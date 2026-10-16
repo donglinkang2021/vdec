@@ -1,0 +1,146 @@
+[
+  {
+    "backend": "vllm",
+    "model": "qwen35-4b",
+    "condition": "no_plan",
+    "method": "choice_boxed",
+    "collision_confusion": {
+      "safe -> safe": 264,
+      "collision -> safe": 24
+    },
+    "relative_turn_predictions": {
+      "turn_left": {
+        "left": 42,
+        "right": 23,
+        "reverse": 25,
+        "straight": 6
+      },
+      "turn_right": {
+        "right": 32,
+        "reverse": 19,
+        "left": 35,
+        "straight": 10
+      }
+    }
+  },
+  {
+    "backend": "vllm",
+    "model": "qwen3vl-4b-thinking",
+    "condition": "no_plan",
+    "method": "choice_boxed",
+    "collision_confusion": {
+      "safe -> safe": 264,
+      "collision -> safe": 24
+    },
+    "relative_turn_predictions": {
+      "turn_left": {
+        "reverse": 30,
+        "left": 5,
+        "straight": 48,
+        "right": 13
+      },
+      "turn_right": {
+        "straight": 47,
+        "right": 15,
+        "reverse": 23,
+        "left": 11
+      }
+    }
+  },
+  {
+    "backend": "vllm",
+    "model": "gemma4-e4b",
+    "condition": "no_plan",
+    "method": "choice_boxed",
+    "collision_confusion": {
+      "safe -> safe": 264,
+      "collision -> safe": 24
+    },
+    "relative_turn_predictions": {
+      "turn_left": {
+        "left": 20,
+        "right": 11,
+        "reverse": 34,
+        "straight": 31
+      },
+      "turn_right": {
+        "straight": 46,
+        "right": 12,
+        "reverse": 24,
+        "left": 14
+      }
+    }
+  },
+  {
+    "backend": "vllm",
+    "model": "qwen35-4b",
+    "condition": "no_plan",
+    "method": "choice_boxed",
+    "collision_confusion": {
+      "safe -> safe": 264,
+      "collision -> safe": 24
+    },
+    "relative_turn_predictions": {
+      "turn_left": {
+        "left": 42,
+        "right": 23,
+        "reverse": 25,
+        "straight": 6
+      },
+      "turn_right": {
+        "right": 32,
+        "reverse": 19,
+        "left": 35,
+        "straight": 10
+      }
+    }
+  },
+  {
+    "backend": "vllm",
+    "model": "qwen3vl-4b-thinking",
+    "condition": "no_plan",
+    "method": "choice_boxed",
+    "collision_confusion": {
+      "safe -> safe": 264,
+      "collision -> safe": 24
+    },
+    "relative_turn_predictions": {
+      "turn_left": {
+        "reverse": 30,
+        "left": 5,
+        "straight": 48,
+        "right": 13
+      },
+      "turn_right": {
+        "straight": 47,
+        "right": 15,
+        "reverse": 23,
+        "left": 11
+      }
+    }
+  },
+  {
+    "backend": "vllm",
+    "model": "gemma4-e4b",
+    "condition": "no_plan",
+    "method": "choice_boxed",
+    "collision_confusion": {
+      "safe -> safe": 264,
+      "collision -> safe": 24
+    },
+    "relative_turn_predictions": {
+      "turn_left": {
+        "left": 21,
+        "right": 11,
+        "reverse": 35,
+        "straight": 29
+      },
+      "turn_right": {
+        "straight": 46,
+        "right": 12,
+        "reverse": 24,
+        "left": 14
+      }
+    }
+  }
+]

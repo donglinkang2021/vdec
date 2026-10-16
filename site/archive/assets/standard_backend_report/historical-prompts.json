@@ -1,0 +1,465 @@
+{
+  "rules": "Play Snake on a 10 by 10 board. The blue head has a white arrow showing its direction; green cells are the body and the red circle is food. Each action moves one cell. Left and right turn relative to the current heading; straight keeps the heading. Eating food grows the snake. Hitting a wall or the body ends the game; the tail vacates its cell on a non-eating move. Maximize food and survival. Use the CURRENT screenshot to adapt any earlier plan.",
+  "question": "Which action should the snake take next?",
+  "choices": [
+    [
+      "left",
+      "Turn left"
+    ],
+    [
+      "straight",
+      "Go straight"
+    ],
+    [
+      "right",
+      "Turn right"
+    ]
+  ],
+  "planning": {
+    "request": "Develop a reusable strategy for playing an entire game of Snake, from the opening until the game ends. The attached image illustrates only the game's visual appearance and symbols. It is not the current game state and must not determine a fixed route, target location, or opening action. Your strategy must remain applicable as the snake moves and grows and new food appears. Describe how to interpret each latest screenshot, apply turns relative to the current heading, avoid collisions and repetitive loops, and pursue food while preserving room to move. After your reasoning, summarize the whole-game strategy in a concise plan. This summary limits the length of your explanation, not the number of game steps it covers.",
+    "direct_request": "Develop a reusable strategy for playing an entire game of Snake, from the opening until the game ends. The attached image illustrates only the game's visual appearance and symbols. It is not the current game state and must not determine a fixed route, target location, or opening action. Your strategy must remain applicable as the snake moves and grows and new food appears. Describe how to interpret each latest screenshot, apply turns relative to the current heading, avoid collisions and repetitive loops, and pursue food while preserving room to move. Return only a concise whole-game plan, without a reasoning transcript. This summary limits the length of your explanation, not the number of game steps it covers.",
+    "readout_context": "The earlier image was only an illustration of the game's appearance, not the current state. Apply the whole-game strategy to the latest screenshot; do not follow a fixed route or target from the illustration.\n"
+  },
+  "models": {
+    "qwen35-4b": {
+      "metadata": {
+        "model": "/inspire/hdd/global_user/donglinkang-253108120084/projects/vdecision/.cache/model-staging/standard-six-20261012/Qwen/Qwen3.5-4B",
+        "model_type": "qwen3_5",
+        "adapter": "qwen35",
+        "planning_kind": "cot",
+        "supports_thinking": true,
+        "template_sha256": "a4aee8afcf2e0711942cf848899be66016f8d14a889ff9ede07bca099c28f715",
+        "config_sha256": "ddc63e1c717afa86c865bb5e01313d89d72bb53b97ad4a8a03ba8510c0621670",
+        "gpu_validation": "not_performed"
+      },
+      "answer_suffix": "<|im_start|>assistant\n<think>\n\n</think>\n\n",
+      "boxed_ids": [
+        59,
+        76367,
+        90
+      ],
+      "label_ids": {
+        "yes": 9405,
+        "no": 2083,
+        "A": 32,
+        "B": 33,
+        "C": 34,
+        "D": 35,
+        "E": 36,
+        "F": 37,
+        "G": 38,
+        "H": 39,
+        "I": 40,
+        "J": 41,
+        "K": 42,
+        "L": 43,
+        "M": 44,
+        "N": 45,
+        "O": 46,
+        "P": 47,
+        "Q": 48,
+        "R": 49,
+        "S": 50,
+        "T": 51,
+        "U": 52,
+        "V": 53,
+        "W": 54,
+        "X": 55,
+        "Y": 56,
+        "Z": 57
+      },
+      "examples": {
+        "choice": [
+          "<|im_start|>system\nPlay Snake on a 10 by 10 board. The blue head has a white arrow showing its direction; green cells are the body and the red circle is food. Each action moves one cell. Left and right turn relative to the current heading; straight keeps the heading. Eating food grows the snake. Hitting a wall or the body ends the game; the tail vacates its cell on a non-eating move. Maximize food and survival. Use the CURRENT screenshot to adapt any earlier plan.<|im_end|>\n<|im_start|>user\n<|vision_start|><|image_pad|><|vision_end|>The following image is the CURRENT observation.\nWhich action should the snake take next?\nOptions:\nA. Turn left\nB. Go straight\nC. Turn right\nChoose the best option. Reply with exactly its uppercase letter.<|im_end|>\n<|im_start|>assistant\n<think>\n\n</think>\n\n"
+        ],
+        "choice_boxed": [
+          "<|im_start|>system\nPlay Snake on a 10 by 10 board. The blue head has a white arrow showing its direction; green cells are the body and the red circle is food. Each action moves one cell. Left and right turn relative to the current heading; straight keeps the heading. Eating food grows the snake. Hitting a wall or the body ends the game; the tail vacates its cell on a non-eating move. Maximize food and survival. Use the CURRENT screenshot to adapt any earlier plan.<|im_end|>\n<|im_start|>user\n<|vision_start|><|image_pad|><|vision_end|>The following image is the CURRENT observation.\nWhich action should the snake take next?\nOptions:\nA. Turn left\nB. Go straight\nC. Turn right\nChoose the best option. Reply with exactly its uppercase letter inside \\boxed{}, with no explanation.<|im_end|>\n<|im_start|>assistant\n<think>\n\n</think>\n\n\\boxed{"
+        ],
+        "yes_no": [
+          "<|im_start|>system\nPlay Snake on a 10 by 10 board. The blue head has a white arrow showing its direction; green cells are the body and the red circle is food. Each action moves one cell. Left and right turn relative to the current heading; straight keeps the heading. Eating food grows the snake. Hitting a wall or the body ends the game; the tail vacates its cell on a non-eating move. Maximize food and survival. Use the CURRENT screenshot to adapt any earlier plan.<|im_end|>\n<|im_start|>user\n<|vision_start|><|image_pad|><|vision_end|>The following image is the CURRENT observation.\nWhich action should the snake take next?\nOptions:\nA. Turn left\nB. Go straight\nC. Turn right\nIs option A the best choice? Reply exactly yes or no.<|im_end|>\n<|im_start|>assistant\n<think>\n\n</think>\n\n",
+          "<|im_start|>system\nPlay Snake on a 10 by 10 board. The blue head has a white arrow showing its direction; green cells are the body and the red circle is food. Each action moves one cell. Left and right turn relative to the current heading; straight keeps the heading. Eating food grows the snake. Hitting a wall or the body ends the game; the tail vacates its cell on a non-eating move. Maximize food and survival. Use the CURRENT screenshot to adapt any earlier plan.<|im_end|>\n<|im_start|>user\n<|vision_start|><|image_pad|><|vision_end|>The following image is the CURRENT observation.\nWhich action should the snake take next?\nOptions:\nA. Turn left\nB. Go straight\nC. Turn right\nIs option B the best choice? Reply exactly yes or no.<|im_end|>\n<|im_start|>assistant\n<think>\n\n</think>\n\n",
+          "<|im_start|>system\nPlay Snake on a 10 by 10 board. The blue head has a white arrow showing its direction; green cells are the body and the red circle is food. Each action moves one cell. Left and right turn relative to the current heading; straight keeps the heading. Eating food grows the snake. Hitting a wall or the body ends the game; the tail vacates its cell on a non-eating move. Maximize food and survival. Use the CURRENT screenshot to adapt any earlier plan.<|im_end|>\n<|im_start|>user\n<|vision_start|><|image_pad|><|vision_end|>The following image is the CURRENT observation.\nWhich action should the snake take next?\nOptions:\nA. Turn left\nB. Go straight\nC. Turn right\nIs option C the best choice? Reply exactly yes or no.<|im_end|>\n<|im_start|>assistant\n<think>\n\n</think>\n\n"
+        ],
+        "yes_no_boxed": [
+          "<|im_start|>system\nPlay Snake on a 10 by 10 board. The blue head has a white arrow showing its direction; green cells are the body and the red circle is food. Each action moves one cell. Left and right turn relative to the current heading; straight keeps the heading. Eating food grows the snake. Hitting a wall or the body ends the game; the tail vacates its cell on a non-eating move. Maximize food and survival. Use the CURRENT screenshot to adapt any earlier plan.<|im_end|>\n<|im_start|>user\n<|vision_start|><|image_pad|><|vision_end|>The following image is the CURRENT observation.\nWhich action should the snake take next?\nOptions:\nA. Turn left\nB. Go straight\nC. Turn right\nIs option A the best choice? Reply with exactly \\boxed{yes} or \\boxed{no}, with no explanation.<|im_end|>\n<|im_start|>assistant\n<think>\n\n</think>\n\n\\boxed{",
+          "<|im_start|>system\nPlay Snake on a 10 by 10 board. The blue head has a white arrow showing its direction; green cells are the body and the red circle is food. Each action moves one cell. Left and right turn relative to the current heading; straight keeps the heading. Eating food grows the snake. Hitting a wall or the body ends the game; the tail vacates its cell on a non-eating move. Maximize food and survival. Use the CURRENT screenshot to adapt any earlier plan.<|im_end|>\n<|im_start|>user\n<|vision_start|><|image_pad|><|vision_end|>The following image is the CURRENT observation.\nWhich action should the snake take next?\nOptions:\nA. Turn left\nB. Go straight\nC. Turn right\nIs option B the best choice? Reply with exactly \\boxed{yes} or \\boxed{no}, with no explanation.<|im_end|>\n<|im_start|>assistant\n<think>\n\n</think>\n\n\\boxed{",
+          "<|im_start|>system\nPlay Snake on a 10 by 10 board. The blue head has a white arrow showing its direction; green cells are the body and the red circle is food. Each action moves one cell. Left and right turn relative to the current heading; straight keeps the heading. Eating food grows the snake. Hitting a wall or the body ends the game; the tail vacates its cell on a non-eating move. Maximize food and survival. Use the CURRENT screenshot to adapt any earlier plan.<|im_end|>\n<|im_start|>user\n<|vision_start|><|image_pad|><|vision_end|>The following image is the CURRENT observation.\nWhich action should the snake take next?\nOptions:\nA. Turn left\nB. Go straight\nC. Turn right\nIs option C the best choice? Reply with exactly \\boxed{yes} or \\boxed{no}, with no explanation.<|im_end|>\n<|im_start|>assistant\n<think>\n\n</think>\n\n\\boxed{"
+        ],
+        "yes_no_naive": [
+          "<|im_start|>system\nPlay Snake on a 10 by 10 board. The blue head has a white arrow showing its direction; green cells are the body and the red circle is food. Each action moves one cell. Left and right turn relative to the current heading; straight keeps the heading. Eating food grows the snake. Hitting a wall or the body ends the game; the tail vacates its cell on a non-eating move. Maximize food and survival. Use the CURRENT screenshot to adapt any earlier plan.<|im_end|>\n<|im_start|>user\n<|vision_start|><|image_pad|><|vision_end|>The following image is the CURRENT observation.\nWhich action should the snake take next?\nIs \"Turn left\" the best answer to the question above? Reply exactly yes or no.<|im_end|>\n<|im_start|>assistant\n<think>\n\n</think>\n\n",
+          "<|im_start|>system\nPlay Snake on a 10 by 10 board. The blue head has a white arrow showing its direction; green cells are the body and the red circle is food. Each action moves one cell. Left and right turn relative to the current heading; straight keeps the heading. Eating food grows the snake. Hitting a wall or the body ends the game; the tail vacates its cell on a non-eating move. Maximize food and survival. Use the CURRENT screenshot to adapt any earlier plan.<|im_end|>\n<|im_start|>user\n<|vision_start|><|image_pad|><|vision_end|>The following image is the CURRENT observation.\nWhich action should the snake take next?\nIs \"Go straight\" the best answer to the question above? Reply exactly yes or no.<|im_end|>\n<|im_start|>assistant\n<think>\n\n</think>\n\n",
+          "<|im_start|>system\nPlay Snake on a 10 by 10 board. The blue head has a white arrow showing its direction; green cells are the body and the red circle is food. Each action moves one cell. Left and right turn relative to the current heading; straight keeps the heading. Eating food grows the snake. Hitting a wall or the body ends the game; the tail vacates its cell on a non-eating move. Maximize food and survival. Use the CURRENT screenshot to adapt any earlier plan.<|im_end|>\n<|im_start|>user\n<|vision_start|><|image_pad|><|vision_end|>The following image is the CURRENT observation.\nWhich action should the snake take next?\nIs \"Turn right\" the best answer to the question above? Reply exactly yes or no.<|im_end|>\n<|im_start|>assistant\n<think>\n\n</think>\n\n"
+        ],
+        "yes_no_naive_boxed": [
+          "<|im_start|>system\nPlay Snake on a 10 by 10 board. The blue head has a white arrow showing its direction; green cells are the body and the red circle is food. Each action moves one cell. Left and right turn relative to the current heading; straight keeps the heading. Eating food grows the snake. Hitting a wall or the body ends the game; the tail vacates its cell on a non-eating move. Maximize food and survival. Use the CURRENT screenshot to adapt any earlier plan.<|im_end|>\n<|im_start|>user\n<|vision_start|><|image_pad|><|vision_end|>The following image is the CURRENT observation.\nWhich action should the snake take next?\nIs \"Turn left\" the best answer to the question above? Reply with exactly \\boxed{yes} or \\boxed{no}, with no explanation.<|im_end|>\n<|im_start|>assistant\n<think>\n\n</think>\n\n\\boxed{",
+          "<|im_start|>system\nPlay Snake on a 10 by 10 board. The blue head has a white arrow showing its direction; green cells are the body and the red circle is food. Each action moves one cell. Left and right turn relative to the current heading; straight keeps the heading. Eating food grows the snake. Hitting a wall or the body ends the game; the tail vacates its cell on a non-eating move. Maximize food and survival. Use the CURRENT screenshot to adapt any earlier plan.<|im_end|>\n<|im_start|>user\n<|vision_start|><|image_pad|><|vision_end|>The following image is the CURRENT observation.\nWhich action should the snake take next?\nIs \"Go straight\" the best answer to the question above? Reply with exactly \\boxed{yes} or \\boxed{no}, with no explanation.<|im_end|>\n<|im_start|>assistant\n<think>\n\n</think>\n\n\\boxed{",
+          "<|im_start|>system\nPlay Snake on a 10 by 10 board. The blue head has a white arrow showing its direction; green cells are the body and the red circle is food. Each action moves one cell. Left and right turn relative to the current heading; straight keeps the heading. Eating food grows the snake. Hitting a wall or the body ends the game; the tail vacates its cell on a non-eating move. Maximize food and survival. Use the CURRENT screenshot to adapt any earlier plan.<|im_end|>\n<|im_start|>user\n<|vision_start|><|image_pad|><|vision_end|>The following image is the CURRENT observation.\nWhich action should the snake take next?\nIs \"Turn right\" the best answer to the question above? Reply with exactly \\boxed{yes} or \\boxed{no}, with no explanation.<|im_end|>\n<|im_start|>assistant\n<think>\n\n</think>\n\n\\boxed{"
+        ]
+      },
+      "native_template": "{%- set image_count = namespace(value=0) %}\n{%- set video_count = namespace(value=0) %}\n{%- macro render_content(content, do_vision_count, is_system_content=false) %}\n    {%- if content is string %}\n        {{- content }}\n    {%- elif content is iterable and content is not mapping %}\n        {%- for item in content %}\n            {%- if 'image' in item or 'image_url' in item or item.type == 'image' %}\n                {%- if is_system_content %}\n                    {{- raise_exception('System message cannot contain images.') }}\n                {%- endif %}\n                {%- if do_vision_count %}\n                    {%- set image_count.value = image_count.value + 1 %}\n                {%- endif %}\n                {%- if add_vision_id %}\n                    {{- 'Picture ' ~ image_count.value ~ ': ' }}\n                {%- endif %}\n                {{- '<|vision_start|><|image_pad|><|vision_end|>' }}\n            {%- elif 'video' in item or item.type == 'video' %}\n                {%- if is_system_content %}\n                    {{- raise_exception('System message cannot contain videos.') }}\n                {%- endif %}\n                {%- if do_vision_count %}\n                    {%- set video_count.value = video_count.value + 1 %}\n                {%- endif %}\n                {%- if add_vision_id %}\n                    {{- 'Video ' ~ video_count.value ~ ': ' }}\n                {%- endif %}\n                {{- '<|vision_start|><|video_pad|><|vision_end|>' }}\n            {%- elif 'text' in item %}\n                {{- item.text }}\n            {%- else %}\n                {{- raise_exception('Unexpected item type in content.') }}\n            {%- endif %}\n        {%- endfor %}\n    {%- elif content is none or content is undefined %}\n        {{- '' }}\n    {%- else %}\n        {{- raise_exception('Unexpected content type.') }}\n    {%- endif %}\n{%- endmacro %}\n{%- if not messages %}\n    {{- raise_exception('No messages provided.') }}\n{%- endif %}\n{%- if tools and tools is iterable and tools is not mapping %}\n    {{- '<|im_start|>system\\n' }}\n    {{- \"# Tools\\n\\nYou have access to the following functions:\\n\\n<tools>\" }}\n    {%- for tool in tools %}\n        {{- \"\\n\" }}\n        {{- tool | tojson }}\n    {%- endfor %}\n    {{- \"\\n</tools>\" }}\n    {{- '\\n\\nIf you choose to call a function ONLY reply in the following format with NO suffix:\\n\\n<tool_call>\\n<function=example_function_name>\\n<parameter=example_parameter_1>\\nvalue_1\\n</parameter>\\n<parameter=example_parameter_2>\\nThis is the value for the second parameter\\nthat can span\\nmultiple lines\\n</parameter>\\n</function>\\n</tool_call>\\n\\n<IMPORTANT>\\nReminder:\\n- Function calls MUST follow the specified format: an inner <function=...></function> block must be nested within <tool_call></tool_call> XML tags\\n- Required parameters MUST be specified\\n- You may provide optional reasoning for your function call in natural language BEFORE the function call, but NOT after\\n- If there is no function call available, answer the question like normal with your current knowledge and do not tell the user about function calls\\n</IMPORTANT>' }}\n    {%- if messages[0].role == 'system' %}\n        {%- set content = render_content(messages[0].content, false, true)|trim %}\n        {%- if content %}\n            {{- '\\n\\n' + content }}\n        {%- endif %}\n    {%- endif %}\n    {{- '<|im_end|>\\n' }}\n{%- else %}\n    {%- if messages[0].role == 'system' %}\n        {%- set content = render_content(messages[0].content, false, true)|trim %}\n        {{- '<|im_start|>system\\n' + content + '<|im_end|>\\n' }}\n    {%- endif %}\n{%- endif %}\n{%- set ns = namespace(multi_step_tool=true, last_query_index=messages|length - 1) %}\n{%- for message in messages[::-1] %}\n    {%- set index = (messages|length - 1) - loop.index0 %}\n    {%- if ns.multi_step_tool and message.role == \"user\" %}\n        {%- set content = render_content(message.content, false)|trim %}\n        {%- if not(content.startswith('<tool_response>') and content.endswith('</tool_response>')) %}\n            {%- set ns.multi_step_tool = false %}\n            {%- set ns.last_query_index = index %}\n        {%- endif %}\n    {%- endif %}\n{%- endfor %}\n{%- if ns.multi_step_tool %}\n    {{- raise_exception('No user query found in messages.') }}\n{%- endif %}\n{%- for message in messages %}\n    {%- set content = render_content(message.content, true)|trim %}\n    {%- if message.role == \"system\" %}\n        {%- if not loop.first %}\n            {{- raise_exception('System message must be at the beginning.') }}\n        {%- endif %}\n    {%- elif message.role == \"user\" %}\n        {{- '<|im_start|>' + message.role + '\\n' + content + '<|im_end|>' + '\\n' }}\n    {%- elif message.role == \"assistant\" %}\n        {%- set reasoning_content = '' %}\n        {%- if message.reasoning_content is string %}\n            {%- set reasoning_content = message.reasoning_content %}\n        {%- else %}\n            {%- if '</think>' in content %}\n                {%- set reasoning_content = content.split('</think>')[0].rstrip('\\n').split('<think>')[-1].lstrip('\\n') %}\n                {%- set content = content.split('</think>')[-1].lstrip('\\n') %}\n            {%- endif %}\n        {%- endif %}\n        {%- set reasoning_content = reasoning_content|trim %}\n        {%- if loop.index0 > ns.last_query_index %}\n            {{- '<|im_start|>' + message.role + '\\n<think>\\n' + reasoning_content + '\\n</think>\\n\\n' + content }}\n        {%- else %}\n            {{- '<|im_start|>' + message.role + '\\n' + content }}\n        {%- endif %}\n        {%- if message.tool_calls and message.tool_calls is iterable and message.tool_calls is not mapping %}\n            {%- for tool_call in message.tool_calls %}\n                {%- if tool_call.function is defined %}\n                    {%- set tool_call = tool_call.function %}\n                {%- endif %}\n                {%- if loop.first %}\n                    {%- if content|trim %}\n                        {{- '\\n\\n<tool_call>\\n<function=' + tool_call.name + '>\\n' }}\n                    {%- else %}\n                        {{- '<tool_call>\\n<function=' + tool_call.name + '>\\n' }}\n                    {%- endif %}\n                {%- else %}\n                    {{- '\\n<tool_call>\\n<function=' + tool_call.name + '>\\n' }}\n                {%- endif %}\n                {%- if tool_call.arguments is defined %}\n                    {%- for args_name, args_value in tool_call.arguments|items %}\n                        {{- '<parameter=' + args_name + '>\\n' }}\n                        {%- set args_value = args_value | tojson | safe if args_value is mapping or (args_value is sequence and args_value is not string) else args_value | string %}\n                        {{- args_value }}\n                        {{- '\\n</parameter>\\n' }}\n                    {%- endfor %}\n                {%- endif %}\n                {{- '</function>\\n</tool_call>' }}\n            {%- endfor %}\n        {%- endif %}\n        {{- '<|im_end|>\\n' }}\n    {%- elif message.role == \"tool\" %}\n        {%- if loop.previtem and loop.previtem.role != \"tool\" %}\n            {{- '<|im_start|>user' }}\n        {%- endif %}\n        {{- '\\n<tool_response>\\n' }}\n        {{- content }}\n        {{- '\\n</tool_response>' }}\n        {%- if not loop.last and loop.nextitem.role != \"tool\" %}\n            {{- '<|im_end|>\\n' }}\n        {%- elif loop.last %}\n            {{- '<|im_end|>\\n' }}\n        {%- endif %}\n    {%- else %}\n        {{- raise_exception('Unexpected message role.') }}\n    {%- endif %}\n{%- endfor %}\n{%- if add_generation_prompt %}\n    {{- '<|im_start|>assistant\\n' }}\n    {%- if enable_thinking is defined and enable_thinking is false %}\n        {{- '<think>\\n\\n</think>\\n\\n' }}\n    {%- else %}\n        {{- '<think>\\n' }}\n    {%- endif %}\n{%- endif %}",
+      "planning_initial": {
+        "True": "<|im_start|>system\nPlay Snake on a 10 by 10 board. The blue head has a white arrow showing its direction; green cells are the body and the red circle is food. Each action moves one cell. Left and right turn relative to the current heading; straight keeps the heading. Eating food grows the snake. Hitting a wall or the body ends the game; the tail vacates its cell on a non-eating move. Maximize food and survival. Use the CURRENT screenshot to adapt any earlier plan.<|im_end|>\n<|im_start|>user\n<|vision_start|><|image_pad|><|vision_end|>\nDevelop a reusable strategy for playing an entire game of Snake, from the opening until the game ends. The attached image illustrates only the game's visual appearance and symbols. It is not the current game state and must not determine a fixed route, target location, or opening action. Your strategy must remain applicable as the snake moves and grows and new food appears. Describe how to interpret each latest screenshot, apply turns relative to the current heading, avoid collisions and repetitive loops, and pursue food while preserving room to move. After your reasoning, summarize the whole-game strategy in a concise plan. This summary limits the length of your explanation, not the number of game steps it covers.<|im_end|>\n<|im_start|>assistant\n<think>\n",
+        "False": "<|im_start|>system\nPlay Snake on a 10 by 10 board. The blue head has a white arrow showing its direction; green cells are the body and the red circle is food. Each action moves one cell. Left and right turn relative to the current heading; straight keeps the heading. Eating food grows the snake. Hitting a wall or the body ends the game; the tail vacates its cell on a non-eating move. Maximize food and survival. Use the CURRENT screenshot to adapt any earlier plan.<|im_end|>\n<|im_start|>user\n<|vision_start|><|image_pad|><|vision_end|>\nDevelop a reusable strategy for playing an entire game of Snake, from the opening until the game ends. The attached image illustrates only the game's visual appearance and symbols. It is not the current game state and must not determine a fixed route, target location, or opening action. Your strategy must remain applicable as the snake moves and grows and new food appears. Describe how to interpret each latest screenshot, apply turns relative to the current heading, avoid collisions and repetitive loops, and pursue food while preserving room to move. Return only a concise whole-game plan, without a reasoning transcript. This summary limits the length of your explanation, not the number of game steps it covers.<|im_end|>\n<|im_start|>assistant\n<think>\n\n</think>\n\n"
+      }
+    },
+    "qwen3vl-4b-thinking": {
+      "metadata": {
+        "model": "/inspire/hdd/global_user/donglinkang-253108120084/projects/vdecision/.cache/model-staging/standard-six-20261012/Qwen/Qwen3-VL-4B-Thinking",
+        "model_type": "qwen3_vl",
+        "adapter": "qwen3_vl",
+        "planning_kind": "cot",
+        "supports_thinking": true,
+        "template_sha256": "36e042fe45641f067b1f2381fcc8955d10d956a3ed333ecdf7f7eb0916f68956",
+        "config_sha256": "edac7703329133edfc53e46ac0081835144c99d7eebf28b71c732694d435224d",
+        "gpu_validation": "not_performed"
+      },
+      "answer_suffix": "<|im_start|>assistant\n<think>\n\n</think>\n\n",
+      "boxed_ids": [
+        59,
+        79075,
+        90
+      ],
+      "label_ids": {
+        "yes": 9693,
+        "no": 2152,
+        "A": 32,
+        "B": 33,
+        "C": 34,
+        "D": 35,
+        "E": 36,
+        "F": 37,
+        "G": 38,
+        "H": 39,
+        "I": 40,
+        "J": 41,
+        "K": 42,
+        "L": 43,
+        "M": 44,
+        "N": 45,
+        "O": 46,
+        "P": 47,
+        "Q": 48,
+        "R": 49,
+        "S": 50,
+        "T": 51,
+        "U": 52,
+        "V": 53,
+        "W": 54,
+        "X": 55,
+        "Y": 56,
+        "Z": 57
+      },
+      "examples": {
+        "choice": [
+          "<|im_start|>system\nPlay Snake on a 10 by 10 board. The blue head has a white arrow showing its direction; green cells are the body and the red circle is food. Each action moves one cell. Left and right turn relative to the current heading; straight keeps the heading. Eating food grows the snake. Hitting a wall or the body ends the game; the tail vacates its cell on a non-eating move. Maximize food and survival. Use the CURRENT screenshot to adapt any earlier plan.<|im_end|>\n<|im_start|>user\n<|vision_start|><|image_pad|><|vision_end|>The following image is the CURRENT observation.\nWhich action should the snake take next?\nOptions:\nA. Turn left\nB. Go straight\nC. Turn right\nChoose the best option. Reply with exactly its uppercase letter.<|im_end|>\n<|im_start|>assistant\n<think>\n\n</think>\n\n"
+        ],
+        "choice_boxed": [
+          "<|im_start|>system\nPlay Snake on a 10 by 10 board. The blue head has a white arrow showing its direction; green cells are the body and the red circle is food. Each action moves one cell. Left and right turn relative to the current heading; straight keeps the heading. Eating food grows the snake. Hitting a wall or the body ends the game; the tail vacates its cell on a non-eating move. Maximize food and survival. Use the CURRENT screenshot to adapt any earlier plan.<|im_end|>\n<|im_start|>user\n<|vision_start|><|image_pad|><|vision_end|>The following image is the CURRENT observation.\nWhich action should the snake take next?\nOptions:\nA. Turn left\nB. Go straight\nC. Turn right\nChoose the best option. Reply with exactly its uppercase letter inside \\boxed{}, with no explanation.<|im_end|>\n<|im_start|>assistant\n<think>\n\n</think>\n\n\\boxed{"
+        ],
+        "yes_no": [
+          "<|im_start|>system\nPlay Snake on a 10 by 10 board. The blue head has a white arrow showing its direction; green cells are the body and the red circle is food. Each action moves one cell. Left and right turn relative to the current heading; straight keeps the heading. Eating food grows the snake. Hitting a wall or the body ends the game; the tail vacates its cell on a non-eating move. Maximize food and survival. Use the CURRENT screenshot to adapt any earlier plan.<|im_end|>\n<|im_start|>user\n<|vision_start|><|image_pad|><|vision_end|>The following image is the CURRENT observation.\nWhich action should the snake take next?\nOptions:\nA. Turn left\nB. Go straight\nC. Turn right\nIs option A the best choice? Reply exactly yes or no.<|im_end|>\n<|im_start|>assistant\n<think>\n\n</think>\n\n",
+          "<|im_start|>system\nPlay Snake on a 10 by 10 board. The blue head has a white arrow showing its direction; green cells are the body and the red circle is food. Each action moves one cell. Left and right turn relative to the current heading; straight keeps the heading. Eating food grows the snake. Hitting a wall or the body ends the game; the tail vacates its cell on a non-eating move. Maximize food and survival. Use the CURRENT screenshot to adapt any earlier plan.<|im_end|>\n<|im_start|>user\n<|vision_start|><|image_pad|><|vision_end|>The following image is the CURRENT observation.\nWhich action should the snake take next?\nOptions:\nA. Turn left\nB. Go straight\nC. Turn right\nIs option B the best choice? Reply exactly yes or no.<|im_end|>\n<|im_start|>assistant\n<think>\n\n</think>\n\n",
+          "<|im_start|>system\nPlay Snake on a 10 by 10 board. The blue head has a white arrow showing its direction; green cells are the body and the red circle is food. Each action moves one cell. Left and right turn relative to the current heading; straight keeps the heading. Eating food grows the snake. Hitting a wall or the body ends the game; the tail vacates its cell on a non-eating move. Maximize food and survival. Use the CURRENT screenshot to adapt any earlier plan.<|im_end|>\n<|im_start|>user\n<|vision_start|><|image_pad|><|vision_end|>The following image is the CURRENT observation.\nWhich action should the snake take next?\nOptions:\nA. Turn left\nB. Go straight\nC. Turn right\nIs option C the best choice? Reply exactly yes or no.<|im_end|>\n<|im_start|>assistant\n<think>\n\n</think>\n\n"
+        ],
+        "yes_no_boxed": [
+          "<|im_start|>system\nPlay Snake on a 10 by 10 board. The blue head has a white arrow showing its direction; green cells are the body and the red circle is food. Each action moves one cell. Left and right turn relative to the current heading; straight keeps the heading. Eating food grows the snake. Hitting a wall or the body ends the game; the tail vacates its cell on a non-eating move. Maximize food and survival. Use the CURRENT screenshot to adapt any earlier plan.<|im_end|>\n<|im_start|>user\n<|vision_start|><|image_pad|><|vision_end|>The following image is the CURRENT observation.\nWhich action should the snake take next?\nOptions:\nA. Turn left\nB. Go straight\nC. Turn right\nIs option A the best choice? Reply with exactly \\boxed{yes} or \\boxed{no}, with no explanation.<|im_end|>\n<|im_start|>assistant\n<think>\n\n</think>\n\n\\boxed{",
+          "<|im_start|>system\nPlay Snake on a 10 by 10 board. The blue head has a white arrow showing its direction; green cells are the body and the red circle is food. Each action moves one cell. Left and right turn relative to the current heading; straight keeps the heading. Eating food grows the snake. Hitting a wall or the body ends the game; the tail vacates its cell on a non-eating move. Maximize food and survival. Use the CURRENT screenshot to adapt any earlier plan.<|im_end|>\n<|im_start|>user\n<|vision_start|><|image_pad|><|vision_end|>The following image is the CURRENT observation.\nWhich action should the snake take next?\nOptions:\nA. Turn left\nB. Go straight\nC. Turn right\nIs option B the best choice? Reply with exactly \\boxed{yes} or \\boxed{no}, with no explanation.<|im_end|>\n<|im_start|>assistant\n<think>\n\n</think>\n\n\\boxed{",
+          "<|im_start|>system\nPlay Snake on a 10 by 10 board. The blue head has a white arrow showing its direction; green cells are the body and the red circle is food. Each action moves one cell. Left and right turn relative to the current heading; straight keeps the heading. Eating food grows the snake. Hitting a wall or the body ends the game; the tail vacates its cell on a non-eating move. Maximize food and survival. Use the CURRENT screenshot to adapt any earlier plan.<|im_end|>\n<|im_start|>user\n<|vision_start|><|image_pad|><|vision_end|>The following image is the CURRENT observation.\nWhich action should the snake take next?\nOptions:\nA. Turn left\nB. Go straight\nC. Turn right\nIs option C the best choice? Reply with exactly \\boxed{yes} or \\boxed{no}, with no explanation.<|im_end|>\n<|im_start|>assistant\n<think>\n\n</think>\n\n\\boxed{"
+        ],
+        "yes_no_naive": [
+          "<|im_start|>system\nPlay Snake on a 10 by 10 board. The blue head has a white arrow showing its direction; green cells are the body and the red circle is food. Each action moves one cell. Left and right turn relative to the current heading; straight keeps the heading. Eating food grows the snake. Hitting a wall or the body ends the game; the tail vacates its cell on a non-eating move. Maximize food and survival. Use the CURRENT screenshot to adapt any earlier plan.<|im_end|>\n<|im_start|>user\n<|vision_start|><|image_pad|><|vision_end|>The following image is the CURRENT observation.\nWhich action should the snake take next?\nIs \"Turn left\" the best answer to the question above? Reply exactly yes or no.<|im_end|>\n<|im_start|>assistant\n<think>\n\n</think>\n\n",
+          "<|im_start|>system\nPlay Snake on a 10 by 10 board. The blue head has a white arrow showing its direction; green cells are the body and the red circle is food. Each action moves one cell. Left and right turn relative to the current heading; straight keeps the heading. Eating food grows the snake. Hitting a wall or the body ends the game; the tail vacates its cell on a non-eating move. Maximize food and survival. Use the CURRENT screenshot to adapt any earlier plan.<|im_end|>\n<|im_start|>user\n<|vision_start|><|image_pad|><|vision_end|>The following image is the CURRENT observation.\nWhich action should the snake take next?\nIs \"Go straight\" the best answer to the question above? Reply exactly yes or no.<|im_end|>\n<|im_start|>assistant\n<think>\n\n</think>\n\n",
+          "<|im_start|>system\nPlay Snake on a 10 by 10 board. The blue head has a white arrow showing its direction; green cells are the body and the red circle is food. Each action moves one cell. Left and right turn relative to the current heading; straight keeps the heading. Eating food grows the snake. Hitting a wall or the body ends the game; the tail vacates its cell on a non-eating move. Maximize food and survival. Use the CURRENT screenshot to adapt any earlier plan.<|im_end|>\n<|im_start|>user\n<|vision_start|><|image_pad|><|vision_end|>The following image is the CURRENT observation.\nWhich action should the snake take next?\nIs \"Turn right\" the best answer to the question above? Reply exactly yes or no.<|im_end|>\n<|im_start|>assistant\n<think>\n\n</think>\n\n"
+        ],
+        "yes_no_naive_boxed": [
+          "<|im_start|>system\nPlay Snake on a 10 by 10 board. The blue head has a white arrow showing its direction; green cells are the body and the red circle is food. Each action moves one cell. Left and right turn relative to the current heading; straight keeps the heading. Eating food grows the snake. Hitting a wall or the body ends the game; the tail vacates its cell on a non-eating move. Maximize food and survival. Use the CURRENT screenshot to adapt any earlier plan.<|im_end|>\n<|im_start|>user\n<|vision_start|><|image_pad|><|vision_end|>The following image is the CURRENT observation.\nWhich action should the snake take next?\nIs \"Turn left\" the best answer to the question above? Reply with exactly \\boxed{yes} or \\boxed{no}, with no explanation.<|im_end|>\n<|im_start|>assistant\n<think>\n\n</think>\n\n\\boxed{",
+          "<|im_start|>system\nPlay Snake on a 10 by 10 board. The blue head has a white arrow showing its direction; green cells are the body and the red circle is food. Each action moves one cell. Left and right turn relative to the current heading; straight keeps the heading. Eating food grows the snake. Hitting a wall or the body ends the game; the tail vacates its cell on a non-eating move. Maximize food and survival. Use the CURRENT screenshot to adapt any earlier plan.<|im_end|>\n<|im_start|>user\n<|vision_start|><|image_pad|><|vision_end|>The following image is the CURRENT observation.\nWhich action should the snake take next?\nIs \"Go straight\" the best answer to the question above? Reply with exactly \\boxed{yes} or \\boxed{no}, with no explanation.<|im_end|>\n<|im_start|>assistant\n<think>\n\n</think>\n\n\\boxed{",
+          "<|im_start|>system\nPlay Snake on a 10 by 10 board. The blue head has a white arrow showing its direction; green cells are the body and the red circle is food. Each action moves one cell. Left and right turn relative to the current heading; straight keeps the heading. Eating food grows the snake. Hitting a wall or the body ends the game; the tail vacates its cell on a non-eating move. Maximize food and survival. Use the CURRENT screenshot to adapt any earlier plan.<|im_end|>\n<|im_start|>user\n<|vision_start|><|image_pad|><|vision_end|>The following image is the CURRENT observation.\nWhich action should the snake take next?\nIs \"Turn right\" the best answer to the question above? Reply with exactly \\boxed{yes} or \\boxed{no}, with no explanation.<|im_end|>\n<|im_start|>assistant\n<think>\n\n</think>\n\n\\boxed{"
+        ]
+      },
+      "native_template": "{%- set image_count = namespace(value=0) %}\n{%- set video_count = namespace(value=0) %}\n{%- macro render_content(content, do_vision_count) %}\n    {%- if content is string %}\n        {{- content }}\n    {%- else %}\n        {%- for item in content %}\n            {%- if 'image' in item or 'image_url' in item or item.type == 'image' %}\n                {%- if do_vision_count %}\n                    {%- set image_count.value = image_count.value + 1 %}\n                {%- endif %}\n                {%- if add_vision_id %}Picture {{ image_count.value }}: {% endif -%}\n                <|vision_start|><|image_pad|><|vision_end|>\n            {%- elif 'video' in item or item.type == 'video' %}\n                {%- if do_vision_count %}\n                    {%- set video_count.value = video_count.value + 1 %}\n                {%- endif %}\n                {%- if add_vision_id %}Video {{ video_count.value }}: {% endif -%}\n                <|vision_start|><|video_pad|><|vision_end|>\n            {%- elif 'text' in item %}\n                {{- item.text }}\n            {%- endif %}\n        {%- endfor %}\n    {%- endif %}\n{%- endmacro %}\n{%- if tools %}\n    {{- '<|im_start|>system\\n' }}\n    {%- if messages[0].role == 'system' %}\n        {{- render_content(messages[0].content, false) + '\\n\\n' }}\n    {%- endif %}\n    {{- \"# Tools\\n\\nYou may call one or more functions to assist with the user query.\\n\\nYou are provided with function signatures within <tools></tools> XML tags:\\n<tools>\" }}\n    {%- for tool in tools %}\n        {{- \"\\n\" }}\n        {{- tool | tojson }}\n    {%- endfor %}\n    {{- \"\\n</tools>\\n\\nFor each function call, return a json object with function name and arguments within <tool_call></tool_call> XML tags:\\n<tool_call>\\n{\\\"name\\\": <function-name>, \\\"arguments\\\": <args-json-object>}\\n</tool_call><|im_end|>\\n\" }}\n{%- else %}\n    {%- if messages[0].role == 'system' %}\n        {{- '<|im_start|>system\\n' + render_content(messages[0].content, false) + '<|im_end|>\\n' }}\n    {%- endif %}\n{%- endif %}\n{%- set ns = namespace(multi_step_tool=true, last_query_index=messages|length - 1) %}\n{%- for message in messages[::-1] %}\n    {%- set index = (messages|length - 1) - loop.index0 %}\n    {%- if ns.multi_step_tool and message.role == \"user\" %}\n        {%- set content = render_content(message.content, false) %}\n        {%- if not(content.startswith('<tool_response>') and content.endswith('</tool_response>')) %}\n            {%- set ns.multi_step_tool = false %}\n            {%- set ns.last_query_index = index %}\n        {%- endif %}\n    {%- endif %}\n{%- endfor %}\n{%- for message in messages %}\n    {%- set content = render_content(message.content, True) %}\n    {%- if (message.role == \"user\") or (message.role == \"system\" and not loop.first) %}\n        {{- '<|im_start|>' + message.role + '\\n' + content + '<|im_end|>' + '\\n' }}\n    {%- elif message.role == \"assistant\" %}\n        {%- set reasoning_content = '' %}\n        {%- if message.reasoning_content is string %}\n            {%- set reasoning_content = message.reasoning_content %}\n        {%- else %}\n            {%- if '</think>' in content %}\n                {%- set reasoning_content = content.split('</think>')[0].rstrip('\\n').split('<think>')[-1].lstrip('\\n') %}\n                {%- set content = content.split('</think>')[-1].lstrip('\\n') %}\n            {%- endif %}\n        {%- endif %}\n        {%- if loop.index0 > ns.last_query_index %}\n            {%- if loop.last or (not loop.last and reasoning_content) %}\n                {{- '<|im_start|>' + message.role + '\\n<think>\\n' + reasoning_content.strip('\\n') + '\\n</think>\\n\\n' + content.lstrip('\\n') }}\n            {%- else %}\n                {{- '<|im_start|>' + message.role + '\\n' + content }}\n            {%- endif %}\n        {%- else %}\n            {{- '<|im_start|>' + message.role + '\\n' + content }}\n        {%- endif %}\n        {%- if message.tool_calls %}\n            {%- for tool_call in message.tool_calls %}\n                {%- if (loop.first and content) or (not loop.first) %}\n                    {{- '\\n' }}\n                {%- endif %}\n                {%- if tool_call.function %}\n                    {%- set tool_call = tool_call.function %}\n                {%- endif %}\n                {{- '<tool_call>\\n{\"name\": \"' }}\n                {{- tool_call.name }}\n                {{- '\", \"arguments\": ' }}\n                {%- if tool_call.arguments is string %}\n                    {{- tool_call.arguments }}\n                {%- else %}\n                    {{- tool_call.arguments | tojson }}\n                {%- endif %}\n                {{- '}\\n</tool_call>' }}\n            {%- endfor %}\n        {%- endif %}\n        {{- '<|im_end|>\\n' }}\n    {%- elif message.role == \"tool\" %}\n        {%- if loop.first or (messages[loop.index0 - 1].role != \"tool\") %}\n            {{- '<|im_start|>user' }}\n        {%- endif %}\n        {{- '\\n<tool_response>\\n' }}\n        {{- content }}\n        {{- '\\n</tool_response>' }}\n        {%- if loop.last or (messages[loop.index0 + 1].role != \"tool\") %}\n            {{- '<|im_end|>\\n' }}\n        {%- endif %}\n    {%- endif %}\n{%- endfor %}\n{%- if add_generation_prompt %}\n    {{- '<|im_start|>assistant\\n<think>\\n' }}\n{%- endif %}\n",
+      "planning_initial": {
+        "True": "<|im_start|>system\nPlay Snake on a 10 by 10 board. The blue head has a white arrow showing its direction; green cells are the body and the red circle is food. Each action moves one cell. Left and right turn relative to the current heading; straight keeps the heading. Eating food grows the snake. Hitting a wall or the body ends the game; the tail vacates its cell on a non-eating move. Maximize food and survival. Use the CURRENT screenshot to adapt any earlier plan.<|im_end|>\n<|im_start|>user\n<|vision_start|><|image_pad|><|vision_end|>\nDevelop a reusable strategy for playing an entire game of Snake, from the opening until the game ends. The attached image illustrates only the game's visual appearance and symbols. It is not the current game state and must not determine a fixed route, target location, or opening action. Your strategy must remain applicable as the snake moves and grows and new food appears. Describe how to interpret each latest screenshot, apply turns relative to the current heading, avoid collisions and repetitive loops, and pursue food while preserving room to move. After your reasoning, summarize the whole-game strategy in a concise plan. This summary limits the length of your explanation, not the number of game steps it covers.<|im_end|>\n<|im_start|>assistant\n<think>\n",
+        "False": "<|im_start|>system\nPlay Snake on a 10 by 10 board. The blue head has a white arrow showing its direction; green cells are the body and the red circle is food. Each action moves one cell. Left and right turn relative to the current heading; straight keeps the heading. Eating food grows the snake. Hitting a wall or the body ends the game; the tail vacates its cell on a non-eating move. Maximize food and survival. Use the CURRENT screenshot to adapt any earlier plan.<|im_end|>\n<|im_start|>user\n<|vision_start|><|image_pad|><|vision_end|>\nDevelop a reusable strategy for playing an entire game of Snake, from the opening until the game ends. The attached image illustrates only the game's visual appearance and symbols. It is not the current game state and must not determine a fixed route, target location, or opening action. Your strategy must remain applicable as the snake moves and grows and new food appears. Describe how to interpret each latest screenshot, apply turns relative to the current heading, avoid collisions and repetitive loops, and pursue food while preserving room to move. Return only a concise whole-game plan, without a reasoning transcript. This summary limits the length of your explanation, not the number of game steps it covers.<|im_end|>\n<|im_start|>assistant\n<think>\n\n</think>\n\n"
+      }
+    },
+    "gemma4-e4b": {
+      "metadata": {
+        "model": "/inspire/hdd/global_user/donglinkang-253108120084/projects/vdecision/.cache/model-staging/standard-six-20261012/google/gemma-4-E4B-it",
+        "model_type": "gemma4",
+        "adapter": "gemma4",
+        "planning_kind": "cot",
+        "supports_thinking": true,
+        "template_sha256": "55572b8d3c8342044e25874c73fe5234b661fa0a57a57f6ef75b58e03d7d959a",
+        "config_sha256": "33b10c02df3c2e8536cf323d29d53262aaa2f4d11dbe19bc729373fbe90295d4",
+        "gpu_validation": "not_performed"
+      },
+      "answer_suffix": "<|turn>model\n<|channel>thought\n<channel|>",
+      "boxed_ids": [
+        236785,
+        57296,
+        236782
+      ],
+      "label_ids": {
+        "yes": 4443,
+        "no": 1904,
+        "A": 236776,
+        "B": 236799,
+        "C": 236780,
+        "D": 236796,
+        "E": 236788,
+        "F": 236811,
+        "G": 236823,
+        "H": 236814,
+        "I": 236777,
+        "J": 236863,
+        "K": 236855,
+        "L": 236798,
+        "M": 236792,
+        "N": 236797,
+        "O": 236806,
+        "P": 236791,
+        "Q": 236935,
+        "R": 236794,
+        "S": 236773,
+        "T": 236774,
+        "U": 236836,
+        "V": 236847,
+        "W": 236824,
+        "X": 236917,
+        "Y": 236874,
+        "Z": 236953
+      },
+      "examples": {
+        "choice": [
+          "<bos><|turn>system\nPlay Snake on a 10 by 10 board. The blue head has a white arrow showing its direction; green cells are the body and the red circle is food. Each action moves one cell. Left and right turn relative to the current heading; straight keeps the heading. Eating food grows the snake. Hitting a wall or the body ends the game; the tail vacates its cell on a non-eating move. Maximize food and survival. Use the CURRENT screenshot to adapt any earlier plan.<turn|>\n<|turn>user\n\n\n<|image|>\n\nThe following image is the CURRENT observation.\nWhich action should the snake take next?\nOptions:\nA. Turn left\nB. Go straight\nC. Turn right\nChoose the best option. Reply with exactly its uppercase letter.<turn|>\n<|turn>model\n<|channel>thought\n<channel|>"
+        ],
+        "choice_boxed": [
+          "<bos><|turn>system\nPlay Snake on a 10 by 10 board. The blue head has a white arrow showing its direction; green cells are the body and the red circle is food. Each action moves one cell. Left and right turn relative to the current heading; straight keeps the heading. Eating food grows the snake. Hitting a wall or the body ends the game; the tail vacates its cell on a non-eating move. Maximize food and survival. Use the CURRENT screenshot to adapt any earlier plan.<turn|>\n<|turn>user\n\n\n<|image|>\n\nThe following image is the CURRENT observation.\nWhich action should the snake take next?\nOptions:\nA. Turn left\nB. Go straight\nC. Turn right\nChoose the best option. Reply with exactly its uppercase letter inside \\boxed{}, with no explanation.<turn|>\n<|turn>model\n<|channel>thought\n<channel|>\\boxed{"
+        ],
+        "yes_no": [
+          "<bos><|turn>system\nPlay Snake on a 10 by 10 board. The blue head has a white arrow showing its direction; green cells are the body and the red circle is food. Each action moves one cell. Left and right turn relative to the current heading; straight keeps the heading. Eating food grows the snake. Hitting a wall or the body ends the game; the tail vacates its cell on a non-eating move. Maximize food and survival. Use the CURRENT screenshot to adapt any earlier plan.<turn|>\n<|turn>user\n\n\n<|image|>\n\nThe following image is the CURRENT observation.\nWhich action should the snake take next?\nOptions:\nA. Turn left\nB. Go straight\nC. Turn right\nIs option A the best choice? Reply exactly yes or no.<turn|>\n<|turn>model\n<|channel>thought\n<channel|>",
+          "<bos><|turn>system\nPlay Snake on a 10 by 10 board. The blue head has a white arrow showing its direction; green cells are the body and the red circle is food. Each action moves one cell. Left and right turn relative to the current heading; straight keeps the heading. Eating food grows the snake. Hitting a wall or the body ends the game; the tail vacates its cell on a non-eating move. Maximize food and survival. Use the CURRENT screenshot to adapt any earlier plan.<turn|>\n<|turn>user\n\n\n<|image|>\n\nThe following image is the CURRENT observation.\nWhich action should the snake take next?\nOptions:\nA. Turn left\nB. Go straight\nC. Turn right\nIs option B the best choice? Reply exactly yes or no.<turn|>\n<|turn>model\n<|channel>thought\n<channel|>",
+          "<bos><|turn>system\nPlay Snake on a 10 by 10 board. The blue head has a white arrow showing its direction; green cells are the body and the red circle is food. Each action moves one cell. Left and right turn relative to the current heading; straight keeps the heading. Eating food grows the snake. Hitting a wall or the body ends the game; the tail vacates its cell on a non-eating move. Maximize food and survival. Use the CURRENT screenshot to adapt any earlier plan.<turn|>\n<|turn>user\n\n\n<|image|>\n\nThe following image is the CURRENT observation.\nWhich action should the snake take next?\nOptions:\nA. Turn left\nB. Go straight\nC. Turn right\nIs option C the best choice? Reply exactly yes or no.<turn|>\n<|turn>model\n<|channel>thought\n<channel|>"
+        ],
+        "yes_no_boxed": [
+          "<bos><|turn>system\nPlay Snake on a 10 by 10 board. The blue head has a white arrow showing its direction; green cells are the body and the red circle is food. Each action moves one cell. Left and right turn relative to the current heading; straight keeps the heading. Eating food grows the snake. Hitting a wall or the body ends the game; the tail vacates its cell on a non-eating move. Maximize food and survival. Use the CURRENT screenshot to adapt any earlier plan.<turn|>\n<|turn>user\n\n\n<|image|>\n\nThe following image is the CURRENT observation.\nWhich action should the snake take next?\nOptions:\nA. Turn left\nB. Go straight\nC. Turn right\nIs option A the best choice? Reply with exactly \\boxed{yes} or \\boxed{no}, with no explanation.<turn|>\n<|turn>model\n<|channel>thought\n<channel|>\\boxed{",
+          "<bos><|turn>system\nPlay Snake on a 10 by 10 board. The blue head has a white arrow showing its direction; green cells are the body and the red circle is food. Each action moves one cell. Left and right turn relative to the current heading; straight keeps the heading. Eating food grows the snake. Hitting a wall or the body ends the game; the tail vacates its cell on a non-eating move. Maximize food and survival. Use the CURRENT screenshot to adapt any earlier plan.<turn|>\n<|turn>user\n\n\n<|image|>\n\nThe following image is the CURRENT observation.\nWhich action should the snake take next?\nOptions:\nA. Turn left\nB. Go straight\nC. Turn right\nIs option B the best choice? Reply with exactly \\boxed{yes} or \\boxed{no}, with no explanation.<turn|>\n<|turn>model\n<|channel>thought\n<channel|>\\boxed{",
+          "<bos><|turn>system\nPlay Snake on a 10 by 10 board. The blue head has a white arrow showing its direction; green cells are the body and the red circle is food. Each action moves one cell. Left and right turn relative to the current heading; straight keeps the heading. Eating food grows the snake. Hitting a wall or the body ends the game; the tail vacates its cell on a non-eating move. Maximize food and survival. Use the CURRENT screenshot to adapt any earlier plan.<turn|>\n<|turn>user\n\n\n<|image|>\n\nThe following image is the CURRENT observation.\nWhich action should the snake take next?\nOptions:\nA. Turn left\nB. Go straight\nC. Turn right\nIs option C the best choice? Reply with exactly \\boxed{yes} or \\boxed{no}, with no explanation.<turn|>\n<|turn>model\n<|channel>thought\n<channel|>\\boxed{"
+        ],
+        "yes_no_naive": [
+          "<bos><|turn>system\nPlay Snake on a 10 by 10 board. The blue head has a white arrow showing its direction; green cells are the body and the red circle is food. Each action moves one cell. Left and right turn relative to the current heading; straight keeps the heading. Eating food grows the snake. Hitting a wall or the body ends the game; the tail vacates its cell on a non-eating move. Maximize food and survival. Use the CURRENT screenshot to adapt any earlier plan.<turn|>\n<|turn>user\n\n\n<|image|>\n\nThe following image is the CURRENT observation.\nWhich action should the snake take next?\nIs \"Turn left\" the best answer to the question above? Reply exactly yes or no.<turn|>\n<|turn>model\n<|channel>thought\n<channel|>",
+          "<bos><|turn>system\nPlay Snake on a 10 by 10 board. The blue head has a white arrow showing its direction; green cells are the body and the red circle is food. Each action moves one cell. Left and right turn relative to the current heading; straight keeps the heading. Eating food grows the snake. Hitting a wall or the body ends the game; the tail vacates its cell on a non-eating move. Maximize food and survival. Use the CURRENT screenshot to adapt any earlier plan.<turn|>\n<|turn>user\n\n\n<|image|>\n\nThe following image is the CURRENT observation.\nWhich action should the snake take next?\nIs \"Go straight\" the best answer to the question above? Reply exactly yes or no.<turn|>\n<|turn>model\n<|channel>thought\n<channel|>",
+          "<bos><|turn>system\nPlay Snake on a 10 by 10 board. The blue head has a white arrow showing its direction; green cells are the body and the red circle is food. Each action moves one cell. Left and right turn relative to the current heading; straight keeps the heading. Eating food grows the snake. Hitting a wall or the body ends the game; the tail vacates its cell on a non-eating move. Maximize food and survival. Use the CURRENT screenshot to adapt any earlier plan.<turn|>\n<|turn>user\n\n\n<|image|>\n\nThe following image is the CURRENT observation.\nWhich action should the snake take next?\nIs \"Turn right\" the best answer to the question above? Reply exactly yes or no.<turn|>\n<|turn>model\n<|channel>thought\n<channel|>"
+        ],
+        "yes_no_naive_boxed": [
+          "<bos><|turn>system\nPlay Snake on a 10 by 10 board. The blue head has a white arrow showing its direction; green cells are the body and the red circle is food. Each action moves one cell. Left and right turn relative to the current heading; straight keeps the heading. Eating food grows the snake. Hitting a wall or the body ends the game; the tail vacates its cell on a non-eating move. Maximize food and survival. Use the CURRENT screenshot to adapt any earlier plan.<turn|>\n<|turn>user\n\n\n<|image|>\n\nThe following image is the CURRENT observation.\nWhich action should the snake take next?\nIs \"Turn left\" the best answer to the question above? Reply with exactly \\boxed{yes} or \\boxed{no}, with no explanation.<turn|>\n<|turn>model\n<|channel>thought\n<channel|>\\boxed{",
+          "<bos><|turn>system\nPlay Snake on a 10 by 10 board. The blue head has a white arrow showing its direction; green cells are the body and the red circle is food. Each action moves one cell. Left and right turn relative to the current heading; straight keeps the heading. Eating food grows the snake. Hitting a wall or the body ends the game; the tail vacates its cell on a non-eating move. Maximize food and survival. Use the CURRENT screenshot to adapt any earlier plan.<turn|>\n<|turn>user\n\n\n<|image|>\n\nThe following image is the CURRENT observation.\nWhich action should the snake take next?\nIs \"Go straight\" the best answer to the question above? Reply with exactly \\boxed{yes} or \\boxed{no}, with no explanation.<turn|>\n<|turn>model\n<|channel>thought\n<channel|>\\boxed{",
+          "<bos><|turn>system\nPlay Snake on a 10 by 10 board. The blue head has a white arrow showing its direction; green cells are the body and the red circle is food. Each action moves one cell. Left and right turn relative to the current heading; straight keeps the heading. Eating food grows the snake. Hitting a wall or the body ends the game; the tail vacates its cell on a non-eating move. Maximize food and survival. Use the CURRENT screenshot to adapt any earlier plan.<turn|>\n<|turn>user\n\n\n<|image|>\n\nThe following image is the CURRENT observation.\nWhich action should the snake take next?\nIs \"Turn right\" the best answer to the question above? Reply with exactly \\boxed{yes} or \\boxed{no}, with no explanation.<turn|>\n<|turn>model\n<|channel>thought\n<channel|>\\boxed{"
+        ]
+      },
+      "native_template": "{%- macro format_parameters(properties, required) -%}\n    {%- set standard_keys = ['description', 'type', 'properties', 'required', 'nullable'] -%}\n    {%- set ns = namespace(found_first=false) -%}\n    {%- for key, value in properties | dictsort -%}\n        {%- set add_comma = false -%}\n        {%- if key not in standard_keys -%}\n            {%- if ns.found_first %},{% endif -%}\n            {%- set ns.found_first = true -%}\n            {{ key }}:{\n            {%- if value['description'] -%}\n                description:<|\"|>{{ value['description'] }}<|\"|>\n                {%- set add_comma = true -%}\n            {%- endif -%}\n            {%- if value['nullable'] %}\n                {%- if add_comma %},{%- else -%} {%- set add_comma = true -%} {% endif -%}\n                nullable:true\n            {%- endif -%}\n            {%- if value['type'] | upper == 'STRING' -%}\n                {%- if value['enum'] -%}\n                    {%- if add_comma %},{%- else -%} {%- set add_comma = true -%} {% endif -%}\n                    enum:{{ format_argument(value['enum']) }}\n                {%- endif -%}\n            {%- elif value['type'] | upper == 'OBJECT' -%}\n                ,properties:{\n                {%- if value['properties'] is defined and value['properties'] is mapping -%}\n                    {{- format_parameters(value['properties'], value['required'] | default([])) -}}\n                {%- elif value is mapping -%}\n                    {{- format_parameters(value, value['required'] | default([])) -}}\n                {%- endif -%}\n                }\n                {%- if value['required'] -%}\n                    ,required:[\n                    {%- for item in value['required'] | default([]) -%}\n                        <|\"|>{{- item -}}<|\"|>\n                        {%- if not loop.last %},{% endif -%}\n                    {%- endfor -%}\n                    ]\n                {%- endif -%}\n            {%- elif value['type'] | upper == 'ARRAY' -%}\n                {%- if value['items'] is mapping and value['items'] -%}\n                    ,items:{\n                    {%- set ns_items = namespace(found_first=false) -%}\n                    {%- for item_key, item_value in value['items'] | dictsort -%}\n                        {%- if item_value is not none -%}\n                            {%- if ns_items.found_first %},{% endif -%}\n                            {%- set ns_items.found_first = true -%}\n                            {%- if item_key == 'properties' -%}\n                                properties:{\n                                {%- if item_value is mapping -%}\n                                    {{- format_parameters(item_value, value['items']['required'] | default([])) -}}\n                                {%- endif -%}\n                                }\n                            {%- elif item_key == 'required' -%}\n                                required:[\n                                {%- for req_item in item_value -%}\n                                    <|\"|>{{- req_item -}}<|\"|>\n                                    {%- if not loop.last %},{% endif -%}\n                                {%- endfor -%}\n                                ]\n                            {%- elif item_key == 'type' -%}\n                                {%- if item_value is string -%}\n                                    type:{{ format_argument(item_value | upper) }}\n                                {%- else -%}\n                                    type:{{ format_argument(item_value | map('upper') | list) }}\n                                {%- endif -%}\n                            {%- else -%}\n                                {{ item_key }}:{{ format_argument(item_value) }}\n                            {%- endif -%}\n                        {%- endif -%}\n                    {%- endfor -%}\n                    }\n                {%- endif -%}\n            {%- endif -%}\n            {%- if add_comma %},{%- else -%} {%- set add_comma = true -%} {% endif -%}\n            type:<|\"|>{{ value['type'] | upper }}<|\"|>}\n        {%- endif -%}\n    {%- endfor -%}\n{%- endmacro -%}\n{%- macro format_function_declaration(tool_data) -%}\n    declaration:{{- tool_data['function']['name'] -}}{description:<|\"|>{{- tool_data['function']['description'] -}}<|\"|>\n    {%- set params = tool_data['function']['parameters'] -%}\n    {%- if params -%}\n        ,parameters:{\n        {%- if params['properties'] -%}\n            properties:{ {{- format_parameters(params['properties'], params['required']) -}} },\n        {%- endif -%}\n        {%- if params['required'] -%}\n            required:[\n            {%- for item in params['required'] -%}\n                <|\"|>{{- item -}}<|\"|>\n                {{- ',' if not loop.last -}}\n            {%- endfor -%}\n            ],\n        {%- endif -%}\n        {%- if params['type'] -%}\n            type:<|\"|>{{- params['type'] | upper -}}<|\"|>}\n        {%- endif -%}\n    {%- endif -%}\n    {%- if 'response' in tool_data['function'] -%}\n        {%- set response_declaration = tool_data['function']['response'] -%}\n        ,response:{\n        {%- if response_declaration['description'] -%}\n            description:<|\"|>{{- response_declaration['description'] -}}<|\"|>,\n        {%- endif -%}\n        {%- if response_declaration['type'] | upper == 'OBJECT' -%}\n            type:<|\"|>{{- response_declaration['type'] | upper -}}<|\"|>}\n        {%- endif -%}\n    {%- endif -%}\n    }\n{%- endmacro -%}\n{%- macro format_argument(argument, escape_keys=True) -%}\n    {%- if argument is string -%}\n        {{- '<|\"|>' + argument + '<|\"|>' -}}\n    {%- elif argument is boolean -%}\n        {{- 'true' if argument else 'false' -}}\n    {%- elif argument is mapping -%}\n        {{- '{' -}}\n        {%- set ns = namespace(found_first=false) -%}\n        {%- for key, value in argument | dictsort -%}\n            {%- if ns.found_first %},{% endif -%}\n            {%- set ns.found_first = true -%}\n            {%- if escape_keys -%}\n                {{- '<|\"|>' + key + '<|\"|>' -}}\n            {%- else -%}\n                {{- key -}}\n            {%- endif -%}\n            :{{- format_argument(value, escape_keys=escape_keys) -}}\n        {%- endfor -%}\n        {{- '}' -}}\n    {%- elif argument is sequence -%}\n        {{- '[' -}}\n        {%- for item in argument -%}\n            {{- format_argument(item, escape_keys=escape_keys) -}}\n            {%- if not loop.last %},{% endif -%}\n        {%- endfor -%}\n        {{- ']' -}}\n    {%- else -%}\n        {{- argument -}}\n    {%- endif -%}\n{%- endmacro -%}\n{%- macro strip_thinking(text) -%}\n    {%- set ns = namespace(result='') -%}\n    {%- for part in text.split('<channel|>') -%}\n        {%- if '<|channel>' in part -%}\n            {%- set ns.result = ns.result + part.split('<|channel>')[0] -%}\n        {%- else -%}\n            {%- set ns.result = ns.result + part -%}\n        {%- endif -%}\n    {%- endfor -%}\n    {{- ns.result | trim -}}\n{%- endmacro -%}\n\n{%- set ns = namespace(prev_message_type=None) -%}\n{%- set loop_messages = messages -%}\n{{ bos_token }}\n{#- Handle System/Tool Definitions Block -#}\n{%- if (enable_thinking is defined and enable_thinking) or tools or messages[0]['role'] in ['system', 'developer'] -%}\n    {{- '<|turn>system\\n' -}}\n\n    {#- Inject Thinking token at the very top of the FIRST system turn -#}\n    {%- if enable_thinking is defined and enable_thinking -%}\n        {{- '<|think|>' -}}\n        {%- set ns.prev_message_type = 'think' -%}\n    {%- endif -%}\n\n    {%- if messages[0]['role'] in ['system', 'developer'] -%}\n        {{- messages[0]['content'] | trim -}}\n        {%- set loop_messages = messages[1:] -%}\n    {%- endif -%}\n\n    {%- if tools -%}\n        {%- for tool in tools %}\n            {{- '<|tool>' -}}\n            {{- format_function_declaration(tool) | trim -}}\n            {{- '<tool|>' -}}\n        {%- endfor %}\n        {%- set ns.prev_message_type = 'tool' -%}\n    {%- endif -%}\n\n    {{- '<turn|>\\n' -}}\n{%- endif %}\n\n{#- Loop through messages -#}\n{%- for message in loop_messages -%}\n    {%- set ns.prev_message_type = None -%}\n    {%- set role = 'model' if message['role'] == 'assistant' else message['role'] -%}\n        {{- '<|turn>' + role + '\\n' }}\n\n            {%- if message['tool_calls'] -%}\n                {%- for tool_call in message['tool_calls'] -%}\n                    {%- set function = tool_call['function'] -%}\n                    {{- '<|tool_call>call:' + function['name'] + '{' -}}\n                    {%- if function['arguments'] is mapping -%}\n                        {%- set ns_args = namespace(found_first=false) -%}\n                        {%- for key, value in function['arguments'] | dictsort -%}\n                            {%- if ns_args.found_first %},{% endif -%}\n                            {%- set ns_args.found_first = true -%}\n                            {{- key -}}:{{- format_argument(value, escape_keys=False) -}}\n                        {%- endfor -%}\n                    {%- elif function['arguments'] is string -%}\n                        {{- function['arguments'] -}}\n                    {%- endif -%}\n                    {{- '}<tool_call|>' -}}\n                {%- endfor -%}\n                {%- set ns.prev_message_type = 'tool_call' -%}\n            {%- endif -%}\n\n            {%- if message['tool_responses'] -%}\n                {#- Tool Response handling -#}\n                {%- for tool_response in message['tool_responses'] -%}\n                    {{- '<|tool_response>' -}}\n                    {%- if tool_response['response'] is mapping -%}\n                        {{- 'response:' + tool_response['name'] | default('unknown') + '{' -}}\n                        {%- for key, value in tool_response['response'] | dictsort -%}\n                            {{- key -}}:{{- format_argument(value, escape_keys=False) -}}\n                            {%- if not loop.last %},{% endif -%}\n                        {%- endfor -%}\n                        {{- '}' -}}\n                    {%- else -%}\n                        {{- 'response:' + tool_response['name'] | default('unknown') + '{value:' + format_argument(tool_response['response'], escape_keys=False) + '}' -}}\n                    {%- endif -%}\n                    {{- '<tool_response|>' -}}\n                {%- endfor -%}\n                {%- set ns.prev_message_type = 'tool_response' -%}\n            {%- endif -%}\n\n            {%- if message['content'] is string -%}\n                {%- if role == 'model' -%}\n                    {{- strip_thinking(message['content']) -}}\n                {%- else -%}\n                    {{- message['content'] | trim -}}\n                {%- endif -%}\n            {%- elif message['content'] is sequence -%}\n                {%- for item in message['content'] -%}\n                    {%- if item['type'] == 'text' -%}\n                        {%- if role == 'model' -%}\n                            {{- strip_thinking(item['text']) -}}\n                        {%- else -%}\n                            {{- item['text'] | trim -}}\n                        {%- endif -%}\n                    {%- elif item['type'] == 'image' -%}\n                        {{- '\\n\\n<|image|>\\n\\n' -}}\n                        {%- set ns.prev_message_type = 'image' -%}\n                    {%- elif item['type'] == 'audio' -%}\n                        {{- '<|audio|>' -}}\n                        {%- set ns.prev_message_type = 'audio' -%}\n                    {%- elif item['type'] == 'video' -%}\n                        {{- '\\n\\n<|video|>\\n\\n' -}}\n                        {%- set ns.prev_message_type = 'video' -%}\n                    {%- endif -%}\n                {%- endfor -%}\n            {%- endif -%}\n\n        {%- if not (message['tool_responses'] and not message['content']) -%}\n            {{- '<turn|>\\n' -}}\n        {%- endif -%}\n{%- endfor -%}\n\n{%- if add_generation_prompt -%}\n    {%- if ns.prev_message_type != 'tool_response' -%}\n        {{- '<|turn>model\\n' -}}\n    {%- endif -%}\n{%- endif -%}",
+      "planning_initial": {
+        "True": "<bos><|turn>system\n<|think|>Play Snake on a 10 by 10 board. The blue head has a white arrow showing its direction; green cells are the body and the red circle is food. Each action moves one cell. Left and right turn relative to the current heading; straight keeps the heading. Eating food grows the snake. Hitting a wall or the body ends the game; the tail vacates its cell on a non-eating move. Maximize food and survival. Use the CURRENT screenshot to adapt any earlier plan.<turn|>\n<|turn>user\n\n\n<|image|>\n\nDevelop a reusable strategy for playing an entire game of Snake, from the opening until the game ends. The attached image illustrates only the game's visual appearance and symbols. It is not the current game state and must not determine a fixed route, target location, or opening action. Your strategy must remain applicable as the snake moves and grows and new food appears. Describe how to interpret each latest screenshot, apply turns relative to the current heading, avoid collisions and repetitive loops, and pursue food while preserving room to move. After your reasoning, summarize the whole-game strategy in a concise plan. This summary limits the length of your explanation, not the number of game steps it covers.<turn|>\n<|turn>model\n<|channel>thought\n",
+        "False": "<bos><|turn>system\nPlay Snake on a 10 by 10 board. The blue head has a white arrow showing its direction; green cells are the body and the red circle is food. Each action moves one cell. Left and right turn relative to the current heading; straight keeps the heading. Eating food grows the snake. Hitting a wall or the body ends the game; the tail vacates its cell on a non-eating move. Maximize food and survival. Use the CURRENT screenshot to adapt any earlier plan.<turn|>\n<|turn>user\n\n\n<|image|>\n\nDevelop a reusable strategy for playing an entire game of Snake, from the opening until the game ends. The attached image illustrates only the game's visual appearance and symbols. It is not the current game state and must not determine a fixed route, target location, or opening action. Your strategy must remain applicable as the snake moves and grows and new food appears. Describe how to interpret each latest screenshot, apply turns relative to the current heading, avoid collisions and repetitive loops, and pursue food while preserving room to move. Return only a concise whole-game plan, without a reasoning transcript. This summary limits the length of your explanation, not the number of game steps it covers.<turn|>\n<|turn>model\n<|channel>thought\n<channel|>"
+      }
+    }
+  },
+  "probes": [
+    {
+      "id": "heading",
+      "question": "Which absolute direction does the white arrow on the blue head point?",
+      "choices": [
+        [
+          "up",
+          "Up"
+        ],
+        [
+          "right",
+          "Right"
+        ],
+        [
+          "down",
+          "Down"
+        ],
+        [
+          "left",
+          "Left"
+        ]
+      ]
+    },
+    {
+      "id": "food_x",
+      "question": "Relative to the blue head, where is the red food horizontally?",
+      "choices": [
+        [
+          "left",
+          "To the left"
+        ],
+        [
+          "aligned",
+          "In the same column"
+        ],
+        [
+          "right",
+          "To the right"
+        ]
+      ]
+    },
+    {
+      "id": "food_y",
+      "question": "Relative to the blue head, where is the red food vertically?",
+      "choices": [
+        [
+          "up",
+          "Above"
+        ],
+        [
+          "aligned",
+          "In the same row"
+        ],
+        [
+          "down",
+          "Below"
+        ]
+      ]
+    },
+    {
+      "id": "turn_left",
+      "question": "If the snake chooses 'Turn left', what absolute direction will it move?",
+      "choices": [
+        [
+          "up",
+          "Up"
+        ],
+        [
+          "right",
+          "Right"
+        ],
+        [
+          "down",
+          "Down"
+        ],
+        [
+          "left",
+          "Left"
+        ]
+      ]
+    },
+    {
+      "id": "collision_left",
+      "question": "Would choosing 'Turn left' cause an immediate wall or body collision? Remember the tail vacates on a non-eating move.",
+      "choices": [
+        [
+          "collision",
+          "Immediate collision"
+        ],
+        [
+          "safe",
+          "No immediate collision"
+        ]
+      ]
+    },
+    {
+      "id": "turn_straight",
+      "question": "If the snake chooses 'Go straight', what absolute direction will it move?",
+      "choices": [
+        [
+          "up",
+          "Up"
+        ],
+        [
+          "right",
+          "Right"
+        ],
+        [
+          "down",
+          "Down"
+        ],
+        [
+          "left",
+          "Left"
+        ]
+      ]
+    },
+    {
+      "id": "collision_straight",
+      "question": "Would choosing 'Go straight' cause an immediate wall or body collision? Remember the tail vacates on a non-eating move.",
+      "choices": [
+        [
+          "collision",
+          "Immediate collision"
+        ],
+        [
+          "safe",
+          "No immediate collision"
+        ]
+      ]
+    },
+    {
+      "id": "turn_right",
+      "question": "If the snake chooses 'Turn right', what absolute direction will it move?",
+      "choices": [
+        [
+          "up",
+          "Up"
+        ],
+        [
+          "right",
+          "Right"
+        ],
+        [
+          "down",
+          "Down"
+        ],
+        [
+          "left",
+          "Left"
+        ]
+      ]
+    },
+    {
+      "id": "collision_right",
+      "question": "Would choosing 'Turn right' cause an immediate wall or body collision? Remember the tail vacates on a non-eating move.",
+      "choices": [
+        [
+          "collision",
+          "Immediate collision"
+        ],
+        [
+          "safe",
+          "No immediate collision"
+        ]
+      ]
+    }
+  ],
+  "user_payloads": {
+    "choice": [
+      "The following image is the CURRENT observation.\nWhich action should the snake take next?\nOptions:\nA. Turn left\nB. Go straight\nC. Turn right\nChoose the best option. Reply with exactly its uppercase letter."
+    ],
+    "choice_boxed": [
+      "The following image is the CURRENT observation.\nWhich action should the snake take next?\nOptions:\nA. Turn left\nB. Go straight\nC. Turn right\nChoose the best option. Reply with exactly its uppercase letter inside \\boxed{}, with no explanation."
+    ],
+    "yes_no": [
+      "The following image is the CURRENT observation.\nWhich action should the snake take next?\nOptions:\nA. Turn left\nB. Go straight\nC. Turn right\nIs option A the best choice? Reply exactly yes or no.",
+      "The following image is the CURRENT observation.\nWhich action should the snake take next?\nOptions:\nA. Turn left\nB. Go straight\nC. Turn right\nIs option B the best choice? Reply exactly yes or no.",
+      "The following image is the CURRENT observation.\nWhich action should the snake take next?\nOptions:\nA. Turn left\nB. Go straight\nC. Turn right\nIs option C the best choice? Reply exactly yes or no."
+    ],
+    "yes_no_boxed": [
+      "The following image is the CURRENT observation.\nWhich action should the snake take next?\nOptions:\nA. Turn left\nB. Go straight\nC. Turn right\nIs option A the best choice? Reply with exactly \\boxed{yes} or \\boxed{no}, with no explanation.",
+      "The following image is the CURRENT observation.\nWhich action should the snake take next?\nOptions:\nA. Turn left\nB. Go straight\nC. Turn right\nIs option B the best choice? Reply with exactly \\boxed{yes} or \\boxed{no}, with no explanation.",
+      "The following image is the CURRENT observation.\nWhich action should the snake take next?\nOptions:\nA. Turn left\nB. Go straight\nC. Turn right\nIs option C the best choice? Reply with exactly \\boxed{yes} or \\boxed{no}, with no explanation."
+    ],
+    "yes_no_naive": [
+      "The following image is the CURRENT observation.\nWhich action should the snake take next?\nIs \"Turn left\" the best answer to the question above? Reply exactly yes or no.",
+      "The following image is the CURRENT observation.\nWhich action should the snake take next?\nIs \"Go straight\" the best answer to the question above? Reply exactly yes or no.",
+      "The following image is the CURRENT observation.\nWhich action should the snake take next?\nIs \"Turn right\" the best answer to the question above? Reply exactly yes or no."
+    ],
+    "yes_no_naive_boxed": [
+      "The following image is the CURRENT observation.\nWhich action should the snake take next?\nIs \"Turn left\" the best answer to the question above? Reply with exactly \\boxed{yes} or \\boxed{no}, with no explanation.",
+      "The following image is the CURRENT observation.\nWhich action should the snake take next?\nIs \"Go straight\" the best answer to the question above? Reply with exactly \\boxed{yes} or \\boxed{no}, with no explanation.",
+      "The following image is the CURRENT observation.\nWhich action should the snake take next?\nIs \"Turn right\" the best answer to the question above? Reply with exactly \\boxed{yes} or \\boxed{no}, with no explanation."
+    ]
+  },
+  "source_commit": "040593cdde98f3e9fa50b9aeb160e3638940074e"
+}

@@ -1,0 +1,131 @@
+{
+  "version": "snake-safety-v1",
+  "cases": 108,
+  "families": 96,
+  "split_counts": {
+    "dev": {
+      "0": 9,
+      "1": 9,
+      "2": 9,
+      "3": 9
+    },
+    "test": {
+      "0": 9,
+      "1": 21,
+      "2": 21,
+      "3": 21
+    }
+  },
+  "headings": {
+    "1": 27,
+    "2": 27,
+    "0": 27,
+    "3": 27
+  },
+  "coverage_by_split": {
+    "dev": {
+      "food": 15,
+      "outside": 21,
+      "body": 33,
+      "corner_cases": 6,
+      "food_conflict_cases": 13,
+      "tail": 8,
+      "empty": 31,
+      "dead_wall_body": 5,
+      "dead_body": 4
+    },
+    "test": {
+      "outside": 34,
+      "empty": 87,
+      "body": 56,
+      "corner_cases": 3,
+      "food_conflict_cases": 19,
+      "tail": 10,
+      "food": 29,
+      "dead_wall_body": 5,
+      "dead_body": 4
+    }
+  },
+  "target_types": {
+    "food": 44,
+    "outside": 55,
+    "body": 89,
+    "tail": 18,
+    "empty": 118
+  },
+  "collision_causes": {
+    "safe": 180,
+    "wall": 55,
+    "body": 89
+  },
+  "pairs": {
+    "tail": 4,
+    "obstacle": 4,
+    "food": 4
+  },
+  "baselines": {
+    "dev": {
+      "1": {
+        "left": 0.3333333333333333,
+        "straight": 0.3333333333333333,
+        "right": 0.3333333333333333,
+        "random": 0.3333333333333333
+      },
+      "2": {
+        "left": 0.6666666666666666,
+        "straight": 0.6666666666666666,
+        "right": 0.6666666666666666,
+        "random": 0.6666666666666666
+      },
+      "3": {
+        "left": 1.0,
+        "straight": 1.0,
+        "right": 1.0,
+        "random": 1.0
+      }
+    },
+    "test": {
+      "1": {
+        "left": 0.3333333333333333,
+        "straight": 0.3333333333333333,
+        "right": 0.3333333333333333,
+        "random": 0.3333333333333332
+      },
+      "2": {
+        "left": 0.6666666666666666,
+        "straight": 0.6666666666666666,
+        "right": 0.6666666666666666,
+        "random": 0.6666666666666664
+      },
+      "3": {
+        "left": 1.0,
+        "straight": 1.0,
+        "right": 1.0,
+        "random": 1.0
+      }
+    },
+    "all": {
+      "1": {
+        "left": 0.3333333333333333,
+        "straight": 0.3333333333333333,
+        "right": 0.3333333333333333,
+        "random": 0.3333333333333333
+      },
+      "2": {
+        "left": 0.6666666666666666,
+        "straight": 0.6666666666666666,
+        "right": 0.6666666666666666,
+        "random": 0.6666666666666666
+      },
+      "3": {
+        "left": 1.0,
+        "straight": 1.0,
+        "right": 1.0,
+        "random": 1.0
+      }
+    }
+  },
+  "note": "Cases include related variants; permutations are repeated measurements, not independent samples.",
+  "dataset_hash": "d9ee6970565e2aa329578f907ab2623f6b40d38b004aabeff743dea7193f6893",
+  "prompt_version": "snake-safety-prompt-v1"
+}

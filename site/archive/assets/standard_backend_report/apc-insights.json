@@ -1,0 +1,5213 @@
+{
+  "dataset_note": "36/48 fixtures have no unsafe action; 12/48 have exactly one. Fixed-label decisions over all six permutations yield 91.6667% overall safety by dataset geometry; no random game was run.",
+  "models": [
+    {
+      "backend": "vllm",
+      "model": "/inspire/hdd/global_user/donglinkang-253108120084/projects/vdecision/.cache/model-staging/standard-six-20261012/Qwen/Qwen3.5-4B",
+      "readout": [
+        {
+          "method": "choice",
+          "condition": "no_plan",
+          "dangerous_fixture_count": 12,
+          "dangerous_fixture_score_count": 72,
+          "dangerous_fixture_safe_rate": 0.6666666666666666,
+          "safe_and_approaches_food_rate": 0.4444444444444444,
+          "total_safe_rate": 0.9166666666666666
+        },
+        {
+          "method": "choice",
+          "condition": "shared_full",
+          "dangerous_fixture_count": 12,
+          "dangerous_fixture_score_count": 72,
+          "dangerous_fixture_safe_rate": 0.5972222222222222,
+          "safe_and_approaches_food_rate": 0.4236111111111111,
+          "total_safe_rate": 0.8993055555555556
+        },
+        {
+          "method": "choice",
+          "condition": "shared_no_think",
+          "dangerous_fixture_count": 12,
+          "dangerous_fixture_score_count": 72,
+          "dangerous_fixture_safe_rate": 0.5833333333333334,
+          "safe_and_approaches_food_rate": 0.4444444444444444,
+          "total_safe_rate": 0.8958333333333334
+        },
+        {
+          "method": "choice",
+          "condition": "shared_plan_only",
+          "dangerous_fixture_count": 12,
+          "dangerous_fixture_score_count": 72,
+          "dangerous_fixture_safe_rate": 0.8333333333333334,
+          "safe_and_approaches_food_rate": 0.5,
+          "total_safe_rate": 0.9583333333333334
+        },
+        {
+          "method": "choice_boxed",
+          "condition": "no_plan",
+          "dangerous_fixture_count": 12,
+          "dangerous_fixture_score_count": 72,
+          "dangerous_fixture_safe_rate": 0.8055555555555556,
+          "safe_and_approaches_food_rate": 0.4826388888888889,
+          "total_safe_rate": 0.9513888888888888
+        },
+        {
+          "method": "choice_boxed",
+          "condition": "shared_full",
+          "dangerous_fixture_count": 12,
+          "dangerous_fixture_score_count": 72,
+          "dangerous_fixture_safe_rate": 0.8472222222222222,
+          "safe_and_approaches_food_rate": 0.4444444444444444,
+          "total_safe_rate": 0.9618055555555556
+        },
+        {
+          "method": "choice_boxed",
+          "condition": "shared_no_think",
+          "dangerous_fixture_count": 12,
+          "dangerous_fixture_score_count": 72,
+          "dangerous_fixture_safe_rate": 0.625,
+          "safe_and_approaches_food_rate": 0.4305555555555556,
+          "total_safe_rate": 0.90625
+        },
+        {
+          "method": "choice_boxed",
+          "condition": "shared_plan_only",
+          "dangerous_fixture_count": 12,
+          "dangerous_fixture_score_count": 72,
+          "dangerous_fixture_safe_rate": 0.7222222222222222,
+          "safe_and_approaches_food_rate": 0.4583333333333333,
+          "total_safe_rate": 0.9305555555555556
+        },
+        {
+          "method": "yes_no",
+          "condition": "no_plan",
+          "dangerous_fixture_count": 12,
+          "dangerous_fixture_score_count": 72,
+          "dangerous_fixture_safe_rate": 0.9027777777777778,
+          "safe_and_approaches_food_rate": 0.4548611111111111,
+          "total_safe_rate": 0.9756944444444444
+        },
+        {
+          "method": "yes_no",
+          "condition": "shared_full",
+          "dangerous_fixture_count": 12,
+          "dangerous_fixture_score_count": 72,
+          "dangerous_fixture_safe_rate": 1,
+          "safe_and_approaches_food_rate": 0.4930555555555556,
+          "total_safe_rate": 1
+        },
+        {
+          "method": "yes_no",
+          "condition": "shared_no_think",
+          "dangerous_fixture_count": 12,
+          "dangerous_fixture_score_count": 72,
+          "dangerous_fixture_safe_rate": 0.8194444444444444,
+          "safe_and_approaches_food_rate": 0.5,
+          "total_safe_rate": 0.9548611111111112
+        },
+        {
+          "method": "yes_no",
+          "condition": "shared_plan_only",
+          "dangerous_fixture_count": 12,
+          "dangerous_fixture_score_count": 72,
+          "dangerous_fixture_safe_rate": 0.8194444444444444,
+          "safe_and_approaches_food_rate": 0.5034722222222222,
+          "total_safe_rate": 0.9548611111111112
+        },
+        {
+          "method": "yes_no_boxed",
+          "condition": "no_plan",
+          "dangerous_fixture_count": 12,
+          "dangerous_fixture_score_count": 72,
+          "dangerous_fixture_safe_rate": 0.8472222222222222,
+          "safe_and_approaches_food_rate": 0.4652777777777778,
+          "total_safe_rate": 0.9618055555555556
+        },
+        {
+          "method": "yes_no_boxed",
+          "condition": "shared_full",
+          "dangerous_fixture_count": 12,
+          "dangerous_fixture_score_count": 72,
+          "dangerous_fixture_safe_rate": 1,
+          "safe_and_approaches_food_rate": 0.5,
+          "total_safe_rate": 1
+        },
+        {
+          "method": "yes_no_boxed",
+          "condition": "shared_no_think",
+          "dangerous_fixture_count": 12,
+          "dangerous_fixture_score_count": 72,
+          "dangerous_fixture_safe_rate": 0.6944444444444444,
+          "safe_and_approaches_food_rate": 0.4652777777777778,
+          "total_safe_rate": 0.9236111111111112
+        },
+        {
+          "method": "yes_no_boxed",
+          "condition": "shared_plan_only",
+          "dangerous_fixture_count": 12,
+          "dangerous_fixture_score_count": 72,
+          "dangerous_fixture_safe_rate": 0.9027777777777778,
+          "safe_and_approaches_food_rate": 0.5208333333333334,
+          "total_safe_rate": 0.9756944444444444
+        },
+        {
+          "method": "yes_no_naive",
+          "condition": "no_plan",
+          "dangerous_fixture_count": 12,
+          "dangerous_fixture_score_count": 72,
+          "dangerous_fixture_safe_rate": 0.8194444444444444,
+          "safe_and_approaches_food_rate": 0.46875,
+          "total_safe_rate": 0.9548611111111112
+        },
+        {
+          "method": "yes_no_naive",
+          "condition": "shared_full",
+          "dangerous_fixture_count": 12,
+          "dangerous_fixture_score_count": 72,
+          "dangerous_fixture_safe_rate": 1,
+          "safe_and_approaches_food_rate": 0.5,
+          "total_safe_rate": 1
+        },
+        {
+          "method": "yes_no_naive",
+          "condition": "shared_no_think",
+          "dangerous_fixture_count": 12,
+          "dangerous_fixture_score_count": 72,
+          "dangerous_fixture_safe_rate": 0.4861111111111111,
+          "safe_and_approaches_food_rate": 0.3333333333333333,
+          "total_safe_rate": 0.8715277777777778
+        },
+        {
+          "method": "yes_no_naive",
+          "condition": "shared_plan_only",
+          "dangerous_fixture_count": 12,
+          "dangerous_fixture_score_count": 72,
+          "dangerous_fixture_safe_rate": 0.5,
+          "safe_and_approaches_food_rate": 0.3888888888888889,
+          "total_safe_rate": 0.875
+        },
+        {
+          "method": "yes_no_naive_boxed",
+          "condition": "no_plan",
+          "dangerous_fixture_count": 12,
+          "dangerous_fixture_score_count": 72,
+          "dangerous_fixture_safe_rate": 0.5,
+          "safe_and_approaches_food_rate": 0.3680555555555556,
+          "total_safe_rate": 0.875
+        },
+        {
+          "method": "yes_no_naive_boxed",
+          "condition": "shared_full",
+          "dangerous_fixture_count": 12,
+          "dangerous_fixture_score_count": 72,
+          "dangerous_fixture_safe_rate": 1,
+          "safe_and_approaches_food_rate": 0.5,
+          "total_safe_rate": 1
+        },
+        {
+          "method": "yes_no_naive_boxed",
+          "condition": "shared_no_think",
+          "dangerous_fixture_count": 12,
+          "dangerous_fixture_score_count": 72,
+          "dangerous_fixture_safe_rate": 0.4166666666666667,
+          "safe_and_approaches_food_rate": 0.4409722222222222,
+          "total_safe_rate": 0.8541666666666666
+        },
+        {
+          "method": "yes_no_naive_boxed",
+          "condition": "shared_plan_only",
+          "dangerous_fixture_count": 12,
+          "dangerous_fixture_score_count": 72,
+          "dangerous_fixture_safe_rate": 0.5,
+          "safe_and_approaches_food_rate": 0.3611111111111111,
+          "total_safe_rate": 0.875
+        }
+      ],
+      "perception": [
+        {
+          "probe": "collision_left",
+          "method": "choice",
+          "condition": "no_plan",
+          "n": 96,
+          "accuracy": 0.5
+        },
+        {
+          "probe": "collision_left",
+          "method": "choice",
+          "condition": "shared_full",
+          "n": 96,
+          "accuracy": 0.5104166666666666
+        },
+        {
+          "probe": "collision_left",
+          "method": "choice",
+          "condition": "shared_no_think",
+          "n": 96,
+          "accuracy": 0.5
+        },
+        {
+          "probe": "collision_left",
+          "method": "choice",
+          "condition": "shared_plan_only",
+          "n": 96,
+          "accuracy": 0.5
+        },
+        {
+          "probe": "collision_left",
+          "method": "choice_boxed",
+          "condition": "no_plan",
+          "n": 96,
+          "accuracy": 1
+        },
+        {
+          "probe": "collision_left",
+          "method": "choice_boxed",
+          "condition": "shared_full",
+          "n": 96,
+          "accuracy": 0.8020833333333334
+        },
+        {
+          "probe": "collision_left",
+          "method": "choice_boxed",
+          "condition": "shared_no_think",
+          "n": 96,
+          "accuracy": 0.8541666666666666
+        },
+        {
+          "probe": "collision_left",
+          "method": "choice_boxed",
+          "condition": "shared_plan_only",
+          "n": 96,
+          "accuracy": 0.9895833333333334
+        },
+        {
+          "probe": "collision_left",
+          "method": "yes_no",
+          "condition": "no_plan",
+          "n": 96,
+          "accuracy": 0.9895833333333334
+        },
+        {
+          "probe": "collision_left",
+          "method": "yes_no",
+          "condition": "shared_full",
+          "n": 96,
+          "accuracy": 0.5
+        },
+        {
+          "probe": "collision_left",
+          "method": "yes_no",
+          "condition": "shared_no_think",
+          "n": 96,
+          "accuracy": 0.9375
+        },
+        {
+          "probe": "collision_left",
+          "method": "yes_no",
+          "condition": "shared_plan_only",
+          "n": 96,
+          "accuracy": 0.9895833333333334
+        },
+        {
+          "probe": "collision_left",
+          "method": "yes_no_boxed",
+          "condition": "no_plan",
+          "n": 96,
+          "accuracy": 1
+        },
+        {
+          "probe": "collision_left",
+          "method": "yes_no_boxed",
+          "condition": "shared_full",
+          "n": 96,
+          "accuracy": 1
+        },
+        {
+          "probe": "collision_left",
+          "method": "yes_no_boxed",
+          "condition": "shared_no_think",
+          "n": 96,
+          "accuracy": 1
+        },
+        {
+          "probe": "collision_left",
+          "method": "yes_no_boxed",
+          "condition": "shared_plan_only",
+          "n": 96,
+          "accuracy": 1
+        },
+        {
+          "probe": "collision_left",
+          "method": "yes_no_naive",
+          "condition": "no_plan",
+          "n": 96,
+          "accuracy": 0.9895833333333334
+        },
+        {
+          "probe": "collision_left",
+          "method": "yes_no_naive",
+          "condition": "shared_full",
+          "n": 96,
+          "accuracy": 0.65625
+        },
+        {
+          "probe": "collision_left",
+          "method": "yes_no_naive",
+          "condition": "shared_no_think",
+          "n": 96,
+          "accuracy": 1
+        },
+        {
+          "probe": "collision_left",
+          "method": "yes_no_naive",
+          "condition": "shared_plan_only",
+          "n": 96,
+          "accuracy": 1
+        },
+        {
+          "probe": "collision_left",
+          "method": "yes_no_naive_boxed",
+          "condition": "no_plan",
+          "n": 96,
+          "accuracy": 1
+        },
+        {
+          "probe": "collision_left",
+          "method": "yes_no_naive_boxed",
+          "condition": "shared_full",
+          "n": 96,
+          "accuracy": 1
+        },
+        {
+          "probe": "collision_left",
+          "method": "yes_no_naive_boxed",
+          "condition": "shared_no_think",
+          "n": 96,
+          "accuracy": 1
+        },
+        {
+          "probe": "collision_left",
+          "method": "yes_no_naive_boxed",
+          "condition": "shared_plan_only",
+          "n": 96,
+          "accuracy": 1
+        },
+        {
+          "probe": "collision_right",
+          "method": "choice",
+          "condition": "no_plan",
+          "n": 96,
+          "accuracy": 0.5
+        },
+        {
+          "probe": "collision_right",
+          "method": "choice",
+          "condition": "shared_full",
+          "n": 96,
+          "accuracy": 0.5
+        },
+        {
+          "probe": "collision_right",
+          "method": "choice",
+          "condition": "shared_no_think",
+          "n": 96,
+          "accuracy": 0.5
+        },
+        {
+          "probe": "collision_right",
+          "method": "choice",
+          "condition": "shared_plan_only",
+          "n": 96,
+          "accuracy": 0.5
+        },
+        {
+          "probe": "collision_right",
+          "method": "choice_boxed",
+          "condition": "no_plan",
+          "n": 96,
+          "accuracy": 0.9166666666666666
+        },
+        {
+          "probe": "collision_right",
+          "method": "choice_boxed",
+          "condition": "shared_full",
+          "n": 96,
+          "accuracy": 0.5520833333333334
+        },
+        {
+          "probe": "collision_right",
+          "method": "choice_boxed",
+          "condition": "shared_no_think",
+          "n": 96,
+          "accuracy": 0.9166666666666666
+        },
+        {
+          "probe": "collision_right",
+          "method": "choice_boxed",
+          "condition": "shared_plan_only",
+          "n": 96,
+          "accuracy": 0.9166666666666666
+        },
+        {
+          "probe": "collision_right",
+          "method": "yes_no",
+          "condition": "no_plan",
+          "n": 96,
+          "accuracy": 0.9166666666666666
+        },
+        {
+          "probe": "collision_right",
+          "method": "yes_no",
+          "condition": "shared_full",
+          "n": 96,
+          "accuracy": 0.5
+        },
+        {
+          "probe": "collision_right",
+          "method": "yes_no",
+          "condition": "shared_no_think",
+          "n": 96,
+          "accuracy": 0.9166666666666666
+        },
+        {
+          "probe": "collision_right",
+          "method": "yes_no",
+          "condition": "shared_plan_only",
+          "n": 96,
+          "accuracy": 0.9166666666666666
+        },
+        {
+          "probe": "collision_right",
+          "method": "yes_no_boxed",
+          "condition": "no_plan",
+          "n": 96,
+          "accuracy": 0.9166666666666666
+        },
+        {
+          "probe": "collision_right",
+          "method": "yes_no_boxed",
+          "condition": "shared_full",
+          "n": 96,
+          "accuracy": 0.9166666666666666
+        },
+        {
+          "probe": "collision_right",
+          "method": "yes_no_boxed",
+          "condition": "shared_no_think",
+          "n": 96,
+          "accuracy": 0.9166666666666666
+        },
+        {
+          "probe": "collision_right",
+          "method": "yes_no_boxed",
+          "condition": "shared_plan_only",
+          "n": 96,
+          "accuracy": 0.9166666666666666
+        },
+        {
+          "probe": "collision_right",
+          "method": "yes_no_naive",
+          "condition": "no_plan",
+          "n": 96,
+          "accuracy": 0.9166666666666666
+        },
+        {
+          "probe": "collision_right",
+          "method": "yes_no_naive",
+          "condition": "shared_full",
+          "n": 96,
+          "accuracy": 0.5416666666666666
+        },
+        {
+          "probe": "collision_right",
+          "method": "yes_no_naive",
+          "condition": "shared_no_think",
+          "n": 96,
+          "accuracy": 0.9166666666666666
+        },
+        {
+          "probe": "collision_right",
+          "method": "yes_no_naive",
+          "condition": "shared_plan_only",
+          "n": 96,
+          "accuracy": 0.9166666666666666
+        },
+        {
+          "probe": "collision_right",
+          "method": "yes_no_naive_boxed",
+          "condition": "no_plan",
+          "n": 96,
+          "accuracy": 0.9166666666666666
+        },
+        {
+          "probe": "collision_right",
+          "method": "yes_no_naive_boxed",
+          "condition": "shared_full",
+          "n": 96,
+          "accuracy": 0.9166666666666666
+        },
+        {
+          "probe": "collision_right",
+          "method": "yes_no_naive_boxed",
+          "condition": "shared_no_think",
+          "n": 96,
+          "accuracy": 0.9166666666666666
+        },
+        {
+          "probe": "collision_right",
+          "method": "yes_no_naive_boxed",
+          "condition": "shared_plan_only",
+          "n": 96,
+          "accuracy": 0.9166666666666666
+        },
+        {
+          "probe": "collision_straight",
+          "method": "choice",
+          "condition": "no_plan",
+          "n": 96,
+          "accuracy": 0.6770833333333334
+        },
+        {
+          "probe": "collision_straight",
+          "method": "choice",
+          "condition": "shared_full",
+          "n": 96,
+          "accuracy": 0.6041666666666666
+        },
+        {
+          "probe": "collision_straight",
+          "method": "choice",
+          "condition": "shared_no_think",
+          "n": 96,
+          "accuracy": 0.6875
+        },
+        {
+          "probe": "collision_straight",
+          "method": "choice",
+          "condition": "shared_plan_only",
+          "n": 96,
+          "accuracy": 0.5
+        },
+        {
+          "probe": "collision_straight",
+          "method": "choice_boxed",
+          "condition": "no_plan",
+          "n": 96,
+          "accuracy": 0.8333333333333334
+        },
+        {
+          "probe": "collision_straight",
+          "method": "choice_boxed",
+          "condition": "shared_full",
+          "n": 96,
+          "accuracy": 0.7291666666666666
+        },
+        {
+          "probe": "collision_straight",
+          "method": "choice_boxed",
+          "condition": "shared_no_think",
+          "n": 96,
+          "accuracy": 0.8333333333333334
+        },
+        {
+          "probe": "collision_straight",
+          "method": "choice_boxed",
+          "condition": "shared_plan_only",
+          "n": 96,
+          "accuracy": 0.8333333333333334
+        },
+        {
+          "probe": "collision_straight",
+          "method": "yes_no",
+          "condition": "no_plan",
+          "n": 96,
+          "accuracy": 0.8333333333333334
+        },
+        {
+          "probe": "collision_straight",
+          "method": "yes_no",
+          "condition": "shared_full",
+          "n": 96,
+          "accuracy": 0.3645833333333333
+        },
+        {
+          "probe": "collision_straight",
+          "method": "yes_no",
+          "condition": "shared_no_think",
+          "n": 96,
+          "accuracy": 0.8333333333333334
+        },
+        {
+          "probe": "collision_straight",
+          "method": "yes_no",
+          "condition": "shared_plan_only",
+          "n": 96,
+          "accuracy": 0.8333333333333334
+        },
+        {
+          "probe": "collision_straight",
+          "method": "yes_no_boxed",
+          "condition": "no_plan",
+          "n": 96,
+          "accuracy": 0.8333333333333334
+        },
+        {
+          "probe": "collision_straight",
+          "method": "yes_no_boxed",
+          "condition": "shared_full",
+          "n": 96,
+          "accuracy": 0.8333333333333334
+        },
+        {
+          "probe": "collision_straight",
+          "method": "yes_no_boxed",
+          "condition": "shared_no_think",
+          "n": 96,
+          "accuracy": 0.8333333333333334
+        },
+        {
+          "probe": "collision_straight",
+          "method": "yes_no_boxed",
+          "condition": "shared_plan_only",
+          "n": 96,
+          "accuracy": 0.8333333333333334
+        },
+        {
+          "probe": "collision_straight",
+          "method": "yes_no_naive",
+          "condition": "no_plan",
+          "n": 96,
+          "accuracy": 0.8333333333333334
+        },
+        {
+          "probe": "collision_straight",
+          "method": "yes_no_naive",
+          "condition": "shared_full",
+          "n": 96,
+          "accuracy": 0.4166666666666667
+        },
+        {
+          "probe": "collision_straight",
+          "method": "yes_no_naive",
+          "condition": "shared_no_think",
+          "n": 96,
+          "accuracy": 0.8333333333333334
+        },
+        {
+          "probe": "collision_straight",
+          "method": "yes_no_naive",
+          "condition": "shared_plan_only",
+          "n": 96,
+          "accuracy": 0.8333333333333334
+        },
+        {
+          "probe": "collision_straight",
+          "method": "yes_no_naive_boxed",
+          "condition": "no_plan",
+          "n": 96,
+          "accuracy": 0.8333333333333334
+        },
+        {
+          "probe": "collision_straight",
+          "method": "yes_no_naive_boxed",
+          "condition": "shared_full",
+          "n": 96,
+          "accuracy": 0.8333333333333334
+        },
+        {
+          "probe": "collision_straight",
+          "method": "yes_no_naive_boxed",
+          "condition": "shared_no_think",
+          "n": 96,
+          "accuracy": 0.8333333333333334
+        },
+        {
+          "probe": "collision_straight",
+          "method": "yes_no_naive_boxed",
+          "condition": "shared_plan_only",
+          "n": 96,
+          "accuracy": 0.8333333333333334
+        },
+        {
+          "probe": "food_x",
+          "method": "choice",
+          "condition": "no_plan",
+          "n": 96,
+          "accuracy": 0.9479166666666666
+        },
+        {
+          "probe": "food_x",
+          "method": "choice",
+          "condition": "shared_full",
+          "n": 96,
+          "accuracy": 0.90625
+        },
+        {
+          "probe": "food_x",
+          "method": "choice",
+          "condition": "shared_no_think",
+          "n": 96,
+          "accuracy": 1
+        },
+        {
+          "probe": "food_x",
+          "method": "choice",
+          "condition": "shared_plan_only",
+          "n": 96,
+          "accuracy": 0.90625
+        },
+        {
+          "probe": "food_x",
+          "method": "choice_boxed",
+          "condition": "no_plan",
+          "n": 96,
+          "accuracy": 0.96875
+        },
+        {
+          "probe": "food_x",
+          "method": "choice_boxed",
+          "condition": "shared_full",
+          "n": 96,
+          "accuracy": 0.9791666666666666
+        },
+        {
+          "probe": "food_x",
+          "method": "choice_boxed",
+          "condition": "shared_no_think",
+          "n": 96,
+          "accuracy": 0.9895833333333334
+        },
+        {
+          "probe": "food_x",
+          "method": "choice_boxed",
+          "condition": "shared_plan_only",
+          "n": 96,
+          "accuracy": 0.96875
+        },
+        {
+          "probe": "food_x",
+          "method": "yes_no",
+          "condition": "no_plan",
+          "n": 96,
+          "accuracy": 0.9479166666666666
+        },
+        {
+          "probe": "food_x",
+          "method": "yes_no",
+          "condition": "shared_full",
+          "n": 96,
+          "accuracy": 0.8645833333333334
+        },
+        {
+          "probe": "food_x",
+          "method": "yes_no",
+          "condition": "shared_no_think",
+          "n": 96,
+          "accuracy": 0.9375
+        },
+        {
+          "probe": "food_x",
+          "method": "yes_no",
+          "condition": "shared_plan_only",
+          "n": 96,
+          "accuracy": 0.9270833333333334
+        },
+        {
+          "probe": "food_x",
+          "method": "yes_no_boxed",
+          "condition": "no_plan",
+          "n": 96,
+          "accuracy": 0.9479166666666666
+        },
+        {
+          "probe": "food_x",
+          "method": "yes_no_boxed",
+          "condition": "shared_full",
+          "n": 96,
+          "accuracy": 0.8958333333333334
+        },
+        {
+          "probe": "food_x",
+          "method": "yes_no_boxed",
+          "condition": "shared_no_think",
+          "n": 96,
+          "accuracy": 0.9895833333333334
+        },
+        {
+          "probe": "food_x",
+          "method": "yes_no_boxed",
+          "condition": "shared_plan_only",
+          "n": 96,
+          "accuracy": 0.96875
+        },
+        {
+          "probe": "food_x",
+          "method": "yes_no_naive",
+          "condition": "no_plan",
+          "n": 96,
+          "accuracy": 0.9791666666666666
+        },
+        {
+          "probe": "food_x",
+          "method": "yes_no_naive",
+          "condition": "shared_full",
+          "n": 96,
+          "accuracy": 0.9791666666666666
+        },
+        {
+          "probe": "food_x",
+          "method": "yes_no_naive",
+          "condition": "shared_no_think",
+          "n": 96,
+          "accuracy": 1
+        },
+        {
+          "probe": "food_x",
+          "method": "yes_no_naive",
+          "condition": "shared_plan_only",
+          "n": 96,
+          "accuracy": 1
+        },
+        {
+          "probe": "food_x",
+          "method": "yes_no_naive_boxed",
+          "condition": "no_plan",
+          "n": 96,
+          "accuracy": 0.9791666666666666
+        },
+        {
+          "probe": "food_x",
+          "method": "yes_no_naive_boxed",
+          "condition": "shared_full",
+          "n": 96,
+          "accuracy": 0.9791666666666666
+        },
+        {
+          "probe": "food_x",
+          "method": "yes_no_naive_boxed",
+          "condition": "shared_no_think",
+          "n": 96,
+          "accuracy": 1
+        },
+        {
+          "probe": "food_x",
+          "method": "yes_no_naive_boxed",
+          "condition": "shared_plan_only",
+          "n": 96,
+          "accuracy": 1
+        },
+        {
+          "probe": "food_y",
+          "method": "choice",
+          "condition": "no_plan",
+          "n": 96,
+          "accuracy": 0.9479166666666666
+        },
+        {
+          "probe": "food_y",
+          "method": "choice",
+          "condition": "shared_full",
+          "n": 96,
+          "accuracy": 0.8020833333333334
+        },
+        {
+          "probe": "food_y",
+          "method": "choice",
+          "condition": "shared_no_think",
+          "n": 96,
+          "accuracy": 0.96875
+        },
+        {
+          "probe": "food_y",
+          "method": "choice",
+          "condition": "shared_plan_only",
+          "n": 96,
+          "accuracy": 0.9166666666666666
+        },
+        {
+          "probe": "food_y",
+          "method": "choice_boxed",
+          "condition": "no_plan",
+          "n": 96,
+          "accuracy": 0.96875
+        },
+        {
+          "probe": "food_y",
+          "method": "choice_boxed",
+          "condition": "shared_full",
+          "n": 96,
+          "accuracy": 0.9583333333333334
+        },
+        {
+          "probe": "food_y",
+          "method": "choice_boxed",
+          "condition": "shared_no_think",
+          "n": 96,
+          "accuracy": 0.9583333333333334
+        },
+        {
+          "probe": "food_y",
+          "method": "choice_boxed",
+          "condition": "shared_plan_only",
+          "n": 96,
+          "accuracy": 0.9479166666666666
+        },
+        {
+          "probe": "food_y",
+          "method": "yes_no",
+          "condition": "no_plan",
+          "n": 96,
+          "accuracy": 0.9791666666666666
+        },
+        {
+          "probe": "food_y",
+          "method": "yes_no",
+          "condition": "shared_full",
+          "n": 96,
+          "accuracy": 0.875
+        },
+        {
+          "probe": "food_y",
+          "method": "yes_no",
+          "condition": "shared_no_think",
+          "n": 96,
+          "accuracy": 0.90625
+        },
+        {
+          "probe": "food_y",
+          "method": "yes_no",
+          "condition": "shared_plan_only",
+          "n": 96,
+          "accuracy": 0.8958333333333334
+        },
+        {
+          "probe": "food_y",
+          "method": "yes_no_boxed",
+          "condition": "no_plan",
+          "n": 96,
+          "accuracy": 0.9791666666666666
+        },
+        {
+          "probe": "food_y",
+          "method": "yes_no_boxed",
+          "condition": "shared_full",
+          "n": 96,
+          "accuracy": 0.875
+        },
+        {
+          "probe": "food_y",
+          "method": "yes_no_boxed",
+          "condition": "shared_no_think",
+          "n": 96,
+          "accuracy": 0.9166666666666666
+        },
+        {
+          "probe": "food_y",
+          "method": "yes_no_boxed",
+          "condition": "shared_plan_only",
+          "n": 96,
+          "accuracy": 0.875
+        },
+        {
+          "probe": "food_y",
+          "method": "yes_no_naive",
+          "condition": "no_plan",
+          "n": 96,
+          "accuracy": 1
+        },
+        {
+          "probe": "food_y",
+          "method": "yes_no_naive",
+          "condition": "shared_full",
+          "n": 96,
+          "accuracy": 0.9583333333333334
+        },
+        {
+          "probe": "food_y",
+          "method": "yes_no_naive",
+          "condition": "shared_no_think",
+          "n": 96,
+          "accuracy": 1
+        },
+        {
+          "probe": "food_y",
+          "method": "yes_no_naive",
+          "condition": "shared_plan_only",
+          "n": 96,
+          "accuracy": 0.9583333333333334
+        },
+        {
+          "probe": "food_y",
+          "method": "yes_no_naive_boxed",
+          "condition": "no_plan",
+          "n": 96,
+          "accuracy": 0.9791666666666666
+        },
+        {
+          "probe": "food_y",
+          "method": "yes_no_naive_boxed",
+          "condition": "shared_full",
+          "n": 96,
+          "accuracy": 0.9375
+        },
+        {
+          "probe": "food_y",
+          "method": "yes_no_naive_boxed",
+          "condition": "shared_no_think",
+          "n": 96,
+          "accuracy": 1
+        },
+        {
+          "probe": "food_y",
+          "method": "yes_no_naive_boxed",
+          "condition": "shared_plan_only",
+          "n": 96,
+          "accuracy": 0.8958333333333334
+        },
+        {
+          "probe": "heading",
+          "method": "choice",
+          "condition": "no_plan",
+          "n": 96,
+          "accuracy": 1
+        },
+        {
+          "probe": "heading",
+          "method": "choice",
+          "condition": "shared_full",
+          "n": 96,
+          "accuracy": 0.9166666666666666
+        },
+        {
+          "probe": "heading",
+          "method": "choice",
+          "condition": "shared_no_think",
+          "n": 96,
+          "accuracy": 1
+        },
+        {
+          "probe": "heading",
+          "method": "choice",
+          "condition": "shared_plan_only",
+          "n": 96,
+          "accuracy": 1
+        },
+        {
+          "probe": "heading",
+          "method": "choice_boxed",
+          "condition": "no_plan",
+          "n": 96,
+          "accuracy": 1
+        },
+        {
+          "probe": "heading",
+          "method": "choice_boxed",
+          "condition": "shared_full",
+          "n": 96,
+          "accuracy": 1
+        },
+        {
+          "probe": "heading",
+          "method": "choice_boxed",
+          "condition": "shared_no_think",
+          "n": 96,
+          "accuracy": 0.96875
+        },
+        {
+          "probe": "heading",
+          "method": "choice_boxed",
+          "condition": "shared_plan_only",
+          "n": 96,
+          "accuracy": 1
+        },
+        {
+          "probe": "heading",
+          "method": "yes_no",
+          "condition": "no_plan",
+          "n": 96,
+          "accuracy": 1
+        },
+        {
+          "probe": "heading",
+          "method": "yes_no",
+          "condition": "shared_full",
+          "n": 96,
+          "accuracy": 1
+        },
+        {
+          "probe": "heading",
+          "method": "yes_no",
+          "condition": "shared_no_think",
+          "n": 96,
+          "accuracy": 0.9895833333333334
+        },
+        {
+          "probe": "heading",
+          "method": "yes_no",
+          "condition": "shared_plan_only",
+          "n": 96,
+          "accuracy": 1
+        },
+        {
+          "probe": "heading",
+          "method": "yes_no_boxed",
+          "condition": "no_plan",
+          "n": 96,
+          "accuracy": 1
+        },
+        {
+          "probe": "heading",
+          "method": "yes_no_boxed",
+          "condition": "shared_full",
+          "n": 96,
+          "accuracy": 0.9895833333333334
+        },
+        {
+          "probe": "heading",
+          "method": "yes_no_boxed",
+          "condition": "shared_no_think",
+          "n": 96,
+          "accuracy": 1
+        },
+        {
+          "probe": "heading",
+          "method": "yes_no_boxed",
+          "condition": "shared_plan_only",
+          "n": 96,
+          "accuracy": 1
+        },
+        {
+          "probe": "heading",
+          "method": "yes_no_naive",
+          "condition": "no_plan",
+          "n": 96,
+          "accuracy": 1
+        },
+        {
+          "probe": "heading",
+          "method": "yes_no_naive",
+          "condition": "shared_full",
+          "n": 96,
+          "accuracy": 1
+        },
+        {
+          "probe": "heading",
+          "method": "yes_no_naive",
+          "condition": "shared_no_think",
+          "n": 96,
+          "accuracy": 1
+        },
+        {
+          "probe": "heading",
+          "method": "yes_no_naive",
+          "condition": "shared_plan_only",
+          "n": 96,
+          "accuracy": 1
+        },
+        {
+          "probe": "heading",
+          "method": "yes_no_naive_boxed",
+          "condition": "no_plan",
+          "n": 96,
+          "accuracy": 1
+        },
+        {
+          "probe": "heading",
+          "method": "yes_no_naive_boxed",
+          "condition": "shared_full",
+          "n": 96,
+          "accuracy": 1
+        },
+        {
+          "probe": "heading",
+          "method": "yes_no_naive_boxed",
+          "condition": "shared_no_think",
+          "n": 96,
+          "accuracy": 1
+        },
+        {
+          "probe": "heading",
+          "method": "yes_no_naive_boxed",
+          "condition": "shared_plan_only",
+          "n": 96,
+          "accuracy": 1
+        },
+        {
+          "probe": "turn_left",
+          "method": "choice",
+          "condition": "no_plan",
+          "n": 96,
+          "accuracy": 0.25
+        },
+        {
+          "probe": "turn_left",
+          "method": "choice",
+          "condition": "shared_full",
+          "n": 96,
+          "accuracy": 0.21875
+        },
+        {
+          "probe": "turn_left",
+          "method": "choice",
+          "condition": "shared_no_think",
+          "n": 96,
+          "accuracy": 0.23958333333333334
+        },
+        {
+          "probe": "turn_left",
+          "method": "choice",
+          "condition": "shared_plan_only",
+          "n": 96,
+          "accuracy": 0.28125
+        },
+        {
+          "probe": "turn_left",
+          "method": "choice_boxed",
+          "condition": "no_plan",
+          "n": 96,
+          "accuracy": 0.4375
+        },
+        {
+          "probe": "turn_left",
+          "method": "choice_boxed",
+          "condition": "shared_full",
+          "n": 96,
+          "accuracy": 0.3541666666666667
+        },
+        {
+          "probe": "turn_left",
+          "method": "choice_boxed",
+          "condition": "shared_no_think",
+          "n": 96,
+          "accuracy": 0.3854166666666667
+        },
+        {
+          "probe": "turn_left",
+          "method": "choice_boxed",
+          "condition": "shared_plan_only",
+          "n": 96,
+          "accuracy": 0.3125
+        },
+        {
+          "probe": "turn_left",
+          "method": "yes_no",
+          "condition": "no_plan",
+          "n": 96,
+          "accuracy": 0.25
+        },
+        {
+          "probe": "turn_left",
+          "method": "yes_no",
+          "condition": "shared_full",
+          "n": 96,
+          "accuracy": 0.3125
+        },
+        {
+          "probe": "turn_left",
+          "method": "yes_no",
+          "condition": "shared_no_think",
+          "n": 96,
+          "accuracy": 0.3020833333333333
+        },
+        {
+          "probe": "turn_left",
+          "method": "yes_no",
+          "condition": "shared_plan_only",
+          "n": 96,
+          "accuracy": 0.28125
+        },
+        {
+          "probe": "turn_left",
+          "method": "yes_no_boxed",
+          "condition": "no_plan",
+          "n": 96,
+          "accuracy": 0.25
+        },
+        {
+          "probe": "turn_left",
+          "method": "yes_no_boxed",
+          "condition": "shared_full",
+          "n": 96,
+          "accuracy": 0.2604166666666667
+        },
+        {
+          "probe": "turn_left",
+          "method": "yes_no_boxed",
+          "condition": "shared_no_think",
+          "n": 96,
+          "accuracy": 0.2708333333333333
+        },
+        {
+          "probe": "turn_left",
+          "method": "yes_no_boxed",
+          "condition": "shared_plan_only",
+          "n": 96,
+          "accuracy": 0.3020833333333333
+        },
+        {
+          "probe": "turn_left",
+          "method": "yes_no_naive",
+          "condition": "no_plan",
+          "n": 96,
+          "accuracy": 0.28125
+        },
+        {
+          "probe": "turn_left",
+          "method": "yes_no_naive",
+          "condition": "shared_full",
+          "n": 96,
+          "accuracy": 0.2604166666666667
+        },
+        {
+          "probe": "turn_left",
+          "method": "yes_no_naive",
+          "condition": "shared_no_think",
+          "n": 96,
+          "accuracy": 0.1875
+        },
+        {
+          "probe": "turn_left",
+          "method": "yes_no_naive",
+          "condition": "shared_plan_only",
+          "n": 96,
+          "accuracy": 0.2708333333333333
+        },
+        {
+          "probe": "turn_left",
+          "method": "yes_no_naive_boxed",
+          "condition": "no_plan",
+          "n": 96,
+          "accuracy": 0.3020833333333333
+        },
+        {
+          "probe": "turn_left",
+          "method": "yes_no_naive_boxed",
+          "condition": "shared_full",
+          "n": 96,
+          "accuracy": 0.25
+        },
+        {
+          "probe": "turn_left",
+          "method": "yes_no_naive_boxed",
+          "condition": "shared_no_think",
+          "n": 96,
+          "accuracy": 0.2604166666666667
+        },
+        {
+          "probe": "turn_left",
+          "method": "yes_no_naive_boxed",
+          "condition": "shared_plan_only",
+          "n": 96,
+          "accuracy": 0.2604166666666667
+        },
+        {
+          "probe": "turn_right",
+          "method": "choice",
+          "condition": "no_plan",
+          "n": 96,
+          "accuracy": 0.23958333333333334
+        },
+        {
+          "probe": "turn_right",
+          "method": "choice",
+          "condition": "shared_full",
+          "n": 96,
+          "accuracy": 0.25
+        },
+        {
+          "probe": "turn_right",
+          "method": "choice",
+          "condition": "shared_no_think",
+          "n": 96,
+          "accuracy": 0.22916666666666666
+        },
+        {
+          "probe": "turn_right",
+          "method": "choice",
+          "condition": "shared_plan_only",
+          "n": 96,
+          "accuracy": 0.3125
+        },
+        {
+          "probe": "turn_right",
+          "method": "choice_boxed",
+          "condition": "no_plan",
+          "n": 96,
+          "accuracy": 0.3333333333333333
+        },
+        {
+          "probe": "turn_right",
+          "method": "choice_boxed",
+          "condition": "shared_full",
+          "n": 96,
+          "accuracy": 0.25
+        },
+        {
+          "probe": "turn_right",
+          "method": "choice_boxed",
+          "condition": "shared_no_think",
+          "n": 96,
+          "accuracy": 0.3125
+        },
+        {
+          "probe": "turn_right",
+          "method": "choice_boxed",
+          "condition": "shared_plan_only",
+          "n": 96,
+          "accuracy": 0.3645833333333333
+        },
+        {
+          "probe": "turn_right",
+          "method": "yes_no",
+          "condition": "no_plan",
+          "n": 96,
+          "accuracy": 0.2708333333333333
+        },
+        {
+          "probe": "turn_right",
+          "method": "yes_no",
+          "condition": "shared_full",
+          "n": 96,
+          "accuracy": 0.2916666666666667
+        },
+        {
+          "probe": "turn_right",
+          "method": "yes_no",
+          "condition": "shared_no_think",
+          "n": 96,
+          "accuracy": 0.2708333333333333
+        },
+        {
+          "probe": "turn_right",
+          "method": "yes_no",
+          "condition": "shared_plan_only",
+          "n": 96,
+          "accuracy": 0.22916666666666666
+        },
+        {
+          "probe": "turn_right",
+          "method": "yes_no_boxed",
+          "condition": "no_plan",
+          "n": 96,
+          "accuracy": 0.19791666666666666
+        },
+        {
+          "probe": "turn_right",
+          "method": "yes_no_boxed",
+          "condition": "shared_full",
+          "n": 96,
+          "accuracy": 0.23958333333333334
+        },
+        {
+          "probe": "turn_right",
+          "method": "yes_no_boxed",
+          "condition": "shared_no_think",
+          "n": 96,
+          "accuracy": 0.3333333333333333
+        },
+        {
+          "probe": "turn_right",
+          "method": "yes_no_boxed",
+          "condition": "shared_plan_only",
+          "n": 96,
+          "accuracy": 0.2604166666666667
+        },
+        {
+          "probe": "turn_right",
+          "method": "yes_no_naive",
+          "condition": "no_plan",
+          "n": 96,
+          "accuracy": 0.20833333333333334
+        },
+        {
+          "probe": "turn_right",
+          "method": "yes_no_naive",
+          "condition": "shared_full",
+          "n": 96,
+          "accuracy": 0.25
+        },
+        {
+          "probe": "turn_right",
+          "method": "yes_no_naive",
+          "condition": "shared_no_think",
+          "n": 96,
+          "accuracy": 0.23958333333333334
+        },
+        {
+          "probe": "turn_right",
+          "method": "yes_no_naive",
+          "condition": "shared_plan_only",
+          "n": 96,
+          "accuracy": 0.25
+        },
+        {
+          "probe": "turn_right",
+          "method": "yes_no_naive_boxed",
+          "condition": "no_plan",
+          "n": 96,
+          "accuracy": 0.3020833333333333
+        },
+        {
+          "probe": "turn_right",
+          "method": "yes_no_naive_boxed",
+          "condition": "shared_full",
+          "n": 96,
+          "accuracy": 0.25
+        },
+        {
+          "probe": "turn_right",
+          "method": "yes_no_naive_boxed",
+          "condition": "shared_no_think",
+          "n": 96,
+          "accuracy": 0.25
+        },
+        {
+          "probe": "turn_right",
+          "method": "yes_no_naive_boxed",
+          "condition": "shared_plan_only",
+          "n": 96,
+          "accuracy": 0.3020833333333333
+        },
+        {
+          "probe": "turn_straight",
+          "method": "choice",
+          "condition": "no_plan",
+          "n": 96,
+          "accuracy": 0.78125
+        },
+        {
+          "probe": "turn_straight",
+          "method": "choice",
+          "condition": "shared_full",
+          "n": 96,
+          "accuracy": 0.7604166666666666
+        },
+        {
+          "probe": "turn_straight",
+          "method": "choice",
+          "condition": "shared_no_think",
+          "n": 96,
+          "accuracy": 0.84375
+        },
+        {
+          "probe": "turn_straight",
+          "method": "choice",
+          "condition": "shared_plan_only",
+          "n": 96,
+          "accuracy": 0.75
+        },
+        {
+          "probe": "turn_straight",
+          "method": "choice_boxed",
+          "condition": "no_plan",
+          "n": 96,
+          "accuracy": 0.7395833333333334
+        },
+        {
+          "probe": "turn_straight",
+          "method": "choice_boxed",
+          "condition": "shared_full",
+          "n": 96,
+          "accuracy": 0.875
+        },
+        {
+          "probe": "turn_straight",
+          "method": "choice_boxed",
+          "condition": "shared_no_think",
+          "n": 96,
+          "accuracy": 0.7916666666666666
+        },
+        {
+          "probe": "turn_straight",
+          "method": "choice_boxed",
+          "condition": "shared_plan_only",
+          "n": 96,
+          "accuracy": 0.9270833333333334
+        },
+        {
+          "probe": "turn_straight",
+          "method": "yes_no",
+          "condition": "no_plan",
+          "n": 96,
+          "accuracy": 0.3645833333333333
+        },
+        {
+          "probe": "turn_straight",
+          "method": "yes_no",
+          "condition": "shared_full",
+          "n": 96,
+          "accuracy": 0.3229166666666667
+        },
+        {
+          "probe": "turn_straight",
+          "method": "yes_no",
+          "condition": "shared_no_think",
+          "n": 96,
+          "accuracy": 0.5
+        },
+        {
+          "probe": "turn_straight",
+          "method": "yes_no",
+          "condition": "shared_plan_only",
+          "n": 96,
+          "accuracy": 0.65625
+        },
+        {
+          "probe": "turn_straight",
+          "method": "yes_no_boxed",
+          "condition": "no_plan",
+          "n": 96,
+          "accuracy": 0.59375
+        },
+        {
+          "probe": "turn_straight",
+          "method": "yes_no_boxed",
+          "condition": "shared_full",
+          "n": 96,
+          "accuracy": 0.40625
+        },
+        {
+          "probe": "turn_straight",
+          "method": "yes_no_boxed",
+          "condition": "shared_no_think",
+          "n": 96,
+          "accuracy": 0.6979166666666666
+        },
+        {
+          "probe": "turn_straight",
+          "method": "yes_no_boxed",
+          "condition": "shared_plan_only",
+          "n": 96,
+          "accuracy": 0.7395833333333334
+        },
+        {
+          "probe": "turn_straight",
+          "method": "yes_no_naive",
+          "condition": "no_plan",
+          "n": 96,
+          "accuracy": 0.5
+        },
+        {
+          "probe": "turn_straight",
+          "method": "yes_no_naive",
+          "condition": "shared_full",
+          "n": 96,
+          "accuracy": 0.5416666666666666
+        },
+        {
+          "probe": "turn_straight",
+          "method": "yes_no_naive",
+          "condition": "shared_no_think",
+          "n": 96,
+          "accuracy": 0.65625
+        },
+        {
+          "probe": "turn_straight",
+          "method": "yes_no_naive",
+          "condition": "shared_plan_only",
+          "n": 96,
+          "accuracy": 0.5
+        },
+        {
+          "probe": "turn_straight",
+          "method": "yes_no_naive_boxed",
+          "condition": "no_plan",
+          "n": 96,
+          "accuracy": 0.5208333333333334
+        },
+        {
+          "probe": "turn_straight",
+          "method": "yes_no_naive_boxed",
+          "condition": "shared_full",
+          "n": 96,
+          "accuracy": 0.6666666666666666
+        },
+        {
+          "probe": "turn_straight",
+          "method": "yes_no_naive_boxed",
+          "condition": "shared_no_think",
+          "n": 96,
+          "accuracy": 0.625
+        },
+        {
+          "probe": "turn_straight",
+          "method": "yes_no_naive_boxed",
+          "condition": "shared_plan_only",
+          "n": 96,
+          "accuracy": 0.6041666666666666
+        }
+      ]
+    },
+    {
+      "backend": "vllm",
+      "model": "/inspire/hdd/global_user/donglinkang-253108120084/projects/vdecision/.cache/model-staging/standard-six-20261012/Qwen/Qwen3-VL-4B-Thinking",
+      "readout": [
+        {
+          "method": "choice",
+          "condition": "no_plan",
+          "dangerous_fixture_count": 12,
+          "dangerous_fixture_score_count": 72,
+          "dangerous_fixture_safe_rate": 0.375,
+          "safe_and_approaches_food_rate": 0.3680555555555556,
+          "total_safe_rate": 0.84375
+        },
+        {
+          "method": "choice",
+          "condition": "shared_full",
+          "dangerous_fixture_count": 12,
+          "dangerous_fixture_score_count": 72,
+          "dangerous_fixture_safe_rate": 0.5,
+          "safe_and_approaches_food_rate": 0.3888888888888889,
+          "total_safe_rate": 0.875
+        },
+        {
+          "method": "choice",
+          "condition": "shared_no_think",
+          "dangerous_fixture_count": 12,
+          "dangerous_fixture_score_count": 72,
+          "dangerous_fixture_safe_rate": 0.5138888888888888,
+          "safe_and_approaches_food_rate": 0.3993055555555556,
+          "total_safe_rate": 0.8784722222222222
+        },
+        {
+          "method": "choice",
+          "condition": "shared_plan_only",
+          "dangerous_fixture_count": 12,
+          "dangerous_fixture_score_count": 72,
+          "dangerous_fixture_safe_rate": 0.5,
+          "safe_and_approaches_food_rate": 0.3888888888888889,
+          "total_safe_rate": 0.875
+        },
+        {
+          "method": "choice_boxed",
+          "condition": "no_plan",
+          "dangerous_fixture_count": 12,
+          "dangerous_fixture_score_count": 72,
+          "dangerous_fixture_safe_rate": 0.3333333333333333,
+          "safe_and_approaches_food_rate": 0.3333333333333333,
+          "total_safe_rate": 0.8333333333333334
+        },
+        {
+          "method": "choice_boxed",
+          "condition": "shared_full",
+          "dangerous_fixture_count": 12,
+          "dangerous_fixture_score_count": 72,
+          "dangerous_fixture_safe_rate": 0.4027777777777778,
+          "safe_and_approaches_food_rate": 0.3541666666666667,
+          "total_safe_rate": 0.8506944444444444
+        },
+        {
+          "method": "choice_boxed",
+          "condition": "shared_no_think",
+          "dangerous_fixture_count": 12,
+          "dangerous_fixture_score_count": 72,
+          "dangerous_fixture_safe_rate": 0.3611111111111111,
+          "safe_and_approaches_food_rate": 0.3333333333333333,
+          "total_safe_rate": 0.8402777777777778
+        },
+        {
+          "method": "choice_boxed",
+          "condition": "shared_plan_only",
+          "dangerous_fixture_count": 12,
+          "dangerous_fixture_score_count": 72,
+          "dangerous_fixture_safe_rate": 0.3472222222222222,
+          "safe_and_approaches_food_rate": 0.3368055555555556,
+          "total_safe_rate": 0.8368055555555556
+        },
+        {
+          "method": "yes_no",
+          "condition": "no_plan",
+          "dangerous_fixture_count": 12,
+          "dangerous_fixture_score_count": 72,
+          "dangerous_fixture_safe_rate": 0.3472222222222222,
+          "safe_and_approaches_food_rate": 0.34375,
+          "total_safe_rate": 0.8368055555555556
+        },
+        {
+          "method": "yes_no",
+          "condition": "shared_full",
+          "dangerous_fixture_count": 12,
+          "dangerous_fixture_score_count": 72,
+          "dangerous_fixture_safe_rate": 0.4027777777777778,
+          "safe_and_approaches_food_rate": 0.3888888888888889,
+          "total_safe_rate": 0.8506944444444444
+        },
+        {
+          "method": "yes_no",
+          "condition": "shared_no_think",
+          "dangerous_fixture_count": 12,
+          "dangerous_fixture_score_count": 72,
+          "dangerous_fixture_safe_rate": 0.3611111111111111,
+          "safe_and_approaches_food_rate": 0.3472222222222222,
+          "total_safe_rate": 0.8402777777777778
+        },
+        {
+          "method": "yes_no",
+          "condition": "shared_plan_only",
+          "dangerous_fixture_count": 12,
+          "dangerous_fixture_score_count": 72,
+          "dangerous_fixture_safe_rate": 0.4305555555555556,
+          "safe_and_approaches_food_rate": 0.3854166666666667,
+          "total_safe_rate": 0.8576388888888888
+        },
+        {
+          "method": "yes_no_boxed",
+          "condition": "no_plan",
+          "dangerous_fixture_count": 12,
+          "dangerous_fixture_score_count": 72,
+          "dangerous_fixture_safe_rate": 0.375,
+          "safe_and_approaches_food_rate": 0.3680555555555556,
+          "total_safe_rate": 0.84375
+        },
+        {
+          "method": "yes_no_boxed",
+          "condition": "shared_full",
+          "dangerous_fixture_count": 12,
+          "dangerous_fixture_score_count": 72,
+          "dangerous_fixture_safe_rate": 0.4861111111111111,
+          "safe_and_approaches_food_rate": 0.4097222222222222,
+          "total_safe_rate": 0.8715277777777778
+        },
+        {
+          "method": "yes_no_boxed",
+          "condition": "shared_no_think",
+          "dangerous_fixture_count": 12,
+          "dangerous_fixture_score_count": 72,
+          "dangerous_fixture_safe_rate": 0.4305555555555556,
+          "safe_and_approaches_food_rate": 0.3923611111111111,
+          "total_safe_rate": 0.8576388888888888
+        },
+        {
+          "method": "yes_no_boxed",
+          "condition": "shared_plan_only",
+          "dangerous_fixture_count": 12,
+          "dangerous_fixture_score_count": 72,
+          "dangerous_fixture_safe_rate": 0.4166666666666667,
+          "safe_and_approaches_food_rate": 0.3958333333333333,
+          "total_safe_rate": 0.8541666666666666
+        },
+        {
+          "method": "yes_no_naive",
+          "condition": "no_plan",
+          "dangerous_fixture_count": 12,
+          "dangerous_fixture_score_count": 72,
+          "dangerous_fixture_safe_rate": 0.4444444444444444,
+          "safe_and_approaches_food_rate": 0.4097222222222222,
+          "total_safe_rate": 0.8611111111111112
+        },
+        {
+          "method": "yes_no_naive",
+          "condition": "shared_full",
+          "dangerous_fixture_count": 12,
+          "dangerous_fixture_score_count": 72,
+          "dangerous_fixture_safe_rate": 0.6666666666666666,
+          "safe_and_approaches_food_rate": 0.46875,
+          "total_safe_rate": 0.9166666666666666
+        },
+        {
+          "method": "yes_no_naive",
+          "condition": "shared_no_think",
+          "dangerous_fixture_count": 12,
+          "dangerous_fixture_score_count": 72,
+          "dangerous_fixture_safe_rate": 0.7222222222222222,
+          "safe_and_approaches_food_rate": 0.4513888888888889,
+          "total_safe_rate": 0.9305555555555556
+        },
+        {
+          "method": "yes_no_naive",
+          "condition": "shared_plan_only",
+          "dangerous_fixture_count": 12,
+          "dangerous_fixture_score_count": 72,
+          "dangerous_fixture_safe_rate": 0.6666666666666666,
+          "safe_and_approaches_food_rate": 0.5,
+          "total_safe_rate": 0.9166666666666666
+        },
+        {
+          "method": "yes_no_naive_boxed",
+          "condition": "no_plan",
+          "dangerous_fixture_count": 12,
+          "dangerous_fixture_score_count": 72,
+          "dangerous_fixture_safe_rate": 0.5138888888888888,
+          "safe_and_approaches_food_rate": 0.4409722222222222,
+          "total_safe_rate": 0.8784722222222222
+        },
+        {
+          "method": "yes_no_naive_boxed",
+          "condition": "shared_full",
+          "dangerous_fixture_count": 12,
+          "dangerous_fixture_score_count": 72,
+          "dangerous_fixture_safe_rate": 0.6666666666666666,
+          "safe_and_approaches_food_rate": 0.53125,
+          "total_safe_rate": 0.9166666666666666
+        },
+        {
+          "method": "yes_no_naive_boxed",
+          "condition": "shared_no_think",
+          "dangerous_fixture_count": 12,
+          "dangerous_fixture_score_count": 72,
+          "dangerous_fixture_safe_rate": 0.75,
+          "safe_and_approaches_food_rate": 0.5243055555555556,
+          "total_safe_rate": 0.9375
+        },
+        {
+          "method": "yes_no_naive_boxed",
+          "condition": "shared_plan_only",
+          "dangerous_fixture_count": 12,
+          "dangerous_fixture_score_count": 72,
+          "dangerous_fixture_safe_rate": 0.6666666666666666,
+          "safe_and_approaches_food_rate": 0.5243055555555556,
+          "total_safe_rate": 0.9166666666666666
+        }
+      ],
+      "perception": [
+        {
+          "probe": "collision_left",
+          "method": "choice",
+          "condition": "no_plan",
+          "n": 96,
+          "accuracy": 1
+        },
+        {
+          "probe": "collision_left",
+          "method": "choice",
+          "condition": "shared_full",
+          "n": 96,
+          "accuracy": 1
+        },
+        {
+          "probe": "collision_left",
+          "method": "choice",
+          "condition": "shared_no_think",
+          "n": 96,
+          "accuracy": 1
+        },
+        {
+          "probe": "collision_left",
+          "method": "choice",
+          "condition": "shared_plan_only",
+          "n": 96,
+          "accuracy": 1
+        },
+        {
+          "probe": "collision_left",
+          "method": "choice_boxed",
+          "condition": "no_plan",
+          "n": 96,
+          "accuracy": 1
+        },
+        {
+          "probe": "collision_left",
+          "method": "choice_boxed",
+          "condition": "shared_full",
+          "n": 96,
+          "accuracy": 1
+        },
+        {
+          "probe": "collision_left",
+          "method": "choice_boxed",
+          "condition": "shared_no_think",
+          "n": 96,
+          "accuracy": 1
+        },
+        {
+          "probe": "collision_left",
+          "method": "choice_boxed",
+          "condition": "shared_plan_only",
+          "n": 96,
+          "accuracy": 1
+        },
+        {
+          "probe": "collision_left",
+          "method": "yes_no",
+          "condition": "no_plan",
+          "n": 96,
+          "accuracy": 1
+        },
+        {
+          "probe": "collision_left",
+          "method": "yes_no",
+          "condition": "shared_full",
+          "n": 96,
+          "accuracy": 1
+        },
+        {
+          "probe": "collision_left",
+          "method": "yes_no",
+          "condition": "shared_no_think",
+          "n": 96,
+          "accuracy": 1
+        },
+        {
+          "probe": "collision_left",
+          "method": "yes_no",
+          "condition": "shared_plan_only",
+          "n": 96,
+          "accuracy": 1
+        },
+        {
+          "probe": "collision_left",
+          "method": "yes_no_boxed",
+          "condition": "no_plan",
+          "n": 96,
+          "accuracy": 1
+        },
+        {
+          "probe": "collision_left",
+          "method": "yes_no_boxed",
+          "condition": "shared_full",
+          "n": 96,
+          "accuracy": 1
+        },
+        {
+          "probe": "collision_left",
+          "method": "yes_no_boxed",
+          "condition": "shared_no_think",
+          "n": 96,
+          "accuracy": 1
+        },
+        {
+          "probe": "collision_left",
+          "method": "yes_no_boxed",
+          "condition": "shared_plan_only",
+          "n": 96,
+          "accuracy": 1
+        },
+        {
+          "probe": "collision_left",
+          "method": "yes_no_naive",
+          "condition": "no_plan",
+          "n": 96,
+          "accuracy": 0
+        },
+        {
+          "probe": "collision_left",
+          "method": "yes_no_naive",
+          "condition": "shared_full",
+          "n": 96,
+          "accuracy": 0.052083333333333336
+        },
+        {
+          "probe": "collision_left",
+          "method": "yes_no_naive",
+          "condition": "shared_no_think",
+          "n": 96,
+          "accuracy": 0.28125
+        },
+        {
+          "probe": "collision_left",
+          "method": "yes_no_naive",
+          "condition": "shared_plan_only",
+          "n": 96,
+          "accuracy": 0.125
+        },
+        {
+          "probe": "collision_left",
+          "method": "yes_no_naive_boxed",
+          "condition": "no_plan",
+          "n": 96,
+          "accuracy": 0
+        },
+        {
+          "probe": "collision_left",
+          "method": "yes_no_naive_boxed",
+          "condition": "shared_full",
+          "n": 96,
+          "accuracy": 0.052083333333333336
+        },
+        {
+          "probe": "collision_left",
+          "method": "yes_no_naive_boxed",
+          "condition": "shared_no_think",
+          "n": 96,
+          "accuracy": 1
+        },
+        {
+          "probe": "collision_left",
+          "method": "yes_no_naive_boxed",
+          "condition": "shared_plan_only",
+          "n": 96,
+          "accuracy": 0.21875
+        },
+        {
+          "probe": "collision_right",
+          "method": "choice",
+          "condition": "no_plan",
+          "n": 96,
+          "accuracy": 0.9166666666666666
+        },
+        {
+          "probe": "collision_right",
+          "method": "choice",
+          "condition": "shared_full",
+          "n": 96,
+          "accuracy": 0.9166666666666666
+        },
+        {
+          "probe": "collision_right",
+          "method": "choice",
+          "condition": "shared_no_think",
+          "n": 96,
+          "accuracy": 0.9166666666666666
+        },
+        {
+          "probe": "collision_right",
+          "method": "choice",
+          "condition": "shared_plan_only",
+          "n": 96,
+          "accuracy": 0.9166666666666666
+        },
+        {
+          "probe": "collision_right",
+          "method": "choice_boxed",
+          "condition": "no_plan",
+          "n": 96,
+          "accuracy": 0.9166666666666666
+        },
+        {
+          "probe": "collision_right",
+          "method": "choice_boxed",
+          "condition": "shared_full",
+          "n": 96,
+          "accuracy": 0.9166666666666666
+        },
+        {
+          "probe": "collision_right",
+          "method": "choice_boxed",
+          "condition": "shared_no_think",
+          "n": 96,
+          "accuracy": 0.9166666666666666
+        },
+        {
+          "probe": "collision_right",
+          "method": "choice_boxed",
+          "condition": "shared_plan_only",
+          "n": 96,
+          "accuracy": 0.9166666666666666
+        },
+        {
+          "probe": "collision_right",
+          "method": "yes_no",
+          "condition": "no_plan",
+          "n": 96,
+          "accuracy": 0.9166666666666666
+        },
+        {
+          "probe": "collision_right",
+          "method": "yes_no",
+          "condition": "shared_full",
+          "n": 96,
+          "accuracy": 0.9166666666666666
+        },
+        {
+          "probe": "collision_right",
+          "method": "yes_no",
+          "condition": "shared_no_think",
+          "n": 96,
+          "accuracy": 0.9166666666666666
+        },
+        {
+          "probe": "collision_right",
+          "method": "yes_no",
+          "condition": "shared_plan_only",
+          "n": 96,
+          "accuracy": 0.9166666666666666
+        },
+        {
+          "probe": "collision_right",
+          "method": "yes_no_boxed",
+          "condition": "no_plan",
+          "n": 96,
+          "accuracy": 0.9166666666666666
+        },
+        {
+          "probe": "collision_right",
+          "method": "yes_no_boxed",
+          "condition": "shared_full",
+          "n": 96,
+          "accuracy": 0.9166666666666666
+        },
+        {
+          "probe": "collision_right",
+          "method": "yes_no_boxed",
+          "condition": "shared_no_think",
+          "n": 96,
+          "accuracy": 0.9166666666666666
+        },
+        {
+          "probe": "collision_right",
+          "method": "yes_no_boxed",
+          "condition": "shared_plan_only",
+          "n": 96,
+          "accuracy": 0.9166666666666666
+        },
+        {
+          "probe": "collision_right",
+          "method": "yes_no_naive",
+          "condition": "no_plan",
+          "n": 96,
+          "accuracy": 0.08333333333333333
+        },
+        {
+          "probe": "collision_right",
+          "method": "yes_no_naive",
+          "condition": "shared_full",
+          "n": 96,
+          "accuracy": 0.10416666666666667
+        },
+        {
+          "probe": "collision_right",
+          "method": "yes_no_naive",
+          "condition": "shared_no_think",
+          "n": 96,
+          "accuracy": 0.14583333333333334
+        },
+        {
+          "probe": "collision_right",
+          "method": "yes_no_naive",
+          "condition": "shared_plan_only",
+          "n": 96,
+          "accuracy": 0.11458333333333333
+        },
+        {
+          "probe": "collision_right",
+          "method": "yes_no_naive_boxed",
+          "condition": "no_plan",
+          "n": 96,
+          "accuracy": 0.08333333333333333
+        },
+        {
+          "probe": "collision_right",
+          "method": "yes_no_naive_boxed",
+          "condition": "shared_full",
+          "n": 96,
+          "accuracy": 0.16666666666666666
+        },
+        {
+          "probe": "collision_right",
+          "method": "yes_no_naive_boxed",
+          "condition": "shared_no_think",
+          "n": 96,
+          "accuracy": 0.9166666666666666
+        },
+        {
+          "probe": "collision_right",
+          "method": "yes_no_naive_boxed",
+          "condition": "shared_plan_only",
+          "n": 96,
+          "accuracy": 0.20833333333333334
+        },
+        {
+          "probe": "collision_straight",
+          "method": "choice",
+          "condition": "no_plan",
+          "n": 96,
+          "accuracy": 0.8333333333333334
+        },
+        {
+          "probe": "collision_straight",
+          "method": "choice",
+          "condition": "shared_full",
+          "n": 96,
+          "accuracy": 0.8333333333333334
+        },
+        {
+          "probe": "collision_straight",
+          "method": "choice",
+          "condition": "shared_no_think",
+          "n": 96,
+          "accuracy": 0.8333333333333334
+        },
+        {
+          "probe": "collision_straight",
+          "method": "choice",
+          "condition": "shared_plan_only",
+          "n": 96,
+          "accuracy": 0.8333333333333334
+        },
+        {
+          "probe": "collision_straight",
+          "method": "choice_boxed",
+          "condition": "no_plan",
+          "n": 96,
+          "accuracy": 0.8333333333333334
+        },
+        {
+          "probe": "collision_straight",
+          "method": "choice_boxed",
+          "condition": "shared_full",
+          "n": 96,
+          "accuracy": 0.8333333333333334
+        },
+        {
+          "probe": "collision_straight",
+          "method": "choice_boxed",
+          "condition": "shared_no_think",
+          "n": 96,
+          "accuracy": 0.8333333333333334
+        },
+        {
+          "probe": "collision_straight",
+          "method": "choice_boxed",
+          "condition": "shared_plan_only",
+          "n": 96,
+          "accuracy": 0.8333333333333334
+        },
+        {
+          "probe": "collision_straight",
+          "method": "yes_no",
+          "condition": "no_plan",
+          "n": 96,
+          "accuracy": 0.8333333333333334
+        },
+        {
+          "probe": "collision_straight",
+          "method": "yes_no",
+          "condition": "shared_full",
+          "n": 96,
+          "accuracy": 0.8333333333333334
+        },
+        {
+          "probe": "collision_straight",
+          "method": "yes_no",
+          "condition": "shared_no_think",
+          "n": 96,
+          "accuracy": 0.8333333333333334
+        },
+        {
+          "probe": "collision_straight",
+          "method": "yes_no",
+          "condition": "shared_plan_only",
+          "n": 96,
+          "accuracy": 0.8333333333333334
+        },
+        {
+          "probe": "collision_straight",
+          "method": "yes_no_boxed",
+          "condition": "no_plan",
+          "n": 96,
+          "accuracy": 0.8333333333333334
+        },
+        {
+          "probe": "collision_straight",
+          "method": "yes_no_boxed",
+          "condition": "shared_full",
+          "n": 96,
+          "accuracy": 0.8333333333333334
+        },
+        {
+          "probe": "collision_straight",
+          "method": "yes_no_boxed",
+          "condition": "shared_no_think",
+          "n": 96,
+          "accuracy": 0.8333333333333334
+        },
+        {
+          "probe": "collision_straight",
+          "method": "yes_no_boxed",
+          "condition": "shared_plan_only",
+          "n": 96,
+          "accuracy": 0.8333333333333334
+        },
+        {
+          "probe": "collision_straight",
+          "method": "yes_no_naive",
+          "condition": "no_plan",
+          "n": 96,
+          "accuracy": 0.19791666666666666
+        },
+        {
+          "probe": "collision_straight",
+          "method": "yes_no_naive",
+          "condition": "shared_full",
+          "n": 96,
+          "accuracy": 0.21875
+        },
+        {
+          "probe": "collision_straight",
+          "method": "yes_no_naive",
+          "condition": "shared_no_think",
+          "n": 96,
+          "accuracy": 0.2916666666666667
+        },
+        {
+          "probe": "collision_straight",
+          "method": "yes_no_naive",
+          "condition": "shared_plan_only",
+          "n": 96,
+          "accuracy": 0.21875
+        },
+        {
+          "probe": "collision_straight",
+          "method": "yes_no_naive_boxed",
+          "condition": "no_plan",
+          "n": 96,
+          "accuracy": 0.6875
+        },
+        {
+          "probe": "collision_straight",
+          "method": "yes_no_naive_boxed",
+          "condition": "shared_full",
+          "n": 96,
+          "accuracy": 0.22916666666666666
+        },
+        {
+          "probe": "collision_straight",
+          "method": "yes_no_naive_boxed",
+          "condition": "shared_no_think",
+          "n": 96,
+          "accuracy": 0.4166666666666667
+        },
+        {
+          "probe": "collision_straight",
+          "method": "yes_no_naive_boxed",
+          "condition": "shared_plan_only",
+          "n": 96,
+          "accuracy": 0.23958333333333334
+        },
+        {
+          "probe": "food_x",
+          "method": "choice",
+          "condition": "no_plan",
+          "n": 96,
+          "accuracy": 0.5104166666666666
+        },
+        {
+          "probe": "food_x",
+          "method": "choice",
+          "condition": "shared_full",
+          "n": 96,
+          "accuracy": 0.6041666666666666
+        },
+        {
+          "probe": "food_x",
+          "method": "choice",
+          "condition": "shared_no_think",
+          "n": 96,
+          "accuracy": 0.15625
+        },
+        {
+          "probe": "food_x",
+          "method": "choice",
+          "condition": "shared_plan_only",
+          "n": 96,
+          "accuracy": 0.125
+        },
+        {
+          "probe": "food_x",
+          "method": "choice_boxed",
+          "condition": "no_plan",
+          "n": 96,
+          "accuracy": 0.71875
+        },
+        {
+          "probe": "food_x",
+          "method": "choice_boxed",
+          "condition": "shared_full",
+          "n": 96,
+          "accuracy": 0.6979166666666666
+        },
+        {
+          "probe": "food_x",
+          "method": "choice_boxed",
+          "condition": "shared_no_think",
+          "n": 96,
+          "accuracy": 0.5208333333333334
+        },
+        {
+          "probe": "food_x",
+          "method": "choice_boxed",
+          "condition": "shared_plan_only",
+          "n": 96,
+          "accuracy": 0.3125
+        },
+        {
+          "probe": "food_x",
+          "method": "yes_no",
+          "condition": "no_plan",
+          "n": 96,
+          "accuracy": 0.4583333333333333
+        },
+        {
+          "probe": "food_x",
+          "method": "yes_no",
+          "condition": "shared_full",
+          "n": 96,
+          "accuracy": 0.5520833333333334
+        },
+        {
+          "probe": "food_x",
+          "method": "yes_no",
+          "condition": "shared_no_think",
+          "n": 96,
+          "accuracy": 0.5520833333333334
+        },
+        {
+          "probe": "food_x",
+          "method": "yes_no",
+          "condition": "shared_plan_only",
+          "n": 96,
+          "accuracy": 0.59375
+        },
+        {
+          "probe": "food_x",
+          "method": "yes_no_boxed",
+          "condition": "no_plan",
+          "n": 96,
+          "accuracy": 0.75
+        },
+        {
+          "probe": "food_x",
+          "method": "yes_no_boxed",
+          "condition": "shared_full",
+          "n": 96,
+          "accuracy": 0.6041666666666666
+        },
+        {
+          "probe": "food_x",
+          "method": "yes_no_boxed",
+          "condition": "shared_no_think",
+          "n": 96,
+          "accuracy": 0.6875
+        },
+        {
+          "probe": "food_x",
+          "method": "yes_no_boxed",
+          "condition": "shared_plan_only",
+          "n": 96,
+          "accuracy": 0.7083333333333334
+        },
+        {
+          "probe": "food_x",
+          "method": "yes_no_naive",
+          "condition": "no_plan",
+          "n": 96,
+          "accuracy": 0.9166666666666666
+        },
+        {
+          "probe": "food_x",
+          "method": "yes_no_naive",
+          "condition": "shared_full",
+          "n": 96,
+          "accuracy": 0.78125
+        },
+        {
+          "probe": "food_x",
+          "method": "yes_no_naive",
+          "condition": "shared_no_think",
+          "n": 96,
+          "accuracy": 0.53125
+        },
+        {
+          "probe": "food_x",
+          "method": "yes_no_naive",
+          "condition": "shared_plan_only",
+          "n": 96,
+          "accuracy": 0.5208333333333334
+        },
+        {
+          "probe": "food_x",
+          "method": "yes_no_naive_boxed",
+          "condition": "no_plan",
+          "n": 96,
+          "accuracy": 0.8645833333333334
+        },
+        {
+          "probe": "food_x",
+          "method": "yes_no_naive_boxed",
+          "condition": "shared_full",
+          "n": 96,
+          "accuracy": 0.5104166666666666
+        },
+        {
+          "probe": "food_x",
+          "method": "yes_no_naive_boxed",
+          "condition": "shared_no_think",
+          "n": 96,
+          "accuracy": 0.7916666666666666
+        },
+        {
+          "probe": "food_x",
+          "method": "yes_no_naive_boxed",
+          "condition": "shared_plan_only",
+          "n": 96,
+          "accuracy": 0.4479166666666667
+        },
+        {
+          "probe": "food_y",
+          "method": "choice",
+          "condition": "no_plan",
+          "n": 96,
+          "accuracy": 0.5520833333333334
+        },
+        {
+          "probe": "food_y",
+          "method": "choice",
+          "condition": "shared_full",
+          "n": 96,
+          "accuracy": 0.7395833333333334
+        },
+        {
+          "probe": "food_y",
+          "method": "choice",
+          "condition": "shared_no_think",
+          "n": 96,
+          "accuracy": 0.7604166666666666
+        },
+        {
+          "probe": "food_y",
+          "method": "choice",
+          "condition": "shared_plan_only",
+          "n": 96,
+          "accuracy": 0.6770833333333334
+        },
+        {
+          "probe": "food_y",
+          "method": "choice_boxed",
+          "condition": "no_plan",
+          "n": 96,
+          "accuracy": 0.6354166666666666
+        },
+        {
+          "probe": "food_y",
+          "method": "choice_boxed",
+          "condition": "shared_full",
+          "n": 96,
+          "accuracy": 0.84375
+        },
+        {
+          "probe": "food_y",
+          "method": "choice_boxed",
+          "condition": "shared_no_think",
+          "n": 96,
+          "accuracy": 0.7083333333333334
+        },
+        {
+          "probe": "food_y",
+          "method": "choice_boxed",
+          "condition": "shared_plan_only",
+          "n": 96,
+          "accuracy": 0.6041666666666666
+        },
+        {
+          "probe": "food_y",
+          "method": "yes_no",
+          "condition": "no_plan",
+          "n": 96,
+          "accuracy": 0.78125
+        },
+        {
+          "probe": "food_y",
+          "method": "yes_no",
+          "condition": "shared_full",
+          "n": 96,
+          "accuracy": 0.53125
+        },
+        {
+          "probe": "food_y",
+          "method": "yes_no",
+          "condition": "shared_no_think",
+          "n": 96,
+          "accuracy": 0.5104166666666666
+        },
+        {
+          "probe": "food_y",
+          "method": "yes_no",
+          "condition": "shared_plan_only",
+          "n": 96,
+          "accuracy": 0.5520833333333334
+        },
+        {
+          "probe": "food_y",
+          "method": "yes_no_boxed",
+          "condition": "no_plan",
+          "n": 96,
+          "accuracy": 0.7604166666666666
+        },
+        {
+          "probe": "food_y",
+          "method": "yes_no_boxed",
+          "condition": "shared_full",
+          "n": 96,
+          "accuracy": 0.53125
+        },
+        {
+          "probe": "food_y",
+          "method": "yes_no_boxed",
+          "condition": "shared_no_think",
+          "n": 96,
+          "accuracy": 0.5625
+        },
+        {
+          "probe": "food_y",
+          "method": "yes_no_boxed",
+          "condition": "shared_plan_only",
+          "n": 96,
+          "accuracy": 0.5416666666666666
+        },
+        {
+          "probe": "food_y",
+          "method": "yes_no_naive",
+          "condition": "no_plan",
+          "n": 96,
+          "accuracy": 0.9479166666666666
+        },
+        {
+          "probe": "food_y",
+          "method": "yes_no_naive",
+          "condition": "shared_full",
+          "n": 96,
+          "accuracy": 0.9375
+        },
+        {
+          "probe": "food_y",
+          "method": "yes_no_naive",
+          "condition": "shared_no_think",
+          "n": 96,
+          "accuracy": 0.9583333333333334
+        },
+        {
+          "probe": "food_y",
+          "method": "yes_no_naive",
+          "condition": "shared_plan_only",
+          "n": 96,
+          "accuracy": 0.9583333333333334
+        },
+        {
+          "probe": "food_y",
+          "method": "yes_no_naive_boxed",
+          "condition": "no_plan",
+          "n": 96,
+          "accuracy": 0.8645833333333334
+        },
+        {
+          "probe": "food_y",
+          "method": "yes_no_naive_boxed",
+          "condition": "shared_full",
+          "n": 96,
+          "accuracy": 0.9583333333333334
+        },
+        {
+          "probe": "food_y",
+          "method": "yes_no_naive_boxed",
+          "condition": "shared_no_think",
+          "n": 96,
+          "accuracy": 0.9583333333333334
+        },
+        {
+          "probe": "food_y",
+          "method": "yes_no_naive_boxed",
+          "condition": "shared_plan_only",
+          "n": 96,
+          "accuracy": 0.9583333333333334
+        },
+        {
+          "probe": "heading",
+          "method": "choice",
+          "condition": "no_plan",
+          "n": 96,
+          "accuracy": 1
+        },
+        {
+          "probe": "heading",
+          "method": "choice",
+          "condition": "shared_full",
+          "n": 96,
+          "accuracy": 1
+        },
+        {
+          "probe": "heading",
+          "method": "choice",
+          "condition": "shared_no_think",
+          "n": 96,
+          "accuracy": 1
+        },
+        {
+          "probe": "heading",
+          "method": "choice",
+          "condition": "shared_plan_only",
+          "n": 96,
+          "accuracy": 1
+        },
+        {
+          "probe": "heading",
+          "method": "choice_boxed",
+          "condition": "no_plan",
+          "n": 96,
+          "accuracy": 1
+        },
+        {
+          "probe": "heading",
+          "method": "choice_boxed",
+          "condition": "shared_full",
+          "n": 96,
+          "accuracy": 1
+        },
+        {
+          "probe": "heading",
+          "method": "choice_boxed",
+          "condition": "shared_no_think",
+          "n": 96,
+          "accuracy": 1
+        },
+        {
+          "probe": "heading",
+          "method": "choice_boxed",
+          "condition": "shared_plan_only",
+          "n": 96,
+          "accuracy": 1
+        },
+        {
+          "probe": "heading",
+          "method": "yes_no",
+          "condition": "no_plan",
+          "n": 96,
+          "accuracy": 1
+        },
+        {
+          "probe": "heading",
+          "method": "yes_no",
+          "condition": "shared_full",
+          "n": 96,
+          "accuracy": 1
+        },
+        {
+          "probe": "heading",
+          "method": "yes_no",
+          "condition": "shared_no_think",
+          "n": 96,
+          "accuracy": 1
+        },
+        {
+          "probe": "heading",
+          "method": "yes_no",
+          "condition": "shared_plan_only",
+          "n": 96,
+          "accuracy": 1
+        },
+        {
+          "probe": "heading",
+          "method": "yes_no_boxed",
+          "condition": "no_plan",
+          "n": 96,
+          "accuracy": 1
+        },
+        {
+          "probe": "heading",
+          "method": "yes_no_boxed",
+          "condition": "shared_full",
+          "n": 96,
+          "accuracy": 1
+        },
+        {
+          "probe": "heading",
+          "method": "yes_no_boxed",
+          "condition": "shared_no_think",
+          "n": 96,
+          "accuracy": 1
+        },
+        {
+          "probe": "heading",
+          "method": "yes_no_boxed",
+          "condition": "shared_plan_only",
+          "n": 96,
+          "accuracy": 1
+        },
+        {
+          "probe": "heading",
+          "method": "yes_no_naive",
+          "condition": "no_plan",
+          "n": 96,
+          "accuracy": 1
+        },
+        {
+          "probe": "heading",
+          "method": "yes_no_naive",
+          "condition": "shared_full",
+          "n": 96,
+          "accuracy": 0.9791666666666666
+        },
+        {
+          "probe": "heading",
+          "method": "yes_no_naive",
+          "condition": "shared_no_think",
+          "n": 96,
+          "accuracy": 0.9895833333333334
+        },
+        {
+          "probe": "heading",
+          "method": "yes_no_naive",
+          "condition": "shared_plan_only",
+          "n": 96,
+          "accuracy": 0.96875
+        },
+        {
+          "probe": "heading",
+          "method": "yes_no_naive_boxed",
+          "condition": "no_plan",
+          "n": 96,
+          "accuracy": 1
+        },
+        {
+          "probe": "heading",
+          "method": "yes_no_naive_boxed",
+          "condition": "shared_full",
+          "n": 96,
+          "accuracy": 0.9895833333333334
+        },
+        {
+          "probe": "heading",
+          "method": "yes_no_naive_boxed",
+          "condition": "shared_no_think",
+          "n": 96,
+          "accuracy": 1
+        },
+        {
+          "probe": "heading",
+          "method": "yes_no_naive_boxed",
+          "condition": "shared_plan_only",
+          "n": 96,
+          "accuracy": 0.9791666666666666
+        },
+        {
+          "probe": "turn_left",
+          "method": "choice",
+          "condition": "no_plan",
+          "n": 96,
+          "accuracy": 0.041666666666666664
+        },
+        {
+          "probe": "turn_left",
+          "method": "choice",
+          "condition": "shared_full",
+          "n": 96,
+          "accuracy": 0.16666666666666666
+        },
+        {
+          "probe": "turn_left",
+          "method": "choice",
+          "condition": "shared_no_think",
+          "n": 96,
+          "accuracy": 0.07291666666666667
+        },
+        {
+          "probe": "turn_left",
+          "method": "choice",
+          "condition": "shared_plan_only",
+          "n": 96,
+          "accuracy": 0.125
+        },
+        {
+          "probe": "turn_left",
+          "method": "choice_boxed",
+          "condition": "no_plan",
+          "n": 96,
+          "accuracy": 0.052083333333333336
+        },
+        {
+          "probe": "turn_left",
+          "method": "choice_boxed",
+          "condition": "shared_full",
+          "n": 96,
+          "accuracy": 0.25
+        },
+        {
+          "probe": "turn_left",
+          "method": "choice_boxed",
+          "condition": "shared_no_think",
+          "n": 96,
+          "accuracy": 0.125
+        },
+        {
+          "probe": "turn_left",
+          "method": "choice_boxed",
+          "condition": "shared_plan_only",
+          "n": 96,
+          "accuracy": 0.125
+        },
+        {
+          "probe": "turn_left",
+          "method": "yes_no",
+          "condition": "no_plan",
+          "n": 96,
+          "accuracy": 0.21875
+        },
+        {
+          "probe": "turn_left",
+          "method": "yes_no",
+          "condition": "shared_full",
+          "n": 96,
+          "accuracy": 0.14583333333333334
+        },
+        {
+          "probe": "turn_left",
+          "method": "yes_no",
+          "condition": "shared_no_think",
+          "n": 96,
+          "accuracy": 0.125
+        },
+        {
+          "probe": "turn_left",
+          "method": "yes_no",
+          "condition": "shared_plan_only",
+          "n": 96,
+          "accuracy": 0.15625
+        },
+        {
+          "probe": "turn_left",
+          "method": "yes_no_boxed",
+          "condition": "no_plan",
+          "n": 96,
+          "accuracy": 0.15625
+        },
+        {
+          "probe": "turn_left",
+          "method": "yes_no_boxed",
+          "condition": "shared_full",
+          "n": 96,
+          "accuracy": 0.125
+        },
+        {
+          "probe": "turn_left",
+          "method": "yes_no_boxed",
+          "condition": "shared_no_think",
+          "n": 96,
+          "accuracy": 0.09375
+        },
+        {
+          "probe": "turn_left",
+          "method": "yes_no_boxed",
+          "condition": "shared_plan_only",
+          "n": 96,
+          "accuracy": 0.13541666666666666
+        },
+        {
+          "probe": "turn_left",
+          "method": "yes_no_naive",
+          "condition": "no_plan",
+          "n": 96,
+          "accuracy": 0.25
+        },
+        {
+          "probe": "turn_left",
+          "method": "yes_no_naive",
+          "condition": "shared_full",
+          "n": 96,
+          "accuracy": 0.25
+        },
+        {
+          "probe": "turn_left",
+          "method": "yes_no_naive",
+          "condition": "shared_no_think",
+          "n": 96,
+          "accuracy": 0.25
+        },
+        {
+          "probe": "turn_left",
+          "method": "yes_no_naive",
+          "condition": "shared_plan_only",
+          "n": 96,
+          "accuracy": 0.25
+        },
+        {
+          "probe": "turn_left",
+          "method": "yes_no_naive_boxed",
+          "condition": "no_plan",
+          "n": 96,
+          "accuracy": 0.25
+        },
+        {
+          "probe": "turn_left",
+          "method": "yes_no_naive_boxed",
+          "condition": "shared_full",
+          "n": 96,
+          "accuracy": 0.25
+        },
+        {
+          "probe": "turn_left",
+          "method": "yes_no_naive_boxed",
+          "condition": "shared_no_think",
+          "n": 96,
+          "accuracy": 0.25
+        },
+        {
+          "probe": "turn_left",
+          "method": "yes_no_naive_boxed",
+          "condition": "shared_plan_only",
+          "n": 96,
+          "accuracy": 0.23958333333333334
+        },
+        {
+          "probe": "turn_right",
+          "method": "choice",
+          "condition": "no_plan",
+          "n": 96,
+          "accuracy": 0.1875
+        },
+        {
+          "probe": "turn_right",
+          "method": "choice",
+          "condition": "shared_full",
+          "n": 96,
+          "accuracy": 0.23958333333333334
+        },
+        {
+          "probe": "turn_right",
+          "method": "choice",
+          "condition": "shared_no_think",
+          "n": 96,
+          "accuracy": 0.1875
+        },
+        {
+          "probe": "turn_right",
+          "method": "choice",
+          "condition": "shared_plan_only",
+          "n": 96,
+          "accuracy": 0.07291666666666667
+        },
+        {
+          "probe": "turn_right",
+          "method": "choice_boxed",
+          "condition": "no_plan",
+          "n": 96,
+          "accuracy": 0.15625
+        },
+        {
+          "probe": "turn_right",
+          "method": "choice_boxed",
+          "condition": "shared_full",
+          "n": 96,
+          "accuracy": 0.20833333333333334
+        },
+        {
+          "probe": "turn_right",
+          "method": "choice_boxed",
+          "condition": "shared_no_think",
+          "n": 96,
+          "accuracy": 0.10416666666666667
+        },
+        {
+          "probe": "turn_right",
+          "method": "choice_boxed",
+          "condition": "shared_plan_only",
+          "n": 96,
+          "accuracy": 0.07291666666666667
+        },
+        {
+          "probe": "turn_right",
+          "method": "yes_no",
+          "condition": "no_plan",
+          "n": 96,
+          "accuracy": 0.25
+        },
+        {
+          "probe": "turn_right",
+          "method": "yes_no",
+          "condition": "shared_full",
+          "n": 96,
+          "accuracy": 0.21875
+        },
+        {
+          "probe": "turn_right",
+          "method": "yes_no",
+          "condition": "shared_no_think",
+          "n": 96,
+          "accuracy": 0.13541666666666666
+        },
+        {
+          "probe": "turn_right",
+          "method": "yes_no",
+          "condition": "shared_plan_only",
+          "n": 96,
+          "accuracy": 0.07291666666666667
+        },
+        {
+          "probe": "turn_right",
+          "method": "yes_no_boxed",
+          "condition": "no_plan",
+          "n": 96,
+          "accuracy": 0.25
+        },
+        {
+          "probe": "turn_right",
+          "method": "yes_no_boxed",
+          "condition": "shared_full",
+          "n": 96,
+          "accuracy": 0.25
+        },
+        {
+          "probe": "turn_right",
+          "method": "yes_no_boxed",
+          "condition": "shared_no_think",
+          "n": 96,
+          "accuracy": 0.1875
+        },
+        {
+          "probe": "turn_right",
+          "method": "yes_no_boxed",
+          "condition": "shared_plan_only",
+          "n": 96,
+          "accuracy": 0.07291666666666667
+        },
+        {
+          "probe": "turn_right",
+          "method": "yes_no_naive",
+          "condition": "no_plan",
+          "n": 96,
+          "accuracy": 0.25
+        },
+        {
+          "probe": "turn_right",
+          "method": "yes_no_naive",
+          "condition": "shared_full",
+          "n": 96,
+          "accuracy": 0.23958333333333334
+        },
+        {
+          "probe": "turn_right",
+          "method": "yes_no_naive",
+          "condition": "shared_no_think",
+          "n": 96,
+          "accuracy": 0.19791666666666666
+        },
+        {
+          "probe": "turn_right",
+          "method": "yes_no_naive",
+          "condition": "shared_plan_only",
+          "n": 96,
+          "accuracy": 0.15625
+        },
+        {
+          "probe": "turn_right",
+          "method": "yes_no_naive_boxed",
+          "condition": "no_plan",
+          "n": 96,
+          "accuracy": 0.25
+        },
+        {
+          "probe": "turn_right",
+          "method": "yes_no_naive_boxed",
+          "condition": "shared_full",
+          "n": 96,
+          "accuracy": 0.25
+        },
+        {
+          "probe": "turn_right",
+          "method": "yes_no_naive_boxed",
+          "condition": "shared_no_think",
+          "n": 96,
+          "accuracy": 0.19791666666666666
+        },
+        {
+          "probe": "turn_right",
+          "method": "yes_no_naive_boxed",
+          "condition": "shared_plan_only",
+          "n": 96,
+          "accuracy": 0.17708333333333334
+        },
+        {
+          "probe": "turn_straight",
+          "method": "choice",
+          "condition": "no_plan",
+          "n": 96,
+          "accuracy": 0.875
+        },
+        {
+          "probe": "turn_straight",
+          "method": "choice",
+          "condition": "shared_full",
+          "n": 96,
+          "accuracy": 0.7395833333333334
+        },
+        {
+          "probe": "turn_straight",
+          "method": "choice",
+          "condition": "shared_no_think",
+          "n": 96,
+          "accuracy": 0.6354166666666666
+        },
+        {
+          "probe": "turn_straight",
+          "method": "choice",
+          "condition": "shared_plan_only",
+          "n": 96,
+          "accuracy": 0.6770833333333334
+        },
+        {
+          "probe": "turn_straight",
+          "method": "choice_boxed",
+          "condition": "no_plan",
+          "n": 96,
+          "accuracy": 0.9166666666666666
+        },
+        {
+          "probe": "turn_straight",
+          "method": "choice_boxed",
+          "condition": "shared_full",
+          "n": 96,
+          "accuracy": 0.8333333333333334
+        },
+        {
+          "probe": "turn_straight",
+          "method": "choice_boxed",
+          "condition": "shared_no_think",
+          "n": 96,
+          "accuracy": 0.7291666666666666
+        },
+        {
+          "probe": "turn_straight",
+          "method": "choice_boxed",
+          "condition": "shared_plan_only",
+          "n": 96,
+          "accuracy": 0.6979166666666666
+        },
+        {
+          "probe": "turn_straight",
+          "method": "yes_no",
+          "condition": "no_plan",
+          "n": 96,
+          "accuracy": 0.84375
+        },
+        {
+          "probe": "turn_straight",
+          "method": "yes_no",
+          "condition": "shared_full",
+          "n": 96,
+          "accuracy": 0.7395833333333334
+        },
+        {
+          "probe": "turn_straight",
+          "method": "yes_no",
+          "condition": "shared_no_think",
+          "n": 96,
+          "accuracy": 0.59375
+        },
+        {
+          "probe": "turn_straight",
+          "method": "yes_no",
+          "condition": "shared_plan_only",
+          "n": 96,
+          "accuracy": 0.6145833333333334
+        },
+        {
+          "probe": "turn_straight",
+          "method": "yes_no_boxed",
+          "condition": "no_plan",
+          "n": 96,
+          "accuracy": 0.8541666666666666
+        },
+        {
+          "probe": "turn_straight",
+          "method": "yes_no_boxed",
+          "condition": "shared_full",
+          "n": 96,
+          "accuracy": 0.8125
+        },
+        {
+          "probe": "turn_straight",
+          "method": "yes_no_boxed",
+          "condition": "shared_no_think",
+          "n": 96,
+          "accuracy": 0.7916666666666666
+        },
+        {
+          "probe": "turn_straight",
+          "method": "yes_no_boxed",
+          "condition": "shared_plan_only",
+          "n": 96,
+          "accuracy": 0.6979166666666666
+        },
+        {
+          "probe": "turn_straight",
+          "method": "yes_no_naive",
+          "condition": "no_plan",
+          "n": 96,
+          "accuracy": 0.90625
+        },
+        {
+          "probe": "turn_straight",
+          "method": "yes_no_naive",
+          "condition": "shared_full",
+          "n": 96,
+          "accuracy": 0.875
+        },
+        {
+          "probe": "turn_straight",
+          "method": "yes_no_naive",
+          "condition": "shared_no_think",
+          "n": 96,
+          "accuracy": 0.7916666666666666
+        },
+        {
+          "probe": "turn_straight",
+          "method": "yes_no_naive",
+          "condition": "shared_plan_only",
+          "n": 96,
+          "accuracy": 0.7604166666666666
+        },
+        {
+          "probe": "turn_straight",
+          "method": "yes_no_naive_boxed",
+          "condition": "no_plan",
+          "n": 96,
+          "accuracy": 0.9166666666666666
+        },
+        {
+          "probe": "turn_straight",
+          "method": "yes_no_naive_boxed",
+          "condition": "shared_full",
+          "n": 96,
+          "accuracy": 0.8229166666666666
+        },
+        {
+          "probe": "turn_straight",
+          "method": "yes_no_naive_boxed",
+          "condition": "shared_no_think",
+          "n": 96,
+          "accuracy": 0.8645833333333334
+        },
+        {
+          "probe": "turn_straight",
+          "method": "yes_no_naive_boxed",
+          "condition": "shared_plan_only",
+          "n": 96,
+          "accuracy": 0.7291666666666666
+        }
+      ]
+    },
+    {
+      "backend": "vllm",
+      "model": "/inspire/hdd/global_user/donglinkang-253108120084/projects/vdecision/.cache/model-staging/standard-six-20261012/google/gemma-4-E4B-it",
+      "readout": [
+        {
+          "method": "choice",
+          "condition": "no_plan",
+          "dangerous_fixture_count": 12,
+          "dangerous_fixture_score_count": 72,
+          "dangerous_fixture_safe_rate": 0.6666666666666666,
+          "safe_and_approaches_food_rate": 0.4444444444444444,
+          "total_safe_rate": 0.9166666666666666
+        },
+        {
+          "method": "choice",
+          "condition": "shared_full",
+          "dangerous_fixture_count": 12,
+          "dangerous_fixture_score_count": 72,
+          "dangerous_fixture_safe_rate": 0.6666666666666666,
+          "safe_and_approaches_food_rate": 0.4444444444444444,
+          "total_safe_rate": 0.9166666666666666
+        },
+        {
+          "method": "choice",
+          "condition": "shared_no_think",
+          "dangerous_fixture_count": 12,
+          "dangerous_fixture_score_count": 72,
+          "dangerous_fixture_safe_rate": 0.6666666666666666,
+          "safe_and_approaches_food_rate": 0.4444444444444444,
+          "total_safe_rate": 0.9166666666666666
+        },
+        {
+          "method": "choice",
+          "condition": "shared_plan_only",
+          "dangerous_fixture_count": 12,
+          "dangerous_fixture_score_count": 72,
+          "dangerous_fixture_safe_rate": 0.6666666666666666,
+          "safe_and_approaches_food_rate": 0.4444444444444444,
+          "total_safe_rate": 0.9166666666666666
+        },
+        {
+          "method": "choice_boxed",
+          "condition": "no_plan",
+          "dangerous_fixture_count": 12,
+          "dangerous_fixture_score_count": 72,
+          "dangerous_fixture_safe_rate": 0.3333333333333333,
+          "safe_and_approaches_food_rate": 0.3402777777777778,
+          "total_safe_rate": 0.8333333333333334
+        },
+        {
+          "method": "choice_boxed",
+          "condition": "shared_full",
+          "dangerous_fixture_count": 12,
+          "dangerous_fixture_score_count": 72,
+          "dangerous_fixture_safe_rate": 0.5277777777777778,
+          "safe_and_approaches_food_rate": 0.4513888888888889,
+          "total_safe_rate": 0.8819444444444444
+        },
+        {
+          "method": "choice_boxed",
+          "condition": "shared_no_think",
+          "dangerous_fixture_count": 12,
+          "dangerous_fixture_score_count": 72,
+          "dangerous_fixture_safe_rate": 0.4722222222222222,
+          "safe_and_approaches_food_rate": 0.4027777777777778,
+          "total_safe_rate": 0.8680555555555556
+        },
+        {
+          "method": "choice_boxed",
+          "condition": "shared_plan_only",
+          "dangerous_fixture_count": 12,
+          "dangerous_fixture_score_count": 72,
+          "dangerous_fixture_safe_rate": 0.3888888888888889,
+          "safe_and_approaches_food_rate": 0.3611111111111111,
+          "total_safe_rate": 0.8472222222222222
+        },
+        {
+          "method": "yes_no",
+          "condition": "no_plan",
+          "dangerous_fixture_count": 12,
+          "dangerous_fixture_score_count": 72,
+          "dangerous_fixture_safe_rate": 0.6388888888888888,
+          "safe_and_approaches_food_rate": 0.4236111111111111,
+          "total_safe_rate": 0.9097222222222222
+        },
+        {
+          "method": "yes_no",
+          "condition": "shared_full",
+          "dangerous_fixture_count": 12,
+          "dangerous_fixture_score_count": 72,
+          "dangerous_fixture_safe_rate": 0.625,
+          "safe_and_approaches_food_rate": 0.4270833333333333,
+          "total_safe_rate": 0.90625
+        },
+        {
+          "method": "yes_no",
+          "condition": "shared_no_think",
+          "dangerous_fixture_count": 12,
+          "dangerous_fixture_score_count": 72,
+          "dangerous_fixture_safe_rate": 0.8194444444444444,
+          "safe_and_approaches_food_rate": 0.4826388888888889,
+          "total_safe_rate": 0.9548611111111112
+        },
+        {
+          "method": "yes_no",
+          "condition": "shared_plan_only",
+          "dangerous_fixture_count": 12,
+          "dangerous_fixture_score_count": 72,
+          "dangerous_fixture_safe_rate": 0.7222222222222222,
+          "safe_and_approaches_food_rate": 0.5034722222222222,
+          "total_safe_rate": 0.9305555555555556
+        },
+        {
+          "method": "yes_no_boxed",
+          "condition": "no_plan",
+          "dangerous_fixture_count": 12,
+          "dangerous_fixture_score_count": 72,
+          "dangerous_fixture_safe_rate": 0.4166666666666667,
+          "safe_and_approaches_food_rate": 0.3611111111111111,
+          "total_safe_rate": 0.8541666666666666
+        },
+        {
+          "method": "yes_no_boxed",
+          "condition": "shared_full",
+          "dangerous_fixture_count": 12,
+          "dangerous_fixture_score_count": 72,
+          "dangerous_fixture_safe_rate": 0.5416666666666666,
+          "safe_and_approaches_food_rate": 0.3888888888888889,
+          "total_safe_rate": 0.8854166666666666
+        },
+        {
+          "method": "yes_no_boxed",
+          "condition": "shared_no_think",
+          "dangerous_fixture_count": 12,
+          "dangerous_fixture_score_count": 72,
+          "dangerous_fixture_safe_rate": 0.375,
+          "safe_and_approaches_food_rate": 0.3472222222222222,
+          "total_safe_rate": 0.84375
+        },
+        {
+          "method": "yes_no_boxed",
+          "condition": "shared_plan_only",
+          "dangerous_fixture_count": 12,
+          "dangerous_fixture_score_count": 72,
+          "dangerous_fixture_safe_rate": 0.5416666666666666,
+          "safe_and_approaches_food_rate": 0.3888888888888889,
+          "total_safe_rate": 0.8854166666666666
+        },
+        {
+          "method": "yes_no_naive",
+          "condition": "no_plan",
+          "dangerous_fixture_count": 12,
+          "dangerous_fixture_score_count": 72,
+          "dangerous_fixture_safe_rate": 0.4027777777777778,
+          "safe_and_approaches_food_rate": 0.3298611111111111,
+          "total_safe_rate": 0.8506944444444444
+        },
+        {
+          "method": "yes_no_naive",
+          "condition": "shared_full",
+          "dangerous_fixture_count": 12,
+          "dangerous_fixture_score_count": 72,
+          "dangerous_fixture_safe_rate": 0.8194444444444444,
+          "safe_and_approaches_food_rate": 0.5069444444444444,
+          "total_safe_rate": 0.9548611111111112
+        },
+        {
+          "method": "yes_no_naive",
+          "condition": "shared_no_think",
+          "dangerous_fixture_count": 12,
+          "dangerous_fixture_score_count": 72,
+          "dangerous_fixture_safe_rate": 0.8472222222222222,
+          "safe_and_approaches_food_rate": 0.3819444444444444,
+          "total_safe_rate": 0.9618055555555556
+        },
+        {
+          "method": "yes_no_naive",
+          "condition": "shared_plan_only",
+          "dangerous_fixture_count": 12,
+          "dangerous_fixture_score_count": 72,
+          "dangerous_fixture_safe_rate": 0.6527777777777778,
+          "safe_and_approaches_food_rate": 0.4479166666666667,
+          "total_safe_rate": 0.9131944444444444
+        },
+        {
+          "method": "yes_no_naive_boxed",
+          "condition": "no_plan",
+          "dangerous_fixture_count": 12,
+          "dangerous_fixture_score_count": 72,
+          "dangerous_fixture_safe_rate": 0.3333333333333333,
+          "safe_and_approaches_food_rate": 0.3333333333333333,
+          "total_safe_rate": 0.8333333333333334
+        },
+        {
+          "method": "yes_no_naive_boxed",
+          "condition": "shared_full",
+          "dangerous_fixture_count": 12,
+          "dangerous_fixture_score_count": 72,
+          "dangerous_fixture_safe_rate": 0.6666666666666666,
+          "safe_and_approaches_food_rate": 0.5659722222222222,
+          "total_safe_rate": 0.9166666666666666
+        },
+        {
+          "method": "yes_no_naive_boxed",
+          "condition": "shared_no_think",
+          "dangerous_fixture_count": 12,
+          "dangerous_fixture_score_count": 72,
+          "dangerous_fixture_safe_rate": 0.5,
+          "safe_and_approaches_food_rate": 0.3958333333333333,
+          "total_safe_rate": 0.875
+        },
+        {
+          "method": "yes_no_naive_boxed",
+          "condition": "shared_plan_only",
+          "dangerous_fixture_count": 12,
+          "dangerous_fixture_score_count": 72,
+          "dangerous_fixture_safe_rate": 0.5,
+          "safe_and_approaches_food_rate": 0.3993055555555556,
+          "total_safe_rate": 0.875
+        }
+      ],
+      "perception": [
+        {
+          "probe": "collision_left",
+          "method": "choice",
+          "condition": "no_plan",
+          "n": 96,
+          "accuracy": 0.5
+        },
+        {
+          "probe": "collision_left",
+          "method": "choice",
+          "condition": "shared_full",
+          "n": 96,
+          "accuracy": 0.5
+        },
+        {
+          "probe": "collision_left",
+          "method": "choice",
+          "condition": "shared_no_think",
+          "n": 96,
+          "accuracy": 0.5
+        },
+        {
+          "probe": "collision_left",
+          "method": "choice",
+          "condition": "shared_plan_only",
+          "n": 96,
+          "accuracy": 0.5
+        },
+        {
+          "probe": "collision_left",
+          "method": "choice_boxed",
+          "condition": "no_plan",
+          "n": 96,
+          "accuracy": 1
+        },
+        {
+          "probe": "collision_left",
+          "method": "choice_boxed",
+          "condition": "shared_full",
+          "n": 96,
+          "accuracy": 1
+        },
+        {
+          "probe": "collision_left",
+          "method": "choice_boxed",
+          "condition": "shared_no_think",
+          "n": 96,
+          "accuracy": 1
+        },
+        {
+          "probe": "collision_left",
+          "method": "choice_boxed",
+          "condition": "shared_plan_only",
+          "n": 96,
+          "accuracy": 1
+        },
+        {
+          "probe": "collision_left",
+          "method": "yes_no",
+          "condition": "no_plan",
+          "n": 96,
+          "accuracy": 1
+        },
+        {
+          "probe": "collision_left",
+          "method": "yes_no",
+          "condition": "shared_full",
+          "n": 96,
+          "accuracy": 0.17708333333333334
+        },
+        {
+          "probe": "collision_left",
+          "method": "yes_no",
+          "condition": "shared_no_think",
+          "n": 96,
+          "accuracy": 0.90625
+        },
+        {
+          "probe": "collision_left",
+          "method": "yes_no",
+          "condition": "shared_plan_only",
+          "n": 96,
+          "accuracy": 0.59375
+        },
+        {
+          "probe": "collision_left",
+          "method": "yes_no_boxed",
+          "condition": "no_plan",
+          "n": 96,
+          "accuracy": 1
+        },
+        {
+          "probe": "collision_left",
+          "method": "yes_no_boxed",
+          "condition": "shared_full",
+          "n": 96,
+          "accuracy": 1
+        },
+        {
+          "probe": "collision_left",
+          "method": "yes_no_boxed",
+          "condition": "shared_no_think",
+          "n": 96,
+          "accuracy": 1
+        },
+        {
+          "probe": "collision_left",
+          "method": "yes_no_boxed",
+          "condition": "shared_plan_only",
+          "n": 96,
+          "accuracy": 1
+        },
+        {
+          "probe": "collision_left",
+          "method": "yes_no_naive",
+          "condition": "no_plan",
+          "n": 96,
+          "accuracy": 0.9791666666666666
+        },
+        {
+          "probe": "collision_left",
+          "method": "yes_no_naive",
+          "condition": "shared_full",
+          "n": 96,
+          "accuracy": 0.90625
+        },
+        {
+          "probe": "collision_left",
+          "method": "yes_no_naive",
+          "condition": "shared_no_think",
+          "n": 96,
+          "accuracy": 0.8333333333333334
+        },
+        {
+          "probe": "collision_left",
+          "method": "yes_no_naive",
+          "condition": "shared_plan_only",
+          "n": 96,
+          "accuracy": 0.4583333333333333
+        },
+        {
+          "probe": "collision_left",
+          "method": "yes_no_naive_boxed",
+          "condition": "no_plan",
+          "n": 96,
+          "accuracy": 1
+        },
+        {
+          "probe": "collision_left",
+          "method": "yes_no_naive_boxed",
+          "condition": "shared_full",
+          "n": 96,
+          "accuracy": 1
+        },
+        {
+          "probe": "collision_left",
+          "method": "yes_no_naive_boxed",
+          "condition": "shared_no_think",
+          "n": 96,
+          "accuracy": 1
+        },
+        {
+          "probe": "collision_left",
+          "method": "yes_no_naive_boxed",
+          "condition": "shared_plan_only",
+          "n": 96,
+          "accuracy": 1
+        },
+        {
+          "probe": "collision_right",
+          "method": "choice",
+          "condition": "no_plan",
+          "n": 96,
+          "accuracy": 0.5
+        },
+        {
+          "probe": "collision_right",
+          "method": "choice",
+          "condition": "shared_full",
+          "n": 96,
+          "accuracy": 0.5
+        },
+        {
+          "probe": "collision_right",
+          "method": "choice",
+          "condition": "shared_no_think",
+          "n": 96,
+          "accuracy": 0.5
+        },
+        {
+          "probe": "collision_right",
+          "method": "choice",
+          "condition": "shared_plan_only",
+          "n": 96,
+          "accuracy": 0.5
+        },
+        {
+          "probe": "collision_right",
+          "method": "choice_boxed",
+          "condition": "no_plan",
+          "n": 96,
+          "accuracy": 0.9166666666666666
+        },
+        {
+          "probe": "collision_right",
+          "method": "choice_boxed",
+          "condition": "shared_full",
+          "n": 96,
+          "accuracy": 0.9166666666666666
+        },
+        {
+          "probe": "collision_right",
+          "method": "choice_boxed",
+          "condition": "shared_no_think",
+          "n": 96,
+          "accuracy": 0.9166666666666666
+        },
+        {
+          "probe": "collision_right",
+          "method": "choice_boxed",
+          "condition": "shared_plan_only",
+          "n": 96,
+          "accuracy": 0.9166666666666666
+        },
+        {
+          "probe": "collision_right",
+          "method": "yes_no",
+          "condition": "no_plan",
+          "n": 96,
+          "accuracy": 0.9166666666666666
+        },
+        {
+          "probe": "collision_right",
+          "method": "yes_no",
+          "condition": "shared_full",
+          "n": 96,
+          "accuracy": 0.22916666666666666
+        },
+        {
+          "probe": "collision_right",
+          "method": "yes_no",
+          "condition": "shared_no_think",
+          "n": 96,
+          "accuracy": 0.8229166666666666
+        },
+        {
+          "probe": "collision_right",
+          "method": "yes_no",
+          "condition": "shared_plan_only",
+          "n": 96,
+          "accuracy": 0.5625
+        },
+        {
+          "probe": "collision_right",
+          "method": "yes_no_boxed",
+          "condition": "no_plan",
+          "n": 96,
+          "accuracy": 0.9166666666666666
+        },
+        {
+          "probe": "collision_right",
+          "method": "yes_no_boxed",
+          "condition": "shared_full",
+          "n": 96,
+          "accuracy": 0.9166666666666666
+        },
+        {
+          "probe": "collision_right",
+          "method": "yes_no_boxed",
+          "condition": "shared_no_think",
+          "n": 96,
+          "accuracy": 0.9166666666666666
+        },
+        {
+          "probe": "collision_right",
+          "method": "yes_no_boxed",
+          "condition": "shared_plan_only",
+          "n": 96,
+          "accuracy": 0.9166666666666666
+        },
+        {
+          "probe": "collision_right",
+          "method": "yes_no_naive",
+          "condition": "no_plan",
+          "n": 96,
+          "accuracy": 0.9166666666666666
+        },
+        {
+          "probe": "collision_right",
+          "method": "yes_no_naive",
+          "condition": "shared_full",
+          "n": 96,
+          "accuracy": 0.8854166666666666
+        },
+        {
+          "probe": "collision_right",
+          "method": "yes_no_naive",
+          "condition": "shared_no_think",
+          "n": 96,
+          "accuracy": 0.8125
+        },
+        {
+          "probe": "collision_right",
+          "method": "yes_no_naive",
+          "condition": "shared_plan_only",
+          "n": 96,
+          "accuracy": 0.625
+        },
+        {
+          "probe": "collision_right",
+          "method": "yes_no_naive_boxed",
+          "condition": "no_plan",
+          "n": 96,
+          "accuracy": 0.9166666666666666
+        },
+        {
+          "probe": "collision_right",
+          "method": "yes_no_naive_boxed",
+          "condition": "shared_full",
+          "n": 96,
+          "accuracy": 0.9166666666666666
+        },
+        {
+          "probe": "collision_right",
+          "method": "yes_no_naive_boxed",
+          "condition": "shared_no_think",
+          "n": 96,
+          "accuracy": 0.9166666666666666
+        },
+        {
+          "probe": "collision_right",
+          "method": "yes_no_naive_boxed",
+          "condition": "shared_plan_only",
+          "n": 96,
+          "accuracy": 0.9166666666666666
+        },
+        {
+          "probe": "collision_straight",
+          "method": "choice",
+          "condition": "no_plan",
+          "n": 96,
+          "accuracy": 0.5
+        },
+        {
+          "probe": "collision_straight",
+          "method": "choice",
+          "condition": "shared_full",
+          "n": 96,
+          "accuracy": 0.5
+        },
+        {
+          "probe": "collision_straight",
+          "method": "choice",
+          "condition": "shared_no_think",
+          "n": 96,
+          "accuracy": 0.5
+        },
+        {
+          "probe": "collision_straight",
+          "method": "choice",
+          "condition": "shared_plan_only",
+          "n": 96,
+          "accuracy": 0.5
+        },
+        {
+          "probe": "collision_straight",
+          "method": "choice_boxed",
+          "condition": "no_plan",
+          "n": 96,
+          "accuracy": 0.8333333333333334
+        },
+        {
+          "probe": "collision_straight",
+          "method": "choice_boxed",
+          "condition": "shared_full",
+          "n": 96,
+          "accuracy": 0.8333333333333334
+        },
+        {
+          "probe": "collision_straight",
+          "method": "choice_boxed",
+          "condition": "shared_no_think",
+          "n": 96,
+          "accuracy": 0.8333333333333334
+        },
+        {
+          "probe": "collision_straight",
+          "method": "choice_boxed",
+          "condition": "shared_plan_only",
+          "n": 96,
+          "accuracy": 0.8333333333333334
+        },
+        {
+          "probe": "collision_straight",
+          "method": "yes_no",
+          "condition": "no_plan",
+          "n": 96,
+          "accuracy": 0.84375
+        },
+        {
+          "probe": "collision_straight",
+          "method": "yes_no",
+          "condition": "shared_full",
+          "n": 96,
+          "accuracy": 0.40625
+        },
+        {
+          "probe": "collision_straight",
+          "method": "yes_no",
+          "condition": "shared_no_think",
+          "n": 96,
+          "accuracy": 0.71875
+        },
+        {
+          "probe": "collision_straight",
+          "method": "yes_no",
+          "condition": "shared_plan_only",
+          "n": 96,
+          "accuracy": 0.53125
+        },
+        {
+          "probe": "collision_straight",
+          "method": "yes_no_boxed",
+          "condition": "no_plan",
+          "n": 96,
+          "accuracy": 0.8333333333333334
+        },
+        {
+          "probe": "collision_straight",
+          "method": "yes_no_boxed",
+          "condition": "shared_full",
+          "n": 96,
+          "accuracy": 0.8333333333333334
+        },
+        {
+          "probe": "collision_straight",
+          "method": "yes_no_boxed",
+          "condition": "shared_no_think",
+          "n": 96,
+          "accuracy": 0.8333333333333334
+        },
+        {
+          "probe": "collision_straight",
+          "method": "yes_no_boxed",
+          "condition": "shared_plan_only",
+          "n": 96,
+          "accuracy": 0.8333333333333334
+        },
+        {
+          "probe": "collision_straight",
+          "method": "yes_no_naive",
+          "condition": "no_plan",
+          "n": 96,
+          "accuracy": 0.8125
+        },
+        {
+          "probe": "collision_straight",
+          "method": "yes_no_naive",
+          "condition": "shared_full",
+          "n": 96,
+          "accuracy": 0.7916666666666666
+        },
+        {
+          "probe": "collision_straight",
+          "method": "yes_no_naive",
+          "condition": "shared_no_think",
+          "n": 96,
+          "accuracy": 0.65625
+        },
+        {
+          "probe": "collision_straight",
+          "method": "yes_no_naive",
+          "condition": "shared_plan_only",
+          "n": 96,
+          "accuracy": 0.53125
+        },
+        {
+          "probe": "collision_straight",
+          "method": "yes_no_naive_boxed",
+          "condition": "no_plan",
+          "n": 96,
+          "accuracy": 0.8333333333333334
+        },
+        {
+          "probe": "collision_straight",
+          "method": "yes_no_naive_boxed",
+          "condition": "shared_full",
+          "n": 96,
+          "accuracy": 0.8333333333333334
+        },
+        {
+          "probe": "collision_straight",
+          "method": "yes_no_naive_boxed",
+          "condition": "shared_no_think",
+          "n": 96,
+          "accuracy": 0.8333333333333334
+        },
+        {
+          "probe": "collision_straight",
+          "method": "yes_no_naive_boxed",
+          "condition": "shared_plan_only",
+          "n": 96,
+          "accuracy": 0.8333333333333334
+        },
+        {
+          "probe": "food_x",
+          "method": "choice",
+          "condition": "no_plan",
+          "n": 96,
+          "accuracy": 0.4791666666666667
+        },
+        {
+          "probe": "food_x",
+          "method": "choice",
+          "condition": "shared_full",
+          "n": 96,
+          "accuracy": 0.4791666666666667
+        },
+        {
+          "probe": "food_x",
+          "method": "choice",
+          "condition": "shared_no_think",
+          "n": 96,
+          "accuracy": 0.4791666666666667
+        },
+        {
+          "probe": "food_x",
+          "method": "choice",
+          "condition": "shared_plan_only",
+          "n": 96,
+          "accuracy": 0.4791666666666667
+        },
+        {
+          "probe": "food_x",
+          "method": "choice_boxed",
+          "condition": "no_plan",
+          "n": 96,
+          "accuracy": 0.8645833333333334
+        },
+        {
+          "probe": "food_x",
+          "method": "choice_boxed",
+          "condition": "shared_full",
+          "n": 96,
+          "accuracy": 0.9375
+        },
+        {
+          "probe": "food_x",
+          "method": "choice_boxed",
+          "condition": "shared_no_think",
+          "n": 96,
+          "accuracy": 0.9479166666666666
+        },
+        {
+          "probe": "food_x",
+          "method": "choice_boxed",
+          "condition": "shared_plan_only",
+          "n": 96,
+          "accuracy": 0.78125
+        },
+        {
+          "probe": "food_x",
+          "method": "yes_no",
+          "condition": "no_plan",
+          "n": 96,
+          "accuracy": 0.34375
+        },
+        {
+          "probe": "food_x",
+          "method": "yes_no",
+          "condition": "shared_full",
+          "n": 96,
+          "accuracy": 0.5520833333333334
+        },
+        {
+          "probe": "food_x",
+          "method": "yes_no",
+          "condition": "shared_no_think",
+          "n": 96,
+          "accuracy": 0.4375
+        },
+        {
+          "probe": "food_x",
+          "method": "yes_no",
+          "condition": "shared_plan_only",
+          "n": 96,
+          "accuracy": 0.3333333333333333
+        },
+        {
+          "probe": "food_x",
+          "method": "yes_no_boxed",
+          "condition": "no_plan",
+          "n": 96,
+          "accuracy": 0.8229166666666666
+        },
+        {
+          "probe": "food_x",
+          "method": "yes_no_boxed",
+          "condition": "shared_full",
+          "n": 96,
+          "accuracy": 0.9166666666666666
+        },
+        {
+          "probe": "food_x",
+          "method": "yes_no_boxed",
+          "condition": "shared_no_think",
+          "n": 96,
+          "accuracy": 0.9583333333333334
+        },
+        {
+          "probe": "food_x",
+          "method": "yes_no_boxed",
+          "condition": "shared_plan_only",
+          "n": 96,
+          "accuracy": 0.8958333333333334
+        },
+        {
+          "probe": "food_x",
+          "method": "yes_no_naive",
+          "condition": "no_plan",
+          "n": 96,
+          "accuracy": 0.5416666666666666
+        },
+        {
+          "probe": "food_x",
+          "method": "yes_no_naive",
+          "condition": "shared_full",
+          "n": 96,
+          "accuracy": 0.23958333333333334
+        },
+        {
+          "probe": "food_x",
+          "method": "yes_no_naive",
+          "condition": "shared_no_think",
+          "n": 96,
+          "accuracy": 0.375
+        },
+        {
+          "probe": "food_x",
+          "method": "yes_no_naive",
+          "condition": "shared_plan_only",
+          "n": 96,
+          "accuracy": 0.11458333333333333
+        },
+        {
+          "probe": "food_x",
+          "method": "yes_no_naive_boxed",
+          "condition": "no_plan",
+          "n": 96,
+          "accuracy": 0.6875
+        },
+        {
+          "probe": "food_x",
+          "method": "yes_no_naive_boxed",
+          "condition": "shared_full",
+          "n": 96,
+          "accuracy": 0.6145833333333334
+        },
+        {
+          "probe": "food_x",
+          "method": "yes_no_naive_boxed",
+          "condition": "shared_no_think",
+          "n": 96,
+          "accuracy": 0.5104166666666666
+        },
+        {
+          "probe": "food_x",
+          "method": "yes_no_naive_boxed",
+          "condition": "shared_plan_only",
+          "n": 96,
+          "accuracy": 0.46875
+        },
+        {
+          "probe": "food_y",
+          "method": "choice",
+          "condition": "no_plan",
+          "n": 96,
+          "accuracy": 0.4791666666666667
+        },
+        {
+          "probe": "food_y",
+          "method": "choice",
+          "condition": "shared_full",
+          "n": 96,
+          "accuracy": 0.4791666666666667
+        },
+        {
+          "probe": "food_y",
+          "method": "choice",
+          "condition": "shared_no_think",
+          "n": 96,
+          "accuracy": 0.4791666666666667
+        },
+        {
+          "probe": "food_y",
+          "method": "choice",
+          "condition": "shared_plan_only",
+          "n": 96,
+          "accuracy": 0.4791666666666667
+        },
+        {
+          "probe": "food_y",
+          "method": "choice_boxed",
+          "condition": "no_plan",
+          "n": 96,
+          "accuracy": 0.96875
+        },
+        {
+          "probe": "food_y",
+          "method": "choice_boxed",
+          "condition": "shared_full",
+          "n": 96,
+          "accuracy": 0.9270833333333334
+        },
+        {
+          "probe": "food_y",
+          "method": "choice_boxed",
+          "condition": "shared_no_think",
+          "n": 96,
+          "accuracy": 0.9479166666666666
+        },
+        {
+          "probe": "food_y",
+          "method": "choice_boxed",
+          "condition": "shared_plan_only",
+          "n": 96,
+          "accuracy": 0.90625
+        },
+        {
+          "probe": "food_y",
+          "method": "yes_no",
+          "condition": "no_plan",
+          "n": 96,
+          "accuracy": 0.65625
+        },
+        {
+          "probe": "food_y",
+          "method": "yes_no",
+          "condition": "shared_full",
+          "n": 96,
+          "accuracy": 0.7083333333333334
+        },
+        {
+          "probe": "food_y",
+          "method": "yes_no",
+          "condition": "shared_no_think",
+          "n": 96,
+          "accuracy": 0.6145833333333334
+        },
+        {
+          "probe": "food_y",
+          "method": "yes_no",
+          "condition": "shared_plan_only",
+          "n": 96,
+          "accuracy": 0.3541666666666667
+        },
+        {
+          "probe": "food_y",
+          "method": "yes_no_boxed",
+          "condition": "no_plan",
+          "n": 96,
+          "accuracy": 0.84375
+        },
+        {
+          "probe": "food_y",
+          "method": "yes_no_boxed",
+          "condition": "shared_full",
+          "n": 96,
+          "accuracy": 0.8958333333333334
+        },
+        {
+          "probe": "food_y",
+          "method": "yes_no_boxed",
+          "condition": "shared_no_think",
+          "n": 96,
+          "accuracy": 0.8541666666666666
+        },
+        {
+          "probe": "food_y",
+          "method": "yes_no_boxed",
+          "condition": "shared_plan_only",
+          "n": 96,
+          "accuracy": 0.8541666666666666
+        },
+        {
+          "probe": "food_y",
+          "method": "yes_no_naive",
+          "condition": "no_plan",
+          "n": 96,
+          "accuracy": 0.7604166666666666
+        },
+        {
+          "probe": "food_y",
+          "method": "yes_no_naive",
+          "condition": "shared_full",
+          "n": 96,
+          "accuracy": 0.6041666666666666
+        },
+        {
+          "probe": "food_y",
+          "method": "yes_no_naive",
+          "condition": "shared_no_think",
+          "n": 96,
+          "accuracy": 0.375
+        },
+        {
+          "probe": "food_y",
+          "method": "yes_no_naive",
+          "condition": "shared_plan_only",
+          "n": 96,
+          "accuracy": 0.4583333333333333
+        },
+        {
+          "probe": "food_y",
+          "method": "yes_no_naive_boxed",
+          "condition": "no_plan",
+          "n": 96,
+          "accuracy": 0.8125
+        },
+        {
+          "probe": "food_y",
+          "method": "yes_no_naive_boxed",
+          "condition": "shared_full",
+          "n": 96,
+          "accuracy": 0.8541666666666666
+        },
+        {
+          "probe": "food_y",
+          "method": "yes_no_naive_boxed",
+          "condition": "shared_no_think",
+          "n": 96,
+          "accuracy": 0.7916666666666666
+        },
+        {
+          "probe": "food_y",
+          "method": "yes_no_naive_boxed",
+          "condition": "shared_plan_only",
+          "n": 96,
+          "accuracy": 0.7604166666666666
+        },
+        {
+          "probe": "heading",
+          "method": "choice",
+          "condition": "no_plan",
+          "n": 96,
+          "accuracy": 0.25
+        },
+        {
+          "probe": "heading",
+          "method": "choice",
+          "condition": "shared_full",
+          "n": 96,
+          "accuracy": 0.25
+        },
+        {
+          "probe": "heading",
+          "method": "choice",
+          "condition": "shared_no_think",
+          "n": 96,
+          "accuracy": 0.25
+        },
+        {
+          "probe": "heading",
+          "method": "choice",
+          "condition": "shared_plan_only",
+          "n": 96,
+          "accuracy": 0.25
+        },
+        {
+          "probe": "heading",
+          "method": "choice_boxed",
+          "condition": "no_plan",
+          "n": 96,
+          "accuracy": 1
+        },
+        {
+          "probe": "heading",
+          "method": "choice_boxed",
+          "condition": "shared_full",
+          "n": 96,
+          "accuracy": 0.9895833333333334
+        },
+        {
+          "probe": "heading",
+          "method": "choice_boxed",
+          "condition": "shared_no_think",
+          "n": 96,
+          "accuracy": 0.9791666666666666
+        },
+        {
+          "probe": "heading",
+          "method": "choice_boxed",
+          "condition": "shared_plan_only",
+          "n": 96,
+          "accuracy": 1
+        },
+        {
+          "probe": "heading",
+          "method": "yes_no",
+          "condition": "no_plan",
+          "n": 96,
+          "accuracy": 0.6458333333333334
+        },
+        {
+          "probe": "heading",
+          "method": "yes_no",
+          "condition": "shared_full",
+          "n": 96,
+          "accuracy": 0.6770833333333334
+        },
+        {
+          "probe": "heading",
+          "method": "yes_no",
+          "condition": "shared_no_think",
+          "n": 96,
+          "accuracy": 0.6666666666666666
+        },
+        {
+          "probe": "heading",
+          "method": "yes_no",
+          "condition": "shared_plan_only",
+          "n": 96,
+          "accuracy": 0.4895833333333333
+        },
+        {
+          "probe": "heading",
+          "method": "yes_no_boxed",
+          "condition": "no_plan",
+          "n": 96,
+          "accuracy": 0.9583333333333334
+        },
+        {
+          "probe": "heading",
+          "method": "yes_no_boxed",
+          "condition": "shared_full",
+          "n": 96,
+          "accuracy": 0.8854166666666666
+        },
+        {
+          "probe": "heading",
+          "method": "yes_no_boxed",
+          "condition": "shared_no_think",
+          "n": 96,
+          "accuracy": 0.8854166666666666
+        },
+        {
+          "probe": "heading",
+          "method": "yes_no_boxed",
+          "condition": "shared_plan_only",
+          "n": 96,
+          "accuracy": 0.8854166666666666
+        },
+        {
+          "probe": "heading",
+          "method": "yes_no_naive",
+          "condition": "no_plan",
+          "n": 96,
+          "accuracy": 0.6666666666666666
+        },
+        {
+          "probe": "heading",
+          "method": "yes_no_naive",
+          "condition": "shared_full",
+          "n": 96,
+          "accuracy": 0.6979166666666666
+        },
+        {
+          "probe": "heading",
+          "method": "yes_no_naive",
+          "condition": "shared_no_think",
+          "n": 96,
+          "accuracy": 0.7291666666666666
+        },
+        {
+          "probe": "heading",
+          "method": "yes_no_naive",
+          "condition": "shared_plan_only",
+          "n": 96,
+          "accuracy": 0.53125
+        },
+        {
+          "probe": "heading",
+          "method": "yes_no_naive_boxed",
+          "condition": "no_plan",
+          "n": 96,
+          "accuracy": 0.8958333333333334
+        },
+        {
+          "probe": "heading",
+          "method": "yes_no_naive_boxed",
+          "condition": "shared_full",
+          "n": 96,
+          "accuracy": 0.8854166666666666
+        },
+        {
+          "probe": "heading",
+          "method": "yes_no_naive_boxed",
+          "condition": "shared_no_think",
+          "n": 96,
+          "accuracy": 0.9375
+        },
+        {
+          "probe": "heading",
+          "method": "yes_no_naive_boxed",
+          "condition": "shared_plan_only",
+          "n": 96,
+          "accuracy": 0.8645833333333334
+        },
+        {
+          "probe": "turn_left",
+          "method": "choice",
+          "condition": "no_plan",
+          "n": 96,
+          "accuracy": 0.25
+        },
+        {
+          "probe": "turn_left",
+          "method": "choice",
+          "condition": "shared_full",
+          "n": 96,
+          "accuracy": 0.25
+        },
+        {
+          "probe": "turn_left",
+          "method": "choice",
+          "condition": "shared_no_think",
+          "n": 96,
+          "accuracy": 0.25
+        },
+        {
+          "probe": "turn_left",
+          "method": "choice",
+          "condition": "shared_plan_only",
+          "n": 96,
+          "accuracy": 0.25
+        },
+        {
+          "probe": "turn_left",
+          "method": "choice_boxed",
+          "condition": "no_plan",
+          "n": 96,
+          "accuracy": 0.21875
+        },
+        {
+          "probe": "turn_left",
+          "method": "choice_boxed",
+          "condition": "shared_full",
+          "n": 96,
+          "accuracy": 0.20833333333333334
+        },
+        {
+          "probe": "turn_left",
+          "method": "choice_boxed",
+          "condition": "shared_no_think",
+          "n": 96,
+          "accuracy": 0.14583333333333334
+        },
+        {
+          "probe": "turn_left",
+          "method": "choice_boxed",
+          "condition": "shared_plan_only",
+          "n": 96,
+          "accuracy": 0.125
+        },
+        {
+          "probe": "turn_left",
+          "method": "yes_no",
+          "condition": "no_plan",
+          "n": 96,
+          "accuracy": 0.2604166666666667
+        },
+        {
+          "probe": "turn_left",
+          "method": "yes_no",
+          "condition": "shared_full",
+          "n": 96,
+          "accuracy": 0.22916666666666666
+        },
+        {
+          "probe": "turn_left",
+          "method": "yes_no",
+          "condition": "shared_no_think",
+          "n": 96,
+          "accuracy": 0.1875
+        },
+        {
+          "probe": "turn_left",
+          "method": "yes_no",
+          "condition": "shared_plan_only",
+          "n": 96,
+          "accuracy": 0.1875
+        },
+        {
+          "probe": "turn_left",
+          "method": "yes_no_boxed",
+          "condition": "no_plan",
+          "n": 96,
+          "accuracy": 0.16666666666666666
+        },
+        {
+          "probe": "turn_left",
+          "method": "yes_no_boxed",
+          "condition": "shared_full",
+          "n": 96,
+          "accuracy": 0.14583333333333334
+        },
+        {
+          "probe": "turn_left",
+          "method": "yes_no_boxed",
+          "condition": "shared_no_think",
+          "n": 96,
+          "accuracy": 0.10416666666666667
+        },
+        {
+          "probe": "turn_left",
+          "method": "yes_no_boxed",
+          "condition": "shared_plan_only",
+          "n": 96,
+          "accuracy": 0.21875
+        },
+        {
+          "probe": "turn_left",
+          "method": "yes_no_naive",
+          "condition": "no_plan",
+          "n": 96,
+          "accuracy": 0.3645833333333333
+        },
+        {
+          "probe": "turn_left",
+          "method": "yes_no_naive",
+          "condition": "shared_full",
+          "n": 96,
+          "accuracy": 0.23958333333333334
+        },
+        {
+          "probe": "turn_left",
+          "method": "yes_no_naive",
+          "condition": "shared_no_think",
+          "n": 96,
+          "accuracy": 0.25
+        },
+        {
+          "probe": "turn_left",
+          "method": "yes_no_naive",
+          "condition": "shared_plan_only",
+          "n": 96,
+          "accuracy": 0.2708333333333333
+        },
+        {
+          "probe": "turn_left",
+          "method": "yes_no_naive_boxed",
+          "condition": "no_plan",
+          "n": 96,
+          "accuracy": 0.125
+        },
+        {
+          "probe": "turn_left",
+          "method": "yes_no_naive_boxed",
+          "condition": "shared_full",
+          "n": 96,
+          "accuracy": 0.2916666666666667
+        },
+        {
+          "probe": "turn_left",
+          "method": "yes_no_naive_boxed",
+          "condition": "shared_no_think",
+          "n": 96,
+          "accuracy": 0.0625
+        },
+        {
+          "probe": "turn_left",
+          "method": "yes_no_naive_boxed",
+          "condition": "shared_plan_only",
+          "n": 96,
+          "accuracy": 0.2916666666666667
+        },
+        {
+          "probe": "turn_right",
+          "method": "choice",
+          "condition": "no_plan",
+          "n": 96,
+          "accuracy": 0.25
+        },
+        {
+          "probe": "turn_right",
+          "method": "choice",
+          "condition": "shared_full",
+          "n": 96,
+          "accuracy": 0.25
+        },
+        {
+          "probe": "turn_right",
+          "method": "choice",
+          "condition": "shared_no_think",
+          "n": 96,
+          "accuracy": 0.25
+        },
+        {
+          "probe": "turn_right",
+          "method": "choice",
+          "condition": "shared_plan_only",
+          "n": 96,
+          "accuracy": 0.25
+        },
+        {
+          "probe": "turn_right",
+          "method": "choice_boxed",
+          "condition": "no_plan",
+          "n": 96,
+          "accuracy": 0.125
+        },
+        {
+          "probe": "turn_right",
+          "method": "choice_boxed",
+          "condition": "shared_full",
+          "n": 96,
+          "accuracy": 0.13541666666666666
+        },
+        {
+          "probe": "turn_right",
+          "method": "choice_boxed",
+          "condition": "shared_no_think",
+          "n": 96,
+          "accuracy": 0.19791666666666666
+        },
+        {
+          "probe": "turn_right",
+          "method": "choice_boxed",
+          "condition": "shared_plan_only",
+          "n": 96,
+          "accuracy": 0.17708333333333334
+        },
+        {
+          "probe": "turn_right",
+          "method": "yes_no",
+          "condition": "no_plan",
+          "n": 96,
+          "accuracy": 0.2604166666666667
+        },
+        {
+          "probe": "turn_right",
+          "method": "yes_no",
+          "condition": "shared_full",
+          "n": 96,
+          "accuracy": 0.25
+        },
+        {
+          "probe": "turn_right",
+          "method": "yes_no",
+          "condition": "shared_no_think",
+          "n": 96,
+          "accuracy": 0.21875
+        },
+        {
+          "probe": "turn_right",
+          "method": "yes_no",
+          "condition": "shared_plan_only",
+          "n": 96,
+          "accuracy": 0.22916666666666666
+        },
+        {
+          "probe": "turn_right",
+          "method": "yes_no_boxed",
+          "condition": "no_plan",
+          "n": 96,
+          "accuracy": 0.125
+        },
+        {
+          "probe": "turn_right",
+          "method": "yes_no_boxed",
+          "condition": "shared_full",
+          "n": 96,
+          "accuracy": 0.125
+        },
+        {
+          "probe": "turn_right",
+          "method": "yes_no_boxed",
+          "condition": "shared_no_think",
+          "n": 96,
+          "accuracy": 0.10416666666666667
+        },
+        {
+          "probe": "turn_right",
+          "method": "yes_no_boxed",
+          "condition": "shared_plan_only",
+          "n": 96,
+          "accuracy": 0.16666666666666666
+        },
+        {
+          "probe": "turn_right",
+          "method": "yes_no_naive",
+          "condition": "no_plan",
+          "n": 96,
+          "accuracy": 0.15625
+        },
+        {
+          "probe": "turn_right",
+          "method": "yes_no_naive",
+          "condition": "shared_full",
+          "n": 96,
+          "accuracy": 0.25
+        },
+        {
+          "probe": "turn_right",
+          "method": "yes_no_naive",
+          "condition": "shared_no_think",
+          "n": 96,
+          "accuracy": 0.28125
+        },
+        {
+          "probe": "turn_right",
+          "method": "yes_no_naive",
+          "condition": "shared_plan_only",
+          "n": 96,
+          "accuracy": 0.3020833333333333
+        },
+        {
+          "probe": "turn_right",
+          "method": "yes_no_naive_boxed",
+          "condition": "no_plan",
+          "n": 96,
+          "accuracy": 0.25
+        },
+        {
+          "probe": "turn_right",
+          "method": "yes_no_naive_boxed",
+          "condition": "shared_full",
+          "n": 96,
+          "accuracy": 0.09375
+        },
+        {
+          "probe": "turn_right",
+          "method": "yes_no_naive_boxed",
+          "condition": "shared_no_think",
+          "n": 96,
+          "accuracy": 0.11458333333333333
+        },
+        {
+          "probe": "turn_right",
+          "method": "yes_no_naive_boxed",
+          "condition": "shared_plan_only",
+          "n": 96,
+          "accuracy": 0.23958333333333334
+        },
+        {
+          "probe": "turn_straight",
+          "method": "choice",
+          "condition": "no_plan",
+          "n": 96,
+          "accuracy": 0.25
+        },
+        {
+          "probe": "turn_straight",
+          "method": "choice",
+          "condition": "shared_full",
+          "n": 96,
+          "accuracy": 0.25
+        },
+        {
+          "probe": "turn_straight",
+          "method": "choice",
+          "condition": "shared_no_think",
+          "n": 96,
+          "accuracy": 0.25
+        },
+        {
+          "probe": "turn_straight",
+          "method": "choice",
+          "condition": "shared_plan_only",
+          "n": 96,
+          "accuracy": 0.25
+        },
+        {
+          "probe": "turn_straight",
+          "method": "choice_boxed",
+          "condition": "no_plan",
+          "n": 96,
+          "accuracy": 0.8125
+        },
+        {
+          "probe": "turn_straight",
+          "method": "choice_boxed",
+          "condition": "shared_full",
+          "n": 96,
+          "accuracy": 0.9166666666666666
+        },
+        {
+          "probe": "turn_straight",
+          "method": "choice_boxed",
+          "condition": "shared_no_think",
+          "n": 96,
+          "accuracy": 0.8229166666666666
+        },
+        {
+          "probe": "turn_straight",
+          "method": "choice_boxed",
+          "condition": "shared_plan_only",
+          "n": 96,
+          "accuracy": 0.9270833333333334
+        },
+        {
+          "probe": "turn_straight",
+          "method": "yes_no",
+          "condition": "no_plan",
+          "n": 96,
+          "accuracy": 0.40625
+        },
+        {
+          "probe": "turn_straight",
+          "method": "yes_no",
+          "condition": "shared_full",
+          "n": 96,
+          "accuracy": 0.5416666666666666
+        },
+        {
+          "probe": "turn_straight",
+          "method": "yes_no",
+          "condition": "shared_no_think",
+          "n": 96,
+          "accuracy": 0.5104166666666666
+        },
+        {
+          "probe": "turn_straight",
+          "method": "yes_no",
+          "condition": "shared_plan_only",
+          "n": 96,
+          "accuracy": 0.4270833333333333
+        },
+        {
+          "probe": "turn_straight",
+          "method": "yes_no_boxed",
+          "condition": "no_plan",
+          "n": 96,
+          "accuracy": 0.875
+        },
+        {
+          "probe": "turn_straight",
+          "method": "yes_no_boxed",
+          "condition": "shared_full",
+          "n": 96,
+          "accuracy": 0.875
+        },
+        {
+          "probe": "turn_straight",
+          "method": "yes_no_boxed",
+          "condition": "shared_no_think",
+          "n": 96,
+          "accuracy": 0.875
+        },
+        {
+          "probe": "turn_straight",
+          "method": "yes_no_boxed",
+          "condition": "shared_plan_only",
+          "n": 96,
+          "accuracy": 0.8541666666666666
+        },
+        {
+          "probe": "turn_straight",
+          "method": "yes_no_naive",
+          "condition": "no_plan",
+          "n": 96,
+          "accuracy": 0.2916666666666667
+        },
+        {
+          "probe": "turn_straight",
+          "method": "yes_no_naive",
+          "condition": "shared_full",
+          "n": 96,
+          "accuracy": 0.5
+        },
+        {
+          "probe": "turn_straight",
+          "method": "yes_no_naive",
+          "condition": "shared_no_think",
+          "n": 96,
+          "accuracy": 0.2916666666666667
+        },
+        {
+          "probe": "turn_straight",
+          "method": "yes_no_naive",
+          "condition": "shared_plan_only",
+          "n": 96,
+          "accuracy": 0.2708333333333333
+        },
+        {
+          "probe": "turn_straight",
+          "method": "yes_no_naive_boxed",
+          "condition": "no_plan",
+          "n": 96,
+          "accuracy": 0.6666666666666666
+        },
+        {
+          "probe": "turn_straight",
+          "method": "yes_no_naive_boxed",
+          "condition": "shared_full",
+          "n": 96,
+          "accuracy": 0.46875
+        },
+        {
+          "probe": "turn_straight",
+          "method": "yes_no_naive_boxed",
+          "condition": "shared_no_think",
+          "n": 96,
+          "accuracy": 0.5520833333333334
+        },
+        {
+          "probe": "turn_straight",
+          "method": "yes_no_naive_boxed",
+          "condition": "shared_plan_only",
+          "n": 96,
+          "accuracy": 0.59375
+        }
+      ]
+    }
+  ]
+}

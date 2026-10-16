@@ -1,0 +1,2840 @@
+{
+  "cases": {
+    "format": {
+      "vllm": [
+        {
+          "type": "result",
+          "id": "e00000",
+          "stage": "perception",
+          "case_id": "open-00-r0",
+          "group": "open",
+          "probe": "heading",
+          "method": "choice",
+          "order": 0,
+          "condition": "no_plan",
+          "seed": null,
+          "status": "success",
+          "plan_id": null,
+          "choices": [
+            [
+              "up",
+              "Up"
+            ],
+            [
+              "right",
+              "Right"
+            ],
+            [
+              "down",
+              "Down"
+            ],
+            [
+              "left",
+              "Left"
+            ]
+          ],
+          "question": "Which absolute direction does the white arrow on the blue head point?",
+          "observation_hash": "0cc85b89128e7b4e9cab91abeabb6d58d30beb9d7fa33076c913896a5b3d5341",
+          "evaluation_state": {
+            "body": [
+              [
+                5,
+                5
+              ],
+              [
+                4,
+                5
+              ],
+              [
+                3,
+                5
+              ]
+            ],
+            "direction": 1,
+            "food": [
+              2,
+              2
+            ],
+            "steps": 0,
+            "foods": 0,
+            "terminal": null
+          },
+          "candidates": [
+            {
+              "id": "up",
+              "label": "A",
+              "logprob": -8.886094093322754,
+              "score": 0.9850077322677053
+            },
+            {
+              "id": "right",
+              "label": "B",
+              "logprob": -14.167344093322754,
+              "score": 0.005009817519396372
+            },
+            {
+              "id": "down",
+              "label": "C",
+              "logprob": -14.979844093322754,
+              "score": 0.002223093048229208
+            },
+            {
+              "id": "left",
+              "label": "D",
+              "logprob": -13.729844093322754,
+              "score": 0.007759357164669195
+            }
+          ],
+          "action": "up",
+          "seconds": 0.20714371325448155,
+          "request_count": 1,
+          "input_tokens": 434,
+          "output_tokens": 1,
+          "cached_tokens": [
+            0
+          ],
+          "expected": "right",
+          "correct": false
+        },
+        {
+          "type": "result",
+          "id": "e00002",
+          "stage": "perception",
+          "case_id": "open-00-r0",
+          "group": "open",
+          "probe": "heading",
+          "method": "choice_boxed",
+          "order": 0,
+          "condition": "no_plan",
+          "seed": null,
+          "status": "success",
+          "plan_id": null,
+          "choices": [
+            [
+              "up",
+              "Up"
+            ],
+            [
+              "right",
+              "Right"
+            ],
+            [
+              "down",
+              "Down"
+            ],
+            [
+              "left",
+              "Left"
+            ]
+          ],
+          "question": "Which absolute direction does the white arrow on the blue head point?",
+          "observation_hash": "0cc85b89128e7b4e9cab91abeabb6d58d30beb9d7fa33076c913896a5b3d5341",
+          "evaluation_state": {
+            "body": [
+              [
+                5,
+                5
+              ],
+              [
+                4,
+                5
+              ],
+              [
+                3,
+                5
+              ]
+            ],
+            "direction": 1,
+            "food": [
+              2,
+              2
+            ],
+            "steps": 0,
+            "foods": 0,
+            "terminal": null
+          },
+          "candidates": [
+            {
+              "id": "up",
+              "label": "A",
+              "logprob": -13.750346183776855,
+              "score": 1.0673537718945005e-06
+            },
+            {
+              "id": "right",
+              "label": "B",
+              "logprob": -0.000346362212439999,
+              "score": 0.9996717923779757
+            },
+            {
+              "id": "down",
+              "label": "C",
+              "logprob": -8.125346183776855,
+              "score": 0.0002959476187275722
+            },
+            {
+              "id": "left",
+              "label": "D",
+              "logprob": -10.375346183776855,
+              "score": 3.1192649524816394e-05
+            }
+          ],
+          "action": "right",
+          "seconds": 0.03698364179581404,
+          "request_count": 1,
+          "input_tokens": 444,
+          "output_tokens": 1,
+          "cached_tokens": [
+            0
+          ],
+          "expected": "right",
+          "correct": true
+        }
+      ],
+      "transformers": [
+        {
+          "type": "result",
+          "id": "e00000",
+          "stage": "perception",
+          "case_id": "open-00-r0",
+          "group": "open",
+          "probe": "heading",
+          "method": "choice",
+          "order": 0,
+          "condition": "no_plan",
+          "seed": null,
+          "status": "success",
+          "plan_id": null,
+          "choices": [
+            [
+              "up",
+              "Up"
+            ],
+            [
+              "right",
+              "Right"
+            ],
+            [
+              "down",
+              "Down"
+            ],
+            [
+              "left",
+              "Left"
+            ]
+          ],
+          "question": "Which absolute direction does the white arrow on the blue head point?",
+          "observation_hash": "0cc85b89128e7b4e9cab91abeabb6d58d30beb9d7fa33076c913896a5b3d5341",
+          "evaluation_state": {
+            "body": [
+              [
+                5,
+                5
+              ],
+              [
+                4,
+                5
+              ],
+              [
+                3,
+                5
+              ]
+            ],
+            "direction": 1,
+            "food": [
+              2,
+              2
+            ],
+            "steps": 0,
+            "foods": 0,
+            "terminal": null
+          },
+          "candidates": [
+            {
+              "id": "up",
+              "label": "A",
+              "logprob": -8.885884284973145,
+              "score": 0.9842156663105538
+            },
+            {
+              "id": "right",
+              "label": "B",
+              "logprob": -14.198384284973145,
+              "score": 0.004851777080152679
+            },
+            {
+              "id": "down",
+              "label": "C",
+              "logprob": -14.792134284973145,
+              "score": 0.002679405780159101
+            },
+            {
+              "id": "left",
+              "label": "D",
+              "logprob": -13.667134284973145,
+              "score": 0.008253150829134427
+            }
+          ],
+          "action": "up",
+          "seconds": 0.0911755501292646,
+          "request_count": 1,
+          "input_tokens": 434,
+          "output_tokens": 0,
+          "cached_tokens": [
+            0
+          ],
+          "expected": "right",
+          "correct": false
+        },
+        {
+          "type": "result",
+          "id": "e00002",
+          "stage": "perception",
+          "case_id": "open-00-r0",
+          "group": "open",
+          "probe": "heading",
+          "method": "choice_boxed",
+          "order": 0,
+          "condition": "no_plan",
+          "seed": null,
+          "status": "success",
+          "plan_id": null,
+          "choices": [
+            [
+              "up",
+              "Up"
+            ],
+            [
+              "right",
+              "Right"
+            ],
+            [
+              "down",
+              "Down"
+            ],
+            [
+              "left",
+              "Left"
+            ]
+          ],
+          "question": "Which absolute direction does the white arrow on the blue head point?",
+          "observation_hash": "0cc85b89128e7b4e9cab91abeabb6d58d30beb9d7fa33076c913896a5b3d5341",
+          "evaluation_state": {
+            "body": [
+              [
+                5,
+                5
+              ],
+              [
+                4,
+                5
+              ],
+              [
+                3,
+                5
+              ]
+            ],
+            "direction": 1,
+            "food": [
+              2,
+              2
+            ],
+            "steps": 0,
+            "foods": 0,
+            "terminal": null
+          },
+          "candidates": [
+            {
+              "id": "up",
+              "label": "A",
+              "logprob": -13.7503080368042,
+              "score": 1.067390649132573e-06
+            },
+            {
+              "id": "right",
+              "label": "B",
+              "logprob": -0.0003079893649555743,
+              "score": 0.9997065570016982
+            },
+            {
+              "id": "down",
+              "label": "C",
+              "logprob": -8.2503080368042,
+              "score": 0.0002611818804170098
+            },
+            {
+              "id": "left",
+              "label": "D",
+              "logprob": -10.3753080368042,
+              "score": 3.119372723568689e-05
+            }
+          ],
+          "action": "right",
+          "seconds": 0.09307090286165476,
+          "request_count": 1,
+          "input_tokens": 444,
+          "output_tokens": 0,
+          "cached_tokens": [
+            0
+          ],
+          "expected": "right",
+          "correct": true
+        }
+      ],
+      "apc": [
+        {
+          "type": "result",
+          "id": "e00000",
+          "stage": "perception",
+          "case_id": "open-00-r0",
+          "group": "open",
+          "probe": "heading",
+          "method": "choice",
+          "order": 0,
+          "condition": "no_plan",
+          "seed": null,
+          "status": "success",
+          "plan_id": null,
+          "choices": [
+            [
+              "up",
+              "Up"
+            ],
+            [
+              "right",
+              "Right"
+            ],
+            [
+              "down",
+              "Down"
+            ],
+            [
+              "left",
+              "Left"
+            ]
+          ],
+          "question": "Which absolute direction does the white arrow on the blue head point?",
+          "observation_hash": "0cc85b89128e7b4e9cab91abeabb6d58d30beb9d7fa33076c913896a5b3d5341",
+          "evaluation_state": {
+            "body": [
+              [
+                5,
+                5
+              ],
+              [
+                4,
+                5
+              ],
+              [
+                3,
+                5
+              ]
+            ],
+            "direction": 1,
+            "food": [
+              2,
+              2
+            ],
+            "steps": 0,
+            "foods": 0,
+            "terminal": null
+          },
+          "candidates": [
+            {
+              "id": "up",
+              "label": "A",
+              "logprob": -8.948542594909668,
+              "score": 0.9818178190732323
+            },
+            {
+              "id": "right",
+              "label": "B",
+              "logprob": -14.167292594909668,
+              "score": 0.005315652504440274
+            },
+            {
+              "id": "down",
+              "label": "C",
+              "logprob": -14.761042594909668,
+              "score": 0.002935582119792337
+            },
+            {
+              "id": "left",
+              "label": "D",
+              "logprob": -13.542292594909668,
+              "score": 0.009930946302535012
+            }
+          ],
+          "action": "up",
+          "seconds": 0.01764722354710102,
+          "request_count": 1,
+          "input_tokens": 434,
+          "output_tokens": 1,
+          "cached_tokens": [
+            352
+          ],
+          "expected": "right",
+          "correct": false
+        },
+        {
+          "type": "result",
+          "id": "e00002",
+          "stage": "perception",
+          "case_id": "open-00-r0",
+          "group": "open",
+          "probe": "heading",
+          "method": "choice_boxed",
+          "order": 0,
+          "condition": "no_plan",
+          "seed": null,
+          "status": "success",
+          "plan_id": null,
+          "choices": [
+            [
+              "up",
+              "Up"
+            ],
+            [
+              "right",
+              "Right"
+            ],
+            [
+              "down",
+              "Down"
+            ],
+            [
+              "left",
+              "Left"
+            ]
+          ],
+          "question": "Which absolute direction does the white arrow on the blue head point?",
+          "observation_hash": "0cc85b89128e7b4e9cab91abeabb6d58d30beb9d7fa33076c913896a5b3d5341",
+          "evaluation_state": {
+            "body": [
+              [
+                5,
+                5
+              ],
+              [
+                4,
+                5
+              ],
+              [
+                3,
+                5
+              ]
+            ],
+            "direction": 1,
+            "food": [
+              2,
+              2
+            ],
+            "steps": 0,
+            "foods": 0,
+            "terminal": null
+          },
+          "candidates": [
+            {
+              "id": "up",
+              "label": "A",
+              "logprob": -13.875344276428223,
+              "score": 9.419427911841414e-07
+            },
+            {
+              "id": "right",
+              "label": "B",
+              "logprob": -0.00034421717282384634,
+              "score": 0.9996788154049282
+            },
+            {
+              "id": "down",
+              "label": "C",
+              "logprob": -8.125344276428223,
+              "score": 0.00029594962751349515
+            },
+            {
+              "id": "left",
+              "label": "D",
+              "logprob": -10.625344276428223,
+              "score": 2.429302476718861e-05
+            }
+          ],
+          "action": "right",
+          "seconds": 0.013938351534307003,
+          "request_count": 1,
+          "input_tokens": 444,
+          "output_tokens": 1,
+          "cached_tokens": [
+            416
+          ],
+          "expected": "right",
+          "correct": true
+        }
+      ]
+    },
+    "fixed_label": {
+      "vllm": [
+        {
+          "type": "result",
+          "id": "e09648",
+          "stage": "readout",
+          "case_id": "wall-04-r0",
+          "group": "wall",
+          "method": "choice",
+          "condition": "no_plan",
+          "order": 0,
+          "seed": 0,
+          "status": "success",
+          "plan_id": null,
+          "choices": [
+            [
+              "left",
+              "Turn left"
+            ],
+            [
+              "straight",
+              "Go straight"
+            ],
+            [
+              "right",
+              "Turn right"
+            ]
+          ],
+          "question": "Which action should the snake take next?",
+          "observation_hash": "764b0b76ceb1d4dfeecd73834c79c417cabea82edac96832413abc6295d59576",
+          "evaluation_state": {
+            "body": [
+              [
+                5,
+                0
+              ],
+              [
+                5,
+                1
+              ],
+              [
+                5,
+                2
+              ]
+            ],
+            "direction": 0,
+            "food": [
+              2,
+              5
+            ],
+            "steps": 0,
+            "foods": 0,
+            "terminal": null
+          },
+          "candidates": [
+            {
+              "id": "left",
+              "label": "A",
+              "logprob": -4.234078407287598,
+              "score": 0.014847918381422597
+            },
+            {
+              "id": "straight",
+              "label": "B",
+              "logprob": -2.7340781688690186,
+              "score": 0.06654376939256235
+            },
+            {
+              "id": "right",
+              "label": "C",
+              "logprob": -0.10907826572656631,
+              "score": 0.9186083122260151
+            }
+          ],
+          "action": "right",
+          "seconds": 0.046049502678215504,
+          "request_count": 1,
+          "input_tokens": 270,
+          "output_tokens": 1,
+          "cached_tokens": [
+            0
+          ],
+          "safe": true,
+          "approaches_food": false,
+          "evaluation_actions": {
+            "left": {
+              "collision": false,
+              "heading": 3,
+              "approaches_food": true
+            },
+            "straight": {
+              "collision": true,
+              "heading": 0,
+              "approaches_food": false
+            },
+            "right": {
+              "collision": false,
+              "heading": 1,
+              "approaches_food": false
+            }
+          }
+        },
+        {
+          "type": "result",
+          "id": "e09649",
+          "stage": "readout",
+          "case_id": "wall-04-r0",
+          "group": "wall",
+          "method": "choice",
+          "condition": "no_plan",
+          "order": 1,
+          "seed": 0,
+          "status": "success",
+          "plan_id": null,
+          "choices": [
+            [
+              "left",
+              "Turn left"
+            ],
+            [
+              "right",
+              "Turn right"
+            ],
+            [
+              "straight",
+              "Go straight"
+            ]
+          ],
+          "question": "Which action should the snake take next?",
+          "observation_hash": "764b0b76ceb1d4dfeecd73834c79c417cabea82edac96832413abc6295d59576",
+          "evaluation_state": {
+            "body": [
+              [
+                5,
+                0
+              ],
+              [
+                5,
+                1
+              ],
+              [
+                5,
+                2
+              ]
+            ],
+            "direction": 0,
+            "food": [
+              2,
+              5
+            ],
+            "steps": 0,
+            "foods": 0,
+            "terminal": null
+          },
+          "candidates": [
+            {
+              "id": "left",
+              "label": "A",
+              "logprob": -4.008307933807373,
+              "score": 0.01863433080394069
+            },
+            {
+              "id": "right",
+              "label": "B",
+              "logprob": -2.508307933807373,
+              "score": 0.0835132766970849
+            },
+            {
+              "id": "straight",
+              "label": "C",
+              "logprob": -0.13330787420272827,
+              "score": 0.8978523924989743
+            }
+          ],
+          "action": "straight",
+          "seconds": 0.04538154322654009,
+          "request_count": 1,
+          "input_tokens": 270,
+          "output_tokens": 1,
+          "cached_tokens": [
+            0
+          ],
+          "safe": false,
+          "approaches_food": false,
+          "evaluation_actions": {
+            "left": {
+              "collision": false,
+              "heading": 3,
+              "approaches_food": true
+            },
+            "straight": {
+              "collision": true,
+              "heading": 0,
+              "approaches_food": false
+            },
+            "right": {
+              "collision": false,
+              "heading": 1,
+              "approaches_food": false
+            }
+          }
+        },
+        {
+          "type": "result",
+          "id": "e09650",
+          "stage": "readout",
+          "case_id": "wall-04-r0",
+          "group": "wall",
+          "method": "choice",
+          "condition": "no_plan",
+          "order": 2,
+          "seed": 0,
+          "status": "success",
+          "plan_id": null,
+          "choices": [
+            [
+              "straight",
+              "Go straight"
+            ],
+            [
+              "left",
+              "Turn left"
+            ],
+            [
+              "right",
+              "Turn right"
+            ]
+          ],
+          "question": "Which action should the snake take next?",
+          "observation_hash": "764b0b76ceb1d4dfeecd73834c79c417cabea82edac96832413abc6295d59576",
+          "evaluation_state": {
+            "body": [
+              [
+                5,
+                0
+              ],
+              [
+                5,
+                1
+              ],
+              [
+                5,
+                2
+              ]
+            ],
+            "direction": 0,
+            "food": [
+              2,
+              5
+            ],
+            "steps": 0,
+            "foods": 0,
+            "terminal": null
+          },
+          "candidates": [
+            {
+              "id": "straight",
+              "label": "A",
+              "logprob": -5.57443380355835,
+              "score": 0.003853617071473862
+            },
+            {
+              "id": "left",
+              "label": "B",
+              "logprob": -2.9494340419769287,
+              "score": 0.05319753006457451
+            },
+            {
+              "id": "right",
+              "label": "C",
+              "logprob": -0.07443396747112274,
+              "score": 0.9429488528639516
+            }
+          ],
+          "action": "right",
+          "seconds": 0.04573666863143444,
+          "request_count": 1,
+          "input_tokens": 270,
+          "output_tokens": 1,
+          "cached_tokens": [
+            0
+          ],
+          "safe": true,
+          "approaches_food": false,
+          "evaluation_actions": {
+            "left": {
+              "collision": false,
+              "heading": 3,
+              "approaches_food": true
+            },
+            "straight": {
+              "collision": true,
+              "heading": 0,
+              "approaches_food": false
+            },
+            "right": {
+              "collision": false,
+              "heading": 1,
+              "approaches_food": false
+            }
+          }
+        },
+        {
+          "type": "result",
+          "id": "e09651",
+          "stage": "readout",
+          "case_id": "wall-04-r0",
+          "group": "wall",
+          "method": "choice",
+          "condition": "no_plan",
+          "order": 3,
+          "seed": 0,
+          "status": "success",
+          "plan_id": null,
+          "choices": [
+            [
+              "straight",
+              "Go straight"
+            ],
+            [
+              "right",
+              "Turn right"
+            ],
+            [
+              "left",
+              "Turn left"
+            ]
+          ],
+          "question": "Which action should the snake take next?",
+          "observation_hash": "764b0b76ceb1d4dfeecd73834c79c417cabea82edac96832413abc6295d59576",
+          "evaluation_state": {
+            "body": [
+              [
+                5,
+                0
+              ],
+              [
+                5,
+                1
+              ],
+              [
+                5,
+                2
+              ]
+            ],
+            "direction": 0,
+            "food": [
+              2,
+              5
+            ],
+            "steps": 0,
+            "foods": 0,
+            "terminal": null
+          },
+          "candidates": [
+            {
+              "id": "straight",
+              "label": "A",
+              "logprob": -5.424169540405273,
+              "score": 0.004475059171451978
+            },
+            {
+              "id": "right",
+              "label": "B",
+              "logprob": -3.5491693019866943,
+              "score": 0.02918105836711833
+            },
+            {
+              "id": "left",
+              "label": "C",
+              "logprob": -0.04916935786604881,
+              "score": 0.9663438824614297
+            }
+          ],
+          "action": "left",
+          "seconds": 0.04626328498125076,
+          "request_count": 1,
+          "input_tokens": 270,
+          "output_tokens": 1,
+          "cached_tokens": [
+            0
+          ],
+          "safe": true,
+          "approaches_food": true,
+          "evaluation_actions": {
+            "left": {
+              "collision": false,
+              "heading": 3,
+              "approaches_food": true
+            },
+            "straight": {
+              "collision": true,
+              "heading": 0,
+              "approaches_food": false
+            },
+            "right": {
+              "collision": false,
+              "heading": 1,
+              "approaches_food": false
+            }
+          }
+        },
+        {
+          "type": "result",
+          "id": "e09652",
+          "stage": "readout",
+          "case_id": "wall-04-r0",
+          "group": "wall",
+          "method": "choice",
+          "condition": "no_plan",
+          "order": 4,
+          "seed": 0,
+          "status": "success",
+          "plan_id": null,
+          "choices": [
+            [
+              "right",
+              "Turn right"
+            ],
+            [
+              "left",
+              "Turn left"
+            ],
+            [
+              "straight",
+              "Go straight"
+            ]
+          ],
+          "question": "Which action should the snake take next?",
+          "observation_hash": "764b0b76ceb1d4dfeecd73834c79c417cabea82edac96832413abc6295d59576",
+          "evaluation_state": {
+            "body": [
+              [
+                5,
+                0
+              ],
+              [
+                5,
+                1
+              ],
+              [
+                5,
+                2
+              ]
+            ],
+            "direction": 0,
+            "food": [
+              2,
+              5
+            ],
+            "steps": 0,
+            "foods": 0,
+            "terminal": null
+          },
+          "candidates": [
+            {
+              "id": "right",
+              "label": "A",
+              "logprob": -5.032363414764404,
+              "score": 0.006680045580759074
+            },
+            {
+              "id": "left",
+              "label": "B",
+              "logprob": -2.1573634147644043,
+              "score": 0.11840664106965014
+            },
+            {
+              "id": "straight",
+              "label": "C",
+              "logprob": -0.1573634147644043,
+              "score": 0.8749133133495908
+            }
+          ],
+          "action": "straight",
+          "seconds": 0.04563136678189039,
+          "request_count": 1,
+          "input_tokens": 270,
+          "output_tokens": 1,
+          "cached_tokens": [
+            0
+          ],
+          "safe": false,
+          "approaches_food": false,
+          "evaluation_actions": {
+            "left": {
+              "collision": false,
+              "heading": 3,
+              "approaches_food": true
+            },
+            "straight": {
+              "collision": true,
+              "heading": 0,
+              "approaches_food": false
+            },
+            "right": {
+              "collision": false,
+              "heading": 1,
+              "approaches_food": false
+            }
+          }
+        },
+        {
+          "type": "result",
+          "id": "e09653",
+          "stage": "readout",
+          "case_id": "wall-04-r0",
+          "group": "wall",
+          "method": "choice",
+          "condition": "no_plan",
+          "order": 5,
+          "seed": 0,
+          "status": "success",
+          "plan_id": null,
+          "choices": [
+            [
+              "right",
+              "Turn right"
+            ],
+            [
+              "straight",
+              "Go straight"
+            ],
+            [
+              "left",
+              "Turn left"
+            ]
+          ],
+          "question": "Which action should the snake take next?",
+          "observation_hash": "764b0b76ceb1d4dfeecd73834c79c417cabea82edac96832413abc6295d59576",
+          "evaluation_state": {
+            "body": [
+              [
+                5,
+                0
+              ],
+              [
+                5,
+                1
+              ],
+              [
+                5,
+                2
+              ]
+            ],
+            "direction": 0,
+            "food": [
+              2,
+              5
+            ],
+            "steps": 0,
+            "foods": 0,
+            "terminal": null
+          },
+          "candidates": [
+            {
+              "id": "right",
+              "label": "A",
+              "logprob": -4.216734886169434,
+              "score": 0.01506974202195625
+            },
+            {
+              "id": "straight",
+              "label": "B",
+              "logprob": -2.9667351245880127,
+              "score": 0.05259855539662743
+            },
+            {
+              "id": "left",
+              "label": "C",
+              "logprob": -0.0917351245880127,
+              "score": 0.9323317025814163
+            }
+          ],
+          "action": "left",
+          "seconds": 0.0492446580901742,
+          "request_count": 1,
+          "input_tokens": 270,
+          "output_tokens": 1,
+          "cached_tokens": [
+            0
+          ],
+          "safe": true,
+          "approaches_food": true,
+          "evaluation_actions": {
+            "left": {
+              "collision": false,
+              "heading": 3,
+              "approaches_food": true
+            },
+            "straight": {
+              "collision": true,
+              "heading": 0,
+              "approaches_food": false
+            },
+            "right": {
+              "collision": false,
+              "heading": 1,
+              "approaches_food": false
+            }
+          }
+        }
+      ],
+      "transformers": [
+        {
+          "type": "result",
+          "id": "e09648",
+          "stage": "readout",
+          "case_id": "wall-04-r0",
+          "group": "wall",
+          "method": "choice",
+          "condition": "no_plan",
+          "order": 0,
+          "seed": 0,
+          "status": "success",
+          "plan_id": null,
+          "choices": [
+            [
+              "left",
+              "Turn left"
+            ],
+            [
+              "straight",
+              "Go straight"
+            ],
+            [
+              "right",
+              "Turn right"
+            ]
+          ],
+          "question": "Which action should the snake take next?",
+          "observation_hash": "764b0b76ceb1d4dfeecd73834c79c417cabea82edac96832413abc6295d59576",
+          "evaluation_state": {
+            "body": [
+              [
+                5,
+                0
+              ],
+              [
+                5,
+                1
+              ],
+              [
+                5,
+                2
+              ]
+            ],
+            "direction": 0,
+            "food": [
+              2,
+              5
+            ],
+            "steps": 0,
+            "foods": 0,
+            "terminal": null
+          },
+          "candidates": [
+            {
+              "id": "left",
+              "label": "A",
+              "logprob": -4.008582592010498,
+              "score": 0.01863433279841692
+            },
+            {
+              "id": "straight",
+              "label": "B",
+              "logprob": -2.508582592010498,
+              "score": 0.08351328563570724
+            },
+            {
+              "id": "right",
+              "label": "C",
+              "logprob": -0.13358265161514282,
+              "score": 0.8978523815658758
+            }
+          ],
+          "action": "right",
+          "seconds": 0.0793320219963789,
+          "request_count": 1,
+          "input_tokens": 270,
+          "output_tokens": 0,
+          "cached_tokens": [
+            0
+          ],
+          "safe": true,
+          "approaches_food": false,
+          "evaluation_actions": {
+            "left": {
+              "collision": false,
+              "heading": 3,
+              "approaches_food": true
+            },
+            "straight": {
+              "collision": true,
+              "heading": 0,
+              "approaches_food": false
+            },
+            "right": {
+              "collision": false,
+              "heading": 1,
+              "approaches_food": false
+            }
+          }
+        },
+        {
+          "type": "result",
+          "id": "e09649",
+          "stage": "readout",
+          "case_id": "wall-04-r0",
+          "group": "wall",
+          "method": "choice",
+          "condition": "no_plan",
+          "order": 1,
+          "seed": 0,
+          "status": "success",
+          "plan_id": null,
+          "choices": [
+            [
+              "left",
+              "Turn left"
+            ],
+            [
+              "right",
+              "Turn right"
+            ],
+            [
+              "straight",
+              "Go straight"
+            ]
+          ],
+          "question": "Which action should the snake take next?",
+          "observation_hash": "764b0b76ceb1d4dfeecd73834c79c417cabea82edac96832413abc6295d59576",
+          "evaluation_state": {
+            "body": [
+              [
+                5,
+                0
+              ],
+              [
+                5,
+                1
+              ],
+              [
+                5,
+                2
+              ]
+            ],
+            "direction": 0,
+            "food": [
+              2,
+              5
+            ],
+            "steps": 0,
+            "foods": 0,
+            "terminal": null
+          },
+          "candidates": [
+            {
+              "id": "left",
+              "label": "A",
+              "logprob": -4.015467643737793,
+              "score": 0.018429402296570682
+            },
+            {
+              "id": "right",
+              "label": "B",
+              "logprob": -2.390467643737793,
+              "score": 0.09359222746675486
+            },
+            {
+              "id": "straight",
+              "label": "C",
+              "logprob": -0.1404675990343094,
+              "score": 0.8879783702366744
+            }
+          ],
+          "action": "straight",
+          "seconds": 0.07903375290334225,
+          "request_count": 1,
+          "input_tokens": 270,
+          "output_tokens": 0,
+          "cached_tokens": [
+            0
+          ],
+          "safe": false,
+          "approaches_food": false,
+          "evaluation_actions": {
+            "left": {
+              "collision": false,
+              "heading": 3,
+              "approaches_food": true
+            },
+            "straight": {
+              "collision": true,
+              "heading": 0,
+              "approaches_food": false
+            },
+            "right": {
+              "collision": false,
+              "heading": 1,
+              "approaches_food": false
+            }
+          }
+        },
+        {
+          "type": "result",
+          "id": "e09650",
+          "stage": "readout",
+          "case_id": "wall-04-r0",
+          "group": "wall",
+          "method": "choice",
+          "condition": "no_plan",
+          "order": 2,
+          "seed": 0,
+          "status": "success",
+          "plan_id": null,
+          "choices": [
+            [
+              "straight",
+              "Go straight"
+            ],
+            [
+              "left",
+              "Turn left"
+            ],
+            [
+              "right",
+              "Turn right"
+            ]
+          ],
+          "question": "Which action should the snake take next?",
+          "observation_hash": "764b0b76ceb1d4dfeecd73834c79c417cabea82edac96832413abc6295d59576",
+          "evaluation_state": {
+            "body": [
+              [
+                5,
+                0
+              ],
+              [
+                5,
+                1
+              ],
+              [
+                5,
+                2
+              ]
+            ],
+            "direction": 0,
+            "food": [
+              2,
+              5
+            ],
+            "steps": 0,
+            "foods": 0,
+            "terminal": null
+          },
+          "candidates": [
+            {
+              "id": "straight",
+              "label": "A",
+              "logprob": -4.978476047515869,
+              "score": 0.0070064731138030105
+            },
+            {
+              "id": "left",
+              "label": "B",
+              "logprob": -2.603476047515869,
+              "score": 0.07532668483438562
+            },
+            {
+              "id": "right",
+              "label": "C",
+              "logprob": -0.10347609221935272,
+              "score": 0.9176668420518113
+            }
+          ],
+          "action": "right",
+          "seconds": 0.07924407906830311,
+          "request_count": 1,
+          "input_tokens": 270,
+          "output_tokens": 0,
+          "cached_tokens": [
+            0
+          ],
+          "safe": true,
+          "approaches_food": false,
+          "evaluation_actions": {
+            "left": {
+              "collision": false,
+              "heading": 3,
+              "approaches_food": true
+            },
+            "straight": {
+              "collision": true,
+              "heading": 0,
+              "approaches_food": false
+            },
+            "right": {
+              "collision": false,
+              "heading": 1,
+              "approaches_food": false
+            }
+          }
+        },
+        {
+          "type": "result",
+          "id": "e09651",
+          "stage": "readout",
+          "case_id": "wall-04-r0",
+          "group": "wall",
+          "method": "choice",
+          "condition": "no_plan",
+          "order": 3,
+          "seed": 0,
+          "status": "success",
+          "plan_id": null,
+          "choices": [
+            [
+              "straight",
+              "Go straight"
+            ],
+            [
+              "right",
+              "Turn right"
+            ],
+            [
+              "left",
+              "Turn left"
+            ]
+          ],
+          "question": "Which action should the snake take next?",
+          "observation_hash": "764b0b76ceb1d4dfeecd73834c79c417cabea82edac96832413abc6295d59576",
+          "evaluation_state": {
+            "body": [
+              [
+                5,
+                0
+              ],
+              [
+                5,
+                1
+              ],
+              [
+                5,
+                2
+              ]
+            ],
+            "direction": 0,
+            "food": [
+              2,
+              5
+            ],
+            "steps": 0,
+            "foods": 0,
+            "terminal": null
+          },
+          "candidates": [
+            {
+              "id": "straight",
+              "label": "A",
+              "logprob": -4.827646732330322,
+              "score": 0.00817401674552245
+            },
+            {
+              "id": "right",
+              "label": "B",
+              "logprob": -3.0776467323303223,
+              "score": 0.047038218637499137
+            },
+            {
+              "id": "left",
+              "label": "C",
+              "logprob": -0.07764685153961182,
+              "score": 0.9447877646169783
+            }
+          ],
+          "action": "left",
+          "seconds": 0.078604556620121,
+          "request_count": 1,
+          "input_tokens": 270,
+          "output_tokens": 0,
+          "cached_tokens": [
+            0
+          ],
+          "safe": true,
+          "approaches_food": true,
+          "evaluation_actions": {
+            "left": {
+              "collision": false,
+              "heading": 3,
+              "approaches_food": true
+            },
+            "straight": {
+              "collision": true,
+              "heading": 0,
+              "approaches_food": false
+            },
+            "right": {
+              "collision": false,
+              "heading": 1,
+              "approaches_food": false
+            }
+          }
+        },
+        {
+          "type": "result",
+          "id": "e09652",
+          "stage": "readout",
+          "case_id": "wall-04-r0",
+          "group": "wall",
+          "method": "choice",
+          "condition": "no_plan",
+          "order": 4,
+          "seed": 0,
+          "status": "success",
+          "plan_id": null,
+          "choices": [
+            [
+              "right",
+              "Turn right"
+            ],
+            [
+              "left",
+              "Turn left"
+            ],
+            [
+              "straight",
+              "Go straight"
+            ]
+          ],
+          "question": "Which action should the snake take next?",
+          "observation_hash": "764b0b76ceb1d4dfeecd73834c79c417cabea82edac96832413abc6295d59576",
+          "evaluation_state": {
+            "body": [
+              [
+                5,
+                0
+              ],
+              [
+                5,
+                1
+              ],
+              [
+                5,
+                2
+              ]
+            ],
+            "direction": 0,
+            "food": [
+              2,
+              5
+            ],
+            "steps": 0,
+            "foods": 0,
+            "terminal": null
+          },
+          "candidates": [
+            {
+              "id": "right",
+              "label": "A",
+              "logprob": -4.800583839416504,
+              "score": 0.008428475091266228
+            },
+            {
+              "id": "left",
+              "label": "B",
+              "logprob": -2.050583600997925,
+              "score": 0.1318435646316785
+            },
+            {
+              "id": "straight",
+              "label": "C",
+              "logprob": -0.17558369040489197,
+              "score": 0.8597279602770552
+            }
+          ],
+          "action": "straight",
+          "seconds": 0.07904772087931633,
+          "request_count": 1,
+          "input_tokens": 270,
+          "output_tokens": 0,
+          "cached_tokens": [
+            0
+          ],
+          "safe": false,
+          "approaches_food": false,
+          "evaluation_actions": {
+            "left": {
+              "collision": false,
+              "heading": 3,
+              "approaches_food": true
+            },
+            "straight": {
+              "collision": true,
+              "heading": 0,
+              "approaches_food": false
+            },
+            "right": {
+              "collision": false,
+              "heading": 1,
+              "approaches_food": false
+            }
+          }
+        },
+        {
+          "type": "result",
+          "id": "e09653",
+          "stage": "readout",
+          "case_id": "wall-04-r0",
+          "group": "wall",
+          "method": "choice",
+          "condition": "no_plan",
+          "order": 5,
+          "seed": 0,
+          "status": "success",
+          "plan_id": null,
+          "choices": [
+            [
+              "right",
+              "Turn right"
+            ],
+            [
+              "straight",
+              "Go straight"
+            ],
+            [
+              "left",
+              "Turn left"
+            ]
+          ],
+          "question": "Which action should the snake take next?",
+          "observation_hash": "764b0b76ceb1d4dfeecd73834c79c417cabea82edac96832413abc6295d59576",
+          "evaluation_state": {
+            "body": [
+              [
+                5,
+                0
+              ],
+              [
+                5,
+                1
+              ],
+              [
+                5,
+                2
+              ]
+            ],
+            "direction": 0,
+            "food": [
+              2,
+              5
+            ],
+            "steps": 0,
+            "foods": 0,
+            "terminal": null
+          },
+          "candidates": [
+            {
+              "id": "right",
+              "label": "A",
+              "logprob": -4.1261091232299805,
+              "score": 0.016644518834665403
+            },
+            {
+              "id": "straight",
+              "label": "B",
+              "logprob": -2.6261091232299805,
+              "score": 0.074595558142356
+            },
+            {
+              "id": "left",
+              "label": "C",
+              "logprob": -0.12610913813114166,
+              "score": 0.9087599230229786
+            }
+          ],
+          "action": "left",
+          "seconds": 0.07883135601878166,
+          "request_count": 1,
+          "input_tokens": 270,
+          "output_tokens": 0,
+          "cached_tokens": [
+            0
+          ],
+          "safe": true,
+          "approaches_food": true,
+          "evaluation_actions": {
+            "left": {
+              "collision": false,
+              "heading": 3,
+              "approaches_food": true
+            },
+            "straight": {
+              "collision": true,
+              "heading": 0,
+              "approaches_food": false
+            },
+            "right": {
+              "collision": false,
+              "heading": 1,
+              "approaches_food": false
+            }
+          }
+        }
+      ]
+    },
+    "tie": {
+      "transformers": [
+        {
+          "type": "result",
+          "id": "e21768",
+          "stage": "readout",
+          "case_id": "body_tail-09-r1",
+          "group": "body_tail",
+          "method": "yes_no_naive",
+          "condition": "no_plan",
+          "order": 0,
+          "seed": 5,
+          "status": "success",
+          "plan_id": null,
+          "choices": [
+            [
+              "left",
+              "Turn left"
+            ],
+            [
+              "straight",
+              "Go straight"
+            ],
+            [
+              "right",
+              "Turn right"
+            ]
+          ],
+          "question": "Which action should the snake take next?",
+          "observation_hash": "fbb3ef9a2d40c3bc8d9ed2f5138716d7626132ccaf256ee4afde1b6519e8ef67",
+          "evaluation_state": {
+            "body": [
+              [
+                5,
+                4
+              ],
+              [
+                4,
+                4
+              ],
+              [
+                4,
+                5
+              ],
+              [
+                5,
+                5
+              ],
+              [
+                5,
+                6
+              ]
+            ],
+            "direction": 1,
+            "food": [
+              7,
+              2
+            ],
+            "steps": 0,
+            "foods": 0,
+            "terminal": null
+          },
+          "candidates": [
+            {
+              "id": "left",
+              "yes_logprob": -1.7381573915481567,
+              "no_logprob": -0.23815736174583435,
+              "yes_score": 0.18242551936144571,
+              "score": 0.37687021314870356
+            },
+            {
+              "id": "straight",
+              "yes_logprob": -1.7495750188827515,
+              "no_logprob": -0.24957498908042908,
+              "yes_score": 0.18242551936144571,
+              "score": 0.37687021314870356
+            },
+            {
+              "id": "right",
+              "yes_logprob": -2.164942741394043,
+              "no_logprob": -0.16494274139404297,
+              "yes_score": 0.11920292202211753,
+              "score": 0.24625957370259283
+            }
+          ],
+          "action": "left",
+          "seconds": 0.0902290940284729,
+          "request_count": 3,
+          "input_tokens": 777,
+          "output_tokens": 0,
+          "cached_tokens": [
+            0,
+            0,
+            0
+          ],
+          "safe": true,
+          "approaches_food": true,
+          "evaluation_actions": {
+            "left": {
+              "collision": false,
+              "heading": 0,
+              "approaches_food": true
+            },
+            "straight": {
+              "collision": false,
+              "heading": 1,
+              "approaches_food": true
+            },
+            "right": {
+              "collision": true,
+              "heading": 2,
+              "approaches_food": false
+            }
+          }
+        },
+        {
+          "type": "result",
+          "id": "e21769",
+          "stage": "readout",
+          "case_id": "body_tail-09-r1",
+          "group": "body_tail",
+          "method": "yes_no_naive",
+          "condition": "no_plan",
+          "order": 1,
+          "seed": 5,
+          "status": "success",
+          "plan_id": null,
+          "choices": [
+            [
+              "left",
+              "Turn left"
+            ],
+            [
+              "right",
+              "Turn right"
+            ],
+            [
+              "straight",
+              "Go straight"
+            ]
+          ],
+          "question": "Which action should the snake take next?",
+          "observation_hash": "fbb3ef9a2d40c3bc8d9ed2f5138716d7626132ccaf256ee4afde1b6519e8ef67",
+          "evaluation_state": {
+            "body": [
+              [
+                5,
+                4
+              ],
+              [
+                4,
+                4
+              ],
+              [
+                4,
+                5
+              ],
+              [
+                5,
+                5
+              ],
+              [
+                5,
+                6
+              ]
+            ],
+            "direction": 1,
+            "food": [
+              7,
+              2
+            ],
+            "steps": 0,
+            "foods": 0,
+            "terminal": null
+          },
+          "candidates": [
+            {
+              "id": "left",
+              "yes_logprob": -1.7381573915481567,
+              "no_logprob": -0.23815736174583435,
+              "yes_score": 0.18242551936144571,
+              "score": 0.37687021314870356
+            },
+            {
+              "id": "right",
+              "yes_logprob": -2.164942741394043,
+              "no_logprob": -0.16494274139404297,
+              "yes_score": 0.11920292202211753,
+              "score": 0.24625957370259283
+            },
+            {
+              "id": "straight",
+              "yes_logprob": -1.7495750188827515,
+              "no_logprob": -0.24957498908042908,
+              "yes_score": 0.18242551936144571,
+              "score": 0.37687021314870356
+            }
+          ],
+          "action": "left",
+          "seconds": 0.09008532203733921,
+          "request_count": 3,
+          "input_tokens": 777,
+          "output_tokens": 0,
+          "cached_tokens": [
+            0,
+            0,
+            0
+          ],
+          "safe": true,
+          "approaches_food": true,
+          "evaluation_actions": {
+            "left": {
+              "collision": false,
+              "heading": 0,
+              "approaches_food": true
+            },
+            "straight": {
+              "collision": false,
+              "heading": 1,
+              "approaches_food": true
+            },
+            "right": {
+              "collision": true,
+              "heading": 2,
+              "approaches_food": false
+            }
+          }
+        },
+        {
+          "type": "result",
+          "id": "e21770",
+          "stage": "readout",
+          "case_id": "body_tail-09-r1",
+          "group": "body_tail",
+          "method": "yes_no_naive",
+          "condition": "no_plan",
+          "order": 2,
+          "seed": 5,
+          "status": "success",
+          "plan_id": null,
+          "choices": [
+            [
+              "straight",
+              "Go straight"
+            ],
+            [
+              "left",
+              "Turn left"
+            ],
+            [
+              "right",
+              "Turn right"
+            ]
+          ],
+          "question": "Which action should the snake take next?",
+          "observation_hash": "fbb3ef9a2d40c3bc8d9ed2f5138716d7626132ccaf256ee4afde1b6519e8ef67",
+          "evaluation_state": {
+            "body": [
+              [
+                5,
+                4
+              ],
+              [
+                4,
+                4
+              ],
+              [
+                4,
+                5
+              ],
+              [
+                5,
+                5
+              ],
+              [
+                5,
+                6
+              ]
+            ],
+            "direction": 1,
+            "food": [
+              7,
+              2
+            ],
+            "steps": 0,
+            "foods": 0,
+            "terminal": null
+          },
+          "candidates": [
+            {
+              "id": "straight",
+              "yes_logprob": -1.7495750188827515,
+              "no_logprob": -0.24957498908042908,
+              "yes_score": 0.18242551936144571,
+              "score": 0.37687021314870356
+            },
+            {
+              "id": "left",
+              "yes_logprob": -1.7381573915481567,
+              "no_logprob": -0.23815736174583435,
+              "yes_score": 0.18242551936144571,
+              "score": 0.37687021314870356
+            },
+            {
+              "id": "right",
+              "yes_logprob": -2.164942741394043,
+              "no_logprob": -0.16494274139404297,
+              "yes_score": 0.11920292202211753,
+              "score": 0.24625957370259283
+            }
+          ],
+          "action": "straight",
+          "seconds": 0.08978147432208061,
+          "request_count": 3,
+          "input_tokens": 777,
+          "output_tokens": 0,
+          "cached_tokens": [
+            0,
+            0,
+            0
+          ],
+          "safe": true,
+          "approaches_food": true,
+          "evaluation_actions": {
+            "left": {
+              "collision": false,
+              "heading": 0,
+              "approaches_food": true
+            },
+            "straight": {
+              "collision": false,
+              "heading": 1,
+              "approaches_food": true
+            },
+            "right": {
+              "collision": true,
+              "heading": 2,
+              "approaches_food": false
+            }
+          }
+        },
+        {
+          "type": "result",
+          "id": "e21771",
+          "stage": "readout",
+          "case_id": "body_tail-09-r1",
+          "group": "body_tail",
+          "method": "yes_no_naive",
+          "condition": "no_plan",
+          "order": 3,
+          "seed": 5,
+          "status": "success",
+          "plan_id": null,
+          "choices": [
+            [
+              "straight",
+              "Go straight"
+            ],
+            [
+              "right",
+              "Turn right"
+            ],
+            [
+              "left",
+              "Turn left"
+            ]
+          ],
+          "question": "Which action should the snake take next?",
+          "observation_hash": "fbb3ef9a2d40c3bc8d9ed2f5138716d7626132ccaf256ee4afde1b6519e8ef67",
+          "evaluation_state": {
+            "body": [
+              [
+                5,
+                4
+              ],
+              [
+                4,
+                4
+              ],
+              [
+                4,
+                5
+              ],
+              [
+                5,
+                5
+              ],
+              [
+                5,
+                6
+              ]
+            ],
+            "direction": 1,
+            "food": [
+              7,
+              2
+            ],
+            "steps": 0,
+            "foods": 0,
+            "terminal": null
+          },
+          "candidates": [
+            {
+              "id": "straight",
+              "yes_logprob": -1.7495750188827515,
+              "no_logprob": -0.24957498908042908,
+              "yes_score": 0.18242551936144571,
+              "score": 0.37687021314870356
+            },
+            {
+              "id": "right",
+              "yes_logprob": -2.164942741394043,
+              "no_logprob": -0.16494274139404297,
+              "yes_score": 0.11920292202211753,
+              "score": 0.24625957370259283
+            },
+            {
+              "id": "left",
+              "yes_logprob": -1.7381573915481567,
+              "no_logprob": -0.23815736174583435,
+              "yes_score": 0.18242551936144571,
+              "score": 0.37687021314870356
+            }
+          ],
+          "action": "straight",
+          "seconds": 0.08981230109930038,
+          "request_count": 3,
+          "input_tokens": 777,
+          "output_tokens": 0,
+          "cached_tokens": [
+            0,
+            0,
+            0
+          ],
+          "safe": true,
+          "approaches_food": true,
+          "evaluation_actions": {
+            "left": {
+              "collision": false,
+              "heading": 0,
+              "approaches_food": true
+            },
+            "straight": {
+              "collision": false,
+              "heading": 1,
+              "approaches_food": true
+            },
+            "right": {
+              "collision": true,
+              "heading": 2,
+              "approaches_food": false
+            }
+          }
+        },
+        {
+          "type": "result",
+          "id": "e21772",
+          "stage": "readout",
+          "case_id": "body_tail-09-r1",
+          "group": "body_tail",
+          "method": "yes_no_naive",
+          "condition": "no_plan",
+          "order": 4,
+          "seed": 5,
+          "status": "success",
+          "plan_id": null,
+          "choices": [
+            [
+              "right",
+              "Turn right"
+            ],
+            [
+              "left",
+              "Turn left"
+            ],
+            [
+              "straight",
+              "Go straight"
+            ]
+          ],
+          "question": "Which action should the snake take next?",
+          "observation_hash": "fbb3ef9a2d40c3bc8d9ed2f5138716d7626132ccaf256ee4afde1b6519e8ef67",
+          "evaluation_state": {
+            "body": [
+              [
+                5,
+                4
+              ],
+              [
+                4,
+                4
+              ],
+              [
+                4,
+                5
+              ],
+              [
+                5,
+                5
+              ],
+              [
+                5,
+                6
+              ]
+            ],
+            "direction": 1,
+            "food": [
+              7,
+              2
+            ],
+            "steps": 0,
+            "foods": 0,
+            "terminal": null
+          },
+          "candidates": [
+            {
+              "id": "right",
+              "yes_logprob": -2.164942741394043,
+              "no_logprob": -0.16494274139404297,
+              "yes_score": 0.11920292202211753,
+              "score": 0.24625957370259283
+            },
+            {
+              "id": "left",
+              "yes_logprob": -1.7381573915481567,
+              "no_logprob": -0.23815736174583435,
+              "yes_score": 0.18242551936144571,
+              "score": 0.37687021314870356
+            },
+            {
+              "id": "straight",
+              "yes_logprob": -1.7495750188827515,
+              "no_logprob": -0.24957498908042908,
+              "yes_score": 0.18242551936144571,
+              "score": 0.37687021314870356
+            }
+          ],
+          "action": "left",
+          "seconds": 0.08997263945639133,
+          "request_count": 3,
+          "input_tokens": 777,
+          "output_tokens": 0,
+          "cached_tokens": [
+            0,
+            0,
+            0
+          ],
+          "safe": true,
+          "approaches_food": true,
+          "evaluation_actions": {
+            "left": {
+              "collision": false,
+              "heading": 0,
+              "approaches_food": true
+            },
+            "straight": {
+              "collision": false,
+              "heading": 1,
+              "approaches_food": true
+            },
+            "right": {
+              "collision": true,
+              "heading": 2,
+              "approaches_food": false
+            }
+          }
+        },
+        {
+          "type": "result",
+          "id": "e21773",
+          "stage": "readout",
+          "case_id": "body_tail-09-r1",
+          "group": "body_tail",
+          "method": "yes_no_naive",
+          "condition": "no_plan",
+          "order": 5,
+          "seed": 5,
+          "status": "success",
+          "plan_id": null,
+          "choices": [
+            [
+              "right",
+              "Turn right"
+            ],
+            [
+              "straight",
+              "Go straight"
+            ],
+            [
+              "left",
+              "Turn left"
+            ]
+          ],
+          "question": "Which action should the snake take next?",
+          "observation_hash": "fbb3ef9a2d40c3bc8d9ed2f5138716d7626132ccaf256ee4afde1b6519e8ef67",
+          "evaluation_state": {
+            "body": [
+              [
+                5,
+                4
+              ],
+              [
+                4,
+                4
+              ],
+              [
+                4,
+                5
+              ],
+              [
+                5,
+                5
+              ],
+              [
+                5,
+                6
+              ]
+            ],
+            "direction": 1,
+            "food": [
+              7,
+              2
+            ],
+            "steps": 0,
+            "foods": 0,
+            "terminal": null
+          },
+          "candidates": [
+            {
+              "id": "right",
+              "yes_logprob": -2.164942741394043,
+              "no_logprob": -0.16494274139404297,
+              "yes_score": 0.11920292202211753,
+              "score": 0.24625957370259283
+            },
+            {
+              "id": "straight",
+              "yes_logprob": -1.7495750188827515,
+              "no_logprob": -0.24957498908042908,
+              "yes_score": 0.18242551936144571,
+              "score": 0.37687021314870356
+            },
+            {
+              "id": "left",
+              "yes_logprob": -1.7381573915481567,
+              "no_logprob": -0.23815736174583435,
+              "yes_score": 0.18242551936144571,
+              "score": 0.37687021314870356
+            }
+          ],
+          "action": "straight",
+          "seconds": 0.08993001095950603,
+          "request_count": 3,
+          "input_tokens": 777,
+          "output_tokens": 0,
+          "cached_tokens": [
+            0,
+            0,
+            0
+          ],
+          "safe": true,
+          "approaches_food": true,
+          "evaluation_actions": {
+            "left": {
+              "collision": false,
+              "heading": 0,
+              "approaches_food": true
+            },
+            "straight": {
+              "collision": false,
+              "heading": 1,
+              "approaches_food": true
+            },
+            "right": {
+              "collision": true,
+              "heading": 2,
+              "approaches_food": false
+            }
+          }
+        }
+      ]
+    },
+    "collision": {
+      "vllm": [
+        {
+          "type": "result",
+          "id": "e09506",
+          "stage": "perception",
+          "case_id": "wall-04-r0",
+          "group": "wall",
+          "probe": "collision_straight",
+          "method": "choice_boxed",
+          "order": 0,
+          "condition": "no_plan",
+          "seed": null,
+          "status": "success",
+          "plan_id": null,
+          "choices": [
+            [
+              "collision",
+              "Immediate collision"
+            ],
+            [
+              "safe",
+              "No immediate collision"
+            ]
+          ],
+          "question": "Would choosing 'Go straight' cause an immediate wall or body collision? Remember the tail vacates on a non-eating move.",
+          "observation_hash": "764b0b76ceb1d4dfeecd73834c79c417cabea82edac96832413abc6295d59576",
+          "evaluation_state": {
+            "body": [
+              [
+                5,
+                0
+              ],
+              [
+                5,
+                1
+              ],
+              [
+                5,
+                2
+              ]
+            ],
+            "direction": 0,
+            "food": [
+              2,
+              5
+            ],
+            "steps": 0,
+            "foods": 0,
+            "terminal": null
+          },
+          "candidates": [
+            {
+              "id": "collision",
+              "label": "A",
+              "logprob": -9.375085830688477,
+              "score": 8.481105151953703e-05
+            },
+            {
+              "id": "safe",
+              "label": "B",
+              "logprob": -8.594620157964528e-05,
+              "score": 0.9999151889484804
+            }
+          ],
+          "action": "safe",
+          "seconds": 0.024905702099204063,
+          "request_count": 1,
+          "input_tokens": 291,
+          "output_tokens": 1,
+          "cached_tokens": [
+            0
+          ],
+          "expected": "collision",
+          "correct": false
+        },
+        {
+          "type": "result",
+          "id": "e09507",
+          "stage": "perception",
+          "case_id": "wall-04-r0",
+          "group": "wall",
+          "probe": "collision_straight",
+          "method": "choice_boxed",
+          "order": 1,
+          "condition": "no_plan",
+          "seed": null,
+          "status": "success",
+          "plan_id": null,
+          "choices": [
+            [
+              "safe",
+              "No immediate collision"
+            ],
+            [
+              "collision",
+              "Immediate collision"
+            ]
+          ],
+          "question": "Would choosing 'Go straight' cause an immediate wall or body collision? Remember the tail vacates on a non-eating move.",
+          "observation_hash": "764b0b76ceb1d4dfeecd73834c79c417cabea82edac96832413abc6295d59576",
+          "evaluation_state": {
+            "body": [
+              [
+                5,
+                0
+              ],
+              [
+                5,
+                1
+              ],
+              [
+                5,
+                2
+              ]
+            ],
+            "direction": 0,
+            "food": [
+              2,
+              5
+            ],
+            "steps": 0,
+            "foods": 0,
+            "terminal": null
+          },
+          "candidates": [
+            {
+              "id": "safe",
+              "label": "A",
+              "logprob": -0.000491021724883467,
+              "score": 0.9995121429359993
+            },
+            {
+              "id": "collision",
+              "label": "B",
+              "logprob": -7.625491142272949,
+              "score": 0.000487857064000728
+            }
+          ],
+          "action": "safe",
+          "seconds": 0.025240836665034294,
+          "request_count": 1,
+          "input_tokens": 291,
+          "output_tokens": 1,
+          "cached_tokens": [
+            0
+          ],
+          "expected": "collision",
+          "correct": false
+        }
+      ],
+      "transformers": [
+        {
+          "type": "result",
+          "id": "e09506",
+          "stage": "perception",
+          "case_id": "wall-04-r0",
+          "group": "wall",
+          "probe": "collision_straight",
+          "method": "choice_boxed",
+          "order": 0,
+          "condition": "no_plan",
+          "seed": null,
+          "status": "success",
+          "plan_id": null,
+          "choices": [
+            [
+              "collision",
+              "Immediate collision"
+            ],
+            [
+              "safe",
+              "No immediate collision"
+            ]
+          ],
+          "question": "Would choosing 'Go straight' cause an immediate wall or body collision? Remember the tail vacates on a non-eating move.",
+          "observation_hash": "764b0b76ceb1d4dfeecd73834c79c417cabea82edac96832413abc6295d59576",
+          "evaluation_state": {
+            "body": [
+              [
+                5,
+                0
+              ],
+              [
+                5,
+                1
+              ],
+              [
+                5,
+                2
+              ]
+            ],
+            "direction": 0,
+            "food": [
+              2,
+              5
+            ],
+            "steps": 0,
+            "foods": 0,
+            "terminal": null
+          },
+          "candidates": [
+            {
+              "id": "collision",
+              "label": "A",
+              "logprob": -9.250097274780273,
+              "score": 9.61024150450135e-05
+            },
+            {
+              "id": "safe",
+              "label": "B",
+              "logprob": -9.727005090098828e-05,
+              "score": 0.9999038975849549
+            }
+          ],
+          "action": "safe",
+          "seconds": 0.04758204985409975,
+          "request_count": 1,
+          "input_tokens": 291,
+          "output_tokens": 0,
+          "cached_tokens": [
+            0
+          ],
+          "expected": "collision",
+          "correct": false
+        },
+        {
+          "type": "result",
+          "id": "e09507",
+          "stage": "perception",
+          "case_id": "wall-04-r0",
+          "group": "wall",
+          "probe": "collision_straight",
+          "method": "choice_boxed",
+          "order": 1,
+          "condition": "no_plan",
+          "seed": null,
+          "status": "success",
+          "plan_id": null,
+          "choices": [
+            [
+              "safe",
+              "No immediate collision"
+            ],
+            [
+              "collision",
+              "Immediate collision"
+            ]
+          ],
+          "question": "Would choosing 'Go straight' cause an immediate wall or body collision? Remember the tail vacates on a non-eating move.",
+          "observation_hash": "764b0b76ceb1d4dfeecd73834c79c417cabea82edac96832413abc6295d59576",
+          "evaluation_state": {
+            "body": [
+              [
+                5,
+                0
+              ],
+              [
+                5,
+                1
+              ],
+              [
+                5,
+                2
+              ]
+            ],
+            "direction": 0,
+            "food": [
+              2,
+              5
+            ],
+            "steps": 0,
+            "foods": 0,
+            "terminal": null
+          },
+          "candidates": [
+            {
+              "id": "safe",
+              "label": "A",
+              "logprob": -0.00038378025055862963,
+              "score": 0.999620015513228
+            },
+            {
+              "id": "collision",
+              "label": "B",
+              "logprob": -7.8753838539123535,
+              "score": 0.00037998448677216005
+            }
+          ],
+          "action": "safe",
+          "seconds": 0.049026528373360634,
+          "request_count": 1,
+          "input_tokens": 291,
+          "output_tokens": 0,
+          "cached_tokens": [
+            0
+          ],
+          "expected": "collision",
+          "correct": false
+        }
+      ]
+    }
+  },
+  "collision_confusion": [
+    {
+      "model": "Qwen3.5-4B",
+      "backend": "vllm",
+      "tn": 264,
+      "fn": 24,
+      "tp": 0,
+      "fp": 0
+    },
+    {
+      "model": "Qwen3.5-4B",
+      "backend": "transformers",
+      "tn": 264,
+      "fn": 24,
+      "tp": 0,
+      "fp": 0
+    },
+    {
+      "model": "Qwen3.5-4B",
+      "backend": "apc",
+      "tn": 264,
+      "fn": 24,
+      "tp": 0,
+      "fp": 0
+    },
+    {
+      "model": "Qwen3-VL-4B-Thinking",
+      "backend": "vllm",
+      "tn": 264,
+      "fn": 24,
+      "tp": 0,
+      "fp": 0
+    },
+    {
+      "model": "Qwen3-VL-4B-Thinking",
+      "backend": "transformers",
+      "tn": 264,
+      "fn": 24,
+      "tp": 0,
+      "fp": 0
+    },
+    {
+      "model": "Qwen3-VL-4B-Thinking",
+      "backend": "apc",
+      "tn": 264,
+      "fn": 24,
+      "tp": 0,
+      "fp": 0
+    },
+    {
+      "model": "Gemma4-E4B-it",
+      "backend": "vllm",
+      "tn": 264,
+      "fn": 24,
+      "tp": 0,
+      "fp": 0
+    },
+    {
+      "model": "Gemma4-E4B-it",
+      "backend": "transformers",
+      "tn": 264,
+      "fn": 24,
+      "tp": 0,
+      "fp": 0
+    },
+    {
+      "model": "Gemma4-E4B-it",
+      "backend": "apc",
+      "tn": 264,
+      "fn": 24,
+      "tp": 0,
+      "fp": 0
+    }
+  ]
+}

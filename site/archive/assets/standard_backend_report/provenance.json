@@ -1,0 +1,338 @@
+{
+  "historical_prompt_source_commit": "040593cdde98f3e9fa50b9aeb160e3638940074e",
+  "source_sha256": {
+    "docs/assets/standard_backend_report/historical-prompts.json": "82d595771fe2d88ada1ece4ac7469ee30b1bf1d73114735ec4a3ece05c6dfdce",
+    "outputs/standard-six-20261012T123333Z-cu132-seeds/acceptance.json": "6faa78700473009f3815f405f3c4276841d2b5e1a2dc79597817b1381572c052",
+    "outputs/standard-six-20261012T123333Z-cu132-seeds/comparison/comparison.csv": "6544ee5a75996ce1d0c6a2d8092d3096e20ce651778c7abe57dad20361214be2",
+    "outputs/standard-six-20261012T123333Z-cu132-seeds/comparison/comparison.json": "d56058ceed48315c710894959683cb34c3fe983cb4e25c934af1bcec85a9f493",
+    "outputs/standard-six-20261012T123333Z-cu132-seeds/comparison/report.md": "7a79ed4eddb023734514a001f010013227592b89bf92e5116b10e9b6db2fc86e",
+    "outputs/standard-six-20261012T123333Z-cu132-seeds/merged/gemma4-e4b/events.jsonl": "19fa253aec416369e1949668c32c44b2676a3fa650c1bcb9dbbccc608bd7e25e",
+    "outputs/standard-six-20261012T123333Z-cu132-seeds/merged/qwen35-4b/events.jsonl": "896db7013c855ab3a3078270bb38f0e1be0ee1ff23060328639a332b3e2c6b88",
+    "outputs/standard-six-20261012T123333Z-cu132-seeds/merged/qwen3vl-4b-thinking/events.jsonl": "a09e6dad4dd53ba07283dacfb7aab534310b079dea01a303efd8f332ed596243",
+    "outputs/standard-transformers-batched-20261012T140259Z/acceptance.json": "c8f09366a04791889cc8cac33abc2ae5d0d1b445304b0c1635f180213e7ebebf",
+    "outputs/standard-transformers-batched-20261012T140259Z/backend-comparison/comparison.csv": "d13486ff3380291b083d6c380c2c40c4f9d2755d506f1dcc0078d0a10e51a0a6",
+    "outputs/standard-transformers-batched-20261012T140259Z/backend-comparison/comparison.json": "fbf576d73d22cf89977e1f859faf9d7e524a6c5cb69987b49f00594b350f820a",
+    "outputs/standard-transformers-batched-20261012T140259Z/comparison/comparison.csv": "3ac4f77a3016da6bbdbd33a166950f0dbb35366ce96337e6bff50f437cbf4d93",
+    "outputs/standard-transformers-batched-20261012T140259Z/comparison/comparison.json": "532a7ea2c52afbfde983b1eaca091ee750bd6d91b8b4e28d1889a02df4dc93e1",
+    "outputs/standard-transformers-batched-20261012T140259Z/insights.json": "0ce6dd1f9a0d336ef33cb835a2c7a1def37d5b7e5a7be9eccb734724a10a1945",
+    "outputs/standard-transformers-batched-20261012T140259Z/merged/gemma4-e4b/events.jsonl": "db655bc04512bb2c9a265c427911368041dbcb25c9a21116bbc40e6473748ddf",
+    "outputs/standard-transformers-batched-20261012T140259Z/merged/qwen35-4b/events.jsonl": "ce31272efebc1e2892160f01323c18821e6e5b63e5a324ff112acdbcca2824ac",
+    "outputs/standard-transformers-batched-20261012T140259Z/merged/qwen3vl-4b-thinking/events.jsonl": "57a04524f1dce7a64afbfb24573095167b7dd2bc98f4a2ca388c9a4402a4cab9",
+    "outputs/standard-transformers-batched-20261012T140259Z/readout-failures.json": "910eae900420e9474c45b422d5185b3474db809d06206e101f28f81aa657087b",
+    "outputs/standard-vllm-default-apc-20261013T031635Z/acceptance.json": "9e1a1e1ef3234f73a3e3b4c03de8540c07b1816b400a9acf716c5fffb13bb041",
+    "outputs/standard-vllm-default-apc-20261013T031635Z/comparison/comparison.csv": "db67eacf2a7a877fe0299653869f396856a6273ff6f642f82256043fc0826616",
+    "outputs/standard-vllm-default-apc-20261013T031635Z/comparison/comparison.json": "22fce151326e639e806e66ec0796f14fe2fb5f530795272e7e66034e7be21109",
+    "outputs/standard-vllm-default-apc-20261013T031635Z/insights.json": "d558b5083e46686b009adb6da3d4f6c70ceb4e5c6bab2a9d468ab997aaf6be72",
+    "outputs/standard-vllm-default-apc-20261013T031635Z/merged/gemma4-e4b/events.jsonl": "33fd324530ed4bce52dcfb2a7937cffa0daa5bc9b1435c70b9696c1dc32d9215",
+    "outputs/standard-vllm-default-apc-20261013T031635Z/merged/qwen35-4b/events.jsonl": "ae4ec5439c3b4db93ceefe6bd07231ec6b5d98b4828644ac4a1ec8c32cbe3e60",
+    "outputs/standard-vllm-default-apc-20261013T031635Z/merged/qwen3vl-4b-thinking/events.jsonl": "cb4cf362132359c082e96faa3798d54bdb02bc89a09edaebb71a0380cc341c4c",
+    "outputs/standard-vllm-default-apc-20261013T031635Z/naive-drift-evidence.json": "9ffa216a687d86421c2b403042452c262f8d40a53a6978891154bf1021b84668",
+    "outputs/standard-vllm-default-apc-20261013T031635Z/readout-failures.json": "c137fb9cae7b88e00585d456c4a7a20e17cc39d7311c5ca4570858665dfedf20",
+    "outputs/standard-vllm-default-apc-20261013T031635Z/three-profile-comparison/comparison.csv": "3a03f0ae4d12d1d9b29cf42769b3327d9fb44bbc25ef3027b74c07c59a455830",
+    "outputs/standard-vllm-default-apc-20261013T031635Z/three-profile-comparison/comparison.json": "27fde36c7989ceccc227e566f160f980b40b652de174e2d2435f27d4f808818a"
+  },
+  "original_table_count": 17,
+  "formal_results": 248832,
+  "formal_plans": 144,
+  "profiles": {
+    "vllm": "vllm_eager",
+    "transformers": "transformers_batched",
+    "apc": "vllm_default_apc"
+  },
+  "acceptance": {
+    "vllm": {
+      "status": "passed",
+      "naive_input_audit": {
+        "qwen35-4b": {
+          "status": "passed",
+          "unique_candidate_inputs": 11904,
+          "repeated_inputs_compared": 16512,
+          "evidence_sha256": "202f429f9ef20d1be674c6a507b66864221f8b670a66692f7e265f5884fa6aac",
+          "note": "Reconstructed exact token IDs and image bytes; candidate batch positions may still differ."
+        },
+        "qwen3vl-4b-thinking": {
+          "status": "passed",
+          "unique_candidate_inputs": 11904,
+          "repeated_inputs_compared": 16512,
+          "evidence_sha256": "a2ec22f73f46a0e02b26d5a61163248c7d84f973ab65c96b5ac8f539c2e9bfd8",
+          "note": "Reconstructed exact token IDs and image bytes; candidate batch positions may still differ."
+        },
+        "gemma4-e4b": {
+          "status": "passed",
+          "unique_candidate_inputs": 11904,
+          "repeated_inputs_compared": 16512,
+          "evidence_sha256": "3575f7b563701699bd14f222d5546e5fdfecf41948f785bec0930c1b7fa713fb",
+          "note": "Reconstructed exact token IDs and image bytes; candidate batch positions may still differ."
+        }
+      },
+      "jobs": [
+        {
+          "shard": "qwen35-4b-s0",
+          "job_id": "job-4a8439bc-6309-4f73-bc27-92bc027eb069",
+          "platform_status": "job_succeeded",
+          "exit_code": 0,
+          "scores": 3456,
+          "plans": 2,
+          "runtime_seconds": 584.0
+        },
+        {
+          "shard": "qwen3vl-4b-thinking-s0",
+          "job_id": "job-66a5d397-bbb9-41b7-992e-cac1c08a9e91",
+          "platform_status": "job_succeeded",
+          "exit_code": 0,
+          "scores": 3456,
+          "plans": 2,
+          "runtime_seconds": 433.0
+        },
+        {
+          "shard": "gemma4-e4b-s0",
+          "job_id": "job-7ba98628-b2db-47a7-8cb6-cf8e8fcc901d",
+          "platform_status": "job_succeeded",
+          "exit_code": 0,
+          "scores": 3456,
+          "plans": 2,
+          "runtime_seconds": 599.0
+        },
+        {
+          "shard": "qwen35-4b-s1",
+          "job_id": "job-aa42ef6f-405e-4759-920d-be8ad5969f43",
+          "platform_status": "job_succeeded",
+          "exit_code": 0,
+          "scores": 3456,
+          "plans": 2,
+          "runtime_seconds": 601.0
+        },
+        {
+          "shard": "qwen3vl-4b-thinking-s1",
+          "job_id": "job-d4e3afe8-f04d-4305-ae57-ad44aadda50f",
+          "platform_status": "job_succeeded",
+          "exit_code": 0,
+          "scores": 3456,
+          "plans": 2,
+          "runtime_seconds": 428.0
+        },
+        {
+          "shard": "gemma4-e4b-s1",
+          "job_id": "job-cf39ab85-cd95-4638-9c70-869b1934bd23",
+          "platform_status": "job_succeeded",
+          "exit_code": 0,
+          "scores": 3456,
+          "plans": 2,
+          "runtime_seconds": 543.0
+        },
+        {
+          "shard": "qwen35-4b-s2",
+          "job_id": "job-46eadc6b-2c71-431a-a0a6-2aa305500714",
+          "platform_status": "job_succeeded",
+          "exit_code": 0,
+          "scores": 3456,
+          "plans": 2,
+          "runtime_seconds": 662.0
+        },
+        {
+          "shard": "qwen3vl-4b-thinking-s2",
+          "job_id": "job-a35ba153-2770-4284-87d9-28b0fdec7d87",
+          "platform_status": "job_succeeded",
+          "exit_code": 0,
+          "scores": 3456,
+          "plans": 2,
+          "runtime_seconds": 461.0
+        },
+        {
+          "shard": "gemma4-e4b-s2",
+          "job_id": "job-ebdc4ca7-8d0d-471e-baab-fae6ab11f9bb",
+          "platform_status": "job_succeeded",
+          "exit_code": 0,
+          "scores": 3456,
+          "plans": 2,
+          "runtime_seconds": 549.0
+        },
+        {
+          "shard": "qwen35-4b-s3",
+          "job_id": "job-5d3ea475-c303-4817-9ca9-15524e5eaff3",
+          "platform_status": "job_succeeded",
+          "exit_code": 0,
+          "scores": 3456,
+          "plans": 2,
+          "runtime_seconds": 655.0
+        },
+        {
+          "shard": "qwen3vl-4b-thinking-s3",
+          "job_id": "job-2222fd9e-766b-424b-a9f5-55125ba34fa0",
+          "platform_status": "job_succeeded",
+          "exit_code": 0,
+          "scores": 3456,
+          "plans": 2,
+          "runtime_seconds": 424.0
+        },
+        {
+          "shard": "gemma4-e4b-s3",
+          "job_id": "job-80ff42fa-1528-49fc-bf89-786814c41f07",
+          "platform_status": "job_succeeded",
+          "exit_code": 0,
+          "scores": 3456,
+          "plans": 2,
+          "runtime_seconds": 531.0
+        },
+        {
+          "shard": "qwen35-4b-s4",
+          "job_id": "job-dc2aa3ce-ab9c-496a-9822-64448b4378fd",
+          "platform_status": "job_succeeded",
+          "exit_code": 0,
+          "scores": 3456,
+          "plans": 2,
+          "runtime_seconds": 596.0
+        },
+        {
+          "shard": "qwen3vl-4b-thinking-s4",
+          "job_id": "job-17a13ee5-eb91-4c2f-a6af-b92c08924420",
+          "platform_status": "job_succeeded",
+          "exit_code": 0,
+          "scores": 3456,
+          "plans": 2,
+          "runtime_seconds": 414.0
+        },
+        {
+          "shard": "gemma4-e4b-s4",
+          "job_id": "job-c69a254b-b53f-4679-a44b-aebd854016d4",
+          "platform_status": "job_succeeded",
+          "exit_code": 0,
+          "scores": 3456,
+          "plans": 2,
+          "runtime_seconds": 577.0
+        },
+        {
+          "shard": "qwen35-4b-s5",
+          "job_id": "job-297fbf7b-6b15-47cf-a48a-03cfe82064a2",
+          "platform_status": "job_succeeded",
+          "exit_code": 0,
+          "scores": 3456,
+          "plans": 2,
+          "runtime_seconds": 589.0
+        },
+        {
+          "shard": "qwen3vl-4b-thinking-s5",
+          "job_id": "job-7cf5c0c7-5af7-479f-a2b8-69de5de5784d",
+          "platform_status": "job_succeeded",
+          "exit_code": 0,
+          "scores": 3456,
+          "plans": 2,
+          "runtime_seconds": 433.0
+        },
+        {
+          "shard": "gemma4-e4b-s5",
+          "job_id": "job-ec709cd4-9e4e-4878-b670-5e3958eac64a",
+          "platform_status": "job_succeeded",
+          "exit_code": 0,
+          "scores": 3456,
+          "plans": 2,
+          "runtime_seconds": 532.0
+        },
+        {
+          "shard": "qwen35-4b-s6",
+          "job_id": "job-a8733b51-fcd5-4ae0-8e20-68cda4332a42",
+          "platform_status": "job_succeeded",
+          "exit_code": 0,
+          "scores": 3456,
+          "plans": 2,
+          "runtime_seconds": 586.0
+        },
+        {
+          "shard": "qwen3vl-4b-thinking-s6",
+          "job_id": "job-5eca0d08-9aac-4ff7-8168-6be28fe0ee56",
+          "platform_status": "job_succeeded",
+          "exit_code": 0,
+          "scores": 3456,
+          "plans": 2,
+          "runtime_seconds": 406.0
+        },
+        {
+          "shard": "gemma4-e4b-s6",
+          "job_id": "job-12002569-5ea6-4b54-9147-73a0c6fd6571",
+          "platform_status": "job_succeeded",
+          "exit_code": 0,
+          "scores": 3456,
+          "plans": 2,
+          "runtime_seconds": 504.0
+        },
+        {
+          "shard": "qwen35-4b-s7",
+          "job_id": "job-9dcf6957-d6bd-4472-ada2-a8bcc9bc937b",
+          "platform_status": "job_succeeded",
+          "exit_code": 0,
+          "scores": 3456,
+          "plans": 2,
+          "runtime_seconds": 597.0
+        },
+        {
+          "shard": "qwen3vl-4b-thinking-s7",
+          "job_id": "job-00f495a9-c078-4220-b7bb-e35aa0bd67f7",
+          "platform_status": "job_succeeded",
+          "exit_code": 0,
+          "scores": 3456,
+          "plans": 2,
+          "runtime_seconds": 404.0
+        },
+        {
+          "shard": "gemma4-e4b-s7",
+          "job_id": "job-168b416a-e5cb-4a05-b9d7-586c16fbfafc",
+          "platform_status": "job_succeeded",
+          "exit_code": 0,
+          "scores": 3456,
+          "plans": 2,
+          "runtime_seconds": 512.0
+        }
+      ],
+      "success": 82944,
+      "plans": 48,
+      "platform_gpu_hours": 3.5055555555555555,
+      "member_balance": "669.16",
+      "resources_released": true,
+      "snapshot_hashes_match": true,
+      "excluded_previous_attempts": [
+        "standard-six-20261012T123333Z",
+        "standard-six-20261012T123333Z-cu132-r1"
+      ],
+      "comparison": "comparison/report.md",
+      "artifact_sha256": {
+        "comparison/comparison.csv": "6544ee5a75996ce1d0c6a2d8092d3096e20ce651778c7abe57dad20361214be2",
+        "comparison/report.md": "38393bf9604c8c6ec466fb48cb0d28b3baaef2261175213fbfa2b8e8e97cd4d5",
+        "comparison/naive-drift-cases.json": "9835ba574d9c6706116c16a5aab16bcd07d22bf6a6ed8d4961941660138eb3b2",
+        "comparison/comparison.json": "d56058ceed48315c710894959683cb34c3fe983cb4e25c934af1bcec85a9f493"
+      },
+      "formal_scoring_requests": 198144
+    },
+    "transformers": {
+      "status": "complete",
+      "jobs": 24,
+      "formal_scores": 82944,
+      "plans": 48,
+      "paired_diagnostic_scores": 576,
+      "platform_gpu_hours": 6.473611111111112,
+      "estimated_running_units": 6.473611111111112,
+      "snapshots_verified": true,
+      "naive_inputs_verified": true,
+      "resources_released": true
+    },
+    "apc": {
+      "status": "complete",
+      "successful_jobs": 24,
+      "attempts": 25,
+      "targeted_repairs": 1,
+      "formal_scores": 82944,
+      "plans": 48,
+      "paired_diagnostic_scores": 576,
+      "platform_gpu_hours": 3.6158333333333332,
+      "successful_gpu_hours": 3.4697222222222224,
+      "snapshots_verified": true,
+      "naive_inputs_verified": true,
+      "resources_released": true
+    }
+  },
+  "case_image_hashes": {
+    "open-00-r0": "0cc85b89128e7b4e9cab91abeabb6d58d30beb9d7fa33076c913896a5b3d5341",
+    "wall-04-r0": "764b0b76ceb1d4dfeecd73834c79c417cabea82edac96832413abc6295d59576",
+    "body_tail-09-r1": "fbb3ef9a2d40c3bc8d9ed2f5138716d7626132ccaf256ee4afde1b6519e8ef67"
+  },
+  "script_sha256": "495447430366938bda89dc6e4bf22857f205e10c5d00143d08e320f6a1582070"
+}

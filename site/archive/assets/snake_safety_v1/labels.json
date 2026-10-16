@@ -1,0 +1,10792 @@
+[
+  {
+    "case_id": "safety-000",
+    "family_id": "family-000",
+    "split": "dev",
+    "pair_id": "family-000",
+    "pair_kind": "tail",
+    "safe_count": 1,
+    "safe_actions": [
+      "left"
+    ],
+    "state": {
+      "body": [
+        [
+          9,
+          3
+        ],
+        [
+          8,
+          3
+        ],
+        [
+          8,
+          4
+        ],
+        [
+          9,
+          4
+        ],
+        [
+          9,
+          5
+        ],
+        [
+          8,
+          5
+        ]
+      ],
+      "direction": 1,
+      "food": [
+        9,
+        2
+      ]
+    },
+    "observation_hash": "a3f2ee074e4f386f079fb05999fc9d55019f53b4b90280bdb15bd817c726f5f5",
+    "answers": {
+      "heading": "right",
+      "food_x": "aligned",
+      "food_y": "up",
+      "turn_left": "up",
+      "collision_left": "safe",
+      "turn_straight": "right",
+      "collision_straight": "collision",
+      "turn_right": "down",
+      "collision_right": "collision",
+      "target_left": "food",
+      "target_straight": "outside",
+      "target_right": "body",
+      "survival": "available"
+    }
+  },
+  {
+    "case_id": "safety-001",
+    "family_id": "family-000",
+    "split": "dev",
+    "pair_id": "family-000",
+    "pair_kind": "tail",
+    "safe_count": 2,
+    "safe_actions": [
+      "left",
+      "right"
+    ],
+    "state": {
+      "body": [
+        [
+          9,
+          3
+        ],
+        [
+          8,
+          3
+        ],
+        [
+          8,
+          4
+        ],
+        [
+          8,
+          5
+        ],
+        [
+          9,
+          5
+        ],
+        [
+          9,
+          4
+        ]
+      ],
+      "direction": 1,
+      "food": [
+        9,
+        2
+      ]
+    },
+    "observation_hash": "c8bf632404c84903ac67971e882dbf82d01f6d05563eae5e65226d0c585aaad4",
+    "answers": {
+      "heading": "right",
+      "food_x": "aligned",
+      "food_y": "up",
+      "turn_left": "up",
+      "collision_left": "safe",
+      "turn_straight": "right",
+      "collision_straight": "collision",
+      "turn_right": "down",
+      "collision_right": "safe",
+      "target_left": "food",
+      "target_straight": "outside",
+      "target_right": "tail",
+      "survival": "available"
+    }
+  },
+  {
+    "case_id": "safety-002",
+    "family_id": "family-001",
+    "split": "dev",
+    "pair_id": "family-001",
+    "pair_kind": "obstacle",
+    "safe_count": 2,
+    "safe_actions": [
+      "straight",
+      "right"
+    ],
+    "state": {
+      "body": [
+        [
+          6,
+          2
+        ],
+        [
+          6,
+          1
+        ],
+        [
+          5,
+          1
+        ],
+        [
+          5,
+          0
+        ],
+        [
+          6,
+          0
+        ],
+        [
+          7,
+          0
+        ],
+        [
+          8,
+          0
+        ],
+        [
+          9,
+          0
+        ],
+        [
+          9,
+          1
+        ],
+        [
+          8,
+          1
+        ],
+        [
+          8,
+          2
+        ],
+        [
+          7,
+          2
+        ],
+        [
+          7,
+          1
+        ]
+      ],
+      "direction": 2,
+      "food": [
+        3,
+        9
+      ]
+    },
+    "observation_hash": "7847c94b9a9b6e4c49b86f1791151c0d9ac0dcf7b0fe6f76c24b07b5817d6de4",
+    "answers": {
+      "heading": "down",
+      "food_x": "left",
+      "food_y": "down",
+      "turn_left": "right",
+      "collision_left": "collision",
+      "turn_straight": "down",
+      "collision_straight": "safe",
+      "turn_right": "left",
+      "collision_right": "safe",
+      "target_left": "body",
+      "target_straight": "empty",
+      "target_right": "empty",
+      "survival": "available"
+    }
+  },
+  {
+    "case_id": "safety-003",
+    "family_id": "family-001",
+    "split": "dev",
+    "pair_id": "family-001",
+    "pair_kind": "obstacle",
+    "safe_count": 3,
+    "safe_actions": [
+      "left",
+      "straight",
+      "right"
+    ],
+    "state": {
+      "body": [
+        [
+          6,
+          2
+        ],
+        [
+          6,
+          1
+        ],
+        [
+          5,
+          1
+        ],
+        [
+          5,
+          0
+        ],
+        [
+          6,
+          0
+        ],
+        [
+          7,
+          0
+        ],
+        [
+          8,
+          0
+        ],
+        [
+          9,
+          0
+        ],
+        [
+          9,
+          1
+        ],
+        [
+          8,
+          1
+        ],
+        [
+          8,
+          2
+        ],
+        [
+          7,
+          2
+        ]
+      ],
+      "direction": 2,
+      "food": [
+        3,
+        9
+      ]
+    },
+    "observation_hash": "ddc84933aca36585369c6c85784569dd74d7b09d459c4ca2f78021fdb3c24e7e",
+    "answers": {
+      "heading": "down",
+      "food_x": "left",
+      "food_y": "down",
+      "turn_left": "right",
+      "collision_left": "safe",
+      "turn_straight": "down",
+      "collision_straight": "safe",
+      "turn_right": "left",
+      "collision_right": "safe",
+      "target_left": "tail",
+      "target_straight": "empty",
+      "target_right": "empty",
+      "survival": "available"
+    }
+  },
+  {
+    "case_id": "safety-004",
+    "family_id": "family-002",
+    "split": "dev",
+    "pair_id": "family-002",
+    "pair_kind": "food",
+    "safe_count": 3,
+    "safe_actions": [
+      "left",
+      "straight",
+      "right"
+    ],
+    "state": {
+      "body": [
+        [
+          5,
+          1
+        ],
+        [
+          5,
+          2
+        ],
+        [
+          5,
+          3
+        ],
+        [
+          6,
+          3
+        ],
+        [
+          6,
+          2
+        ],
+        [
+          7,
+          2
+        ],
+        [
+          7,
+          1
+        ],
+        [
+          7,
+          0
+        ],
+        [
+          6,
+          0
+        ],
+        [
+          6,
+          1
+        ]
+      ],
+      "direction": 0,
+      "food": [
+        4,
+        1
+      ]
+    },
+    "observation_hash": "3261ceef712270554d6260a5ea346dbecd779123352e168c96442820fe41249f",
+    "answers": {
+      "heading": "up",
+      "food_x": "left",
+      "food_y": "aligned",
+      "turn_left": "left",
+      "collision_left": "safe",
+      "turn_straight": "up",
+      "collision_straight": "safe",
+      "turn_right": "right",
+      "collision_right": "safe",
+      "target_left": "food",
+      "target_straight": "empty",
+      "target_right": "tail",
+      "survival": "available"
+    }
+  },
+  {
+    "case_id": "safety-005",
+    "family_id": "family-002",
+    "split": "dev",
+    "pair_id": "family-002",
+    "pair_kind": "food",
+    "safe_count": 3,
+    "safe_actions": [
+      "left",
+      "straight",
+      "right"
+    ],
+    "state": {
+      "body": [
+        [
+          5,
+          1
+        ],
+        [
+          5,
+          2
+        ],
+        [
+          5,
+          3
+        ],
+        [
+          6,
+          3
+        ],
+        [
+          6,
+          2
+        ],
+        [
+          7,
+          2
+        ],
+        [
+          7,
+          1
+        ],
+        [
+          7,
+          0
+        ],
+        [
+          6,
+          0
+        ],
+        [
+          6,
+          1
+        ]
+      ],
+      "direction": 0,
+      "food": [
+        8,
+        9
+      ]
+    },
+    "observation_hash": "f3b756014f59406524ec300c778d5318e5be73654f7a36f263ec9788b518084a",
+    "answers": {
+      "heading": "up",
+      "food_x": "right",
+      "food_y": "down",
+      "turn_left": "left",
+      "collision_left": "safe",
+      "turn_straight": "up",
+      "collision_straight": "safe",
+      "turn_right": "right",
+      "collision_right": "safe",
+      "target_left": "empty",
+      "target_straight": "empty",
+      "target_right": "tail",
+      "survival": "available"
+    }
+  },
+  {
+    "case_id": "safety-006",
+    "family_id": "family-003",
+    "split": "dev",
+    "pair_id": null,
+    "pair_kind": null,
+    "safe_count": 3,
+    "safe_actions": [
+      "left",
+      "straight",
+      "right"
+    ],
+    "state": {
+      "body": [
+        [
+          2,
+          3
+        ],
+        [
+          3,
+          3
+        ],
+        [
+          4,
+          3
+        ],
+        [
+          4,
+          4
+        ],
+        [
+          5,
+          4
+        ],
+        [
+          6,
+          4
+        ],
+        [
+          7,
+          4
+        ],
+        [
+          7,
+          3
+        ],
+        [
+          7,
+          2
+        ],
+        [
+          6,
+          2
+        ]
+      ],
+      "direction": 3,
+      "food": [
+        2,
+        4
+      ]
+    },
+    "observation_hash": "1b79a6928a5a8c4cf21460fb20f1cb3c287d0a68495f02e61c1abfe931dfab99",
+    "answers": {
+      "heading": "left",
+      "food_x": "aligned",
+      "food_y": "down",
+      "turn_left": "down",
+      "collision_left": "safe",
+      "turn_straight": "left",
+      "collision_straight": "safe",
+      "turn_right": "up",
+      "collision_right": "safe",
+      "target_left": "food",
+      "target_straight": "empty",
+      "target_right": "empty",
+      "survival": "available"
+    }
+  },
+  {
+    "case_id": "safety-007",
+    "family_id": "family-004",
+    "split": "dev",
+    "pair_id": null,
+    "pair_kind": null,
+    "safe_count": 1,
+    "safe_actions": [
+      "straight"
+    ],
+    "state": {
+      "body": [
+        [
+          3,
+          0
+        ],
+        [
+          4,
+          0
+        ],
+        [
+          5,
+          0
+        ],
+        [
+          5,
+          1
+        ],
+        [
+          4,
+          1
+        ],
+        [
+          4,
+          2
+        ],
+        [
+          3,
+          2
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          2,
+          1
+        ]
+      ],
+      "direction": 3,
+      "food": [
+        1,
+        4
+      ]
+    },
+    "observation_hash": "085e271a9d7d694ffb9ace219be262c62d9c1bfb8af9cb3b50a7145618422e85",
+    "answers": {
+      "heading": "left",
+      "food_x": "left",
+      "food_y": "down",
+      "turn_left": "down",
+      "collision_left": "collision",
+      "turn_straight": "left",
+      "collision_straight": "safe",
+      "turn_right": "up",
+      "collision_right": "collision",
+      "target_left": "body",
+      "target_straight": "empty",
+      "target_right": "outside",
+      "survival": "available"
+    }
+  },
+  {
+    "case_id": "safety-008",
+    "family_id": "family-005",
+    "split": "dev",
+    "pair_id": null,
+    "pair_kind": null,
+    "safe_count": 0,
+    "safe_actions": [],
+    "state": {
+      "body": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          0,
+          3
+        ],
+        [
+          0,
+          4
+        ],
+        [
+          0,
+          5
+        ],
+        [
+          1,
+          5
+        ],
+        [
+          1,
+          4
+        ],
+        [
+          1,
+          3
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          3,
+          3
+        ],
+        [
+          3,
+          2
+        ],
+        [
+          2,
+          2
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          3,
+          0
+        ],
+        [
+          4,
+          0
+        ],
+        [
+          5,
+          0
+        ],
+        [
+          5,
+          1
+        ],
+        [
+          5,
+          2
+        ],
+        [
+          5,
+          3
+        ],
+        [
+          4,
+          3
+        ],
+        [
+          4,
+          4
+        ],
+        [
+          4,
+          5
+        ],
+        [
+          3,
+          5
+        ],
+        [
+          3,
+          6
+        ]
+      ],
+      "direction": 3,
+      "food": [
+        9,
+        2
+      ]
+    },
+    "observation_hash": "3fa63b8f98b3cad6396cd69512ad37c6426bbf066d0c911d453072eadccc5c7b",
+    "answers": {
+      "heading": "left",
+      "food_x": "right",
+      "food_y": "down",
+      "turn_left": "down",
+      "collision_left": "collision",
+      "turn_straight": "left",
+      "collision_straight": "collision",
+      "turn_right": "up",
+      "collision_right": "collision",
+      "target_left": "body",
+      "target_straight": "outside",
+      "target_right": "outside",
+      "survival": "trapped"
+    }
+  },
+  {
+    "case_id": "safety-009",
+    "family_id": "family-006",
+    "split": "dev",
+    "pair_id": null,
+    "pair_kind": null,
+    "safe_count": 2,
+    "safe_actions": [
+      "left",
+      "right"
+    ],
+    "state": {
+      "body": [
+        [
+          9,
+          8
+        ],
+        [
+          8,
+          8
+        ],
+        [
+          8,
+          7
+        ],
+        [
+          7,
+          7
+        ],
+        [
+          7,
+          8
+        ],
+        [
+          6,
+          8
+        ],
+        [
+          6,
+          7
+        ],
+        [
+          6,
+          6
+        ],
+        [
+          6,
+          5
+        ],
+        [
+          7,
+          5
+        ],
+        [
+          8,
+          5
+        ],
+        [
+          8,
+          6
+        ],
+        [
+          9,
+          6
+        ],
+        [
+          9,
+          5
+        ],
+        [
+          9,
+          4
+        ],
+        [
+          8,
+          4
+        ],
+        [
+          8,
+          3
+        ],
+        [
+          9,
+          3
+        ],
+        [
+          9,
+          2
+        ],
+        [
+          9,
+          1
+        ],
+        [
+          9,
+          0
+        ],
+        [
+          8,
+          0
+        ],
+        [
+          7,
+          0
+        ],
+        [
+          6,
+          0
+        ],
+        [
+          6,
+          1
+        ],
+        [
+          6,
+          2
+        ],
+        [
+          7,
+          2
+        ]
+      ],
+      "direction": 1,
+      "food": [
+        9,
+        7
+      ]
+    },
+    "observation_hash": "7f4856fcbfba0737329990484a30fd7664d747474bf77ab86ab183a7405a9d39",
+    "answers": {
+      "heading": "right",
+      "food_x": "aligned",
+      "food_y": "up",
+      "turn_left": "up",
+      "collision_left": "safe",
+      "turn_straight": "right",
+      "collision_straight": "collision",
+      "turn_right": "down",
+      "collision_right": "safe",
+      "target_left": "food",
+      "target_straight": "outside",
+      "target_right": "empty",
+      "survival": "available"
+    }
+  },
+  {
+    "case_id": "safety-010",
+    "family_id": "family-007",
+    "split": "dev",
+    "pair_id": null,
+    "pair_kind": null,
+    "safe_count": 3,
+    "safe_actions": [
+      "left",
+      "straight",
+      "right"
+    ],
+    "state": {
+      "body": [
+        [
+          1,
+          7
+        ],
+        [
+          1,
+          6
+        ],
+        [
+          2,
+          6
+        ],
+        [
+          2,
+          5
+        ],
+        [
+          3,
+          5
+        ],
+        [
+          3,
+          6
+        ],
+        [
+          3,
+          7
+        ]
+      ],
+      "direction": 2,
+      "food": [
+        9,
+        2
+      ]
+    },
+    "observation_hash": "90888ce1c363cc33670187e8f70e850f9062da5a826124424e85a0f6f3f89c8c",
+    "answers": {
+      "heading": "down",
+      "food_x": "right",
+      "food_y": "up",
+      "turn_left": "right",
+      "collision_left": "safe",
+      "turn_straight": "down",
+      "collision_straight": "safe",
+      "turn_right": "left",
+      "collision_right": "safe",
+      "target_left": "empty",
+      "target_straight": "empty",
+      "target_right": "empty",
+      "survival": "available"
+    }
+  },
+  {
+    "case_id": "safety-011",
+    "family_id": "family-008",
+    "split": "dev",
+    "pair_id": null,
+    "pair_kind": null,
+    "safe_count": 2,
+    "safe_actions": [
+      "straight",
+      "right"
+    ],
+    "state": {
+      "body": [
+        [
+          4,
+          2
+        ],
+        [
+          4,
+          3
+        ],
+        [
+          4,
+          4
+        ],
+        [
+          3,
+          4
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          3,
+          3
+        ],
+        [
+          3,
+          2
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          2
+        ]
+      ],
+      "direction": 0,
+      "food": [
+        5,
+        2
+      ]
+    },
+    "observation_hash": "c9196ad172d847b4962f27f716189646d71f044dd2490964988edf16d12050eb",
+    "answers": {
+      "heading": "up",
+      "food_x": "right",
+      "food_y": "aligned",
+      "turn_left": "left",
+      "collision_left": "collision",
+      "turn_straight": "up",
+      "collision_straight": "safe",
+      "turn_right": "right",
+      "collision_right": "safe",
+      "target_left": "body",
+      "target_straight": "empty",
+      "target_right": "food",
+      "survival": "available"
+    }
+  },
+  {
+    "case_id": "safety-012",
+    "family_id": "family-009",
+    "split": "dev",
+    "pair_id": null,
+    "pair_kind": null,
+    "safe_count": 2,
+    "safe_actions": [
+      "straight",
+      "right"
+    ],
+    "state": {
+      "body": [
+        [
+          7,
+          0
+        ],
+        [
+          6,
+          0
+        ],
+        [
+          6,
+          1
+        ],
+        [
+          6,
+          2
+        ],
+        [
+          7,
+          2
+        ],
+        [
+          8,
+          2
+        ],
+        [
+          9,
+          2
+        ],
+        [
+          9,
+          3
+        ],
+        [
+          8,
+          3
+        ],
+        [
+          8,
+          4
+        ],
+        [
+          7,
+          4
+        ],
+        [
+          6,
+          4
+        ],
+        [
+          5,
+          4
+        ],
+        [
+          5,
+          3
+        ],
+        [
+          4,
+          3
+        ],
+        [
+          3,
+          3
+        ],
+        [
+          3,
+          4
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          1,
+          4
+        ],
+        [
+          1,
+          3
+        ],
+        [
+          0,
+          3
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          2,
+          0
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          2,
+          2
+        ]
+      ],
+      "direction": 1,
+      "food": [
+        8,
+        0
+      ]
+    },
+    "observation_hash": "bf704c9639079da35fd6e6cc18292cb4b2a97d160f37c544b47b429a2a7213be",
+    "answers": {
+      "heading": "right",
+      "food_x": "right",
+      "food_y": "aligned",
+      "turn_left": "up",
+      "collision_left": "collision",
+      "turn_straight": "right",
+      "collision_straight": "safe",
+      "turn_right": "down",
+      "collision_right": "safe",
+      "target_left": "outside",
+      "target_straight": "food",
+      "target_right": "empty",
+      "survival": "available"
+    }
+  },
+  {
+    "case_id": "safety-013",
+    "family_id": "family-010",
+    "split": "dev",
+    "pair_id": null,
+    "pair_kind": null,
+    "safe_count": 3,
+    "safe_actions": [
+      "left",
+      "straight",
+      "right"
+    ],
+    "state": {
+      "body": [
+        [
+          5,
+          4
+        ],
+        [
+          6,
+          4
+        ],
+        [
+          7,
+          4
+        ],
+        [
+          8,
+          4
+        ],
+        [
+          9,
+          4
+        ],
+        [
+          9,
+          5
+        ],
+        [
+          8,
+          5
+        ]
+      ],
+      "direction": 3,
+      "food": [
+        5,
+        5
+      ]
+    },
+    "observation_hash": "548cb2a02a6b06e98ff21980ee2a45dc1af08ec95b6374dcba6d5f6389ef6709",
+    "answers": {
+      "heading": "left",
+      "food_x": "aligned",
+      "food_y": "down",
+      "turn_left": "down",
+      "collision_left": "safe",
+      "turn_straight": "left",
+      "collision_straight": "safe",
+      "turn_right": "up",
+      "collision_right": "safe",
+      "target_left": "food",
+      "target_straight": "empty",
+      "target_right": "empty",
+      "survival": "available"
+    }
+  },
+  {
+    "case_id": "safety-014",
+    "family_id": "family-011",
+    "split": "dev",
+    "pair_id": null,
+    "pair_kind": null,
+    "safe_count": 2,
+    "safe_actions": [
+      "left",
+      "straight"
+    ],
+    "state": {
+      "body": [
+        [
+          3,
+          1
+        ],
+        [
+          3,
+          0
+        ],
+        [
+          2,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          2,
+          2
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          3,
+          3
+        ],
+        [
+          3,
+          4
+        ],
+        [
+          3,
+          5
+        ],
+        [
+          3,
+          6
+        ],
+        [
+          2,
+          6
+        ]
+      ],
+      "direction": 2,
+      "food": [
+        8,
+        5
+      ]
+    },
+    "observation_hash": "763e048e5e588a4e51c5a5dfcd038503b6561de39a911e679d6cf9b02e239bb3",
+    "answers": {
+      "heading": "down",
+      "food_x": "right",
+      "food_y": "down",
+      "turn_left": "right",
+      "collision_left": "safe",
+      "turn_straight": "down",
+      "collision_straight": "safe",
+      "turn_right": "left",
+      "collision_right": "collision",
+      "target_left": "empty",
+      "target_straight": "empty",
+      "target_right": "body",
+      "survival": "available"
+    }
+  },
+  {
+    "case_id": "safety-015",
+    "family_id": "family-012",
+    "split": "dev",
+    "pair_id": null,
+    "pair_kind": null,
+    "safe_count": 3,
+    "safe_actions": [
+      "left",
+      "straight",
+      "right"
+    ],
+    "state": {
+      "body": [
+        [
+          3,
+          7
+        ],
+        [
+          3,
+          8
+        ],
+        [
+          4,
+          8
+        ],
+        [
+          4,
+          7
+        ]
+      ],
+      "direction": 0,
+      "food": [
+        2,
+        7
+      ]
+    },
+    "observation_hash": "ce63741b733eaed733be9338ac02ca17f6ca8f339de7ccef3407ce4b8fcc2643",
+    "answers": {
+      "heading": "up",
+      "food_x": "left",
+      "food_y": "aligned",
+      "turn_left": "left",
+      "collision_left": "safe",
+      "turn_straight": "up",
+      "collision_straight": "safe",
+      "turn_right": "right",
+      "collision_right": "safe",
+      "target_left": "food",
+      "target_straight": "empty",
+      "target_right": "tail",
+      "survival": "available"
+    }
+  },
+  {
+    "case_id": "safety-016",
+    "family_id": "family-013",
+    "split": "dev",
+    "pair_id": null,
+    "pair_kind": null,
+    "safe_count": 3,
+    "safe_actions": [
+      "left",
+      "straight",
+      "right"
+    ],
+    "state": {
+      "body": [
+        [
+          3,
+          4
+        ],
+        [
+          4,
+          4
+        ],
+        [
+          4,
+          5
+        ],
+        [
+          4,
+          6
+        ],
+        [
+          5,
+          6
+        ],
+        [
+          6,
+          6
+        ],
+        [
+          6,
+          5
+        ],
+        [
+          5,
+          5
+        ],
+        [
+          5,
+          4
+        ],
+        [
+          5,
+          3
+        ],
+        [
+          5,
+          2
+        ],
+        [
+          5,
+          1
+        ],
+        [
+          4,
+          1
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          1,
+          3
+        ]
+      ],
+      "direction": 3,
+      "food": [
+        0,
+        4
+      ]
+    },
+    "observation_hash": "a9cc2f62a5ca9ff3c07e4b7070dd9b8cacd6a3fe5817bef374e25966ff32dee6",
+    "answers": {
+      "heading": "left",
+      "food_x": "left",
+      "food_y": "aligned",
+      "turn_left": "down",
+      "collision_left": "safe",
+      "turn_straight": "left",
+      "collision_straight": "safe",
+      "turn_right": "up",
+      "collision_right": "safe",
+      "target_left": "empty",
+      "target_straight": "empty",
+      "target_right": "empty",
+      "survival": "available"
+    }
+  },
+  {
+    "case_id": "safety-017",
+    "family_id": "family-014",
+    "split": "dev",
+    "pair_id": null,
+    "pair_kind": null,
+    "safe_count": 0,
+    "safe_actions": [],
+    "state": {
+      "body": [
+        [
+          9,
+          8
+        ],
+        [
+          9,
+          9
+        ],
+        [
+          8,
+          9
+        ],
+        [
+          8,
+          8
+        ],
+        [
+          8,
+          7
+        ],
+        [
+          9,
+          7
+        ],
+        [
+          9,
+          6
+        ],
+        [
+          8,
+          6
+        ],
+        [
+          7,
+          6
+        ],
+        [
+          6,
+          6
+        ],
+        [
+          6,
+          7
+        ],
+        [
+          7,
+          7
+        ],
+        [
+          7,
+          8
+        ],
+        [
+          7,
+          9
+        ],
+        [
+          6,
+          9
+        ],
+        [
+          5,
+          9
+        ],
+        [
+          5,
+          8
+        ],
+        [
+          6,
+          8
+        ]
+      ],
+      "direction": 0,
+      "food": [
+        8,
+        2
+      ]
+    },
+    "observation_hash": "13490cad912fa7fc1f128f9ce6f53c676f7334d686ea8a102d142974a07d214a",
+    "answers": {
+      "heading": "up",
+      "food_x": "left",
+      "food_y": "up",
+      "turn_left": "left",
+      "collision_left": "collision",
+      "turn_straight": "up",
+      "collision_straight": "collision",
+      "turn_right": "right",
+      "collision_right": "collision",
+      "target_left": "body",
+      "target_straight": "body",
+      "target_right": "outside",
+      "survival": "trapped"
+    }
+  },
+  {
+    "case_id": "safety-018",
+    "family_id": "family-015",
+    "split": "dev",
+    "pair_id": null,
+    "pair_kind": null,
+    "safe_count": 3,
+    "safe_actions": [
+      "left",
+      "straight",
+      "right"
+    ],
+    "state": {
+      "body": [
+        [
+          4,
+          3
+        ],
+        [
+          4,
+          2
+        ],
+        [
+          5,
+          2
+        ],
+        [
+          6,
+          2
+        ],
+        [
+          7,
+          2
+        ],
+        [
+          7,
+          1
+        ],
+        [
+          7,
+          0
+        ],
+        [
+          8,
+          0
+        ],
+        [
+          8,
+          1
+        ],
+        [
+          8,
+          2
+        ],
+        [
+          9,
+          2
+        ],
+        [
+          9,
+          1
+        ],
+        [
+          9,
+          0
+        ]
+      ],
+      "direction": 2,
+      "food": [
+        5,
+        3
+      ]
+    },
+    "observation_hash": "9957d0f7944ae6d71a69b1ad420aa6b3ba564f0d9c79bbe3ef59fc4faf79e4ec",
+    "answers": {
+      "heading": "down",
+      "food_x": "right",
+      "food_y": "aligned",
+      "turn_left": "right",
+      "collision_left": "safe",
+      "turn_straight": "down",
+      "collision_straight": "safe",
+      "turn_right": "left",
+      "collision_right": "safe",
+      "target_left": "food",
+      "target_straight": "empty",
+      "target_right": "empty",
+      "survival": "available"
+    }
+  },
+  {
+    "case_id": "safety-019",
+    "family_id": "family-016",
+    "split": "dev",
+    "pair_id": null,
+    "pair_kind": null,
+    "safe_count": 2,
+    "safe_actions": [
+      "left",
+      "right"
+    ],
+    "state": {
+      "body": [
+        [
+          9,
+          5
+        ],
+        [
+          8,
+          5
+        ],
+        [
+          7,
+          5
+        ],
+        [
+          7,
+          4
+        ],
+        [
+          6,
+          4
+        ],
+        [
+          5,
+          4
+        ],
+        [
+          5,
+          5
+        ],
+        [
+          5,
+          6
+        ],
+        [
+          6,
+          6
+        ]
+      ],
+      "direction": 1,
+      "food": [
+        1,
+        0
+      ]
+    },
+    "observation_hash": "618e394d0c326f8dc1c7cd9f754cd0d5be6d9c359794835f068bf9544e14aad8",
+    "answers": {
+      "heading": "right",
+      "food_x": "left",
+      "food_y": "up",
+      "turn_left": "up",
+      "collision_left": "safe",
+      "turn_straight": "right",
+      "collision_straight": "collision",
+      "turn_right": "down",
+      "collision_right": "safe",
+      "target_left": "empty",
+      "target_straight": "outside",
+      "target_right": "empty",
+      "survival": "available"
+    }
+  },
+  {
+    "case_id": "safety-020",
+    "family_id": "family-017",
+    "split": "dev",
+    "pair_id": null,
+    "pair_kind": null,
+    "safe_count": 2,
+    "safe_actions": [
+      "left",
+      "straight"
+    ],
+    "state": {
+      "body": [
+        [
+          7,
+          8
+        ],
+        [
+          7,
+          9
+        ],
+        [
+          8,
+          9
+        ],
+        [
+          8,
+          8
+        ],
+        [
+          8,
+          7
+        ],
+        [
+          8,
+          6
+        ],
+        [
+          9,
+          6
+        ],
+        [
+          9,
+          5
+        ],
+        [
+          8,
+          5
+        ],
+        [
+          7,
+          5
+        ],
+        [
+          7,
+          6
+        ],
+        [
+          7,
+          7
+        ]
+      ],
+      "direction": 0,
+      "food": [
+        6,
+        8
+      ]
+    },
+    "observation_hash": "82db9cddc2770e870863acd80f1d1c9e25892d0b1156096d8d051989ed9e87f3",
+    "answers": {
+      "heading": "up",
+      "food_x": "left",
+      "food_y": "aligned",
+      "turn_left": "left",
+      "collision_left": "safe",
+      "turn_straight": "up",
+      "collision_straight": "safe",
+      "turn_right": "right",
+      "collision_right": "collision",
+      "target_left": "food",
+      "target_straight": "tail",
+      "target_right": "body",
+      "survival": "available"
+    }
+  },
+  {
+    "case_id": "safety-021",
+    "family_id": "family-018",
+    "split": "dev",
+    "pair_id": null,
+    "pair_kind": null,
+    "safe_count": 2,
+    "safe_actions": [
+      "left",
+      "straight"
+    ],
+    "state": {
+      "body": [
+        [
+          7,
+          8
+        ],
+        [
+          6,
+          8
+        ],
+        [
+          6,
+          9
+        ],
+        [
+          7,
+          9
+        ],
+        [
+          8,
+          9
+        ],
+        [
+          9,
+          9
+        ],
+        [
+          9,
+          8
+        ],
+        [
+          9,
+          7
+        ],
+        [
+          8,
+          7
+        ],
+        [
+          8,
+          6
+        ],
+        [
+          9,
+          6
+        ],
+        [
+          9,
+          5
+        ],
+        [
+          9,
+          4
+        ],
+        [
+          8,
+          4
+        ],
+        [
+          7,
+          4
+        ],
+        [
+          6,
+          4
+        ],
+        [
+          6,
+          5
+        ],
+        [
+          5,
+          5
+        ],
+        [
+          4,
+          5
+        ],
+        [
+          4,
+          4
+        ],
+        [
+          4,
+          3
+        ],
+        [
+          4,
+          2
+        ],
+        [
+          3,
+          2
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          2,
+          2
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          0,
+          3
+        ]
+      ],
+      "direction": 1,
+      "food": [
+        8,
+        8
+      ]
+    },
+    "observation_hash": "2b2ae9168328310e7456b562e385f8e66b4357f27c0fa32187f6cd75da7f3797",
+    "answers": {
+      "heading": "right",
+      "food_x": "right",
+      "food_y": "aligned",
+      "turn_left": "up",
+      "collision_left": "safe",
+      "turn_straight": "right",
+      "collision_straight": "safe",
+      "turn_right": "down",
+      "collision_right": "collision",
+      "target_left": "empty",
+      "target_straight": "food",
+      "target_right": "body",
+      "survival": "available"
+    }
+  },
+  {
+    "case_id": "safety-022",
+    "family_id": "family-019",
+    "split": "dev",
+    "pair_id": null,
+    "pair_kind": null,
+    "safe_count": 1,
+    "safe_actions": [
+      "left"
+    ],
+    "state": {
+      "body": [
+        [
+          0,
+          9
+        ],
+        [
+          0,
+          8
+        ],
+        [
+          1,
+          8
+        ],
+        [
+          1,
+          7
+        ],
+        [
+          2,
+          7
+        ],
+        [
+          2,
+          8
+        ],
+        [
+          2,
+          9
+        ],
+        [
+          3,
+          9
+        ],
+        [
+          4,
+          9
+        ],
+        [
+          4,
+          8
+        ],
+        [
+          4,
+          7
+        ],
+        [
+          4,
+          6
+        ],
+        [
+          3,
+          6
+        ],
+        [
+          2,
+          6
+        ],
+        [
+          1,
+          6
+        ]
+      ],
+      "direction": 2,
+      "food": [
+        1,
+        9
+      ]
+    },
+    "observation_hash": "eb9faa16005c621b0376f29e5ba711d9c472fe98f7d61272d8147cb86ce12308",
+    "answers": {
+      "heading": "down",
+      "food_x": "right",
+      "food_y": "aligned",
+      "turn_left": "right",
+      "collision_left": "safe",
+      "turn_straight": "down",
+      "collision_straight": "collision",
+      "turn_right": "left",
+      "collision_right": "collision",
+      "target_left": "food",
+      "target_straight": "outside",
+      "target_right": "outside",
+      "survival": "available"
+    }
+  },
+  {
+    "case_id": "safety-023",
+    "family_id": "family-020",
+    "split": "dev",
+    "pair_id": null,
+    "pair_kind": null,
+    "safe_count": 1,
+    "safe_actions": [
+      "right"
+    ],
+    "state": {
+      "body": [
+        [
+          7,
+          8
+        ],
+        [
+          8,
+          8
+        ],
+        [
+          9,
+          8
+        ],
+        [
+          9,
+          9
+        ],
+        [
+          8,
+          9
+        ],
+        [
+          7,
+          9
+        ],
+        [
+          6,
+          9
+        ],
+        [
+          6,
+          8
+        ],
+        [
+          6,
+          7
+        ],
+        [
+          5,
+          7
+        ],
+        [
+          5,
+          8
+        ],
+        [
+          5,
+          9
+        ],
+        [
+          4,
+          9
+        ],
+        [
+          3,
+          9
+        ],
+        [
+          3,
+          8
+        ],
+        [
+          3,
+          7
+        ],
+        [
+          2,
+          7
+        ],
+        [
+          1,
+          7
+        ],
+        [
+          1,
+          6
+        ],
+        [
+          0,
+          6
+        ],
+        [
+          0,
+          7
+        ],
+        [
+          0,
+          8
+        ],
+        [
+          1,
+          8
+        ],
+        [
+          2,
+          8
+        ],
+        [
+          2,
+          9
+        ],
+        [
+          1,
+          9
+        ],
+        [
+          0,
+          9
+        ]
+      ],
+      "direction": 3,
+      "food": [
+        7,
+        7
+      ]
+    },
+    "observation_hash": "88ffa7f284b53e2f54b29f2f1b34d62037d32192eee69ac9fd082071537ce136",
+    "answers": {
+      "heading": "left",
+      "food_x": "aligned",
+      "food_y": "up",
+      "turn_left": "down",
+      "collision_left": "collision",
+      "turn_straight": "left",
+      "collision_straight": "collision",
+      "turn_right": "up",
+      "collision_right": "safe",
+      "target_left": "body",
+      "target_straight": "body",
+      "target_right": "food",
+      "survival": "available"
+    }
+  },
+  {
+    "case_id": "safety-024",
+    "family_id": "family-021",
+    "split": "dev",
+    "pair_id": null,
+    "pair_kind": null,
+    "safe_count": 1,
+    "safe_actions": [
+      "right"
+    ],
+    "state": {
+      "body": [
+        [
+          3,
+          5
+        ],
+        [
+          3,
+          6
+        ],
+        [
+          2,
+          6
+        ],
+        [
+          2,
+          7
+        ],
+        [
+          2,
+          8
+        ],
+        [
+          1,
+          8
+        ],
+        [
+          0,
+          8
+        ],
+        [
+          0,
+          7
+        ],
+        [
+          1,
+          7
+        ],
+        [
+          1,
+          6
+        ],
+        [
+          1,
+          5
+        ],
+        [
+          2,
+          5
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          1,
+          4
+        ],
+        [
+          1,
+          3
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          3,
+          3
+        ],
+        [
+          3,
+          4
+        ],
+        [
+          4,
+          4
+        ],
+        [
+          5,
+          4
+        ],
+        [
+          5,
+          3
+        ]
+      ],
+      "direction": 0,
+      "food": [
+        4,
+        5
+      ]
+    },
+    "observation_hash": "0a47fe9ad6b4a6851e3704e6b3b1e7b04667ce7b92ebef45f763a2adc065d724",
+    "answers": {
+      "heading": "up",
+      "food_x": "right",
+      "food_y": "aligned",
+      "turn_left": "left",
+      "collision_left": "collision",
+      "turn_straight": "up",
+      "collision_straight": "collision",
+      "turn_right": "right",
+      "collision_right": "safe",
+      "target_left": "body",
+      "target_straight": "body",
+      "target_right": "food",
+      "survival": "available"
+    }
+  },
+  {
+    "case_id": "safety-025",
+    "family_id": "family-022",
+    "split": "dev",
+    "pair_id": null,
+    "pair_kind": null,
+    "safe_count": 1,
+    "safe_actions": [
+      "left"
+    ],
+    "state": {
+      "body": [
+        [
+          0,
+          9
+        ],
+        [
+          0,
+          8
+        ],
+        [
+          0,
+          7
+        ],
+        [
+          1,
+          7
+        ],
+        [
+          1,
+          8
+        ],
+        [
+          1,
+          9
+        ]
+      ],
+      "direction": 2,
+      "food": [
+        5,
+        4
+      ]
+    },
+    "observation_hash": "74d3e9583e69091082d94133edb918e40096cdd21a5482cd359c772afcc3e1ad",
+    "answers": {
+      "heading": "down",
+      "food_x": "right",
+      "food_y": "up",
+      "turn_left": "right",
+      "collision_left": "safe",
+      "turn_straight": "down",
+      "collision_straight": "collision",
+      "turn_right": "left",
+      "collision_right": "collision",
+      "target_left": "tail",
+      "target_straight": "outside",
+      "target_right": "outside",
+      "survival": "available"
+    }
+  },
+  {
+    "case_id": "safety-026",
+    "family_id": "family-023",
+    "split": "dev",
+    "pair_id": null,
+    "pair_kind": null,
+    "safe_count": 1,
+    "safe_actions": [
+      "right"
+    ],
+    "state": {
+      "body": [
+        [
+          8,
+          6
+        ],
+        [
+          7,
+          6
+        ],
+        [
+          7,
+          5
+        ],
+        [
+          6,
+          5
+        ],
+        [
+          6,
+          4
+        ],
+        [
+          7,
+          4
+        ],
+        [
+          8,
+          4
+        ],
+        [
+          8,
+          5
+        ],
+        [
+          9,
+          5
+        ],
+        [
+          9,
+          6
+        ],
+        [
+          9,
+          7
+        ],
+        [
+          9,
+          8
+        ],
+        [
+          8,
+          8
+        ],
+        [
+          7,
+          8
+        ],
+        [
+          6,
+          8
+        ],
+        [
+          6,
+          9
+        ],
+        [
+          5,
+          9
+        ],
+        [
+          4,
+          9
+        ],
+        [
+          4,
+          8
+        ],
+        [
+          3,
+          8
+        ],
+        [
+          3,
+          7
+        ],
+        [
+          3,
+          6
+        ],
+        [
+          4,
+          6
+        ],
+        [
+          5,
+          6
+        ],
+        [
+          6,
+          6
+        ],
+        [
+          6,
+          7
+        ],
+        [
+          7,
+          7
+        ],
+        [
+          8,
+          7
+        ]
+      ],
+      "direction": 1,
+      "food": [
+        2,
+        0
+      ]
+    },
+    "observation_hash": "7294ab27737d9c7c1d08a0e459d54b58e2599ba7d9d92efd21b6839b9e1db4ab",
+    "answers": {
+      "heading": "right",
+      "food_x": "left",
+      "food_y": "up",
+      "turn_left": "up",
+      "collision_left": "collision",
+      "turn_straight": "right",
+      "collision_straight": "collision",
+      "turn_right": "down",
+      "collision_right": "safe",
+      "target_left": "body",
+      "target_straight": "body",
+      "target_right": "tail",
+      "survival": "available"
+    }
+  },
+  {
+    "case_id": "safety-027",
+    "family_id": "family-024",
+    "split": "dev",
+    "pair_id": null,
+    "pair_kind": null,
+    "safe_count": 1,
+    "safe_actions": [
+      "straight"
+    ],
+    "state": {
+      "body": [
+        [
+          8,
+          9
+        ],
+        [
+          9,
+          9
+        ],
+        [
+          9,
+          8
+        ],
+        [
+          8,
+          8
+        ],
+        [
+          8,
+          7
+        ],
+        [
+          8,
+          6
+        ],
+        [
+          7,
+          6
+        ],
+        [
+          7,
+          5
+        ],
+        [
+          7,
+          4
+        ],
+        [
+          8,
+          4
+        ],
+        [
+          8,
+          3
+        ],
+        [
+          7,
+          3
+        ],
+        [
+          6,
+          3
+        ],
+        [
+          6,
+          4
+        ],
+        [
+          6,
+          5
+        ],
+        [
+          5,
+          5
+        ],
+        [
+          5,
+          4
+        ],
+        [
+          5,
+          3
+        ],
+        [
+          5,
+          2
+        ],
+        [
+          5,
+          1
+        ],
+        [
+          5,
+          0
+        ],
+        [
+          4,
+          0
+        ],
+        [
+          3,
+          0
+        ],
+        [
+          2,
+          0
+        ]
+      ],
+      "direction": 3,
+      "food": [
+        1,
+        3
+      ]
+    },
+    "observation_hash": "3ad07c0182674cc28c8949ffe8803ef1a5de94d3ef6e8339e69d81d1dc324a11",
+    "answers": {
+      "heading": "left",
+      "food_x": "left",
+      "food_y": "up",
+      "turn_left": "down",
+      "collision_left": "collision",
+      "turn_straight": "left",
+      "collision_straight": "safe",
+      "turn_right": "up",
+      "collision_right": "collision",
+      "target_left": "outside",
+      "target_straight": "empty",
+      "target_right": "body",
+      "survival": "available"
+    }
+  },
+  {
+    "case_id": "safety-028",
+    "family_id": "family-025",
+    "split": "dev",
+    "pair_id": null,
+    "pair_kind": null,
+    "safe_count": 1,
+    "safe_actions": [
+      "straight"
+    ],
+    "state": {
+      "body": [
+        [
+          9,
+          6
+        ],
+        [
+          9,
+          5
+        ],
+        [
+          8,
+          5
+        ],
+        [
+          8,
+          6
+        ],
+        [
+          8,
+          7
+        ],
+        [
+          8,
+          8
+        ],
+        [
+          9,
+          8
+        ],
+        [
+          9,
+          9
+        ],
+        [
+          8,
+          9
+        ],
+        [
+          7,
+          9
+        ],
+        [
+          6,
+          9
+        ],
+        [
+          5,
+          9
+        ],
+        [
+          5,
+          8
+        ],
+        [
+          4,
+          8
+        ]
+      ],
+      "direction": 2,
+      "food": [
+        4,
+        4
+      ]
+    },
+    "observation_hash": "a46f4115502bece5670850cbf1e24c1f6378971b9039b9076911f84401ed8856",
+    "answers": {
+      "heading": "down",
+      "food_x": "left",
+      "food_y": "up",
+      "turn_left": "right",
+      "collision_left": "collision",
+      "turn_straight": "down",
+      "collision_straight": "safe",
+      "turn_right": "left",
+      "collision_right": "collision",
+      "target_left": "outside",
+      "target_straight": "empty",
+      "target_right": "body",
+      "survival": "available"
+    }
+  },
+  {
+    "case_id": "safety-029",
+    "family_id": "family-026",
+    "split": "dev",
+    "pair_id": null,
+    "pair_kind": null,
+    "safe_count": 0,
+    "safe_actions": [],
+    "state": {
+      "body": [
+        [
+          9,
+          0
+        ],
+        [
+          9,
+          1
+        ],
+        [
+          8,
+          1
+        ],
+        [
+          8,
+          0
+        ],
+        [
+          7,
+          0
+        ],
+        [
+          6,
+          0
+        ],
+        [
+          6,
+          1
+        ],
+        [
+          5,
+          1
+        ],
+        [
+          5,
+          0
+        ],
+        [
+          4,
+          0
+        ],
+        [
+          3,
+          0
+        ],
+        [
+          2,
+          0
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          4,
+          1
+        ],
+        [
+          4,
+          2
+        ],
+        [
+          5,
+          2
+        ],
+        [
+          6,
+          2
+        ]
+      ],
+      "direction": 0,
+      "food": [
+        2,
+        9
+      ]
+    },
+    "observation_hash": "5c6cbb9f68d744f1712d7bd93a5f2356b34e8739fd6e8e6b62518ce62cef468f",
+    "answers": {
+      "heading": "up",
+      "food_x": "left",
+      "food_y": "down",
+      "turn_left": "left",
+      "collision_left": "collision",
+      "turn_straight": "up",
+      "collision_straight": "collision",
+      "turn_right": "right",
+      "collision_right": "collision",
+      "target_left": "body",
+      "target_straight": "outside",
+      "target_right": "outside",
+      "survival": "trapped"
+    }
+  },
+  {
+    "case_id": "safety-030",
+    "family_id": "family-027",
+    "split": "dev",
+    "pair_id": null,
+    "pair_kind": null,
+    "safe_count": 0,
+    "safe_actions": [],
+    "state": {
+      "body": [
+        [
+          8,
+          4
+        ],
+        [
+          7,
+          4
+        ],
+        [
+          7,
+          3
+        ],
+        [
+          8,
+          3
+        ],
+        [
+          9,
+          3
+        ],
+        [
+          9,
+          4
+        ],
+        [
+          9,
+          5
+        ],
+        [
+          9,
+          6
+        ],
+        [
+          8,
+          6
+        ],
+        [
+          8,
+          5
+        ],
+        [
+          7,
+          5
+        ],
+        [
+          7,
+          6
+        ],
+        [
+          7,
+          7
+        ],
+        [
+          6,
+          7
+        ],
+        [
+          6,
+          6
+        ],
+        [
+          6,
+          5
+        ],
+        [
+          5,
+          5
+        ],
+        [
+          4,
+          5
+        ],
+        [
+          4,
+          6
+        ],
+        [
+          5,
+          6
+        ],
+        [
+          5,
+          7
+        ],
+        [
+          4,
+          7
+        ],
+        [
+          3,
+          7
+        ],
+        [
+          2,
+          7
+        ],
+        [
+          2,
+          6
+        ],
+        [
+          2,
+          5
+        ],
+        [
+          3,
+          5
+        ]
+      ],
+      "direction": 1,
+      "food": [
+        1,
+        0
+      ]
+    },
+    "observation_hash": "39a6ceb0ff2e566191602004221edebbae32152a29b20d8e20247105b057844e",
+    "answers": {
+      "heading": "right",
+      "food_x": "left",
+      "food_y": "up",
+      "turn_left": "up",
+      "collision_left": "collision",
+      "turn_straight": "right",
+      "collision_straight": "collision",
+      "turn_right": "down",
+      "collision_right": "collision",
+      "target_left": "body",
+      "target_straight": "body",
+      "target_right": "body",
+      "survival": "trapped"
+    }
+  },
+  {
+    "case_id": "safety-031",
+    "family_id": "family-028",
+    "split": "dev",
+    "pair_id": null,
+    "pair_kind": null,
+    "safe_count": 0,
+    "safe_actions": [],
+    "state": {
+      "body": [
+        [
+          1,
+          5
+        ],
+        [
+          2,
+          5
+        ],
+        [
+          3,
+          5
+        ],
+        [
+          4,
+          5
+        ],
+        [
+          5,
+          5
+        ],
+        [
+          5,
+          4
+        ],
+        [
+          6,
+          4
+        ],
+        [
+          6,
+          3
+        ],
+        [
+          6,
+          2
+        ],
+        [
+          5,
+          2
+        ],
+        [
+          4,
+          2
+        ],
+        [
+          4,
+          3
+        ],
+        [
+          4,
+          4
+        ],
+        [
+          3,
+          4
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          1,
+          4
+        ],
+        [
+          0,
+          4
+        ],
+        [
+          0,
+          5
+        ],
+        [
+          0,
+          6
+        ],
+        [
+          1,
+          6
+        ],
+        [
+          1,
+          7
+        ],
+        [
+          0,
+          7
+        ],
+        [
+          0,
+          8
+        ],
+        [
+          1,
+          8
+        ],
+        [
+          1,
+          9
+        ],
+        [
+          2,
+          9
+        ],
+        [
+          3,
+          9
+        ],
+        [
+          3,
+          8
+        ],
+        [
+          2,
+          8
+        ],
+        [
+          2,
+          7
+        ],
+        [
+          2,
+          6
+        ],
+        [
+          3,
+          6
+        ]
+      ],
+      "direction": 3,
+      "food": [
+        8,
+        0
+      ]
+    },
+    "observation_hash": "5aa9629d6fa5f492fb519740027abd1653502d886c632c9d7760204e3c58e37c",
+    "answers": {
+      "heading": "left",
+      "food_x": "right",
+      "food_y": "up",
+      "turn_left": "down",
+      "collision_left": "collision",
+      "turn_straight": "left",
+      "collision_straight": "collision",
+      "turn_right": "up",
+      "collision_right": "collision",
+      "target_left": "body",
+      "target_straight": "body",
+      "target_right": "body",
+      "survival": "trapped"
+    }
+  },
+  {
+    "case_id": "safety-032",
+    "family_id": "family-029",
+    "split": "dev",
+    "pair_id": null,
+    "pair_kind": null,
+    "safe_count": 0,
+    "safe_actions": [],
+    "state": {
+      "body": [
+        [
+          1,
+          7
+        ],
+        [
+          0,
+          7
+        ],
+        [
+          0,
+          6
+        ],
+        [
+          1,
+          6
+        ],
+        [
+          1,
+          5
+        ],
+        [
+          2,
+          5
+        ],
+        [
+          3,
+          5
+        ],
+        [
+          3,
+          6
+        ],
+        [
+          2,
+          6
+        ],
+        [
+          2,
+          7
+        ],
+        [
+          2,
+          8
+        ],
+        [
+          1,
+          8
+        ],
+        [
+          0,
+          8
+        ],
+        [
+          0,
+          9
+        ],
+        [
+          1,
+          9
+        ],
+        [
+          2,
+          9
+        ],
+        [
+          3,
+          9
+        ],
+        [
+          3,
+          8
+        ],
+        [
+          4,
+          8
+        ],
+        [
+          4,
+          7
+        ],
+        [
+          3,
+          7
+        ]
+      ],
+      "direction": 1,
+      "food": [
+        0,
+        5
+      ]
+    },
+    "observation_hash": "f02c352180b3c21d0e8971f13811445d216c7f2ee8f137b4c302eef3600d86c2",
+    "answers": {
+      "heading": "right",
+      "food_x": "left",
+      "food_y": "up",
+      "turn_left": "up",
+      "collision_left": "collision",
+      "turn_straight": "right",
+      "collision_straight": "collision",
+      "turn_right": "down",
+      "collision_right": "collision",
+      "target_left": "body",
+      "target_straight": "body",
+      "target_right": "body",
+      "survival": "trapped"
+    }
+  },
+  {
+    "case_id": "safety-033",
+    "family_id": "family-030",
+    "split": "dev",
+    "pair_id": null,
+    "pair_kind": null,
+    "safe_count": 0,
+    "safe_actions": [],
+    "state": {
+      "body": [
+        [
+          0,
+          9
+        ],
+        [
+          0,
+          8
+        ],
+        [
+          1,
+          8
+        ],
+        [
+          1,
+          9
+        ],
+        [
+          2,
+          9
+        ],
+        [
+          3,
+          9
+        ],
+        [
+          3,
+          8
+        ],
+        [
+          3,
+          7
+        ],
+        [
+          4,
+          7
+        ],
+        [
+          4,
+          8
+        ],
+        [
+          5,
+          8
+        ],
+        [
+          5,
+          7
+        ],
+        [
+          5,
+          6
+        ],
+        [
+          5,
+          5
+        ],
+        [
+          4,
+          5
+        ]
+      ],
+      "direction": 2,
+      "food": [
+        5,
+        0
+      ]
+    },
+    "observation_hash": "455d72e1575b8284590dd9cdfa4c820b344ca5e9a7142ac96b0e16eb724f7f24",
+    "answers": {
+      "heading": "down",
+      "food_x": "right",
+      "food_y": "up",
+      "turn_left": "right",
+      "collision_left": "collision",
+      "turn_straight": "down",
+      "collision_straight": "collision",
+      "turn_right": "left",
+      "collision_right": "collision",
+      "target_left": "body",
+      "target_straight": "outside",
+      "target_right": "outside",
+      "survival": "trapped"
+    }
+  },
+  {
+    "case_id": "safety-034",
+    "family_id": "family-031",
+    "split": "dev",
+    "pair_id": null,
+    "pair_kind": null,
+    "safe_count": 0,
+    "safe_actions": [],
+    "state": {
+      "body": [
+        [
+          9,
+          0
+        ],
+        [
+          9,
+          1
+        ],
+        [
+          9,
+          2
+        ],
+        [
+          8,
+          2
+        ],
+        [
+          8,
+          1
+        ],
+        [
+          8,
+          0
+        ],
+        [
+          7,
+          0
+        ],
+        [
+          7,
+          1
+        ]
+      ],
+      "direction": 0,
+      "food": [
+        0,
+        5
+      ]
+    },
+    "observation_hash": "4c64f4925e7db251ab4f6b17a7c9bc4ebd818422df6b65f4a7db096cb74c5a05",
+    "answers": {
+      "heading": "up",
+      "food_x": "left",
+      "food_y": "down",
+      "turn_left": "left",
+      "collision_left": "collision",
+      "turn_straight": "up",
+      "collision_straight": "collision",
+      "turn_right": "right",
+      "collision_right": "collision",
+      "target_left": "body",
+      "target_straight": "outside",
+      "target_right": "outside",
+      "survival": "trapped"
+    }
+  },
+  {
+    "case_id": "safety-035",
+    "family_id": "family-032",
+    "split": "dev",
+    "pair_id": null,
+    "pair_kind": null,
+    "safe_count": 0,
+    "safe_actions": [],
+    "state": {
+      "body": [
+        [
+          1,
+          3
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          3,
+          3
+        ],
+        [
+          3,
+          2
+        ],
+        [
+          4,
+          2
+        ],
+        [
+          4,
+          1
+        ],
+        [
+          4,
+          0
+        ],
+        [
+          3,
+          0
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          2,
+          2
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          0,
+          3
+        ],
+        [
+          0,
+          4
+        ],
+        [
+          1,
+          4
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          2,
+          5
+        ],
+        [
+          2,
+          6
+        ],
+        [
+          1,
+          6
+        ],
+        [
+          0,
+          6
+        ],
+        [
+          0,
+          7
+        ]
+      ],
+      "direction": 3,
+      "food": [
+        9,
+        7
+      ]
+    },
+    "observation_hash": "c278fc4f9962618dfb4f1b197b6ace92411a7586d0a077665c1d791472306240",
+    "answers": {
+      "heading": "left",
+      "food_x": "right",
+      "food_y": "down",
+      "turn_left": "down",
+      "collision_left": "collision",
+      "turn_straight": "left",
+      "collision_straight": "collision",
+      "turn_right": "up",
+      "collision_right": "collision",
+      "target_left": "body",
+      "target_straight": "body",
+      "target_right": "body",
+      "survival": "trapped"
+    }
+  },
+  {
+    "case_id": "safety-036",
+    "family_id": "family-033",
+    "split": "test",
+    "pair_id": "family-033",
+    "pair_kind": "tail",
+    "safe_count": 1,
+    "safe_actions": [
+      "straight"
+    ],
+    "state": {
+      "body": [
+        [
+          0,
+          8
+        ],
+        [
+          0,
+          9
+        ],
+        [
+          1,
+          9
+        ],
+        [
+          1,
+          8
+        ],
+        [
+          2,
+          8
+        ],
+        [
+          3,
+          8
+        ],
+        [
+          4,
+          8
+        ],
+        [
+          4,
+          7
+        ],
+        [
+          5,
+          7
+        ],
+        [
+          5,
+          8
+        ],
+        [
+          5,
+          9
+        ],
+        [
+          4,
+          9
+        ],
+        [
+          3,
+          9
+        ],
+        [
+          2,
+          9
+        ]
+      ],
+      "direction": 0,
+      "food": [
+        7,
+        3
+      ]
+    },
+    "observation_hash": "6aded757eed933a8ef55f77d8b13ba0b65a2cf2e1ae1d8e1db9310f7d0b7b2d4",
+    "answers": {
+      "heading": "up",
+      "food_x": "right",
+      "food_y": "up",
+      "turn_left": "left",
+      "collision_left": "collision",
+      "turn_straight": "up",
+      "collision_straight": "safe",
+      "turn_right": "right",
+      "collision_right": "collision",
+      "target_left": "outside",
+      "target_straight": "empty",
+      "target_right": "body",
+      "survival": "available"
+    }
+  },
+  {
+    "case_id": "safety-037",
+    "family_id": "family-033",
+    "split": "test",
+    "pair_id": "family-033",
+    "pair_kind": "tail",
+    "safe_count": 2,
+    "safe_actions": [
+      "straight",
+      "right"
+    ],
+    "state": {
+      "body": [
+        [
+          0,
+          8
+        ],
+        [
+          0,
+          9
+        ],
+        [
+          1,
+          9
+        ],
+        [
+          2,
+          9
+        ],
+        [
+          3,
+          9
+        ],
+        [
+          4,
+          9
+        ],
+        [
+          5,
+          9
+        ],
+        [
+          5,
+          8
+        ],
+        [
+          5,
+          7
+        ],
+        [
+          4,
+          7
+        ],
+        [
+          4,
+          8
+        ],
+        [
+          3,
+          8
+        ],
+        [
+          2,
+          8
+        ],
+        [
+          1,
+          8
+        ]
+      ],
+      "direction": 0,
+      "food": [
+        7,
+        3
+      ]
+    },
+    "observation_hash": "8acee924f9c7191c793ad6a05e41a5b32d7db7c7e32c390b95c1b121602c6c31",
+    "answers": {
+      "heading": "up",
+      "food_x": "right",
+      "food_y": "up",
+      "turn_left": "left",
+      "collision_left": "collision",
+      "turn_straight": "up",
+      "collision_straight": "safe",
+      "turn_right": "right",
+      "collision_right": "safe",
+      "target_left": "outside",
+      "target_straight": "empty",
+      "target_right": "tail",
+      "survival": "available"
+    }
+  },
+  {
+    "case_id": "safety-038",
+    "family_id": "family-034",
+    "split": "test",
+    "pair_id": "family-034",
+    "pair_kind": "tail",
+    "safe_count": 2,
+    "safe_actions": [
+      "straight",
+      "right"
+    ],
+    "state": {
+      "body": [
+        [
+          7,
+          2
+        ],
+        [
+          6,
+          2
+        ],
+        [
+          6,
+          1
+        ],
+        [
+          6,
+          0
+        ],
+        [
+          7,
+          0
+        ],
+        [
+          7,
+          1
+        ],
+        [
+          8,
+          1
+        ],
+        [
+          8,
+          0
+        ],
+        [
+          9,
+          0
+        ],
+        [
+          9,
+          1
+        ],
+        [
+          9,
+          2
+        ],
+        [
+          8,
+          2
+        ]
+      ],
+      "direction": 1,
+      "food": [
+        7,
+        3
+      ]
+    },
+    "observation_hash": "3bce3dc851748d2218306c70c030041285d1b2c28684c4918eb062fb072a69f6",
+    "answers": {
+      "heading": "right",
+      "food_x": "aligned",
+      "food_y": "down",
+      "turn_left": "up",
+      "collision_left": "collision",
+      "turn_straight": "right",
+      "collision_straight": "safe",
+      "turn_right": "down",
+      "collision_right": "safe",
+      "target_left": "body",
+      "target_straight": "tail",
+      "target_right": "food",
+      "survival": "available"
+    }
+  },
+  {
+    "case_id": "safety-039",
+    "family_id": "family-034",
+    "split": "test",
+    "pair_id": "family-034",
+    "pair_kind": "tail",
+    "safe_count": 2,
+    "safe_actions": [
+      "left",
+      "right"
+    ],
+    "state": {
+      "body": [
+        [
+          7,
+          2
+        ],
+        [
+          6,
+          2
+        ],
+        [
+          6,
+          1
+        ],
+        [
+          6,
+          0
+        ],
+        [
+          7,
+          0
+        ],
+        [
+          8,
+          0
+        ],
+        [
+          9,
+          0
+        ],
+        [
+          9,
+          1
+        ],
+        [
+          9,
+          2
+        ],
+        [
+          8,
+          2
+        ],
+        [
+          8,
+          1
+        ],
+        [
+          7,
+          1
+        ]
+      ],
+      "direction": 1,
+      "food": [
+        7,
+        3
+      ]
+    },
+    "observation_hash": "51ac84671f3f704642c2c3bb8b32558094078547d8d6ae7a39ce60e680497a25",
+    "answers": {
+      "heading": "right",
+      "food_x": "aligned",
+      "food_y": "down",
+      "turn_left": "up",
+      "collision_left": "safe",
+      "turn_straight": "right",
+      "collision_straight": "collision",
+      "turn_right": "down",
+      "collision_right": "safe",
+      "target_left": "tail",
+      "target_straight": "body",
+      "target_right": "food",
+      "survival": "available"
+    }
+  },
+  {
+    "case_id": "safety-040",
+    "family_id": "family-035",
+    "split": "test",
+    "pair_id": "family-035",
+    "pair_kind": "tail",
+    "safe_count": 3,
+    "safe_actions": [
+      "left",
+      "straight",
+      "right"
+    ],
+    "state": {
+      "body": [
+        [
+          5,
+          7
+        ],
+        [
+          5,
+          6
+        ],
+        [
+          4,
+          6
+        ],
+        [
+          3,
+          6
+        ],
+        [
+          2,
+          6
+        ],
+        [
+          2,
+          7
+        ],
+        [
+          3,
+          7
+        ],
+        [
+          3,
+          8
+        ],
+        [
+          2,
+          8
+        ],
+        [
+          1,
+          8
+        ],
+        [
+          1,
+          9
+        ],
+        [
+          2,
+          9
+        ],
+        [
+          3,
+          9
+        ],
+        [
+          4,
+          9
+        ],
+        [
+          4,
+          8
+        ],
+        [
+          4,
+          7
+        ]
+      ],
+      "direction": 2,
+      "food": [
+        7,
+        2
+      ]
+    },
+    "observation_hash": "2516d103b5e72508a1b7f5e563ddb545a92c5b0f231f63eef4dba589bd62035d",
+    "answers": {
+      "heading": "down",
+      "food_x": "right",
+      "food_y": "up",
+      "turn_left": "right",
+      "collision_left": "safe",
+      "turn_straight": "down",
+      "collision_straight": "safe",
+      "turn_right": "left",
+      "collision_right": "safe",
+      "target_left": "empty",
+      "target_straight": "empty",
+      "target_right": "tail",
+      "survival": "available"
+    }
+  },
+  {
+    "case_id": "safety-041",
+    "family_id": "family-035",
+    "split": "test",
+    "pair_id": "family-035",
+    "pair_kind": "tail",
+    "safe_count": 2,
+    "safe_actions": [
+      "left",
+      "straight"
+    ],
+    "state": {
+      "body": [
+        [
+          5,
+          7
+        ],
+        [
+          5,
+          6
+        ],
+        [
+          4,
+          6
+        ],
+        [
+          4,
+          7
+        ],
+        [
+          4,
+          8
+        ],
+        [
+          4,
+          9
+        ],
+        [
+          3,
+          9
+        ],
+        [
+          3,
+          8
+        ],
+        [
+          3,
+          7
+        ],
+        [
+          3,
+          6
+        ],
+        [
+          2,
+          6
+        ],
+        [
+          2,
+          7
+        ],
+        [
+          2,
+          8
+        ],
+        [
+          2,
+          9
+        ],
+        [
+          1,
+          9
+        ],
+        [
+          1,
+          8
+        ]
+      ],
+      "direction": 2,
+      "food": [
+        7,
+        2
+      ]
+    },
+    "observation_hash": "f1db0baa7003f1e4b01ac74e70ce566d1566d70bbbbf9a0c2cf1940ec755433d",
+    "answers": {
+      "heading": "down",
+      "food_x": "right",
+      "food_y": "up",
+      "turn_left": "right",
+      "collision_left": "safe",
+      "turn_straight": "down",
+      "collision_straight": "safe",
+      "turn_right": "left",
+      "collision_right": "collision",
+      "target_left": "empty",
+      "target_straight": "empty",
+      "target_right": "body",
+      "survival": "available"
+    }
+  },
+  {
+    "case_id": "safety-042",
+    "family_id": "family-036",
+    "split": "test",
+    "pair_id": "family-036",
+    "pair_kind": "obstacle",
+    "safe_count": 2,
+    "safe_actions": [
+      "left",
+      "straight"
+    ],
+    "state": {
+      "body": [
+        [
+          3,
+          6
+        ],
+        [
+          4,
+          6
+        ],
+        [
+          4,
+          5
+        ],
+        [
+          4,
+          4
+        ],
+        [
+          4,
+          3
+        ],
+        [
+          5,
+          3
+        ],
+        [
+          5,
+          2
+        ],
+        [
+          4,
+          2
+        ],
+        [
+          3,
+          2
+        ],
+        [
+          2,
+          2
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          3,
+          3
+        ],
+        [
+          3,
+          4
+        ],
+        [
+          3,
+          5
+        ],
+        [
+          2,
+          5
+        ]
+      ],
+      "direction": 3,
+      "food": [
+        5,
+        8
+      ]
+    },
+    "observation_hash": "b8ed5bdebaa195bf476b8fbbe15f4d4145380443949a002c65a96b64895a6409",
+    "answers": {
+      "heading": "left",
+      "food_x": "right",
+      "food_y": "down",
+      "turn_left": "down",
+      "collision_left": "safe",
+      "turn_straight": "left",
+      "collision_straight": "safe",
+      "turn_right": "up",
+      "collision_right": "collision",
+      "target_left": "empty",
+      "target_straight": "empty",
+      "target_right": "body",
+      "survival": "available"
+    }
+  },
+  {
+    "case_id": "safety-043",
+    "family_id": "family-036",
+    "split": "test",
+    "pair_id": "family-036",
+    "pair_kind": "obstacle",
+    "safe_count": 3,
+    "safe_actions": [
+      "left",
+      "straight",
+      "right"
+    ],
+    "state": {
+      "body": [
+        [
+          3,
+          6
+        ],
+        [
+          4,
+          6
+        ],
+        [
+          4,
+          5
+        ],
+        [
+          4,
+          4
+        ],
+        [
+          4,
+          3
+        ],
+        [
+          5,
+          3
+        ],
+        [
+          5,
+          2
+        ],
+        [
+          4,
+          2
+        ],
+        [
+          3,
+          2
+        ],
+        [
+          2,
+          2
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          3,
+          3
+        ],
+        [
+          3,
+          4
+        ],
+        [
+          3,
+          5
+        ]
+      ],
+      "direction": 3,
+      "food": [
+        5,
+        8
+      ]
+    },
+    "observation_hash": "56ed596616dff95f190a01868e7714ba44a1354c912b0ca4328263f2ea9ba1e4",
+    "answers": {
+      "heading": "left",
+      "food_x": "right",
+      "food_y": "down",
+      "turn_left": "down",
+      "collision_left": "safe",
+      "turn_straight": "left",
+      "collision_straight": "safe",
+      "turn_right": "up",
+      "collision_right": "safe",
+      "target_left": "empty",
+      "target_straight": "empty",
+      "target_right": "tail",
+      "survival": "available"
+    }
+  },
+  {
+    "case_id": "safety-044",
+    "family_id": "family-037",
+    "split": "test",
+    "pair_id": "family-037",
+    "pair_kind": "obstacle",
+    "safe_count": 1,
+    "safe_actions": [
+      "left"
+    ],
+    "state": {
+      "body": [
+        [
+          2,
+          9
+        ],
+        [
+          2,
+          8
+        ],
+        [
+          2,
+          7
+        ],
+        [
+          3,
+          7
+        ],
+        [
+          3,
+          6
+        ],
+        [
+          3,
+          5
+        ],
+        [
+          2,
+          5
+        ],
+        [
+          2,
+          6
+        ],
+        [
+          1,
+          6
+        ],
+        [
+          1,
+          7
+        ],
+        [
+          0,
+          7
+        ],
+        [
+          0,
+          8
+        ],
+        [
+          1,
+          8
+        ],
+        [
+          1,
+          9
+        ],
+        [
+          0,
+          9
+        ]
+      ],
+      "direction": 2,
+      "food": [
+        4,
+        1
+      ]
+    },
+    "observation_hash": "68be301d9b0d5bad448e43efcb2bb216eee2de09e4c89ad8702a6899d83a3a9c",
+    "answers": {
+      "heading": "down",
+      "food_x": "right",
+      "food_y": "up",
+      "turn_left": "right",
+      "collision_left": "safe",
+      "turn_straight": "down",
+      "collision_straight": "collision",
+      "turn_right": "left",
+      "collision_right": "collision",
+      "target_left": "empty",
+      "target_straight": "outside",
+      "target_right": "body",
+      "survival": "available"
+    }
+  },
+  {
+    "case_id": "safety-045",
+    "family_id": "family-037",
+    "split": "test",
+    "pair_id": "family-037",
+    "pair_kind": "obstacle",
+    "safe_count": 2,
+    "safe_actions": [
+      "left",
+      "right"
+    ],
+    "state": {
+      "body": [
+        [
+          2,
+          9
+        ],
+        [
+          2,
+          8
+        ],
+        [
+          2,
+          7
+        ],
+        [
+          3,
+          7
+        ],
+        [
+          3,
+          6
+        ],
+        [
+          3,
+          5
+        ],
+        [
+          2,
+          5
+        ],
+        [
+          2,
+          6
+        ],
+        [
+          1,
+          6
+        ],
+        [
+          1,
+          7
+        ],
+        [
+          0,
+          7
+        ],
+        [
+          0,
+          8
+        ],
+        [
+          1,
+          8
+        ],
+        [
+          1,
+          9
+        ]
+      ],
+      "direction": 2,
+      "food": [
+        4,
+        1
+      ]
+    },
+    "observation_hash": "416eda41da799b4d5ffa3d9c44ab5061f34fda62d3b0dac2bcf54de368963fad",
+    "answers": {
+      "heading": "down",
+      "food_x": "right",
+      "food_y": "up",
+      "turn_left": "right",
+      "collision_left": "safe",
+      "turn_straight": "down",
+      "collision_straight": "collision",
+      "turn_right": "left",
+      "collision_right": "safe",
+      "target_left": "empty",
+      "target_straight": "outside",
+      "target_right": "tail",
+      "survival": "available"
+    }
+  },
+  {
+    "case_id": "safety-046",
+    "family_id": "family-038",
+    "split": "test",
+    "pair_id": "family-038",
+    "pair_kind": "obstacle",
+    "safe_count": 0,
+    "safe_actions": [],
+    "state": {
+      "body": [
+        [
+          7,
+          0
+        ],
+        [
+          8,
+          0
+        ],
+        [
+          9,
+          0
+        ],
+        [
+          9,
+          1
+        ],
+        [
+          9,
+          2
+        ],
+        [
+          9,
+          3
+        ],
+        [
+          8,
+          3
+        ],
+        [
+          8,
+          2
+        ],
+        [
+          8,
+          1
+        ],
+        [
+          7,
+          1
+        ],
+        [
+          7,
+          2
+        ],
+        [
+          6,
+          2
+        ],
+        [
+          5,
+          2
+        ],
+        [
+          5,
+          1
+        ],
+        [
+          4,
+          1
+        ],
+        [
+          4,
+          0
+        ],
+        [
+          5,
+          0
+        ],
+        [
+          6,
+          0
+        ],
+        [
+          6,
+          1
+        ]
+      ],
+      "direction": 3,
+      "food": [
+        2,
+        4
+      ]
+    },
+    "observation_hash": "2282b6d09e76059eb2868b31a52ecad7975de4ff5b7703ade1c16846247899f8",
+    "answers": {
+      "heading": "left",
+      "food_x": "left",
+      "food_y": "down",
+      "turn_left": "down",
+      "collision_left": "collision",
+      "turn_straight": "left",
+      "collision_straight": "collision",
+      "turn_right": "up",
+      "collision_right": "collision",
+      "target_left": "body",
+      "target_straight": "body",
+      "target_right": "outside",
+      "survival": "trapped"
+    }
+  },
+  {
+    "case_id": "safety-047",
+    "family_id": "family-038",
+    "split": "test",
+    "pair_id": "family-038",
+    "pair_kind": "obstacle",
+    "safe_count": 1,
+    "safe_actions": [
+      "straight"
+    ],
+    "state": {
+      "body": [
+        [
+          7,
+          0
+        ],
+        [
+          8,
+          0
+        ],
+        [
+          9,
+          0
+        ],
+        [
+          9,
+          1
+        ],
+        [
+          9,
+          2
+        ],
+        [
+          9,
+          3
+        ],
+        [
+          8,
+          3
+        ],
+        [
+          8,
+          2
+        ],
+        [
+          8,
+          1
+        ],
+        [
+          7,
+          1
+        ],
+        [
+          7,
+          2
+        ],
+        [
+          6,
+          2
+        ],
+        [
+          5,
+          2
+        ],
+        [
+          5,
+          1
+        ],
+        [
+          4,
+          1
+        ],
+        [
+          4,
+          0
+        ],
+        [
+          5,
+          0
+        ],
+        [
+          6,
+          0
+        ]
+      ],
+      "direction": 3,
+      "food": [
+        2,
+        4
+      ]
+    },
+    "observation_hash": "132a81b6c340d506519da4aae9039ee07e1d715882df8dc9633c8bcab200331e",
+    "answers": {
+      "heading": "left",
+      "food_x": "left",
+      "food_y": "down",
+      "turn_left": "down",
+      "collision_left": "collision",
+      "turn_straight": "left",
+      "collision_straight": "safe",
+      "turn_right": "up",
+      "collision_right": "collision",
+      "target_left": "body",
+      "target_straight": "tail",
+      "target_right": "outside",
+      "survival": "available"
+    }
+  },
+  {
+    "case_id": "safety-048",
+    "family_id": "family-039",
+    "split": "test",
+    "pair_id": "family-039",
+    "pair_kind": "food",
+    "safe_count": 3,
+    "safe_actions": [
+      "left",
+      "straight",
+      "right"
+    ],
+    "state": {
+      "body": [
+        [
+          1,
+          2
+        ],
+        [
+          1,
+          3
+        ],
+        [
+          1,
+          4
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          3,
+          4
+        ],
+        [
+          3,
+          5
+        ],
+        [
+          3,
+          6
+        ],
+        [
+          2,
+          6
+        ],
+        [
+          2,
+          7
+        ],
+        [
+          1,
+          7
+        ],
+        [
+          1,
+          8
+        ],
+        [
+          2,
+          8
+        ],
+        [
+          2,
+          9
+        ],
+        [
+          3,
+          9
+        ],
+        [
+          3,
+          8
+        ],
+        [
+          3,
+          7
+        ],
+        [
+          4,
+          7
+        ],
+        [
+          4,
+          6
+        ],
+        [
+          4,
+          5
+        ],
+        [
+          5,
+          5
+        ],
+        [
+          5,
+          4
+        ],
+        [
+          4,
+          4
+        ],
+        [
+          4,
+          3
+        ],
+        [
+          3,
+          3
+        ],
+        [
+          3,
+          2
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          4,
+          1
+        ],
+        [
+          4,
+          2
+        ],
+        [
+          5,
+          2
+        ],
+        [
+          5,
+          1
+        ],
+        [
+          5,
+          0
+        ],
+        [
+          6,
+          0
+        ]
+      ],
+      "direction": 0,
+      "food": [
+        0,
+        2
+      ]
+    },
+    "observation_hash": "d792d727ff68cccf01dc552bce65d89c3bcadcc2639ff6097b586cd87880f014",
+    "answers": {
+      "heading": "up",
+      "food_x": "left",
+      "food_y": "aligned",
+      "turn_left": "left",
+      "collision_left": "safe",
+      "turn_straight": "up",
+      "collision_straight": "safe",
+      "turn_right": "right",
+      "collision_right": "safe",
+      "target_left": "food",
+      "target_straight": "empty",
+      "target_right": "empty",
+      "survival": "available"
+    }
+  },
+  {
+    "case_id": "safety-049",
+    "family_id": "family-039",
+    "split": "test",
+    "pair_id": "family-039",
+    "pair_kind": "food",
+    "safe_count": 3,
+    "safe_actions": [
+      "left",
+      "straight",
+      "right"
+    ],
+    "state": {
+      "body": [
+        [
+          1,
+          2
+        ],
+        [
+          1,
+          3
+        ],
+        [
+          1,
+          4
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          3,
+          4
+        ],
+        [
+          3,
+          5
+        ],
+        [
+          3,
+          6
+        ],
+        [
+          2,
+          6
+        ],
+        [
+          2,
+          7
+        ],
+        [
+          1,
+          7
+        ],
+        [
+          1,
+          8
+        ],
+        [
+          2,
+          8
+        ],
+        [
+          2,
+          9
+        ],
+        [
+          3,
+          9
+        ],
+        [
+          3,
+          8
+        ],
+        [
+          3,
+          7
+        ],
+        [
+          4,
+          7
+        ],
+        [
+          4,
+          6
+        ],
+        [
+          4,
+          5
+        ],
+        [
+          5,
+          5
+        ],
+        [
+          5,
+          4
+        ],
+        [
+          4,
+          4
+        ],
+        [
+          4,
+          3
+        ],
+        [
+          3,
+          3
+        ],
+        [
+          3,
+          2
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          4,
+          1
+        ],
+        [
+          4,
+          2
+        ],
+        [
+          5,
+          2
+        ],
+        [
+          5,
+          1
+        ],
+        [
+          5,
+          0
+        ],
+        [
+          6,
+          0
+        ]
+      ],
+      "direction": 0,
+      "food": [
+        4,
+        0
+      ]
+    },
+    "observation_hash": "66d7ddb20454732e005efd5905353f494dcf80218563e0af0a3759c14be256a6",
+    "answers": {
+      "heading": "up",
+      "food_x": "right",
+      "food_y": "up",
+      "turn_left": "left",
+      "collision_left": "safe",
+      "turn_straight": "up",
+      "collision_straight": "safe",
+      "turn_right": "right",
+      "collision_right": "safe",
+      "target_left": "empty",
+      "target_straight": "empty",
+      "target_right": "empty",
+      "survival": "available"
+    }
+  },
+  {
+    "case_id": "safety-050",
+    "family_id": "family-040",
+    "split": "test",
+    "pair_id": "family-040",
+    "pair_kind": "food",
+    "safe_count": 3,
+    "safe_actions": [
+      "left",
+      "straight",
+      "right"
+    ],
+    "state": {
+      "body": [
+        [
+          3,
+          4
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          1,
+          4
+        ],
+        [
+          1,
+          5
+        ],
+        [
+          2,
+          5
+        ],
+        [
+          2,
+          6
+        ],
+        [
+          1,
+          6
+        ],
+        [
+          1,
+          7
+        ],
+        [
+          2,
+          7
+        ],
+        [
+          3,
+          7
+        ],
+        [
+          3,
+          8
+        ]
+      ],
+      "direction": 1,
+      "food": [
+        3,
+        5
+      ]
+    },
+    "observation_hash": "deaab0a5cf537b03c603c537b073cdb41d1da1f3644d1ca94993450a82e316ac",
+    "answers": {
+      "heading": "right",
+      "food_x": "aligned",
+      "food_y": "down",
+      "turn_left": "up",
+      "collision_left": "safe",
+      "turn_straight": "right",
+      "collision_straight": "safe",
+      "turn_right": "down",
+      "collision_right": "safe",
+      "target_left": "empty",
+      "target_straight": "empty",
+      "target_right": "food",
+      "survival": "available"
+    }
+  },
+  {
+    "case_id": "safety-051",
+    "family_id": "family-040",
+    "split": "test",
+    "pair_id": "family-040",
+    "pair_kind": "food",
+    "safe_count": 3,
+    "safe_actions": [
+      "left",
+      "straight",
+      "right"
+    ],
+    "state": {
+      "body": [
+        [
+          3,
+          4
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          1,
+          4
+        ],
+        [
+          1,
+          5
+        ],
+        [
+          2,
+          5
+        ],
+        [
+          2,
+          6
+        ],
+        [
+          1,
+          6
+        ],
+        [
+          1,
+          7
+        ],
+        [
+          2,
+          7
+        ],
+        [
+          3,
+          7
+        ],
+        [
+          3,
+          8
+        ]
+      ],
+      "direction": 1,
+      "food": [
+        6,
+        4
+      ]
+    },
+    "observation_hash": "7a04ec26d32cfac8919427e2bfa24fa92f32599577b41e8c3ea18a7000d6ddab",
+    "answers": {
+      "heading": "right",
+      "food_x": "right",
+      "food_y": "aligned",
+      "turn_left": "up",
+      "collision_left": "safe",
+      "turn_straight": "right",
+      "collision_straight": "safe",
+      "turn_right": "down",
+      "collision_right": "safe",
+      "target_left": "empty",
+      "target_straight": "empty",
+      "target_right": "empty",
+      "survival": "available"
+    }
+  },
+  {
+    "case_id": "safety-052",
+    "family_id": "family-041",
+    "split": "test",
+    "pair_id": "family-041",
+    "pair_kind": "food",
+    "safe_count": 2,
+    "safe_actions": [
+      "straight",
+      "right"
+    ],
+    "state": {
+      "body": [
+        [
+          6,
+          4
+        ],
+        [
+          7,
+          4
+        ],
+        [
+          7,
+          5
+        ],
+        [
+          6,
+          5
+        ],
+        [
+          6,
+          6
+        ],
+        [
+          7,
+          6
+        ],
+        [
+          7,
+          7
+        ],
+        [
+          8,
+          7
+        ],
+        [
+          8,
+          8
+        ],
+        [
+          7,
+          8
+        ],
+        [
+          6,
+          8
+        ],
+        [
+          6,
+          7
+        ],
+        [
+          5,
+          7
+        ],
+        [
+          5,
+          8
+        ]
+      ],
+      "direction": 3,
+      "food": [
+        0,
+        9
+      ]
+    },
+    "observation_hash": "1d119e04707cdfaefd4b11faaab2b490d0a122bc085515d3c3d3a972aea28c42",
+    "answers": {
+      "heading": "left",
+      "food_x": "left",
+      "food_y": "down",
+      "turn_left": "down",
+      "collision_left": "collision",
+      "turn_straight": "left",
+      "collision_straight": "safe",
+      "turn_right": "up",
+      "collision_right": "safe",
+      "target_left": "body",
+      "target_straight": "empty",
+      "target_right": "empty",
+      "survival": "available"
+    }
+  },
+  {
+    "case_id": "safety-053",
+    "family_id": "family-041",
+    "split": "test",
+    "pair_id": "family-041",
+    "pair_kind": "food",
+    "safe_count": 2,
+    "safe_actions": [
+      "straight",
+      "right"
+    ],
+    "state": {
+      "body": [
+        [
+          6,
+          4
+        ],
+        [
+          7,
+          4
+        ],
+        [
+          7,
+          5
+        ],
+        [
+          6,
+          5
+        ],
+        [
+          6,
+          6
+        ],
+        [
+          7,
+          6
+        ],
+        [
+          7,
+          7
+        ],
+        [
+          8,
+          7
+        ],
+        [
+          8,
+          8
+        ],
+        [
+          7,
+          8
+        ],
+        [
+          6,
+          8
+        ],
+        [
+          6,
+          7
+        ],
+        [
+          5,
+          7
+        ],
+        [
+          5,
+          8
+        ]
+      ],
+      "direction": 3,
+      "food": [
+        1,
+        2
+      ]
+    },
+    "observation_hash": "e08d5f19daccad2589b710597151ad240307f85931b300e5d4376056c1f1cbd0",
+    "answers": {
+      "heading": "left",
+      "food_x": "left",
+      "food_y": "up",
+      "turn_left": "down",
+      "collision_left": "collision",
+      "turn_straight": "left",
+      "collision_straight": "safe",
+      "turn_right": "up",
+      "collision_right": "safe",
+      "target_left": "body",
+      "target_straight": "empty",
+      "target_right": "empty",
+      "survival": "available"
+    }
+  },
+  {
+    "case_id": "safety-054",
+    "family_id": "family-042",
+    "split": "test",
+    "pair_id": null,
+    "pair_kind": null,
+    "safe_count": 3,
+    "safe_actions": [
+      "left",
+      "straight",
+      "right"
+    ],
+    "state": {
+      "body": [
+        [
+          8,
+          3
+        ],
+        [
+          8,
+          4
+        ],
+        [
+          8,
+          5
+        ],
+        [
+          8,
+          6
+        ],
+        [
+          9,
+          6
+        ],
+        [
+          9,
+          7
+        ],
+        [
+          9,
+          8
+        ],
+        [
+          8,
+          8
+        ],
+        [
+          8,
+          9
+        ],
+        [
+          7,
+          9
+        ],
+        [
+          7,
+          8
+        ],
+        [
+          6,
+          8
+        ]
+      ],
+      "direction": 0,
+      "food": [
+        9,
+        3
+      ]
+    },
+    "observation_hash": "1c2a1d7c1645cb83a07b3683cf8af9bc64b257c7e4c272c236dd315307569706",
+    "answers": {
+      "heading": "up",
+      "food_x": "right",
+      "food_y": "aligned",
+      "turn_left": "left",
+      "collision_left": "safe",
+      "turn_straight": "up",
+      "collision_straight": "safe",
+      "turn_right": "right",
+      "collision_right": "safe",
+      "target_left": "empty",
+      "target_straight": "empty",
+      "target_right": "food",
+      "survival": "available"
+    }
+  },
+  {
+    "case_id": "safety-055",
+    "family_id": "family-043",
+    "split": "test",
+    "pair_id": null,
+    "pair_kind": null,
+    "safe_count": 2,
+    "safe_actions": [
+      "left",
+      "right"
+    ],
+    "state": {
+      "body": [
+        [
+          2,
+          9
+        ],
+        [
+          2,
+          8
+        ],
+        [
+          2,
+          7
+        ],
+        [
+          1,
+          7
+        ],
+        [
+          1,
+          8
+        ],
+        [
+          0,
+          8
+        ],
+        [
+          0,
+          9
+        ],
+        [
+          1,
+          9
+        ]
+      ],
+      "direction": 2,
+      "food": [
+        3,
+        9
+      ]
+    },
+    "observation_hash": "e158ab041ef9eff1c6730a1f564bf2b1f1fc51485af9dd435c438a6b6424c03d",
+    "answers": {
+      "heading": "down",
+      "food_x": "right",
+      "food_y": "aligned",
+      "turn_left": "right",
+      "collision_left": "safe",
+      "turn_straight": "down",
+      "collision_straight": "collision",
+      "turn_right": "left",
+      "collision_right": "safe",
+      "target_left": "food",
+      "target_straight": "outside",
+      "target_right": "tail",
+      "survival": "available"
+    }
+  },
+  {
+    "case_id": "safety-056",
+    "family_id": "family-044",
+    "split": "test",
+    "pair_id": null,
+    "pair_kind": null,
+    "safe_count": 2,
+    "safe_actions": [
+      "straight",
+      "right"
+    ],
+    "state": {
+      "body": [
+        [
+          6,
+          0
+        ],
+        [
+          5,
+          0
+        ],
+        [
+          4,
+          0
+        ],
+        [
+          3,
+          0
+        ],
+        [
+          2,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          2
+        ],
+        [
+          3,
+          2
+        ],
+        [
+          3,
+          3
+        ],
+        [
+          3,
+          4
+        ],
+        [
+          4,
+          4
+        ],
+        [
+          5,
+          4
+        ],
+        [
+          5,
+          5
+        ],
+        [
+          6,
+          5
+        ],
+        [
+          7,
+          5
+        ],
+        [
+          7,
+          4
+        ],
+        [
+          8,
+          4
+        ],
+        [
+          8,
+          5
+        ],
+        [
+          9,
+          5
+        ],
+        [
+          9,
+          4
+        ],
+        [
+          9,
+          3
+        ]
+      ],
+      "direction": 1,
+      "food": [
+        6,
+        1
+      ]
+    },
+    "observation_hash": "e4ec10fc9bf446436ea4ed816ffca79d95c4fa5dc0efa86ab536c06a9aaf995a",
+    "answers": {
+      "heading": "right",
+      "food_x": "aligned",
+      "food_y": "down",
+      "turn_left": "up",
+      "collision_left": "collision",
+      "turn_straight": "right",
+      "collision_straight": "safe",
+      "turn_right": "down",
+      "collision_right": "safe",
+      "target_left": "outside",
+      "target_straight": "empty",
+      "target_right": "food",
+      "survival": "available"
+    }
+  },
+  {
+    "case_id": "safety-057",
+    "family_id": "family-045",
+    "split": "test",
+    "pair_id": null,
+    "pair_kind": null,
+    "safe_count": 2,
+    "safe_actions": [
+      "straight",
+      "right"
+    ],
+    "state": {
+      "body": [
+        [
+          9,
+          7
+        ],
+        [
+          9,
+          6
+        ],
+        [
+          8,
+          6
+        ],
+        [
+          7,
+          6
+        ],
+        [
+          6,
+          6
+        ],
+        [
+          5,
+          6
+        ],
+        [
+          4,
+          6
+        ],
+        [
+          4,
+          7
+        ],
+        [
+          4,
+          8
+        ],
+        [
+          4,
+          9
+        ]
+      ],
+      "direction": 2,
+      "food": [
+        8,
+        7
+      ]
+    },
+    "observation_hash": "97f3a78f26656a1e907f9877277a9c203f2b8387522255773fabd3e0e8bb6f47",
+    "answers": {
+      "heading": "down",
+      "food_x": "left",
+      "food_y": "aligned",
+      "turn_left": "right",
+      "collision_left": "collision",
+      "turn_straight": "down",
+      "collision_straight": "safe",
+      "turn_right": "left",
+      "collision_right": "safe",
+      "target_left": "outside",
+      "target_straight": "empty",
+      "target_right": "food",
+      "survival": "available"
+    }
+  },
+  {
+    "case_id": "safety-058",
+    "family_id": "family-046",
+    "split": "test",
+    "pair_id": null,
+    "pair_kind": null,
+    "safe_count": 3,
+    "safe_actions": [
+      "left",
+      "straight",
+      "right"
+    ],
+    "state": {
+      "body": [
+        [
+          5,
+          4
+        ],
+        [
+          5,
+          5
+        ],
+        [
+          6,
+          5
+        ],
+        [
+          6,
+          6
+        ],
+        [
+          5,
+          6
+        ],
+        [
+          4,
+          6
+        ],
+        [
+          3,
+          6
+        ],
+        [
+          3,
+          5
+        ],
+        [
+          3,
+          4
+        ],
+        [
+          3,
+          3
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          1,
+          3
+        ],
+        [
+          1,
+          4
+        ],
+        [
+          1,
+          5
+        ],
+        [
+          2,
+          5
+        ]
+      ],
+      "direction": 0,
+      "food": [
+        2,
+        9
+      ]
+    },
+    "observation_hash": "c87292ac9eadf94d1cf5bb2e3bbe0c71eb9f4bc71a1f562d5d350a912762e23c",
+    "answers": {
+      "heading": "up",
+      "food_x": "left",
+      "food_y": "down",
+      "turn_left": "left",
+      "collision_left": "safe",
+      "turn_straight": "up",
+      "collision_straight": "safe",
+      "turn_right": "right",
+      "collision_right": "safe",
+      "target_left": "empty",
+      "target_straight": "empty",
+      "target_right": "empty",
+      "survival": "available"
+    }
+  },
+  {
+    "case_id": "safety-059",
+    "family_id": "family-047",
+    "split": "test",
+    "pair_id": null,
+    "pair_kind": null,
+    "safe_count": 2,
+    "safe_actions": [
+      "left",
+      "straight"
+    ],
+    "state": {
+      "body": [
+        [
+          5,
+          6
+        ],
+        [
+          4,
+          6
+        ],
+        [
+          3,
+          6
+        ],
+        [
+          3,
+          7
+        ],
+        [
+          2,
+          7
+        ],
+        [
+          1,
+          7
+        ],
+        [
+          1,
+          8
+        ],
+        [
+          1,
+          9
+        ],
+        [
+          2,
+          9
+        ],
+        [
+          2,
+          8
+        ],
+        [
+          3,
+          8
+        ],
+        [
+          3,
+          9
+        ],
+        [
+          4,
+          9
+        ],
+        [
+          5,
+          9
+        ],
+        [
+          6,
+          9
+        ],
+        [
+          6,
+          8
+        ],
+        [
+          6,
+          7
+        ],
+        [
+          5,
+          7
+        ],
+        [
+          4,
+          7
+        ],
+        [
+          4,
+          8
+        ],
+        [
+          5,
+          8
+        ]
+      ],
+      "direction": 1,
+      "food": [
+        6,
+        6
+      ]
+    },
+    "observation_hash": "32b73deab24847fcf175333e398fb0b8e5926a6a3625f004b7dc04440a3c7992",
+    "answers": {
+      "heading": "right",
+      "food_x": "right",
+      "food_y": "aligned",
+      "turn_left": "up",
+      "collision_left": "safe",
+      "turn_straight": "right",
+      "collision_straight": "safe",
+      "turn_right": "down",
+      "collision_right": "collision",
+      "target_left": "empty",
+      "target_straight": "food",
+      "target_right": "body",
+      "survival": "available"
+    }
+  },
+  {
+    "case_id": "safety-060",
+    "family_id": "family-048",
+    "split": "test",
+    "pair_id": null,
+    "pair_kind": null,
+    "safe_count": 2,
+    "safe_actions": [
+      "left",
+      "straight"
+    ],
+    "state": {
+      "body": [
+        [
+          0,
+          5
+        ],
+        [
+          0,
+          4
+        ],
+        [
+          0,
+          3
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          2,
+          0
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          2
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          1,
+          3
+        ],
+        [
+          1,
+          4
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          3,
+          4
+        ],
+        [
+          4,
+          4
+        ],
+        [
+          5,
+          4
+        ]
+      ],
+      "direction": 2,
+      "food": [
+        2,
+        6
+      ]
+    },
+    "observation_hash": "43974c800837a449538dcfc111b722276df658515a3f05b6a3d71d107762cabb",
+    "answers": {
+      "heading": "down",
+      "food_x": "right",
+      "food_y": "down",
+      "turn_left": "right",
+      "collision_left": "safe",
+      "turn_straight": "down",
+      "collision_straight": "safe",
+      "turn_right": "left",
+      "collision_right": "collision",
+      "target_left": "empty",
+      "target_straight": "empty",
+      "target_right": "outside",
+      "survival": "available"
+    }
+  },
+  {
+    "case_id": "safety-061",
+    "family_id": "family-049",
+    "split": "test",
+    "pair_id": null,
+    "pair_kind": null,
+    "safe_count": 2,
+    "safe_actions": [
+      "left",
+      "right"
+    ],
+    "state": {
+      "body": [
+        [
+          4,
+          0
+        ],
+        [
+          4,
+          1
+        ],
+        [
+          4,
+          2
+        ],
+        [
+          3,
+          2
+        ],
+        [
+          3,
+          3
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          1,
+          4
+        ],
+        [
+          1,
+          3
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          0,
+          3
+        ],
+        [
+          0,
+          4
+        ],
+        [
+          0,
+          5
+        ],
+        [
+          0,
+          6
+        ],
+        [
+          1,
+          6
+        ],
+        [
+          1,
+          7
+        ],
+        [
+          1,
+          8
+        ],
+        [
+          2,
+          8
+        ],
+        [
+          2,
+          9
+        ],
+        [
+          1,
+          9
+        ],
+        [
+          0,
+          9
+        ],
+        [
+          0,
+          8
+        ],
+        [
+          0,
+          7
+        ]
+      ],
+      "direction": 0,
+      "food": [
+        7,
+        8
+      ]
+    },
+    "observation_hash": "2471d135659bfd5b9d35c626236b1db1c8951321bcaa9dacaf390b5435a67931",
+    "answers": {
+      "heading": "up",
+      "food_x": "right",
+      "food_y": "down",
+      "turn_left": "left",
+      "collision_left": "safe",
+      "turn_straight": "up",
+      "collision_straight": "collision",
+      "turn_right": "right",
+      "collision_right": "safe",
+      "target_left": "empty",
+      "target_straight": "outside",
+      "target_right": "empty",
+      "survival": "available"
+    }
+  },
+  {
+    "case_id": "safety-062",
+    "family_id": "family-050",
+    "split": "test",
+    "pair_id": null,
+    "pair_kind": null,
+    "safe_count": 2,
+    "safe_actions": [
+      "left",
+      "straight"
+    ],
+    "state": {
+      "body": [
+        [
+          1,
+          3
+        ],
+        [
+          0,
+          3
+        ],
+        [
+          0,
+          4
+        ],
+        [
+          1,
+          4
+        ],
+        [
+          1,
+          5
+        ],
+        [
+          1,
+          6
+        ],
+        [
+          1,
+          7
+        ],
+        [
+          0,
+          7
+        ],
+        [
+          0,
+          6
+        ],
+        [
+          0,
+          5
+        ]
+      ],
+      "direction": 1,
+      "food": [
+        4,
+        0
+      ]
+    },
+    "observation_hash": "5d8ac958149840817699977bcf61894cc645049b5da1cc72529ae74e96337b1e",
+    "answers": {
+      "heading": "right",
+      "food_x": "right",
+      "food_y": "up",
+      "turn_left": "up",
+      "collision_left": "safe",
+      "turn_straight": "right",
+      "collision_straight": "safe",
+      "turn_right": "down",
+      "collision_right": "collision",
+      "target_left": "empty",
+      "target_straight": "empty",
+      "target_right": "body",
+      "survival": "available"
+    }
+  },
+  {
+    "case_id": "safety-063",
+    "family_id": "family-051",
+    "split": "test",
+    "pair_id": null,
+    "pair_kind": null,
+    "safe_count": 2,
+    "safe_actions": [
+      "left",
+      "straight"
+    ],
+    "state": {
+      "body": [
+        [
+          8,
+          2
+        ],
+        [
+          9,
+          2
+        ],
+        [
+          9,
+          1
+        ],
+        [
+          9,
+          0
+        ],
+        [
+          8,
+          0
+        ],
+        [
+          8,
+          1
+        ],
+        [
+          7,
+          1
+        ],
+        [
+          6,
+          1
+        ],
+        [
+          6,
+          0
+        ],
+        [
+          7,
+          0
+        ]
+      ],
+      "direction": 3,
+      "food": [
+        7,
+        2
+      ]
+    },
+    "observation_hash": "adaae9280afa948fef6acc9d57974c4f1f8f4b1c79c58fb290507a76131a1ac8",
+    "answers": {
+      "heading": "left",
+      "food_x": "left",
+      "food_y": "aligned",
+      "turn_left": "down",
+      "collision_left": "safe",
+      "turn_straight": "left",
+      "collision_straight": "safe",
+      "turn_right": "up",
+      "collision_right": "collision",
+      "target_left": "empty",
+      "target_straight": "food",
+      "target_right": "body",
+      "survival": "available"
+    }
+  },
+  {
+    "case_id": "safety-064",
+    "family_id": "family-052",
+    "split": "test",
+    "pair_id": null,
+    "pair_kind": null,
+    "safe_count": 1,
+    "safe_actions": [
+      "straight"
+    ],
+    "state": {
+      "body": [
+        [
+          9,
+          3
+        ],
+        [
+          9,
+          4
+        ],
+        [
+          8,
+          4
+        ],
+        [
+          8,
+          3
+        ],
+        [
+          7,
+          3
+        ],
+        [
+          7,
+          4
+        ],
+        [
+          6,
+          4
+        ],
+        [
+          5,
+          4
+        ],
+        [
+          4,
+          4
+        ],
+        [
+          3,
+          4
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          1,
+          4
+        ],
+        [
+          1,
+          3
+        ],
+        [
+          0,
+          3
+        ],
+        [
+          0,
+          4
+        ],
+        [
+          0,
+          5
+        ],
+        [
+          1,
+          5
+        ]
+      ],
+      "direction": 0,
+      "food": [
+        2,
+        9
+      ]
+    },
+    "observation_hash": "e3f23abf283d806309aaa2d6a153de16ccd40800631faaa392d40225c4931b28",
+    "answers": {
+      "heading": "up",
+      "food_x": "left",
+      "food_y": "down",
+      "turn_left": "left",
+      "collision_left": "collision",
+      "turn_straight": "up",
+      "collision_straight": "safe",
+      "turn_right": "right",
+      "collision_right": "collision",
+      "target_left": "body",
+      "target_straight": "empty",
+      "target_right": "outside",
+      "survival": "available"
+    }
+  },
+  {
+    "case_id": "safety-065",
+    "family_id": "family-053",
+    "split": "test",
+    "pair_id": null,
+    "pair_kind": null,
+    "safe_count": 3,
+    "safe_actions": [
+      "left",
+      "straight",
+      "right"
+    ],
+    "state": {
+      "body": [
+        [
+          5,
+          5
+        ],
+        [
+          5,
+          4
+        ],
+        [
+          5,
+          3
+        ],
+        [
+          4,
+          3
+        ],
+        [
+          3,
+          3
+        ],
+        [
+          3,
+          4
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          2,
+          2
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          2,
+          0
+        ],
+        [
+          3,
+          0
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          3,
+          2
+        ]
+      ],
+      "direction": 2,
+      "food": [
+        5,
+        6
+      ]
+    },
+    "observation_hash": "ce546772d11cb5f193b897d511bcef696e1a8b92f48bced33874d243646153aa",
+    "answers": {
+      "heading": "down",
+      "food_x": "aligned",
+      "food_y": "down",
+      "turn_left": "right",
+      "collision_left": "safe",
+      "turn_straight": "down",
+      "collision_straight": "safe",
+      "turn_right": "left",
+      "collision_right": "safe",
+      "target_left": "empty",
+      "target_straight": "food",
+      "target_right": "empty",
+      "survival": "available"
+    }
+  },
+  {
+    "case_id": "safety-066",
+    "family_id": "family-054",
+    "split": "test",
+    "pair_id": null,
+    "pair_kind": null,
+    "safe_count": 2,
+    "safe_actions": [
+      "left",
+      "straight"
+    ],
+    "state": {
+      "body": [
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          2
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          3,
+          4
+        ],
+        [
+          3,
+          3
+        ],
+        [
+          4,
+          3
+        ],
+        [
+          5,
+          3
+        ],
+        [
+          6,
+          3
+        ],
+        [
+          7,
+          3
+        ],
+        [
+          8,
+          3
+        ],
+        [
+          9,
+          3
+        ],
+        [
+          9,
+          4
+        ]
+      ],
+      "direction": 1,
+      "food": [
+        1,
+        0
+      ]
+    },
+    "observation_hash": "78b0a0251663ab4591580ca649e4c5637326624ad75b21e926f55fa7c2fe9077",
+    "answers": {
+      "heading": "right",
+      "food_x": "aligned",
+      "food_y": "up",
+      "turn_left": "up",
+      "collision_left": "safe",
+      "turn_straight": "right",
+      "collision_straight": "safe",
+      "turn_right": "down",
+      "collision_right": "collision",
+      "target_left": "food",
+      "target_straight": "empty",
+      "target_right": "body",
+      "survival": "available"
+    }
+  },
+  {
+    "case_id": "safety-067",
+    "family_id": "family-055",
+    "split": "test",
+    "pair_id": null,
+    "pair_kind": null,
+    "safe_count": 2,
+    "safe_actions": [
+      "straight",
+      "right"
+    ],
+    "state": {
+      "body": [
+        [
+          1,
+          6
+        ],
+        [
+          2,
+          6
+        ],
+        [
+          2,
+          7
+        ],
+        [
+          1,
+          7
+        ],
+        [
+          1,
+          8
+        ],
+        [
+          1,
+          9
+        ],
+        [
+          2,
+          9
+        ],
+        [
+          2,
+          8
+        ],
+        [
+          3,
+          8
+        ],
+        [
+          3,
+          9
+        ],
+        [
+          4,
+          9
+        ],
+        [
+          5,
+          9
+        ],
+        [
+          6,
+          9
+        ],
+        [
+          7,
+          9
+        ],
+        [
+          7,
+          8
+        ]
+      ],
+      "direction": 3,
+      "food": [
+        2,
+        0
+      ]
+    },
+    "observation_hash": "e7b9a6bfd1e946535117d4206ef92630a0791aa4e0fcbeaa3bc1f7cb879eb317",
+    "answers": {
+      "heading": "left",
+      "food_x": "right",
+      "food_y": "up",
+      "turn_left": "down",
+      "collision_left": "collision",
+      "turn_straight": "left",
+      "collision_straight": "safe",
+      "turn_right": "up",
+      "collision_right": "safe",
+      "target_left": "body",
+      "target_straight": "empty",
+      "target_right": "empty",
+      "survival": "available"
+    }
+  },
+  {
+    "case_id": "safety-068",
+    "family_id": "family-056",
+    "split": "test",
+    "pair_id": null,
+    "pair_kind": null,
+    "safe_count": 1,
+    "safe_actions": [
+      "left"
+    ],
+    "state": {
+      "body": [
+        [
+          0,
+          5
+        ],
+        [
+          1,
+          5
+        ],
+        [
+          1,
+          6
+        ],
+        [
+          1,
+          7
+        ],
+        [
+          2,
+          7
+        ],
+        [
+          2,
+          6
+        ],
+        [
+          3,
+          6
+        ],
+        [
+          4,
+          6
+        ],
+        [
+          4,
+          5
+        ],
+        [
+          3,
+          5
+        ],
+        [
+          2,
+          5
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          1,
+          3
+        ],
+        [
+          0,
+          3
+        ],
+        [
+          0,
+          4
+        ],
+        [
+          1,
+          4
+        ]
+      ],
+      "direction": 3,
+      "food": [
+        0,
+        6
+      ]
+    },
+    "observation_hash": "5dcdb720ea4e0ae366a32a3dc79a0d439ba81de8cd55aae118349b8b2ca66f0a",
+    "answers": {
+      "heading": "left",
+      "food_x": "aligned",
+      "food_y": "down",
+      "turn_left": "down",
+      "collision_left": "safe",
+      "turn_straight": "left",
+      "collision_straight": "collision",
+      "turn_right": "up",
+      "collision_right": "collision",
+      "target_left": "food",
+      "target_straight": "outside",
+      "target_right": "body",
+      "survival": "available"
+    }
+  },
+  {
+    "case_id": "safety-069",
+    "family_id": "family-057",
+    "split": "test",
+    "pair_id": null,
+    "pair_kind": null,
+    "safe_count": 2,
+    "safe_actions": [
+      "left",
+      "right"
+    ],
+    "state": {
+      "body": [
+        [
+          9,
+          4
+        ],
+        [
+          8,
+          4
+        ],
+        [
+          8,
+          5
+        ],
+        [
+          7,
+          5
+        ],
+        [
+          6,
+          5
+        ],
+        [
+          6,
+          4
+        ],
+        [
+          5,
+          4
+        ],
+        [
+          5,
+          3
+        ],
+        [
+          4,
+          3
+        ],
+        [
+          3,
+          3
+        ],
+        [
+          3,
+          2
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          3,
+          0
+        ],
+        [
+          2,
+          0
+        ]
+      ],
+      "direction": 1,
+      "food": [
+        9,
+        5
+      ]
+    },
+    "observation_hash": "0ff833ac7ac088ad50d419c754ef5135c8819458c8be9714b9dae14b27d46a08",
+    "answers": {
+      "heading": "right",
+      "food_x": "aligned",
+      "food_y": "down",
+      "turn_left": "up",
+      "collision_left": "safe",
+      "turn_straight": "right",
+      "collision_straight": "collision",
+      "turn_right": "down",
+      "collision_right": "safe",
+      "target_left": "empty",
+      "target_straight": "outside",
+      "target_right": "food",
+      "survival": "available"
+    }
+  },
+  {
+    "case_id": "safety-070",
+    "family_id": "family-058",
+    "split": "test",
+    "pair_id": null,
+    "pair_kind": null,
+    "safe_count": 2,
+    "safe_actions": [
+      "left",
+      "right"
+    ],
+    "state": {
+      "body": [
+        [
+          4,
+          9
+        ],
+        [
+          4,
+          8
+        ],
+        [
+          3,
+          8
+        ],
+        [
+          2,
+          8
+        ],
+        [
+          1,
+          8
+        ],
+        [
+          0,
+          8
+        ],
+        [
+          0,
+          9
+        ],
+        [
+          1,
+          9
+        ],
+        [
+          2,
+          9
+        ],
+        [
+          3,
+          9
+        ]
+      ],
+      "direction": 2,
+      "food": [
+        9,
+        8
+      ]
+    },
+    "observation_hash": "bb28cda4161b3173ca94f6e3ab3741a28cc677cf443eb9b08e5d61ff90309108",
+    "answers": {
+      "heading": "down",
+      "food_x": "right",
+      "food_y": "up",
+      "turn_left": "right",
+      "collision_left": "safe",
+      "turn_straight": "down",
+      "collision_straight": "collision",
+      "turn_right": "left",
+      "collision_right": "safe",
+      "target_left": "empty",
+      "target_straight": "outside",
+      "target_right": "tail",
+      "survival": "available"
+    }
+  },
+  {
+    "case_id": "safety-071",
+    "family_id": "family-059",
+    "split": "test",
+    "pair_id": null,
+    "pair_kind": null,
+    "safe_count": 1,
+    "safe_actions": [
+      "right"
+    ],
+    "state": {
+      "body": [
+        [
+          4,
+          0
+        ],
+        [
+          4,
+          1
+        ],
+        [
+          4,
+          2
+        ],
+        [
+          3,
+          2
+        ],
+        [
+          3,
+          3
+        ],
+        [
+          3,
+          4
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          1,
+          4
+        ],
+        [
+          0,
+          4
+        ],
+        [
+          0,
+          3
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          2
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          2,
+          0
+        ],
+        [
+          3,
+          0
+        ],
+        [
+          3,
+          1
+        ]
+      ],
+      "direction": 0,
+      "food": [
+        3,
+        9
+      ]
+    },
+    "observation_hash": "bd18dcad150ff750101693e6f27a95273591199fd170849d9ca7a4a93da9ab79",
+    "answers": {
+      "heading": "up",
+      "food_x": "left",
+      "food_y": "down",
+      "turn_left": "left",
+      "collision_left": "collision",
+      "turn_straight": "up",
+      "collision_straight": "collision",
+      "turn_right": "right",
+      "collision_right": "safe",
+      "target_left": "body",
+      "target_straight": "outside",
+      "target_right": "empty",
+      "survival": "available"
+    }
+  },
+  {
+    "case_id": "safety-072",
+    "family_id": "family-060",
+    "split": "test",
+    "pair_id": null,
+    "pair_kind": null,
+    "safe_count": 3,
+    "safe_actions": [
+      "left",
+      "straight",
+      "right"
+    ],
+    "state": {
+      "body": [
+        [
+          2,
+          5
+        ],
+        [
+          2,
+          6
+        ],
+        [
+          2,
+          7
+        ],
+        [
+          3,
+          7
+        ],
+        [
+          4,
+          7
+        ],
+        [
+          5,
+          7
+        ],
+        [
+          5,
+          6
+        ],
+        [
+          5,
+          5
+        ],
+        [
+          5,
+          4
+        ],
+        [
+          5,
+          3
+        ],
+        [
+          5,
+          2
+        ],
+        [
+          6,
+          2
+        ]
+      ],
+      "direction": 0,
+      "food": [
+        7,
+        4
+      ]
+    },
+    "observation_hash": "0501d4a7d4cc7f432e2e0ff76a021821f97d02e6b40f59d37c5b3d9267c7b355",
+    "answers": {
+      "heading": "up",
+      "food_x": "right",
+      "food_y": "up",
+      "turn_left": "left",
+      "collision_left": "safe",
+      "turn_straight": "up",
+      "collision_straight": "safe",
+      "turn_right": "right",
+      "collision_right": "safe",
+      "target_left": "empty",
+      "target_straight": "empty",
+      "target_right": "empty",
+      "survival": "available"
+    }
+  },
+  {
+    "case_id": "safety-073",
+    "family_id": "family-061",
+    "split": "test",
+    "pair_id": null,
+    "pair_kind": null,
+    "safe_count": 1,
+    "safe_actions": [
+      "straight"
+    ],
+    "state": {
+      "body": [
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          3,
+          0
+        ],
+        [
+          4,
+          0
+        ],
+        [
+          5,
+          0
+        ],
+        [
+          5,
+          1
+        ],
+        [
+          4,
+          1
+        ],
+        [
+          4,
+          2
+        ],
+        [
+          5,
+          2
+        ]
+      ],
+      "direction": 1,
+      "food": [
+        7,
+        9
+      ]
+    },
+    "observation_hash": "829063561f1c9d5f33ca0b0c718e415b844c20fe5bae431b34bbe380ba3080d0",
+    "answers": {
+      "heading": "right",
+      "food_x": "right",
+      "food_y": "down",
+      "turn_left": "up",
+      "collision_left": "collision",
+      "turn_straight": "right",
+      "collision_straight": "safe",
+      "turn_right": "down",
+      "collision_right": "collision",
+      "target_left": "outside",
+      "target_straight": "empty",
+      "target_right": "body",
+      "survival": "available"
+    }
+  },
+  {
+    "case_id": "safety-074",
+    "family_id": "family-062",
+    "split": "test",
+    "pair_id": null,
+    "pair_kind": null,
+    "safe_count": 2,
+    "safe_actions": [
+      "left",
+      "right"
+    ],
+    "state": {
+      "body": [
+        [
+          8,
+          9
+        ],
+        [
+          8,
+          8
+        ],
+        [
+          8,
+          7
+        ],
+        [
+          9,
+          7
+        ],
+        [
+          9,
+          8
+        ]
+      ],
+      "direction": 2,
+      "food": [
+        9,
+        9
+      ]
+    },
+    "observation_hash": "886fdec0d7a480aece067a41fa3a24fce2bfa084d35644c6a6a68c4b5ed7c9f9",
+    "answers": {
+      "heading": "down",
+      "food_x": "right",
+      "food_y": "aligned",
+      "turn_left": "right",
+      "collision_left": "safe",
+      "turn_straight": "down",
+      "collision_straight": "collision",
+      "turn_right": "left",
+      "collision_right": "safe",
+      "target_left": "food",
+      "target_straight": "outside",
+      "target_right": "empty",
+      "survival": "available"
+    }
+  },
+  {
+    "case_id": "safety-075",
+    "family_id": "family-063",
+    "split": "test",
+    "pair_id": null,
+    "pair_kind": null,
+    "safe_count": 1,
+    "safe_actions": [
+      "straight"
+    ],
+    "state": {
+      "body": [
+        [
+          6,
+          9
+        ],
+        [
+          7,
+          9
+        ],
+        [
+          7,
+          8
+        ],
+        [
+          7,
+          7
+        ],
+        [
+          8,
+          7
+        ],
+        [
+          8,
+          6
+        ],
+        [
+          7,
+          6
+        ],
+        [
+          7,
+          5
+        ],
+        [
+          6,
+          5
+        ],
+        [
+          6,
+          6
+        ],
+        [
+          6,
+          7
+        ],
+        [
+          6,
+          8
+        ],
+        [
+          5,
+          8
+        ],
+        [
+          5,
+          7
+        ],
+        [
+          5,
+          6
+        ],
+        [
+          4,
+          6
+        ],
+        [
+          3,
+          6
+        ],
+        [
+          3,
+          7
+        ]
+      ],
+      "direction": 3,
+      "food": [
+        5,
+        9
+      ]
+    },
+    "observation_hash": "48813dcc14d19732b8ef63b5724c6f63f55db37b0d44b27f39ab4cbaba048ff7",
+    "answers": {
+      "heading": "left",
+      "food_x": "left",
+      "food_y": "aligned",
+      "turn_left": "down",
+      "collision_left": "collision",
+      "turn_straight": "left",
+      "collision_straight": "safe",
+      "turn_right": "up",
+      "collision_right": "collision",
+      "target_left": "outside",
+      "target_straight": "food",
+      "target_right": "body",
+      "survival": "available"
+    }
+  },
+  {
+    "case_id": "safety-076",
+    "family_id": "family-064",
+    "split": "test",
+    "pair_id": null,
+    "pair_kind": null,
+    "safe_count": 3,
+    "safe_actions": [
+      "left",
+      "straight",
+      "right"
+    ],
+    "state": {
+      "body": [
+        [
+          8,
+          8
+        ],
+        [
+          9,
+          8
+        ],
+        [
+          9,
+          7
+        ],
+        [
+          9,
+          6
+        ],
+        [
+          9,
+          5
+        ],
+        [
+          8,
+          5
+        ],
+        [
+          8,
+          4
+        ],
+        [
+          7,
+          4
+        ],
+        [
+          7,
+          3
+        ],
+        [
+          7,
+          2
+        ],
+        [
+          8,
+          2
+        ],
+        [
+          8,
+          3
+        ],
+        [
+          9,
+          3
+        ],
+        [
+          9,
+          2
+        ],
+        [
+          9,
+          1
+        ],
+        [
+          8,
+          1
+        ],
+        [
+          7,
+          1
+        ],
+        [
+          7,
+          0
+        ],
+        [
+          6,
+          0
+        ],
+        [
+          6,
+          1
+        ]
+      ],
+      "direction": 3,
+      "food": [
+        8,
+        9
+      ]
+    },
+    "observation_hash": "dfef92cdf74826a66608712a468462c2d8e820fba7ff4da25710177dc741504b",
+    "answers": {
+      "heading": "left",
+      "food_x": "aligned",
+      "food_y": "down",
+      "turn_left": "down",
+      "collision_left": "safe",
+      "turn_straight": "left",
+      "collision_straight": "safe",
+      "turn_right": "up",
+      "collision_right": "safe",
+      "target_left": "food",
+      "target_straight": "empty",
+      "target_right": "empty",
+      "survival": "available"
+    }
+  },
+  {
+    "case_id": "safety-077",
+    "family_id": "family-065",
+    "split": "test",
+    "pair_id": null,
+    "pair_kind": null,
+    "safe_count": 3,
+    "safe_actions": [
+      "left",
+      "straight",
+      "right"
+    ],
+    "state": {
+      "body": [
+        [
+          8,
+          6
+        ],
+        [
+          8,
+          5
+        ],
+        [
+          9,
+          5
+        ],
+        [
+          9,
+          4
+        ],
+        [
+          9,
+          3
+        ],
+        [
+          8,
+          3
+        ],
+        [
+          8,
+          2
+        ],
+        [
+          7,
+          2
+        ],
+        [
+          6,
+          2
+        ],
+        [
+          6,
+          3
+        ],
+        [
+          6,
+          4
+        ],
+        [
+          7,
+          4
+        ],
+        [
+          8,
+          4
+        ]
+      ],
+      "direction": 2,
+      "food": [
+        8,
+        7
+      ]
+    },
+    "observation_hash": "f3091c98752870ceec0550e4d848818e135023d7062e60db0969c80ea605102d",
+    "answers": {
+      "heading": "down",
+      "food_x": "aligned",
+      "food_y": "down",
+      "turn_left": "right",
+      "collision_left": "safe",
+      "turn_straight": "down",
+      "collision_straight": "safe",
+      "turn_right": "left",
+      "collision_right": "safe",
+      "target_left": "empty",
+      "target_straight": "food",
+      "target_right": "empty",
+      "survival": "available"
+    }
+  },
+  {
+    "case_id": "safety-078",
+    "family_id": "family-066",
+    "split": "test",
+    "pair_id": null,
+    "pair_kind": null,
+    "safe_count": 3,
+    "safe_actions": [
+      "left",
+      "straight",
+      "right"
+    ],
+    "state": {
+      "body": [
+        [
+          3,
+          5
+        ],
+        [
+          3,
+          6
+        ],
+        [
+          2,
+          6
+        ],
+        [
+          1,
+          6
+        ],
+        [
+          1,
+          5
+        ],
+        [
+          0,
+          5
+        ],
+        [
+          0,
+          6
+        ],
+        [
+          0,
+          7
+        ],
+        [
+          1,
+          7
+        ],
+        [
+          1,
+          8
+        ],
+        [
+          1,
+          9
+        ],
+        [
+          0,
+          9
+        ],
+        [
+          0,
+          8
+        ]
+      ],
+      "direction": 0,
+      "food": [
+        8,
+        4
+      ]
+    },
+    "observation_hash": "301b3d775a9528b4270ef0e5f28a7bf8b367755c6f040be20b6619e0ca11869f",
+    "answers": {
+      "heading": "up",
+      "food_x": "right",
+      "food_y": "up",
+      "turn_left": "left",
+      "collision_left": "safe",
+      "turn_straight": "up",
+      "collision_straight": "safe",
+      "turn_right": "right",
+      "collision_right": "safe",
+      "target_left": "empty",
+      "target_straight": "empty",
+      "target_right": "empty",
+      "survival": "available"
+    }
+  },
+  {
+    "case_id": "safety-079",
+    "family_id": "family-067",
+    "split": "test",
+    "pair_id": null,
+    "pair_kind": null,
+    "safe_count": 3,
+    "safe_actions": [
+      "left",
+      "straight",
+      "right"
+    ],
+    "state": {
+      "body": [
+        [
+          2,
+          3
+        ],
+        [
+          1,
+          3
+        ],
+        [
+          0,
+          3
+        ],
+        [
+          0,
+          4
+        ],
+        [
+          1,
+          4
+        ],
+        [
+          1,
+          5
+        ],
+        [
+          0,
+          5
+        ],
+        [
+          0,
+          6
+        ],
+        [
+          1,
+          6
+        ],
+        [
+          2,
+          6
+        ],
+        [
+          2,
+          7
+        ],
+        [
+          2,
+          8
+        ],
+        [
+          2,
+          9
+        ]
+      ],
+      "direction": 1,
+      "food": [
+        3,
+        3
+      ]
+    },
+    "observation_hash": "d375ee721ef82200148ee154e391631e96714184ebc6157f34bfa5a7e1205e65",
+    "answers": {
+      "heading": "right",
+      "food_x": "right",
+      "food_y": "aligned",
+      "turn_left": "up",
+      "collision_left": "safe",
+      "turn_straight": "right",
+      "collision_straight": "safe",
+      "turn_right": "down",
+      "collision_right": "safe",
+      "target_left": "empty",
+      "target_straight": "food",
+      "target_right": "empty",
+      "survival": "available"
+    }
+  },
+  {
+    "case_id": "safety-080",
+    "family_id": "family-068",
+    "split": "test",
+    "pair_id": null,
+    "pair_kind": null,
+    "safe_count": 0,
+    "safe_actions": [],
+    "state": {
+      "body": [
+        [
+          4,
+          9
+        ],
+        [
+          3,
+          9
+        ],
+        [
+          3,
+          8
+        ],
+        [
+          3,
+          7
+        ],
+        [
+          4,
+          7
+        ],
+        [
+          4,
+          8
+        ],
+        [
+          5,
+          8
+        ],
+        [
+          5,
+          9
+        ],
+        [
+          6,
+          9
+        ]
+      ],
+      "direction": 1,
+      "food": [
+        4,
+        0
+      ]
+    },
+    "observation_hash": "822fc0cd313c7e44b4ae8a71226e0192294e3bab8e8264706e3a0146b3916980",
+    "answers": {
+      "heading": "right",
+      "food_x": "aligned",
+      "food_y": "up",
+      "turn_left": "up",
+      "collision_left": "collision",
+      "turn_straight": "right",
+      "collision_straight": "collision",
+      "turn_right": "down",
+      "collision_right": "collision",
+      "target_left": "body",
+      "target_straight": "body",
+      "target_right": "outside",
+      "survival": "trapped"
+    }
+  },
+  {
+    "case_id": "safety-081",
+    "family_id": "family-069",
+    "split": "test",
+    "pair_id": null,
+    "pair_kind": null,
+    "safe_count": 3,
+    "safe_actions": [
+      "left",
+      "straight",
+      "right"
+    ],
+    "state": {
+      "body": [
+        [
+          3,
+          3
+        ],
+        [
+          4,
+          3
+        ],
+        [
+          5,
+          3
+        ],
+        [
+          6,
+          3
+        ],
+        [
+          7,
+          3
+        ],
+        [
+          7,
+          4
+        ],
+        [
+          6,
+          4
+        ],
+        [
+          5,
+          4
+        ]
+      ],
+      "direction": 3,
+      "food": [
+        3,
+        2
+      ]
+    },
+    "observation_hash": "782664c471d60a87246051e0452dac12469de728fae331d8e23ec525e9672f46",
+    "answers": {
+      "heading": "left",
+      "food_x": "aligned",
+      "food_y": "up",
+      "turn_left": "down",
+      "collision_left": "safe",
+      "turn_straight": "left",
+      "collision_straight": "safe",
+      "turn_right": "up",
+      "collision_right": "safe",
+      "target_left": "empty",
+      "target_straight": "empty",
+      "target_right": "food",
+      "survival": "available"
+    }
+  },
+  {
+    "case_id": "safety-082",
+    "family_id": "family-070",
+    "split": "test",
+    "pair_id": null,
+    "pair_kind": null,
+    "safe_count": 1,
+    "safe_actions": [
+      "straight"
+    ],
+    "state": {
+      "body": [
+        [
+          0,
+          6
+        ],
+        [
+          0,
+          5
+        ],
+        [
+          1,
+          5
+        ],
+        [
+          1,
+          6
+        ],
+        [
+          2,
+          6
+        ],
+        [
+          2,
+          7
+        ],
+        [
+          2,
+          8
+        ],
+        [
+          3,
+          8
+        ],
+        [
+          3,
+          7
+        ],
+        [
+          4,
+          7
+        ],
+        [
+          5,
+          7
+        ],
+        [
+          5,
+          6
+        ],
+        [
+          4,
+          6
+        ],
+        [
+          4,
+          5
+        ],
+        [
+          4,
+          4
+        ],
+        [
+          3,
+          4
+        ],
+        [
+          3,
+          5
+        ],
+        [
+          3,
+          6
+        ]
+      ],
+      "direction": 2,
+      "food": [
+        8,
+        9
+      ]
+    },
+    "observation_hash": "fbec177a376a71e0539c0a55fee653d35e8b96de6fd5ba290cd9ef64ad4b8f04",
+    "answers": {
+      "heading": "down",
+      "food_x": "right",
+      "food_y": "down",
+      "turn_left": "right",
+      "collision_left": "collision",
+      "turn_straight": "down",
+      "collision_straight": "safe",
+      "turn_right": "left",
+      "collision_right": "collision",
+      "target_left": "body",
+      "target_straight": "empty",
+      "target_right": "outside",
+      "survival": "available"
+    }
+  },
+  {
+    "case_id": "safety-083",
+    "family_id": "family-071",
+    "split": "test",
+    "pair_id": null,
+    "pair_kind": null,
+    "safe_count": 1,
+    "safe_actions": [
+      "right"
+    ],
+    "state": {
+      "body": [
+        [
+          6,
+          0
+        ],
+        [
+          6,
+          1
+        ],
+        [
+          6,
+          2
+        ],
+        [
+          5,
+          2
+        ],
+        [
+          5,
+          1
+        ],
+        [
+          5,
+          0
+        ],
+        [
+          4,
+          0
+        ],
+        [
+          4,
+          1
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          2,
+          2
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          0,
+          2
+        ]
+      ],
+      "direction": 0,
+      "food": [
+        7,
+        3
+      ]
+    },
+    "observation_hash": "75440d31d4110593b35e07d7fe218989cdfa9f313b1aaad372ea3ed9d828b5e7",
+    "answers": {
+      "heading": "up",
+      "food_x": "right",
+      "food_y": "down",
+      "turn_left": "left",
+      "collision_left": "collision",
+      "turn_straight": "up",
+      "collision_straight": "collision",
+      "turn_right": "right",
+      "collision_right": "safe",
+      "target_left": "body",
+      "target_straight": "outside",
+      "target_right": "empty",
+      "survival": "available"
+    }
+  },
+  {
+    "case_id": "safety-084",
+    "family_id": "family-072",
+    "split": "test",
+    "pair_id": null,
+    "pair_kind": null,
+    "safe_count": 1,
+    "safe_actions": [
+      "left"
+    ],
+    "state": {
+      "body": [
+        [
+          8,
+          6
+        ],
+        [
+          8,
+          7
+        ],
+        [
+          9,
+          7
+        ],
+        [
+          9,
+          6
+        ],
+        [
+          9,
+          5
+        ],
+        [
+          9,
+          4
+        ],
+        [
+          9,
+          3
+        ],
+        [
+          9,
+          2
+        ],
+        [
+          8,
+          2
+        ],
+        [
+          8,
+          3
+        ],
+        [
+          8,
+          4
+        ],
+        [
+          8,
+          5
+        ],
+        [
+          7,
+          5
+        ],
+        [
+          6,
+          5
+        ],
+        [
+          5,
+          5
+        ],
+        [
+          5,
+          6
+        ],
+        [
+          5,
+          7
+        ],
+        [
+          4,
+          7
+        ],
+        [
+          4,
+          8
+        ],
+        [
+          4,
+          9
+        ],
+        [
+          3,
+          9
+        ],
+        [
+          3,
+          8
+        ],
+        [
+          2,
+          8
+        ],
+        [
+          2,
+          7
+        ],
+        [
+          1,
+          7
+        ],
+        [
+          1,
+          8
+        ],
+        [
+          0,
+          8
+        ],
+        [
+          0,
+          9
+        ],
+        [
+          1,
+          9
+        ]
+      ],
+      "direction": 0,
+      "food": [
+        4,
+        0
+      ]
+    },
+    "observation_hash": "2d6686c93d105acfea360e6fda26e08dafa18c12a4a24cdedd75424b03b20db6",
+    "answers": {
+      "heading": "up",
+      "food_x": "left",
+      "food_y": "up",
+      "turn_left": "left",
+      "collision_left": "safe",
+      "turn_straight": "up",
+      "collision_straight": "collision",
+      "turn_right": "right",
+      "collision_right": "collision",
+      "target_left": "empty",
+      "target_straight": "body",
+      "target_right": "body",
+      "survival": "available"
+    }
+  },
+  {
+    "case_id": "safety-085",
+    "family_id": "family-073",
+    "split": "test",
+    "pair_id": null,
+    "pair_kind": null,
+    "safe_count": 3,
+    "safe_actions": [
+      "left",
+      "straight",
+      "right"
+    ],
+    "state": {
+      "body": [
+        [
+          5,
+          6
+        ],
+        [
+          4,
+          6
+        ],
+        [
+          4,
+          5
+        ],
+        [
+          4,
+          4
+        ],
+        [
+          4,
+          3
+        ],
+        [
+          5,
+          3
+        ],
+        [
+          5,
+          2
+        ]
+      ],
+      "direction": 1,
+      "food": [
+        0,
+        5
+      ]
+    },
+    "observation_hash": "e1d12982d7dc3f60ade485ab08cc941fd9f65fb0a8c3173ce1d55d773db4876c",
+    "answers": {
+      "heading": "right",
+      "food_x": "left",
+      "food_y": "up",
+      "turn_left": "up",
+      "collision_left": "safe",
+      "turn_straight": "right",
+      "collision_straight": "safe",
+      "turn_right": "down",
+      "collision_right": "safe",
+      "target_left": "empty",
+      "target_straight": "empty",
+      "target_right": "empty",
+      "survival": "available"
+    }
+  },
+  {
+    "case_id": "safety-086",
+    "family_id": "family-074",
+    "split": "test",
+    "pair_id": null,
+    "pair_kind": null,
+    "safe_count": 3,
+    "safe_actions": [
+      "left",
+      "straight",
+      "right"
+    ],
+    "state": {
+      "body": [
+        [
+          1,
+          3
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          3,
+          3
+        ],
+        [
+          3,
+          4
+        ],
+        [
+          3,
+          5
+        ],
+        [
+          4,
+          5
+        ],
+        [
+          4,
+          6
+        ],
+        [
+          5,
+          6
+        ],
+        [
+          6,
+          6
+        ],
+        [
+          6,
+          5
+        ],
+        [
+          7,
+          5
+        ],
+        [
+          7,
+          6
+        ],
+        [
+          8,
+          6
+        ]
+      ],
+      "direction": 3,
+      "food": [
+        0,
+        2
+      ]
+    },
+    "observation_hash": "d9a19decef35f8db9246b5cdd6395c9a62054c9e644c80e1984a40a82761c857",
+    "answers": {
+      "heading": "left",
+      "food_x": "left",
+      "food_y": "up",
+      "turn_left": "down",
+      "collision_left": "safe",
+      "turn_straight": "left",
+      "collision_straight": "safe",
+      "turn_right": "up",
+      "collision_right": "safe",
+      "target_left": "empty",
+      "target_straight": "empty",
+      "target_right": "empty",
+      "survival": "available"
+    }
+  },
+  {
+    "case_id": "safety-087",
+    "family_id": "family-075",
+    "split": "test",
+    "pair_id": null,
+    "pair_kind": null,
+    "safe_count": 3,
+    "safe_actions": [
+      "left",
+      "straight",
+      "right"
+    ],
+    "state": {
+      "body": [
+        [
+          4,
+          8
+        ],
+        [
+          4,
+          7
+        ],
+        [
+          3,
+          7
+        ],
+        [
+          2,
+          7
+        ],
+        [
+          2,
+          6
+        ],
+        [
+          3,
+          6
+        ],
+        [
+          3,
+          5
+        ],
+        [
+          4,
+          5
+        ]
+      ],
+      "direction": 2,
+      "food": [
+        7,
+        1
+      ]
+    },
+    "observation_hash": "9d366761ff35e79120cd7cf397c180295e9967b5ccda39e654124c11655336fb",
+    "answers": {
+      "heading": "down",
+      "food_x": "right",
+      "food_y": "up",
+      "turn_left": "right",
+      "collision_left": "safe",
+      "turn_straight": "down",
+      "collision_straight": "safe",
+      "turn_right": "left",
+      "collision_right": "safe",
+      "target_left": "empty",
+      "target_straight": "empty",
+      "target_right": "empty",
+      "survival": "available"
+    }
+  },
+  {
+    "case_id": "safety-088",
+    "family_id": "family-076",
+    "split": "test",
+    "pair_id": null,
+    "pair_kind": null,
+    "safe_count": 1,
+    "safe_actions": [
+      "right"
+    ],
+    "state": {
+      "body": [
+        [
+          1,
+          9
+        ],
+        [
+          1,
+          8
+        ],
+        [
+          2,
+          8
+        ],
+        [
+          2,
+          9
+        ],
+        [
+          3,
+          9
+        ],
+        [
+          4,
+          9
+        ],
+        [
+          4,
+          8
+        ],
+        [
+          3,
+          8
+        ],
+        [
+          3,
+          7
+        ],
+        [
+          3,
+          6
+        ],
+        [
+          3,
+          5
+        ],
+        [
+          2,
+          5
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          2,
+          2
+        ],
+        [
+          3,
+          2
+        ],
+        [
+          4,
+          2
+        ],
+        [
+          4,
+          1
+        ],
+        [
+          5,
+          1
+        ]
+      ],
+      "direction": 2,
+      "food": [
+        6,
+        6
+      ]
+    },
+    "observation_hash": "81841be30114b31563731c4bc0d6da7b9f4ae910e7651ffdd01d34f29beec9b6",
+    "answers": {
+      "heading": "down",
+      "food_x": "right",
+      "food_y": "up",
+      "turn_left": "right",
+      "collision_left": "collision",
+      "turn_straight": "down",
+      "collision_straight": "collision",
+      "turn_right": "left",
+      "collision_right": "safe",
+      "target_left": "body",
+      "target_straight": "outside",
+      "target_right": "empty",
+      "survival": "available"
+    }
+  },
+  {
+    "case_id": "safety-089",
+    "family_id": "family-077",
+    "split": "test",
+    "pair_id": null,
+    "pair_kind": null,
+    "safe_count": 1,
+    "safe_actions": [
+      "straight"
+    ],
+    "state": {
+      "body": [
+        [
+          2,
+          9
+        ],
+        [
+          1,
+          9
+        ],
+        [
+          1,
+          8
+        ],
+        [
+          2,
+          8
+        ],
+        [
+          2,
+          7
+        ],
+        [
+          3,
+          7
+        ],
+        [
+          4,
+          7
+        ],
+        [
+          4,
+          6
+        ]
+      ],
+      "direction": 1,
+      "food": [
+        3,
+        9
+      ]
+    },
+    "observation_hash": "a8f428eb49b13bdde6ae1ae5ec945104bf9dabf18791675208a5f0b481514a09",
+    "answers": {
+      "heading": "right",
+      "food_x": "right",
+      "food_y": "aligned",
+      "turn_left": "up",
+      "collision_left": "collision",
+      "turn_straight": "right",
+      "collision_straight": "safe",
+      "turn_right": "down",
+      "collision_right": "collision",
+      "target_left": "body",
+      "target_straight": "food",
+      "target_right": "outside",
+      "survival": "available"
+    }
+  },
+  {
+    "case_id": "safety-090",
+    "family_id": "family-078",
+    "split": "test",
+    "pair_id": null,
+    "pair_kind": null,
+    "safe_count": 1,
+    "safe_actions": [
+      "left"
+    ],
+    "state": {
+      "body": [
+        [
+          6,
+          0
+        ],
+        [
+          6,
+          1
+        ],
+        [
+          6,
+          2
+        ],
+        [
+          7,
+          2
+        ],
+        [
+          7,
+          1
+        ],
+        [
+          7,
+          0
+        ],
+        [
+          8,
+          0
+        ],
+        [
+          8,
+          1
+        ],
+        [
+          8,
+          2
+        ],
+        [
+          9,
+          2
+        ]
+      ],
+      "direction": 0,
+      "food": [
+        5,
+        0
+      ]
+    },
+    "observation_hash": "5e0a6ccf35fde9ed8ab38a1e52109c90dda26e4432a5d83b01639a7505e93b76",
+    "answers": {
+      "heading": "up",
+      "food_x": "left",
+      "food_y": "aligned",
+      "turn_left": "left",
+      "collision_left": "safe",
+      "turn_straight": "up",
+      "collision_straight": "collision",
+      "turn_right": "right",
+      "collision_right": "collision",
+      "target_left": "food",
+      "target_straight": "outside",
+      "target_right": "body",
+      "survival": "available"
+    }
+  },
+  {
+    "case_id": "safety-091",
+    "family_id": "family-079",
+    "split": "test",
+    "pair_id": null,
+    "pair_kind": null,
+    "safe_count": 3,
+    "safe_actions": [
+      "left",
+      "straight",
+      "right"
+    ],
+    "state": {
+      "body": [
+        [
+          2,
+          1
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          4,
+          1
+        ],
+        [
+          5,
+          1
+        ],
+        [
+          6,
+          1
+        ],
+        [
+          6,
+          2
+        ],
+        [
+          5,
+          2
+        ],
+        [
+          4,
+          2
+        ],
+        [
+          3,
+          2
+        ],
+        [
+          3,
+          3
+        ],
+        [
+          4,
+          3
+        ],
+        [
+          4,
+          4
+        ],
+        [
+          3,
+          4
+        ],
+        [
+          3,
+          5
+        ],
+        [
+          2,
+          5
+        ],
+        [
+          1,
+          5
+        ],
+        [
+          0,
+          5
+        ],
+        [
+          0,
+          4
+        ],
+        [
+          0,
+          3
+        ]
+      ],
+      "direction": 3,
+      "food": [
+        1,
+        1
+      ]
+    },
+    "observation_hash": "4fed2a31d3c198ffaf8cb420fa11b3e26c8ccc2d201c51513023e4497d649565",
+    "answers": {
+      "heading": "left",
+      "food_x": "left",
+      "food_y": "aligned",
+      "turn_left": "down",
+      "collision_left": "safe",
+      "turn_straight": "left",
+      "collision_straight": "safe",
+      "turn_right": "up",
+      "collision_right": "safe",
+      "target_left": "empty",
+      "target_straight": "food",
+      "target_right": "empty",
+      "survival": "available"
+    }
+  },
+  {
+    "case_id": "safety-092",
+    "family_id": "family-080",
+    "split": "test",
+    "pair_id": null,
+    "pair_kind": null,
+    "safe_count": 3,
+    "safe_actions": [
+      "left",
+      "straight",
+      "right"
+    ],
+    "state": {
+      "body": [
+        [
+          8,
+          7
+        ],
+        [
+          8,
+          6
+        ],
+        [
+          7,
+          6
+        ],
+        [
+          6,
+          6
+        ],
+        [
+          5,
+          6
+        ],
+        [
+          5,
+          7
+        ]
+      ],
+      "direction": 2,
+      "food": [
+        9,
+        9
+      ]
+    },
+    "observation_hash": "03ae22a861f74967647e5182be9982906aaa7317470ee041dd82faf1013ccd6a",
+    "answers": {
+      "heading": "down",
+      "food_x": "right",
+      "food_y": "down",
+      "turn_left": "right",
+      "collision_left": "safe",
+      "turn_straight": "down",
+      "collision_straight": "safe",
+      "turn_right": "left",
+      "collision_right": "safe",
+      "target_left": "empty",
+      "target_straight": "empty",
+      "target_right": "empty",
+      "survival": "available"
+    }
+  },
+  {
+    "case_id": "safety-093",
+    "family_id": "family-081",
+    "split": "test",
+    "pair_id": null,
+    "pair_kind": null,
+    "safe_count": 3,
+    "safe_actions": [
+      "left",
+      "straight",
+      "right"
+    ],
+    "state": {
+      "body": [
+        [
+          8,
+          4
+        ],
+        [
+          7,
+          4
+        ],
+        [
+          7,
+          5
+        ],
+        [
+          6,
+          5
+        ],
+        [
+          6,
+          6
+        ],
+        [
+          7,
+          6
+        ],
+        [
+          8,
+          6
+        ],
+        [
+          9,
+          6
+        ],
+        [
+          9,
+          7
+        ],
+        [
+          9,
+          8
+        ],
+        [
+          9,
+          9
+        ],
+        [
+          8,
+          9
+        ],
+        [
+          8,
+          8
+        ],
+        [
+          8,
+          7
+        ],
+        [
+          7,
+          7
+        ],
+        [
+          6,
+          7
+        ],
+        [
+          5,
+          7
+        ],
+        [
+          4,
+          7
+        ],
+        [
+          4,
+          8
+        ],
+        [
+          3,
+          8
+        ],
+        [
+          3,
+          9
+        ],
+        [
+          4,
+          9
+        ],
+        [
+          5,
+          9
+        ],
+        [
+          5,
+          8
+        ],
+        [
+          6,
+          8
+        ],
+        [
+          6,
+          9
+        ],
+        [
+          7,
+          9
+        ],
+        [
+          7,
+          8
+        ]
+      ],
+      "direction": 1,
+      "food": [
+        9,
+        4
+      ]
+    },
+    "observation_hash": "315a11ba0aaad6da32895ec8298615d806d4f0f60f4bef59e49eb4a37e30b0f7",
+    "answers": {
+      "heading": "right",
+      "food_x": "right",
+      "food_y": "aligned",
+      "turn_left": "up",
+      "collision_left": "safe",
+      "turn_straight": "right",
+      "collision_straight": "safe",
+      "turn_right": "down",
+      "collision_right": "safe",
+      "target_left": "empty",
+      "target_straight": "food",
+      "target_right": "empty",
+      "survival": "available"
+    }
+  },
+  {
+    "case_id": "safety-094",
+    "family_id": "family-082",
+    "split": "test",
+    "pair_id": null,
+    "pair_kind": null,
+    "safe_count": 0,
+    "safe_actions": [],
+    "state": {
+      "body": [
+        [
+          0,
+          2
+        ],
+        [
+          0,
+          3
+        ],
+        [
+          1,
+          3
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "direction": 0,
+      "food": [
+        8,
+        4
+      ]
+    },
+    "observation_hash": "c4f1dd8539cdd4125798cb1ead450c61ffa2e3963df49e6c0786e1b73f66003d",
+    "answers": {
+      "heading": "up",
+      "food_x": "right",
+      "food_y": "down",
+      "turn_left": "left",
+      "collision_left": "collision",
+      "turn_straight": "up",
+      "collision_straight": "collision",
+      "turn_right": "right",
+      "collision_right": "collision",
+      "target_left": "outside",
+      "target_straight": "body",
+      "target_right": "body",
+      "survival": "trapped"
+    }
+  },
+  {
+    "case_id": "safety-095",
+    "family_id": "family-083",
+    "split": "test",
+    "pair_id": null,
+    "pair_kind": null,
+    "safe_count": 1,
+    "safe_actions": [
+      "right"
+    ],
+    "state": {
+      "body": [
+        [
+          3,
+          8
+        ],
+        [
+          4,
+          8
+        ],
+        [
+          4,
+          9
+        ],
+        [
+          3,
+          9
+        ],
+        [
+          2,
+          9
+        ],
+        [
+          2,
+          8
+        ],
+        [
+          1,
+          8
+        ],
+        [
+          0,
+          8
+        ],
+        [
+          0,
+          7
+        ],
+        [
+          0,
+          6
+        ],
+        [
+          1,
+          6
+        ],
+        [
+          1,
+          7
+        ],
+        [
+          2,
+          7
+        ],
+        [
+          2,
+          6
+        ],
+        [
+          3,
+          6
+        ],
+        [
+          4,
+          6
+        ],
+        [
+          4,
+          7
+        ],
+        [
+          3,
+          7
+        ]
+      ],
+      "direction": 3,
+      "food": [
+        6,
+        0
+      ]
+    },
+    "observation_hash": "ebfd88c9962a61ca353f69854c71a52e212f210caba7bff21820f0a35eed7b05",
+    "answers": {
+      "heading": "left",
+      "food_x": "right",
+      "food_y": "up",
+      "turn_left": "down",
+      "collision_left": "collision",
+      "turn_straight": "left",
+      "collision_straight": "collision",
+      "turn_right": "up",
+      "collision_right": "safe",
+      "target_left": "body",
+      "target_straight": "body",
+      "target_right": "tail",
+      "survival": "available"
+    }
+  },
+  {
+    "case_id": "safety-096",
+    "family_id": "family-084",
+    "split": "test",
+    "pair_id": null,
+    "pair_kind": null,
+    "safe_count": 1,
+    "safe_actions": [
+      "right"
+    ],
+    "state": {
+      "body": [
+        [
+          0,
+          7
+        ],
+        [
+          1,
+          7
+        ],
+        [
+          2,
+          7
+        ],
+        [
+          2,
+          8
+        ],
+        [
+          2,
+          9
+        ],
+        [
+          1,
+          9
+        ],
+        [
+          1,
+          8
+        ],
+        [
+          0,
+          8
+        ],
+        [
+          0,
+          9
+        ]
+      ],
+      "direction": 3,
+      "food": [
+        0,
+        6
+      ]
+    },
+    "observation_hash": "72628b9d5e1a7754251b4cac3657a1b69023db6723e12e7a7a97fd32bb3d53f4",
+    "answers": {
+      "heading": "left",
+      "food_x": "aligned",
+      "food_y": "up",
+      "turn_left": "down",
+      "collision_left": "collision",
+      "turn_straight": "left",
+      "collision_straight": "collision",
+      "turn_right": "up",
+      "collision_right": "safe",
+      "target_left": "body",
+      "target_straight": "outside",
+      "target_right": "food",
+      "survival": "available"
+    }
+  },
+  {
+    "case_id": "safety-097",
+    "family_id": "family-085",
+    "split": "test",
+    "pair_id": null,
+    "pair_kind": null,
+    "safe_count": 1,
+    "safe_actions": [
+      "right"
+    ],
+    "state": {
+      "body": [
+        [
+          1,
+          6
+        ],
+        [
+          1,
+          7
+        ],
+        [
+          0,
+          7
+        ],
+        [
+          0,
+          6
+        ],
+        [
+          0,
+          5
+        ],
+        [
+          1,
+          5
+        ],
+        [
+          2,
+          5
+        ],
+        [
+          3,
+          5
+        ],
+        [
+          3,
+          4
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          1,
+          3
+        ],
+        [
+          0,
+          3
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "direction": 0,
+      "food": [
+        9,
+        1
+      ]
+    },
+    "observation_hash": "b3c0dce24b4a3c1554d0060c04e97398867b6848b49ae2fbc1aaec1560e82511",
+    "answers": {
+      "heading": "up",
+      "food_x": "right",
+      "food_y": "up",
+      "turn_left": "left",
+      "collision_left": "collision",
+      "turn_straight": "up",
+      "collision_straight": "collision",
+      "turn_right": "right",
+      "collision_right": "safe",
+      "target_left": "body",
+      "target_straight": "body",
+      "target_right": "empty",
+      "survival": "available"
+    }
+  },
+  {
+    "case_id": "safety-098",
+    "family_id": "family-086",
+    "split": "test",
+    "pair_id": null,
+    "pair_kind": null,
+    "safe_count": 0,
+    "safe_actions": [],
+    "state": {
+      "body": [
+        [
+          9,
+          9
+        ],
+        [
+          9,
+          8
+        ],
+        [
+          8,
+          8
+        ],
+        [
+          8,
+          9
+        ],
+        [
+          7,
+          9
+        ],
+        [
+          7,
+          8
+        ],
+        [
+          6,
+          8
+        ],
+        [
+          5,
+          8
+        ],
+        [
+          5,
+          7
+        ],
+        [
+          5,
+          6
+        ],
+        [
+          4,
+          6
+        ]
+      ],
+      "direction": 2,
+      "food": [
+        6,
+        0
+      ]
+    },
+    "observation_hash": "79fd5864af42d074b1152db231c0cfed72f40f146d51a1021785d2e8f1375ea2",
+    "answers": {
+      "heading": "down",
+      "food_x": "left",
+      "food_y": "up",
+      "turn_left": "right",
+      "collision_left": "collision",
+      "turn_straight": "down",
+      "collision_straight": "collision",
+      "turn_right": "left",
+      "collision_right": "collision",
+      "target_left": "outside",
+      "target_straight": "outside",
+      "target_right": "body",
+      "survival": "trapped"
+    }
+  },
+  {
+    "case_id": "safety-099",
+    "family_id": "family-087",
+    "split": "test",
+    "pair_id": null,
+    "pair_kind": null,
+    "safe_count": 1,
+    "safe_actions": [
+      "left"
+    ],
+    "state": {
+      "body": [
+        [
+          6,
+          4
+        ],
+        [
+          5,
+          4
+        ],
+        [
+          4,
+          4
+        ],
+        [
+          3,
+          4
+        ],
+        [
+          3,
+          5
+        ],
+        [
+          4,
+          5
+        ],
+        [
+          5,
+          5
+        ],
+        [
+          6,
+          5
+        ],
+        [
+          7,
+          5
+        ],
+        [
+          7,
+          4
+        ],
+        [
+          8,
+          4
+        ],
+        [
+          8,
+          3
+        ],
+        [
+          7,
+          3
+        ]
+      ],
+      "direction": 1,
+      "food": [
+        6,
+        3
+      ]
+    },
+    "observation_hash": "55959572579ae2e4f35a15d50920453c96f799d3a7017315b0ce7397842e5da6",
+    "answers": {
+      "heading": "right",
+      "food_x": "aligned",
+      "food_y": "up",
+      "turn_left": "up",
+      "collision_left": "safe",
+      "turn_straight": "right",
+      "collision_straight": "collision",
+      "turn_right": "down",
+      "collision_right": "collision",
+      "target_left": "food",
+      "target_straight": "body",
+      "target_right": "body",
+      "survival": "available"
+    }
+  },
+  {
+    "case_id": "safety-100",
+    "family_id": "family-088",
+    "split": "test",
+    "pair_id": null,
+    "pair_kind": null,
+    "safe_count": 1,
+    "safe_actions": [
+      "left"
+    ],
+    "state": {
+      "body": [
+        [
+          0,
+          9
+        ],
+        [
+          0,
+          8
+        ],
+        [
+          0,
+          7
+        ],
+        [
+          0,
+          6
+        ],
+        [
+          0,
+          5
+        ],
+        [
+          0,
+          4
+        ],
+        [
+          1,
+          4
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          2,
+          5
+        ],
+        [
+          3,
+          5
+        ],
+        [
+          4,
+          5
+        ],
+        [
+          5,
+          5
+        ],
+        [
+          5,
+          4
+        ],
+        [
+          5,
+          3
+        ],
+        [
+          4,
+          3
+        ],
+        [
+          3,
+          3
+        ],
+        [
+          3,
+          4
+        ],
+        [
+          4,
+          4
+        ]
+      ],
+      "direction": 2,
+      "food": [
+        1,
+        9
+      ]
+    },
+    "observation_hash": "50aa89cd28734615f9d723fa7e014faf9d741272d1b71fd96c4cc9298009b91f",
+    "answers": {
+      "heading": "down",
+      "food_x": "right",
+      "food_y": "aligned",
+      "turn_left": "right",
+      "collision_left": "safe",
+      "turn_straight": "down",
+      "collision_straight": "collision",
+      "turn_right": "left",
+      "collision_right": "collision",
+      "target_left": "food",
+      "target_straight": "outside",
+      "target_right": "outside",
+      "survival": "available"
+    }
+  },
+  {
+    "case_id": "safety-101",
+    "family_id": "family-089",
+    "split": "test",
+    "pair_id": null,
+    "pair_kind": null,
+    "safe_count": 1,
+    "safe_actions": [
+      "left"
+    ],
+    "state": {
+      "body": [
+        [
+          5,
+          1
+        ],
+        [
+          5,
+          2
+        ],
+        [
+          5,
+          3
+        ],
+        [
+          6,
+          3
+        ],
+        [
+          7,
+          3
+        ],
+        [
+          8,
+          3
+        ],
+        [
+          8,
+          4
+        ],
+        [
+          9,
+          4
+        ],
+        [
+          9,
+          3
+        ],
+        [
+          9,
+          2
+        ],
+        [
+          8,
+          2
+        ],
+        [
+          8,
+          1
+        ],
+        [
+          8,
+          0
+        ],
+        [
+          7,
+          0
+        ],
+        [
+          7,
+          1
+        ],
+        [
+          6,
+          1
+        ],
+        [
+          6,
+          0
+        ],
+        [
+          5,
+          0
+        ],
+        [
+          4,
+          0
+        ],
+        [
+          3,
+          0
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          3,
+          2
+        ]
+      ],
+      "direction": 0,
+      "food": [
+        4,
+        1
+      ]
+    },
+    "observation_hash": "c4530aeb59c913a00a4f139cf83b96e83c1480c66a8f861548b678e1d72651c0",
+    "answers": {
+      "heading": "up",
+      "food_x": "left",
+      "food_y": "aligned",
+      "turn_left": "left",
+      "collision_left": "safe",
+      "turn_straight": "up",
+      "collision_straight": "collision",
+      "turn_right": "right",
+      "collision_right": "collision",
+      "target_left": "food",
+      "target_straight": "body",
+      "target_right": "body",
+      "survival": "available"
+    }
+  },
+  {
+    "case_id": "safety-102",
+    "family_id": "family-090",
+    "split": "test",
+    "pair_id": null,
+    "pair_kind": null,
+    "safe_count": 1,
+    "safe_actions": [
+      "right"
+    ],
+    "state": {
+      "body": [
+        [
+          9,
+          0
+        ],
+        [
+          8,
+          0
+        ],
+        [
+          7,
+          0
+        ],
+        [
+          6,
+          0
+        ],
+        [
+          5,
+          0
+        ],
+        [
+          5,
+          1
+        ],
+        [
+          5,
+          2
+        ],
+        [
+          4,
+          2
+        ],
+        [
+          3,
+          2
+        ],
+        [
+          2,
+          2
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          2,
+          0
+        ],
+        [
+          3,
+          0
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          4,
+          1
+        ],
+        [
+          4,
+          0
+        ]
+      ],
+      "direction": 1,
+      "food": [
+        9,
+        1
+      ]
+    },
+    "observation_hash": "747ea8ac50c51f01b455619513007ea1008219850906465b14bf4dc3e9267a01",
+    "answers": {
+      "heading": "right",
+      "food_x": "aligned",
+      "food_y": "down",
+      "turn_left": "up",
+      "collision_left": "collision",
+      "turn_straight": "right",
+      "collision_straight": "collision",
+      "turn_right": "down",
+      "collision_right": "safe",
+      "target_left": "outside",
+      "target_straight": "outside",
+      "target_right": "food",
+      "survival": "available"
+    }
+  },
+  {
+    "case_id": "safety-103",
+    "family_id": "family-091",
+    "split": "test",
+    "pair_id": null,
+    "pair_kind": null,
+    "safe_count": 0,
+    "safe_actions": [],
+    "state": {
+      "body": [
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          2
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          2,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          0,
+          3
+        ],
+        [
+          1,
+          3
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          3,
+          3
+        ],
+        [
+          4,
+          3
+        ],
+        [
+          4,
+          2
+        ],
+        [
+          5,
+          2
+        ]
+      ],
+      "direction": 3,
+      "food": [
+        0,
+        0
+      ]
+    },
+    "observation_hash": "dd6abf7a6bee83e187ec550fcc1318701fdcea43563381c227473ab18b4b8f2f",
+    "answers": {
+      "heading": "left",
+      "food_x": "left",
+      "food_y": "up",
+      "turn_left": "down",
+      "collision_left": "collision",
+      "turn_straight": "left",
+      "collision_straight": "collision",
+      "turn_right": "up",
+      "collision_right": "collision",
+      "target_left": "body",
+      "target_straight": "body",
+      "target_right": "body",
+      "survival": "trapped"
+    }
+  },
+  {
+    "case_id": "safety-104",
+    "family_id": "family-092",
+    "split": "test",
+    "pair_id": null,
+    "pair_kind": null,
+    "safe_count": 0,
+    "safe_actions": [],
+    "state": {
+      "body": [
+        [
+          6,
+          0
+        ],
+        [
+          5,
+          0
+        ],
+        [
+          5,
+          1
+        ],
+        [
+          5,
+          2
+        ],
+        [
+          5,
+          3
+        ],
+        [
+          6,
+          3
+        ],
+        [
+          6,
+          2
+        ],
+        [
+          6,
+          1
+        ],
+        [
+          7,
+          1
+        ],
+        [
+          7,
+          0
+        ],
+        [
+          8,
+          0
+        ],
+        [
+          9,
+          0
+        ],
+        [
+          9,
+          1
+        ],
+        [
+          8,
+          1
+        ],
+        [
+          8,
+          2
+        ],
+        [
+          9,
+          2
+        ],
+        [
+          9,
+          3
+        ],
+        [
+          9,
+          4
+        ],
+        [
+          9,
+          5
+        ],
+        [
+          8,
+          5
+        ],
+        [
+          8,
+          6
+        ],
+        [
+          8,
+          7
+        ],
+        [
+          7,
+          7
+        ],
+        [
+          7,
+          8
+        ],
+        [
+          6,
+          8
+        ],
+        [
+          5,
+          8
+        ],
+        [
+          5,
+          7
+        ],
+        [
+          6,
+          7
+        ],
+        [
+          6,
+          6
+        ],
+        [
+          5,
+          6
+        ],
+        [
+          5,
+          5
+        ]
+      ],
+      "direction": 1,
+      "food": [
+        5,
+        4
+      ]
+    },
+    "observation_hash": "a9e3348d2f1e96476421b24e9afa06e3f7280db8a85195e9de9224b59afb1ca4",
+    "answers": {
+      "heading": "right",
+      "food_x": "left",
+      "food_y": "down",
+      "turn_left": "up",
+      "collision_left": "collision",
+      "turn_straight": "right",
+      "collision_straight": "collision",
+      "turn_right": "down",
+      "collision_right": "collision",
+      "target_left": "outside",
+      "target_straight": "body",
+      "target_right": "body",
+      "survival": "trapped"
+    }
+  },
+  {
+    "case_id": "safety-105",
+    "family_id": "family-093",
+    "split": "test",
+    "pair_id": null,
+    "pair_kind": null,
+    "safe_count": 0,
+    "safe_actions": [],
+    "state": {
+      "body": [
+        [
+          1,
+          8
+        ],
+        [
+          1,
+          7
+        ],
+        [
+          2,
+          7
+        ],
+        [
+          2,
+          8
+        ],
+        [
+          2,
+          9
+        ],
+        [
+          1,
+          9
+        ],
+        [
+          0,
+          9
+        ],
+        [
+          0,
+          8
+        ],
+        [
+          0,
+          7
+        ],
+        [
+          0,
+          6
+        ],
+        [
+          0,
+          5
+        ],
+        [
+          0,
+          4
+        ],
+        [
+          1,
+          4
+        ],
+        [
+          1,
+          3
+        ],
+        [
+          0,
+          3
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          2
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          3,
+          3
+        ],
+        [
+          3,
+          2
+        ],
+        [
+          4,
+          2
+        ],
+        [
+          5,
+          2
+        ],
+        [
+          5,
+          1
+        ]
+      ],
+      "direction": 2,
+      "food": [
+        9,
+        4
+      ]
+    },
+    "observation_hash": "7c6dd7bcfd45850f056dda3bd729e9f842b894d25e24bfdf4589dd98f90009da",
+    "answers": {
+      "heading": "down",
+      "food_x": "right",
+      "food_y": "up",
+      "turn_left": "right",
+      "collision_left": "collision",
+      "turn_straight": "down",
+      "collision_straight": "collision",
+      "turn_right": "left",
+      "collision_right": "collision",
+      "target_left": "body",
+      "target_straight": "body",
+      "target_right": "body",
+      "survival": "trapped"
+    }
+  },
+  {
+    "case_id": "safety-106",
+    "family_id": "family-094",
+    "split": "test",
+    "pair_id": null,
+    "pair_kind": null,
+    "safe_count": 0,
+    "safe_actions": [],
+    "state": {
+      "body": [
+        [
+          6,
+          5
+        ],
+        [
+          7,
+          5
+        ],
+        [
+          7,
+          6
+        ],
+        [
+          6,
+          6
+        ],
+        [
+          6,
+          7
+        ],
+        [
+          5,
+          7
+        ],
+        [
+          5,
+          6
+        ],
+        [
+          5,
+          5
+        ],
+        [
+          5,
+          4
+        ],
+        [
+          5,
+          3
+        ],
+        [
+          6,
+          3
+        ],
+        [
+          6,
+          4
+        ],
+        [
+          7,
+          4
+        ],
+        [
+          7,
+          3
+        ],
+        [
+          7,
+          2
+        ],
+        [
+          8,
+          2
+        ],
+        [
+          8,
+          3
+        ],
+        [
+          9,
+          3
+        ],
+        [
+          9,
+          4
+        ],
+        [
+          8,
+          4
+        ],
+        [
+          8,
+          5
+        ]
+      ],
+      "direction": 3,
+      "food": [
+        5,
+        0
+      ]
+    },
+    "observation_hash": "ccc81e935d87f21ff24ef5909f5cfd477e9303f6a990b5cbd099b5d763cb00c1",
+    "answers": {
+      "heading": "left",
+      "food_x": "left",
+      "food_y": "up",
+      "turn_left": "down",
+      "collision_left": "collision",
+      "turn_straight": "left",
+      "collision_straight": "collision",
+      "turn_right": "up",
+      "collision_right": "collision",
+      "target_left": "body",
+      "target_straight": "body",
+      "target_right": "body",
+      "survival": "trapped"
+    }
+  },
+  {
+    "case_id": "safety-107",
+    "family_id": "family-095",
+    "split": "test",
+    "pair_id": null,
+    "pair_kind": null,
+    "safe_count": 0,
+    "safe_actions": [],
+    "state": {
+      "body": [
+        [
+          2,
+          6
+        ],
+        [
+          2,
+          7
+        ],
+        [
+          3,
+          7
+        ],
+        [
+          3,
+          6
+        ],
+        [
+          3,
+          5
+        ],
+        [
+          2,
+          5
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          1,
+          3
+        ],
+        [
+          1,
+          4
+        ],
+        [
+          0,
+          4
+        ],
+        [
+          0,
+          5
+        ],
+        [
+          0,
+          6
+        ],
+        [
+          1,
+          6
+        ],
+        [
+          1,
+          7
+        ],
+        [
+          0,
+          7
+        ],
+        [
+          0,
+          8
+        ],
+        [
+          0,
+          9
+        ],
+        [
+          1,
+          9
+        ],
+        [
+          1,
+          8
+        ],
+        [
+          2,
+          8
+        ],
+        [
+          3,
+          8
+        ],
+        [
+          4,
+          8
+        ],
+        [
+          4,
+          7
+        ],
+        [
+          4,
+          6
+        ],
+        [
+          4,
+          5
+        ],
+        [
+          4,
+          4
+        ],
+        [
+          4,
+          3
+        ],
+        [
+          5,
+          3
+        ],
+        [
+          5,
+          4
+        ]
+      ],
+      "direction": 0,
+      "food": [
+        7,
+        5
+      ]
+    },
+    "observation_hash": "da2030b70251ea69c5cc1fb82315ea72d18d454b842a97872137b0ea7f59f9d3",
+    "answers": {
+      "heading": "up",
+      "food_x": "right",
+      "food_y": "up",
+      "turn_left": "left",
+      "collision_left": "collision",
+      "turn_straight": "up",
+      "collision_straight": "collision",
+      "turn_right": "right",
+      "collision_right": "collision",
+      "target_left": "body",
+      "target_straight": "body",
+      "target_right": "body",
+      "survival": "trapped"
+    }
+  }
+]
