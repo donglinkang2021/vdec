@@ -6,7 +6,7 @@
 </style></head><body>
 <a class="skip" href="#main">跳到正文</a>
 <header><a class="brand" href="index.html">vdecision<span aria-hidden="true"> /</span></a>
-<nav aria-label="网站导航"><a href="benchmark_explainer.html">交互指南</a><a href="benchmark_tasks.html">指标说明</a><a href="genception_explainer.html">GenCeption</a><a href="archive/index.html">历史归档</a></nav></header>
+<nav aria-label="网站导航"><a href="benchmark_explainer.html">交互指南</a><a href="benchmark_tasks.html">指标说明</a><a href="reasoning_study_explainer.html">推理实验</a><a href="genception_explainer.html">GenCeption</a><a href="archive/index.html">历史归档</a></nav></header>
 <main id="main"><article class="document"><details class="toc-box"><summary>本页目录</summary><div class="toc">
 <ul>
 <li><a href="#benchmark-说明main-v1">Benchmark 说明：main-v1</a><ul>
@@ -107,7 +107,7 @@
 </table></div>
 <p>四层样本量不同，主分数仍对四层等权。12 对案例包括尾巴身份、尾端占用、食物位置各 4 对；同一 pair 属于同一 family、split 与规划 seed，不能当作两个独立 family。旧 UI 的尾巴身份配对截图相同但安全答案不同，新 UI 的连接与尖尾使差异可见。尾格在不进食时腾空，所以允许进入。</p>
 <p>冻结文件为 <span class="unpublished" title="仓库内文件，未随站点发布"><code>safety_v1.json</code></span>，SHA-256：<code>d9ee6970565e2aa329578f907ab2623f6b40d38b004aabeff743dea7193f6893</code>。新增其他榜的图片时保持此文件不变。</p>
-<p>扩展生成条件、独立重复、三模型矩阵和当前问题 CoT 见 <span class="unpublished" title="仓库内文件，未随站点发布">实验运行说明</span>。下文四种共享规划条件的计数仍适用；per-step CoT 额外产生逐请求生成开销。</p>
+<p>扩展生成条件、独立重复、三模型矩阵和当前问题 CoT 见 <a href="experiment_study.html">实验运行说明</a>。下文四种共享规划条件的计数仍适用；per-step CoT 额外产生逐请求生成开销。</p>
 <h2 id="运行与分母">运行与分母<a class="anchor" href="#运行与分母" title="Permanent link">§</a></h2>
 <pre><code class="language-bash">PYTHONPATH=src .venv/bin/python run.py --benchmark perception --split dev --dry-run
 </code></pre>

@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="vdecision：视觉决策评测、交互文章与研究记录。">
+<title>三模型规划与视觉推理实验 · vdecision</title><style>:root{color-scheme:light;--paper:#faf9f6;--ink:#20323c;--muted:#657577;--accent:#08766e;--line:#dbe1db}
+*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:17px/1.85 system-ui,-apple-system,"PingFang SC","Microsoft YaHei",sans-serif}a{color:var(--accent);text-underline-offset:4px}a:hover{text-decoration-thickness:2px}a:focus-visible,summary:focus-visible{outline:3px solid #db952f;outline-offset:5px}header,main,footer{max-width:1100px;margin:auto;padding:24px}header{display:flex;align-items:center;justify-content:space-between;gap:20px;border-bottom:1px solid var(--line)}.brand{font-weight:750;font-size:23px;text-decoration:none;color:var(--ink)}nav{display:flex;flex-wrap:wrap;gap:12px 24px;font-size:14px}nav a{text-decoration:none}.hero{max-width:790px;padding:64px 0 38px}.eyebrow{font-size:13px;letter-spacing:.13em;text-transform:uppercase;color:var(--accent);font-weight:650}h1{font-family:Georgia,"Songti SC","Noto Serif CJK SC",serif;font-size:clamp(32px,5vw,56px);line-height:1.3;letter-spacing:-.025em;margin:15px 0 24px}h2{font-size:26px;margin-top:44px;line-height:1.45}h3{font-size:21px}p{margin:15px 0}.intro{font-size:20px;color:var(--muted)}.cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}.card{display:block;padding:28px;border:1px solid var(--line);border-radius:12px;text-decoration:none;color:var(--ink);background:#fffefa}.card:hover{border-color:var(--accent)}.card h2{margin:12px 0;font-size:25px}.card p{color:var(--muted);font-size:16px}.card .go{color:var(--accent);font-size:15px}.note,blockquote{border-left:3px solid #96b7a5;padding:8px 22px;margin:28px 0;background:#edf2ec}.document{max-width:850px;margin:36px auto}.document h1{font-size:38px}.document img{display:block;max-width:100%;height:auto;margin:28px auto}.document li{margin:8px 0}.document a,.document code{overflow-wrap:anywhere}pre{overflow:auto;padding:20px;background:#edf0ec;border-radius:7px;font-size:14px;line-height:1.7}pre code{overflow-wrap:normal!important}code{font-size:.87em}.table-scroll{overflow:auto;margin:24px 0}table{border-collapse:collapse;width:100%;font-size:15px}th,td{padding:12px 14px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}th{background:#edf2ec}td:first-child{font-weight:550}.toc{font-size:14px}.toc ul{padding-left:22px}.toc-box{padding:14px 20px;border:1px solid var(--line);border-radius:8px}.unpublished{color:var(--muted);text-decoration:underline dotted}.archive-label{color:#875f29;font-weight:650}.anchor{font-size:.7em;text-decoration:none;margin-left:8px}footer{margin-top:60px;border-top:1px solid var(--line);color:var(--muted);font-size:14px}.skip{position:absolute;top:-80px}.skip:focus{top:10px;background:white;padding:10px;z-index:2}@media(max-width:600px){header{align-items:flex-start;flex-direction:column;gap:12px}header,main,footer{padding:20px}.hero{padding-top:30px}.cards{grid-template-columns:1fr}.card{padding:22px}.document{margin-top:24px}.document h1{font-size:30px}.intro{font-size:18px}pre{padding:14px}.note,blockquote{padding:8px 14px}nav{gap:10px 18px}}@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}}
+</style></head><body>
+<a class="skip" href="#main">跳到正文</a>
+<header><a class="brand" href="index.html">vdecision<span aria-hidden="true"> /</span></a>
+<nav aria-label="网站导航"><a href="benchmark_explainer.html">交互指南</a><a href="benchmark_tasks.html">指标说明</a><a href="reasoning_study_explainer.html">推理实验</a><a href="genception_explainer.html">GenCeption</a><a href="archive/index.html">历史归档</a></nav></header>
+<main id="main"><article class="document"><details class="toc-box"><summary>本页目录</summary><div class="toc">
+<ul>
+<li><a href="#三模型规划与视觉推理实验">三模型规划与视觉推理实验</a><ul>
+<li><a href="#生成和读出">生成和读出</a></li>
+<li><a href="#运行顺序">运行顺序</a></li>
+<li><a href="#分数和蒸馏接口">分数和蒸馏接口</a></li>
+<li><a href="#验证">验证</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</details><h1 id="三模型规划与视觉推理实验">三模型规划与视觉推理实验<a class="anchor" href="#三模型规划与视觉推理实验" title="Permanent link">§</a></h1>
+<p>实现协议为 <code>snake-bench-v8</code>，沿用 <code>main-v1</code> 冻结数据与指标。历史 v7 结果仍可离线读取。数据、模型真实结果、规则 oracle 和测试替身结果必须分别解释。</p>
+<h2 id="生成和读出">生成和读出<a class="anchor" href="#生成和读出" title="Permanent link">§</a></h2>
+<p>默认 <code>--sampling model_default</code> 读取 checkpoint 的 <code>generation_config.json</code>，用当前 Transformers 库默认值补齐缺失字段，并把原文件 SHA-256、原值和解析值写入 <code>run.json</code>。缺少文件时明确失败；通过 <code>--generation-config FILE</code> 显式覆盖。<code>recommended</code> 保留旧固定参数；<code>probe</code> 为 T=1/top_p=1/top_k=-1 的 thinking 加 greedy plan；<code>greedy</code> 全部 greedy。boxed 读出始终使用中性参数，与生成采样分离。</p>
+<p>Qwen3.5-4B 本地 checkpoint 没有该文件。<code>experiments/qwen35_model_card_sampling.json</code> 是来自本地模型卡、带来源哈希的<strong>显式替代配置</strong>，不是 checkpoint 默认文件。用户已确认采用；研究矩阵默认加载 <code>experiments/snake_generation_configs.json</code> 显式映射，单独运行 CLI/冒烟脚本仍需传入 <code>--generation-config experiments/qwen35_model_card_sampling.json</code>。实际参数及来源随 dev 冻结。</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>条件</th>
+<th>生成</th>
+<th>执行上下文</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>no_plan</td>
+<td>无</td>
+<td>当前截图与问题</td>
+</tr>
+<tr>
+<td>shared_full</td>
+<td>thinking + plan</td>
+<td>同一份完整 thinking + plan</td>
+</tr>
+<tr>
+<td>shared_plan_only</td>
+<td>与 full 共享生成结果</td>
+<td>仅保留 plan</td>
+</tr>
+<tr>
+<td>shared_no_think</td>
+<td>关闭 thinking 生成 plan</td>
+<td>直接 plan</td>
+</tr>
+<tr>
+<td>manual_plan</td>
+<td>无</td>
+<td>固定任务清单</td>
+</tr>
+<tr>
+<td>neutral_prefix</td>
+<td>无</td>
+<td>与人工清单 token 长度接近的中性段落</td>
+</tr>
+<tr>
+<td>per_step_cot</td>
+<td>当前问题独立 thinking</td>
+<td>原始 thinking token、结束标记、boxed 直接读出</td>
+</tr>
+</tbody>
+</table></div>
+<p>人工清单在 <code>prefixes.py</code> 固定，亦可用 <code>--manual-plan-file</code> 替换；不按 plan 生成预算裁剪。每个 plan 事件保留实际正文、token 长度和来源哈希。<code>per_step_cot</code> 使用 <code>--step-thinking-tokens 128/256/512</code>，不生成中间 plan；choice 每个排列独立，yes/no 每个候选独立。自然结束立即读出，耗尽预算补齐原生结束标记，异常提前结束记失败。</p>
+<p><code>--repeat-id</code> 与 <code>--seeds</code> 不同：前者是覆盖完整数据集的独立生成重复，后者分配 family 的共享 plan。分片不会改变同一个实际问题的 RNG。所有模型保留各自原生模板，Gemma 使用通道结束标记。</p>
+<h2 id="运行顺序">运行顺序<a class="anchor" href="#运行顺序" title="Permanent link">§</a></h2>
+<p>在项目根目录使用同一虚拟环境、源码快照、vLLM 配置、精度及缓存设置。<code>experiments/snake_models.json</code> 给出三个模型路径，可复制后改为分配节点可访问的路径。</p>
+<pre><code class="language-bash"># 仅查看矩阵，不加载权重、不提交 GPU
+PYTHONPATH=src:. .venv/bin/python scripts/snake_study.py matrix \
+  --models experiments/snake_models.json --stage baseline
+
+# 模板检查，使用真实 tokenizer / processor，无权重
+PYTHONPATH=src .venv/bin/python run.py --model models/Qwen/Qwen3-VL-4B-Thinking --preflight
+
+# 单模型 GPU 冒烟：128-token 共享 planning，三档当前问题 thinking
+PYTHONPATH=src .venv/bin/python scripts/smoke_snake_reasoning.py \
+  --model models/Qwen/Qwen3-VL-4B-Thinking --output outputs/smoke-qwenvl
+
+# 完整 dev 基线；输出目录必须不存在
+PYTHONPATH=src:. .venv/bin/python scripts/snake_study.py matrix \
+  --models experiments/snake_models.json --stage baseline --execute --output outputs/study-dev-baseline
+</code></pre>
+<p>随后按 <code>shared</code>、<code>prefix</code>、<code>cot</code> 分阶段执行。<code>shared</code> 包含 plan 128/512/1024、四种生成方式、三个重复；<code>cot</code> 包含 128/256/512、三个重复。所有阶段包含四个静态榜和两种读出。每个 split 共 564 个独立运行目录：baseline 12、shared 432、prefix 12、cot 108；其中每个 shared full/plan-only 配对在同一个运行内生成一次。主流程不会重复运行 no_plan。</p>
+<p>显式覆盖映射文件格式为 <code>{"qwen35-4b":"experiments/qwen35_model_card_sampling.json"}</code>，通过矩阵命令的 <code>--generation-configs FILE</code> 使用。运行失败立即停止，保留已有输出；工具不会覆盖或自动重试部分运行。</p>
+<pre><code class="language-bash"># 所有参数应为实际运行目录，而非包含多个运行的父目录
+PYTHONPATH=src:. .venv/bin/python scripts/snake_study.py compare \
+  outputs/RUN_BASELINE outputs/RUN_CONDITION --output outputs/comparison-dev
+
+# 完成 dev 后冻结；test 必须匹配已完成的 dev 配置、源码、启动器和采样文件
+PYTHONPATH=src:. .venv/bin/python scripts/snake_study.py freeze \
+  outputs/RUN_BASELINE outputs/RUN_CONDITION --output outputs/dev-freeze.json
+PYTHONPATH=src:. .venv/bin/python scripts/snake_study.py matrix \
+  --models experiments/snake_models.json --stage baseline --split test \
+  --freeze-file outputs/dev-freeze.json --execute --output outputs/study-test-baseline
+
+# 从完整 dev Decision 比较结果选择闭环配置；默认仅列出，追加 --execute --output 才运行
+PYTHONPATH=src:. .venv/bin/python scripts/snake_study.py episodes \
+  --comparison outputs/comparison-dev/comparison.json
+</code></pre>
+<p>闭环使用相同 30 个 seed、128 步上限，包含无计划、人工计划、每模型每读出的最佳生成计划和最佳 per-step CoT。共享计划按 dev Decision 安全率、执行时间顺序选择；CoT 同分选短预算。Episode 使用自己的任务规划提示重新生成计划。随机基线只随 no_plan 运行。</p>
+<h2 id="分数和蒸馏接口">分数和蒸馏接口<a class="anchor" href="#分数和蒸馏接口" title="Permanent link">§</a></h2>
+<p>每个 run 保留榜单、原始事件、分层诊断、视觉格子混淆、Safety 配对判断、危险召回、误报及延迟。比较表按模型、任务、读出、条件、采样和预算分组，先按重复聚合，再以 family 为单位进行 2000 次配对 bootstrap；保留同 family 内全部题目与排列，Safety/Decision 保持层等权。单独报告重复分数和标准差。未完成配置不排名，比较输出展示其失败率、缺失数与不支持数。</p>
+<p>Readout 的一致性不是决策正确性。静态收益必须结合 Decision 和闭环食物数、可避免碰撞、重复状态与延迟解释。前缀中性对照只是长度接近，不声称精确消除了全部语义影响。</p>
+<pre><code class="language-bash">PYTHONPATH=src:. .venv/bin/python scripts/snake_study.py export-teacher \
+  --baseline outputs/RUN_NO_PLAN --teachers outputs/RUN_COT_REPEAT0 outputs/RUN_COT_REPEAT1 \
+  --output outputs/teacher-evaluation
+</code></pre>
+<p>导出要求两个不同 repeat 的同模型、同预算、同配置 CoT 运行，逐项核对当前图像、问题和语义候选顺序。保存可重建并校验哈希的 PNG、两次候选分布及平均值、无思考 p0、推理 token/终止状态；yes/no 额外保留原始二元概率。</p>
+<p>导出标记 <code>purpose=evaluation_only</code>。正式训练集必须另建，并与 benchmark 的 dev/test family 隔离。本轮不启动 vdistill 训练。SII-Decision 的候选分布蒸馏可作为后续损失参考，但官方语言 backbone 路径需要多模态适配：<a href="https://arxiv.org/html/2610.03935v2#S6">论文 v2 §6</a>、<a href="https://github.com/amazingljy1206/SII-Decision/blob/main/sii_decision/learning.py">官方 learning.py</a>。</p>
+<h2 id="验证">验证<a class="anchor" href="#验证" title="Permanent link">§</a></h2>
+<pre><code class="language-bash">PYTHONPATH=src:.:tests .venv/bin/python -m unittest discover -s tests
+PYTHONPATH=src .venv/bin/python -m vdecision.benches.snake.datasets_audit
+</code></pre>
+<p>离线模板检查不等于 GPU 推理检查；测试替身通过不代表已获得三模型分数。GPU 冒烟脚本的 <code>smoke.json</code> 区分 <code>not_performed</code>、<code>failed</code>、<code>passed</code>，完整 benchmark 以 run 原始事件及汇总为准。</p></article></main>
+<footer><p>vdecision · 让每个分数，都有画面可查。</p><p><a href="https://donglinkang2021.github.io/">董林康的主页</a> · <a href="https://github.com/donglinkang2021/vdec">网站仓库</a></p></footer>
+</body></html>
