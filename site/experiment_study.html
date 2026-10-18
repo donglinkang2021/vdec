@@ -14,6 +14,7 @@
 <li><a href="#运行顺序">运行顺序</a></li>
 <li><a href="#分数和蒸馏接口">分数和蒸馏接口</a></li>
 <li><a href="#验证">验证</a></li>
+<li><a href="#v9-permissive-plan-extraction-and-recovery">v9: permissive plan extraction and recovery</a></li>
 </ul>
 </li>
 </ul>
@@ -119,6 +120,24 @@ PYTHONPATH=src:. .venv/bin/python scripts/snake_study.py episodes \
 <pre><code class="language-bash">PYTHONPATH=src:.:tests .venv/bin/python -m unittest discover -s tests
 PYTHONPATH=src .venv/bin/python -m vdecision.benches.snake.datasets_audit
 </code></pre>
-<p>离线模板检查不等于 GPU 推理检查；测试替身通过不代表已获得三模型分数。GPU 冒烟脚本的 <code>smoke.json</code> 区分 <code>not_performed</code>、<code>failed</code>、<code>passed</code>，完整 benchmark 以 run 原始事件及汇总为准。</p></article></main>
+<p>离线模板检查不等于 GPU 推理检查；测试替身通过不代表已获得三模型分数。GPU 冒烟脚本的 <code>smoke.json</code> 区分 <code>not_performed</code>、<code>failed</code>、<code>passed</code>，完整 benchmark 以 run 原始事件及汇总为准。</p>
+<h2 id="v9-permissive-plan-extraction-and-recovery">v9: permissive plan extraction and recovery<a class="anchor" href="#v9-permissive-plan-extraction-and-recovery" title="Permanent link">§</a></h2>
+<p><code>snake-bench-v9</code> uses <code>last_close_v1</code>: find the last token sequence encoding
+<code>&lt;/think&gt;</code> or <code>&lt;channel|&gt;</code> and take the suffix as the plan. If neither occurs,
+use the entire generated plan. Repeated/orphan markers, empty suffixes and budget
+truncation are observations, not generation errors. Raw generated IDs remain in
+<code>raw_plan_ids</code>; <code>plan_ids</code> contains the extracted suffix. Full CoT execution keeps
+the raw trajectory, while plan-only/direct execution uses the extracted plan.
+A native EOS during thinking finishes the response without another plan request.</p>
+<p>Runtime requests retry at most twice with identical prompt tokens and sampling
+seed. A failed readout does not regenerate its plan or current-question reasoning.
+Each retry is recorded, and a failed configuration does not stop its siblings.
+Partial results expose <code>observed_score</code>, <code>coverage</code>, <code>bundle_coverage</code>,
+<code>failure_rate</code>, and <code>score_status</code>; the primary <code>score</code> remains unavailable until
+its full required coverage is present. Request failures never receive fabricated
+candidate distributions. <code>plans.html</code> shows raw/extracted plans and termination
+metadata for each run. Old v7/v8 result artifacts remain readable and unchanged.</p>
+<p>The v9 restart uses a fresh source snapshot and repeats all 12 baselines and 552
+dev configurations. Historical v8 scores cannot be pooled into v9 comparisons.</p></article></main>
 <footer><p>vdecision · 让每个分数，都有画面可查。</p><p><a href="https://donglinkang2021.github.io/">董林康的主页</a> · <a href="https://github.com/donglinkang2021/vdec">网站仓库</a></p></footer>
 </body></html>
