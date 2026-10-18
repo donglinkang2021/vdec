@@ -22,7 +22,7 @@
 </ul>
 </div>
 </details><h1 id="benchmark-说明main-v1">Benchmark 说明：main-v1<a class="anchor" href="#benchmark-说明main-v1" title="Permanent link">§</a></h1>
-<p>协议 <code>snake-bench-v7</code>，套件 <code>main-v1</code>。四套静态图片均为 108 张、dev 36／test 72，benchmark 自动绑定图片，禁止任意任务／数据组合。</p>
+<p>协议 <code>snake-bench-v8</code>，套件 <code>main-v1</code>。四套静态图片均为 108 张、dev 36／test 72，benchmark 自动绑定图片，禁止任意任务／数据组合。</p>
 <p>默认展示 Perception、Readout、Safety 三个核心榜；Decision、Episode 为补充评测，不合成总分。可通过 <a href="benchmark_explainer.html">离线交互文章</a> 查看截图、真实输入模板与规则回放。</p>
 <h2 id="任务与主指标">任务与主指标<a class="anchor" href="#任务与主指标" title="Permanent link">§</a></h2>
 <div class="table-scroll"><table>
@@ -107,6 +107,7 @@
 </table></div>
 <p>四层样本量不同，主分数仍对四层等权。12 对案例包括尾巴身份、尾端占用、食物位置各 4 对；同一 pair 属于同一 family、split 与规划 seed，不能当作两个独立 family。旧 UI 的尾巴身份配对截图相同但安全答案不同，新 UI 的连接与尖尾使差异可见。尾格在不进食时腾空，所以允许进入。</p>
 <p>冻结文件为 <span class="unpublished" title="仓库内文件，未随站点发布"><code>safety_v1.json</code></span>，SHA-256：<code>d9ee6970565e2aa329578f907ab2623f6b40d38b004aabeff743dea7193f6893</code>。新增其他榜的图片时保持此文件不变。</p>
+<p>扩展生成条件、独立重复、三模型矩阵和当前问题 CoT 见 <span class="unpublished" title="仓库内文件，未随站点发布">实验运行说明</span>。下文四种共享规划条件的计数仍适用；per-step CoT 额外产生逐请求生成开销。</p>
 <h2 id="运行与分母">运行与分母<a class="anchor" href="#运行与分母" title="Permanent link">§</a></h2>
 <pre><code class="language-bash">PYTHONPATH=src .venv/bin/python run.py --benchmark perception --split dev --dry-run
 </code></pre>
