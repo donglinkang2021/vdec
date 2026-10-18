@@ -3,6 +3,10 @@
 <meta name="description" content="vdecision：视觉决策评测、交互文章与研究记录。">
 <title>三模型规划与视觉推理实验 · vdecision</title><style>:root{color-scheme:light;--paper:#faf9f6;--ink:#20323c;--muted:#657577;--accent:#08766e;--line:#dbe1db}
 *{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:17px/1.85 system-ui,-apple-system,"PingFang SC","Microsoft YaHei",sans-serif}a{color:var(--accent);text-underline-offset:4px}a:hover{text-decoration-thickness:2px}a:focus-visible,summary:focus-visible{outline:3px solid #db952f;outline-offset:5px}header,main,footer{max-width:1100px;margin:auto;padding:24px}header{display:flex;align-items:center;justify-content:space-between;gap:20px;border-bottom:1px solid var(--line)}.brand{font-weight:750;font-size:23px;text-decoration:none;color:var(--ink)}nav{display:flex;flex-wrap:wrap;gap:12px 24px;font-size:14px}nav a{text-decoration:none}.hero{max-width:790px;padding:64px 0 38px}.eyebrow{font-size:13px;letter-spacing:.13em;text-transform:uppercase;color:var(--accent);font-weight:650}h1{font-family:Georgia,"Songti SC","Noto Serif CJK SC",serif;font-size:clamp(32px,5vw,56px);line-height:1.3;letter-spacing:-.025em;margin:15px 0 24px}h2{font-size:26px;margin-top:44px;line-height:1.45}h3{font-size:21px}p{margin:15px 0}.intro{font-size:20px;color:var(--muted)}.cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}.card{display:block;padding:28px;border:1px solid var(--line);border-radius:12px;text-decoration:none;color:var(--ink);background:#fffefa}.card:hover{border-color:var(--accent)}.card h2{margin:12px 0;font-size:25px}.card p{color:var(--muted);font-size:16px}.card .go{color:var(--accent);font-size:15px}.note,blockquote{border-left:3px solid #96b7a5;padding:8px 22px;margin:28px 0;background:#edf2ec}.document{max-width:850px;margin:36px auto}.document h1{font-size:38px}.document img{display:block;max-width:100%;height:auto;margin:28px auto}.document li{margin:8px 0}.document a,.document code{overflow-wrap:anywhere}pre{overflow:auto;padding:20px;background:#edf0ec;border-radius:7px;font-size:14px;line-height:1.7}pre code{overflow-wrap:normal!important}code{font-size:.87em}.table-scroll{overflow:auto;margin:24px 0}table{border-collapse:collapse;width:100%;font-size:15px}th,td{padding:12px 14px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}th{background:#edf2ec}td:first-child{font-weight:550}.toc{font-size:14px}.toc ul{padding-left:22px}.toc-box{padding:14px 20px;border:1px solid var(--line);border-radius:8px}.unpublished{color:var(--muted);text-decoration:underline dotted}.archive-label{color:#875f29;font-weight:650}.anchor{font-size:.7em;text-decoration:none;margin-left:8px}footer{margin-top:60px;border-top:1px solid var(--line);color:var(--muted);font-size:14px}.skip{position:absolute;top:-80px}.skip:focus{top:10px;background:white;padding:10px;z-index:2}@media(max-width:600px){header{align-items:flex-start;flex-direction:column;gap:12px}header,main,footer{padding:20px}.hero{padding-top:30px}.cards{grid-template-columns:1fr}.card{padding:22px}.document{margin-top:24px}.document h1{font-size:30px}.intro{font-size:18px}pre{padding:14px}.note,blockquote{padding:8px 14px}nav{gap:10px 18px}}@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}}
+
+.document details{margin:22px 0;padding:14px 18px;border:1px solid var(--line);border-radius:8px;background:#fffefa}.document summary{cursor:pointer;font-weight:650}.document details[open]>summary{margin-bottom:18px}.document details h2{margin-top:28px}.document p{overflow-wrap:anywhere}.document span[id]{scroll-margin-top:24px}
+
+.table-scroll:focus-visible{outline:3px solid #db952f;outline-offset:4px}@media(max-width:600px){.document table{min-width:640px}}
 </style></head><body>
 <a class="skip" href="#main">跳到正文</a>
 <header><a class="brand" href="index.html">vdecision<span aria-hidden="true"> /</span></a>
@@ -14,17 +18,18 @@
 <li><a href="#运行顺序">运行顺序</a></li>
 <li><a href="#分数和蒸馏接口">分数和蒸馏接口</a></li>
 <li><a href="#验证">验证</a></li>
-<li><a href="#v9-permissive-plan-extraction-and-recovery">v9: permissive plan extraction and recovery</a></li>
+<li><a href="#v9计划提取与失败重试">v9：计划提取与失败重试</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </details><h1 id="三模型规划与视觉推理实验">三模型规划与视觉推理实验<a class="anchor" href="#三模型规划与视觉推理实验" title="Permanent link">§</a></h1>
-<p>实现协议为 <code>snake-bench-v8</code>，沿用 <code>main-v1</code> 冻结数据与指标。历史 v7 结果仍可离线读取。数据、模型真实结果、规则 oracle 和测试替身结果必须分别解释。</p>
+<p>下文记录 v8 实验的配置与运行方法，使用 <code>main-v1</code> 冻结数据。v9 的变化单列在末尾；两版结果不可混合比较。当前分数和案例见 <a href="reasoning_study_explainer.html">实验说明页</a>。</p>
 <h2 id="生成和读出">生成和读出<a class="anchor" href="#生成和读出" title="Permanent link">§</a></h2>
-<p>默认 <code>--sampling model_default</code> 读取 checkpoint 的 <code>generation_config.json</code>，用当前 Transformers 库默认值补齐缺失字段，并把原文件 SHA-256、原值和解析值写入 <code>run.json</code>。缺少文件时明确失败；通过 <code>--generation-config FILE</code> 显式覆盖。<code>recommended</code> 保留旧固定参数；<code>probe</code> 为 T=1/top_p=1/top_k=-1 的 thinking 加 greedy plan；<code>greedy</code> 全部 greedy。boxed 读出始终使用中性参数，与生成采样分离。</p>
-<p>Qwen3.5-4B 本地 checkpoint 没有该文件。<code>experiments/qwen35_model_card_sampling.json</code> 是来自本地模型卡、带来源哈希的<strong>显式替代配置</strong>，不是 checkpoint 默认文件。用户已确认采用；研究矩阵默认加载 <code>experiments/snake_generation_configs.json</code> 显式映射，单独运行 CLI/冒烟脚本仍需传入 <code>--generation-config experiments/qwen35_model_card_sampling.json</code>。实际参数及来源随 dev 冻结。</p>
-<div class="table-scroll"><table>
+<p>先生成推理或计划，再读取候选分数。两阶段的采样设置独立。<code>recommended</code> 保留历史参数；<code>probe</code> 使用 T=1、top_p=1、top_k=-1 生成 thinking，再 greedy 生成 plan；<code>greedy</code> 两阶段均为 greedy。</p>
+<p><code>model_default</code> 从 checkpoint 的 <code>generation_config.json</code> 读取采样参数。缺失字段用当前 Transformers 默认值补齐；缺文件则报错。<code>run.json</code> 保存原值、解析值与文件哈希。可用 <code>--generation-config FILE</code> 显式覆盖。boxed 读出使用中性参数，不继承生成采样。</p>
+<p>Qwen3.5-4B 缺少默认采样文件。经确认，使用模型卡参数文件 <code>experiments/qwen35_model_card_sampling.json</code>。矩阵通过 <code>experiments/snake_generation_configs.json</code> 加载；单独运行时需传 <code>--generation-config experiments/qwen35_model_card_sampling.json</code>。这是显式覆盖，不是 checkpoint 默认文件。</p>
+<div class="table-scroll" tabindex="0" role="region" aria-label="数据表，可横向滚动"><table>
 <thead>
 <tr>
 <th>条件</th>
@@ -70,9 +75,12 @@
 </tr>
 </tbody>
 </table></div>
-<p>人工清单在 <code>prefixes.py</code> 固定，亦可用 <code>--manual-plan-file</code> 替换；不按 plan 生成预算裁剪。每个 plan 事件保留实际正文、token 长度和来源哈希。<code>per_step_cot</code> 使用 <code>--step-thinking-tokens 128/256/512</code>，不生成中间 plan；choice 每个排列独立，yes/no 每个候选独立。自然结束立即读出，耗尽预算补齐原生结束标记，异常提前结束记失败。</p>
-<p><code>--repeat-id</code> 与 <code>--seeds</code> 不同：前者是覆盖完整数据集的独立生成重复，后者分配 family 的共享 plan。分片不会改变同一个实际问题的 RNG。所有模型保留各自原生模板，Gemma 使用通道结束标记。</p>
+<p>人工计划由 <code>prefixes.py</code> 提供，也可用 <code>--manual-plan-file</code> 替换；正文不按生成预算裁剪。当前问题 CoT 的预算为 <code>--step-thinking-tokens 128/256/512</code>，不生成 plan。choice 每种排列单独思考，yes/no 每个候选单独思考。自然结束立即读出；预算耗尽补原生结束标记。v8 的异常提前结束记失败。</p>
+<p><code>--repeat-id</code> 表示覆盖完整数据集的一次独立重复。<code>--seeds</code> 将同源题组（family）分配给共享计划，不代表多次完整重复。分片不改变问题的随机种子。模型使用自己的原生模板；Gemma 使用通道标记。每份计划保存正文、token 长度和来源哈希。</p>
 <h2 id="运行顺序">运行顺序<a class="anchor" href="#运行顺序" title="Permanent link">§</a></h2>
+<p>先完成 dev 检查，再冻结配置运行 test。依次运行 baseline、shared、prefix、cot。每个 split 共 564 个配置；一个配置可包含多种条件和读出。</p>
+<details>
+<summary>查看分阶段命令、冻结与闭环选型</summary>
 <p>在项目根目录使用同一虚拟环境、源码快照、vLLM 配置、精度及缓存设置。<code>experiments/snake_models.json</code> 给出三个模型路径，可复制后改为分配节点可访问的路径。</p>
 <pre><code class="language-bash"># 仅查看矩阵，不加载权重、不提交 GPU
 PYTHONPATH=src:. .venv/bin/python scripts/snake_study.py matrix \
@@ -107,21 +115,32 @@ PYTHONPATH=src:. .venv/bin/python scripts/snake_study.py episodes \
   --comparison outputs/comparison-dev/comparison.json
 </code></pre>
 <p>闭环使用相同 30 个 seed、128 步上限，包含无计划、人工计划、每模型每读出的最佳生成计划和最佳 per-step CoT。共享计划按 dev Decision 安全率、执行时间顺序选择；CoT 同分选短预算。Episode 使用自己的任务规划提示重新生成计划。随机基线只随 no_plan 运行。</p>
+</details>
 <h2 id="分数和蒸馏接口">分数和蒸馏接口<a class="anchor" href="#分数和蒸馏接口" title="Permanent link">§</a></h2>
-<p>每个 run 保留榜单、原始事件、分层诊断、视觉格子混淆、Safety 配对判断、危险召回、误报及延迟。比较表按模型、任务、读出、条件、采样和预算分组，先按重复聚合，再以 family 为单位进行 2000 次配对 bootstrap；保留同 family 内全部题目与排列，Safety/Decision 保持层等权。单独报告重复分数和标准差。未完成配置不排名，比较输出展示其失败率、缺失数与不支持数。</p>
-<p>Readout 的一致性不是决策正确性。静态收益必须结合 Decision 和闭环食物数、可避免碰撞、重复状态与延迟解释。前缀中性对照只是长度接近，不声称精确消除了全部语义影响。</p>
+<p>每次运行保存主分数、错误诊断和延迟。比较时，用相同题组比较两种方法。先汇总独立生成重复，再以 family 为单位抽样 2000 次；每次保留组内全部问题和排列，并保持 Safety / Decision 的分层权重。重复分数和标准差单独报告。未完成配置只展示失败与缺失情况，不排名。</p>
+<p>动作一致不代表动作正确。还需检查 Decision 安全率、闭环食物数、碰撞和延迟。中性前缀只控制近似长度，仍可能影响语义。</p>
 <pre><code class="language-bash">PYTHONPATH=src:. .venv/bin/python scripts/snake_study.py export-teacher \
   --baseline outputs/RUN_NO_PLAN --teachers outputs/RUN_COT_REPEAT0 outputs/RUN_COT_REPEAT1 \
   --output outputs/teacher-evaluation
 </code></pre>
-<p>导出要求两个不同 repeat 的同模型、同预算、同配置 CoT 运行，逐项核对当前图像、问题和语义候选顺序。保存可重建并校验哈希的 PNG、两次候选分布及平均值、无思考 p0、推理 token/终止状态；yes/no 额外保留原始二元概率。</p>
+<p>teacher 导出需要两个不同 repeat 的 CoT 运行，且模型、预算、配置一致。逐项核对图片、问题和候选顺序。导出图片与哈希、两次候选分布、均值、无思考分布 p0，以及推理 token 和终止状态。yes/no 额外保留原始二元概率。</p>
 <p>导出标记 <code>purpose=evaluation_only</code>。正式训练集必须另建，并与 benchmark 的 dev/test family 隔离。本轮不启动 vdistill 训练。SII-Decision 的候选分布蒸馏可作为后续损失参考，但官方语言 backbone 路径需要多模态适配：<a href="https://arxiv.org/html/2610.03935v2#S6">论文 v2 §6</a>、<a href="https://github.com/amazingljy1206/SII-Decision/blob/main/sii_decision/learning.py">官方 learning.py</a>。</p>
 <h2 id="验证">验证<a class="anchor" href="#验证" title="Permanent link">§</a></h2>
+<p>离线模板检查验证输入边界；小规模 GPU 运行检查（冒烟测试）验证真实执行路径。完整成绩以运行记录为准。</p>
+<details>
+<summary>查看 CPU 与 GPU 检查说明</summary>
 <pre><code class="language-bash">PYTHONPATH=src:.:tests .venv/bin/python -m unittest discover -s tests
 PYTHONPATH=src .venv/bin/python -m vdecision.benches.snake.datasets_audit
 </code></pre>
 <p>离线模板检查不等于 GPU 推理检查；测试替身通过不代表已获得三模型分数。GPU 冒烟脚本的 <code>smoke.json</code> 区分 <code>not_performed</code>、<code>failed</code>、<code>passed</code>，完整 benchmark 以 run 原始事件及汇总为准。</p>
-<h2 id="v9-permissive-plan-extraction-and-recovery">v9: permissive plan extraction and recovery<a class="anchor" href="#v9-permissive-plan-extraction-and-recovery" title="Permanent link">§</a></h2>
+</details>
+<p><span id="v9-permissive-plan-extraction-and-recovery"></span></p>
+<h2 id="v9计划提取与失败重试">v9：计划提取与失败重试<a class="anchor" href="#v9计划提取与失败重试" title="Permanent link">§</a></h2>
+<p>v9 保留原始输出，并从最后一个原生思考结束标记之后提取 plan。标记异常、空 plan 和预算截断均记录下来。原始 token 不改写；full 使用完整轨迹，plan-only 使用提取后的 plan。</p>
+<p>每次请求最多重试两次，保持输入 token 和采样 seed 相同。一个配置失败后仍继续其他配置。未完成配置只显示已观察分数和覆盖率，不提供完整主分数。</p>
+<p>v9 重新运行 12 个 baseline 和 552 个 dev 配置。v8 原始结果继续保留，不与 v9 合并。</p>
+<details>
+<summary>查看 v9 字段、终止规则与版本记录</summary>
 <p><code>snake-bench-v9</code> uses <code>last_close_v1</code>: find the last token sequence encoding
 <code>&lt;/think&gt;</code> or <code>&lt;channel|&gt;</code> and take the suffix as the plan. If neither occurs,
 use the entire generated plan. Repeated/orphan markers, empty suffixes and budget
@@ -138,6 +157,24 @@ its full required coverage is present. Request failures never receive fabricated
 candidate distributions. <code>plans.html</code> shows raw/extracted plans and termination
 metadata for each run. Old v7/v8 result artifacts remain readable and unchanged.</p>
 <p>The v9 restart uses a fresh source snapshot and repeats all 12 baselines and 552
-dev configurations. Historical v8 scores cannot be pooled into v9 comparisons.</p></article></main>
+dev configurations. Historical v8 scores cannot be pooled into v9 comparisons.</p>
+</details></article></main>
 <footer><p>vdecision</p><p><a href="https://donglinkang2021.github.io/">董林康的主页</a> · <a href="https://github.com/donglinkang2021/vdec">网站仓库</a></p></footer>
+<script>
+(function () {
+  function revealTarget() {
+    let id;
+    try { id = decodeURIComponent(location.hash.slice(1)); } catch (_) { return; }
+    const target = document.getElementById(id);
+    if (!target) return;
+    for (let parent = target.parentElement; parent; parent = parent.parentElement) {
+      if (parent.tagName === 'DETAILS') parent.open = true;
+    }
+    requestAnimationFrame(() => target.scrollIntoView());
+  }
+  addEventListener('hashchange', revealTarget);
+  if (document.readyState === 'loading') addEventListener('DOMContentLoaded', revealTarget);
+  else revealTarget();
+})();
+</script>
 </body></html>

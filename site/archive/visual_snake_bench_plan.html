@@ -1,229 +1,26 @@
 <!doctype html>
 <html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="description" content="vdecision：视觉决策评测、交互文章与研究记录。">
-<title>制定视觉系统贪吃蛇实验计划 · vdecision</title><style>:root{color-scheme:light;--paper:#faf9f6;--ink:#20323c;--muted:#657577;--accent:#08766e;--line:#dbe1db}
+<title>早期实验计划：先排除固定策略偏差 · vdecision</title><style>:root{color-scheme:light;--paper:#faf9f6;--ink:#20323c;--muted:#657577;--accent:#08766e;--line:#dbe1db}
 *{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:17px/1.85 system-ui,-apple-system,"PingFang SC","Microsoft YaHei",sans-serif}a{color:var(--accent);text-underline-offset:4px}a:hover{text-decoration-thickness:2px}a:focus-visible,summary:focus-visible{outline:3px solid #db952f;outline-offset:5px}header,main,footer{max-width:1100px;margin:auto;padding:24px}header{display:flex;align-items:center;justify-content:space-between;gap:20px;border-bottom:1px solid var(--line)}.brand{font-weight:750;font-size:23px;text-decoration:none;color:var(--ink)}nav{display:flex;flex-wrap:wrap;gap:12px 24px;font-size:14px}nav a{text-decoration:none}.hero{max-width:790px;padding:64px 0 38px}.eyebrow{font-size:13px;letter-spacing:.13em;text-transform:uppercase;color:var(--accent);font-weight:650}h1{font-family:Georgia,"Songti SC","Noto Serif CJK SC",serif;font-size:clamp(32px,5vw,56px);line-height:1.3;letter-spacing:-.025em;margin:15px 0 24px}h2{font-size:26px;margin-top:44px;line-height:1.45}h3{font-size:21px}p{margin:15px 0}.intro{font-size:20px;color:var(--muted)}.cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}.card{display:block;padding:28px;border:1px solid var(--line);border-radius:12px;text-decoration:none;color:var(--ink);background:#fffefa}.card:hover{border-color:var(--accent)}.card h2{margin:12px 0;font-size:25px}.card p{color:var(--muted);font-size:16px}.card .go{color:var(--accent);font-size:15px}.note,blockquote{border-left:3px solid #96b7a5;padding:8px 22px;margin:28px 0;background:#edf2ec}.document{max-width:850px;margin:36px auto}.document h1{font-size:38px}.document img{display:block;max-width:100%;height:auto;margin:28px auto}.document li{margin:8px 0}.document a,.document code{overflow-wrap:anywhere}pre{overflow:auto;padding:20px;background:#edf0ec;border-radius:7px;font-size:14px;line-height:1.7}pre code{overflow-wrap:normal!important}code{font-size:.87em}.table-scroll{overflow:auto;margin:24px 0}table{border-collapse:collapse;width:100%;font-size:15px}th,td{padding:12px 14px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}th{background:#edf2ec}td:first-child{font-weight:550}.toc{font-size:14px}.toc ul{padding-left:22px}.toc-box{padding:14px 20px;border:1px solid var(--line);border-radius:8px}.unpublished{color:var(--muted);text-decoration:underline dotted}.archive-label{color:#875f29;font-weight:650}.anchor{font-size:.7em;text-decoration:none;margin-left:8px}footer{margin-top:60px;border-top:1px solid var(--line);color:var(--muted);font-size:14px}.skip{position:absolute;top:-80px}.skip:focus{top:10px;background:white;padding:10px;z-index:2}@media(max-width:600px){header{align-items:flex-start;flex-direction:column;gap:12px}header,main,footer{padding:20px}.hero{padding-top:30px}.cards{grid-template-columns:1fr}.card{padding:22px}.document{margin-top:24px}.document h1{font-size:30px}.intro{font-size:18px}pre{padding:14px}.note,blockquote{padding:8px 14px}nav{gap:10px 18px}}@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}}
+
+.document details{margin:22px 0;padding:14px 18px;border:1px solid var(--line);border-radius:8px;background:#fffefa}.document summary{cursor:pointer;font-weight:650}.document details[open]>summary{margin-bottom:18px}.document details h2{margin-top:28px}.document p{overflow-wrap:anywhere}.document span[id]{scroll-margin-top:24px}
+
+.table-scroll:focus-visible{outline:3px solid #db952f;outline-offset:4px}@media(max-width:600px){.document table{min-width:640px}}
 </style></head><body>
 <a class="skip" href="#main">跳到正文</a>
 <header><a class="brand" href="../index.html">vdecision<span aria-hidden="true"> /</span></a>
 <nav aria-label="网站导航"><a href="../benchmark_explainer.html">交互指南</a><a href="../benchmark_tasks.html">指标说明</a><a href="../reasoning_study_explainer.html">推理实验</a><a href="../papers.html">读论文</a><a href="../archive/index.html">历史归档</a></nav></header>
 <main id="main"><article class="document"><p class="archive-label">历史资料 · 指标与成绩仅适用于原报告版本</p><details class="toc-box"><summary>本页目录</summary><div class="toc">
 <ul>
-<li><a href="#制定视觉系统贪吃蛇实验计划">制定视觉系统贪吃蛇实验计划</a></li>
+<li><a href="#早期实验计划先排除固定策略偏差">早期实验计划：先排除固定策略偏差</a></li>
 </ul>
 </div>
-</details><h1 id="制定视觉系统贪吃蛇实验计划">制定视觉系统贪吃蛇实验计划<a class="anchor" href="#制定视觉系统贪吃蛇实验计划" title="Permanent link">§</a></h1>
-<blockquote>
-<p>请你结合 docs/standard_backend_report.md 为我规划一下我的下一步最应该做什么，（从第一性出发的话，我目前是想做一个利用模型 visual system 1 能力，快速打贪吃蛇游戏的一个方法，后面的话我觉得可以接入我的 ../vdisitll 中进行训练，这是长期规划），短期规划是我目前思考的是我应该先把 plan 允许的长度开长一点再测试一下（包括 cot 的更好的消融），以及对于安全的 case 我再丰富一下来单独做一个 bench，还有一些 report 里的内容我没有读懂，请你结合我的 report 和长远规划思考一下我当前最应该做哪些探索或者验证</p>
-</blockquote>
-<details><summary>12 previous messages</summary>
-
-> 我先读报告和相关实验配置，再结合你的长期目标，梳理哪些结论已经可信、哪些关键假设还需要验证，以及下一轮实验的优先级。
->
-> <details><summary>Explored a file, a search, a list, ran 3 commands</summary>
->
-> - Ran `for path in /AGENTS.md /inspire/AGENTS.md /inspire/hdd/AGENTS.md /inspire/hdd/global_user/AGENTS.md /inspire/hdd/global_user/donglinkang-253108120084/AGENTS.md /inspire/hdd/global_user/donglinkang-253108120084/projects/AGENTS.md; do if [ -f "$path" ]; then printf '\n%s\n' "$path"; cat "$path"; fi; done`
->
-> - Ran `pwd && rg --files -g 'AGENTS.md' -g '*report*' -g '*README*' -g '*plan*' -g '*cot*' -g '*bench*' -g '*config*' | head -100`
->
-> <details><summary>Explored 2 files, a search, a list</summary>
->
-> - Read `./docs/standard_backend_report.md`
-> - Read `./docs/standard_backend_report.md`
-> - Listed files
-> - Searched for `^##|^###|128|截断|预算|规划|安全|CoT|cot` in `standard_backend_report.md`
->
-> </details>
->
-> - Ran `cat README.md; if [ -d ../vdisitll ]; then rg --files ../vdisitll -g AGENTS.md -g 'README*' -g '*.md' | head -50; else ls -d ../*dist* ../*disi* 2>/dev/null; fi`
->
-> </details>
->
-> 报告里你最想进一步解释的是哪一部分？我会先完整分析实验优先级；另外你写的 ../vdisitll 在目录中不存在，我先按现有的 ../vdistill 理解。
-> - plan / CoT 的对照到底说明了什么
-> - 概率、boxed、顺序偏置与数值漂移
-> - 安全率、碰撞召回与 benchmark 设计
->
-> <details><summary>Explored 4 files, ran 2 commands</summary>
->
-> <details><summary>Explored 4 files</summary>
->
-> - Read `./README.md`
-> - Read `./docs/standard_backend_report.md`
-> - Read `./src/vdecision/benches/snake/episode.py`
-> - Read `./src/vdecision/benches/snake/environment.py`
->
-> </details>
->
-> - Ran `cat src/vdecision/core/generation.py; sed -n '1,220p' src/vdecision/benches/snake/cli.py; git status --short`
->
-> - Ran `rg --files --hidden -g AGENTS.md -g 'README*' ../vdistill | head -55; sed -n '1,200p' ../vdistill/README.md; if [ -f ../vdistill/AGENTS.md ]; then cat ../vdistill/AGENTS.md; fi`
->
-> </details>
->
-> 报告里有两个关键限制：144 份短计划全部被截断；现有截图即使均匀随机选动作，一步安全率也能达到 91.67%。所以，加长 plan 值得做，但需要配合更有区分度的安全测试，才能判断收益。
->
-> 代码里已经有闭环游戏入口。另外，名为 `per_step_cot` 的分支目前仍只看外观示例图生成策略，并没有针对当前局面推理；下一轮 CoT 消融需要把这两件事明确分开。
->
-> <details><summary>Explored 7 files, 4 searches, a list, ran a command, searched the web</summary>
->
-> Searched the web for `site.proceedings.mlr.press v15 ross11a imitation learning dataset aggregation ...`
->
-> <details><summary>Explored 3 files, 2 searches, a list</summary>
->
-> - Read `/inspire/hdd/global_user/donglinkang-253108120084/projects/vdistill/AGENTS.md`
-> - Listed files in `vdistill`
-> - Searched for `experience|dynamic|probe|vision|multimodal|distill|harness`
-> - Read `./src/vdecision/benches/snake/bench.py`
-> - Read `./src/vdecision/core/scoring.py`
-> - Searched for `def plan|plan_tokens|thinking_tokens|finish_reason|prefix_mode|def score` in `engine.py`
->
-> </details>
->
-> Searched the web for `https://arxiv.org/abs/2407.06023`
->
-> <details><summary>Explored 4 files, 2 searches</summary>
->
-> - Searched for `probe|boxed|potential|phi|multimodal|image` in `experience_credit.py`
-> - Read `./src/vdecision/core/engine.py`
-> - Searched for `^##|^###` in `standard_backend_report.md`
-> - Read `/inspire/hdd/global_user/donglinkang-253108120084/projects/vdistill/docs/dynamic-experience-plan.md`
-> - Read `/inspire/hdd/global_user/donglinkang-253108120084/projects/vdistill/docs/harness/README.md`
-> - Read `/inspire/hdd/global_user/donglinkang-253108120084/projects/vdistill/src/vdistill/experience_credit.py`
->
-> </details>
->
-> - Ran `PYTHONPATH=src .venv/bin/python - <<'PY'
-> from vdecision.benches.snake.environment import Snake, validate_state, action_facts
-> from vdecision.core.artifacts import image_hash
-> cells={(x,y) for x in range(4,7) for y in range(4,8)}
-> paths={}
-> def dfs(path, seen):
->     if len(path)==len(cells):
->         paths.setdefault(path[-1], path.copy())
->         return
->     x,y=path[-1]
->     for q in ((x+1,y),(x-1,y),(x,y+1),(x,y-1)):
->         if q in cells and q not in seen:
->             dfs(path+[q],seen|{q})
-> dfs([(4,4),(5,4)],{(4,4),(5,4)})
-> print('possible_tails',list(paths))
-> if (4,5) in paths and len(paths)>1:
->     tail2=next(t for t in paths if t!=(4,5))
->     for tail in ((4,5),tail2):
->         game=Snake(0,body=paths[tail],direction=3,food=(1,1))
->         validate_state(game)
->         print({'body':game.body,'image_hash':image_hash(game.render()),'actions':action_facts(game)})
-> PY`
->
-> </details>
->
-> **报告里你最想进一步解释的是哪一部分？我会先完整分析实验优先级；另外你写的 ../vdisitll 在目录中不存在，我先按现有的 ../vdistill 理解。**
->
-> 安全率、碰撞召回与 benchmark 设计
->
-> <details><summary>Explored 4 files, ran a command</summary>
->
-> <details><summary>Explored 4 files</summary>
->
-> - Read `./src/vdecision/benches/snake/episode.py`
-> - Read `./src/vdecision/benches/snake/environment.py`
-> - Read `./README.md`
-> - Read `./docs/assets/standard_backend_report/apc-readout-failures.json`
->
-> </details>
->
-> - Ran `head -4 docs/assets/standard_backend_report/three-profile-comparison.csv; sed -n '1016,1069p' docs/standard_backend_report.md; sed -n '1,120p' ../vdistill/src/vdistill/skill_distillation.py; rg --files ../vdistill/src/vdistill ../vdistill/docs ../vdistill/exps | rg 't23|probe|potential' | head -50`
->
-> </details>
->
-> 我会重点解释安全率、碰撞召回和 benchmark 设计，并把它们与闭环表现联系起来。
->
-> 另外，检查渲染代码时发现一个会影响新 benchmark 的问题：蛇尾没有独立标记。我用 CPU 构造了两个通过当前状态校验的局面，截图哈希完全相同，但同一个左转动作在一个局面安全、另一个会撞身。扩充尾巴案例时，需要先处理这种单张图无法区分的情况。
->
-> <details><summary>Explored 2 searches, ran 3 commands</summary>
->
-> <details><summary>Explored 2 searches</summary>
->
-> - Searched for `multimodal|vision|images|pixel_values` in `skill_distillation.py`
-> - Searched for `response_mask|replay` in `replay_loss.py`
->
-> </details>
->
-> - Ran `PYTHONPATH=src .venv/bin/python - <<'PY'
-> from collections import Counter
-> from vdecision.benches.snake.environment import diagnostic_cases, action_facts
-> cases=diagnostic_cases()
-> facts=[action_facts(g) for _,_,g in cases]
-> danger=[f for f in facts if any(v['collision'] for v in f.values())]
-> print('case_count',len(cases),'hazard_cases',len(danger))
-> print('dangerous_action_counts',dict(Counter(a for f in facts for a,v in f.items() if v['collision'])))
-> for action in ('left','straight','right'):
->     print(action, {'safe_all':sum(not f[action]['collision'] for f in facts)/len(facts), 'safe_hazard':sum(not f[action]['collision'] for f in danger)/len(danger), 'safe_approach':sum(f[action]['approaches_food'] for f in facts)/len(facts)})
-> PY`
->
-> - Ran `python - <<'PY'
-> import json
-> from pathlib import Path
-> for name in ['provenance.json','apc-insights.json','insights.json']:
->  p=Path('docs/assets/standard_backend_report')/name
->  d=json.loads(p.read_text())
->  print(name, list(d) if isinstance(d,dict) else len(d))
->  if name=='provenance.json':
->   print(json.dumps(d,ensure_ascii=False)[:5000])
-> PY`
->
-> - Ran `python - <<'PY'
-> import json
-> from collections import Counter
-> from pathlib import Path
-> roots=['standard-six-20261012T123333Z-cu132-seeds','standard-transformers-batched-20261012T140259Z','standard-vllm-default-apc-20261013T031635Z']
-> for root in roots:
->  p=Path('outputs')/root/'merged/qwen35-4b/events.jsonl'
->  if not p.exists():
->   print(root,'missing');continue
->  counts={};states={}
->  with p.open() as f:
->   for line in f:
->    d=json.loads(line)
->    if d.get('type')!='result' or d.get('stage')!='readout' or d.get('status')!='success':continue
->    states[d['case_id']]=d.get('evaluation_actions',{})
->    if d.get('method')=='yes_no_naive_boxed':
->     k=d['condition'];counts.setdefault(k,Counter())[d.get('action')]+=1
->  print(root,'action_counts',counts)
->  print('historical_states',len(states),'danger_actions',Counter(a for fact in states.values() for a,v in fact.items() if v['collision']))
->  if states:
->   print('fixed_left',sum(not f['left']['collision'] for f in states.values()),sum(f['left']['approaches_food'] for f in states.values()))
-> PY`
->
-> </details>
->
-> 复核原始记录后，发现一个直接影响实验优先级的问题：这 48 张图里，固定“永远左转”就能达到 100% 安全率、50% 趋近食物率。APC 组 Qwen3.5 的 `shared_full + yes_no_naive_boxed` 恰好是 288 次全部左转。
->
-> 所以，这一组的满分安全率还不能证明模型会根据图片避险。下一步应先补上左转也会危险、必须根据画面改变动作的局面，再比较完整 plan 和 CoT 的收益。
->
-> <details><summary>Ran a command</summary>
->
-> - Ran `nl -ba src/vdecision/benches/snake/environment.py | sed -n '124,174p'; python - <<'PY'
-> import json
-> from pathlib import Path
-> p=Path('outputs/standard-vllm-default-apc-20261013T031635Z/merged/qwen35-4b/events.jsonl')
-> with p.open() as f:
->  for i,line in enumerate(f,1):
->   d=json.loads(line)
->   if d.get('type')=='result' and d.get('stage')=='readout' and d.get('condition')=='shared_full' and d.get('method')=='yes_no_naive_boxed':
->    print('first_full_naive_boxed_result_line',i,'event',d.get('id'),'action',d.get('action'));break
-> PY`
->
-> </details>
-</details>
-
-<p>我建议你的下一步按这个顺序推进：<strong>先让安全 benchmark 能识别“模型有没有根据画面做决策”，再验证完整 plan 和真正的当前局面 CoT，随后尽早跑闭环。</strong> 加长 plan 是必要修正，但目前最影响结论可信度的是评测集的区分能力。</p>
-<p>从第一性出发，你想验证的方法可以明确为：<strong>模型读取当前截图，通过少量前向计算、无需每步生成长推理，就能持续吃食物并避免死亡。</strong> 通用规划可以作为一次性准备；最终需要证明的是它提高了后续视觉决策的质量，并且成本能被摊薄。</p>
-<p>我读了报告、相关实现和 <code>../vdistill</code> 的部分训练代码，还对原始实验记录做了 CPU 复核。这里有一个值得优先处理的新发现。</p>
-<p><strong>现有测试集上，“永远左转”已经可以拿到 100% 安全率。</strong></p>
-<p>48 张截图中，危险动作只有直行和右转：8 张直行危险、4 张右转危险，左转在全部截图上都安全。下面是不需要看图的基线，直接由环境真值计算：</p>
-<div class="table-scroll"><table>
+</details><p><span id="制定视觉系统贪吃蛇实验计划"></span></p>
+<h1 id="早期实验计划先排除固定策略偏差">早期实验计划：先排除固定策略偏差<a class="anchor" href="#早期实验计划先排除固定策略偏差" title="Permanent link">§</a></h1>
+<p>这份历史计划解释旧测试集的问题，并提出后续实验。它不是当前配置说明；文中的待办事项反映当时进度。</p>
+<p><strong>旧测试集中，固定左转就能得到 100% 安全率。</strong> 48 张图只有直行或右转危险，左转始终安全。下表由环境真值计算，不是模型实测。</p>
+<div class="table-scroll" tabindex="0" role="region" aria-label="数据表，可横向滚动"><table>
 <thead>
 <tr>
 <th>策略</th>
@@ -259,10 +56,225 @@
 </tr>
 </tbody>
 </table></div>
+<p>APC 组 Qwen3.5 的 <code>shared_full + yes_no_naive_boxed</code> 在 288 次评分中全部左转。因此，高安全率不能证明模型会根据截图避险。</p>
+<p>当时建议按以下顺序验证：</p>
+<ol>
+<li>平衡左、直、右的危险位置，并让尾巴在图上可辨认。</li>
+<li>将 plan 预算从 128 提高到 512、1024，检查策略是否完整。</li>
+<li>比较当前截图的直接作答与逐题 CoT，定位视觉能力差距。</li>
+<li>用 20–30 个配对 seed 做闭环，检查食物数、碰撞和延迟。</li>
+<li>只有 teacher 优势稳定后，才考虑蒸馏。</li>
+</ol>
+<details>
+<summary>查看原始讨论、诊断依据与五步计划</summary>
+<blockquote>
+<p>请你结合 docs/standard_backend_report.md 为我规划一下我的下一步最应该做什么，（从第一性出发的话，我目前是想做一个利用模型 visual system 1 能力，快速打贪吃蛇游戏的一个方法，后面的话我觉得可以接入我的 ../vdisitll 中进行训练，这是长期规划），短期规划是我目前思考的是我应该先把 plan 允许的长度开长一点再测试一下（包括 cot 的更好的消融），以及对于安全的 case 我再丰富一下来单独做一个 bench，还有一些 report 里的内容我没有读懂，请你结合我的 report 和长远规划思考一下我当前最应该做哪些探索或者验证</p>
+</blockquote>
+<details>
+<p><summary>12 previous messages</summary></p>
+<blockquote>
+<p>我先读报告和相关实验配置，再结合你的长期目标，梳理哪些结论已经可信、哪些关键假设还需要验证，以及下一轮实验的优先级。</p>
+<p><details markdown="1"><summary>Explored a file, a search, a list, ran 3 commands</summary></p>
+<ul>
+<li>
+<p>Ran <code>for path in /AGENTS.md /inspire/AGENTS.md /inspire/hdd/AGENTS.md /inspire/hdd/global_user/AGENTS.md /inspire/hdd/global_user/donglinkang-253108120084/AGENTS.md /inspire/hdd/global_user/donglinkang-253108120084/projects/AGENTS.md; do if [ -f "$path" ]; then printf '\n%s\n' "$path"; cat "$path"; fi; done</code></p>
+</li>
+<li>
+<p>Ran <code>pwd &amp;&amp; rg --files -g 'AGENTS.md' -g '*report*' -g '*README*' -g '*plan*' -g '*cot*' -g '*bench*' -g '*config*' | head -100</code></p>
+</li>
+</ul>
+<p><details markdown="1"><summary>Explored 2 files, a search, a list</summary></p>
+<ul>
+<li>Read <code>./docs/standard_backend_report.md</code></li>
+<li>Read <code>./docs/standard_backend_report.md</code></li>
+<li>Listed files</li>
+<li>Searched for <code>^##|^###|128|截断|预算|规划|安全|CoT|cot</code> in <code>standard_backend_report.md</code></li>
+</ul>
+</blockquote>
+</details>
+<blockquote>
+<ul>
+<li>Ran <code>cat README.md; if [ -d ../vdisitll ]; then rg --files ../vdisitll -g AGENTS.md -g 'README*' -g '*.md' | head -50; else ls -d ../*dist* ../*disi* 2&gt;/dev/null; fi</code></li>
+</ul>
+</blockquote>
+</details>
+<blockquote>
+<p>报告里你最想进一步解释的是哪一部分？我会先完整分析实验优先级；另外你写的 ../vdisitll 在目录中不存在，我先按现有的 ../vdistill 理解。
+- plan / CoT 的对照到底说明了什么
+- 概率、boxed、顺序偏置与数值漂移
+- 安全率、碰撞召回与 benchmark 设计</p>
+<p><details markdown="1"><summary>Explored 4 files, ran 2 commands</summary></p>
+<p><details markdown="1"><summary>Explored 4 files</summary></p>
+<ul>
+<li>Read <code>./README.md</code></li>
+<li>Read <code>./docs/standard_backend_report.md</code></li>
+<li>Read <code>./src/vdecision/benches/snake/episode.py</code></li>
+<li>Read <code>./src/vdecision/benches/snake/environment.py</code></li>
+</ul>
+</details>
+<ul>
+<li>
+<p>Ran <code>cat src/vdecision/core/generation.py; sed -n '1,220p' src/vdecision/benches/snake/cli.py; git status --short</code></p>
+</li>
+<li>
+<p>Ran <code>rg --files --hidden -g AGENTS.md -g 'README*' ../vdistill | head -55; sed -n '1,200p' ../vdistill/README.md; if [ -f ../vdistill/AGENTS.md ]; then cat ../vdistill/AGENTS.md; fi</code></p>
+</li>
+</ul>
+</details>
+<p>报告里有两个关键限制：144 份短计划全部被截断；现有截图即使均匀随机选动作，一步安全率也能达到 91.67%。所以，加长 plan 值得做，但需要配合更有区分度的安全测试，才能判断收益。</p>
+<p>代码里已经有闭环游戏入口。另外，名为 <code>per_step_cot</code> 的分支目前仍只看外观示例图生成策略，并没有针对当前局面推理；下一轮 CoT 消融需要把这两件事明确分开。</p>
+<p><details markdown="1"><summary>Explored 7 files, 4 searches, a list, ran a command, searched the web</summary></p>
+<p>Searched the web for <code>site.proceedings.mlr.press v15 ross11a imitation learning dataset aggregation ...</code></p>
+<p><details markdown="1"><summary>Explored 3 files, 2 searches, a list</summary></p>
+<ul>
+<li>Read <code>/inspire/hdd/global_user/donglinkang-253108120084/projects/vdistill/AGENTS.md</code></li>
+<li>Listed files in <code>vdistill</code></li>
+<li>Searched for <code>experience|dynamic|probe|vision|multimodal|distill|harness</code></li>
+<li>Read <code>./src/vdecision/benches/snake/bench.py</code></li>
+<li>Read <code>./src/vdecision/core/scoring.py</code></li>
+<li>Searched for <code>def plan|plan_tokens|thinking_tokens|finish_reason|prefix_mode|def score</code> in <code>engine.py</code></li>
+</ul>
+</details>
+<p>Searched the web for <code>https://arxiv.org/abs/2407.06023</code></p>
+<p><details markdown="1"><summary>Explored 4 files, 2 searches</summary></p>
+<ul>
+<li>Searched for <code>probe|boxed|potential|phi|multimodal|image</code> in <code>experience_credit.py</code></li>
+<li>Read <code>./src/vdecision/core/engine.py</code></li>
+<li>Searched for <code>^##|^###</code> in <code>standard_backend_report.md</code></li>
+<li>Read <code>/inspire/hdd/global_user/donglinkang-253108120084/projects/vdistill/docs/dynamic-experience-plan.md</code></li>
+<li>Read <code>/inspire/hdd/global_user/donglinkang-253108120084/projects/vdistill/docs/harness/README.md</code></li>
+<li>Read <code>/inspire/hdd/global_user/donglinkang-253108120084/projects/vdistill/src/vdistill/experience_credit.py</code></li>
+</ul>
+</details>
+<ul>
+<li>Ran <code>PYTHONPATH=src .venv/bin/python - &lt;&lt;'PY'
+from vdecision.benches.snake.environment import Snake, validate_state, action_facts
+from vdecision.core.artifacts import image_hash
+cells={(x,y) for x in range(4,7) for y in range(4,8)}
+paths={}
+def dfs(path, seen):
+    if len(path)==len(cells):
+        paths.setdefault(path[-1], path.copy())
+        return
+    x,y=path[-1]
+    for q in ((x+1,y),(x-1,y),(x,y+1),(x,y-1)):
+        if q in cells and q not in seen:
+            dfs(path+[q],seen|{q})
+dfs([(4,4),(5,4)],{(4,4),(5,4)})
+print('possible_tails',list(paths))
+if (4,5) in paths and len(paths)&gt;1:
+    tail2=next(t for t in paths if t!=(4,5))
+    for tail in ((4,5),tail2):
+        game=Snake(0,body=paths[tail],direction=3,food=(1,1))
+        validate_state(game)
+        print({'body':game.body,'image_hash':image_hash(game.render()),'actions':action_facts(game)})
+PY</code></li>
+</ul>
+</details>
+<p><strong>报告里你最想进一步解释的是哪一部分？我会先完整分析实验优先级；另外你写的 ../vdisitll 在目录中不存在，我先按现有的 ../vdistill 理解。</strong></p>
+<p>安全率、碰撞召回与 benchmark 设计</p>
+<p><details markdown="1"><summary>Explored 4 files, ran a command</summary></p>
+<p><details markdown="1"><summary>Explored 4 files</summary></p>
+<ul>
+<li>Read <code>./src/vdecision/benches/snake/episode.py</code></li>
+<li>Read <code>./src/vdecision/benches/snake/environment.py</code></li>
+<li>Read <code>./README.md</code></li>
+<li>Read <code>./docs/assets/standard_backend_report/apc-readout-failures.json</code></li>
+</ul>
+</details>
+<ul>
+<li>Ran <code>head -4 docs/assets/standard_backend_report/three-profile-comparison.csv; sed -n '1016,1069p' docs/standard_backend_report.md; sed -n '1,120p' ../vdistill/src/vdistill/skill_distillation.py; rg --files ../vdistill/src/vdistill ../vdistill/docs ../vdistill/exps | rg 't23|probe|potential' | head -50</code></li>
+</ul>
+</details>
+<p>我会重点解释安全率、碰撞召回和 benchmark 设计，并把它们与闭环表现联系起来。</p>
+<p>另外，检查渲染代码时发现一个会影响新 benchmark 的问题：蛇尾没有独立标记。我用 CPU 构造了两个通过当前状态校验的局面，截图哈希完全相同，但同一个左转动作在一个局面安全、另一个会撞身。扩充尾巴案例时，需要先处理这种单张图无法区分的情况。</p>
+<p><details markdown="1"><summary>Explored 2 searches, ran 3 commands</summary></p>
+<p><details markdown="1"><summary>Explored 2 searches</summary></p>
+<ul>
+<li>Searched for <code>multimodal|vision|images|pixel_values</code> in <code>skill_distillation.py</code></li>
+<li>Searched for <code>response_mask|replay</code> in <code>replay_loss.py</code></li>
+</ul>
+</details>
+<ul>
+<li>
+<p>Ran <code>PYTHONPATH=src .venv/bin/python - &lt;&lt;'PY'
+from collections import Counter
+from vdecision.benches.snake.environment import diagnostic_cases, action_facts
+cases=diagnostic_cases()
+facts=[action_facts(g) for _,_,g in cases]
+danger=[f for f in facts if any(v['collision'] for v in f.values())]
+print('case_count',len(cases),'hazard_cases',len(danger))
+print('dangerous_action_counts',dict(Counter(a for f in facts for a,v in f.items() if v['collision'])))
+for action in ('left','straight','right'):
+    print(action, {'safe_all':sum(not f[action]['collision'] for f in facts)/len(facts), 'safe_hazard':sum(not f[action]['collision'] for f in danger)/len(danger), 'safe_approach':sum(f[action]['approaches_food'] for f in facts)/len(facts)})
+PY</code></p>
+</li>
+<li>
+<p>Ran <code>python - &lt;&lt;'PY'
+import json
+from pathlib import Path
+for name in ['provenance.json','apc-insights.json','insights.json']:
+ p=Path('docs/assets/standard_backend_report')/name
+ d=json.loads(p.read_text())
+ print(name, list(d) if isinstance(d,dict) else len(d))
+ if name=='provenance.json':
+  print(json.dumps(d,ensure_ascii=False)[:5000])
+PY</code></p>
+</li>
+<li>
+<p>Ran <code>python - &lt;&lt;'PY'
+import json
+from collections import Counter
+from pathlib import Path
+roots=['standard-six-20261012T123333Z-cu132-seeds','standard-transformers-batched-20261012T140259Z','standard-vllm-default-apc-20261013T031635Z']
+for root in roots:
+ p=Path('outputs')/root/'merged/qwen35-4b/events.jsonl'
+ if not p.exists():
+  print(root,'missing');continue
+ counts={};states={}
+ with p.open() as f:
+  for line in f:
+   d=json.loads(line)
+   if d.get('type')!='result' or d.get('stage')!='readout' or d.get('status')!='success':continue
+   states[d['case_id']]=d.get('evaluation_actions',{})
+   if d.get('method')=='yes_no_naive_boxed':
+    k=d['condition'];counts.setdefault(k,Counter())[d.get('action')]+=1
+ print(root,'action_counts',counts)
+ print('historical_states',len(states),'danger_actions',Counter(a for fact in states.values() for a,v in fact.items() if v['collision']))
+ if states:
+  print('fixed_left',sum(not f['left']['collision'] for f in states.values()),sum(f['left']['approaches_food'] for f in states.values()))
+PY</code></p>
+</li>
+</ul>
+</details>
+<p>复核原始记录后，发现一个直接影响实验优先级的问题：这 48 张图里，固定“永远左转”就能达到 100% 安全率、50% 趋近食物率。APC 组 Qwen3.5 的 <code>shared_full + yes_no_naive_boxed</code> 恰好是 288 次全部左转。</p>
+<p>所以，这一组的满分安全率还不能证明模型会根据图片避险。下一步应先补上左转也会危险、必须根据画面改变动作的局面，再比较完整 plan 和 CoT 的收益。</p>
+<p><details markdown="1"><summary>Ran a command</summary></p>
+<ul>
+<li>Ran <code>nl -ba src/vdecision/benches/snake/environment.py | sed -n '124,174p'; python - &lt;&lt;'PY'
+import json
+from pathlib import Path
+p=Path('outputs/standard-vllm-default-apc-20261013T031635Z/merged/qwen35-4b/events.jsonl')
+with p.open() as f:
+ for i,line in enumerate(f,1):
+  d=json.loads(line)
+  if d.get('type')=='result' and d.get('stage')=='readout' and d.get('condition')=='shared_full' and d.get('method')=='yes_no_naive_boxed':
+   print('first_full_naive_boxed_result_line',i,'event',d.get('id'),'action',d.get('action'));break
+PY</code></li>
+</ul>
+<p></details>
+</details></p>
+</blockquote>
+<p>我建议你的下一步按这个顺序推进：<strong>先让安全 benchmark 能识别“模型有没有根据画面做决策”，再验证完整 plan 和真正的当前局面 CoT，随后尽早跑闭环。</strong> 加长 plan 是必要修正，但目前最影响结论可信度的是评测集的区分能力。</p>
+<p>从第一性出发，你想验证的方法可以明确为：<strong>模型读取当前截图，通过少量前向计算、无需每步生成长推理，就能持续吃食物并避免死亡。</strong> 通用规划可以作为一次性准备；最终需要证明的是它提高了后续视觉决策的质量，并且成本能被摊薄。</p>
+<p>我读了报告、相关实现和 <code>../vdistill</code> 的部分训练代码，还对原始实验记录做了 CPU 复核。这里有一个值得优先处理的新发现。</p>
+<p><strong>现有测试集上，“永远左转”已经可以拿到 100% 安全率。</strong></p>
+<p>48 张截图中，危险动作只有直行和右转：8 张直行危险、4 张右转危险，左转在全部截图上都安全。下面是不需要看图的基线，直接由环境真值计算：</p>
+<p>固定策略参照见本页开头。</p>
 <p>更关键的是，<strong>APC 组 Qwen3.5 的 <code>shared_full + yes_no_naive_boxed</code>，实际就是 288 次全部左转</strong>，恰好得到 100% 安全、50% 趋近食物、100% 排列一致。<span class="unpublished" title="仓库内文件，未随站点发布">原始记录</span></p>
 <p>因此，这组规划后的提升，目前无法区分“模型学会了避险”和“模型变得更偏爱左转”。<strong>只看危险截图也不足以解决这个问题，还必须平衡危险动作的位置。</strong> 四种旋转会改变绝对朝向，却保持相对左转、右转关系，所以旋转扩增没有消除这个偏差。<span class="unpublished" title="仓库内文件，未随站点发布">局面生成代码</span></p>
 <p>你关心的安全率与碰撞召回，核心区别在于它们回答不同问题：</p>
-<div class="table-scroll"><table>
+<div class="table-scroll" tabindex="0" role="region" aria-label="数据表，可横向滚动"><table>
 <thead>
 <tr>
 <th>指标</th>
@@ -313,7 +325,7 @@
 <p>可以先做一个很小的生成检查：保持提示和 thinking 不变，比较 plan 上限 <strong>128、512、1024</strong>，记录实际长度、停止原因、是否完成以及是否包含明确决策规则。thinking 是否被强制截断也要单独记录。</p>
 <p>我建议把两个问题分开：先固定提示检查预算是否足够，再改提示要求简洁、完整的决策规则。否则长度和提示同时变化，很难解释收益。</p>
 <p>完整性检查通过后，在新安全集上比较：</p>
-<div class="table-scroll"><table>
+<div class="table-scroll" tabindex="0" role="region" aria-label="数据表，可横向滚动"><table>
 <thead>
 <tr>
 <th>条件</th>
@@ -351,7 +363,7 @@
 <p>现有共享规划只看外观示例，因此它测试的是“通用策略能否帮助快速决策”。<strong>它没有回答：同一张测试截图，给模型更多推理时间，能不能做对？</strong></p>
 <p>代码中名为 <code>per_step_cot</code> 的分支，生成规划时仍传入 <code>reference_image()</code>，需要另行实现针对当前截图的推理条件。<span class="unpublished" title="仓库内文件，未随站点发布">对应代码</span></p>
 <p>最有信息量的诊断是这四组：</p>
-<div class="table-scroll"><table>
+<div class="table-scroll" tabindex="0" role="region" aria-label="数据表，可横向滚动"><table>
 <thead>
 <tr>
 <th>输入</th>
@@ -388,6 +400,24 @@
 <p>最小训练验证可以是：teacher 使用当前局面 CoT 或经验证有效的策略上下文，student 只看截图并输出动作；先训练动作选择与安全判断，再检查是否保持低延迟。这个方向与把 System 2 的输出能力蒸馏到无需中间推理的 System 1 一致，但迁移到 Snake 的收益需要实验确认。<a href="https://arxiv.org/abs/2407.06023">相关研究</a></p>
 <p>后续数据应加入 student 自己玩到的失败局面，再补标注或 teacher 判断。因为动作会改变下一步看到的状态，只在固定截图上训练容易漏掉部署时的分布变化；这是 DAgger 所处理的问题。<a href="https://proceedings.mlr.press/v15/ross11a.html">DAgger 原论文</a></p>
 <p>就下一轮实际投入而言，我会先选 <strong>一个模型、当前两个 boxed 读出方法、一个主后端</strong>。优先完成安全集和完整 plan 检查，再加入当前局面 CoT 与小规模闭环；关键差异出来后，用第二个模型和另一后端复核。</p>
-<p><strong>下一轮最值得拿到的证据是：在固定动作无法取巧、截图信息充分的新局面上，完整规划或当前局面 CoT 能稳定减少可避免碰撞；随后，这种优势能被保留在快速闭环决策中。</strong> 这份证据会直接决定你接下来应该优化提示、补视觉训练，还是开始做 teacher→student 蒸馏。</p></article></main>
+<p><strong>下一轮最值得拿到的证据是：在固定动作无法取巧、截图信息充分的新局面上，完整规划或当前局面 CoT 能稳定减少可避免碰撞；随后，这种优势能被保留在快速闭环决策中。</strong> 这份证据会直接决定你接下来应该优化提示、补视觉训练，还是开始做 teacher→student 蒸馏。</p>
+</details></article></main>
 <footer><p>vdecision</p><p><a href="https://donglinkang2021.github.io/">董林康的主页</a> · <a href="https://github.com/donglinkang2021/vdec">网站仓库</a></p></footer>
+<script>
+(function () {
+  function revealTarget() {
+    let id;
+    try { id = decodeURIComponent(location.hash.slice(1)); } catch (_) { return; }
+    const target = document.getElementById(id);
+    if (!target) return;
+    for (let parent = target.parentElement; parent; parent = parent.parentElement) {
+      if (parent.tagName === 'DETAILS') parent.open = true;
+    }
+    requestAnimationFrame(() => target.scrollIntoView());
+  }
+  addEventListener('hashchange', revealTarget);
+  if (document.readyState === 'loading') addEventListener('DOMContentLoaded', revealTarget);
+  else revealTarget();
+})();
+</script>
 </body></html>

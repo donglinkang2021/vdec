@@ -1,11 +1,12 @@
-<!doctype html><html lang="en"><meta charset="utf-8">
-<title>Snake safety v1 review</title>
-<style>body{max-width:1400px;margin:32px auto;padding:0 16px;font:16px system-ui;background:#090f1b;color:#edf5ff}img{width:100%}a{color:#6ee7b7}</style>
-<h1>snake-safety-v1</h1>
-<p>108 cases / 96 families. Labels below are for human review only, never model inputs. Safe means no immediate collision. Zero safe actions means the next move is fatal.</p>
-<p><a href="audit.json">Distribution and baselines</a> · <a href="labels.json">States and all 13 answers</a></p>
-<h2>dev-1.png</h2><a href="dev-1.png"><img src="dev-1.png" loading="lazy" alt="dev-1.png"></a>
-<h2>test-1.png</h2><a href="test-1.png"><img src="test-1.png" loading="lazy" alt="test-1.png"></a>
-<h2>test-2.png</h2><a href="test-2.png"><img src="test-2.png" loading="lazy" alt="test-2.png"></a>
-<h2>pairs.png</h2><a href="pairs.png"><img src="pairs.png" loading="lazy" alt="pairs.png"></a>
-</html>
+<!doctype html><html lang="zh-CN"><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Safety v1：历史样本与标签</title>
+<style>body{max-width:1400px;margin:32px auto;padding:0 20px;font:17px/1.8 system-ui;background:#faf9f6;color:#203b33}img{width:100%;height:auto}a{color:#08766e}a:focus-visible{outline:3px solid #db952f}p{max-width:850px}h2{margin-top:40px}</style>
+<h1>snake-safety-v1：历史样本与标签</h1>
+<p>本页包含 108 个局面、96 个同源题组（family）。同源题组指由同一来源构造的相关局面。标签仅供人工核验，不输入模型。</p>
+<p>安全表示下一步不会碰撞。安全动作数为 0，表示无论选择哪个动作，下一步都会碰撞。</p>
+<p><a href="audit.json">下载分布与策略参照</a> · <a href="labels.json">下载状态与 13 类答案</a></p>
+<h2>开发集截图</h2><p>dev-1.png · 点击图片查看原尺寸。</p><a href="dev-1.png"><img src="dev-1.png" loading="lazy" alt="开发集截图"></a>
+<h2>测试集截图（1）</h2><p>test-1.png · 点击图片查看原尺寸。</p><a href="test-1.png"><img src="test-1.png" loading="lazy" alt="测试集截图（1）"></a>
+<h2>测试集截图（2）</h2><p>test-2.png · 点击图片查看原尺寸。</p><a href="test-2.png"><img src="test-2.png" loading="lazy" alt="测试集截图（2）"></a>
+<h2>配对截图</h2><p>pairs.png · 点击图片查看原尺寸。</p><a href="pairs.png"><img src="pairs.png" loading="lazy" alt="配对截图"></a></html>

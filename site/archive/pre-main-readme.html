@@ -1,15 +1,19 @@
 <!doctype html>
 <html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="description" content="vdecision：视觉决策评测、交互文章与研究记录。">
-<title>vdecision — 视觉决策评测 · vdecision</title><style>:root{color-scheme:light;--paper:#faf9f6;--ink:#20323c;--muted:#657577;--accent:#08766e;--line:#dbe1db}
+<title>旧版运行手册 · vdecision</title><style>:root{color-scheme:light;--paper:#faf9f6;--ink:#20323c;--muted:#657577;--accent:#08766e;--line:#dbe1db}
 *{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:17px/1.85 system-ui,-apple-system,"PingFang SC","Microsoft YaHei",sans-serif}a{color:var(--accent);text-underline-offset:4px}a:hover{text-decoration-thickness:2px}a:focus-visible,summary:focus-visible{outline:3px solid #db952f;outline-offset:5px}header,main,footer{max-width:1100px;margin:auto;padding:24px}header{display:flex;align-items:center;justify-content:space-between;gap:20px;border-bottom:1px solid var(--line)}.brand{font-weight:750;font-size:23px;text-decoration:none;color:var(--ink)}nav{display:flex;flex-wrap:wrap;gap:12px 24px;font-size:14px}nav a{text-decoration:none}.hero{max-width:790px;padding:64px 0 38px}.eyebrow{font-size:13px;letter-spacing:.13em;text-transform:uppercase;color:var(--accent);font-weight:650}h1{font-family:Georgia,"Songti SC","Noto Serif CJK SC",serif;font-size:clamp(32px,5vw,56px);line-height:1.3;letter-spacing:-.025em;margin:15px 0 24px}h2{font-size:26px;margin-top:44px;line-height:1.45}h3{font-size:21px}p{margin:15px 0}.intro{font-size:20px;color:var(--muted)}.cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}.card{display:block;padding:28px;border:1px solid var(--line);border-radius:12px;text-decoration:none;color:var(--ink);background:#fffefa}.card:hover{border-color:var(--accent)}.card h2{margin:12px 0;font-size:25px}.card p{color:var(--muted);font-size:16px}.card .go{color:var(--accent);font-size:15px}.note,blockquote{border-left:3px solid #96b7a5;padding:8px 22px;margin:28px 0;background:#edf2ec}.document{max-width:850px;margin:36px auto}.document h1{font-size:38px}.document img{display:block;max-width:100%;height:auto;margin:28px auto}.document li{margin:8px 0}.document a,.document code{overflow-wrap:anywhere}pre{overflow:auto;padding:20px;background:#edf0ec;border-radius:7px;font-size:14px;line-height:1.7}pre code{overflow-wrap:normal!important}code{font-size:.87em}.table-scroll{overflow:auto;margin:24px 0}table{border-collapse:collapse;width:100%;font-size:15px}th,td{padding:12px 14px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}th{background:#edf2ec}td:first-child{font-weight:550}.toc{font-size:14px}.toc ul{padding-left:22px}.toc-box{padding:14px 20px;border:1px solid var(--line);border-radius:8px}.unpublished{color:var(--muted);text-decoration:underline dotted}.archive-label{color:#875f29;font-weight:650}.anchor{font-size:.7em;text-decoration:none;margin-left:8px}footer{margin-top:60px;border-top:1px solid var(--line);color:var(--muted);font-size:14px}.skip{position:absolute;top:-80px}.skip:focus{top:10px;background:white;padding:10px;z-index:2}@media(max-width:600px){header{align-items:flex-start;flex-direction:column;gap:12px}header,main,footer{padding:20px}.hero{padding-top:30px}.cards{grid-template-columns:1fr}.card{padding:22px}.document{margin-top:24px}.document h1{font-size:30px}.intro{font-size:18px}pre{padding:14px}.note,blockquote{padding:8px 14px}nav{gap:10px 18px}}@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}}
+
+.document details{margin:22px 0;padding:14px 18px;border:1px solid var(--line);border-radius:8px;background:#fffefa}.document summary{cursor:pointer;font-weight:650}.document details[open]>summary{margin-bottom:18px}.document details h2{margin-top:28px}.document p{overflow-wrap:anywhere}.document span[id]{scroll-margin-top:24px}
+
+.table-scroll:focus-visible{outline:3px solid #db952f;outline-offset:4px}@media(max-width:600px){.document table{min-width:640px}}
 </style></head><body>
 <a class="skip" href="#main">跳到正文</a>
 <header><a class="brand" href="../index.html">vdecision<span aria-hidden="true"> /</span></a>
 <nav aria-label="网站导航"><a href="../benchmark_explainer.html">交互指南</a><a href="../benchmark_tasks.html">指标说明</a><a href="../reasoning_study_explainer.html">推理实验</a><a href="../papers.html">读论文</a><a href="../archive/index.html">历史归档</a></nav></header>
 <main id="main"><article class="document"><p class="archive-label">历史资料 · 指标与成绩仅适用于原报告版本</p><details class="toc-box"><summary>本页目录</summary><div class="toc">
 <ul>
-<li><a href="#vdecision-视觉决策评测">vdecision — 视觉决策评测</a><ul>
+<li><a href="#旧版运行手册">旧版运行手册</a><ul>
 <li><a href="#python加载一次模型运行测试">Python：加载一次模型，运行测试</a></li>
 <li><a href="#vllm-执行配置">vLLM 执行配置</a></li>
 <li><a href="#transformers-后端">Transformers 后端</a></li>
@@ -29,7 +33,11 @@
 </details><blockquote>
 <p>历史说明，仅用于解释旧结果；其中旧套件命令不适用于现役 CLI。</p>
 </blockquote>
-<h1 id="vdecision-视觉决策评测">vdecision — 视觉决策评测<a class="anchor" href="#vdecision-视觉决策评测" title="Permanent link">§</a></h1>
+<p><span id="vdecision-视觉决策评测"></span></p>
+<h1 id="旧版运行手册">旧版运行手册<a class="anchor" href="#旧版运行手册" title="Permanent link">§</a></h1>
+<p>本页保留迁移前的 API、命令和协议定义，只用于解释历史结果。新实验使用 <a href="../benchmark_tasks.html">当前指标说明</a> 和 <a href="../experiment_study.html">运行说明</a>。</p>
+<details>
+<summary>查看旧版读出方法与默认设置</summary>
 <p>用同一套协议比较 choice / yes_no 两种 boxed 读出方法、无规划 / 共享规划和不同本地视觉模型。
 支持 vLLM / Transformers 两种推理后端，不训练、不下载模型、不自动申请 GPU。
 当前内置 Snake；bench、模型模板、推理 backend 分层，后续任务可以独立接入。</p>
@@ -38,7 +46,6 @@
   <br>
   <sub>Snake · Rule engine · No browser wait</sub>
 </p>
-
 <p>想先通过可操作的例子了解整个框架，可直接打开 <a href="../benchmark_explainer.html">离线交互文章：下一步，往哪走？</a>。单个 HTML 内含局面浏览、配对实验、题目练习、读出示例、三个模型的完整输入／输出模板、规则回放与调用计算器，无需服务器或 GPU。模板可切换四种规划条件并复制或下载；输出占位符不是模型实测。</p>
 <p>日常使用三个独立榜，每个只看一个主指标：<strong>Perception 感知准确率、Readout 动作排列一致率、Safety 完整安全集合准确率</strong>。入口和定义见 <a href="../benchmark_tasks.html">三个独立榜单</a>。底层 108 个分层局面仍可复用，数据详情见 <a href="../benchmark_tasks.html#safety-分层与配对">Snake safety v1</a>。</p>
 <pre><code class="language-bash">PYTHONPATH=src .venv/bin/python run.py --benchmark perception --split dev
@@ -46,7 +53,10 @@ PYTHONPATH=src .venv/bin/python run.py --benchmark readout --split dev
 PYTHONPATH=src .venv/bin/python run.py --benchmark safety --split dev
 </code></pre>
 <p>新榜默认 <code>no_plan</code>，用 <code>--conditions</code> 统一选择规划条件；结果主表是 <code>leaderboard.csv</code>，细项收在 <code>diagnostics.json</code>。每条命令只运行一个任务，追加 <code>--dry-run</code> 可先查看清单。Python 使用 <code>SnakeBench(benchmark="safety", split="dev")</code>。以下原有 suite/stages 示例保留作历史兼容说明，新实验优先使用上面的单榜入口。</p>
+</details>
 <h2 id="python加载一次模型运行测试">Python：加载一次模型，运行测试<a class="anchor" href="#python加载一次模型运行测试" title="Permanent link">§</a></h2>
+<details>
+<summary>查看本节历史配置与命令</summary>
 <p>从仓库根目录执行脚本，使用现有 <code>.venv/bin/python</code> 并设置 <code>PYTHONPATH=src</code>。</p>
 <pre><code class="language-python">from vdecision import Engine, SnakeBench
 
@@ -66,7 +76,7 @@ bench 配置；同一个 engine 可以复用于多次运行：</p>
 result = bench.run(engine, output=&quot;outputs/qwen35-4b-standard&quot;)
 </code></pre>
 <p>只支持两种 <code>methods</code>，默认是 <code>("choice", "yes_no")</code>，均在原生 assistant 回答边界预填 <code>\boxed{</code>：</p>
-<div class="table-scroll"><table>
+<div class="table-scroll" tabindex="0" role="region" aria-label="数据表，可横向滚动"><table>
 <thead>
 <tr>
 <th>方法</th>
@@ -112,7 +122,7 @@ bench = SnakeBench(stages=&quot;episode&quot;)                 # 只跑闭环游
 bench = SnakeBench(stages=[&quot;perception&quot;, &quot;readout&quot;])  # 两种固定截图测试
 bench = SnakeBench()                                 # 三类全部运行
 </code></pre>
-<div class="table-scroll"><table>
+<div class="table-scroll" tabindex="0" role="region" aria-label="数据表，可横向滚动"><table>
 <thead>
 <tr>
 <th>stages</th>
@@ -150,7 +160,10 @@ bench = SnakeBench()                                 # 三类全部运行
 <p><code>Engine</code> 可以设置 <code>tensor_parallel_size</code>、<code>max_model_len</code>、<code>gpu_memory_utilization</code>、
 <code>thinking_tokens</code>、<code>plan_tokens</code>。vLLM 默认 BF16、TP1、8192 上下文、
 2048 thinking / 128 plan，开启前缀缓存，显存配额使用安装版本的官方默认值。</p>
+</details>
 <h2 id="vllm-执行配置">vLLM 执行配置<a class="anchor" href="#vllm-执行配置" title="Permanent link">§</a></h2>
+<details>
+<summary>查看本节历史配置与命令</summary>
 <p>默认使用历史实验中的 <code>vllm_default_apc</code> 配置：<code>execution_profile="default"</code>，
 开启跨请求前缀缓存（APC），编译和 CUDA Graph 由当前 vLLM 版本自动选择兼容模式：</p>
 <pre><code class="language-python">engine = Engine(model)
@@ -169,7 +182,10 @@ bench = SnakeBench()                                 # 三类全部运行
 <p>结果保存请求参数、解析后的 vLLM 配置、编译缓存目录和加载耗时。共享规划生成前会 reset
 前缀缓存，固定截图评分之间保留缓存；各 job 的缓存独立。
 三组评分延迟、缓存命中与启动成本见 <a href="standard_backend_report.html">历史实验报告</a>。</p>
+</details>
 <h2 id="transformers-后端">Transformers 后端<a class="anchor" href="#transformers-后端" title="Permanent link">§</a></h2>
+<details>
+<summary>查看本节历史配置与命令</summary>
 <p><code>backend="transformers"</code> 可用于全部 stages 和模型支持的全部 conditions，包括先生成 reasoning / plan 再决策：</p>
 <pre><code class="language-python">from vdecision import Engine, SnakeBench
 
@@ -200,7 +216,10 @@ Transformers，使用 vLLM 时安装 <code>.[vllm]</code>（uv 对应 <code>uv s
 没有安装、升级或卸载当前环境中的包。为兼容已有脚本，省略 <code>backend</code> 时仍默认 vLLM。
 <code>run.json</code> / <code>summary.json</code> 记录后端、设备、精度与执行方式，<code>metrics.csv</code> 包含 backend 列。
 两个后端使用同一个 bench 入口，通过 <code>--backend</code> 选择。</p>
+</details>
 <h2 id="命令行与批量模型">命令行与批量模型<a class="anchor" href="#命令行与批量模型" title="Permanent link">§</a></h2>
+<details>
+<summary>查看本节历史配置与命令</summary>
 <pre><code class="language-bash"># 共享运行时与持久缓存；新入口默认 standard，初测显式选择 smoke
 bash scripts/run.sh --suite smoke --model models/Qwen/Qwen3.5-4B
 
@@ -232,8 +251,11 @@ PYTHONPATH=src .venv/bin/python -m vdecision --summarize outputs/某次运行
   bash scripts/run.sh --suite smoke --model &quot;models/$model&quot; || exit 1
 done
 </code></pre>
+</details>
 <h2 id="评测协议-snake-bench-v4">评测协议 snake-bench-v4<a class="anchor" href="#评测协议-snake-bench-v4" title="Permanent link">§</a></h2>
-<div class="table-scroll"><table>
+<details>
+<summary>查看本节历史配置与命令</summary>
+<div class="table-scroll" tabindex="0" role="region" aria-label="数据表，可横向滚动"><table>
 <thead>
 <tr>
 <th>预设</th>
@@ -262,7 +284,7 @@ done
 对四种条件和两种方法枚举全部六种排列。每张诊断截图按固定顺序轮流分配一个规划种子，
 不再要求八个 worker；闭环对每个游戏种子运行全部条件、方法和一次随机基线。</p>
 <p>默认四种条件的定义如下；它们都在最终回答位置读取候选 token 的原始 log-prob：</p>
-<div class="table-scroll"><table>
+<div class="table-scroll" tabindex="0" role="region" aria-label="数据表，可横向滚动"><table>
 <thead>
 <tr>
 <th>condition</th>
@@ -316,7 +338,10 @@ thinking 标记会报错并保留证据，不把它算作成功的直接 plan。
 <p>汇总包括分类感知准确率、安全动作率、趋近食物率、六排列语义动作一致率、所选标签计数，
 以及闭环平均食物数、吃食局比例、步数、终止原因、可避免碰撞与重复状态比例。
 一般 Snake 状态不标注唯一最优动作。规划成本单独计数，复用不重复计费。</p>
+</details>
 <h2 id="snake-实时卡片网页试玩与-gif">Snake 实时卡片、网页试玩与 GIF<a class="anchor" href="#snake-实时卡片网页试玩与-gif" title="Permanent link">§</a></h2>
+<details>
+<summary>查看本节历史配置与命令</summary>
 <p>默认棋盘采用 <code>topology_v2</code>：深色网格、蓝色箭头蛇头、从颈部到尾部渐浅的绿色身体，
 只连接真实连续的节段，尾端收尖。模型仍只看到 320×320 棋盘；问题和动作分数仅供观看。
 新外观与规则说明改变了模型输入，不能把它与历史外观的结果视为同一实验条件。
@@ -435,8 +460,11 @@ choice 与 yes_no 使用同一策略，yes_score 是归一化前的规则权重�
 控制响应还包含 <code>loop_timings</code> 和单调递增的 <code>revision</code>；人工动作可携带 <code>session</code> 与执行前 <code>step</code>，
 后端拒绝旧局／过时步骤的动作，避免延迟请求重复推进或误入新局。
 只读 <code>--run</code> 模式拒绝控制请求。</p>
+</details>
 <h2 id="模型与能力">模型与能力<a class="anchor" href="#模型与能力" title="Permanent link">§</a></h2>
-<div class="table-scroll"><table>
+<details>
+<summary>查看本节历史配置与命令</summary>
+<div class="table-scroll" tabindex="0" role="region" aria-label="数据表，可横向滚动"><table>
 <thead>
 <tr>
 <th>家族</th>
@@ -486,7 +514,10 @@ Qwen3-VL 同档位先 Thinking 后 Instruct。失败证据和候选选择保存�
   VDECISION_TEST_MODELS=models/Qwen/Qwen3.5-0.8B:models/Qwen/Qwen3-VL-4B-Thinking:models/google/gemma-4-E4B-it \
   .venv/bin/python -m unittest discover -s tests -p test_transformers_backend.py -v
 </code></pre>
+</details>
 <h2 id="输出与代码结构">输出与代码结构<a class="anchor" href="#输出与代码结构" title="Permanent link">§</a></h2>
+<details>
+<summary>查看本节历史配置与命令</summary>
 <p>每次运行生成 <code>run.json</code>（配置、实验清单、模型 / 模板指纹与代码哈希）、<code>events.jsonl</code>
 （即时刷新）、<code>summary.json</code>、<code>metrics.csv</code>、<code>run.log</code>，可选每局 GIF。
 失败后保留证据并继续独立实验；指标只使用成功结果，显式列出失败、不支持和待完成数量。
@@ -531,7 +562,10 @@ Python 入口的 run.log 记录运行错误；批量 smoke 额外保存子进程
 Snake 的协议、提示词、实验数量保持不变；新 <code>run.json</code> 增加 <code>bench</code> 标识，
 <code>BenchResult.load()</code> 自动选择对应汇总器，并兼容没有该字段的 Snake v1 / v2 结果。
 源码哈希和 <code>--freeze-only</code> 均递归包含整个包，保留相对路径。</p>
+</details>
 <h2 id="扩展-bench-与-backend">扩展 bench 与 backend<a class="anchor" href="#扩展-bench-与-backend" title="Permanent link">§</a></h2>
+<details>
+<summary>查看本节历史配置与命令</summary>
 <p>脚本可以继续直接使用 <code>SnakeBench</code>，也可以用名称选择任务：</p>
 <pre><code class="language-python">from vdecision import Engine, create_bench
 
@@ -584,7 +618,10 @@ result = create_bench(&quot;puzzle&quot;).run(engine)
   VDECISION_TEST_MODEL=models/Qwen/Qwen3.5-2B \
   .venv/bin/python -m unittest discover -s tests -v
 </code></pre>
+</details>
 <h2 id="缓存与运行时">缓存与运行时<a class="anchor" href="#缓存与运行时" title="Permanent link">§</a></h2>
+<details>
+<summary>查看本节历史配置与命令</summary>
 <ul>
 <li>开发与 GPU 任务统一使用 <code>.venv/bin/python</code>，它指向共享存储上的
   <code>.python/bin/python3.12</code>（Python 3.12.11）。依赖包仅保存在 <code>.venv</code> 中，
@@ -618,7 +655,10 @@ bash scripts/run.sh --freeze-only
 VDECISION_HOME=&quot;$PWD&quot; bash /实际快照路径/scripts/run.sh --suite standard --stages perception readout
 </code></pre>
 <p>脚本不含平台提交、重试或占卡逻辑。GPU 资源与时间上限由下次授权的提交任务管理。</p>
+</details>
 <h2 id="输出与历史">输出与历史<a class="anchor" href="#输出与历史" title="Permanent link">§</a></h2>
+<details>
+<summary>查看本节历史配置与命令</summary>
 <p>默认写入唯一的 <code>outputs/&lt;UTC时间&gt;/</code>；<code>--output</code> 可指定新目录，已有目录拒绝覆盖。
 产物包括 <code>run.json</code>（配置、环境、源码哈希）、<code>events.jsonl</code>、<code>summary.json</code>、
 <code>metrics.csv</code> 和 <code>run.log</code>。闭环 GIF 通过 <code>--save-gifs</code> 显式开启。
@@ -646,7 +686,10 @@ outputs 中保存的整局策略诊断产物。
 朝向识别全部正确，但动作选择受标签排列显著影响；新提示的八份 thinking 和短 plan
 全部触及预算上限，整局策略各组均未吃食。报告保留全部原始 GIF、实际规划与分数，
 不将完整运行或规划提示修改等同于任务成功率提高。</p>
+</details>
 <h2 id="两方法四条件-standard无闭环">两方法、四条件 standard（无闭环）<a class="anchor" href="#两方法四条件-standard无闭环" title="Permanent link">§</a></h2>
+<details>
+<summary>查看本节历史配置与命令</summary>
 <pre><code class="language-bash">PYTHONPATH=src .venv/bin/python run.py --suite standard --stages perception readout \
   --methods choice yes_no \
   --conditions no_plan shared_full shared_plan_only shared_no_think \
@@ -675,6 +718,24 @@ outputs 中保存的整局策略诊断产物。
 八片使用相同冻结源码和模型，全部成功后合并，再用上述脚本验收：</p>
 <pre><code class="language-bash">PYTHONPATH=src .venv/bin/python scripts/merge_snake_shards.py \
   outputs/model-seed-{0,1,2,3,4,5,6,7}/standard --output outputs/model/standard
-</code></pre></article></main>
+</code></pre>
+</details></article></main>
 <footer><p>vdecision</p><p><a href="https://donglinkang2021.github.io/">董林康的主页</a> · <a href="https://github.com/donglinkang2021/vdec">网站仓库</a></p></footer>
+<script>
+(function () {
+  function revealTarget() {
+    let id;
+    try { id = decodeURIComponent(location.hash.slice(1)); } catch (_) { return; }
+    const target = document.getElementById(id);
+    if (!target) return;
+    for (let parent = target.parentElement; parent; parent = parent.parentElement) {
+      if (parent.tagName === 'DETAILS') parent.open = true;
+    }
+    requestAnimationFrame(() => target.scrollIntoView());
+  }
+  addEventListener('hashchange', revealTarget);
+  if (document.readyState === 'loading') addEventListener('DOMContentLoaded', revealTarget);
+  else revealTarget();
+})();
+</script>
 </body></html>

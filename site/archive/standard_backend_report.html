@@ -1,27 +1,20 @@
 <!doctype html>
 <html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="description" content="vdecision：视觉决策评测、交互文章与研究记录。">
-<title>模型真的看懂并选对了吗？三模型、六种读出方法的三组实验 · vdecision</title><style>:root{color-scheme:light;--paper:#faf9f6;--ink:#20323c;--muted:#657577;--accent:#08766e;--line:#dbe1db}
+<title>三模型历史实验结果 · vdecision</title><style>:root{color-scheme:light;--paper:#faf9f6;--ink:#20323c;--muted:#657577;--accent:#08766e;--line:#dbe1db}
 *{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:17px/1.85 system-ui,-apple-system,"PingFang SC","Microsoft YaHei",sans-serif}a{color:var(--accent);text-underline-offset:4px}a:hover{text-decoration-thickness:2px}a:focus-visible,summary:focus-visible{outline:3px solid #db952f;outline-offset:5px}header,main,footer{max-width:1100px;margin:auto;padding:24px}header{display:flex;align-items:center;justify-content:space-between;gap:20px;border-bottom:1px solid var(--line)}.brand{font-weight:750;font-size:23px;text-decoration:none;color:var(--ink)}nav{display:flex;flex-wrap:wrap;gap:12px 24px;font-size:14px}nav a{text-decoration:none}.hero{max-width:790px;padding:64px 0 38px}.eyebrow{font-size:13px;letter-spacing:.13em;text-transform:uppercase;color:var(--accent);font-weight:650}h1{font-family:Georgia,"Songti SC","Noto Serif CJK SC",serif;font-size:clamp(32px,5vw,56px);line-height:1.3;letter-spacing:-.025em;margin:15px 0 24px}h2{font-size:26px;margin-top:44px;line-height:1.45}h3{font-size:21px}p{margin:15px 0}.intro{font-size:20px;color:var(--muted)}.cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}.card{display:block;padding:28px;border:1px solid var(--line);border-radius:12px;text-decoration:none;color:var(--ink);background:#fffefa}.card:hover{border-color:var(--accent)}.card h2{margin:12px 0;font-size:25px}.card p{color:var(--muted);font-size:16px}.card .go{color:var(--accent);font-size:15px}.note,blockquote{border-left:3px solid #96b7a5;padding:8px 22px;margin:28px 0;background:#edf2ec}.document{max-width:850px;margin:36px auto}.document h1{font-size:38px}.document img{display:block;max-width:100%;height:auto;margin:28px auto}.document li{margin:8px 0}.document a,.document code{overflow-wrap:anywhere}pre{overflow:auto;padding:20px;background:#edf0ec;border-radius:7px;font-size:14px;line-height:1.7}pre code{overflow-wrap:normal!important}code{font-size:.87em}.table-scroll{overflow:auto;margin:24px 0}table{border-collapse:collapse;width:100%;font-size:15px}th,td{padding:12px 14px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}th{background:#edf2ec}td:first-child{font-weight:550}.toc{font-size:14px}.toc ul{padding-left:22px}.toc-box{padding:14px 20px;border:1px solid var(--line);border-radius:8px}.unpublished{color:var(--muted);text-decoration:underline dotted}.archive-label{color:#875f29;font-weight:650}.anchor{font-size:.7em;text-decoration:none;margin-left:8px}footer{margin-top:60px;border-top:1px solid var(--line);color:var(--muted);font-size:14px}.skip{position:absolute;top:-80px}.skip:focus{top:10px;background:white;padding:10px;z-index:2}@media(max-width:600px){header{align-items:flex-start;flex-direction:column;gap:12px}header,main,footer{padding:20px}.hero{padding-top:30px}.cards{grid-template-columns:1fr}.card{padding:22px}.document{margin-top:24px}.document h1{font-size:30px}.intro{font-size:18px}pre{padding:14px}.note,blockquote{padding:8px 14px}nav{gap:10px 18px}}@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}}
+
+.document details{margin:22px 0;padding:14px 18px;border:1px solid var(--line);border-radius:8px;background:#fffefa}.document summary{cursor:pointer;font-weight:650}.document details[open]>summary{margin-bottom:18px}.document details h2{margin-top:28px}.document p{overflow-wrap:anywhere}.document span[id]{scroll-margin-top:24px}
+
+.table-scroll:focus-visible{outline:3px solid #db952f;outline-offset:4px}@media(max-width:600px){.document table{min-width:640px}}
 </style></head><body>
 <a class="skip" href="#main">跳到正文</a>
 <header><a class="brand" href="../index.html">vdecision<span aria-hidden="true"> /</span></a>
 <nav aria-label="网站导航"><a href="../benchmark_explainer.html">交互指南</a><a href="../benchmark_tasks.html">指标说明</a><a href="../reasoning_study_explainer.html">推理实验</a><a href="../papers.html">读论文</a><a href="../archive/index.html">历史归档</a></nav></header>
 <main id="main"><article class="document"><p class="archive-label">历史资料 · 指标与成绩仅适用于原报告版本</p><details class="toc-box"><summary>本页目录</summary><div class="toc">
 <ul>
-<li><a href="#模型真的看懂并选对了吗三模型六种读出方法的三组实验">模型真的看懂并选对了吗？三模型、六种读出方法的三组实验</a><ul>
-<li><a href="#1-我们让模型做了什么">1. 我们让模型做了什么</a><ul>
-<li><a href="#11-六种方法问法与读出位置分别改变">1.1 六种方法：问法与读出位置分别改变</a></li>
-<li><a href="#12-四个条件前面要不要放一份通用规划">1.2 四个条件：前面要不要放一份通用规划</a></li>
-<li><a href="#13-三组的规模和执行方式">1.3 三组的规模和执行方式</a></li>
-</ul>
-</li>
-<li><a href="#2-怎样读这些分数才不会被高分误导">2. 怎样读这些分数，才不会被高分误导</a><ul>
-<li><a href="#21-先看原始概率再看候选内排名">2.1 先看原始概率，再看候选内排名</a></li>
-<li><a href="#22-正确安全稳定各有自己的分母">2.2 正确、安全、稳定各有自己的分母</a></li>
-</ul>
-</li>
-<li><a href="#3-三组共同发现了什么">3. 三组共同发现了什么</a><ul>
+<li><a href="#三模型历史实验结果">三模型历史实验结果</a><ul>
+<li><a href="#主要结果">主要结果</a><ul>
 <li><a href="#31-boxed-确实让答案更像答案但不会自动让答案更对">3.1 boxed 确实让答案更像答案，但不会自动让答案更对</a></li>
 <li><a href="#32-换后端没有消除选项偏好">3.2 换后端没有消除选项偏好</a></li>
 <li><a href="#33-tf-的-naive-分数更稳定并列问题仍然存在">3.3 TF 的 naive 分数更稳定；并列问题仍然存在</a></li>
@@ -29,7 +22,26 @@
 <li><a href="#35-加规划没有统一收益而且本次短计划全部被截断">3.5 加规划没有统一收益，而且本次短计划全部被截断</a></li>
 </ul>
 </li>
-<li><a href="#4-质量评分速度和运行成本应分别比较">4. 质量、评分速度和运行成本应分别比较</a><ul>
+<li><a href="#错误案例">错误案例</a><ul>
+<li><a href="#案例一候选分数超过-98答案仍然错误">案例一：候选分数超过 98%，答案仍然错误</a></li>
+<li><a href="#案例二固定选-c换选项后撞墙">案例二：固定选 C，换选项后撞墙</a></li>
+<li><a href="#案例三把撞墙答成安全">案例三：把撞墙答成安全</a></li>
+<li><a href="#案例四分数并列程序选择排在前面的动作">案例四：分数并列，程序选择排在前面的动作</a></li>
+<li><a href="#案例五输入相同分数仍然变化">案例五：输入相同，分数仍然变化</a></li>
+</ul>
+</li>
+<li><a href="#测试方法">测试方法</a><ul>
+<li><a href="#11-六种方法问法与读出位置分别改变">1.1 六种方法：问法与读出位置分别改变</a></li>
+<li><a href="#12-四个条件前面要不要放一份通用规划">1.2 四个条件：前面要不要放一份通用规划</a></li>
+<li><a href="#13-三组的规模和执行方式">1.3 三组的规模和执行方式</a></li>
+</ul>
+</li>
+<li><a href="#怎样读分数">怎样读分数</a><ul>
+<li><a href="#21-先看原始概率再看候选内排名">2.1 先看原始概率，再看候选内排名</a></li>
+<li><a href="#22-正确安全稳定各有自己的分母">2.2 正确、安全、稳定各有自己的分母</a></li>
+</ul>
+</li>
+<li><a href="#评分速度与总成本">评分速度与总成本</a><ul>
 <li><a href="#41-质量没有统一赢家">4.1 质量没有统一赢家</a></li>
 <li><a href="#42-默认优化加速了评分但总-gpu-成本变化很小">4.2 默认优化加速了评分，但总 GPU 成本变化很小</a></li>
 <li><a href="#43-apc-命中与启动开销">4.3 APC 命中与启动开销</a></li>
@@ -37,16 +49,8 @@
 <li><a href="#45-完整评分与规划成本">4.5 完整评分与规划成本</a></li>
 </ul>
 </li>
-<li><a href="#5-真实案例从截图分数和缓存看发生了什么">5. 真实案例：从截图、分数和缓存看发生了什么</a><ul>
-<li><a href="#案例一98-的候选分数也可能建立在几乎不愿回答的分布上">案例一：98% 的候选分数，也可能建立在几乎不愿回答的分布上</a></li>
-<li><a href="#案例二同一张撞墙图只换选项顺序就改变生死">案例二：同一张撞墙图，只换选项顺序，就改变生死</a></li>
-<li><a href="#案例三格式接近满分却把明确的碰撞答成安全">案例三：格式接近满分，却把明确的碰撞答成安全</a></li>
-<li><a href="#案例四tf-分数一模一样为什么换排列仍会换动作">案例四：TF 分数一模一样，为什么换排列仍会换动作</a></li>
-<li><a href="#案例五候选输入相同缓存深度和-batch-位置仍可能不同">案例五：候选输入相同，缓存深度和 batch 位置仍可能不同</a></li>
-</ul>
-</li>
-<li><a href="#6-这些结果支持什么下一步又该测什么">6. 这些结果支持什么，下一步又该测什么</a></li>
-<li><a href="#7-验收数据与复核入口">7. 验收、数据与复核入口</a><ul>
+<li><a href="#后续实验">后续实验</a></li>
+<li><a href="#数据与复现">数据与复现</a><ul>
 <li><a href="#71-完成状态与保留的失败证据">7.1 完成状态与保留的失败证据</a></li>
 <li><a href="#72-随文数据与重建方法">7.2 随文数据与重建方法</a></li>
 </ul>
@@ -113,294 +117,130 @@
 </li>
 </ul>
 </div>
-</details><h1 id="模型真的看懂并选对了吗三模型六种读出方法的三组实验">模型真的看懂并选对了吗？三模型、六种读出方法的三组实验<a class="anchor" href="#模型真的看懂并选对了吗三模型六种读出方法的三组实验" title="Permanent link">§</a></h1>
-<p><strong>vLLM eager、Transformers batch、vLLM default + APC 综合报告 · 2026-10-13</strong></p>
-<blockquote>
-<p>本文方法名均指历史 snake-bench-v3。当前 v4 的 <code>choice</code> = 历史 <code>choice_boxed</code>，<code>yes_no</code> = 历史 <code>yes_no_naive_boxed</code>。六种旧 prompt 及三模型输入边界完整归档于附录 D。</p>
-</blockquote>
-<p>这三组实验想回答一个很具体的问题：给视觉语言模型一张贪吃蛇截图，我们能不能从它接下来要输出的 token 中，可靠地读出判断和动作？如果换一下选项顺序，答案就变了，那么高分可能只是选项偏好。如果模型在那个位置根本不想输出字母，把几个字母的微小概率重新归一化，也可能得到一个看似自信的错误答案。</p>
-<p>三组均已完成，总计 <strong>248,832 条正式评分、144 份规划、72 个有效单卡任务</strong>。最值得保留的结论是：<strong>按规定格式回答、换顺序仍给同一答案、真正答对，是三件不同的事。</strong> <code>\boxed{</code> 主要改善第一件事；不展示选项列表的 naive 问法减少了顺序信息；Transformers batch 在本轮重排检查中没有分数漂移，但仍有精确并列。它们都不能替代对正确性和碰撞判断的检查。</p>
-<p>默认优化 vLLM 的全条件评分比旧 eager 配置快 <strong>2.17×</strong>，比 TF batch 快 <strong>6.60×</strong>；有效任务 GPU 时间却只从 <strong>3.506 小时降至 3.470 小时</strong>。每个 seed 独立冷启动，加载、编译、检查等开销抵消了大部分评分收益。优化组没有统一的质量优势，Gemma 的 naive 最大分数漂移从旧 vLLM 的 0 增至 0.14035。关注本次矩阵的评分速度时可选默认优化 vLLM；关注同输入的数值稳定性时，TF batch 更适合作为复核对照，不能把任一后端当成真值。</p>
-<p>正文依次说明原理、指标、三组共同发现、性能与缓存行为，再看真实案例。附录 A 保留旧 vLLM 的全部表格，附录 B、C 分别给出 TF 和默认优化 vLLM 的全部 144 行结果。图、案例截图和精确数据放在 <code>assets/standard_backend_report/</code>，理解本文不需要先读代码、其他报告或先前对话。</p>
-<h2 id="1-我们让模型做了什么">1. 我们让模型做了什么<a class="anchor" href="#1-我们让模型做了什么" title="Permanent link">§</a></h2>
-<p>棋盘是 10×10。蓝色蛇头里的白箭头表示朝向，绿色方格是蛇身，红色圆点是食物。左转和右转以蛇当前朝向为参照；每次移动一格。撞墙或撞身会失败，没吃食物时尾巴会腾出原来的格子。模型只看规则和图像；真实坐标、正确答案和安全动作清单只供评估程序使用。</p>
-<p>48 张截图来自 12 个基础局面的四种旋转，包括空地、墙边、蛇身与尾巴、食物变化。模型只做两类测试：</p>
-<div class="table-scroll"><table>
+</details><p><span id="模型真的看懂并选对了吗三模型六种读出方法的三组实验"></span></p>
+<h1 id="三模型历史实验结果">三模型历史实验结果<a class="anchor" href="#三模型历史实验结果" title="Permanent link">§</a></h1>
+<p><strong>历史报告 · 2026-10-13 · snake-bench-v3</strong></p>
+<p>本实验测试三个视觉模型能否从贪吃蛇截图中判断状态、选择安全动作。比较六种答案读取方法，以及 vLLM eager、Transformers batch、vLLM default + APC 三套执行配置。</p>
+<p>三组实验已完成：<strong>248,832 条正式评分、144 份规划、72 个有效单卡任务</strong>。结果表明：回答格式正确、换选项后答案一致、答案本身正确，需要分别检查。</p>
+<p><span id="3-三组共同发现了什么"></span></p>
+<h2 id="主要结果">主要结果<a class="anchor" href="#主要结果" title="Permanent link">§</a></h2>
+<p>这里的“感知”混合视觉识别与规则判断。“动作安全率”只看下一步是否碰撞。“动作一致率”要求同一张图换六种选项顺序后，仍选同一个动作。<strong>三组没有连续游戏实验。</strong></p>
+<ul>
+<li><strong>固定字母也能得到 91.67% 安全率。</strong> Qwen3.5 的原始 choice 全选 C，Gemma 全选 A；两者动作一致率都是 0%。</li>
+<li><strong>全部回答“安全”会漏掉所有危险。</strong> 在 choice_boxed + no_plan 下，三模型、三配置的碰撞题准确率都是 91.67%，危险召回率都是 0%。</li>
+<li><strong>boxed 改善格式，不保证选对。</strong> 三组中，每组 72 个配对的合法答案概率都提高；任务分数仍有下降的配对。</li>
+<li><strong>本次规划效果无法代表完整策略。</strong> 144 份短计划全部达到 128 token 上限，未完整结束。shared_full 的平均感知准确率均低于 no_plan。</li>
+</ul>
+<p>下表是无计划基线（no_plan），对六种读出方法等权平均。它描述本次结果，不是一条可直接运行的策略，也没有显著性检验。</p>
+<!-- BEGIN backend_overview -->
+
+<div class="table-scroll" tabindex="0" role="region" aria-label="数据表，可横向滚动"><table>
 <thead>
 <tr>
-<th>阶段</th>
-<th>要回答的问题</th>
-<th>同一截图怎样重复测试</th>
-<th>检查什么</th>
+<th>模型</th>
+<th>配置</th>
+<th>感知准确率</th>
+<th>感知正反一致率</th>
+<th>动作安全率</th>
+<th>安全且趋近食物率</th>
+<th>动作六排列一致率</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>perception：感知与规则判断</td>
-<td>箭头朝哪、食物在哪、转向后朝哪、是否会撞</td>
-<td>9 类问题，每题正反两种候选排列</td>
-<td>判断是否正确，换排列是否一致</td>
+<td>Qwen3.5-4B</td>
+<td>vLLM eager</td>
+<td>73.75%</td>
+<td>78.78%</td>
+<td>94.16%</td>
+<td>44.68%</td>
+<td>35.76%</td>
 </tr>
 <tr>
-<td>readout：动作读出</td>
-<td>下一步左转、直行还是右转</td>
-<td>三个动作的全部 6 种排列</td>
-<td>当前一步是否安全、是否靠近食物、换排列是否一致</td>
-</tr>
-</tbody>
-</table></div>
-<p>九类题分别是：箭头朝向；食物的水平、垂直位置；左转、直行、右转后的绝对朝向；三个动作是否立即碰撞。后六题已经要求应用规则，因此这里的“感知准确率”不等于纯粹的看图识别能力。</p>
-<p><strong>本轮没有连续玩游戏。</strong> 所有动作都只评估当前一步，没有 episode、闭环轨迹或随机游戏基线。一步安全不代表长期能活，靠近食物也不代表最终一定吃到。</p>
-<h3 id="11-六种方法问法与读出位置分别改变">1.1 六种方法：问法与读出位置分别改变<a class="anchor" href="#11-六种方法问法与读出位置分别改变" title="Permanent link">§</a></h3>
-<p><img alt="从截图到下一 token 概率，再到六种评分方法" src="assets/standard_backend_report/01-readout-principle.png" /></p>
-<p>图 1 是原理示意。输入先经过模型，最后一个真实输入位置的隐藏状态经过输出层，得到完整词表上的下一 token 概率。我们读取其中指定答案 token 的概率，选出候选；不是直接把隐藏状态里的某个维度当作答案。</p>
-<div class="table-scroll"><table>
-<thead>
-<tr>
-<th>方法</th>
-<th>模型看见的候选信息</th>
-<th>问法</th>
-<th>从哪里读答案</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>choice</code></td>
-<td>完整的 A/B/C… 选项表</td>
-<td>选最好的选项，回复字母</td>
-<td>原生回答起点</td>
-</tr>
-<tr>
-<td><code>choice_boxed</code></td>
-<td>同上</td>
-<td>要求把字母放进 boxed</td>
-<td>预填 <code>\boxed{</code> 之后</td>
-</tr>
-<tr>
-<td><code>yes_no</code></td>
-<td>完整的字母选项表</td>
-<td>逐个问 <code>Is option A the best choice?</code></td>
-<td>原生回答起点，读取 yes/no</td>
-</tr>
-<tr>
-<td><code>yes_no_boxed</code></td>
-<td>同上</td>
-<td>同上，要求 boxed 格式</td>
-<td>预填 <code>\boxed{</code> 之后，读取 yes/no</td>
-</tr>
-<tr>
-<td><code>yes_no_naive</code></td>
-<td>原问题和当前候选的描述；没有选项表和字母</td>
-<td>直接问这项内容是不是答案</td>
-<td>原生回答起点，读取 yes/no</td>
-</tr>
-<tr>
-<td><code>yes_no_naive_boxed</code></td>
-<td>同上</td>
-<td>同上，要求 boxed 格式</td>
-<td>预填 <code>\boxed{</code> 之后，读取 yes/no</td>
-</tr>
-</tbody>
-</table></div>
-<p>例如 naive 的实际提示末段是：</p>
-<pre><code class="language-text">Which action should the snake take next?
-Is &quot;Turn left&quot; the best answer to the question above? Reply exactly yes or no.
-</code></pre>
-<p>boxed 版本将末句改成：</p>
-<pre><code class="language-text">Reply with exactly \boxed{yes} or \boxed{no}, with no explanation.
-</code></pre>
-<p>并在 assistant 的原生回答边界之后，主动补上字面量 <code>\boxed{</code>。以 Qwen 模板为例，位置在 <code>&lt;/think&gt;</code> 之后；Gemma 使用自己的原生边界，不能把 Qwen 的标记硬套给所有模型。补上前缀后，直接读取后面的字母或 yes/no，不等待模型自己写出整段解释和花括号。</p>
-<p>这里有两个容易混淆的地方。第一，本轮 <code>yes_no</code> 仍保留字母选项表；用户希望的“只问 is xxx…，不出现默认 ABC 集合”由 <code>yes_no_naive</code> 实现。第二，boxed 同时改变了用户指令和 assistant 前缀，因此它测的是这套组合的效果，不是只改一个 token 的严格消融。</p>
-<p>choice 一次请求就能读取全部候选字母。yes/no 家族对每个候选分别构造一个输入；有 K 个候选，就有 K 个候选请求，但这些请求可以放进同一次 batch 并行计算。</p>
-<h3 id="12-四个条件前面要不要放一份通用规划">1.2 四个条件：前面要不要放一份通用规划<a class="anchor" href="#12-四个条件前面要不要放一份通用规划" title="Permanent link">§</a></h3>
-<p><img alt="四条件及两种规划的复用关系" src="assets/standard_backend_report/02-context-conditions.png" /></p>
-<div class="table-scroll"><table>
-<thead>
-<tr>
-<th>条件</th>
-<th>在当前截图之前保留什么</th>
-<th>与其他条件的配对关系</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>no_plan</code></td>
-<td>没有规划</td>
-<td>只看规则、当前截图和问题</td>
-</tr>
-<tr>
-<td><code>shared_full</code></td>
-<td>外观示例与规划对话、完整思考和短计划</td>
-<td>每个 seed 生成一份带思考的规划</td>
-</tr>
-<tr>
-<td><code>shared_plan_only</code></td>
-<td>同一个示例与规划对话、同一份短计划，去掉思考正文</td>
-<td>直接复用 full 的原始 plan token，不重新生成</td>
-</tr>
-<tr>
-<td><code>shared_no_think</code></td>
-<td>示例与规划对话、不经过 thinking 而单独生成的短计划</td>
-<td>是另一份计划，不是删掉 full 的思考</td>
-</tr>
-</tbody>
-</table></div>
-<p>规划只看独立的外观示例，不看当前测试截图。相同模型、相同 seed 的规划由 perception、readout 及六种方法共用。比较 full 与 plan_only，比较的是是否保留同一段思考；比较 full 与 no_think，还混入了计划内容本身的变化。</p>
-<h3 id="13-三组的规模和执行方式">1.3 三组的规模和执行方式<a class="anchor" href="#13-三组的规模和执行方式" title="Permanent link">§</a></h3>
-<div class="table-scroll"><table>
-<thead>
-<tr>
-<th>统计单位</th>
-<th style="text-align: right;">每模型、每组</th>
-<th style="text-align: right;">三模型、每组</th>
-<th style="text-align: right;">三组合计</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>感知评分</td>
-<td style="text-align: right;">20,736</td>
-<td style="text-align: right;">62,208</td>
-<td style="text-align: right;">186,624</td>
-</tr>
-<tr>
-<td>动作评分</td>
-<td style="text-align: right;">6,912</td>
-<td style="text-align: right;">20,736</td>
-<td style="text-align: right;">62,208</td>
-</tr>
-<tr>
-<td>正式评分</td>
-<td style="text-align: right;">27,648</td>
-<td style="text-align: right;">82,944</td>
-<td style="text-align: right;">248,832</td>
-</tr>
-<tr>
-<td>候选评分请求</td>
-<td style="text-align: right;">66,048</td>
-<td style="text-align: right;">198,144</td>
-<td style="text-align: right;">594,432</td>
-</tr>
-<tr>
-<td>保存的规划</td>
-<td style="text-align: right;">16</td>
-<td style="text-align: right;">48</td>
-<td style="text-align: right;">144</td>
-</tr>
-<tr>
-<td>有效单卡任务</td>
-<td style="text-align: right;">8</td>
-<td style="text-align: right;">24</td>
-<td style="text-align: right;">72</td>
-</tr>
-</tbody>
-</table></div>
-<p>每个“模型 × 方法 × 条件”有 864 次感知评分（48×9×2）和 288 次动作评分（48×6）。感知一致率的分母是 432 组正反排列，动作一致率的分母是 48 组六排列。</p>
-<p>三个模型是 Qwen3.5-4B、Qwen3-VL-4B-Thinking、Gemma4-E4B-it。每个模型的 seed 0–7 分开提交任务，每个 seed 负责六张图、两份规划。种子轮流分配截图，不是每张图跑八遍；规划采用 greedy，<strong>八个 seed 不应当成八次独立随机重复</strong>。</p>
-<p>三组均使用开发区 H100 CUDA 13.2、183 核分区，单卡 H100 80GB、TP1、BF16、8192 上下文，单任务 20 CPU、200 GiB 内存及等量共享内存，公共科研项目、优先级 4。thinking 上限 2048 token，短计划上限 128 token。权重大小和 SHA256、配置、模板及处理器一致。环境为 PyTorch 2.13.0+cu130、vLLM 0.31.0、Transformers 5.17.0；第三组节点驱动为 595.58.03。沿用镜像 <code>ngc-pytorch-cu128-dev:1.1</code>，镜像名、CUDA 13.2 分区名和实际 PyTorch runtime 是不同层面的版本记录。</p>
-<div class="table-scroll"><table>
-<thead>
-<tr>
-<th>本文名称</th>
-<th>数据中的配置标识</th>
-<th>前缀缓存</th>
-<th>执行与调度</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>vLLM eager／旧 vLLM</td>
-<td><code>vllm_eager</code></td>
-<td>关闭</td>
-<td><code>enforce_eager=True</code>，禁用编译和 CUDA Graph；显存比例 0.65，max_num_seqs=26，max_num_batched_tokens=8192</td>
-</tr>
-<tr>
+<td>Qwen3.5-4B</td>
 <td>TF batch</td>
-<td><code>transformers_batched</code></td>
-<td>无跨请求 KV 复用</td>
-<td>eager attention，原生候选 batch，microbatch 上限 8</td>
+<td>73.90%</td>
+<td>79.01%</td>
+<td>93.11%</td>
+<td>45.78%</td>
+<td>36.11%</td>
 </tr>
 <tr>
-<td>vLLM APC／默认优化组</td>
-<td><code>vllm_default_apc</code></td>
-<td>显式开启</td>
-<td>不覆盖 eager、编译、调度和显存默认值；实际显存比例 0.92、1024 seqs、16384 batched tokens、编译模式 3、FULL_AND_PIECEWISE CUDA Graph</td>
+<td>Qwen3.5-4B</td>
+<td>vLLM APC</td>
+<td>73.80%</td>
+<td>78.59%</td>
+<td>93.92%</td>
+<td>44.73%</td>
+<td>34.38%</td>
+</tr>
+<tr>
+<td>Qwen3-VL-4B-Thinking</td>
+<td>vLLM eager</td>
+<td>63.08%</td>
+<td>88.77%</td>
+<td>84.84%</td>
+<td>38.25%</td>
+<td>82.64%</td>
+</tr>
+<tr>
+<td>Qwen3-VL-4B-Thinking</td>
+<td>TF batch</td>
+<td>63.68%</td>
+<td>88.39%</td>
+<td>86.00%</td>
+<td>38.77%</td>
+<td>80.21%</td>
+</tr>
+<tr>
+<td>Qwen3-VL-4B-Thinking</td>
+<td>vLLM APC</td>
+<td>63.77%</td>
+<td>88.35%</td>
+<td>84.95%</td>
+<td>37.73%</td>
+<td>77.08%</td>
+</tr>
+<tr>
+<td>Gemma4-E4B-it</td>
+<td>vLLM eager</td>
+<td>61.82%</td>
+<td>68.90%</td>
+<td>86.46%</td>
+<td>39.47%</td>
+<td>57.64%</td>
+</tr>
+<tr>
+<td>Gemma4-E4B-it</td>
+<td>TF batch</td>
+<td>61.84%</td>
+<td>67.98%</td>
+<td>87.15%</td>
+<td>37.04%</td>
+<td>57.64%</td>
+</tr>
+<tr>
+<td>Gemma4-E4B-it</td>
+<td>vLLM APC</td>
+<td>62.50%</td>
+<td>65.51%</td>
+<td>86.63%</td>
+<td>37.21%</td>
+<td>52.43%</td>
 </tr>
 </tbody>
 </table></div>
-<p>下文简称 APC 的始终是整套默认优化配置。第三组同时改变 APC、编译、Graph、调度上限和显存配额，测量的是整套配置收益，不能单独归因于其中一个开关。各轮不是同一时刻、同一物理卡的微基准。</p>
-<p>三组正式结果均无 pending、failed、unsupported；各 24 个有效任务成功、退出码为 0，资源已释放。TF 和 APC 各有 <strong>576 条固定旧 vLLM 规划的 readout 诊断</strong>，合计 1,152 条，另有启动检查；它们均不计入正式评分。停止的 TF 串行尝试和 APC 首次失败 pilot 另行记录成本，见第 7 节。</p>
-<p><strong>TF 正式组使用 batch。</strong> 同一次 yes/no 评分的候选以张量 batch 同时 forward；choice 只需一个请求。三组都未跨不同实验条目合并评分 batch。TF 使用左侧 padding，读取每条输入最后的真实位置，input_tokens 不计 padding；图像经过实际多模态处理器。规划保留逐请求 RNG，思考和短计划有前后依赖，逐请求生成；跨 seed 通过独立任务并行。保存的规划使用原始 token ID，不经过解码再编码。</p>
-<h2 id="2-怎样读这些分数才不会被高分误导">2. 怎样读这些分数，才不会被高分误导<a class="anchor" href="#2-怎样读这些分数才不会被高分误导" title="Permanent link">§</a></h2>
-<h3 id="21-先看原始概率再看候选内排名">2.1 先看原始概率，再看候选内排名<a class="anchor" href="#21-先看原始概率再看候选内排名" title="Permanent link">§</a></h3>
-<p><code>logprob</code> 是完整词表概率的自然对数，<code>P = exp(logprob)</code>。例如 choice 的三个合法 token 是 A/B/C：</p>
-<pre><code class="language-text">合法答案概率 M = P(A) + P(B) + P(C)
-候选分数 score(A) = P(A) / M
-</code></pre>
-<p>如果 P(A)=0.00006，P(B)=0.00004，两个合法答案一共只有 <strong>0.01%</strong> 概率；归一化后却会出现 A=60%、B=40%。这不代表模型有 60% 的把握认为 A 正确，而是“硬要在 A/B 里选，它比较偏向 A”。绝大部分概率可能落在其他 token 上。</p>
-<p>yes/no 方法先对每个候选 i 单独计算：</p>
-<pre><code class="language-text">M_i = P_i(yes) + P_i(no)
-q_i = P_i(yes) / M_i
-score_i = q_i / 所有候选 q 的总和
-</code></pre>
-<p><code>q_i</code> 在原始记录里叫 <code>yes_score</code>。几个候选可以同时得到较高的 q；最终按 score 选最大项，不是对 q 再做一次 softmax。这些分数都没有经过正确率校准，不应直接解读成“动作安全的概率”。</p>
-<p>报告的“合法答案概率”只包含指定的单 token 大写字母或小写 yes/no，不包含空格、其他大小写或同义句。choice 对题目求均值，yes/no 对候选请求求均值，所以四选题在后者中权重比二选题大。图中接近 0% 或 100% 的显示值也可能来自舍入，不是精确零或一。</p>
-<h3 id="22-正确安全稳定各有自己的分母">2.2 正确、安全、稳定各有自己的分母<a class="anchor" href="#22-正确安全稳定各有自己的分母" title="Permanent link">§</a></h3>
-<div class="table-scroll"><table>
-<thead>
-<tr>
-<th>指标</th>
-<th>具体含义</th>
-<th>最常见的误读</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>感知准确率</td>
-<td>所选语义答案与真实状态相符的比例</td>
-<td>高分不代表九类能力都好；题型混有二、三、四选题</td>
-</tr>
-<tr>
-<td>一步安全率</td>
-<td>所选动作下一步不会撞墙、撞身</td>
-<td>不表示长期存活或最优决策</td>
-</tr>
-<tr>
-<td>趋近食物率</td>
-<td><strong>安全且</strong>下一步到当前食物的曼哈顿距离变短，占全部动作评分的比例</td>
-<td>不是只在安全动作中计算；安全绕行也可能不靠近食物</td>
-</tr>
-<tr>
-<td>排列一致率</td>
-<td>感知两次、动作六次都选同一语义答案的组数比例</td>
-<td>不是字母相同；也不是答案一定正确</td>
-</tr>
-<tr>
-<td>合法答案概率</td>
-<td>规定的字母或 yes/no 在完整词表里占多少概率</td>
-<td>只衡量格式与读出位置是否匹配</td>
-</tr>
-<tr>
-<td>最大分数漂移</td>
-<td>相同候选跨排列的最大 score 差值，再取所有组中的最大值</td>
-<td>是最坏个例，不是平均差异</td>
-</tr>
-<tr>
-<td>并列最高分次数</td>
-<td>一次评分至少两个候选精确并列第一，就计一次</td>
-<td>当前实现取首个最大值，零漂移也可能换答案</td>
-</tr>
-</tbody>
-</table></div>
-<p>左转从 A 移到 C，模型也跟着改选 C，属于语义一致。反过来，一直选 A，而 A 对应的动作在变，则不一致。六次中五次选左转、一次选右转，整组一致率记为 0；一直直行可以达到 100% 一致，但可能稳定地撞墙。</p>
-<p>标签偏好也要结合曝光次数看：动作题每个字母都出现 288 次；感知题 A/B 各出现 864 次，C 出现 576 次，D 出现 384 次。naive 根本不展示字母，标签计数为空，不应解释为已经证明了所有形式的无偏。</p>
-<h2 id="3-三组共同发现了什么">3. 三组共同发现了什么<a class="anchor" href="#3-三组共同发现了什么" title="Permanent link">§</a></h2>
+<!-- END backend_overview -->
+
+<p><img alt="三模型的判断正确性、动作安全与选项一致性" src="assets/standard_backend_report/03-no-plan-results.png" /></p>
+<details>
+<summary>查看分项结果、规划截断和分数漂移</summary>
 <h3 id="31-boxed-确实让答案更像答案但不会自动让答案更对">3.1 boxed 确实让答案更像答案，但不会自动让答案更对<a class="anchor" href="#31-boxed-确实让答案更像答案但不会自动让答案更对" title="Permanent link">§</a></h3>
 <p><img alt="boxed 前后合法答案概率，按模型和方法分组" src="assets/standard_backend_report/04-boxed-answer-mass.png" /></p>
 <p>图 3 只取 no_plan 感知题。纵轴是对数刻度：Gemma 普通 yes/no 的合法概率极小，boxed 后接近 100%，差的是多个数量级。蓝色是 vLLM eager，橙色是 TF batch，绿色是 vLLM APC；空心圆是普通版本，三角是 boxed。</p>
 <p>每组配置都有 72 组 boxed 配对（3 模型×2 阶段×4 条件×3 方法家族）。<strong>三组各自的 72 个配对，合法答案概率均值全部提高。</strong> 但对应任务表现——感知看准确率、动作看安全率——旧 vLLM 是 48 组提高、22 组下降、2 组持平；TF 是 43/24/5；APC 是 44/23/5。这是对本次观测的计数，不是显著性检验。</p>
 <p>最清楚的例子是 Gemma 的 no_plan 感知：choice 准确率在前两组都是 38.43%，加 boxed 后分别为 75.00% 和 74.54%。这个提升跨后端复现。前两组中，Qwen3.5 对应为 vLLM eager 64.81%→80.09%，TF 64.47%→79.98%；Qwen3-VL 为 64.93%→68.98%、66.09%→69.56%。</p>
-<p>因此，原先“我们可能还没在正确的回答位置上读分”的担心有实验证据支持。更准确的说法是：<strong>原提示下，约定答案 token 与当前输出分布不匹配。</strong> 仅凭合法概率很低，还不能断定模型仍处于 thinking，也不能确定它更想输出空白、解释还是别的 token。</p>
+<p><strong>这些记录支持读出格式不匹配的解释。</strong> 合法答案 token 的概率很低，但这不能说明模型仍在思考，也不能确定它原本想输出什么。</p>
 <h3 id="32-换后端没有消除选项偏好">3.2 换后端没有消除选项偏好<a class="anchor" href="#32-换后端没有消除选项偏好" title="Permanent link">§</a></h3>
 <p><img alt="no_plan 六方法的感知准确率、动作安全率、动作排列一致率" src="assets/standard_backend_report/03-no-plan-results.png" /></p>
 <p>图 4 每三列使用同一个模型，依次为 vLLM eager、TF batch、vLLM APC。三个面板应一起看：最左是判断正确性，中间是一步安全，最右是换选项顺序后的稳定性。</p>
@@ -409,8 +249,7 @@ score_i = q_i / 所有候选 q 的总和
 <p>即使不看字母，稳定也不是终点。Qwen3-VL 的 choice_boxed 在三组各自的 288 次 no_plan 动作读出中都选择直行，一致率 100%，安全率却只有 83.33%，趋近食物率 33.33%。它确实不受排列影响，但也没有充分根据截图调整动作。</p>
 <h3 id="33-tf-的-naive-分数更稳定并列问题仍然存在">3.3 TF 的 naive 分数更稳定；并列问题仍然存在<a class="anchor" href="#33-tf-的-naive-分数更稳定并列问题仍然存在" title="Permanent link">§</a></h3>
 <!-- BEGIN drift -->
-
-<div class="table-scroll"><table>
+<div class="table-scroll" tabindex="0" role="region" aria-label="数据表，可横向滚动"><table>
 <thead>
 <tr>
 <th>模型</th>
@@ -550,7 +389,6 @@ score_i = q_i / 所有候选 q 的总和
 </tbody>
 </table></div>
 <!-- END drift -->
-
 <p>这里汇总两个阶段、四条件，pp 表示百分点。例如 0.08264 的分数差等于 8.264 个百分点。每个方法的并列分母为 4,608 次评分。</p>
 <p>每模型重建了 11,904 个唯一 naive 候选输入，并比较了 16,512 次重复输入，核对原始 token 与图像哈希。TF 本轮相同候选跨排列的 score 和 q 漂移均为零；旧 vLLM 的 Gemma 原本也是零，APC 组却增至 0.14035（14.035 个百分点）。Qwen3.5 的两种 naive 最大漂移由 0.08264 增至 0.08765，Qwen3-VL 由 0.04510 增至 0.05907。这里描述观测到的整套配置差异，并未隔离某项优化的因果作用。</p>
 <p>需要把三种来源分开：一是提示本身包含选项顺序；二是输入相同，但运行时数值计算有变化；三是分数相同，却因并列取首项而改变动作。naive 去掉第一种来源，TF 本轮消除了重排检查里观察到的第二种，第三种仍在。第 5 节给出精确并列的真实案例。</p>
@@ -566,115 +404,538 @@ score_i = q_i / 所有候选 q 的总和
 <p>图 6 对六方法等权平均，只描述总体变化，不代表一种可以直接部署的策略。三组、三个模型的 shared_full 感知准确率都低于 no_plan。动作安全率却不是同一趋势：TF 的 Qwen3.5 为 93.11%→96.99%，Qwen3-VL 为 86.00%→93.00%，Gemma 为 87.15%→88.95%。</p>
 <p>可以说通用规划前缀改变了读出行为；但还不能说“规划整体有用”或“思考没有用”。它没有看当前测试局面，而且<strong>三组共 144 份短计划全部在 128 token 上限处截断</strong>。原文中还出现标题、规则重述和任务介绍。拿这样的 plan_only 测不到收益，不等价于一份完整、清晰的短策略没有价值。</p>
 <p>前两组的 greedy 规划也不完全相同。Qwen3.5 在旧 vLLM 中的 thinking 达到 2048 token 上限，TF 中自然结束，实际内容长 2044 token；只差四个 token，不能把耗时差归因于长度。Qwen3-VL 两边均触及 thinking 预算，Gemma 的平均 thinking 长度为 942 / 1048。APC 组三模型的 thinking 总长度分别为 13,623、16,384、8,248 token，每模型 16/16 份短计划截断。跨配置比较共享规划条件时，计划内容和评分计算都可能变化，需与 no_plan 的直接对照区分。</p>
-<h2 id="4-质量评分速度和运行成本应分别比较">4. 质量、评分速度和运行成本应分别比较<a class="anchor" href="#4-质量评分速度和运行成本应分别比较" title="Permanent link">§</a></h2>
-<h3 id="41-质量没有统一赢家">4.1 质量没有统一赢家<a class="anchor" href="#41-质量没有统一赢家" title="Permanent link">§</a></h3>
-<p>下表只使用相同输入的 no_plan，对六方法等权平均，不代表某条实际决策策略。默认优化组三个模型的动作六排列一致率均低于旧 vLLM；较小的准确率差异不能直接解释为显著提升。</p>
-<!-- BEGIN backend_overview -->
+</details>
+<p><span id="5-真实案例从截图分数和缓存看发生了什么"></span></p>
+<h2 id="错误案例">错误案例<a class="anchor" href="#错误案例" title="Permanent link">§</a></h2>
+<p>前四例比较旧 vLLM eager 与 TF batch；第五例检查 APC 的分数变化。案例用于解释错误，不代表随机样本。截图已按原始图像哈希核验；完整记录见 <a href="assets/standard_backend_report/case-evidence.json">case-evidence.json</a>。事件 ID 需结合后端与模型使用。</p>
+<p><span id="案例一98-的候选分数也可能建立在几乎不愿回答的分布上"></span></p>
+<h3 id="案例一候选分数超过-98答案仍然错误">案例一：候选分数超过 98%，答案仍然错误<a class="anchor" href="#案例一候选分数超过-98答案仍然错误" title="Permanent link">§</a></h3>
+<p><img alt="open-00-r0：白箭头朝右的原始测试图" src="assets/standard_backend_report/case-format.png" /></p>
+<p><strong>Gemma，no_plan，截图 <code>open-00-r0</code>，heading 题，排列 0。</strong> 白箭头明确朝右。候选是 A=Up、B=Right、C=Down、D=Left，正确答案是 B。</p>
+<!-- BEGIN case_format -->
 
-<div class="table-scroll"><table>
+<div class="table-scroll" tabindex="0" role="region" aria-label="数据表，可横向滚动"><table>
 <thead>
 <tr>
-<th>模型</th>
-<th>配置</th>
-<th>感知准确率</th>
-<th>感知正反一致率</th>
-<th>动作安全率</th>
-<th>安全且趋近食物率</th>
-<th>动作六排列一致率</th>
+<th>后端</th>
+<th>方法</th>
+<th>合法字母总概率</th>
+<th>选中答案</th>
+<th>候选内归一化分数</th>
+<th>结果</th>
+<th>事件 ID</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Qwen3.5-4B</td>
-<td>vLLM eager</td>
-<td>73.75%</td>
-<td>78.78%</td>
-<td>94.16%</td>
-<td>44.68%</td>
-<td>35.76%</td>
+<td>vllm</td>
+<td>choice</td>
+<td>0.014040%</td>
+<td>A / 向上</td>
+<td>98.5008%</td>
+<td>错误</td>
+<td>e00000</td>
 </tr>
 <tr>
-<td>Qwen3.5-4B</td>
-<td>TF batch</td>
-<td>73.90%</td>
-<td>79.01%</td>
-<td>93.11%</td>
-<td>45.78%</td>
-<td>36.11%</td>
+<td>vllm</td>
+<td>choice_boxed</td>
+<td>99.998190%</td>
+<td>B / 右转</td>
+<td>99.9672%</td>
+<td>正确</td>
+<td>e00002</td>
 </tr>
 <tr>
-<td>Qwen3.5-4B</td>
-<td>vLLM APC</td>
-<td>73.80%</td>
-<td>78.59%</td>
-<td>93.92%</td>
-<td>44.73%</td>
-<td>34.38%</td>
+<td>transformers</td>
+<td>choice</td>
+<td>0.014055%</td>
+<td>A / 向上</td>
+<td>98.4216%</td>
+<td>错误</td>
+<td>e00000</td>
 </tr>
 <tr>
-<td>Qwen3-VL-4B-Thinking</td>
-<td>vLLM eager</td>
-<td>63.08%</td>
-<td>88.77%</td>
-<td>84.84%</td>
-<td>38.25%</td>
-<td>82.64%</td>
-</tr>
-<tr>
-<td>Qwen3-VL-4B-Thinking</td>
-<td>TF batch</td>
-<td>63.68%</td>
-<td>88.39%</td>
-<td>86.00%</td>
-<td>38.77%</td>
-<td>80.21%</td>
-</tr>
-<tr>
-<td>Qwen3-VL-4B-Thinking</td>
-<td>vLLM APC</td>
-<td>63.77%</td>
-<td>88.35%</td>
-<td>84.95%</td>
-<td>37.73%</td>
-<td>77.08%</td>
-</tr>
-<tr>
-<td>Gemma4-E4B-it</td>
-<td>vLLM eager</td>
-<td>61.82%</td>
-<td>68.90%</td>
-<td>86.46%</td>
-<td>39.47%</td>
-<td>57.64%</td>
-</tr>
-<tr>
-<td>Gemma4-E4B-it</td>
-<td>TF batch</td>
-<td>61.84%</td>
-<td>67.98%</td>
-<td>87.15%</td>
-<td>37.04%</td>
-<td>57.64%</td>
-</tr>
-<tr>
-<td>Gemma4-E4B-it</td>
-<td>vLLM APC</td>
-<td>62.50%</td>
-<td>65.51%</td>
-<td>86.63%</td>
-<td>37.21%</td>
-<td>52.43%</td>
+<td>transformers</td>
+<td>choice_boxed</td>
+<td>99.998550%</td>
+<td>B / 右转</td>
+<td>99.9707%</td>
+<td>正确</td>
+<td>e00002</td>
 </tr>
 </tbody>
 </table></div>
-<!-- END backend_overview -->
+<!-- END case_format -->
 
+<p>普通 choice 选错，但候选内分数超过 98%。加 boxed 后，两后端都答对。候选内高分不等于模型原本就准备输出这个答案。</p>
+<p>这个案例支持读出格式不匹配的解释。它不能证明 boxed 可以修复其他错误。</p>
+<p><span id="案例二同一张撞墙图只换选项顺序就改变生死"></span></p>
+<h3 id="案例二固定选-c换选项后撞墙">案例二：固定选 C，换选项后撞墙<a class="anchor" href="#案例二固定选-c换选项后撞墙" title="Permanent link">§</a></h3>
+<p><img alt="wall-04-r0：蛇头位于上边界，朝上" src="assets/standard_backend_report/case-wall.png" /></p>
+<p><strong>Qwen3.5，choice + no_plan，截图 <code>wall-04-r0</code>。</strong> 蛇头在上边界朝上，直行会撞墙，左转、右转都安全。两个后端在所有排列里都选 C。</p>
+<!-- BEGIN case_label -->
+
+<div class="table-scroll" tabindex="0" role="region" aria-label="数据表，可横向滚动"><table>
+<thead>
+<tr>
+<th>排列</th>
+<th>A / B / C 对应动作</th>
+<th>两后端都选</th>
+<th>实际动作</th>
+<th>后果</th>
+<th>两后端事件 ID</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>左转 / 直行 / 右转</td>
+<td>C</td>
+<td>右转</td>
+<td>安全</td>
+<td>e09648</td>
+</tr>
+<tr>
+<td>1</td>
+<td>左转 / 右转 / 直行</td>
+<td>C</td>
+<td>直行</td>
+<td>撞墙</td>
+<td>e09649</td>
+</tr>
+<tr>
+<td>2</td>
+<td>直行 / 左转 / 右转</td>
+<td>C</td>
+<td>右转</td>
+<td>安全</td>
+<td>e09650</td>
+</tr>
+<tr>
+<td>3</td>
+<td>直行 / 右转 / 左转</td>
+<td>C</td>
+<td>左转</td>
+<td>安全</td>
+<td>e09651</td>
+</tr>
+<tr>
+<td>4</td>
+<td>右转 / 左转 / 直行</td>
+<td>C</td>
+<td>直行</td>
+<td>撞墙</td>
+<td>e09652</td>
+</tr>
+<tr>
+<td>5</td>
+<td>右转 / 直行 / 左转</td>
+<td>C</td>
+<td>左转</td>
+<td>安全</td>
+<td>e09653</td>
+</tr>
+</tbody>
+</table></div>
+<!-- END case_label -->
+
+<p>图片和动作集合没有变化。模型始终选 C，导致六次选择中两次撞墙。全量 288 次都选 C，也支持模型偏向固定字母的判断。91.67% 的总体安全率掩盖了这个问题。</p>
+<p><span id="案例三格式接近满分却把明确的碰撞答成安全"></span></p>
+<h3 id="案例三把撞墙答成安全">案例三：把撞墙答成安全<a class="anchor" href="#案例三把撞墙答成安全" title="Permanent link">§</a></h3>
+<p>沿用上面的 <code>wall-04-r0</code> 截图，改问“直行会不会立即碰撞”。<strong>Qwen3-VL，choice_boxed + no_plan</strong> 在两个后端、正反两种排列里都选择 safe，真实答案却是 collision。原始记录见案例文件的 <code>collision</code> 项。</p>
+<p>模型按要求的格式、稳定地答错了。全量结果中，这一条件下的三个模型、三套配置都漏判了 24 道真实碰撞题。因此，还需单独统计识别出多少危险。</p>
+<p><span id="案例四tf-分数一模一样为什么换排列仍会换动作"></span></p>
+<h3 id="案例四分数并列程序选择排在前面的动作">案例四：分数并列，程序选择排在前面的动作<a class="anchor" href="#案例四分数并列程序选择排在前面的动作" title="Permanent link">§</a></h3>
+<p><img alt="body_tail-09-r1：用于并列分数案例的原始测试图" src="assets/standard_backend_report/case-tie.png" /></p>
+<p><strong>Qwen3.5，TF，yes_no_naive + no_plan，截图 <code>body_tail-09-r1</code>。</strong> 同一候选在六种排列中的分数没有变化。左转和直行的 q 都是 <code>0.18242551936144571</code>，右转的 q 是 <code>0.11920292202211753</code>；归一化后左转与直行精确并列第一。</p>
+<!-- BEGIN case_tie -->
+
+<div class="table-scroll" tabindex="0" role="region" aria-label="数据表，可横向滚动"><table>
+<thead>
+<tr>
+<th>排列</th>
+<th>候选次序</th>
+<th>左转分数</th>
+<th>直行分数</th>
+<th>右转分数</th>
+<th>选中</th>
+<th>后果</th>
+<th>事件 ID</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>左转 / 直行 / 右转</td>
+<td>0.376870213</td>
+<td>0.376870213</td>
+<td>0.246259574</td>
+<td>左转</td>
+<td>安全</td>
+<td>e21768</td>
+</tr>
+<tr>
+<td>1</td>
+<td>左转 / 右转 / 直行</td>
+<td>0.376870213</td>
+<td>0.376870213</td>
+<td>0.246259574</td>
+<td>左转</td>
+<td>安全</td>
+<td>e21769</td>
+</tr>
+<tr>
+<td>2</td>
+<td>直行 / 左转 / 右转</td>
+<td>0.376870213</td>
+<td>0.376870213</td>
+<td>0.246259574</td>
+<td>直行</td>
+<td>安全</td>
+<td>e21770</td>
+</tr>
+<tr>
+<td>3</td>
+<td>直行 / 右转 / 左转</td>
+<td>0.376870213</td>
+<td>0.376870213</td>
+<td>0.246259574</td>
+<td>直行</td>
+<td>安全</td>
+<td>e21771</td>
+</tr>
+<tr>
+<td>4</td>
+<td>右转 / 左转 / 直行</td>
+<td>0.376870213</td>
+<td>0.376870213</td>
+<td>0.246259574</td>
+<td>左转</td>
+<td>安全</td>
+<td>e21772</td>
+</tr>
+<tr>
+<td>5</td>
+<td>右转 / 直行 / 左转</td>
+<td>0.376870213</td>
+<td>0.376870213</td>
+<td>0.246259574</td>
+<td>直行</td>
+<td>安全</td>
+<td>e21773</td>
+</tr>
+</tbody>
+</table></div>
+<!-- END case_tie -->
+
+<p>程序在并列时取第一个最高分。左转和直行谁排在前面，就选谁。这里的变化来自并列处理，分数本身没有变化。</p>
+<p>后续可将并列记为“不确定”，或预先固定与选项顺序无关的处理规则。后一种做法也会引入动作偏好。本报告保留原规则和原分数。</p>
+<p><span id="案例五候选输入相同缓存深度和-batch-位置仍可能不同"></span></p>
+<h3 id="案例五输入相同分数仍然变化">案例五：输入相同，分数仍然变化<a class="anchor" href="#案例五输入相同分数仍然变化" title="Permanent link">§</a></h3>
+<p>APC 的 Gemma 在 <code>wall-07-r3 / collision_straight / no_plan / yes_no_naive</code> 中，safe 候选的输入 token 和图片不变，但事件 <code>e18152</code>、<code>e18153</code> 的缓存命中分别为 384、416 token，候选归一化分数为 0.64627、0.50592，漂移 0.14035。原始 yes/no 概率和其他候选共同影响最终归一化分数，不能将其视为单个 logit 的差值。</p>
+<p>Qwen3.5 的 <code>body_tail-09-r2 / readout / shared_no_think / yes_no_naive</code> 提供另一种情况：left 候选六个排列均命中 528 token，但 batch 位置从 0 变为 1/2 时，yes log-prob 从 −1.60677 变为 −1.91568，归一化分数从 0.40333 变为 0.31567；其他排列又为 0.33778。相同缓存深度下也有漂移，不能把所有变化都解释成冷缓存与暖缓存的差异。</p>
+<p>三模型最大漂移的完整原始记录见 <a href="assets/standard_backend_report/apc-naive-drift-evidence.json">APC 漂移案例</a>。这些例子说明应检查运行时计算路径，并不证明某一项优化独自造成漂移；batch 位置、其他候选分数和 kernel 选择尚未被独立控制。</p>
+<p><span id="1-我们让模型做了什么"></span></p>
+<h2 id="测试方法">测试方法<a class="anchor" href="#测试方法" title="Permanent link">§</a></h2>
+<p>三个模型分别是 Qwen3.5-4B、Qwen3-VL-4B-Thinking、Gemma4-E4B-it。48 张截图来自 12 个基础局面的四种旋转。模型只接收规则、图片和问题；真值只用于评分。</p>
+<p>六种读出方法分别改变候选呈现方式和答案读取位置。四个规划条件比较是否加入通用策略；规划只看独立示例图。</p>
+<details>
+<summary>查看六种读出、四个规划条件和实验设置</summary>
+<blockquote>
+<p>历史报告：使用 snake-bench-v3。迁移到 v4 时，<code>choice_boxed</code> 改名为 <code>choice</code>，<code>yes_no_naive_boxed</code> 改名为 <code>yes_no</code>。本文保留旧名称；六种提示词见附录 D。</p>
+</blockquote>
+<p>棋盘是 10×10。蓝色蛇头里的白箭头表示朝向，绿色方格是蛇身，红色圆点是食物。左转和右转以蛇当前朝向为参照；每次移动一格。撞墙或撞身会失败，没吃食物时尾巴会腾出原来的格子。模型只看规则和图像；真实坐标、正确答案和安全动作清单只供评估程序使用。</p>
+<p>48 张截图来自 12 个基础局面的四种旋转，包括空地、墙边、蛇身与尾巴、食物变化。模型只做两类测试：</p>
+<div class="table-scroll" tabindex="0" role="region" aria-label="数据表，可横向滚动"><table>
+<thead>
+<tr>
+<th>阶段</th>
+<th>要回答的问题</th>
+<th>同一截图怎样重复测试</th>
+<th>检查什么</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>perception：感知与规则判断</td>
+<td>箭头朝哪、食物在哪、转向后朝哪、是否会撞</td>
+<td>9 类问题，每题正反两种候选排列</td>
+<td>判断是否正确，换排列是否一致</td>
+</tr>
+<tr>
+<td>readout：动作读出</td>
+<td>下一步左转、直行还是右转</td>
+<td>三个动作的全部 6 种排列</td>
+<td>当前一步是否安全、是否靠近食物、换排列是否一致</td>
+</tr>
+</tbody>
+</table></div>
+<p>九类题分别是：箭头朝向；食物的水平、垂直位置；左转、直行、右转后的绝对朝向；三个动作是否立即碰撞。后六题已经要求应用规则，因此这里的“感知准确率”不等于纯粹的看图识别能力。</p>
+<p><strong>本轮没有连续玩游戏。</strong> 所有动作都只评估当前一步，没有 episode、闭环轨迹或随机游戏基线。一步安全不代表长期能活，靠近食物也不代表最终一定吃到。</p>
+<h3 id="11-六种方法问法与读出位置分别改变">1.1 六种方法：问法与读出位置分别改变<a class="anchor" href="#11-六种方法问法与读出位置分别改变" title="Permanent link">§</a></h3>
+<p><img alt="从截图到下一 token 概率，再到六种评分方法" src="assets/standard_backend_report/01-readout-principle.png" /></p>
+<p>图 1 是原理示意。输入先经过模型，最后一个真实输入位置的隐藏状态经过输出层，得到完整词表上的下一 token 概率。我们读取其中指定答案 token 的概率，选出候选；不是直接把隐藏状态里的某个维度当作答案。</p>
+<div class="table-scroll" tabindex="0" role="region" aria-label="数据表，可横向滚动"><table>
+<thead>
+<tr>
+<th>方法</th>
+<th>模型看见的候选信息</th>
+<th>问法</th>
+<th>从哪里读答案</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>choice</code></td>
+<td>完整的 A/B/C… 选项表</td>
+<td>选最好的选项，回复字母</td>
+<td>原生回答起点</td>
+</tr>
+<tr>
+<td><code>choice_boxed</code></td>
+<td>同上</td>
+<td>要求把字母放进 boxed</td>
+<td>预填 <code>\boxed{</code> 之后</td>
+</tr>
+<tr>
+<td><code>yes_no</code></td>
+<td>完整的字母选项表</td>
+<td>逐个问 <code>Is option A the best choice?</code></td>
+<td>原生回答起点，读取 yes/no</td>
+</tr>
+<tr>
+<td><code>yes_no_boxed</code></td>
+<td>同上</td>
+<td>同上，要求 boxed 格式</td>
+<td>预填 <code>\boxed{</code> 之后，读取 yes/no</td>
+</tr>
+<tr>
+<td><code>yes_no_naive</code></td>
+<td>原问题和当前候选的描述；没有选项表和字母</td>
+<td>直接问这项内容是不是答案</td>
+<td>原生回答起点，读取 yes/no</td>
+</tr>
+<tr>
+<td><code>yes_no_naive_boxed</code></td>
+<td>同上</td>
+<td>同上，要求 boxed 格式</td>
+<td>预填 <code>\boxed{</code> 之后，读取 yes/no</td>
+</tr>
+</tbody>
+</table></div>
+<p>例如 naive 的实际提示末段是：</p>
+<pre><code class="language-text">Which action should the snake take next?
+Is &quot;Turn left&quot; the best answer to the question above? Reply exactly yes or no.
+</code></pre>
+<p>boxed 版本将末句改成：</p>
+<pre><code class="language-text">Reply with exactly \boxed{yes} or \boxed{no}, with no explanation.
+</code></pre>
+<p>并在 assistant 的原生回答边界之后，主动补上字面量 <code>\boxed{</code>。以 Qwen 模板为例，位置在 <code>&lt;/think&gt;</code> 之后；Gemma 使用自己的原生边界，不能把 Qwen 的标记硬套给所有模型。补上前缀后，直接读取后面的字母或 yes/no，不等待模型自己写出整段解释和花括号。</p>
+<p>这里有两个容易混淆的地方。第一，本轮 <code>yes_no</code> 仍保留字母选项表；用户希望的“只问 is xxx…，不出现默认 ABC 集合”由 <code>yes_no_naive</code> 实现。第二，boxed 同时改变了用户指令和 assistant 前缀，因此它测的是这套组合的效果，不是只改一个 token 的严格消融。</p>
+<p>choice 一次请求就能读取全部候选字母。yes/no 家族对每个候选分别构造一个输入；有 K 个候选，就有 K 个候选请求，但这些请求可以放进同一次 batch 并行计算。</p>
+<h3 id="12-四个条件前面要不要放一份通用规划">1.2 四个条件：前面要不要放一份通用规划<a class="anchor" href="#12-四个条件前面要不要放一份通用规划" title="Permanent link">§</a></h3>
+<p><img alt="四条件及两种规划的复用关系" src="assets/standard_backend_report/02-context-conditions.png" /></p>
+<div class="table-scroll" tabindex="0" role="region" aria-label="数据表，可横向滚动"><table>
+<thead>
+<tr>
+<th>条件</th>
+<th>在当前截图之前保留什么</th>
+<th>与其他条件的配对关系</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>no_plan</code></td>
+<td>没有规划</td>
+<td>只看规则、当前截图和问题</td>
+</tr>
+<tr>
+<td><code>shared_full</code></td>
+<td>外观示例与规划对话、完整思考和短计划</td>
+<td>每个 seed 生成一份带思考的规划</td>
+</tr>
+<tr>
+<td><code>shared_plan_only</code></td>
+<td>同一个示例与规划对话、同一份短计划，去掉思考正文</td>
+<td>直接复用 full 的原始 plan token，不重新生成</td>
+</tr>
+<tr>
+<td><code>shared_no_think</code></td>
+<td>示例与规划对话、不经过 thinking 而单独生成的短计划</td>
+<td>是另一份计划，不是删掉 full 的思考</td>
+</tr>
+</tbody>
+</table></div>
+<p>规划只看独立的外观示例，不看当前测试截图。相同模型、相同 seed 的规划由 perception、readout 及六种方法共用。比较 full 与 plan_only，比较的是是否保留同一段思考；比较 full 与 no_think，还混入了计划内容本身的变化。</p>
+<h3 id="13-三组的规模和执行方式">1.3 三组的规模和执行方式<a class="anchor" href="#13-三组的规模和执行方式" title="Permanent link">§</a></h3>
+<div class="table-scroll" tabindex="0" role="region" aria-label="数据表，可横向滚动"><table>
+<thead>
+<tr>
+<th>统计单位</th>
+<th style="text-align: right;">每模型、每组</th>
+<th style="text-align: right;">三模型、每组</th>
+<th style="text-align: right;">三组合计</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>感知评分</td>
+<td style="text-align: right;">20,736</td>
+<td style="text-align: right;">62,208</td>
+<td style="text-align: right;">186,624</td>
+</tr>
+<tr>
+<td>动作评分</td>
+<td style="text-align: right;">6,912</td>
+<td style="text-align: right;">20,736</td>
+<td style="text-align: right;">62,208</td>
+</tr>
+<tr>
+<td>正式评分</td>
+<td style="text-align: right;">27,648</td>
+<td style="text-align: right;">82,944</td>
+<td style="text-align: right;">248,832</td>
+</tr>
+<tr>
+<td>候选评分请求</td>
+<td style="text-align: right;">66,048</td>
+<td style="text-align: right;">198,144</td>
+<td style="text-align: right;">594,432</td>
+</tr>
+<tr>
+<td>保存的规划</td>
+<td style="text-align: right;">16</td>
+<td style="text-align: right;">48</td>
+<td style="text-align: right;">144</td>
+</tr>
+<tr>
+<td>有效单卡任务</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">24</td>
+<td style="text-align: right;">72</td>
+</tr>
+</tbody>
+</table></div>
+<p>每个“模型 × 方法 × 条件”有 864 次感知评分（48×9×2）和 288 次动作评分（48×6）。感知一致率的分母是 432 组正反排列，动作一致率的分母是 48 组六排列。</p>
+<p>三个模型是 Qwen3.5-4B、Qwen3-VL-4B-Thinking、Gemma4-E4B-it。每个模型的 seed 0–7 分开提交任务，每个 seed 负责六张图、两份规划。种子轮流分配截图，不是每张图跑八遍；规划采用 greedy，<strong>八个 seed 不应当成八次独立随机重复</strong>。</p>
+<p>三组均使用开发区 H100 CUDA 13.2、183 核分区，单卡 H100 80GB、TP1、BF16、8192 上下文，单任务 20 CPU、200 GiB 内存及等量共享内存，公共科研项目、优先级 4。thinking 上限 2048 token，短计划上限 128 token。权重大小和 SHA256、配置、模板及处理器一致。环境为 PyTorch 2.13.0+cu130、vLLM 0.31.0、Transformers 5.17.0；第三组节点驱动为 595.58.03。沿用镜像 <code>ngc-pytorch-cu128-dev:1.1</code>，镜像名、CUDA 13.2 分区名和实际 PyTorch runtime 是不同层面的版本记录。</p>
+<div class="table-scroll" tabindex="0" role="region" aria-label="数据表，可横向滚动"><table>
+<thead>
+<tr>
+<th>本文名称</th>
+<th>数据中的配置标识</th>
+<th>前缀缓存</th>
+<th>执行与调度</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>vLLM eager／旧 vLLM</td>
+<td><code>vllm_eager</code></td>
+<td>关闭</td>
+<td><code>enforce_eager=True</code>，禁用编译和 CUDA Graph；显存比例 0.65，max_num_seqs=26，max_num_batched_tokens=8192</td>
+</tr>
+<tr>
+<td>TF batch</td>
+<td><code>transformers_batched</code></td>
+<td>无跨请求 KV 复用</td>
+<td>eager attention，原生候选 batch，microbatch 上限 8</td>
+</tr>
+<tr>
+<td>vLLM APC／默认优化组</td>
+<td><code>vllm_default_apc</code></td>
+<td>显式开启</td>
+<td>不覆盖 eager、编译、调度和显存默认值；实际显存比例 0.92、1024 seqs、16384 batched tokens、编译模式 3、FULL_AND_PIECEWISE CUDA Graph</td>
+</tr>
+</tbody>
+</table></div>
+<p>下文简称 APC 的始终是整套默认优化配置。第三组同时改变 APC、编译、Graph、调度上限和显存配额，测量的是整套配置收益，不能单独归因于其中一个开关。各轮不是同一时刻、同一物理卡的微基准。</p>
+<p>三组正式结果均无 pending、failed、unsupported；各 24 个有效任务成功、退出码为 0，资源已释放。TF 和 APC 各有 <strong>576 条固定旧 vLLM 规划的 readout 诊断</strong>，合计 1,152 条，另有启动检查；它们均不计入正式评分。停止的 TF 串行尝试和 APC 首次失败 pilot 另行记录成本，见第 7 节。</p>
+<p><strong>TF 正式组使用 batch。</strong> 同一次 yes/no 评分的候选以张量 batch 同时 forward；choice 只需一个请求。三组都未跨不同实验条目合并评分 batch。TF 使用左侧 padding，读取每条输入最后的真实位置，input_tokens 不计 padding；图像经过实际多模态处理器。规划保留逐请求 RNG，思考和短计划有前后依赖，逐请求生成；跨 seed 通过独立任务并行。保存的规划使用原始 token ID，不经过解码再编码。</p>
+</details>
+<p><span id="2-怎样读这些分数才不会被高分误导"></span></p>
+<h2 id="怎样读分数">怎样读分数<a class="anchor" href="#怎样读分数" title="Permanent link">§</a></h2>
+<p><strong>候选内高分不等于答对概率。</strong> 先检查模型是否准备输出规定答案，再检查答案是否正确、动作是否安全。始终选同一动作可以达到 100% 一致率，也可能一直撞墙。</p>
+<details>
+<summary>查看指标定义、分母和计算公式</summary>
+<h3 id="21-先看原始概率再看候选内排名">2.1 先看原始概率，再看候选内排名<a class="anchor" href="#21-先看原始概率再看候选内排名" title="Permanent link">§</a></h3>
+<p><code>logprob</code> 是完整词表概率的自然对数，<code>P = exp(logprob)</code>。例如 choice 的三个合法 token 是 A/B/C：</p>
+<pre><code class="language-text">合法答案概率 M = P(A) + P(B) + P(C)
+候选分数 score(A) = P(A) / M
+</code></pre>
+<p>如果 P(A)=0.00006，P(B)=0.00004，两个合法答案一共只有 <strong>0.01%</strong> 概率；归一化后却会出现 A=60%、B=40%。这不代表模型有 60% 的把握认为 A 正确，而是“硬要在 A/B 里选，它比较偏向 A”。绝大部分概率可能落在其他 token 上。</p>
+<p>yes/no 方法先对每个候选 i 单独计算：</p>
+<pre><code class="language-text">M_i = P_i(yes) + P_i(no)
+q_i = P_i(yes) / M_i
+score_i = q_i / 所有候选 q 的总和
+</code></pre>
+<p><code>q_i</code> 在原始记录里叫 <code>yes_score</code>。几个候选可以同时得到较高的 q；最终按 score 选最大项，不是对 q 再做一次 softmax。这些分数都没有经过正确率校准，不应直接解读成“动作安全的概率”。</p>
+<p>报告的“合法答案概率”只包含指定的单 token 大写字母或小写 yes/no，不包含空格、其他大小写或同义句。choice 对题目求均值，yes/no 对候选请求求均值，所以四选题在后者中权重比二选题大。图中接近 0% 或 100% 的显示值也可能来自舍入，不是精确零或一。</p>
+<h3 id="22-正确安全稳定各有自己的分母">2.2 正确、安全、稳定各有自己的分母<a class="anchor" href="#22-正确安全稳定各有自己的分母" title="Permanent link">§</a></h3>
+<div class="table-scroll" tabindex="0" role="region" aria-label="数据表，可横向滚动"><table>
+<thead>
+<tr>
+<th>指标</th>
+<th>具体含义</th>
+<th>最常见的误读</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>感知准确率</td>
+<td>所选语义答案与真实状态相符的比例</td>
+<td>高分不代表九类能力都好；题型混有二、三、四选题</td>
+</tr>
+<tr>
+<td>一步安全率</td>
+<td>所选动作下一步不会撞墙、撞身</td>
+<td>不表示长期存活或最优决策</td>
+</tr>
+<tr>
+<td>趋近食物率</td>
+<td><strong>安全且</strong>下一步到当前食物的曼哈顿距离变短，占全部动作评分的比例</td>
+<td>不是只在安全动作中计算；安全绕行也可能不靠近食物</td>
+</tr>
+<tr>
+<td>排列一致率</td>
+<td>感知两次、动作六次都选同一语义答案的组数比例</td>
+<td>不是字母相同；也不是答案一定正确</td>
+</tr>
+<tr>
+<td>合法答案概率</td>
+<td>规定的字母或 yes/no 在完整词表里占多少概率</td>
+<td>只衡量格式与读出位置是否匹配</td>
+</tr>
+<tr>
+<td>最大分数漂移</td>
+<td>相同候选跨排列的最大 score 差值，再取所有组中的最大值</td>
+<td>是最坏个例，不是平均差异</td>
+</tr>
+<tr>
+<td>并列最高分次数</td>
+<td>一次评分至少两个候选精确并列第一，就计一次</td>
+<td>当前实现取首个最大值，零漂移也可能换答案</td>
+</tr>
+</tbody>
+</table></div>
+<p>左转从 A 移到 C，模型也跟着改选 C，属于语义一致。反过来，一直选 A，而 A 对应的动作在变，则不一致。六次中五次选左转、一次选右转，整组一致率记为 0；一直直行可以达到 100% 一致，但可能稳定地撞墙。</p>
+<p>标签偏好也要结合曝光次数看：动作题每个字母都出现 288 次；感知题 A/B 各出现 864 次，C 出现 576 次，D 出现 384 次。naive 根本不展示字母，标签计数为空，不应解释为已经证明了所有形式的无偏。</p>
+</details>
+<p><span id="4-质量评分速度和运行成本应分别比较"></span></p>
+<h2 id="评分速度与总成本">评分速度与总成本<a class="anchor" href="#评分速度与总成本" title="Permanent link">§</a></h2>
+<p><strong>评分更快，总成本几乎没变。</strong> 默认优化 vLLM 的正式评分耗时为 2,751.2 秒，旧 eager 为 5,977.6 秒。有效任务 GPU 时间分别为 3.470 和 3.506 小时；加载、编译和检查也占用 GPU。</p>
+<p>默认优化组同时改变了缓存、编译、CUDA Graph 和调度设置。这些结果不能单独归因于前缀缓存。</p>
+<p><img alt="评分耗时与有效任务 GPU 时间" src="assets/standard_backend_report/07-backend-cost.png" /></p>
+<details>
+<summary>查看各模型耗时、缓存命中和成本口径</summary>
+<h3 id="41-质量没有统一赢家">4.1 质量没有统一赢家<a class="anchor" href="#41-质量没有统一赢家" title="Permanent link">§</a></h3>
+<p>下表只使用相同输入的 no_plan，对六方法等权平均，不代表某条实际决策策略。默认优化组三个模型的动作六排列一致率均低于旧 vLLM；较小的准确率差异不能直接解释为显著提升。</p>
+<p>完整 no_plan 对照表见前面的“主要结果”。</p>
 <h3 id="42-默认优化加速了评分但总-gpu-成本变化很小">4.2 默认优化加速了评分，但总 GPU 成本变化很小<a class="anchor" href="#42-默认优化加速了评分但总-gpu-成本变化很小" title="Permanent link">§</a></h3>
 <p><img alt="三组相同输入评分、全部条件评分与有效任务 GPU 时间" src="assets/standard_backend_report/07-backend-cost.png" /></p>
 <p>图 7 的评分时间是同步 <code>backend.generate</code> 调用耗时的累加；一次 yes/no 评分包含整个候选 batch。候选请求没有独立的延迟测量。平台 GPU 时间还含加载、编译、启动检查、规划、诊断和退出，不等于并行任务完成的日历时长。各轮验证工作量也不同：TF 有固定规划诊断，APC 另有冷暖缓存检查，因此 GPU 成本不是等验证工作量的微基准。</p>
 <!-- BEGIN speedups -->
-
-<div class="table-scroll"><table>
+<div class="table-scroll" tabindex="0" role="region" aria-label="数据表，可横向滚动"><table>
 <thead>
 <tr>
 <th>模型</th>
@@ -744,10 +1005,8 @@ score_i = q_i / 所有候选 q 的总和
 </tbody>
 </table></div>
 <!-- END speedups -->
-
 <!-- BEGIN gpu_costs -->
-
-<div class="table-scroll"><table>
+<div class="table-scroll" tabindex="0" role="region" aria-label="数据表，可横向滚动"><table>
 <thead>
 <tr>
 <th>配置</th>
@@ -774,14 +1033,12 @@ score_i = q_i / 所有候选 q 的总和
 </tbody>
 </table></div>
 <!-- END gpu_costs -->
-
 <p>全部正式评分从旧 vLLM 的 5,977.6 秒减至 APC 的 2,751.2 秒，提升 2.17×；相对 TF 的 18,146.7 秒提升 6.60×。但有效任务 GPU 时间为 3.506 → 3.470 小时。APC 若计入失败 pilot，总占用为 <strong>3.616 GPU 小时</strong>；TF 已停止的早期串行尝试另有约 0.073 GPU 小时。本轮接口报价为每卡小时 1 计费单位，成本按实际占用估算，不能只按正式评分秒数计费。</p>
 <p>TF 使用 eager attention，Qwen3.5 线性注意力走参考 PyTorch 实现；当前环境未安装可选 FLA/causal-conv 加速。尚未跨实验条目拼 batch，因此结果只代表当前配置，不代表各框架性能极限。TF forward 直接读取完整词表 log-softmax，评分 output_tokens=0；vLLM 每候选请求生成一个 token 读取分数，不能用 output_tokens 比较吞吐。</p>
 <h3 id="43-apc-命中与启动开销">4.3 APC 命中与启动开销<a class="anchor" href="#43-apc-命中与启动开销" title="Permanent link">§</a></h3>
 <p>每个 job 持有独立前缀缓存和新的编译缓存目录；启动诊断结束后、每份规划生成前清空 KV 前缀缓存，正式评分之间保留缓存且沿用原请求顺序。后面的题目可能复用之前的公共前缀。以下缓存 token 比例按输入 token 加权，有命中请求比例按候选请求计数。</p>
 <!-- BEGIN cache -->
-
-<div class="table-scroll"><table>
+<div class="table-scroll" tabindex="0" role="region" aria-label="数据表，可横向滚动"><table>
 <thead>
 <tr>
 <th>模型</th>
@@ -905,12 +1162,10 @@ score_i = q_i / 所有候选 q 的总和
 </tbody>
 </table></div>
 <!-- END cache -->
-
 <p>Qwen3.5 混合注意力的默认缓存块是 <strong>528 token</strong>；短 no_plan 输入不足一块，因此重复请求也可零命中，而带规划输入已验证每候选至少命中一块。Qwen3-VL、Gemma 的短输入也可命中。这解释了三个模型缓存行为不同；Qwen3.5 的 no_plan 零命中仍有加速，也说明不能把全部收益归因于 APC。</p>
 <p>下表为 APC 每 job 平均秒数。compile 和 Graph 是 Engine 加载的子阶段，不能再次相加；正式阶段墙钟包含规划、评分和输出写入。</p>
 <!-- BEGIN startup -->
-
-<div class="table-scroll"><table>
+<div class="table-scroll" tabindex="0" role="region" aria-label="数据表，可横向滚动"><table>
 <thead>
 <tr>
 <th>模型</th>
@@ -953,13 +1208,11 @@ score_i = q_i / 所有候选 q 的总和
 </tbody>
 </table></div>
 <!-- END startup -->
-
 <p>实际编译模式和 Graph 模式来自配置及捕获日志，不以初始化成功代替优化生效。历史 receipt 缺少的独立加载阶段记为不可用，不能从平台总时间倒推。逐模型、阶段、方法、条件的均值、P50/P95、吞吐、缓存计数，以及有命中/无命中评分的延迟分布随本文 JSON/CSV 保存；两类评分的题目组成不同，不是严格冷暖缓存因果对照。</p>
 <h3 id="44-总体均值接近不代表逐题选择相同">4.4 总体均值接近，不代表逐题选择相同<a class="anchor" href="#44-总体均值接近不代表逐题选择相同" title="Permanent link">§</a></h3>
 <p>下表分别列出 no_plan 全部评分（每模型 6,912 条，含感知与动作）和仅动作评分（1,728 条）的分歧率。旧报告中的 6.22%、3.98%、12.69% 使用的是前一个分母。</p>
 <!-- BEGIN paired -->
-
-<div class="table-scroll"><table>
+<div class="table-scroll" tabindex="0" role="region" aria-label="数据表，可横向滚动"><table>
 <thead>
 <tr>
 <th>模型</th>
@@ -1026,11 +1279,9 @@ score_i = q_i / 所有候选 q 的总和
 </tbody>
 </table></div>
 <!-- END paired -->
-
 <p>为减少独立生成规划带来的混杂，TF 与 APC 均复用旧 vLLM 保存的原始规划 token，再跑六方法×四条件的 readout。每组每模型 192 条，含 no_plan 对照，只覆盖八张图、order=0，不能代替全排列矩阵。</p>
 <!-- BEGIN fixed_plan -->
-
-<div class="table-scroll"><table>
+<div class="table-scroll" tabindex="0" role="region" aria-label="数据表，可横向滚动"><table>
 <thead>
 <tr>
 <th>模型</th>
@@ -1057,13 +1308,11 @@ score_i = q_i / 所有候选 q 的总和
 </tbody>
 </table></div>
 <!-- END fixed_plan -->
-
 <p>同输入仍可出现 BF16 分数差异，临近并列的 argmax 和生成规划也可能随之改变。这些记录说明差异不只来自规划生成，但没有定位到某一个 kernel。实际使用时，可用默认优化 vLLM 跑矩阵、TF batch 复核关键异常，同时保留原始概率、输入哈希和并列信息。</p>
 <h3 id="45-完整评分与规划成本">4.5 完整评分与规划成本<a class="anchor" href="#45-完整评分与规划成本" title="Permanent link">§</a></h3>
 <p>每行正式工作量相同：27,648 次评分、66,048 个候选请求、24 个规划请求。下表不包含加载和额外诊断。输入 token 是请求累计数，共享前缀重复计入；APC 命中的 token 仍属于输入，不能从此列直接推算计算量。</p>
 <!-- BEGIN costs -->
-
-<div class="table-scroll"><table>
+<div class="table-scroll" tabindex="0" role="region" aria-label="数据表，可横向滚动"><table>
 <thead>
 <tr>
 <th>模型</th>
@@ -1170,238 +1419,29 @@ score_i = q_i / 所有候选 q 的总和
 </tbody>
 </table></div>
 <!-- END costs -->
-
-<h2 id="5-真实案例从截图分数和缓存看发生了什么">5. 真实案例：从截图、分数和缓存看发生了什么<a class="anchor" href="#5-真实案例从截图分数和缓存看发生了什么" title="Permanent link">§</a></h2>
-<p>前四个案例沿用原两组对照（其中 vLLM 指 eager）；第五个补充 APC 数值漂移。案例是为了说明机制而挑选的，不是随机抽样，也不代替全量统计。截图由记录的诊断状态重建，并逐张核验 RGB 图像哈希与原始观测一致。完整记录和自然对数概率见 <a href="assets/standard_backend_report/case-evidence.json">case-evidence.json</a>，表中事件 ID 需结合后端、模型使用。</p>
-<h3 id="案例一98-的候选分数也可能建立在几乎不愿回答的分布上">案例一：98% 的候选分数，也可能建立在几乎不愿回答的分布上<a class="anchor" href="#案例一98-的候选分数也可能建立在几乎不愿回答的分布上" title="Permanent link">§</a></h3>
-<p><img alt="open-00-r0：白箭头朝右的原始测试图" src="assets/standard_backend_report/case-format.png" /></p>
-<p><strong>Gemma，no_plan，截图 <code>open-00-r0</code>，heading 题，排列 0。</strong> 白箭头明确朝右。候选是 A=Up、B=Right、C=Down、D=Left，正确答案是 B。</p>
-<!-- BEGIN case_format -->
-
-<div class="table-scroll"><table>
-<thead>
-<tr>
-<th>后端</th>
-<th>方法</th>
-<th>合法字母总概率</th>
-<th>选中答案</th>
-<th>候选内归一化分数</th>
-<th>结果</th>
-<th>事件 ID</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>vllm</td>
-<td>choice</td>
-<td>0.014040%</td>
-<td>A / 向上</td>
-<td>98.5008%</td>
-<td>错误</td>
-<td>e00000</td>
-</tr>
-<tr>
-<td>vllm</td>
-<td>choice_boxed</td>
-<td>99.998190%</td>
-<td>B / 右转</td>
-<td>99.9672%</td>
-<td>正确</td>
-<td>e00002</td>
-</tr>
-<tr>
-<td>transformers</td>
-<td>choice</td>
-<td>0.014055%</td>
-<td>A / 向上</td>
-<td>98.4216%</td>
-<td>错误</td>
-<td>e00000</td>
-</tr>
-<tr>
-<td>transformers</td>
-<td>choice_boxed</td>
-<td>99.998550%</td>
-<td>B / 右转</td>
-<td>99.9707%</td>
-<td>正确</td>
-<td>e00002</td>
-</tr>
-</tbody>
-</table></div>
-<!-- END case_format -->
-
-<p>普通 choice 错选向上，候选内分数却很高。加 boxed 后，合法字母概率和正确答案分数都接近 100%，两个后端均改为答对。这个案例把“归一化后的自信”和“模型本来准备输出哪类 token”之间的区别摆在了一起。</p>
-<p>它支持这类问题存在读出格式不匹配，不足以证明所有错误都能靠 boxed 修好。后面的案例恰好展示了格式已对齐、内容仍错的情况。</p>
-<h3 id="案例二同一张撞墙图只换选项顺序就改变生死">案例二：同一张撞墙图，只换选项顺序，就改变生死<a class="anchor" href="#案例二同一张撞墙图只换选项顺序就改变生死" title="Permanent link">§</a></h3>
-<p><img alt="wall-04-r0：蛇头位于上边界，朝上" src="assets/standard_backend_report/case-wall.png" /></p>
-<p><strong>Qwen3.5，choice + no_plan，截图 <code>wall-04-r0</code>。</strong> 蛇头在上边界朝上，直行会撞墙，左转、右转都安全。两个后端在所有排列里都选 C。</p>
-<!-- BEGIN case_label -->
-
-<div class="table-scroll"><table>
-<thead>
-<tr>
-<th>排列</th>
-<th>A / B / C 对应动作</th>
-<th>两后端都选</th>
-<th>实际动作</th>
-<th>后果</th>
-<th>两后端事件 ID</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>0</td>
-<td>左转 / 直行 / 右转</td>
-<td>C</td>
-<td>右转</td>
-<td>安全</td>
-<td>e09648</td>
-</tr>
-<tr>
-<td>1</td>
-<td>左转 / 右转 / 直行</td>
-<td>C</td>
-<td>直行</td>
-<td>撞墙</td>
-<td>e09649</td>
-</tr>
-<tr>
-<td>2</td>
-<td>直行 / 左转 / 右转</td>
-<td>C</td>
-<td>右转</td>
-<td>安全</td>
-<td>e09650</td>
-</tr>
-<tr>
-<td>3</td>
-<td>直行 / 右转 / 左转</td>
-<td>C</td>
-<td>左转</td>
-<td>安全</td>
-<td>e09651</td>
-</tr>
-<tr>
-<td>4</td>
-<td>右转 / 左转 / 直行</td>
-<td>C</td>
-<td>直行</td>
-<td>撞墙</td>
-<td>e09652</td>
-</tr>
-<tr>
-<td>5</td>
-<td>右转 / 直行 / 左转</td>
-<td>C</td>
-<td>左转</td>
-<td>安全</td>
-<td>e09653</td>
-</tr>
-</tbody>
-</table></div>
-<!-- END case_label -->
-
-<p>相同图片、相同可选动作，只因为 C 对应的内容变了，就有两次直行撞墙、四次安全。这不是把棋盘看成了另一张图，而是选项标签占据了选择。结合全量 288 次全部选 C 的记录，比单看 91.67% 总安全率更能说明问题。</p>
-<h3 id="案例三格式接近满分却把明确的碰撞答成安全">案例三：格式接近满分，却把明确的碰撞答成安全<a class="anchor" href="#案例三格式接近满分却把明确的碰撞答成安全" title="Permanent link">§</a></h3>
-<p>沿用上面的 <code>wall-04-r0</code> 截图，改问“直行会不会立即碰撞”。<strong>Qwen3-VL，choice_boxed + no_plan</strong> 在两个后端、正反两种排列里都选择 safe，真实答案却是 collision。原始记录见案例文件的 <code>collision</code> 项。</p>
-<p>这个错误不会被“合法答案概率高”和“排列一致”抓出来：模型完全可以稳定地按格式答错。全量统计进一步确认，在这个方法和条件下，三个模型、三组配置的 24 道真实碰撞题都漏判了。这正是应单独报告危险召回率的原因。</p>
-<h3 id="案例四tf-分数一模一样为什么换排列仍会换动作">案例四：TF 分数一模一样，为什么换排列仍会换动作<a class="anchor" href="#案例四tf-分数一模一样为什么换排列仍会换动作" title="Permanent link">§</a></h3>
-<p><img alt="body_tail-09-r1：用于并列分数案例的原始测试图" src="assets/standard_backend_report/case-tie.png" /></p>
-<p><strong>Qwen3.5，TF，yes_no_naive + no_plan，截图 <code>body_tail-09-r1</code>。</strong> 同一候选在六种排列中的分数没有变化。左转和直行的 q 都是 <code>0.18242551936144571</code>，右转的 q 是 <code>0.11920292202211753</code>；归一化后左转与直行精确并列第一。</p>
-<!-- BEGIN case_tie -->
-
-<div class="table-scroll"><table>
-<thead>
-<tr>
-<th>排列</th>
-<th>候选次序</th>
-<th>左转分数</th>
-<th>直行分数</th>
-<th>右转分数</th>
-<th>选中</th>
-<th>后果</th>
-<th>事件 ID</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>0</td>
-<td>左转 / 直行 / 右转</td>
-<td>0.376870213</td>
-<td>0.376870213</td>
-<td>0.246259574</td>
-<td>左转</td>
-<td>安全</td>
-<td>e21768</td>
-</tr>
-<tr>
-<td>1</td>
-<td>左转 / 右转 / 直行</td>
-<td>0.376870213</td>
-<td>0.376870213</td>
-<td>0.246259574</td>
-<td>左转</td>
-<td>安全</td>
-<td>e21769</td>
-</tr>
-<tr>
-<td>2</td>
-<td>直行 / 左转 / 右转</td>
-<td>0.376870213</td>
-<td>0.376870213</td>
-<td>0.246259574</td>
-<td>直行</td>
-<td>安全</td>
-<td>e21770</td>
-</tr>
-<tr>
-<td>3</td>
-<td>直行 / 右转 / 左转</td>
-<td>0.376870213</td>
-<td>0.376870213</td>
-<td>0.246259574</td>
-<td>直行</td>
-<td>安全</td>
-<td>e21771</td>
-</tr>
-<tr>
-<td>4</td>
-<td>右转 / 左转 / 直行</td>
-<td>0.376870213</td>
-<td>0.376870213</td>
-<td>0.246259574</td>
-<td>左转</td>
-<td>安全</td>
-<td>e21772</td>
-</tr>
-<tr>
-<td>5</td>
-<td>右转 / 直行 / 左转</td>
-<td>0.376870213</td>
-<td>0.376870213</td>
-<td>0.246259574</td>
-<td>直行</td>
-<td>安全</td>
-<td>e21773</td>
-</tr>
-</tbody>
-</table></div>
-<!-- END case_tie -->
-
-<p>当前规则是取第一个最大值，所以左转和直行谁在前，就选谁。这里的不一致来自并列处理，不能再归因于提示含有 ABC，也不是 TF 在重排时偷偷改变了分数。</p>
-<p>后续可以预先约定与展示顺序无关的语义 tie-break，或把并列记录成“不确定”；但固定语义优先级也会引入自己的偏好，必须公开。为了保持三组可比，本报告没有修改规则或重算原始成功结果。</p>
-<h3 id="案例五候选输入相同缓存深度和-batch-位置仍可能不同">案例五：候选输入相同，缓存深度和 batch 位置仍可能不同<a class="anchor" href="#案例五候选输入相同缓存深度和-batch-位置仍可能不同" title="Permanent link">§</a></h3>
-<p>APC 的 Gemma 在 <code>wall-07-r3 / collision_straight / no_plan / yes_no_naive</code> 中，safe 候选的输入 token 和图片不变，但事件 <code>e18152</code>、<code>e18153</code> 的缓存命中分别为 384、416 token，候选归一化分数为 0.64627、0.50592，漂移 0.14035。原始 yes/no 概率和其他候选共同影响最终归一化分数，不能将其视为单个 logit 的差值。</p>
-<p>Qwen3.5 的 <code>body_tail-09-r2 / readout / shared_no_think / yes_no_naive</code> 提供另一种情况：left 候选六个排列均命中 528 token，但 batch 位置从 0 变为 1/2 时，yes log-prob 从 −1.60677 变为 −1.91568，归一化分数从 0.40333 变为 0.31567；其他排列又为 0.33778。相同缓存深度下也有漂移，不能把所有变化都解释成冷缓存与暖缓存的差异。</p>
-<p>三模型最大漂移的完整原始记录见 <a href="assets/standard_backend_report/apc-naive-drift-evidence.json">APC 漂移案例</a>。这些例子说明应检查运行时计算路径，并不证明某一项优化独自造成漂移；batch 位置、其他候选分数和 kernel 选择尚未被独立控制。</p>
-<h2 id="6-这些结果支持什么下一步又该测什么">6. 这些结果支持什么，下一步又该测什么<a class="anchor" href="#6-这些结果支持什么下一步又该测什么" title="Permanent link">§</a></h2>
+</details>
+<p><span id="6-这些结果支持什么下一步又该测什么"></span></p>
+<h2 id="后续实验">后续实验<a class="anchor" href="#后续实验" title="Permanent link">§</a></h2>
+<ol>
+<li>分开检查格式、选项偏好、数值变化和并列处理。</li>
+<li>增加存在危险动作的截图，分别测方向识别、转向和碰撞。</li>
+<li>提高计划预算，检查计划完整性后再比较收益。</li>
+<li>用连续游戏检查长期策略价值。</li>
+</ol>
+<p>旋转图、选项排列和 seed 分片并非独立样本。本报告未计算置信区间，结论限于当时的模型、配置和截图。</p>
+<details>
+<summary>查看当时的研究建议与结论限制</summary>
 <p>第一，先验证读出格式，再讨论推理能力。保留 <code>\boxed{</code> 作为对照是有价值的；但应该同时看合法概率、正确率和动作结果。若要进一步分清原因，可分别对照“只改格式指令”“只加回答前缀”，目前两者是一起改变的。</p>
 <p>第二，顺序偏置应拆开诊断。用 naive 除去候选列表带来的语义顺序信息，固定 backend 和 batch 组织检查分数漂移，再明确处理并列。三步完成后，才能判断剩余差异是不是模型对候选内容本身的判断，而不是把所有问题归到同一种偏置上。</p>
 <p>第三，当前诊断集太容易让安全率显得好看。下一轮更值得增加确有危险的局面，分别报告危险召回、误报、危险截图上的动作安全和趋近食物，而不是只把总评分量做大。同时把“看清朝向→完成相对转向→判断碰撞”分开测，有助于定位瓶颈。</p>
 <p>第四，先让短计划真正完整，再评价规划是否有用。可以收紧计划格式，检查输出是否包含可执行的决策规则，或单独比较计划预算。这里所有短计划都被截断，尚不足以回答一份完成的好策略能带来多少收益。</p>
 <p>以上是下一步实验建议，本次报告没有追加 GPU 推理。结论限定于这三个模型、这三套配置和固定诊断图；旋转图、排列和 greedy 分片彼此相关，没有把 248,832 次评分当作同样数量的独立样本，也没有报告显著性或置信区间。<strong>要评价长期策略价值，仍需另做闭环实验。</strong></p>
-<h2 id="7-验收数据与复核入口">7. 验收、数据与复核入口<a class="anchor" href="#7-验收数据与复核入口" title="Permanent link">§</a></h2>
+</details>
+<p><span id="7-验收数据与复核入口"></span></p>
+<h2 id="数据与复现">数据与复现<a class="anchor" href="#数据与复现" title="Permanent link">§</a></h2>
+<p>结果、案例、来源哈希和失败记录均保留。下列文件用于复核历史结果；旧套件命令不适用于现役 CLI。</p>
+<details>
+<summary>查看数据下载、运行记录和验收信息</summary>
 <h3 id="71-完成状态与保留的失败证据">7.1 完成状态与保留的失败证据<a class="anchor" href="#71-完成状态与保留的失败证据" title="Permanent link">§</a></h3>
 <p>三组均核验每模型 27,648 条唯一成功结果、16 份规划及跨阶段配对；正式结果无 pending/failed/unsupported、无 episode 或闭环轨迹，72 个有效任务退出码均为 0，GPU 已释放。比较时核对模型配置、模板、问题、候选、截图哈希和实验 ID。naive 输入审计每模型、每组核验 11,904 个唯一候选输入、16,512 次重复配对。</p>
 <p>TF 批处理检查覆盖混合长短输入、单图/双图、不同图片、反转 batch 和 microbatch 边界，FP32 单条/批量 log-prob 在 2e-5 容差内一致；真实 GPU 记录候选 <code>[3, sequence_length]</code> forward 和 BF16 差异，六方法均通过实测。历史测试记录为基础套件 75 项（含 3 项可选跳过）、显式三模型处理器/小型随机权重测试 10 项通过、比较脚本 3 项通过。APC 实现测试 85 项中 82 通过、3 可选跳过，真实三模型启动检查另验证模板、图片、token 边界、冷暖缓存及优化生效。它们是各实验当时的验证记录，本次文档合并没有重新运行 GPU 推理。</p>
@@ -1417,7 +1457,7 @@ score_i = q_i / 所有候选 q 的总和
 <li>七幅原理/结果图均附同名 PDF，例如 <a href="assets/standard_backend_report/01-readout-principle.pdf">读出原理</a>、<a href="assets/standard_backend_report/03-no-plan-results.pdf">六方法结果</a>、<a href="assets/standard_backend_report/07-backend-cost.pdf">三组成本</a>。</li>
 </ul>
 <p>原始运行目录及验收入口：</p>
-<div class="table-scroll"><table>
+<div class="table-scroll" tabindex="0" role="region" aria-label="数据表，可横向滚动"><table>
 <thead>
 <tr>
 <th>配置</th>
@@ -1454,13 +1494,15 @@ score_i = q_i / 所有候选 q 的总和
 --device cuda --dtype bfloat16
 </code></pre>
 <p>其中 N=0–7；TF 使用 <code>--backend transformers</code>，APC 使用 <code>--backend vllm --vllm-profile default --enable-prefix-caching</code>，旧组使用历史 eager 配置。分析来源为 <code>merge_snake_shards.py</code>、<code>analyze_standard_matrix.py</code>、<code>compare_backends.py</code>、<code>analyze_backend_insights.py</code> 及 <code>compare_execution_profiles.py</code>；原始冻结配置才是运行复现依据，本文不改写历史命令。结果保留 snake-bench-v3，v1/v2 历史读取能力保持不变。</p>
+</details>
 <h2 id="附录-a原-vllm-报告的全部表格">附录 A：原 vLLM 报告的全部表格<a class="anchor" href="#附录-a原-vllm-报告的全部表格" title="Permanent link">§</a></h2>
+<details>
+<summary>展开附录 A：原 vLLM 报告的全部表格（原始记录）</summary>
 <p>以下表格从旧报告逐块原样保留，标题沿用原来的主题；<strong>所有“本轮”、成本和漂移数字在这个附录中均指旧 vLLM eager 轮次。</strong> 定义表里的 vLLM 输出 token 口径只适用于 vLLM，TF 的对应口径已在正文说明。旧表中的最佳组合是这批截图上选出来的描述性结果，不代表在新数据上的最优方法。</p>
 <p>完整结果表的“任务表现”在 perception 中是准确率、readout 中是一步安全率；“趋近食物”含安全约束。一致率在两个阶段分别要求 2/2 和 6/6 同一语义答案。旧表所有数值和精度保持不变。</p>
 <!-- BEGIN original_tables -->
-
 <h3 id="a1-1-实验设置与阅读方式">A.1 1. 实验设置与阅读方式<a class="anchor" href="#a1-1-实验设置与阅读方式" title="Permanent link">§</a></h3>
-<div class="table-scroll"><table>
+<div class="table-scroll" tabindex="0" role="region" aria-label="数据表，可横向滚动"><table>
 <thead>
 <tr>
 <th>阶段</th>
@@ -1485,7 +1527,7 @@ score_i = q_i / 所有候选 q 的总和
 </tbody>
 </table></div>
 <h3 id="a2-11-六种评分方法">A.2 1.1 六种评分方法<a class="anchor" href="#a2-11-六种评分方法" title="Permanent link">§</a></h3>
-<div class="table-scroll"><table>
+<div class="table-scroll" tabindex="0" role="region" aria-label="数据表，可横向滚动"><table>
 <thead>
 <tr>
 <th>方法</th>
@@ -1534,7 +1576,7 @@ score_i = q_i / 所有候选 q 的总和
 </tbody>
 </table></div>
 <h3 id="a3-12-四个条件与规划复用">A.3 1.2 四个条件与规划复用<a class="anchor" href="#a3-12-四个条件与规划复用" title="Permanent link">§</a></h3>
-<div class="table-scroll"><table>
+<div class="table-scroll" tabindex="0" role="region" aria-label="数据表，可横向滚动"><table>
 <thead>
 <tr>
 <th>条件</th>
@@ -1566,7 +1608,7 @@ score_i = q_i / 所有候选 q 的总和
 </tbody>
 </table></div>
 <h3 id="a4-13-数量硬件与完成状态">A.4 1.3 数量、硬件与完成状态<a class="anchor" href="#a4-13-数量硬件与完成状态" title="Permanent link">§</a></h3>
-<div class="table-scroll"><table>
+<div class="table-scroll" tabindex="0" role="region" aria-label="数据表，可横向滚动"><table>
 <thead>
 <tr>
 <th>统计单位</th>
@@ -1608,7 +1650,7 @@ score_i = q_i / 所有候选 q 的总和
 </tbody>
 </table></div>
 <h3 id="a5-21-任务表现与排列一致率">A.5 2.1 任务表现与排列一致率<a class="anchor" href="#a5-21-任务表现与排列一致率" title="Permanent link">§</a></h3>
-<div class="table-scroll"><table>
+<div class="table-scroll" tabindex="0" role="region" aria-label="数据表，可横向滚动"><table>
 <thead>
 <tr>
 <th>指标（数据字段）</th>
@@ -1645,7 +1687,7 @@ score_i = q_i / 所有候选 q 的总和
 </tbody>
 </table></div>
 <h3 id="a6-22-原始概率归一化分数与合法答案概率">A.6 2.2 原始概率、归一化分数与合法答案概率<a class="anchor" href="#a6-22-原始概率归一化分数与合法答案概率" title="Permanent link">§</a></h3>
-<div class="table-scroll"><table>
+<div class="table-scroll" tabindex="0" role="region" aria-label="数据表，可横向滚动"><table>
 <thead>
 <tr>
 <th>指标</th>
@@ -1682,7 +1724,7 @@ score_i = q_i / 所有候选 q 的总和
 </tbody>
 </table></div>
 <h3 id="a7-23-标签偏好漂移和并列">A.7 2.3 标签偏好、漂移和并列<a class="anchor" href="#a7-23-标签偏好漂移和并列" title="Permanent link">§</a></h3>
-<div class="table-scroll"><table>
+<div class="table-scroll" tabindex="0" role="region" aria-label="数据表，可横向滚动"><table>
 <thead>
 <tr>
 <th>指标</th>
@@ -1724,7 +1766,7 @@ score_i = q_i / 所有候选 q 的总和
 </tbody>
 </table></div>
 <h3 id="a8-24-成本与差值字段">A.8 2.4 成本与差值字段<a class="anchor" href="#a8-24-成本与差值字段" title="Permanent link">§</a></h3>
-<div class="table-scroll"><table>
+<div class="table-scroll" tabindex="0" role="region" aria-label="数据表，可横向滚动"><table>
 <thead>
 <tr>
 <th>字段</th>
@@ -1767,7 +1809,7 @@ score_i = q_i / 所有候选 q 的总和
 </tbody>
 </table></div>
 <h3 id="a9-31-boxed-明显改善格式对齐但这不是对能力的统一增益">A.9 3.1 Boxed 明显改善格式对齐，但这不是对“能力”的统一增益<a class="anchor" href="#a9-31-boxed-明显改善格式对齐但这不是对能力的统一增益" title="Permanent link">§</a></h3>
-<div class="table-scroll"><table>
+<div class="table-scroll" tabindex="0" role="region" aria-label="数据表，可横向滚动"><table>
 <thead>
 <tr>
 <th>模型</th>
@@ -1806,7 +1848,7 @@ score_i = q_i / 所有候选 q 的总和
 </tbody>
 </table></div>
 <h3 id="a10-34-总感知分数掩盖了转向和碰撞判断的缺陷">A.10 3.4 总感知分数掩盖了转向和碰撞判断的缺陷<a class="anchor" href="#a10-34-总感知分数掩盖了转向和碰撞判断的缺陷" title="Permanent link">§</a></h3>
-<div class="table-scroll"><table>
+<div class="table-scroll" tabindex="0" role="region" aria-label="数据表，可横向滚动"><table>
 <thead>
 <tr>
 <th>模型</th>
@@ -1893,7 +1935,7 @@ score_i = q_i / 所有候选 q 的总和
 </tbody>
 </table></div>
 <h3 id="a11-36-同样的-naive-输入仍存在输出漂移需与并列选择分开">A.11 3.6 同样的 naive 输入仍存在输出漂移，需与并列选择分开<a class="anchor" href="#a11-36-同样的-naive-输入仍存在输出漂移需与并列选择分开" title="Permanent link">§</a></h3>
-<div class="table-scroll"><table>
+<div class="table-scroll" tabindex="0" role="region" aria-label="数据表，可横向滚动"><table>
 <thead>
 <tr>
 <th>模型</th>
@@ -1949,7 +1991,7 @@ score_i = q_i / 所有候选 q 的总和
 </tbody>
 </table></div>
 <h3 id="a12-37-该怎样选择后续对照配置">A.12 3.7 该怎样选择后续对照配置<a class="anchor" href="#a12-37-该怎样选择后续对照配置" title="Permanent link">§</a></h3>
-<div class="table-scroll"><table>
+<div class="table-scroll" tabindex="0" role="region" aria-label="数据表，可横向滚动"><table>
 <thead>
 <tr>
 <th>模型</th>
@@ -1984,7 +2026,7 @@ score_i = q_i / 所有候选 q 的总和
 </tbody>
 </table></div>
 <h3 id="a13-41-no_plan-动作结果与字母选择">A.13 4.1 no_plan 动作结果与字母选择<a class="anchor" href="#a13-41-no_plan-动作结果与字母选择" title="Permanent link">§</a></h3>
-<div class="table-scroll"><table>
+<div class="table-scroll" tabindex="0" role="region" aria-label="数据表，可横向滚动"><table>
 <thead>
 <tr>
 <th>模型</th>
@@ -2162,7 +2204,7 @@ score_i = q_i / 所有候选 q 的总和
 </tbody>
 </table></div>
 <h3 id="a14-42-总推理成本">A.14 4.2 总推理成本<a class="anchor" href="#a14-42-总推理成本" title="Permanent link">§</a></h3>
-<div class="table-scroll"><table>
+<div class="table-scroll" tabindex="0" role="region" aria-label="数据表，可横向滚动"><table>
 <thead>
 <tr>
 <th>模型</th>
@@ -2205,7 +2247,7 @@ score_i = q_i / 所有候选 q 的总和
 </tbody>
 </table></div>
 <h3 id="a15-qwen35-4b">A.15 Qwen3.5-4B<a class="anchor" href="#a15-qwen35-4b" title="Permanent link">§</a></h3>
-<div class="table-scroll"><table>
+<div class="table-scroll" tabindex="0" role="region" aria-label="数据表，可横向滚动"><table>
 <thead>
 <tr>
 <th>阶段</th>
@@ -2702,7 +2744,7 @@ score_i = q_i / 所有候选 q 的总和
 </tbody>
 </table></div>
 <h3 id="a16-qwen3-vl-4b-thinking">A.16 Qwen3-VL-4B-Thinking<a class="anchor" href="#a16-qwen3-vl-4b-thinking" title="Permanent link">§</a></h3>
-<div class="table-scroll"><table>
+<div class="table-scroll" tabindex="0" role="region" aria-label="数据表，可横向滚动"><table>
 <thead>
 <tr>
 <th>阶段</th>
@@ -3199,7 +3241,7 @@ score_i = q_i / 所有候选 q 的总和
 </tbody>
 </table></div>
 <h3 id="a17-gemma4-e4b-it">A.17 Gemma4-E4B-it<a class="anchor" href="#a17-gemma4-e4b-it" title="Permanent link">§</a></h3>
-<div class="table-scroll"><table>
+<div class="table-scroll" tabindex="0" role="region" aria-label="数据表，可横向滚动"><table>
 <thead>
 <tr>
 <th>阶段</th>
@@ -3696,13 +3738,14 @@ score_i = q_i / 所有候选 q 的总和
 </tbody>
 </table></div>
 <!-- END original_tables -->
-
+</details>
 <h2 id="附录-btransformers-batch-完整结果">附录 B：Transformers batch 完整结果<a class="anchor" href="#附录-btransformers-batch-完整结果" title="Permanent link">§</a></h2>
+<details>
+<summary>展开附录 B：Transformers batch 完整结果（原始记录）</summary>
 <p>表格结构与原报告的三张完整结果表一致，每模型 48 行、合计 144 行。每个感知行 n=864，每个动作行 n=288；时间不含规划。为避免把微小但非零的合法概率读成精确零，低于显示精度的值采用科学计数法。</p>
 <!-- BEGIN tf_tables -->
-
 <h3 id="b1-qwen35-4b">B.1 Qwen3.5-4B<a class="anchor" href="#b1-qwen35-4b" title="Permanent link">§</a></h3>
-<div class="table-scroll"><table>
+<div class="table-scroll" tabindex="0" role="region" aria-label="数据表，可横向滚动"><table>
 <thead>
 <tr>
 <th>阶段</th>
@@ -4199,7 +4242,7 @@ score_i = q_i / 所有候选 q 的总和
 </tbody>
 </table></div>
 <h3 id="b2-qwen3-vl-4b-thinking">B.2 Qwen3-VL-4B-Thinking<a class="anchor" href="#b2-qwen3-vl-4b-thinking" title="Permanent link">§</a></h3>
-<div class="table-scroll"><table>
+<div class="table-scroll" tabindex="0" role="region" aria-label="数据表，可横向滚动"><table>
 <thead>
 <tr>
 <th>阶段</th>
@@ -4696,7 +4739,7 @@ score_i = q_i / 所有候选 q 的总和
 </tbody>
 </table></div>
 <h3 id="b3-gemma4-e4b-it">B.3 Gemma4-E4B-it<a class="anchor" href="#b3-gemma4-e4b-it" title="Permanent link">§</a></h3>
-<div class="table-scroll"><table>
+<div class="table-scroll" tabindex="0" role="region" aria-label="数据表，可横向滚动"><table>
 <thead>
 <tr>
 <th>阶段</th>
@@ -5193,13 +5236,14 @@ score_i = q_i / 所有候选 q 的总和
 </tbody>
 </table></div>
 <!-- END tf_tables -->
-
+</details>
 <h2 id="附录-cvllm-default-apc-完整结果">附录 C：vLLM default + APC 完整结果<a class="anchor" href="#附录-cvllm-default-apc-完整结果" title="Permanent link">§</a></h2>
+<details>
+<summary>展开附录 C：vLLM default + APC 完整结果（原始记录）</summary>
 <p>以下为第三组全部 144 个指标单元，字段与附录 B 相同。详细标签、漂移、并列及延迟分位数见随文数据。</p>
 <!-- BEGIN apc_tables -->
-
 <h3 id="c1-qwen35-4b">C.1 Qwen3.5-4B<a class="anchor" href="#c1-qwen35-4b" title="Permanent link">§</a></h3>
-<div class="table-scroll"><table>
+<div class="table-scroll" tabindex="0" role="region" aria-label="数据表，可横向滚动"><table>
 <thead>
 <tr>
 <th>阶段</th>
@@ -5696,7 +5740,7 @@ score_i = q_i / 所有候选 q 的总和
 </tbody>
 </table></div>
 <h3 id="c2-qwen3-vl-4b-thinking">C.2 Qwen3-VL-4B-Thinking<a class="anchor" href="#c2-qwen3-vl-4b-thinking" title="Permanent link">§</a></h3>
-<div class="table-scroll"><table>
+<div class="table-scroll" tabindex="0" role="region" aria-label="数据表，可横向滚动"><table>
 <thead>
 <tr>
 <th>阶段</th>
@@ -6193,7 +6237,7 @@ score_i = q_i / 所有候选 q 的总和
 </tbody>
 </table></div>
 <h3 id="c3-gemma4-e4b-it">C.3 Gemma4-E4B-it<a class="anchor" href="#c3-gemma4-e4b-it" title="Permanent link">§</a></h3>
-<div class="table-scroll"><table>
+<div class="table-scroll" tabindex="0" role="region" aria-label="数据表，可横向滚动"><table>
 <thead>
 <tr>
 <th>阶段</th>
@@ -6690,8 +6734,10 @@ score_i = q_i / 所有候选 q 的总和
 </tbody>
 </table></div>
 <!-- END apc_tables -->
-
+</details>
 <h2 id="附录-d六种历史-prompt-与输入构造snake-bench-v3">附录 D：六种历史 prompt 与输入构造（snake-bench-v3）<a class="anchor" href="#附录-d六种历史-prompt-与输入构造snake-bench-v3" title="Permanent link">§</a></h2>
+<details>
+<summary>展开附录 D：六种历史 prompt 与输入构造（snake-bench-v3）（原始记录）</summary>
 <p>本报告正文、图表和附录 A–C 均描述历史六方法实验。当前 snake-bench-v4 的 <code>choice</code> 对应历史 <code>choice_boxed</code>，当前 <code>yes_no</code> 对应历史 <code>yes_no_naive_boxed</code>；不能把新旧同名方法直接配对。以下完整归档保持旧含义，不随当前评分代码更新。</p>
 <p>归档源码 commit：<code>040593cdde98f3e9fa50b9aeb160e3638940074e</code>。这份归档从变更前实现和三个本地真实 tokenizer 提取；JSON 字符串中的 <code>\n</code> 表示换行，<code>\\</code> 表示一个反斜杠。图片占位符不等于图片内容，实际图像作为 RGB 图像列表独立传入处理器。</p>
 <h3 id="d1-规则问题和候选">D.1 规则、问题和候选<a class="anchor" href="#d1-规则问题和候选" title="Permanent link">§</a></h3>
@@ -7163,7 +7209,7 @@ Is &quot;Turn right&quot; the best answer to the question above? Reply with exac
 }
 </code></pre>
 <p>设 I 为初始规划输入 token，T 为原始 thinking_ids，C 为 closing_ids，S 为 separator_ids，P 为 plan_ids，<code>+</code> 表示 token 列表拼接。P 和 T 始终保留原始 token，不能先解码再编码。</p>
-<div class="table-scroll"><table>
+<div class="table-scroll" tabindex="0" role="region" aria-label="数据表，可横向滚动"><table>
 <thead>
 <tr>
 <th>条件</th>
@@ -7203,6 +7249,24 @@ Gemma: close + &quot;&lt;|turn&gt;user\n\n\n&lt;|image|&gt;\n\n&quot; + question
 <h3 id="d5-读分与复核">D.5 读分与复核<a class="anchor" href="#d5-读分与复核" title="Permanent link">§</a></h3>
 <p>choice 对完整词表的字母原始 log-prob 做候选内 softmax；所有 yes/no 方法先算每候选 <code>q = P(yes)/(P(yes)+P(no))</code>，再算 <code>q/sum(q)</code>。采用数值稳定的对数实现，不限制输出词表、不加 logit bias 或采样惩罚。并列仍取输入次序的首个最大值。naive 结果不记录未向模型展示的字母。</p>
 <p>随文 <a href="assets/standard_backend_report/historical-prompts.json">historical-prompts.json</a> 保存以上原文、全部动作输入、真实 Jinja 模板和 token ID，便于逐字核验；理解或重建正文无需读当前运行实现。历史六方法命令（第 7.2 节）只能使用上述历史 commit 或原始冻结快照执行。当前代码只运行两个新方法，历史结果与图表不改名、不重写。</p>
-<p>本次接口迁移另做无模型权重加载的验证：三个真实 tokenizer/图像处理器、四条件、九类感知题正反排列与动作六排列，两种保留方法共 576 组调用；新旧 token IDs、图片顺序逐项完全一致。验证使用旧实验保存的 seed 0 规划，未重新生成规划或评分。历史九个模型运行的离线指标与 boxed 差值重新汇总后保持不变。该检查证明输入构造迁移一致，不声称不同后端的浮点数值逐位相同。</p></article></main>
+<p>本次接口迁移另做无模型权重加载的验证：三个真实 tokenizer/图像处理器、四条件、九类感知题正反排列与动作六排列，两种保留方法共 576 组调用；新旧 token IDs、图片顺序逐项完全一致。验证使用旧实验保存的 seed 0 规划，未重新生成规划或评分。历史九个模型运行的离线指标与 boxed 差值重新汇总后保持不变。该检查证明输入构造迁移一致，不声称不同后端的浮点数值逐位相同。</p>
+</details></article></main>
 <footer><p>vdecision</p><p><a href="https://donglinkang2021.github.io/">董林康的主页</a> · <a href="https://github.com/donglinkang2021/vdec">网站仓库</a></p></footer>
+<script>
+(function () {
+  function revealTarget() {
+    let id;
+    try { id = decodeURIComponent(location.hash.slice(1)); } catch (_) { return; }
+    const target = document.getElementById(id);
+    if (!target) return;
+    for (let parent = target.parentElement; parent; parent = parent.parentElement) {
+      if (parent.tagName === 'DETAILS') parent.open = true;
+    }
+    requestAnimationFrame(() => target.scrollIntoView());
+  }
+  addEventListener('hashchange', revealTarget);
+  if (document.readyState === 'loading') addEventListener('DOMContentLoaded', revealTarget);
+  else revealTarget();
+})();
+</script>
 </body></html>
