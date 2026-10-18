@@ -7204,5 +7204,5 @@ Gemma: close + &quot;&lt;|turn&gt;user\n\n\n&lt;|image|&gt;\n\n&quot; + question
 <p>choice 对完整词表的字母原始 log-prob 做候选内 softmax；所有 yes/no 方法先算每候选 <code>q = P(yes)/(P(yes)+P(no))</code>，再算 <code>q/sum(q)</code>。采用数值稳定的对数实现，不限制输出词表、不加 logit bias 或采样惩罚。并列仍取输入次序的首个最大值。naive 结果不记录未向模型展示的字母。</p>
 <p>随文 <a href="assets/standard_backend_report/historical-prompts.json">historical-prompts.json</a> 保存以上原文、全部动作输入、真实 Jinja 模板和 token ID，便于逐字核验；理解或重建正文无需读当前运行实现。历史六方法命令（第 7.2 节）只能使用上述历史 commit 或原始冻结快照执行。当前代码只运行两个新方法，历史结果与图表不改名、不重写。</p>
 <p>本次接口迁移另做无模型权重加载的验证：三个真实 tokenizer/图像处理器、四条件、九类感知题正反排列与动作六排列，两种保留方法共 576 组调用；新旧 token IDs、图片顺序逐项完全一致。验证使用旧实验保存的 seed 0 规划，未重新生成规划或评分。历史九个模型运行的离线指标与 boxed 差值重新汇总后保持不变。该检查证明输入构造迁移一致，不声称不同后端的浮点数值逐位相同。</p></article></main>
-<footer><p>vdecision · 让每个分数，都有画面可查。</p><p><a href="https://donglinkang2021.github.io/">董林康的主页</a> · <a href="https://github.com/donglinkang2021/vdec">网站仓库</a></p></footer>
+<footer><p>vdecision</p><p><a href="https://donglinkang2021.github.io/">董林康的主页</a> · <a href="https://github.com/donglinkang2021/vdec">网站仓库</a></p></footer>
 </body></html>
