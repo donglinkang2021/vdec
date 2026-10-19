@@ -18,7 +18,12 @@
 <li><a href="#运行顺序">运行顺序</a></li>
 <li><a href="#分数和蒸馏接口">分数和蒸馏接口</a></li>
 <li><a href="#验证">验证</a></li>
-<li><a href="#v9计划提取与失败重试">v9：计划提取与失败重试</a></li>
+<li><a href="#v9计划提取与失败重试">v9：计划提取与失败重试</a><ul>
+<li><a href="#历史问题与回归范围">历史问题与回归范围</a></li>
+</ul>
+</li>
+<li><a href="#2026-10-19v9-dev-完成转入闭环">2026-10-19：v9 dev 完成，转入闭环</a></li>
+<li><a href="#2026-10-19episode-完成">2026-10-19：Episode 完成</a></li>
 </ul>
 </li>
 </ul>
@@ -78,7 +83,8 @@
 <p>人工计划由 <code>prefixes.py</code> 提供，也可用 <code>--manual-plan-file</code> 替换；正文不按生成预算裁剪。当前问题 CoT 的预算为 <code>--step-thinking-tokens 128/256/512</code>，不生成 plan。choice 每种排列单独思考，yes/no 每个候选单独思考。自然结束立即读出；预算耗尽补原生结束标记。v8 的异常提前结束记失败。</p>
 <p><code>--repeat-id</code> 表示覆盖完整数据集的一次独立重复。<code>--seeds</code> 将同源题组（family）分配给共享计划，不代表多次完整重复。分片不改变问题的随机种子。模型使用自己的原生模板；Gemma 使用通道标记。每份计划保存正文、token 长度和来源哈希。</p>
 <h2 id="运行顺序">运行顺序<a class="anchor" href="#运行顺序" title="Permanent link">§</a></h2>
-<p>先完成 dev 检查，再冻结配置运行 test。依次运行 baseline、shared、prefix、cot。每个 split 共 564 个配置；一个配置可包含多种条件和读出。</p>
+<p>本轮不运行 test。564 个 v9 dev 配置已完成并核对，下一步运行 Episode 闭环。一个配置可包含多种条件和读出。</p>
+<p>已验证的执行路径默认直接提交实验。增加 seed、重复编号或已支持范围内的预算，不要求重跑 GPU 冒烟。GPU 验证不是每批提交的前置步骤；具体触发条件见下文“验证”。</p>
 <details>
 <summary>查看分阶段命令、冻结与闭环选型</summary>
 <p>在项目根目录使用同一虚拟环境、源码快照、vLLM 配置、精度及缓存设置。<code>experiments/snake_models.json</code> 给出三个模型路径，可复制后改为分配节点可访问的路径。</p>
@@ -89,10 +95,6 @@ PYTHONPATH=src:. .venv/bin/python scripts/snake_study.py matrix \
 # 模板检查，使用真实 tokenizer / processor，无权重
 PYTHONPATH=src .venv/bin/python run.py --model models/Qwen/Qwen3-VL-4B-Thinking --preflight
 
-# 单模型 GPU 冒烟：128-token 共享 planning，三档当前问题 thinking
-PYTHONPATH=src .venv/bin/python scripts/smoke_snake_reasoning.py \
-  --model models/Qwen/Qwen3-VL-4B-Thinking --output outputs/smoke-qwenvl
-
 # 完整 dev 基线；输出目录必须不存在
 PYTHONPATH=src:. .venv/bin/python scripts/snake_study.py matrix \
   --models experiments/snake_models.json --stage baseline --execute --output outputs/study-dev-baseline
@@ -102,13 +104,6 @@ PYTHONPATH=src:. .venv/bin/python scripts/snake_study.py matrix \
 <pre><code class="language-bash"># 所有参数应为实际运行目录，而非包含多个运行的父目录
 PYTHONPATH=src:. .venv/bin/python scripts/snake_study.py compare \
   outputs/RUN_BASELINE outputs/RUN_CONDITION --output outputs/comparison-dev
-
-# 完成 dev 后冻结；test 必须匹配已完成的 dev 配置、源码、启动器和采样文件
-PYTHONPATH=src:. .venv/bin/python scripts/snake_study.py freeze \
-  outputs/RUN_BASELINE outputs/RUN_CONDITION --output outputs/dev-freeze.json
-PYTHONPATH=src:. .venv/bin/python scripts/snake_study.py matrix \
-  --models experiments/snake_models.json --stage baseline --split test \
-  --freeze-file outputs/dev-freeze.json --execute --output outputs/study-test-baseline
 
 # 从完整 dev Decision 比较结果选择闭环配置；默认仅列出，追加 --execute --output 才运行
 PYTHONPATH=src:. .venv/bin/python scripts/snake_study.py episodes \
@@ -126,11 +121,16 @@ PYTHONPATH=src:. .venv/bin/python scripts/snake_study.py episodes \
 <p>teacher 导出需要两个不同 repeat 的 CoT 运行，且模型、预算、配置一致。逐项核对图片、问题和候选顺序。导出图片与哈希、两次候选分布、均值、无思考分布 p0，以及推理 token 和终止状态。yes/no 额外保留原始二元概率。</p>
 <p>导出标记 <code>purpose=evaluation_only</code>。正式训练集必须另建，并与 benchmark 的 dev/test family 隔离。本轮不启动 vdistill 训练。SII-Decision 的候选分布蒸馏可作为后续损失参考，但官方语言 backbone 路径需要多模态适配：<a href="https://arxiv.org/html/2610.03935v2#S6">论文 v2 §6</a>、<a href="https://github.com/amazingljy1206/SII-Decision/blob/main/sii_decision/learning.py">官方 learning.py</a>。</p>
 <h2 id="验证">验证<a class="anchor" href="#验证" title="Permanent link">§</a></h2>
-<p>离线模板检查验证输入边界；小规模 GPU 运行检查（冒烟测试）验证真实执行路径。完整成绩以运行记录为准。</p>
+<p>保留 CPU 回归测试，按改动范围运行。离线模板检查验证输入边界。已通过 GPU 验证的模型和执行路径，后续默认直接提交实验，不重复跑冒烟。</p>
+<p>只有更换 checkpoint、tokenizer、原生模板、推理后端或关键运行环境，修改生成／读出路径，或出现尚未定位的 GPU 错误时，才按风险做必要的 GPU 检查。检查限于受影响的模型和路径，不默认重跑三模型整套冒烟。文档、汇总或报告改动不触发 GPU 检查。</p>
 <details>
-<summary>查看 CPU 与 GPU 检查说明</summary>
+<summary>查看 CPU 回归与可选 GPU 检查命令</summary>
 <pre><code class="language-bash">PYTHONPATH=src:.:tests .venv/bin/python -m unittest discover -s tests
 PYTHONPATH=src .venv/bin/python -m vdecision.benches.snake.datasets_audit
+
+# 可选：仅在执行路径需要重新验证时运行，不是常规提交步骤
+PYTHONPATH=src .venv/bin/python scripts/smoke_snake_reasoning.py \
+  --model models/Qwen/Qwen3-VL-4B-Thinking --output outputs/smoke-qwenvl
 </code></pre>
 <p>离线模板检查不等于 GPU 推理检查；测试替身通过不代表已获得三模型分数。GPU 冒烟脚本的 <code>smoke.json</code> 区分 <code>not_performed</code>、<code>failed</code>、<code>passed</code>，完整 benchmark 以 run 原始事件及汇总为准。</p>
 </details>
@@ -139,6 +139,16 @@ PYTHONPATH=src .venv/bin/python -m vdecision.benches.snake.datasets_audit
 <p>v9 保留原始输出，并从最后一个原生思考结束标记之后提取 plan。标记异常、空 plan 和预算截断均记录下来。原始 token 不改写；full 使用完整轨迹，plan-only 使用提取后的 plan。</p>
 <p>每次请求最多重试两次，保持输入 token 和采样 seed 相同。一个配置失败后仍继续其他配置。未完成配置只显示已观察分数和覆盖率，不提供完整主分数。</p>
 <p>v9 重新运行 12 个 baseline 和 552 个 dev 配置。v8 原始结果继续保留，不与 v9 合并。</p>
+<h3 id="历史问题与回归范围">历史问题与回归范围<a class="anchor" href="#历史问题与回归范围" title="Permanent link">§</a></h3>
+<p>此前四份真实输出因旧版格式校验被拒绝，涉及 Qwen3.5、Qwen3-VL 和 Gemma。生成正文可能含孤立或重复的思考结束标记，也可能在预算处截断。格式异常不能作为跳过读出的理由；正文很短也不能作为拒绝依据。</p>
+<p>核心规则如下：</p>
+<ul>
+<li>在原始 token 中取最后一个 <code>&lt;/think&gt;</code> 或 <code>&lt;channel|&gt;</code> 之后的内容。没有标记则保留全部输出，不要求开始标记匹配。</li>
+<li>自然结束立即使用。预算截断保留已有内容。提取为空仍执行读出并记录 <code>empty_plan</code>，不补生成、不换 seed、不回退为 no-plan。</li>
+<li>full 保留原始轨迹；plan-only 从同一轨迹切片。成本按实际生成的原始 token 统计。</li>
+<li>保留候选 token 边界、图像对应关系和上下文长度检查。运行异常与生成格式分开处理。</li>
+</ul>
+<p>历史大段 token 不再作为仓库测试数据保存。<code>tests/test_permissive_plans.py</code> 使用短合成样例覆盖无标记、重复／混合标记、多 token 标记、Gemma 通道标记及空正文，并可用三个模型的本地 tokenizer 重测。现有 CPU 测试继续覆盖自然 EOS、预算截断、共享轨迹、固定 seed 重试和部分结果报告。真实 GPU 重放工具仅作可选排障用途。</p>
 <details>
 <summary>查看 v9 字段、终止规则与版本记录</summary>
 <p><code>snake-bench-v9</code> uses <code>last_close_v1</code>: find the last token sequence encoding
@@ -158,7 +168,50 @@ candidate distributions. <code>plans.html</code> shows raw/extracted plans and t
 metadata for each run. Old v7/v8 result artifacts remain readable and unchanged.</p>
 <p>The v9 restart uses a fresh source snapshot and repeats all 12 baselines and 552
 dev configurations. Historical v8 scores cannot be pooled into v9 comparisons.</p>
-</details></article></main>
+</details>
+<h2 id="2026-10-19v9-dev-完成转入闭环">2026-10-19：v9 dev 完成，转入闭环<a class="anchor" href="#2026-10-19v9-dev-完成转入闭环" title="Permanent link">§</a></h2>
+<p>已核对 36 个平台任务、564 个配置的退出码、原始事件、候选分数、配置及源码哈希。全部配置完整，541,728 条候选读出有效，覆盖率 100%，失败率 0%。重新从原始事件计算的汇总与各运行的 <code>summary.json</code> 一致。三次生成重复合并后，共 576 个“方法 × 任务 × 模型 × 读出”分数。</p>
+<ul>
+<li>Perception：六组最高分都来自 512-token 当前局面 CoT。yes/no 下，Qwen3.5 为 57.22% → 61.74%，Qwen3-VL 为 43.16% → 48.62%，Gemma 为 53.65% → 59.58%。格子内容与尾巴识别仍弱；512-token CoT 下六组尾巴格识别率为 0%–9.72%。</li>
+<li>Safety：Gemma yes/no 的 probe、1024-token shared_full 为 41.20%，比基线高 16.20 个百分点，配对 95% 区间为 [6.19, 25.98]。</li>
+<li>Decision：六个最佳生成计划的配对区间均包含 0。Qwen3.5 yes/no 的 256-token CoT 为 52.31%，相对无计划高 4.17 个百分点，区间 [0.12, 8.96]。</li>
+<li>计划：3,456 份中有 1,954 份截断，无空计划。全部保留并执行；原始生成共 4,152,761 token。</li>
+</ul>
+<p>以上配置在同一 dev 上选出。区间未校正多重比较，不能视为独立验证。Readout 一致率不单独支持能力提升。</p>
+<p>Episode 已固定 42 个配置：每模型的无计划及人工计划各跑两种读出；最佳生成计划和 CoT 按读出分别选择，各跑三个重复。所有重复都覆盖游戏 seed 0–29，每局最多 128 步。共 1,440 局模型评测，另含 90 局随机对照。生成计划使用 Episode 专用提示重新生成。本轮不启动 test 或蒸馏训练。</p>
+<p>可追溯记录：</p>
+<ul>
+<li>dev 原始输出：<code>outputs/reasoning-v9-20261018T113508Z/</code></li>
+<li>独立审计：<code>.cache/dev-review-20261019/audit.json</code></li>
+<li>配对比较：<code>.cache/dev-review-20261019/comparison.json</code></li>
+<li>Episode 配置：<code>.cache/episode-submissions/v9-20261019/matrix.json</code></li>
+<li>报告：<a href="reasoning_study_explainer.html">三模型视觉推理实验</a></li>
+</ul>
+<p>旧 v8 失败案例在报告中明确标为历史记录，不并入 v9 主榜。</p>
+<p>42 个正式单卡任务已提交，回执位于 <code>.cache/episode-submissions/v9-20261019/formal-submit/jobs.json</code>；配置到 Job ID 的映射位于同批目录的 <code>config-job-map.csv</code>。采用公共科研项目、H100 CUDA 13.2 开发区、优先级 4，预留 50 额度。提交前，三个模型各完成 12 局四步闭环冒烟，候选分数和截图哈希检查通过，进程退出码均为 0。正式运行使用 128 步上限；提交回执不代表 Episode 已完成。</p>
+<h2 id="2026-10-19episode-完成">2026-10-19：Episode 完成<a class="anchor" href="#2026-10-19episode-完成" title="Permanent link">§</a></h2>
+<p>42 个正式任务均为 <code>job_succeeded</code>，进程退出码均为 0。原始事件重算与保存汇总一致。1,440 局模型评测、59,695 次候选读出完整，覆盖率 100%，运行失败率 0%。另有 90 条随机对照记录；三个模型下轨迹相同，去重后按 30 个 seed 计。全部 61,285 步通过独立重放，截图哈希、执行动作、食物数及终止原因一致。</p>
+<ul>
+<li><strong>生存不等于进食。</strong> Qwen3.5 choice 无计划全部走满 128 步，食物为 0，重复状态占 95.9%。人工计划为 0.233 份 / 局，配对差值区间 [0.100, 0.400]，但 73.3% 的局仍零食物到达步限。</li>
+<li><strong>CoT 有局部收益，避障仍不可靠。</strong> Qwen3-VL yes/no 从 0 升到 0.300 份 / 局，配对差值区间 [0.156, 0.478]；动作耗时中位数为 3.332 秒，约为对应基线的 80 倍。六组逐步 CoT 共 540 局，全部以碰撞结束。</li>
+<li><strong>共享计划的长生存可能只是循环。</strong> Gemma choice 从无计划的 5.3 步升到共享计划的 52.1 步，但平均食物数都为 0.033。共享计划中 36.7% 的局零食物走到步限。</li>
+<li><strong>当前优势不够支持直接蒸馏所有行为。</strong> 没有方法平均吃到 1 份食物。应分开评价进食、立即避障与循环；不能把更多思考当作正确示范的保证。</li>
+</ul>
+<p>置信区间以游戏 seed 配对抽样 10,000 次；同 seed 的生成重复先取均值。各重复分数另报，不把三次重复当作 90 个独立 seed。区间未作多重比较校正。Episode 未重扫所有预算，因此不估计预算的因果效应。本轮没有运行 test。</p>
+<p>延迟使用日志的 <code>action_seconds</code>：从模型执行前到环境更新后，包含提示构造、思考、读出及环境检查，<strong>不含截图渲染和前后日志写入</strong>。后两项缺少逐步计时，不能补出完整环路的每步墙钟值。HTML 同时列出整局墙钟时间、首步、后续步、p50/p95 和计划预生成成本。模型加载单列。整局耗时除以步数只作摊销均值。</p>
+<p>报告新增三个同 seed 案例，按明确条件选取中位项，避免只展示最好一局：Qwen3.5 choice seed 12；Qwen3-VL yes/no seed 25、CoT repeat 0；Gemma choice seed 11、共享计划 repeat 2。图片由冻结渲染器重建并核对哈希。所有 1,440 局均可查询逐步延迟并下载 CSV。</p>
+<p>核对与重建入口：</p>
+<pre><code class="language-bash">PYTHONPATH=.cache/episode-submissions/v9-20261019/snapshot/src:. .venv/bin/python \
+  scripts/reasoning_episode_results.py \
+  --root outputs/episode-v9-20261019 \
+  --batch .cache/episode-submissions/v9-20261019 \
+  --status .cache/episode-review-20261019/platform-status.json \
+  --output .cache/episode-review-20261019
+PYTHONPATH=src:. .venv/bin/python scripts/build_reasoning_study_explainer.py \
+  --data-from-html docs/reasoning_study_explainer.html \
+  --episode-results .cache/episode-review-20261019/results.json
+</code></pre>
+<p>产物：<code>.cache/episode-review-20261019/results.json</code>、<code>scores.json</code>、<code>steps.csv</code>、<code>audit.log</code>；原始输出保留在 <code>outputs/episode-v9-20261019/</code>。HTML 内嵌汇总、全部逐步耗时及案例截图，可离线阅读。</p></article></main>
 <footer><p>vdecision</p><p><a href="https://donglinkang2021.github.io/">董林康的主页</a> · <a href="https://github.com/donglinkang2021/vdec">网站仓库</a></p></footer>
 <script>
 (function () {
