@@ -1,0 +1,210 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="vdecision：视觉决策评测、交互文章与研究记录。">
+<title>VDecision Drawing · vdecision</title><style>:root{color-scheme:light;--paper:#faf9f6;--ink:#20323c;--muted:#657577;--accent:#08766e;--line:#dbe1db}
+*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:17px/1.85 system-ui,-apple-system,"PingFang SC","Microsoft YaHei",sans-serif}a{color:var(--accent);text-underline-offset:4px}a:hover{text-decoration-thickness:2px}a:focus-visible,summary:focus-visible{outline:3px solid #db952f;outline-offset:5px}header,main,footer{max-width:1100px;margin:auto;padding:24px}header{display:flex;align-items:center;justify-content:space-between;gap:20px;border-bottom:1px solid var(--line)}.brand{font-weight:750;font-size:23px;text-decoration:none;color:var(--ink)}nav{display:flex;flex-wrap:wrap;gap:12px 24px;font-size:14px}nav a{text-decoration:none}.hero{max-width:790px;padding:64px 0 38px}.eyebrow{font-size:13px;letter-spacing:.13em;text-transform:uppercase;color:var(--accent);font-weight:650}h1{font-family:Georgia,"Songti SC","Noto Serif CJK SC",serif;font-size:clamp(32px,5vw,56px);line-height:1.3;letter-spacing:-.025em;margin:15px 0 24px}h2{font-size:26px;margin-top:44px;line-height:1.45}h3{font-size:21px}p{margin:15px 0}.intro{font-size:20px;color:var(--muted)}.cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}.card{display:block;padding:28px;border:1px solid var(--line);border-radius:12px;text-decoration:none;color:var(--ink);background:#fffefa}.card:hover{border-color:var(--accent)}.card h2{margin:12px 0;font-size:25px}.card p{color:var(--muted);font-size:16px}.card .go{color:var(--accent);font-size:15px}.note,blockquote{border-left:3px solid #96b7a5;padding:8px 22px;margin:28px 0;background:#edf2ec}.document{max-width:850px;margin:36px auto}.document h1{font-size:38px}.document img{display:block;max-width:100%;height:auto;margin:28px auto}.document li{margin:8px 0}.document a,.document code{overflow-wrap:anywhere}pre{overflow:auto;padding:20px;background:#edf0ec;border-radius:7px;font-size:14px;line-height:1.7}pre code{overflow-wrap:normal!important}code{font-size:.87em}.table-scroll{overflow:auto;margin:24px 0}table{border-collapse:collapse;width:100%;font-size:15px}th,td{padding:12px 14px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}th{background:#edf2ec}td:first-child{font-weight:550}.toc{font-size:14px}.toc ul{padding-left:22px}.toc-box{padding:14px 20px;border:1px solid var(--line);border-radius:8px}.unpublished{color:var(--muted);text-decoration:underline dotted}.archive-label{color:#875f29;font-weight:650}.anchor{font-size:.7em;text-decoration:none;margin-left:8px}footer{margin-top:60px;border-top:1px solid var(--line);color:var(--muted);font-size:14px}.skip{position:absolute;top:-80px}.skip:focus{top:10px;background:white;padding:10px;z-index:2}@media(max-width:600px){header{align-items:flex-start;flex-direction:column;gap:12px}header,main,footer{padding:20px}.hero{padding-top:30px}.cards{grid-template-columns:1fr}.card{padding:22px}.document{margin-top:24px}.document h1{font-size:30px}.intro{font-size:18px}pre{padding:14px}.note,blockquote{padding:8px 14px}nav{gap:10px 18px}}@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}}
+
+.document details{margin:22px 0;padding:14px 18px;border:1px solid var(--line);border-radius:8px;background:#fffefa}.document summary{cursor:pointer;font-weight:650}.document details[open]>summary{margin-bottom:18px}.document details h2{margin-top:28px}.document p{overflow-wrap:anywhere}.document span[id]{scroll-margin-top:24px}
+
+.table-scroll:focus-visible{outline:3px solid #db952f;outline-offset:4px}@media(max-width:600px){.document table{min-width:640px}}
+</style></head><body>
+<a class="skip" href="#main">跳到正文</a>
+<header><a class="brand" href="index.html">vdecision<span aria-hidden="true"> /</span></a>
+<nav aria-label="网站导航"><a href="benchmark_explainer.html">Snake 指南</a><a href="brush_explainer.html">Brush 指南</a><a href="drawing_explainer.html">Drawing 指南</a><a href="benchmark_tasks.html">指标说明</a><a href="reasoning_study_explainer.html">推理实验</a><a href="papers.html">读论文</a><a href="archive/index.html">历史归档</a></nav></header>
+<main id="main"><article class="document"><details class="toc-box"><summary>本页目录</summary><div class="toc">
+<ul>
+<li><a href="#vdecision-drawing">VDecision Drawing</a><ul>
+<li><a href="#先体验">先体验</a></li>
+<li><a href="#模型运行与公共接口">模型运行与公共接口</a></li>
+<li><a href="#冻结题集与轨道">冻结题集与轨道</a></li>
+<li><a href="#动作与控制器">动作与控制器</a></li>
+<li><a href="#规划条件与成本">规划条件与成本</a></li>
+<li><a href="#评分与结果完整性">评分与结果完整性</a></li>
+<li><a href="#页面和本地接口">页面和本地接口</a></li>
+<li><a href="#验证与当前证据">验证与当前证据</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</details><h1 id="vdecision-drawing">VDecision Drawing<a class="anchor" href="#vdecision-drawing" title="Permanent link">§</a></h1>
+<p>可从 <a href="drawing_explainer.html">Drawing 交互文章</a> 开始：逐步查看三模型真实输入模板、双轨规则回放、四级九宫格定位与评分反例。文章为单文件，可下载后离线阅读；输出示范不代表模型实测。</p>
+<p>这是当前仓库独立实现的空间绘图 benchmark：模型从画面理解已有物体，补画满足关系要求的新图形。题目不会提供答案坐标。环境、冻结题集、评分、模型控制器和网页均在 <code>src/vdecision/benches/drawing/</code>。</p>
+<p>设计借鉴 <a href="https://github.com/hyunjun1121/DrawingBench/blob/main/examples/sample_prompts.json">DrawingBench 的任务形式</a>，没有迁入其题集或界面，也不宣称复现其鼠标 GUI 协议。本版本使用语义工具选择与画布位置；评分直接验证图形和空间约束。</p>
+<h2 id="先体验">先体验<a class="anchor" href="#先体验" title="Permanent link">§</a></h2>
+<p>在仓库根目录执行，使用已有 <code>.venv</code>：</p>
+<pre><code class="language-bash"># 本地页面：人工绘制、规则演示、回放，不需要 GPU
+PYTHONPATH=src .venv/bin/python -m vdecision.benches.drawing.viewer
+</code></pre>
+<p>打开 <code>http://127.0.0.1:8766</code>。默认仅监听本机；远程机器可通过 SSH 转发 8766 端口访问。页面提供全部 108 题、两个轨道、工具与六种颜色。人工拖动：直线为两端点，矩形为对角点，圆形从圆心拖到圆周；真实画笔保留拖动路径。撤销优先取消当前笔画，否则移除最近完成的新增图形。</p>
+<p>“规则演示”使用题目维护者保存的参考解，明确属于知道答案的规则策略。选择题目后点击“开始新任务”，可以单步、继续、暂停或停止。提交后查看评分，时间轴可以回到任一步；图片导出保存当前步骤的服务端 PNG。</p>
+<pre><code class="language-bash"># 六类各一道开发题，默认几何轨道；唯一输出目录自动生成
+PYTHONPATH=src .venv/bin/python run.py --bench drawing --policy oracle
+
+# 全部案例 × 两轨道，216 次规则验证；输出目录必须尚不存在
+PYTHONPATH=src .venv/bin/python run.py --bench drawing --policy oracle \
+  --split all --full-set --tracks geometry freehand --output outputs/drawing-oracle
+
+# 开发集随机基线，三个 seed
+PYTHONPATH=src .venv/bin/python run.py --bench drawing --policy random \
+  --full-set --tracks geometry freehand --seeds 0 1 2
+
+# 离线查看已有结果，以及打开独立回放页面
+PYTHONPATH=src .venv/bin/python run.py --summarize outputs/drawing-oracle --details
+PYTHONPATH=src .venv/bin/python -m vdecision.benches.drawing.viewer \
+  --run outputs/drawing-oracle --port 8767
+</code></pre>
+<p><code>--save-gifs</code> 额外保存逐步 GIF。PNG、动作和回放状态默认保存。随机策略从规范动作和合法参数中随机选择，因此仍可能出现不适合当前状态的非法操作；它不是可解参考策略。</p>
+<h2 id="模型运行与公共接口">模型运行与公共接口<a class="anchor" href="#模型运行与公共接口" title="Permanent link">§</a></h2>
+<p>复用仓库的模型适配器和推理后端。默认只运行开发集前六题（六类各一题）、<code>geometry / readout / choice / no_plan</code>：</p>
+<pre><code class="language-bash">PYTHONPATH=src .venv/bin/python run.py --bench drawing \
+  --model models/Qwen/Qwen3.5-4B
+
+# 仅查看显式的完整条件矩阵，不加载权重
+PYTHONPATH=src .venv/bin/python run.py --bench drawing --split test --full-set \
+  --tracks geometry freehand --controllers readout coordinate \
+  --methods choice yes_no \
+  --conditions no_plan shared_full shared_plan_only shared_no_think \
+  --seeds 0 1 2 --dry-run
+
+# 模板预检：只读取 tokenizer / processor，不加载权重
+PYTHONPATH=src .venv/bin/python run.py --bench drawing --preflight \
+  --model models/Qwen/Qwen3.5-4B
+
+# 本地 UI 启用真实模型；推理进程在首次执行模型步骤时启动
+PYTHONPATH=src .venv/bin/python -m vdecision.benches.drawing.viewer \
+  --model models/Qwen/Qwen3.5-4B --port 8766
+</code></pre>
+<p>坐标控制器不使用 <code>--methods</code>，在矩阵中只产生一个 <code>coordinate</code> 条件。完整矩阵删除 <code>--dry-run</code> 后才执行实际推理。可通过 <code>--backend transformers</code> 切换后端，模型服务其他参数见入口的 <code>--help</code>。</p>
+<pre><code class="language-python">from vdecision import DrawingBench, Engine, BenchResult
+
+if __name__ == &quot;__main__&quot;:
+    # 无 GPU 的可复现演示
+    result = DrawingBench(policy=&quot;oracle&quot;, tracks=(&quot;geometry&quot;, &quot;freehand&quot;)).run()
+    print(result.summary[&quot;leaderboard&quot;])
+    reloaded = BenchResult.load(result.output_dir)
+
+    # 实际模型推理（需要配置相应资源）
+    # engine = Engine(&quot;models/Qwen/Qwen3.5-4B&quot;)
+    # try:
+    #     result = DrawingBench(controllers=(&quot;readout&quot;, &quot;coordinate&quot;)).run(engine)
+    # finally:
+    #     engine.close()
+</code></pre>
+<h2 id="冻结题集与轨道">冻结题集与轨道<a class="anchor" href="#冻结题集与轨道" title="Permanent link">§</a></h2>
+<p><code>cases_v1.json</code> 冻结 36 个开发案例、72 个测试案例。方向位置、对齐与等距、两物体之间、包含与不相交、相对大小、多条件组合六类等量分布。每题已有 2–5 个对象，要求新增 1–3 个对象；规划参考图单独保存，不属于评测题。</p>
+<p>第一版从六类关系模板生成布局，结合轴变换、平移、颜色置换和干扰对象形成不同实例，按已有布局＋目标属性＋约束的组合去重。开发与测试共享任务模板，<strong>不代表新关系类型上的泛化测试</strong>。维护时可用 <code>PYTHONPATH=src .venv/bin/python scripts/build_drawing_cases.py</code> 重建；正式评测仅读取冻结 JSON，并记录文件哈希。</p>
+<div class="table-scroll" tabindex="0" role="region" aria-label="数据表，可横向滚动"><table>
+<thead>
+<tr>
+<th>轨道</th>
+<th>工具</th>
+<th>落笔后移动的含义</th>
+<th style="text-align: right;">默认操作预算</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>geometry</td>
+<td>line、rectangle、circle</td>
+<td>更新第二控制点；抬笔提交最终图形</td>
+<td style="text-align: right;">64</td>
+</tr>
+<tr>
+<td>freehand</td>
+<td>pen</td>
+<td>每次移动新增真实线段；每个目标必须一笔完成</td>
+<td style="text-align: right;">256</td>
+</tr>
+</tbody>
+</table></div>
+<p>两轨使用相同案例和约束。矩形为轴对齐矩形；圆使用圆心与半径控制点。六种固定颜色是 black、red、green、blue、orange、purple。没有填充、橡皮、对象编辑或工具栏点击定位任务。初始图形不可撤销。</p>
+<h2 id="动作与控制器">动作与控制器<a class="anchor" href="#动作与控制器" title="Permanent link">§</a></h2>
+<p>两控制器调用同一个环境动作接口。画布边长 640，坐标以 8 为间距取整数 <code>0..80</code>，包含边界，共 <code>81 × 81</code> 个位置。横轴向右、纵轴向下。动作 JSON 必须严格匹配以下一种格式：</p>
+<pre><code class="language-json">{&quot;action&quot;:&quot;tool&quot;,&quot;tool&quot;:&quot;circle&quot;}
+{&quot;action&quot;:&quot;color&quot;,&quot;color&quot;:&quot;red&quot;}
+{&quot;action&quot;:&quot;move&quot;,&quot;x&quot;:40,&quot;y&quot;:30}
+{&quot;action&quot;:&quot;down&quot;}
+{&quot;action&quot;:&quot;up&quot;}
+{&quot;action&quot;:&quot;undo&quot;}
+{&quot;action&quot;:&quot;finish&quot;}
+</code></pre>
+<p>每行表示独立的一次动作，不是一次发送的数组。工具和颜色只能在抬笔时修改。<code>finish</code> 不会自动抬笔；尚有未完成笔画则不成功。所有操作始终可选，非法操作消耗一次预算，返回操作错误但不修改成其他动作。预算耗尽不会自动提交。</p>
+<p><code>readout</code> 复用现有 <code>choice</code>／<code>yes_no</code> 候选评分，先选七种操作，再选工具、颜色或落点。落点通过四级九宫格选择：81→27→9→3→1，每级仍看完整画面，并提供当前小区域的放大图。整个候选定位期间真实笔尖不动，最终只执行一次 <code>move</code>，不会产生搜索轨迹墨迹。唯一可用参数（真实画笔工具）直接选取并记录。</p>
+<p><code>coordinate</code> 每次生成一个 JSON 动作，贪心解码，最多 128 token。越界、小数坐标、重复字段、额外字段、代码围栏、解释文本或截断输出均为非法动作；不会截取部分输出或纠正坐标。原始输出、token 和解析错误均保存。</p>
+<p>模型输入只含规则、题目、操作状态和渲染图，不提供已有对象坐标表、目标答案、评分真值或中途分数。服务端保留完整状态用于执行和回放。网页和模型的基础观察图由同一 Python 渲染器生成，候选定位图在基础图上增加区域提示。</p>
+<h2 id="规划条件与成本">规划条件与成本<a class="anchor" href="#规划条件与成本" title="Permanent link">§</a></h2>
+<p>支持 <code>no_plan</code>、<code>shared_full</code>、<code>shared_plan_only</code>、<code>shared_no_think</code>。按控制器、轨道、seed 生成独立参考图规划；<code>full</code> 与 <code>plan-only</code> 复用同一次生成，后者仅注入计划文本 token。<code>shared_no_think</code> 单独生成无思考过程的计划。不支持思考的适配器将需要思考的条件标记为 unsupported。</p>
+<p>分别记录操作数、非法操作、撤销数、模型请求数、输入／输出 token 和执行耗时。<code>yes_no</code> 会产生多个候选请求，落点也需要四次选择，因此不能仅按环境操作数比较效率。规划 token、请求与耗时独立保存，不重复计入每一题。</p>
+<h2 id="评分与结果完整性">评分与结果完整性<a class="anchor" href="#评分与结果完整性" title="Permanent link">§</a></h2>
+<p>主指标是六类任务等权的完整成功率。一次成功要求：模型自主提交、新增对象数量与类型／颜色全部正确、所有空间关系满足、没有额外对象或未完成笔画。停止、预算耗尽、错误输出属于已执行的失败尝试；模型加载或推理异常属于基础设施失败，不作为零分混入榜单。</p>
+<p>位置不与隐藏参考坐标逐点比较，允许多个合法解。对齐、等距和轮廓误差容差为 8，尺寸比例允许 10% 相对偏差，需要分离或包含边距时至少 16。between 在本版本明确表示两对象中心的中点。inside 的外框是矩形；第一版分离任务中的直线为水平／垂直线。</p>
+<p>真实笔迹对完整线段每 2 单位重采样，拟合直线、轴对齐矩形或圆，并检查“笔迹到拟合轮廓”和“拟合轮廓到笔迹”两向最大距离；闭合轮廓还要求起终点距离不超过 8。只点角点、缺边、穿过内部的折线和未闭合笔迹不能凭工具名称通过。形状误差汇总以画布单位报告。</p>
+<p>结果包含：</p>
+<ul>
+<li><code>run.json</code>：实验矩阵、题集及参考图、协议、容差、渲染／提示词版本、数据与源代码哈希。</li>
+<li><code>events.jsonl</code>：规划、每步前后状态、动作、候选分数或生成文本、原始 token、解析错误和终局结果。</li>
+<li><code>summary.json</code>、<code>leaderboard.csv</code>、<code>diagnostics.json</code>：四组控制器×轨道分别汇总，保留读出方式和规划条件，单列关系通过率、轮廓误差、颜色／工具错误及成本。</li>
+<li>每次尝试的最终 PNG，以及可选 GIF；中间图片可从保存状态确定性重建。</li>
+</ul>
+<p><code>status=success</code> 表示基础设施成功执行该次尝试，真正的任务成功读取 <code>metrics.success</code>。缺失、重复、损坏、基础设施失败或 unsupported 的分组不排名。六题冒烟结果标记 <code>subset=true</code>；正式全量结果需要显式 <code>--full-set</code>。UI 人工／规则运行标记为 human／oracle，不混称模型成绩。</p>
+<h2 id="页面和本地接口">页面和本地接口<a class="anchor" href="#页面和本地接口" title="Permanent link">§</a></h2>
+<p>页面提供人工绘制、规则演示、模型运行和历史回放；模型条件可选，支持开始、暂停、单步和停止。暂停保留已经发出的推理请求，返回后等待继续；重开题目使用新会话与版本标识，丢弃旧响应。模型仅由独立进程持有，主服务继续处理页面请求。</p>
+<div class="table-scroll" tabindex="0" role="region" aria-label="数据表，可横向滚动"><table>
+<thead>
+<tr>
+<th>接口</th>
+<th>用途</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GET <code>/api/catalog</code></td>
+<td>不含参考解与评分约束的题目目录</td>
+</tr>
+<tr>
+<td>GET <code>/api/events</code></td>
+<td>当前状态、历史尝试与帧索引；推进已授权的自动运行</td>
+</tr>
+<tr>
+<td>POST <code>/api/control</code></td>
+<td>JSON 命令：new、actions、resume、pause、step、stop</td>
+</tr>
+<tr>
+<td>GET <code>/api/frame?index=N</code></td>
+<td>当前帧状态与决策，终局才含评分</td>
+</tr>
+<tr>
+<td>GET <code>/api/frame.png?index=N</code></td>
+<td>对应 PNG；加 <code>query=K</code> 查看该步骤第 K 次模型查询图</td>
+</tr>
+</tbody>
+</table></div>
+<p><code>new</code> 支持 <code>case_id, track, mode, controller, method, condition, seed</code>。<code>actions</code> 携带规范动作数组，仅供人工模式使用。浏览器提交同源 JSON 请求，连续控制操作按顺序执行。<code>--run</code> 打开只读回放服务，拒绝控制命令。</p>
+<h2 id="验证与当前证据">验证与当前证据<a class="anchor" href="#验证与当前证据" title="Permanent link">§</a></h2>
+<pre><code class="language-bash">PYTHONPATH=src:tests:. .venv/bin/python -m unittest \
+  tests/test_drawing.py tests/test_drawing_ui.py -q
+
+# 需要 Playwright 与 Chromium；支持用环境变量指定已有安装
+node tests/test_drawing_browser.cjs
+</code></pre>
+<p>测试覆盖全部案例的双轨规则可解性、评分反例、多合法布局、全部 6561 个候选落点、两控制器轨迹一致性、严格解析、预算终止、规划复用、真值隔离、损坏或不完整结果不排名、模型子进程、暂停／单步／旧结果丢弃，以及浏览器人工拖动、回放、导出与移动屏幕布局。浏览器的模型进程使用明确标记的脚本测试引擎，用于验证控制流程，不能作为模型能力证据。</p>
+<p>本次交付已执行全量规则策略（108 题 × 两轨道，216/216 成功），以及随机基线（108 题 × 两轨道 × 三 seed，648 次，完整成功率 0%）。Qwen3.5、Qwen3-VL、Gemma-4 三类现有适配器的 tokenizer／processor 预检通过。<strong>尚未运行本 benchmark 的真实模型权重推理，尚无模型成绩。</strong></p></article></main>
+<footer><p>vdecision</p><p><a href="https://donglinkang2021.github.io/">董林康的主页</a> · <a href="https://github.com/donglinkang2021/vdec">网站仓库</a></p></footer>
+<script>
+(function () {
+  function revealTarget() {
+    let id;
+    try { id = decodeURIComponent(location.hash.slice(1)); } catch (_) { return; }
+    const target = document.getElementById(id);
+    if (!target) return;
+    for (let parent = target.parentElement; parent; parent = parent.parentElement) {
+      if (parent.tagName === 'DETAILS') parent.open = true;
+    }
+    requestAnimationFrame(() => target.scrollIntoView());
+  }
+  addEventListener('hashchange', revealTarget);
+  if (document.readyState === 'loading') addEventListener('DOMContentLoaded', revealTarget);
+  else revealTarget();
+})();
+</script>
+</body></html>
