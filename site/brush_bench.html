@@ -10,7 +10,7 @@
 </style></head><body>
 <a class="skip" href="#main">跳到正文</a>
 <header><a class="brand" href="index.html">vdecision<span aria-hidden="true"> /</span></a>
-<nav aria-label="网站导航"><a href="benchmark_explainer.html">Snake 指南</a><a href="brush_explainer.html">Brush 指南</a><a href="drawing_explainer.html">Drawing 指南</a><a href="benchmark_tasks.html">指标说明</a><a href="reasoning_study_explainer.html">推理实验</a><a href="papers.html">读论文</a><a href="archive/index.html">历史归档</a></nav></header>
+<nav aria-label="网站导航"><a href="snake_explainer.html">Snake 指南</a><a href="input_assembly_explainer.html">输入拼接</a><a href="brush_explainer.html">Brush 指南</a><a href="drawing_explainer.html">Drawing 指南</a><a href="benchmark_tasks.html">指标说明</a><a href="reasoning_study_explainer.html">推理实验</a><a href="papers.html">读论文</a><a href="archive/index.html">历史归档</a></nav></header>
 <main id="main"><article class="document"><details class="toc-box"><summary>本页目录</summary><div class="toc">
 <ul>
 <li><a href="#brushbench-v1看图定位与画笔状态控制">BrushBench v1：看图定位与画笔状态控制</a><ul>
@@ -19,6 +19,7 @@
 <li><a href="#二分定位不等于直线绘制">二分定位不等于直线绘制</a></li>
 <li><a href="#状态与动作">状态与动作</a></li>
 <li><a href="#模型输入与双轴批量读出">模型输入与双轴批量读出</a></li>
+<li><a href="#coordinate直接生成坐标动作">Coordinate：直接生成坐标动作</a></li>
 <li><a href="#题集与指标">题集与指标</a></li>
 <li><a href="#运行">运行</a></li>
 <li><a href="#后续更有代表性的游戏">后续更有代表性的游戏</a></li>
@@ -28,7 +29,7 @@
 </div>
 </details><h1 id="brushbench-v1看图定位与画笔状态控制">BrushBench v1：看图定位与画笔状态控制<a class="anchor" href="#brushbench-v1看图定位与画笔状态控制" title="Permanent link">§</a></h1>
 <p>从 <a href="brush_explainer.html">BrushBench 离线交互文章</a> 开始：亲手操作一维二分和完整二维画笔，比较直线工具与真实笔迹。全部案例、规则轨迹和验证数据内嵌，单文件可断网打开。</p>
-<p>本项目的第二个游戏环境，入口为 <code>--bench brush</code>。Snake 的动作主要是连续转向；Brush 引入分层决策：先判断该执行 pick、move 还是 drop，选择 move 后再根据同一张截图回答两个方向问题，控制器据此更新位置。</p>
+<p>本项目的第二个游戏环境，入口为 <code>--bench brush</code>。Snake 的动作主要是连续转向；Brush 默认引入分层决策：先判断该执行 pick、move 还是 drop，选择 move 后再根据同一张截图回答两个方向问题，控制器据此更新位置。另提供与本项目 DrawingBench 一致的 <code>--controller coordinate</code>，每步生成一个 JSON 动作，直接指定 move 的整数坐标。</p>
 <h2 id="方案与实施范围">方案与实施范围<a class="anchor" href="#方案与实施范围" title="Permanent link">§</a></h2>
 <p>本轮实现四步：</p>
 <ol>
@@ -101,7 +102,7 @@
 </tr>
 </tbody>
 </table></div>
-<p>默认模式相当于绘图软件的直线工具。它不测低层手部轨迹控制，也不会自动吸附到正确起终点。<code>freehand</code> 下规则策略也可能失败，不能把这种失败全部归因于模型。若下一版要评测真实画笔画直线，应先抬笔定位并锁存终点，再连续插值绘制，或者另设受限小步动作；这将是一个不同的动作协议。</p>
+<p>默认模式相当于绘图软件的直线工具。它不测低层手部轨迹控制，也不会自动吸附到正确起终点。<code>freehand</code> 下二分规则策略也可能失败，不能把这种失败全部归因于模型。coordinate 协议允许一次直接移动到终点，因此可以在两种笔迹模式中都画出直线；它仍不评测受限小步的连续轨迹控制。</p>
 <h2 id="状态与动作">状态与动作<a class="anchor" href="#状态与动作" title="Permanent link">§</a></h2>
 <div class="table-scroll" tabindex="0" role="region" aria-label="数据表，可横向滚动"><table>
 <thead>
@@ -134,7 +135,7 @@
 </tbody>
 </table></div>
 <p>始终向模型提供三个动作，不屏蔽错误选项。提前落笔和提前提交均照常执行，最后由独立评分器判定。初始笔尖位置已在画布上可见，pick 是“抬笔”动作；这一版没有单独的工具栏抓取步骤。</p>
-<p>模型看到的文本状态只有 phase、当前目标名称 S/E、之前回答产生的轴锁定状态和剩余步数。目标与笔尖坐标、真实是否对齐、正确答案、搜索区间和评分均不输入模型。S 为绿色起点，E 为粉色终点；笔尖由空心准星表示，避免遮住目标中心。</p>
+<p>二分模式中，模型看到的文本状态只有 phase、当前目标名称 S/E、之前回答产生的轴锁定状态和剩余步数。coordinate 模式省略不适用的轴锁定字段。两种协议都不向模型提供目标与笔尖坐标、真实是否对齐、正确答案、搜索区间和评分。S 为绿色起点，E 为粉色终点；笔尖由空心准星表示，避免遮住目标中心。</p>
 <p>默认 33 × 33 个离散位置。每轴保留闭区间 <code>[lo, hi]</code>，初始 <code>[0, 32]</code>。在当前位置 <code>p</code>：</p>
 <ul>
 <li>left / above：<code>hi = min(hi, p - 1)</code>，新位置 <code>floor((lo + hi) / 2)</code>。</li>
@@ -169,6 +170,31 @@
 </table></div>
 <p>复用现有 <code>\boxed{</code> 边界、softmax 和 yes/(yes+no) 归一化。分数不是成功概率。两轴打包不代表延迟必然减半，需要真实后端实测。</p>
 <p>支持 <code>no_plan</code>、<code>shared_full</code>、<code>shared_plan_only</code>、<code>shared_no_think</code>。每个 seed 在独立参考图上生成规划，full 和 plan-only 复用同一次生成的原始 token；不同读出方法也复用该计划。不支持思考的模型会将相关条件记为 unsupported。当前版本尚未接入 Snake 的 manual_plan、neutral_prefix、per_step_cot 扩展条件。</p>
+<h2 id="coordinate直接生成坐标动作">Coordinate：直接生成坐标动作<a class="anchor" href="#coordinate直接生成坐标动作" title="Permanent link">§</a></h2>
+<p><code>--controller coordinate</code> 参考本项目 DrawingBench 的 coordinate 实现，使用同一模型适配器与生成后端。每个高层动作只发起一次生成，贪心解码（temperature=0），最多 128 token。合法输出为以下三种 JSON 对象之一：</p>
+<pre><code class="language-json">{&quot;action&quot;:&quot;pick&quot;}
+</code></pre>
+<pre><code class="language-json">{&quot;action&quot;:&quot;move&quot;,&quot;x&quot;:10,&quot;y&quot;:20}
+</code></pre>
+<pre><code class="language-json">{&quot;action&quot;:&quot;drop&quot;}
+</code></pre>
+<p>坐标是画布格点，不是图片像素：冻结题集范围为 0–32，左上格点为 <code>(0,0)</code>，x 向右、y 向下。模型仍须从图像估计位置。一次 move 同时更新 x/y，不经过二分、轴锁定或中间落点。pick/drop 的状态转换、提前提交、步数限制与评分函数沿用原规则；<code>line_tool</code> 替换预览，<code>freehand</code> 为每次 move 留下一条线段。</p>
+<p>校验不接受额外或重复字段、缺失字段、小数、布尔坐标、越界坐标、代码围栏、解释文本或多个对象。达到生成 token 上限的输出也无效，即使其前缀看起来合法。无效输出消耗一步，笔尖和笔迹不改变，不截取 JSON、不取整、不裁剪、不吸附。原始输出、生成 token、finish/stop reason、解析错误、提示 token 和截图哈希保存在每步的 <code>coordinate_batch</code>；解析成功的命令保存在 <code>coordinate_action</code>。</p>
+<p>coordinate 支持现有四种规划条件；<code>shared_full</code> 与 <code>shared_plan_only</code> 复用同一次生成的计划，使用独立的坐标任务规划说明。<code>--methods choice yes_no</code> 不会复制 coordinate 实验，矩阵中的 method 固定为 <code>coordinate</code>。<code>--axis-schedule alternating</code> 不适用于此模式，配置会明确拒绝；manifest 的 <code>axis_schedule</code> 和 <code>axis_lock_source</code> 为 null，<code>movement_protocol</code> 为 <code>absolute_integer</code>。轴回答准确率为 null，生成请求与 token 成本正常计入 diagnostics。</p>
+<p><code>--policy oracle --controller coordinate</code> 直接读取真值验证环境可解性；random 模式随机选择动作，在 move 时均匀采样合法格点。二者都不加载模型。coordinate 与二分的动作空间和成本不同，分数应按 controller、ink_mode 和 policy 分开比较。原交互文章中的 11.11% 真实笔迹结果对应二分规则策略，不是 coordinate 成绩。</p>
+<pre><code class="language-bash"># 坐标模式配置与矩阵预览，不加载权重
+PYTHONPATH=src .venv/bin/python run.py --bench brush --controller coordinate --dry-run
+
+# 全部 108 题：直接坐标 + 真实笔迹的规则验证
+PYTHONPATH=src .venv/bin/python run.py --bench brush --controller coordinate \
+  --policy oracle --split all --ink-mode freehand
+
+# 模型冒烟；四种规划条件，结果按 coordinate 单独记录
+PYTHONPATH=src .venv/bin/python run.py --bench brush --controller coordinate \
+  --model models/Qwen/Qwen3.5-4B --limit 6 \
+  --conditions no_plan shared_full shared_plan_only shared_no_think
+</code></pre>
+<p>Python 接口：<code>BrushBench(controller="coordinate", ink_mode="freehand")</code>。<code>--preflight</code> 同时检查二分与 coordinate 的原生模板，不加载权重。这里的规则验证与模板检查均不代表模型推理成绩。</p>
 <h2 id="题集与指标">题集与指标<a class="anchor" href="#题集与指标" title="Permanent link">§</a></h2>
 <p>冻结文件为 <code>src/vdecision/benches/brush/cases_v1.json</code>，构造工具为 <code>scripts/build_brush_cases.py</code>。正式运行仅读取冻结数据。六类案例为 horizontal、vertical、diagonal、shallow、steep、boundary；每类开发 6 个、测试 12 个，共 36/72。起终点几何去重时忽略方向，开发／测试不会出现反向复用的同一线段；规划参考图另置。部分案例初始已对齐一个轴或已位于起点，检查是否会产生多余动作。</p>
 <p>主指标是六类<strong>等权完整成功率</strong>。每局成功要求：已提交、落笔点恰为 S、结束点恰为 E、全部可见笔迹到目标线段的最大距离不超过 0.25 个格距。端点要求精确对齐；0.25 容差只用于笔迹偏离。评分直接读取几何，不使用模型裁判。真实笔迹的路径长度比作为额外诊断报告，不与主指标混成一个分数。</p>
