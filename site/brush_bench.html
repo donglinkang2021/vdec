@@ -23,6 +23,7 @@
 <li><a href="#题集与指标">题集与指标</a></li>
 <li><a href="#运行">运行</a></li>
 <li><a href="#后续更有代表性的游戏">后续更有代表性的游戏</a></li>
+<li><a href="#v2-思考模式与重复实验">v2 思考模式与重复实验</a></li>
 </ul>
 </li>
 </ul>
@@ -169,7 +170,7 @@
 </tbody>
 </table></div>
 <p>复用现有 <code>\boxed{</code> 边界、softmax 和 yes/(yes+no) 归一化。分数不是成功概率。两轴打包不代表延迟必然减半，需要真实后端实测。</p>
-<p>支持 <code>no_plan</code>、<code>shared_full</code>、<code>shared_plan_only</code>、<code>shared_no_think</code>。每个 seed 在独立参考图上生成规划，full 和 plan-only 复用同一次生成的原始 token；不同读出方法也复用该计划。不支持思考的模型会将相关条件记为 unsupported。当前版本尚未接入 Snake 的 manual_plan、neutral_prefix、per_step_cot 扩展条件。</p>
+<p>支持 <code>no_plan</code>、<code>shared_full</code>、<code>shared_plan_only</code>、<code>shared_no_think</code>。每个 seed 在独立参考图上生成规划，full 和 plan-only 复用同一次生成的原始 token；不同读出方法也复用该计划。不支持思考的模型会将相关条件记为 unsupported。v2 另支持 manual_plan、neutral_prefix 和 per_step_cot；原四种条件仍可单独运行。完整三模型实验矩阵见 <span class="unpublished" title="仓库内文件，未随站点发布">实验方案</span>。</p>
 <h2 id="coordinate直接生成坐标动作">Coordinate：直接生成坐标动作<a class="anchor" href="#coordinate直接生成坐标动作" title="Permanent link">§</a></h2>
 <p><code>--controller coordinate</code> 参考本项目 DrawingBench 的 coordinate 实现，使用同一模型适配器与生成后端。每个高层动作只发起一次生成，贪心解码（temperature=0），最多 128 token。合法输出为以下三种 JSON 对象之一：</p>
 <pre><code class="language-json">{&quot;action&quot;:&quot;pick&quot;}
@@ -242,7 +243,14 @@ PYTHONPATH=src:tests:. .venv/bin/python -m unittest tests/test_brush.py -v
 <li><strong>开关接线</strong>：只允许连接满足颜色或逻辑约束的端口；新增视觉关系、多步约束和状态依赖。</li>
 <li><strong>沿轨描线</strong>：笔尖只能小步移动，需沿指定曲线并避开障碍；新增连续路径控制。必须另设移动协议，不能沿用当前二分法后声称测到轨迹控制。</li>
 </ol>
-<p>先用 Brush 的完整开发集检查方向判断、状态切换和共享规划收益，再冻结下一款游戏的规则与测试集，避免把一个环境中的问题带到更多 benchmark。</p></article></main>
+<p>先用 Brush 的完整开发集检查方向判断、状态切换和共享规划收益，再冻结下一款游戏的规则与测试集，避免把一个环境中的问题带到更多 benchmark。</p>
+<h2 id="v2-思考模式与重复实验">v2 思考模式与重复实验<a class="anchor" href="#v2-思考模式与重复实验" title="Permanent link">§</a></h2>
+<p>新运行记录为 <code>brush-bench-v2</code>，v1 历史结果仍可读取。<code>--repeat-id</code> 区分独立重复，<code>--thinking-tokens</code> 和 <code>--plan-tokens</code> 明确共享规划预算；<code>--step-thinking-tokens</code> 支持 128、256、512、1024、2048。Python <code>BrushBench</code> 接受同名下划线参数，传入外部 Engine 时其规划预算必须一致。</p>
+<pre><code class="language-bash">PYTHONPATH=src .venv/bin/python run.py --bench brush --controller coordinate \
+  --conditions no_plan manual_plan neutral_prefix per_step_cot \
+  --step-thinking-tokens 512 --repeat-id 0 --split dev --dry-run
+</code></pre>
+<p>逐步 CoT 使用当前图片和问题，在原生思考通道结束后读取候选或生成 JSON；原始思考、结束方式、最终提示 token 和动作分开保存。两轴与 yes/no 候选各自独立思考，不互相泄露答案。共享计划仅在独立参考图上生成；实验 runner 的计划缓存保存原始 token 并跨配对条件复用。人工前缀和中性前缀均不提供当前案例几何真值。</p></article></main>
 <footer><p>vdecision</p><p><a href="https://donglinkang2021.github.io/">董林康的主页</a> · <a href="https://github.com/donglinkang2021/vdec">网站仓库</a></p></footer>
 <script>
 (function () {
