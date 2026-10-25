@@ -1,0 +1,1 @@
+{"id":"dev-boundary-03","split":"dev","family":"boundary","size":33,"start":[32,27],"end":[0,6],"pen":[32,25],"template_id":"boundary","instruction":"抬笔移动到 S，落笔连到 E，再抬笔提交。方向判断相对于当前目标。"}

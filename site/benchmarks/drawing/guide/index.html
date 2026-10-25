@@ -1,0 +1,261 @@
+<!DOCTYPE html><html lang="zh-CN" dir="ltr" data-theme="dark" data-has-toc data-has-sidebar class="astro-g5ptsecz"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><title>Drawing 模型输入与操作教学 | vdec</title><link rel="canonical" href="https://donglinkang2021.github.io/vdec/benchmarks/drawing/guide/"/><link rel="sitemap" href="/vdec/sitemap-index.xml"/><link rel="shortcut icon" href="/vdec/favicon.svg" type="image/svg+xml"/><meta name="generator" content="Astro v7.4.2"/><meta name="generator" content="Starlight v0.42.7"/><meta property="og:title" content="Drawing 模型输入与操作教学"/><meta property="og:type" content="article"/><meta property="og:url" content="https://donglinkang2021.github.io/vdec/benchmarks/drawing/guide/"/><meta property="og:locale" content="zh-CN"/><meta property="og:description" content="视觉决策评测、论文与可复现实验"/><meta property="og:site_name" content="vdec"/><meta name="twitter:card" content="summary_large_image"/><meta name="description" content="视觉决策评测、论文与可复现实验"/><script>
+	window.StarlightThemeProvider = (() => {
+		const storedTheme =
+			typeof localStorage !== 'undefined' && localStorage.getItem('starlight-theme');
+		const theme =
+			storedTheme ||
+			(window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+		document.documentElement.dataset.theme = theme === 'light' ? 'light' : 'dark';
+		return {
+			updatePickers(theme = storedTheme || 'auto') {
+				document.querySelectorAll('starlight-theme-select').forEach((picker) => {
+					const select = picker.querySelector('select');
+					if (select) select.value = theme;
+					/** @type {HTMLTemplateElement | null} */
+					const tmpl = document.querySelector(`#theme-icons`);
+					const newIcon = tmpl && tmpl.content.querySelector('.' + theme);
+					if (newIcon) {
+						const oldIcon = picker.querySelector('svg.label-icon');
+						if (oldIcon) {
+							oldIcon.replaceChildren(...newIcon.cloneNode(true).childNodes);
+						}
+					}
+				});
+			},
+		};
+	})();
+</script><template id="theme-icons"><svg aria-hidden="true" class="light astro-hkc32dio" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M5 12a1 1 0 0 0-1-1H3a1 1 0 0 0 0 2h1a1 1 0 0 0 1-1Zm.64 5-.71.71a1 1 0 0 0 0 1.41 1 1 0 0 0 1.41 0l.71-.71A1 1 0 0 0 5.64 17ZM12 5a1 1 0 0 0 1-1V3a1 1 0 0 0-2 0v1a1 1 0 0 0 1 1Zm5.66 2.34a1 1 0 0 0 .7-.29l.71-.71a1 1 0 1 0-1.41-1.41l-.66.71a1 1 0 0 0 0 1.41 1 1 0 0 0 .66.29Zm-12-.29a1 1 0 0 0 1.41 0 1 1 0 0 0 0-1.41l-.71-.71a1.004 1.004 0 1 0-1.43 1.41l.73.71ZM21 11h-1a1 1 0 0 0 0 2h1a1 1 0 0 0 0-2Zm-2.64 6A1 1 0 0 0 17 18.36l.71.71a1 1 0 0 0 1.41 0 1 1 0 0 0 0-1.41l-.76-.66ZM12 6.5a5.5 5.5 0 1 0 5.5 5.5A5.51 5.51 0 0 0 12 6.5Zm0 9a3.5 3.5 0 1 1 0-7 3.5 3.5 0 0 1 0 7Zm0 3.5a1 1 0 0 0-1 1v1a1 1 0 0 0 2 0v-1a1 1 0 0 0-1-1Z"/></svg><svg aria-hidden="true" class="dark astro-hkc32dio" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M21.64 13a1 1 0 0 0-1.05-.14 8.049 8.049 0 0 1-3.37.73 8.15 8.15 0 0 1-8.14-8.1 8.59 8.59 0 0 1 .25-2A1 1 0 0 0 8 2.36a10.14 10.14 0 1 0 14 11.69 1 1 0 0 0-.36-1.05Zm-9.5 6.69A8.14 8.14 0 0 1 7.08 5.22v.27a10.15 10.15 0 0 0 10.14 10.14 9.784 9.784 0 0 0 2.1-.22 8.11 8.11 0 0 1-7.18 4.32v-.04Z"/></svg><svg aria-hidden="true" class="auto astro-hkc32dio" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M21 14h-1V7a3 3 0 0 0-3-3H7a3 3 0 0 0-3 3v7H3a1 1 0 0 0-1 1v2a3 3 0 0 0 3 3h14a3 3 0 0 0 3-3v-2a1 1 0 0 0-1-1ZM6 7a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v7H6V7Zm14 10a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-1h16v1Z"/></svg></template><link rel="stylesheet" href="/vdec/_astro/print.ehPL0gv-.css" media="print"><link rel="stylesheet" href="/vdec/_astro/common.B2KNhLp0.css"><script type="module" src="/vdec/_astro/page.cNngjUgL.js"></script></head><body class="astro-g5ptsecz"><a class="sl-skip-link astro-qb7clj6f" href="#_top">跳转到内容</a><div class="page sl-flex astro-yntsjkba"><header class="header astro-yntsjkba"><div class="header astro-by6fddyj"><div class="title-wrapper sl-flex astro-by6fddyj"><a href="/vdec/" class="site-title sl-flex astro-6rvad3va"><span class="astro-6rvad3va" translate="no">vdec</span></a></div><div class="sl-flex print:hidden astro-by6fddyj"><site-search class="astro-by6fddyj astro-b5kgnn7o" data-translations="{&quot;placeholder&quot;:&quot;搜索&quot;}"><button data-open-modal disabled aria-label="搜索" aria-keyshortcuts="Control+K" class="astro-b5kgnn7o"><svg aria-hidden="true" class="astro-b5kgnn7o astro-hkc32dio" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M21.71 20.29 18 16.61A9 9 0 1 0 16.61 18l3.68 3.68a.999.999 0 0 0 1.42 0 1 1 0 0 0 0-1.39ZM11 18a7 7 0 1 1 0-14 7 7 0 0 1 0 14Z"/></svg><span class="sl-hidden md:sl-block astro-b5kgnn7o" aria-hidden="true">搜索</span><kbd class="sl-hidden md:sl-flex astro-b5kgnn7o" style="display: none;"><kbd class="astro-b5kgnn7o">Ctrl</kbd><kbd class="astro-b5kgnn7o">K</kbd></kbd></button><dialog style="padding:0" aria-label="搜索" class="astro-b5kgnn7o"><div class="dialog-frame sl-flex astro-b5kgnn7o"><button data-close-modal class="sl-flex md:sl-hidden astro-b5kgnn7o">取消</button><div class="search-container astro-b5kgnn7o"><div id="starlight__search" class="astro-b5kgnn7o"></div></div></div></dialog></site-search><script>
+	(() => {
+		const openBtn = document.querySelector('button[data-open-modal]');
+		const shortcut = openBtn?.querySelector('kbd');
+		if (!openBtn || !(shortcut instanceof HTMLElement)) return;
+		const platformKey = shortcut.querySelector('kbd');
+		if (platformKey && /(Mac|iPhone|iPod|iPad)/i.test(navigator.platform)) {
+			platformKey.textContent = '⌘';
+			openBtn.setAttribute('aria-keyshortcuts', 'Meta+K');
+		}
+		shortcut.style.display = '';
+	})();
+</script><script type="module" src="/vdec/_astro/Search.astro_astro_type_script_index_0_lang.BZ0RsVt4.js"></script></div><div class="sl-hidden md:sl-flex print:hidden right-group astro-by6fddyj"><div class="sl-flex social-icons astro-by6fddyj"><a href="https://github.com/donglinkang2021/vdec" rel="me" class="sl-flex astro-n2mnl6yq"><span class="sr-only astro-n2mnl6yq">公开站点</span><svg aria-hidden="true" class="astro-n2mnl6yq astro-hkc32dio" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M12 .3a12 12 0 0 0-3.8 23.38c.6.12.83-.26.83-.57L9 21.07c-3.34.72-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.08-.74.09-.73.09-.73 1.2.09 1.83 1.24 1.83 1.24 1.08 1.83 2.81 1.3 3.5 1 .1-.78.42-1.31.76-1.61-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.14-.3-.54-1.52.1-3.18 0 0 1-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.28-1.55 3.29-1.23 3.29-1.23.64 1.66.24 2.88.12 3.18a4.65 4.65 0 0 1 1.23 3.22c0 4.61-2.8 5.63-5.48 5.92.42.36.81 1.1.81 2.22l-.01 3.29c0 .31.2.69.82.57A12 12 0 0 0 12 .3Z"/></svg></a></div><starlight-theme-select><label style="--sl-select-width: 6.25em" class="astro-2z5xp7gb"><span class="sr-only astro-2z5xp7gb">选择主题</span><svg aria-hidden="true" class="icon label-icon astro-2z5xp7gb astro-hkc32dio" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M21 14h-1V7a3 3 0 0 0-3-3H7a3 3 0 0 0-3 3v7H3a1 1 0 0 0-1 1v2a3 3 0 0 0 3 3h14a3 3 0 0 0 3-3v-2a1 1 0 0 0-1-1ZM6 7a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v7H6V7Zm14 10a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-1h16v1Z"/></svg><select autocomplete="off" class="astro-2z5xp7gb"><option value="dark" class="astro-2z5xp7gb">深色</option><option value="light" class="astro-2z5xp7gb">浅色</option><option value="auto" selected class="astro-2z5xp7gb">自动</option></select><svg aria-hidden="true" class="icon caret astro-2z5xp7gb astro-hkc32dio" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M17 9.17a1 1 0 0 0-1.41 0L12 12.71 8.46 9.17a1 1 0 1 0-1.41 1.42l4.24 4.24a1.002 1.002 0 0 0 1.42 0L17 10.59a1.002 1.002 0 0 0 0-1.42Z"/></svg></label></starlight-theme-select><script>
+	StarlightThemeProvider.updatePickers();
+</script><script type="module">var e=`starlight-theme`,t=e=>e===`auto`||e===`dark`||e===`light`?e:`auto`,n=()=>t(typeof localStorage<`u`&&localStorage.getItem(e));function r(t){typeof localStorage<`u`&&localStorage.setItem(e,t===`light`||t===`dark`?t:``)}var i=()=>matchMedia(`(prefers-color-scheme: light)`).matches?`light`:`dark`;function a(e){StarlightThemeProvider.updatePickers(e),document.documentElement.dataset.theme=e===`auto`?i():e,r(e)}matchMedia(`(prefers-color-scheme: light)`).addEventListener(`change`,()=>{n()===`auto`&&a(`auto`)});var o=class extends HTMLElement{constructor(){super(),a(n()),this.querySelector(`select`)?.addEventListener(`change`,e=>{e.currentTarget instanceof HTMLSelectElement&&a(t(e.currentTarget.value))})}};customElements.define(`starlight-theme-select`,o);</script><script type="module">var e=class extends HTMLElement{constructor(){super();let e=this.querySelector(`select`);e&&(e.addEventListener(`change`,e=>{e.currentTarget instanceof HTMLSelectElement&&(window.location.pathname=e.currentTarget.value)}),window.addEventListener(`pageshow`,t=>{if(!t.persisted)return;let n=e.querySelector(`option[selected]`)?.index;n!==e.selectedIndex&&(e.selectedIndex=n??0)}))}};customElements.define(`starlight-lang-select`,e);</script></div></div></header><nav class="sidebar print:hidden astro-yntsjkba" aria-label="主要"><button popovertarget="starlight__sidebar" class="sl-menu-button sl-flex md:sl-hidden print:hidden astro-r2osgdlg"><svg aria-hidden="true" class="open-menu astro-r2osgdlg astro-hkc32dio" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M3 8h18a1 1 0 1 0 0-2H3a1 1 0 0 0 0 2Zm18 8H3a1 1 0 0 0 0 2h18a1 1 0 0 0 0-2Zm0-5H3a1 1 0 0 0 0 2h18a1 1 0 0 0 0-2Z"/></svg><svg aria-hidden="true" class="close-menu astro-r2osgdlg astro-hkc32dio" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="m13.41 12 6.3-6.29a1.004 1.004 0 1 0-1.42-1.42L12 10.59l-6.29-6.3a1.004 1.004 0 0 0-1.42 1.42l6.3 6.29-6.3 6.29a1 1 0 0 0 0 1.42.998.998 0 0 0 1.42 0l6.29-6.3 6.29 6.3a.999.999 0 0 0 1.42 0 1 1 0 0 0 0-1.42L13.41 12Z"/></svg><span class="sr-only astro-r2osgdlg">菜单</span></button><script type="module">var e=class extends HTMLElement{constructor(){super();let e=matchMedia(`(min-width: 50em)`),t=()=>{this.popover=e.matches?null:`auto`};t(),e.addEventListener(`change`,()=>t()),this.addEventListener(`toggle`,({newState:e})=>this.trapFocus(e===`open`))}trapFocus(e){document.querySelectorAll(`.main-frame, .sl-skip-link`).forEach(t=>{t.toggleAttribute(`inert`,e)})}};customElements.define(`sl-sidebar-pane`,e);</script><sl-sidebar-pane popover id="starlight__sidebar" class="sidebar-pane astro-yntsjkba"><div class="sidebar-content sl-flex astro-yntsjkba"><sl-sidebar-state-persist data-hash="1gq6nwq" class="astro-ipdry5cl"><script aria-hidden="true">
+		(() => {
+			try {
+				if (!matchMedia('(min-width: 50em)').matches) return;
+				/** @type {HTMLElement | null} */
+				const target = document.querySelector('sl-sidebar-state-persist');
+				const state = JSON.parse(sessionStorage.getItem('sl-sidebar-state') || '0');
+				if (!target || !state || target.dataset.hash !== state.hash) return;
+				window._starlightScrollRestore = state.scroll;
+				customElements.define(
+					'sl-sidebar-restore',
+					class SidebarRestore extends HTMLElement {
+						connectedCallback() {
+							try {
+								const idx = parseInt(this.dataset.index || '');
+								const details = this.closest('details');
+								if (details && typeof state.open[idx] === 'boolean') details.open = state.open[idx];
+							} catch {}
+						}
+					}
+				);
+			} catch {}
+		})();
+	</script><ul class="top-level astro-rmhv4bp6"><li class="astro-rmhv4bp6"><details open class="astro-rmhv4bp6"><summary class="astro-rmhv4bp6"><span class="group-label astro-rmhv4bp6"><span class="large astro-rmhv4bp6">Benchmarks</span></span><svg aria-hidden="true" class="caret astro-rmhv4bp6 astro-hkc32dio" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg></summary><sl-sidebar-restore data-index="0"></sl-sidebar-restore><ul class="astro-rmhv4bp6"><li class="astro-rmhv4bp6"><details open class="astro-rmhv4bp6"><summary class="astro-rmhv4bp6"><span class="group-label astro-rmhv4bp6"><span class="large astro-rmhv4bp6">Snake</span></span><svg aria-hidden="true" class="caret astro-rmhv4bp6 astro-hkc32dio" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg></summary><sl-sidebar-restore data-index="1"></sl-sidebar-restore><ul class="astro-rmhv4bp6"><li class="astro-rmhv4bp6"><a href="/vdec/benchmarks/snake/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Snake</span></a></li><li class="astro-rmhv4bp6"><a href="/vdec/benchmarks/snake/examples/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Snake · 完整题库</span></a></li><li class="astro-rmhv4bp6"><a href="/vdec/benchmarks/snake/guide/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Snake 任务讲解</span></a></li><li class="astro-rmhv4bp6"><a href="/vdec/benchmarks/snake/sandbox/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Snake · 交互沙盒</span></a></li></ul></details></li><li class="astro-rmhv4bp6"><details open class="astro-rmhv4bp6"><summary class="astro-rmhv4bp6"><span class="group-label astro-rmhv4bp6"><span class="large astro-rmhv4bp6">Brush</span></span><svg aria-hidden="true" class="caret astro-rmhv4bp6 astro-hkc32dio" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg></summary><sl-sidebar-restore data-index="2"></sl-sidebar-restore><ul class="astro-rmhv4bp6"><li class="astro-rmhv4bp6"><a href="/vdec/benchmarks/brush/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Brush</span></a></li><li class="astro-rmhv4bp6"><a href="/vdec/benchmarks/brush/examples/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Brush · 完整题库</span></a></li><li class="astro-rmhv4bp6"><a href="/vdec/benchmarks/brush/guide/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Brush 任务讲解</span></a></li><li class="astro-rmhv4bp6"><a href="/vdec/benchmarks/brush/reproduction/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">BrushBench v1：看图定位与画笔状态控制</span></a></li><li class="astro-rmhv4bp6"><a href="/vdec/benchmarks/brush/sandbox/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Brush · 交互沙盒</span></a></li></ul></details></li><li class="astro-rmhv4bp6"><details open class="astro-rmhv4bp6"><summary class="astro-rmhv4bp6"><span class="group-label astro-rmhv4bp6"><span class="large astro-rmhv4bp6">Drawing</span></span><svg aria-hidden="true" class="caret astro-rmhv4bp6 astro-hkc32dio" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg></summary><sl-sidebar-restore data-index="3"></sl-sidebar-restore><ul class="astro-rmhv4bp6"><li class="astro-rmhv4bp6"><a href="/vdec/benchmarks/drawing/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Drawing</span></a></li><li class="astro-rmhv4bp6"><a href="/vdec/benchmarks/drawing/examples/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Drawing · 完整题库</span></a></li><li class="astro-rmhv4bp6"><a href="/vdec/benchmarks/drawing/guide/" aria-current="page" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Drawing 模型输入与操作教学</span></a></li><li class="astro-rmhv4bp6"><a href="/vdec/benchmarks/drawing/reproduction/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">VDecision DrawingBench v2</span></a></li><li class="astro-rmhv4bp6"><a href="/vdec/benchmarks/drawing/sandbox/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Drawing · 交互沙盒</span></a></li></ul></details></li></ul></details></li><li class="astro-rmhv4bp6"><details open class="astro-rmhv4bp6"><summary class="astro-rmhv4bp6"><span class="group-label astro-rmhv4bp6"><span class="large astro-rmhv4bp6">Papers</span></span><svg aria-hidden="true" class="caret astro-rmhv4bp6 astro-hkc32dio" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg></summary><sl-sidebar-restore data-index="4"></sl-sidebar-restore><ul class="astro-rmhv4bp6"><li class="astro-rmhv4bp6"><a href="/vdec/papers/babyvision/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">BabyVision</span></a></li><li class="astro-rmhv4bp6"><a href="/vdec/papers/genception/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">GenCeption：从视频生成到视觉感知</span></a></li></ul></details></li><li class="astro-rmhv4bp6"><details open class="astro-rmhv4bp6"><summary class="astro-rmhv4bp6"><span class="group-label astro-rmhv4bp6"><span class="large astro-rmhv4bp6">Exps</span></span><svg aria-hidden="true" class="caret astro-rmhv4bp6 astro-hkc32dio" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg></summary><sl-sidebar-restore data-index="5"></sl-sidebar-restore><ul class="astro-rmhv4bp6"><li class="astro-rmhv4bp6"><a href="/vdec/exps/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Exps · 运行与复现</span></a></li><li class="astro-rmhv4bp6"><a href="/vdec/exps/brush-study-plan/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Brush Study 实验配置</span></a></li><li class="astro-rmhv4bp6"><a href="/vdec/exps/input-assembly/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">输入拼接实验室</span></a></li><li class="astro-rmhv4bp6"><a href="/vdec/exps/metrics/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Benchmark 说明：main-v1</span></a></li><li class="astro-rmhv4bp6"><a href="/vdec/exps/reproduction/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">三模型规划与视觉推理实验</span></a></li></ul></details></li><li class="astro-rmhv4bp6"><details open class="astro-rmhv4bp6"><summary class="astro-rmhv4bp6"><span class="group-label astro-rmhv4bp6"><span class="large astro-rmhv4bp6">Studies</span></span><svg aria-hidden="true" class="caret astro-rmhv4bp6 astro-hkc32dio" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg></summary><sl-sidebar-restore data-index="6"></sl-sidebar-restore><ul class="astro-rmhv4bp6"><li class="astro-rmhv4bp6"><a href="/vdec/studies/brush/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Brush Study</span></a></li><li class="astro-rmhv4bp6"><a href="/vdec/studies/snake/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Snake Study</span></a></li></ul></details></li><li class="astro-rmhv4bp6"><details class="astro-rmhv4bp6"><summary class="astro-rmhv4bp6"><span class="group-label astro-rmhv4bp6"><span class="large astro-rmhv4bp6">Archive</span></span><svg aria-hidden="true" class="caret astro-rmhv4bp6 astro-hkc32dio" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg></summary><sl-sidebar-restore data-index="7"></sl-sidebar-restore><ul class="astro-rmhv4bp6"><li class="astro-rmhv4bp6"><a href="/vdec/archive/backend-report/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">三模型历史实验结果</span></a></li><li class="astro-rmhv4bp6"><a href="/vdec/archive/drawing-v1/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Drawing v1（历史协议）</span></a></li><li class="astro-rmhv4bp6"><a href="/vdec/archive/pre-main/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">旧版运行手册</span></a></li><li class="astro-rmhv4bp6"><a href="/vdec/archive/snake-plan/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">早期实验计划：先排除固定策略偏差</span></a></li></ul></details></li></ul><script aria-hidden="true">
+		(() => {
+			const scroller = document.getElementById('starlight__sidebar');
+			if (!window._starlightScrollRestore || !scroller) return;
+			scroller.scrollTop = window._starlightScrollRestore;
+			delete window._starlightScrollRestore;
+		})();
+	</script></sl-sidebar-state-persist><div class="md:sl-hidden"><div class="mobile-preferences sl-flex astro-p4azlveh"><div class="social-icons astro-p4azlveh"><a href="https://github.com/donglinkang2021/vdec" rel="me" class="sl-flex astro-n2mnl6yq"><span class="sr-only astro-n2mnl6yq">公开站点</span><svg aria-hidden="true" class="astro-n2mnl6yq astro-hkc32dio" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M12 .3a12 12 0 0 0-3.8 23.38c.6.12.83-.26.83-.57L9 21.07c-3.34.72-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.08-.74.09-.73.09-.73 1.2.09 1.83 1.24 1.83 1.24 1.08 1.83 2.81 1.3 3.5 1 .1-.78.42-1.31.76-1.61-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.14-.3-.54-1.52.1-3.18 0 0 1-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.28-1.55 3.29-1.23 3.29-1.23.64 1.66.24 2.88.12 3.18a4.65 4.65 0 0 1 1.23 3.22c0 4.61-2.8 5.63-5.48 5.92.42.36.81 1.1.81 2.22l-.01 3.29c0 .31.2.69.82.57A12 12 0 0 0 12 .3Z"/></svg></a></div><starlight-theme-select><label style="--sl-select-width: 6.25em" class="astro-2z5xp7gb"><span class="sr-only astro-2z5xp7gb">选择主题</span><svg aria-hidden="true" class="icon label-icon astro-2z5xp7gb astro-hkc32dio" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M21 14h-1V7a3 3 0 0 0-3-3H7a3 3 0 0 0-3 3v7H3a1 1 0 0 0-1 1v2a3 3 0 0 0 3 3h14a3 3 0 0 0 3-3v-2a1 1 0 0 0-1-1ZM6 7a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v7H6V7Zm14 10a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-1h16v1Z"/></svg><select autocomplete="off" class="astro-2z5xp7gb"><option value="dark" class="astro-2z5xp7gb">深色</option><option value="light" class="astro-2z5xp7gb">浅色</option><option value="auto" selected class="astro-2z5xp7gb">自动</option></select><svg aria-hidden="true" class="icon caret astro-2z5xp7gb astro-hkc32dio" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M17 9.17a1 1 0 0 0-1.41 0L12 12.71 8.46 9.17a1 1 0 1 0-1.41 1.42l4.24 4.24a1.002 1.002 0 0 0 1.42 0L17 10.59a1.002 1.002 0 0 0 0-1.42Z"/></svg></label></starlight-theme-select><script>
+	StarlightThemeProvider.updatePickers();
+</script></div></div></div></sl-sidebar-pane></nav><div class="main-frame astro-yntsjkba"><script type="module">var e=document.getElementById(`starlight__sidebar`),t=e?.querySelector(`sl-sidebar-state-persist`),n=`sl-sidebar-state`,r=()=>{let r=[],i=t?.dataset.hash||``;try{let e=sessionStorage.getItem(n),t=JSON.parse(e||`{}`);Array.isArray(t.open)&&t.hash===i&&(r=t.open)}catch{}return{hash:i,open:r,scroll:e?.scrollTop||0}},i=e=>{try{sessionStorage.setItem(n,JSON.stringify(e))}catch{}},a=()=>i(r()),o=(e,t)=>{let n=r();n.open[t]=e,i(n)};t?.addEventListener(`click`,e=>{if(!(e.target instanceof Element))return;let t=e.target.closest(`summary`)?.closest(`details`);if(!t)return;let n=t.querySelector(`sl-sidebar-restore`),r=parseInt(n?.dataset.index||``);isNaN(r)||o(!t.open,r)}),addEventListener(`visibilitychange`,()=>{document.visibilityState===`hidden`&&a()});</script><div class="lg:sl-flex astro-lrzkfocr"><aside class="right-sidebar-container print:hidden astro-lrzkfocr"><div class="right-sidebar astro-lrzkfocr"><div class="lg:sl-hidden astro-qok35upx"><mobile-starlight-toc data-min-h="2" data-max-h="3" class="astro-66cqc7ze"><nav aria-labelledby="starlight__on-this-page--mobile" class="astro-66cqc7ze"><details id="starlight__mobile-toc" class="astro-66cqc7ze"><summary id="starlight__on-this-page--mobile" class="sl-flex astro-66cqc7ze"><span class="toggle sl-flex astro-66cqc7ze">本页内容<svg aria-hidden="true" class="caret astro-66cqc7ze astro-hkc32dio" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg></span><span class="display-current astro-66cqc7ze"></span></summary><div class="dropdown astro-66cqc7ze"><ul class="isMobile astro-jugkfwgx" style="--depth: 0;"><li style="--depth: 0;" class="astro-jugkfwgx"><a href="#_top" style="--depth: 0;" class="astro-jugkfwgx"><span style="--depth: 0;" class="astro-jugkfwgx">概述</span></a></li><li style="--depth: 0;" class="astro-jugkfwgx"><a href="#增加的是结构不只是换颜色" style="--depth: 0;" class="astro-jugkfwgx"><span style="--depth: 0;" class="astro-jugkfwgx">增加的是结构，不只是换颜色</span></a></li><li style="--depth: 0;" class="astro-jugkfwgx"><a href="#11-个操作三种选择方式" style="--depth: 0;" class="astro-jugkfwgx"><span style="--depth: 0;" class="astro-jugkfwgx">11 个操作，三种选择方式</span></a></li><li style="--depth: 0;" class="astro-jugkfwgx"><a href="#看见每个动作真正改变了什么" style="--depth: 0;" class="astro-jugkfwgx"><span style="--depth: 0;" class="astro-jugkfwgx">看见每个动作真正改变了什么</span></a></li><li style="--depth: 0;" class="astro-jugkfwgx"><a href="#展开这一帧的真实输入" style="--depth: 0;" class="astro-jugkfwgx"><span style="--depth: 0;" class="astro-jugkfwgx">展开这一帧的真实输入</span></a><ul class="isMobile astro-jugkfwgx" style="--depth: 1;"><li style="--depth: 1;" class="astro-jugkfwgx"><a href="#便于阅读的分解" style="--depth: 1;" class="astro-jugkfwgx"><span style="--depth: 1;" class="astro-jugkfwgx">便于阅读的分解</span></a></li><li style="--depth: 1;" class="astro-jugkfwgx"><a href="#候选与回答边界" style="--depth: 1;" class="astro-jugkfwgx"><span style="--depth: 1;" class="astro-jugkfwgx">候选与回答边界</span></a></li></ul></li><li style="--depth: 0;" class="astro-jugkfwgx"><a href="#完整-rgb12-次参数选择一次换色" style="--depth: 0;" class="astro-jugkfwgx"><span style="--depth: 0;" class="astro-jugkfwgx">完整 RGB：12 次参数选择，一次换色</span></a><ul class="isMobile astro-jugkfwgx" style="--depth: 1;"><li style="--depth: 1;" class="astro-jugkfwgx"><a href="#这一轮的四个候选范围" style="--depth: 1;" class="astro-jugkfwgx"><span style="--depth: 1;" class="astro-jugkfwgx">这一轮的四个候选范围</span></a></li><li style="--depth: 1;" class="astro-jugkfwgx"><a href="#真实工具颜色" style="--depth: 1;" class="astro-jugkfwgx"><span style="--depth: 1;" class="astro-jugkfwgx">真实工具颜色</span></a></li></ul></li><li style="--depth: 0;" class="astro-jugkfwgx"><a href="#评分检查最后剩下的墨迹" style="--depth: 0;" class="astro-jugkfwgx"><span style="--depth: 0;" class="astro-jugkfwgx">评分检查最后剩下的墨迹</span></a></li><li style="--depth: 0;" class="astro-jugkfwgx"><a href="#规划发生在另一张参考图上" style="--depth: 0;" class="astro-jugkfwgx"><span style="--depth: 0;" class="astro-jugkfwgx">规划发生在另一张参考图上</span></a></li><li style="--depth: 0;" class="astro-jugkfwgx"><a href="#已验证的是环境不是模型成绩" style="--depth: 0;" class="astro-jugkfwgx"><span style="--depth: 0;" class="astro-jugkfwgx">已验证的是环境，不是模型成绩</span></a></li></ul></div></details></nav></mobile-starlight-toc><script type="module" src="/vdec/_astro/MobileTableOfContents.astro_astro_type_script_index_0_lang.C3fM4Kra.js"></script></div><div class="right-sidebar-panel sl-hidden lg:sl-block astro-qok35upx"><div class="sl-container astro-qok35upx"><starlight-toc data-min-h="2" data-max-h="3"><nav aria-labelledby="starlight__on-this-page"><h2 id="starlight__on-this-page">本页内容</h2><ul class="astro-jugkfwgx" style="--depth: 0;"><li style="--depth: 0;" class="astro-jugkfwgx"><a href="#_top" style="--depth: 0;" class="astro-jugkfwgx"><span style="--depth: 0;" class="astro-jugkfwgx">概述</span></a></li><li style="--depth: 0;" class="astro-jugkfwgx"><a href="#增加的是结构不只是换颜色" style="--depth: 0;" class="astro-jugkfwgx"><span style="--depth: 0;" class="astro-jugkfwgx">增加的是结构，不只是换颜色</span></a></li><li style="--depth: 0;" class="astro-jugkfwgx"><a href="#11-个操作三种选择方式" style="--depth: 0;" class="astro-jugkfwgx"><span style="--depth: 0;" class="astro-jugkfwgx">11 个操作，三种选择方式</span></a></li><li style="--depth: 0;" class="astro-jugkfwgx"><a href="#看见每个动作真正改变了什么" style="--depth: 0;" class="astro-jugkfwgx"><span style="--depth: 0;" class="astro-jugkfwgx">看见每个动作真正改变了什么</span></a></li><li style="--depth: 0;" class="astro-jugkfwgx"><a href="#展开这一帧的真实输入" style="--depth: 0;" class="astro-jugkfwgx"><span style="--depth: 0;" class="astro-jugkfwgx">展开这一帧的真实输入</span></a><ul class="astro-jugkfwgx" style="--depth: 1;"><li style="--depth: 1;" class="astro-jugkfwgx"><a href="#便于阅读的分解" style="--depth: 1;" class="astro-jugkfwgx"><span style="--depth: 1;" class="astro-jugkfwgx">便于阅读的分解</span></a></li><li style="--depth: 1;" class="astro-jugkfwgx"><a href="#候选与回答边界" style="--depth: 1;" class="astro-jugkfwgx"><span style="--depth: 1;" class="astro-jugkfwgx">候选与回答边界</span></a></li></ul></li><li style="--depth: 0;" class="astro-jugkfwgx"><a href="#完整-rgb12-次参数选择一次换色" style="--depth: 0;" class="astro-jugkfwgx"><span style="--depth: 0;" class="astro-jugkfwgx">完整 RGB：12 次参数选择，一次换色</span></a><ul class="astro-jugkfwgx" style="--depth: 1;"><li style="--depth: 1;" class="astro-jugkfwgx"><a href="#这一轮的四个候选范围" style="--depth: 1;" class="astro-jugkfwgx"><span style="--depth: 1;" class="astro-jugkfwgx">这一轮的四个候选范围</span></a></li><li style="--depth: 1;" class="astro-jugkfwgx"><a href="#真实工具颜色" style="--depth: 1;" class="astro-jugkfwgx"><span style="--depth: 1;" class="astro-jugkfwgx">真实工具颜色</span></a></li></ul></li><li style="--depth: 0;" class="astro-jugkfwgx"><a href="#评分检查最后剩下的墨迹" style="--depth: 0;" class="astro-jugkfwgx"><span style="--depth: 0;" class="astro-jugkfwgx">评分检查最后剩下的墨迹</span></a></li><li style="--depth: 0;" class="astro-jugkfwgx"><a href="#规划发生在另一张参考图上" style="--depth: 0;" class="astro-jugkfwgx"><span style="--depth: 0;" class="astro-jugkfwgx">规划发生在另一张参考图上</span></a></li><li style="--depth: 0;" class="astro-jugkfwgx"><a href="#已验证的是环境不是模型成绩" style="--depth: 0;" class="astro-jugkfwgx"><span style="--depth: 0;" class="astro-jugkfwgx">已验证的是环境，不是模型成绩</span></a></li></ul></nav></starlight-toc><script type="module" src="/vdec/_astro/TableOfContents.astro_astro_type_script_index_0_lang.BpJaGz7G.js"></script></div></div></div></aside><div class="main-pane astro-lrzkfocr"><main data-pagefind-body class="astro-g5ptsecz" lang="zh-CN" dir="ltr"><div class="content-panel astro-a7po4psb"><div class="sl-container astro-a7po4psb"><h1 id="_top" class="astro-bebwqqxs">Drawing 模型输入与操作教学</h1></div></div><div class="content-panel astro-a7po4psb"><div class="sl-container astro-a7po4psb"><div class="sl-markdown-content"><p>本文保留已保存的研究结果。交互查看器按需加载，模型记录与规则示范分别标注。</p>
+<div id="evidence" class="evidence" data-pagefind-ignore data-evidence="benchmarks-drawing-guide"><button>打开交互证据查看器</button><p role="status">点击后加载已保存的请求与实验记录。不会发起模型推理。</p><div class="evidence-host"></div></div><script type="module">for(let e of document.querySelectorAll(`[data-evidence]`)){let t=e.querySelector(`button`),n=e.querySelector(`p`),r=e.querySelector(`.evidence-host`);t.addEventListener(`click`,async()=>{t.disabled=!0,n.textContent=`正在加载证据…`;try{let i=async e=>{let t=await fetch(e);if(!t.ok)throw Error(`${t.status}: ${e}`);return t.text()},a=JSON.parse(await i(`/vdec/evidence/${e.dataset.evidence}/index.json`)),[o,s,...c]=await Promise.all([i(a.body),i(a.style),...a.data.map(e=>i(e.url))]),l=r.shadowRoot||r.attachShadow({mode:`open`});l.innerHTML=`<style>`+s+`</style><div class="widget">`+o+`</div>`;let u=l.querySelector(`.widget`);a.data.forEach((e,t)=>{let n=document.createElement(`script`);n.type=`application/json`,n.id=e.id,n.textContent=c[t],u.append(n)});let d=new Proxy(document,{get(e,t){if(t===`getElementById`)return e=>l.getElementById(e);if(t===`querySelector`||t===`querySelectorAll`)return e=>l[t](e);if(t===`body`||t===`documentElement`)return u;let n=Reflect.get(e,t,e);return typeof n==`function`?n.bind(e):n}});for(let e of a.scripts){let t=await i(e);Function(`document`,t)(d)}let f=window;e.dataset.evidence===`exps-input-assembly`&&await f.assemblyReady,e.dataset.evidence===`studies-snake`&&await f.articleReady;function p(e){let t=l.getElementById(e);if(t){t instanceof HTMLDetailsElement&&(t.open=!0);for(let e=t.parentElement;e;e=e.parentElement)e instanceof HTMLDetailsElement&&(e.open=!0);t.scrollIntoView()}}let m=new URLSearchParams(location.search).get(`evidence`);m&&p(m),l.addEventListener(`click`,e=>{let t=e.target.closest(`a`);t?.getAttribute(`href`)?.startsWith(`#`)&&l.getElementById(t.getAttribute(`href`).slice(1))&&(e.preventDefault(),p(t.getAttribute(`href`).slice(1)))});let h=new IntersectionObserver(e=>e.forEach(e=>{e.isIntersecting||e.target.pause()}));l.querySelectorAll(`video`).forEach(e=>{if(h.observe(e),e.addEventListener(`play`,()=>{l.querySelectorAll(`video`).forEach(t=>{t!==e&&t.pause()})}),e.dataset.src){let t=document.createElement(`button`);t.textContent=`播放回放`,t.onclick=()=>{e.src=e.dataset.src,e.play(),t.remove()},e.before(t)}}),n.textContent=`已加载。数据来自保存的证据快照。`,t.hidden=!0}catch(e){n.textContent=`加载失败，可重试：`+String(e),t.disabled=!1}}),(new URLSearchParams(location.search).has(`evidence`)||e.dataset.evidence===`exps-input-assembly`&&location.hash.includes(`bench=`))&&t.click()}</script>
+<div class="sl-heading-wrapper level-h2"><h2 id="增加的是结构不只是换颜色">增加的是结构，不只是换颜色</h2><a class="sl-anchor-link" href="#增加的是结构不只是换颜色"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore>Section titled “增加的是结构，不只是换颜色”</span></a></div>
+<p>每个家族有三个模板：前两个分别生成 4 个开发实例和 8 个常规测试实例，第三个模板只出现在 OOD 测试中。因此开发集为 128 题，常规测试 256 题，未见模板测试 128 题。两种测试分别报告；默认冒烟仅选开发集每家族一题，共 16 题。</p>
+<p>geometry 支持直线、矩形、圆、椭圆、多边形和橡皮，预算 192 次；freehand 支持真实画笔和橡皮，预算 768 次。两轨使用同一题目。每题初始对象 2–10 个，最终评分目标最多 8 个；所有题目与参考轨迹在 Python 环境中执行。</p>
+<p>Python 初始观察图规则参考结果 · 非模型输出<img src="/vdec/media/9151af5f71e4fa411513e6ce3c43666d48906cefb1e1034044c4c8196034d86b.png" alt="开发案例初始画面" loading="lazy" decoding="async"><img src="/vdec/media/ce0db24822ed8e4f94e834083dd9a4a023068a06b760461387ea954862e1af39.png" alt="规则完成结果" loading="lazy" decoding="async"></p>
+<ul>
+<li><strong>方向关系</strong> · direction.single_anchor</li>
+<li><strong>对齐</strong> · alignment.collinear</li>
+<li><strong>间距与距离</strong> · spacing_distance.equal_insertion</li>
+<li><strong>中间与分点</strong> · between.single_fraction</li>
+<li><strong>包含</strong> · containment.single_container</li>
+<li><strong>重叠与接触</strong> · overlap_contact.partial_overlap</li>
+<li><strong>大小与比例</strong> · relative_size.dimension_ratio</li>
+<li><strong>角度与平行</strong> · angle_parallel.parallel_perpendicular</li>
+<li><strong>数量与排序</strong> · count_order.attribute_count</li>
+<li><strong>对称</strong> · symmetry.single_mirror</li>
+<li><strong>网格与重复图案</strong> · grid_pattern.missing_grid</li>
+<li><strong>连接关系</strong> · connectivity.node_links</li>
+<li><strong>结构物体</strong> · structured_objects.traffic_light</li>
+<li><strong>图表与布局</strong> · charts_layout.bar_chart</li>
+<li><strong>颜色关系</strong> · color.explicit_rgb</li>
+<li><strong>修复与编辑</strong> · repair_editing.position_size</li>
+</ul>
+<p>仅公开开发示例。图片使用无损压缩，打开时逐张验证原始像素一致。位置、尺寸、颜色和干扰物经过采样与布局去重；模板 ID 与结构签名可追溯。独立规划参考图不参与评分。</p>
+<div class="sl-heading-wrapper level-h2"><h2 id="11-个操作三种选择方式">11 个操作，三种选择方式</h2><a class="sl-anchor-link" href="#11-个操作三种选择方式"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore>Section titled “11 个操作，三种选择方式”</span></a></div>
+<p>原七个操作的字母顺序不变：A tool、B color、C move、D down、E up、F undo、G finish。新增 H style、I width、J select、K edit。选择动作与参数的过程中，真实笔尖、颜色和擦除掩码都不变；参数齐全后才执行一次环境操作。</p>
+<p>**choice：**同一请求列出 A–K，输入尾部预填 <code dir="auto">\boxed&#x26;#123;</code>，读取候选字母的下一 token 分数，取最高项映射为操作。选到 C 之后，仍需四轮九宫格定位，每轮一道九选一题。</p>
+<p>**yes_no：**同一画面分别询问 11 个操作是否最佳，每题同时读取 yes/no 两个候选的分数。比较各题的 yes 相对概率，取最高项；不是遇见第一个 yes 就执行。一次批处理可以装多题，但仍按题数计请求。</p>
+<p>**coordinate：**一次生成规范 JSON，同时表达操作和参数，例如 <code dir="auto">&#x26;#123;"action":"color","rgb":[128,64,192]&#x26;#125;</code>。严格解析整数、字段和范围；非法动作消耗预算，不自动截断或纠正。</p>
+<p>候选分数的计算与含义</p>
+<div class="expressive-code"><link rel="stylesheet" href="/vdec/_astro/ec.w36nc.css"><script type="module" src="/vdec/_astro/ec.0vx5m.js"></script><figure class="frame not-content"><figcaption class="header"></figcaption><pre data-language="plaintext"><code><div class="ec-line"><div class="code"><span style="--0:#d6deeb;--1:#403f53">choice: sᵢ = exp(ℓᵢ) / Σⱼ exp(ℓⱼ)</span></div></div><div class="ec-line"><div class="code"><span style="--0:#d6deeb;--1:#403f53">yes_no: qᵢ = exp(ℓᵢ,yes) / [exp(ℓᵢ,yes) + exp(ℓᵢ,no)]</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">        </span></span><span style="--0:#d6deeb;--1:#403f53">sᵢ = qᵢ / Σⱼ qⱼ</span></div></div><div class="ec-line"><div class="code"><span style="--0:#d6deeb;--1:#403f53">取最高 sᵢ 对应的语义操作。ℓ 是候选 token 的 log-prob。</span></div></div><div class="ec-line"><div class="code"><span style="--0:#d6deeb;--1:#403f53">这些是公式，本文没有实测分数；sᵢ 不是任务成功概率。</span></div></div></code></pre><div class="copy"><div aria-live="polite"></div><button title="复制到剪贴板" data-copied="复制成功！" data-code="choice: sᵢ = exp(ℓᵢ) / Σⱼ exp(ℓⱼ)yes_no: qᵢ = exp(ℓᵢ,yes) / [exp(ℓᵢ,yes) + exp(ℓᵢ,no)]        sᵢ = qᵢ / Σⱼ qⱼ取最高 sᵢ 对应的语义操作。ℓ 是候选 token 的 log-prob。这些是公式，本文没有实测分数；sᵢ 不是任务成功概率。"><div></div></button></div></figure></div>
+<p>v2 典型决策：根据保存的实际模板请求条目计数；每行最终只有 1 次环境操作</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>动作</th><th>choice</th><th>yes_no</th><th>coordinate</th></tr></thead><tbody><tr><td>move</td><td>5</td><td>47</td><td>1</td></tr><tr><td>预设颜色</td><td>2</td><td>28</td><td>1</td></tr><tr><td>自定义 RGB</td><td>14</td><td>76</td><td>1</td></tr></tbody></table>
+<p>v1 的 move 为 7 + 4×9 = <strong>43</strong> 个 yes/no 请求；v2 为 11 + 4×9 = <strong>47</strong>。多出的 4 个是操作候选，不是定位轮数变化。请求数、token、耗时和环境操作数需要分别报告。</p>
+<div class="sl-heading-wrapper level-h2"><h2 id="看见每个动作真正改变了什么">看见每个动作真正改变了什么</h2><a class="sl-anchor-link" href="#看见每个动作真正改变了什么"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore>Section titled “看见每个动作真正改变了什么”</span></a></div>
+<p>三条主线是补绘、RGB 配色和修复；修复又分为局部擦除与对象变换。所有前后图片和状态都来自 Python。下方请求查看器与当前步骤同步，展示这一帧实际组装的模型输入。</p>
+<p>执行前：本步模型看到的画面执行后：真实环境状态查看操作状态（也是模型输入的一部分）查看该对象的真实擦除掩码</p>
+<p>这张掩码是教学解释图，不会作为额外信息输入模型。擦除由真实路径产生；变换会同时变换墨迹和掩码。</p>
+<div class="sl-heading-wrapper level-h2"><h2 id="展开这一帧的真实输入">展开这一帧的真实输入</h2><a class="sl-anchor-link" href="#展开这一帧的真实输入"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore>Section titled “展开这一帧的真实输入”</span></a></div>
+<p>原生文本和 token ID 由生产适配器与本地 tokenizer／processor 捕获，特殊 token 没有手写。图片是独立多模态输入；文本视图不包含视觉编码。下面的规则选择仅用于演示后续问题，不是模型生成内容。</p>
+<div class="sl-heading-wrapper level-h3"><h3 id="便于阅读的分解">便于阅读的分解</h3><a class="sl-anchor-link" href="#便于阅读的分解"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore>Section titled “便于阅读的分解”</span></a></div>
+<p>规则题目与当前状态</p>
+<div class="sl-heading-wrapper level-h3"><h3 id="候选与回答边界">候选与回答边界</h3><a class="sl-anchor-link" href="#候选与回答边界"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore>Section titled “候选与回答边界”</span></a></div>
+<p>完整原生输入文本完整原生 token ID</p>
+<p>阅读辅助标题、分数“未测”和教学选择不会混入原生模型输入。每一步重建当前观察；完整动作历史不会自动追加到模型对话。</p>
+<div class="sl-heading-wrapper level-h2"><h2 id="完整-rgb12-次参数选择一次换色">完整 RGB：12 次参数选择，一次换色</h2><a class="sl-anchor-link" href="#完整-rgb12-次参数选择一次换色"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore>Section titled “完整 RGB：12 次参数选择，一次换色”</span></a></div>
+<p>先选“16 个预设 + 自定义 RGB”之一。自定义时依次选择 R、G、B：每个通道四轮四分，256 → 64 → 16 → 4 → 1。三个通道都完成后才提交一次 color。明确 RGB 指令精确匹配；看图匹配颜色时每通道允许 ±8，模型看不到参照对象的隐藏 RGB。</p>
+<div class="sl-heading-wrapper level-h3"><h3 id="这一轮的四个候选范围">这一轮的四个候选范围</h3><a class="sl-anchor-link" href="#这一轮的四个候选范围"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore>Section titled “这一轮的四个候选范围”</span></a></div>
+<div class="sl-heading-wrapper level-h3"><h3 id="真实工具颜色">真实工具颜色</h3><a class="sl-anchor-link" href="#真实工具颜色"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore>Section titled “真实工具颜色”</span></a></div>
+<div class="sl-heading-wrapper level-h2"><h2 id="评分检查最后剩下的墨迹">评分检查最后剩下的墨迹</h2><a class="sl-anchor-link" href="#评分检查最后剩下的墨迹"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore>Section titled “评分检查最后剩下的墨迹”</span></a></div>
+<p>局部橡皮沿实际移动线段擦除。选中对象时只擦这个可编辑对象，未选中时擦所有可编辑对象；锁定对象不受影响。活动绘制或擦除可以撤销，完成后的撤销恢复最近一次场景变更之前的状态。工具或颜色选择不占场景撤销历史。</p>
+<p>评分先从实际墨迹拟合几何形状，再匹配颜色、填充和空间关系；不拿隐藏参考坐标作为标准答案。空心不能冒充实心，残缺轮廓、额外笔迹与未完成笔画都会影响终局判分。合法遮挡按对象自身墨迹评估，擦除则改变该对象的有效墨迹。</p>
+<div class="expressive-code"><figure class="frame not-content"><figcaption class="header"></figcaption><pre data-language="plaintext"><code><div class="ec-line"><div class="code"><span style="--0:#d6deeb;--1:#403f53">尚未提交</span></div></div></code></pre><div class="copy"><div aria-live="polite"></div><button title="复制到剪贴板" data-copied="复制成功！" data-code="尚未提交"><div></div></button></div></figure></div>
+<div class="sl-heading-wrapper level-h2"><h2 id="规划发生在另一张参考图上">规划发生在另一张参考图上</h2><a class="sl-anchor-link" href="#规划发生在另一张参考图上"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore>Section titled “规划发生在另一张参考图上”</span></a></div>
+<p>按控制器、轨道、seed 和协议版本独立缓存。shared_full 与 shared_plan_only 使用同一次规划生成；前者保留完整规划上下文，后者仅保留计划。这里展示真实规划请求，生成内容只用结构说明，不伪造推理文本。</p>
+<p>真实规划请求</p>
+<div class="sl-heading-wrapper level-h2"><h2 id="已验证的是环境不是模型成绩">已验证的是环境，不是模型成绩</h2><a class="sl-anchor-link" href="#已验证的是环境不是模型成绩"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore>Section titled “已验证的是环境，不是模型成绩”</span></a></div>
+<p>规则与随机策略均在 CPU 上真实执行。三类模型只做模板预检；候选评分、生成动作和模型成功率仍未实测。常规测试与 OOD、geometry 与 freehand、v1 与 v2 均分开报告。</p>
+<p>可复现验证 · 全部为非模型成绩</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>策略</th><th>划分</th><th>轨道</th><th>次数</th><th>家族等权完整成功率</th></tr></thead><tbody><tr><td>规则策略</td><td>开发</td><td>freehand</td><td>128</td><td>100.00%</td></tr><tr><td>规则策略</td><td>开发</td><td>geometry</td><td>128</td><td>100.00%</td></tr><tr><td>规则策略</td><td>OOD</td><td>freehand</td><td>128</td><td>100.00%</td></tr><tr><td>规则策略</td><td>OOD</td><td>geometry</td><td>128</td><td>100.00%</td></tr><tr><td>规则策略</td><td>常规测试</td><td>freehand</td><td>256</td><td>100.00%</td></tr><tr><td>规则策略</td><td>常规测试</td><td>geometry</td><td>256</td><td>100.00%</td></tr><tr><td>随机策略</td><td>开发</td><td>freehand</td><td>384</td><td>0.00%</td></tr><tr><td>随机策略</td><td>开发</td><td>geometry</td><td>384</td><td>0.00%</td></tr><tr><td>随机策略</td><td>OOD</td><td>freehand</td><td>384</td><td>0.00%</td></tr><tr><td>随机策略</td><td>OOD</td><td>geometry</td><td>384</td><td>0.00%</td></tr><tr><td>随机策略</td><td>常规测试</td><td>freehand</td><td>768</td><td>0.00%</td></tr><tr><td>随机策略</td><td>常规测试</td><td>geometry</td><td>768</td><td>0.00%</td></tr></tbody></table>
+<p>来源哈希、模板和验证条件</p>
+<p>v2 与官方 DrawingBench 的任务范围、交互协议和评分定义不同。功能更多不等于经过实验证明更优；场景多样性的有效性仍需要真实模型结果检验。</p>
+<p><a href="/vdec/archive/drawing-v1/">Drawing v1 历史协议与交互示例</a></p></div><footer class="sl-flex astro-ddtxxk7k"><div class="meta sl-flex astro-ddtxxk7k"></div><div class="pagination-links print:hidden astro-b5raizh3" dir="ltr"><a href="/vdec/benchmarks/drawing/examples/" rel="prev" class="astro-b5raizh3"><svg aria-hidden="true" class="astro-b5raizh3 astro-hkc32dio" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.5rem;"><path d="M17 11H9.41l3.3-3.29a1.004 1.004 0 1 0-1.42-1.42l-5 5a1 1 0 0 0-.21.33 1 1 0 0 0 0 .76 1 1 0 0 0 .21.33l5 5a1.002 1.002 0 0 0 1.639-.325 1 1 0 0 0-.219-1.095L9.41 13H17a1 1 0 0 0 0-2Z"/></svg><span class="astro-b5raizh3">上一页<br class="astro-b5raizh3"><span class="link-title astro-b5raizh3">Drawing · 完整题库</span></span></a><a href="/vdec/benchmarks/drawing/reproduction/" rel="next" class="astro-b5raizh3"><svg aria-hidden="true" class="astro-b5raizh3 astro-hkc32dio" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.5rem;"><path d="M17.92 11.62a1.001 1.001 0 0 0-.21-.33l-5-5a1.003 1.003 0 1 0-1.42 1.42l3.3 3.29H7a1 1 0 0 0 0 2h7.59l-3.3 3.29a1.002 1.002 0 0 0 .325 1.639 1 1 0 0 0 1.095-.219l5-5a1 1 0 0 0 .21-.33 1 1 0 0 0 0-.76Z"/></svg><span class="astro-b5raizh3">下一页<br class="astro-b5raizh3"><span class="link-title astro-b5raizh3">VDecision DrawingBench v2</span></span></a></div></footer></div></div></main></div></div></div></div></body></html>

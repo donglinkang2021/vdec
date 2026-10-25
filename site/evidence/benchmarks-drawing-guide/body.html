@@ -1,0 +1,256 @@
+<div data-pagefind-ignore="all"><div data-pagefind-ignore=""><div class="hero prose"><p class="eyebrow">DRAWINGBENCH V2 / 视觉理解 → 参数选择 → 真实墨迹</p><p class="standfirst">16 个任务家族，48 个结构模板，512 个冻结案例。模型现在可以自定 RGB、局部擦除，并修复题目允许编辑的对象。</p><p>这篇文章展示模型收到的真实输入模板，以及环境怎样执行动作。所有输出轨迹来自<strong>规则策略</strong>；没有加载模型权重，候选分数均为“未测”。规则通过率说明环境中的参考解可执行，不代表模型能力，也不能据此宣称超过官方 DrawingBench。</p><div class="hero-links"><a href="#v2-choice">先看三种方法怎么选择 ↓</a><a href="#v2-replay">逐步看补绘、RGB 和修复 ↓</a><a href="/vdec/archive/drawing-v1/">打开 v1 对照 ↓</a></div></div>
+<section id="v2-tasks"><div class="prose"><h2>增加的是结构，不只是换颜色</h2><p>每个家族有三个模板：前两个分别生成 4 个开发实例和 8 个常规测试实例，第三个模板只出现在 OOD 测试中。因此开发集为 128 题，常规测试 256 题，未见模板测试 128 题。两种测试分别报告；默认冒烟仅选开发集每家族一题，共 16 题。</p><p>geometry 支持直线、矩形、圆、椭圆、多边形和橡皮，预算 192 次；freehand 支持真实画笔和橡皮，预算 768 次。两轨使用同一题目。每题初始对象 2–10 个，最终评分目标最多 8 个；所有题目与参考轨迹在 Python 环境中执行。</p></div><div class="figure"><div class="v2-interactive"><label>开发案例<select id="v2-family"></select></label><p id="v2-task"></p><div class="pair-grid"><figure><img alt="v2 开发案例的已有对象" decoding="async" id="v2-gallery-before" loading="lazy"/><figcaption>Python 初始观察图</figcaption></figure><figure><img alt="v2 规则策略的合法完成结果" decoding="async" id="v2-gallery-after" loading="lazy"/><figcaption>规则参考结果 · 非模型输出</figcaption></figure></div></div><div class="v2-static"><div class="pair-grid"><img alt="开发案例初始画面" decoding="async" height="752" loading="lazy" src="/vdec/media/9151af5f71e4fa411513e6ce3c43666d48906cefb1e1034044c4c8196034d86b.png" width="736"/><img alt="规则完成结果" decoding="async" height="752" loading="lazy" src="/vdec/media/ce0db24822ed8e4f94e834083dd9a4a023068a06b760461387ea954862e1af39.png" width="736"/></div><ul><li><strong>方向关系</strong> · direction.single_anchor</li><li><strong>对齐</strong> · alignment.collinear</li><li><strong>间距与距离</strong> · spacing_distance.equal_insertion</li><li><strong>中间与分点</strong> · between.single_fraction</li><li><strong>包含</strong> · containment.single_container</li><li><strong>重叠与接触</strong> · overlap_contact.partial_overlap</li><li><strong>大小与比例</strong> · relative_size.dimension_ratio</li><li><strong>角度与平行</strong> · angle_parallel.parallel_perpendicular</li><li><strong>数量与排序</strong> · count_order.attribute_count</li><li><strong>对称</strong> · symmetry.single_mirror</li><li><strong>网格与重复图案</strong> · grid_pattern.missing_grid</li><li><strong>连接关系</strong> · connectivity.node_links</li><li><strong>结构物体</strong> · structured_objects.traffic_light</li><li><strong>图表与布局</strong> · charts_layout.bar_chart</li><li><strong>颜色关系</strong> · color.explicit_rgb</li><li><strong>修复与编辑</strong> · repair_editing.position_size</li></ul></div><p class="caption">仅公开开发示例。图片使用无损压缩，打开时逐张验证原始像素一致。位置、尺寸、颜色和干扰物经过采样与布局去重；模板 ID 与结构签名可追溯。独立规划参考图不参与评分。</p></div></section>
+<section id="v2-choice"><div class="prose"><h2>11 个操作，三种选择方式</h2><p>原七个操作的字母顺序不变：A tool、B color、C move、D down、E up、F undo、G finish。新增 H style、I width、J select、K edit。选择动作与参数的过程中，真实笔尖、颜色和擦除掩码都不变；参数齐全后才执行一次环境操作。</p><p><strong>choice：</strong>同一请求列出 A–K，输入尾部预填 <code>\boxed{</code>，读取候选字母的下一 token 分数，取最高项映射为操作。选到 C 之后，仍需四轮九宫格定位，每轮一道九选一题。</p><p><strong>yes_no：</strong>同一画面分别询问 11 个操作是否最佳，每题同时读取 yes/no 两个候选的分数。比较各题的 yes 相对概率，取最高项；不是遇见第一个 yes 就执行。一次批处理可以装多题，但仍按题数计请求。</p><p><strong>coordinate：</strong>一次生成规范 JSON，同时表达操作和参数，例如 <code>{"action":"color","rgb":[128,64,192]}</code>。严格解析整数、字段和范围；非法动作消耗预算，不自动截断或纠正。</p><details><summary>候选分数的计算与含义</summary><pre>choice: sᵢ = exp(ℓᵢ) / Σⱼ exp(ℓⱼ)
+yes_no: qᵢ = exp(ℓᵢ,yes) / [exp(ℓᵢ,yes) + exp(ℓᵢ,no)]
+        sᵢ = qᵢ / Σⱼ qⱼ
+取最高 sᵢ 对应的语义操作。ℓ 是候选 token 的 log-prob。
+这些是公式，本文没有实测分数；sᵢ 不是任务成功概率。</pre></details><div class="table-scroll"><table><caption>v2 典型决策：根据保存的实际模板请求条目计数；每行最终只有 1 次环境操作</caption><thead><tr><th>动作</th><th>choice</th><th>yes_no</th><th>coordinate</th></tr></thead><tbody id="v2-cost-rows"><tr><th>move</th><td>5</td><td>47</td><td>1</td></tr><tr><th>预设颜色</th><td>2</td><td>28</td><td>1</td></tr><tr><th>自定义 RGB</th><td>14</td><td>76</td><td>1</td></tr></tbody></table></div><p>v1 的 move 为 7 + 4×9 = <strong>43</strong> 个 yes/no 请求；v2 为 11 + 4×9 = <strong>47</strong>。多出的 4 个是操作候选，不是定位轮数变化。请求数、token、耗时和环境操作数需要分别报告。</p></div></section>
+<section id="v2-replay"><div class="prose"><h2>看见每个动作真正改变了什么</h2><p>三条主线是补绘、RGB 配色和修复；修复又分为局部擦除与对象变换。所有前后图片和状态都来自 Python。下方请求查看器与当前步骤同步，展示这一帧实际组装的模型输入。</p></div><div class="figure v2-interactive"><div class="controls"><label>示范<select id="v2-story"><option value="completion">补绘与分点</option><option value="rgb">任意 RGB 配色</option><option value="repair">局部擦除</option><option value="edit">移动、缩放、旋转、改色与填充</option></select></label><label>轨道<select id="v2-track"><option value="geometry">geometry</option><option value="freehand">freehand</option></select></label></div><p id="v2-instruction"></p><div class="pair-grid"><figure><img alt="本步执行前的 Python 观察" decoding="async" id="v2-before" loading="lazy"/><figcaption>执行前：本步模型看到的画面</figcaption></figure><figure><img alt="本步执行后的 Python 观察" decoding="async" id="v2-after" loading="lazy"/><figcaption>执行后：真实环境状态</figcaption></figure></div><div class="history"><button id="v2-prev">上一步</button><label>时间轴<input id="v2-step" min="0" type="range" value="0"/></label><button id="v2-next">下一步</button><button id="v2-reset">重置</button></div><p id="v2-position" role="status"></p><pre id="v2-action"></pre><details><summary>查看操作状态（也是模型输入的一部分）</summary><pre id="v2-state"></pre></details><p class="feedback" id="v2-score"></p><details id="v2-mask-detail"><summary>查看该对象的真实擦除掩码</summary><img alt="白色部分为擦除区域，黑色部分未擦除" decoding="async" id="v2-mask" loading="lazy"/><p>这张掩码是教学解释图，不会作为额外信息输入模型。擦除由真实路径产生；变换会同时变换墨迹和掩码。</p></details></div></section>
+<section id="v2-inputs"><div class="prose"><h2>展开这一帧的真实输入</h2><p>原生文本和 token ID 由生产适配器与本地 tokenizer／processor 捕获，特殊 token 没有手写。图片是独立多模态输入；文本视图不包含视觉编码。下面的规则选择仅用于演示后续问题，不是模型生成内容。</p></div><div class="figure v2-interactive"><div class="controls"><label>模型模板<select id="v2-model"><option value="qwen35">Qwen3.5</option><option value="qwen3_vl">Qwen3-VL</option><option value="gemma4">Gemma-4</option></select></label><label>控制方式<select id="v2-method"><option value="choice">choice</option><option value="yes_no">yes_no</option><option value="coordinate">coordinate</option></select></label><label>请求阶段<select id="v2-phase"></select></label><label>候选问题<select id="v2-candidate"></select></label></div><div class="request-grid"><div><img alt="此阶段真实输入的图片，包括定位提示" decoding="async" id="v2-request-image" loading="lazy"/><h3>便于阅读的分解</h3><details><summary>规则</summary><pre id="v2-rules"></pre></details><details><summary>题目与当前状态</summary><pre id="v2-context"></pre></details><pre id="v2-question"></pre></div><div><h3>候选与回答边界</h3><pre id="v2-choices"></pre><p class="feedback" id="v2-request-count"></p><pre id="v2-boundary"></pre><p id="v2-output-note"></p><pre id="v2-output"></pre></div></div><details><summary>完整原生输入文本</summary><pre class="prompt-box" id="v2-native"></pre></details><details><summary>完整原生 token ID</summary><pre class="token-box" id="v2-tokens"></pre></details><p class="caption">阅读辅助标题、分数“未测”和教学选择不会混入原生模型输入。每一步重建当前观察；完整动作历史不会自动追加到模型对话。</p></div></section>
+<section id="v2-rgb"><div class="prose"><h2>完整 RGB：12 次参数选择，一次换色</h2><p>先选“16 个预设 + 自定义 RGB”之一。自定义时依次选择 R、G、B：每个通道四轮四分，256 → 64 → 16 → 4 → 1。三个通道都完成后才提交一次 color。明确 RGB 指令精确匹配；看图匹配颜色时每通道允许 ±8，模型看不到参照对象的隐藏 RGB。</p></div><div class="figure v2-interactive"><label>展开自定义 RGB 的选择过程<input id="v2-rgb-round" max="12" min="0" type="range" value="0"/></label><div class="button-row"><button id="v2-rgb-prev">上一轮</button><button id="v2-rgb-next">下一轮</button><button id="v2-rgb-commit">提交一次换色</button><button id="v2-rgb-reset">重置</button></div><p class="feedback" id="v2-rgb-status" role="status"></p><div class="pair-grid"><div><h3>这一轮的四个候选范围</h3><pre id="v2-rgb-options"></pre></div><div><h3>真实工具颜色</h3><div aria-label="当前实际颜色" id="v2-swatch"></div><pre id="v2-rgb-value"></pre></div></div></div></section>
+<section id="v2-grading"><div class="prose"><h2>评分检查最后剩下的墨迹</h2><p>局部橡皮沿实际移动线段擦除。选中对象时只擦这个可编辑对象，未选中时擦所有可编辑对象；锁定对象不受影响。活动绘制或擦除可以撤销，完成后的撤销恢复最近一次场景变更之前的状态。工具或颜色选择不占场景撤销历史。</p><p>评分先从实际墨迹拟合几何形状，再匹配颜色、填充和空间关系；不拿隐藏参考坐标作为标准答案。空心不能冒充实心，残缺轮廓、额外笔迹与未完成笔画都会影响终局判分。合法遮挡按对象自身墨迹评估，擦除则改变该对象的有效墨迹。</p></div><div class="figure v2-interactive"><label>评分反例<select id="v2-variant"></select></label><div class="pair-grid"><img alt="Python 评分反例画面" decoding="async" id="v2-variant-image" loading="lazy"/><div><button id="v2-submit">示范提交后展开评分</button><pre id="v2-variant-score">尚未提交</pre></div></div></div></section>
+<section id="v2-planning"><div class="prose"><h2>规划发生在另一张参考图上</h2><p>按控制器、轨道、seed 和协议版本独立缓存。shared_full 与 shared_plan_only 使用同一次规划生成；前者保留完整规划上下文，后者仅保留计划。这里展示真实规划请求，生成内容只用结构说明，不伪造推理文本。</p></div><div class="figure v2-interactive"><label>规划条件<select id="v2-condition"><option value="no_plan">no_plan</option><option value="shared_full">shared_full</option><option value="shared_plan_only">shared_plan_only</option><option value="shared_no_think">shared_no_think</option></select></label><p class="feedback" id="v2-plan-flow"></p><details id="v2-plan-details"><summary>真实规划请求</summary><pre class="prompt-box" id="v2-plan-native"></pre></details></div></section>
+<section id="v2-evidence"><div class="prose"><h2>已验证的是环境，不是模型成绩</h2><p>规则与随机策略均在 CPU 上真实执行。三类模型只做模板预检；候选评分、生成动作和模型成功率仍未实测。常规测试与 OOD、geometry 与 freehand、v1 与 v2 均分开报告。</p></div><div class="figure result-figure"><div class="table-scroll"><table><caption>可复现验证 · 全部为非模型成绩</caption><thead><tr><th>策略</th><th>划分</th><th>轨道</th><th>次数</th><th>家族等权完整成功率</th></tr></thead><tbody><tr><th>规则策略</th><td>开发</td><td>freehand</td><td>128</td><td>100.00%</td></tr><tr><th>规则策略</th><td>开发</td><td>geometry</td><td>128</td><td>100.00%</td></tr><tr><th>规则策略</th><td>OOD</td><td>freehand</td><td>128</td><td>100.00%</td></tr><tr><th>规则策略</th><td>OOD</td><td>geometry</td><td>128</td><td>100.00%</td></tr><tr><th>规则策略</th><td>常规测试</td><td>freehand</td><td>256</td><td>100.00%</td></tr><tr><th>规则策略</th><td>常规测试</td><td>geometry</td><td>256</td><td>100.00%</td></tr><tr><th>随机策略</th><td>开发</td><td>freehand</td><td>384</td><td>0.00%</td></tr><tr><th>随机策略</th><td>开发</td><td>geometry</td><td>384</td><td>0.00%</td></tr><tr><th>随机策略</th><td>OOD</td><td>freehand</td><td>384</td><td>0.00%</td></tr><tr><th>随机策略</th><td>OOD</td><td>geometry</td><td>384</td><td>0.00%</td></tr><tr><th>随机策略</th><td>常规测试</td><td>freehand</td><td>768</td><td>0.00%</td></tr><tr><th>随机策略</th><td>常规测试</td><td>geometry</td><td>768</td><td>0.00%</td></tr></tbody></table></div><details><summary>来源哈希、模板和验证条件</summary><pre id="v2-provenance">{
+  "version": "v2",
+  "dataset_sha256": "35f143659621f6d64a339f0e267c50086ee8db8b8994192871f1ecdf8c7d706f",
+  "models": {
+    "qwen35": {
+      "name": "Qwen/Qwen3.5-4B",
+      "weights_loaded": false,
+      "template_sha256": "a4aee8afcf2e0711942cf848899be66016f8d14a889ff9ede07bca099c28f715"
+    },
+    "qwen3_vl": {
+      "name": "Qwen/Qwen3-VL-4B-Thinking",
+      "weights_loaded": false,
+      "template_sha256": "36e042fe45641f067b1f2381fcc8955d10d956a3ed333ecdf7f7eb0916f68956"
+    },
+    "gemma4": {
+      "name": "google/gemma-4-E4B-it",
+      "weights_loaded": false,
+      "template_sha256": "55572b8d3c8342044e25874c73fe5234b661fa0a57a57f6ef75b58e03d7d959a"
+    }
+  },
+  "preflight": {
+    "status": "passed",
+    "models": 3,
+    "weights_loaded": false
+  },
+  "source_hashes": {
+    "__init__.py": "e8e9efefc82d5304c68ba67a6b6d55f095f34523e676dccd957c3fae6aad70c9",
+    "backends/__init__.py": "d7afa8b2619690d49e5983a849ea1c3666e55dae043240e93637eaa55ab547b3",
+    "backends/base.py": "837d4369bc9ca3a23db1f04b53fe3bb1f643e69c5952f7201f1cc8dbfa901397",
+    "backends/registry.py": "d9760e36061d6a7d36694770372a6621c74bb273a12781a72dbdc909fb4fb0bc",
+    "backends/transformers.py": "92cee26a4e653f325c5d539d73c7a70ca8d77bca3124ceea2e95fdf44352a778",
+    "backends/vllm.py": "21d9aed18f48f82b6cf8e15a6ce8ecf9fb2ee73972b44650a413728f987a1986",
+    "benches/base.py": "002e5eaa95f4b9db1dfbef779d89d81b244d43c2c4c2ec97c91f1e40b482a418",
+    "benches/drawing/__init__.py": "bb46cf06dead9a10c0215473d45108f326f132f8587eee1c65d72d195bfb3b80",
+    "benches/drawing/bench.py": "9556ee9820992160c9b75c09b820a7bf8640f65d0b82f8894b1e9c637a355085",
+    "benches/drawing/cli.py": "8fc2fd9e698968da3db7cb2b6480fc05a430b25dc8bc789803c1288475c5f47b",
+    "benches/drawing/construction.py": "22e5557bc1058be6b4ac9acd99879d6cd41d7bb4e10f7e5f1f93480a0b11e8d9",
+    "benches/drawing/controllers.py": "e7b0c00a8b37d87de9fcb30d6ea181507e32cbb0ad073d86ce7826e5b17516e3",
+    "benches/drawing/datasets.py": "b8073490b95b53a30faaf633e5e6f85d49832b505913a98645ddc1408fc1af73",
+    "benches/drawing/environment.py": "6fc770c676ef4af7f858cb4fdcb7449eb098e750456fdebaea0194fa03283e93",
+    "benches/drawing/geometry.py": "21020784df710149d75bd377b8508f874a7fcc4224eec0b21a79e9e9176a7417",
+    "benches/drawing/oracle.py": "20eb5eefb4417b24dbd527a556b7a7dbf943593974b44e1bc152210a5de64871",
+    "benches/drawing/prompts.py": "5067129f2d5da190c1b5ef85c8ec95358375c720b3c1dbb02077d3298be75167",
+    "benches/drawing/rendering.py": "ad1740c407490655326e5367dd23336e1a26645436e7fcdbbef6d67b66aa4495",
+    "benches/drawing/results.py": "ee8356b30e731571aa3eb604401eceb8433d3348f340af712b491edbed337bc5",
+    "benches/drawing/scoring.py": "fd136e1c033ef47c892382207182bd1fe86230d9f72787a1dacf2d1d85bed946",
+    "benches/drawing/session.py": "35a32793f9e6c3b8adff357e1b7be94dbd0a69485402f43d9ba08df4aeb48daa",
+    "benches/drawing/v2_construction.py": "6184109e0304d454876e3f6faac8fd00680b6d69d12ca36389623eac4feac70b",
+    "benches/drawing/v2_control.py": "89bdeb6fec8c0bd2a89c3e78aa8a868f0acb1c708a88f972bdcda8f54bc19811",
+    "benches/drawing/v2_environment.py": "b5f9c9c67985c2af10bc9bc53a3f65c9e71ef8fcf5c1a95c4c22df7fa449a8fb",
+    "benches/drawing/v2_ink.py": "ecba27605fbe6665fe647ae3351722e699532a4721617050067dc99b9df3b3b3",
+    "benches/drawing/v2_oracle.py": "091e18d520c9c3bafeb660b7f3bfe745a685a2a843991c7deed05f060eebdab3",
+    "benches/drawing/v2_protocol.py": "1411a499e07667c1a9a39c6a605b2a99fecdb1fcffb02de9d016b0a9890844cc",
+    "benches/drawing/v2_rendering.py": "2f6e276b808be0b94f013576867f3249c40c984ffb3648d5697af2e9650a1ffe",
+    "benches/drawing/v2_scoring.py": "bba4595cacea84bd577180613aeb7ecd76831192acc3c383932c2770684f670c",
+    "benches/drawing/viewer.html": "8e89fc7d13efd017ea13e169f88e673eaf180d1736eb85433c4d368d8ea880b6",
+    "benches/drawing/viewer.js": "d9ff57ce1ea7e4d8e6339672f69847359324961e363018411d450255efb2ef10",
+    "benches/drawing/viewer.py": "4b0d064d89d606800347206d456dcde3c72bfcf1bc865517a96aefbc4ec81c1a",
+    "benches/registry.py": "4891742cbfa4e7baf47e06c10ab94593659696660f28204047b2c0c644423855",
+    "core/__init__.py": "83d141bfee9234c8996b13d61cdc07999d30287bdaac0c802c9ffecdb2d4c3dd",
+    "core/artifacts.py": "7b260407e6df00b8a82fee67ea08227139d814d2bd7fb8eaa6f18f139efd56c8",
+    "core/engine.py": "89ae7dd290a2b2917a7013e35e829391796e68a10208d9c2394555fc17d702d4",
+    "core/generation.py": "163872ba9c83745aa8ba51e35d223756c98f438fd071650f14d917b238df4f3b",
+    "core/sampling.py": "9f75a2215babeb25890387f9b98cd81351d60ccaa1d3461e22e16932be42ae9b",
+    "core/scoring.py": "0c9a8b067199c7cc94c5a417f400b2b942c5417cc6559ede1acf8b9a0c29c2ff",
+    "core/types.py": "dff657a5954f5f6f98b9e832804741552db01896d4f934bb55e94e9cf1ee5d9d",
+    "models/__init__.py": "ace06d8e763c2d43d5b584a0741a0f5b92b0cdadca40afccbda52a2363be52ae",
+    "models/adapters.py": "61831fe7ab0ee1b823ed3181696365fbc3b3c1ac73ce760657b28369bd1c700d",
+    "models/prompts.py": "321c6c38cb02bfc583f652eb2da4b9fe7204f80fb25e508c8e2133bfa931ac6b"
+  },
+  "evidence": [
+    {
+      "policy": "oracle",
+      "config": {
+        "protocol": "drawing-bench-v2",
+        "dataset_version": "v2",
+        "families": null,
+        "split": "all",
+        "limit": null,
+        "tracks": [
+          "geometry",
+          "freehand"
+        ],
+        "controllers": [
+          "readout"
+        ],
+        "methods": [
+          "choice"
+        ],
+        "conditions": [
+          "no_plan"
+        ],
+        "seeds": [
+          0
+        ],
+        "policy": "oracle",
+        "max_steps": null,
+        "default_limits": {
+          "geometry": 192,
+          "freehand": 768
+        },
+        "sampling": {
+          "profile": "model_default",
+          "plan_sampling": null,
+          "seed": 0
+        },
+        "save_gifs": false,
+        "dataset_hash": "35f143659621f6d64a339f0e267c50086ee8db8b8994192871f1ecdf8c7d706f",
+        "prompt_version": "drawing-prompt-v2",
+        "render_version": "drawing-render-v2",
+        "contour_tolerance_pixels": 8,
+        "separation_pixels": 16,
+        "size_ratio_relative_tolerance": 0.1,
+        "prompt_hash": "5067129f2d5da190c1b5ef85c8ec95358375c720b3c1dbb02077d3298be75167",
+        "coordinate_generation": {
+          "temperature": 0,
+          "max_tokens": 128
+        },
+        "localization": "four_level_3x3",
+        "regrading": {
+          "kind": "CPU re-evaluation of saved final ink; no new policy/model execution",
+          "original_manifest_sha256": "3b0d457facf678fbb51b363e8d4940d35688ca2aa3233b6bde37cfa5e5db3446",
+          "original_events_sha256": "4d532b9b58f5773d92b87c36a1e459e9d3c02c0de1479757c0780b8ccde7e4b7",
+          "scoring_source_hashes": {
+            "benches/drawing/__init__.py": "bb46cf06dead9a10c0215473d45108f326f132f8587eee1c65d72d195bfb3b80",
+            "benches/drawing/bench.py": "9556ee9820992160c9b75c09b820a7bf8640f65d0b82f8894b1e9c637a355085",
+            "benches/drawing/cli.py": "8fc2fd9e698968da3db7cb2b6480fc05a430b25dc8bc789803c1288475c5f47b",
+            "benches/drawing/construction.py": "22e5557bc1058be6b4ac9acd99879d6cd41d7bb4e10f7e5f1f93480a0b11e8d9",
+            "benches/drawing/controllers.py": "e7b0c00a8b37d87de9fcb30d6ea181507e32cbb0ad073d86ce7826e5b17516e3",
+            "benches/drawing/datasets.py": "b8073490b95b53a30faaf633e5e6f85d49832b505913a98645ddc1408fc1af73",
+            "benches/drawing/environment.py": "6fc770c676ef4af7f858cb4fdcb7449eb098e750456fdebaea0194fa03283e93",
+            "benches/drawing/geometry.py": "21020784df710149d75bd377b8508f874a7fcc4224eec0b21a79e9e9176a7417",
+            "benches/drawing/oracle.py": "20eb5eefb4417b24dbd527a556b7a7dbf943593974b44e1bc152210a5de64871",
+            "benches/drawing/prompts.py": "5067129f2d5da190c1b5ef85c8ec95358375c720b3c1dbb02077d3298be75167",
+            "benches/drawing/rendering.py": "ad1740c407490655326e5367dd23336e1a26645436e7fcdbbef6d67b66aa4495",
+            "benches/drawing/results.py": "8c32bbdef59feffde041125a5817472a98917ae490ccee3c5240eb549417c4bc",
+            "benches/drawing/scoring.py": "fd136e1c033ef47c892382207182bd1fe86230d9f72787a1dacf2d1d85bed946",
+            "benches/drawing/session.py": "35a32793f9e6c3b8adff357e1b7be94dbd0a69485402f43d9ba08df4aeb48daa",
+            "benches/drawing/v2_construction.py": "6184109e0304d454876e3f6faac8fd00680b6d69d12ca36389623eac4feac70b",
+            "benches/drawing/v2_control.py": "89bdeb6fec8c0bd2a89c3e78aa8a868f0acb1c708a88f972bdcda8f54bc19811",
+            "benches/drawing/v2_environment.py": "b5f9c9c67985c2af10bc9bc53a3f65c9e71ef8fcf5c1a95c4c22df7fa449a8fb",
+            "benches/drawing/v2_ink.py": "ecba27605fbe6665fe647ae3351722e699532a4721617050067dc99b9df3b3b3",
+            "benches/drawing/v2_oracle.py": "091e18d520c9c3bafeb660b7f3bfe745a685a2a843991c7deed05f060eebdab3",
+            "benches/drawing/v2_protocol.py": "1411a499e07667c1a9a39c6a605b2a99fecdb1fcffb02de9d016b0a9890844cc",
+            "benches/drawing/v2_rendering.py": "2f6e276b808be0b94f013576867f3249c40c984ffb3648d5697af2e9650a1ffe",
+            "benches/drawing/v2_scoring.py": "133cc56e81dd213073023dd50fc483d12095ea123a359c63ce852857b8bb4d55",
+            "benches/drawing/viewer.html": "8e89fc7d13efd017ea13e169f88e673eaf180d1736eb85433c4d368d8ea880b6",
+            "benches/drawing/viewer.js": "20c9b29b5404b6aa8c12ca8b86b500bb0076225802ddb7b1f791d13d02fc0cf6",
+            "benches/drawing/viewer.py": "4b0d064d89d606800347206d456dcde3c72bfcf1bc865517a96aefbc4ec81c1a"
+          }
+        }
+      },
+      "manifest_sha256": "a49d0f25e3f63ef08d06c7608d96a6f826c07c13951d0e284307d3b641ffc737",
+      "events_sha256": "45b3bd72a18fc0620e6b6fa16310de1f3c784feb7ea21a1da775f71c0002ac0e"
+    },
+    {
+      "policy": "random",
+      "config": {
+        "protocol": "drawing-bench-v2",
+        "dataset_version": "v2",
+        "families": null,
+        "split": "all",
+        "limit": null,
+        "tracks": [
+          "geometry",
+          "freehand"
+        ],
+        "controllers": [
+          "readout"
+        ],
+        "methods": [
+          "choice"
+        ],
+        "conditions": [
+          "no_plan"
+        ],
+        "seeds": [
+          0,
+          1,
+          2
+        ],
+        "policy": "random",
+        "max_steps": null,
+        "default_limits": {
+          "geometry": 192,
+          "freehand": 768
+        },
+        "sampling": {
+          "profile": "model_default",
+          "plan_sampling": null,
+          "seed": 0
+        },
+        "save_gifs": false,
+        "dataset_hash": "35f143659621f6d64a339f0e267c50086ee8db8b8994192871f1ecdf8c7d706f",
+        "prompt_version": "drawing-prompt-v2",
+        "render_version": "drawing-render-v2",
+        "contour_tolerance_pixels": 8,
+        "separation_pixels": 16,
+        "size_ratio_relative_tolerance": 0.1,
+        "prompt_hash": "5067129f2d5da190c1b5ef85c8ec95358375c720b3c1dbb02077d3298be75167",
+        "coordinate_generation": {
+          "temperature": 0,
+          "max_tokens": 128
+        },
+        "localization": "four_level_3x3",
+        "regrading": {
+          "kind": "CPU re-evaluation of saved final ink; no new policy/model execution",
+          "original_manifest_sha256": "2062cd83156eccd4dfcb5025bd7fba6f6bdfec1356c0d24c46889ccbcfa284aa",
+          "original_events_sha256": "00654241c11ce2aa7815ac629a4db2dbbca16f10763efe4618e17bea621c7e65",
+          "scoring_source_hashes": {
+            "benches/drawing/__init__.py": "bb46cf06dead9a10c0215473d45108f326f132f8587eee1c65d72d195bfb3b80",
+            "benches/drawing/bench.py": "9556ee9820992160c9b75c09b820a7bf8640f65d0b82f8894b1e9c637a355085",
+            "benches/drawing/cli.py": "8fc2fd9e698968da3db7cb2b6480fc05a430b25dc8bc789803c1288475c5f47b",
+            "benches/drawing/construction.py": "22e5557bc1058be6b4ac9acd99879d6cd41d7bb4e10f7e5f1f93480a0b11e8d9",
+            "benches/drawing/controllers.py": "e7b0c00a8b37d87de9fcb30d6ea181507e32cbb0ad073d86ce7826e5b17516e3",
+            "benches/drawing/datasets.py": "b8073490b95b53a30faaf633e5e6f85d49832b505913a98645ddc1408fc1af73",
+            "benches/drawing/environment.py": "6fc770c676ef4af7f858cb4fdcb7449eb098e750456fdebaea0194fa03283e93",
+            "benches/drawing/geometry.py": "21020784df710149d75bd377b8508f874a7fcc4224eec0b21a79e9e9176a7417",
+            "benches/drawing/oracle.py": "20eb5eefb4417b24dbd527a556b7a7dbf943593974b44e1bc152210a5de64871",
+            "benches/drawing/prompts.py": "5067129f2d5da190c1b5ef85c8ec95358375c720b3c1dbb02077d3298be75167",
+            "benches/drawing/rendering.py": "ad1740c407490655326e5367dd23336e1a26645436e7fcdbbef6d67b66aa4495",
+            "benches/drawing/results.py": "8c32bbdef59feffde041125a5817472a98917ae490ccee3c5240eb549417c4bc",
+            "benches/drawing/scoring.py": "fd136e1c033ef47c892382207182bd1fe86230d9f72787a1dacf2d1d85bed946",
+            "benches/drawing/session.py": "35a32793f9e6c3b8adff357e1b7be94dbd0a69485402f43d9ba08df4aeb48daa",
+            "benches/drawing/v2_construction.py": "6184109e0304d454876e3f6faac8fd00680b6d69d12ca36389623eac4feac70b",
+            "benches/drawing/v2_control.py": "89bdeb6fec8c0bd2a89c3e78aa8a868f0acb1c708a88f972bdcda8f54bc19811",
+            "benches/drawing/v2_environment.py": "b5f9c9c67985c2af10bc9bc53a3f65c9e71ef8fcf5c1a95c4c22df7fa449a8fb",
+            "benches/drawing/v2_ink.py": "ecba27605fbe6665fe647ae3351722e699532a4721617050067dc99b9df3b3b3",
+            "benches/drawing/v2_oracle.py": "091e18d520c9c3bafeb660b7f3bfe745a685a2a843991c7deed05f060eebdab3",
+            "benches/drawing/v2_protocol.py": "1411a499e07667c1a9a39c6a605b2a99fecdb1fcffb02de9d016b0a9890844cc",
+            "benches/drawing/v2_rendering.py": "2f6e276b808be0b94f013576867f3249c40c984ffb3648d5697af2e9650a1ffe",
+            "benches/drawing/v2_scoring.py": "133cc56e81dd213073023dd50fc483d12095ea123a359c63ce852857b8bb4d55",
+            "benches/drawing/viewer.html": "8e89fc7d13efd017ea13e169f88e673eaf180d1736eb85433c4d368d8ea880b6",
+            "benches/drawing/viewer.js": "20c9b29b5404b6aa8c12ca8b86b500bb0076225802ddb7b1f791d13d02fc0cf6",
+            "benches/drawing/viewer.py": "4b0d064d89d606800347206d456dcde3c72bfcf1bc865517a96aefbc4ec81c1a"
+          }
+        }
+      },
+      "manifest_sha256": "ab155abe8427f37f132859db6e86bd6c0ee9fc1b559d2f99791762b12ebf8f6b",
+      "events_sha256": "94b1e01d0b2f79a2467afc7b1fc45d6450620bc32a1a5b4a4de367addaf0c11d"
+    }
+  ]
+}</pre></details><p>v2 与官方 DrawingBench 的任务范围、交互协议和评分定义不同。功能更多不等于经过实验证明更优；场景多样性的有效性仍需要真实模型结果检验。</p></div></section>
+<p class="prose" id="v2-load-error" role="status"></p></div></div>

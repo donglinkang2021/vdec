@@ -1,0 +1,816 @@
+<!DOCTYPE html><html lang="zh-CN" dir="ltr" data-theme="dark" data-has-toc data-has-sidebar class="astro-g5ptsecz"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><title>三模型历史实验结果 | vdec</title><link rel="canonical" href="https://donglinkang2021.github.io/vdec/archive/backend-report/"/><link rel="sitemap" href="/vdec/sitemap-index.xml"/><link rel="shortcut icon" href="/vdec/favicon.svg" type="image/svg+xml"/><meta name="generator" content="Astro v7.4.2"/><meta name="generator" content="Starlight v0.42.7"/><meta property="og:title" content="三模型历史实验结果"/><meta property="og:type" content="article"/><meta property="og:url" content="https://donglinkang2021.github.io/vdec/archive/backend-report/"/><meta property="og:locale" content="zh-CN"/><meta property="og:description" content="视觉决策评测、论文与可复现实验"/><meta property="og:site_name" content="vdec"/><meta name="twitter:card" content="summary_large_image"/><meta name="description" content="视觉决策评测、论文与可复现实验"/><script>
+	window.StarlightThemeProvider = (() => {
+		const storedTheme =
+			typeof localStorage !== 'undefined' && localStorage.getItem('starlight-theme');
+		const theme =
+			storedTheme ||
+			(window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+		document.documentElement.dataset.theme = theme === 'light' ? 'light' : 'dark';
+		return {
+			updatePickers(theme = storedTheme || 'auto') {
+				document.querySelectorAll('starlight-theme-select').forEach((picker) => {
+					const select = picker.querySelector('select');
+					if (select) select.value = theme;
+					/** @type {HTMLTemplateElement | null} */
+					const tmpl = document.querySelector(`#theme-icons`);
+					const newIcon = tmpl && tmpl.content.querySelector('.' + theme);
+					if (newIcon) {
+						const oldIcon = picker.querySelector('svg.label-icon');
+						if (oldIcon) {
+							oldIcon.replaceChildren(...newIcon.cloneNode(true).childNodes);
+						}
+					}
+				});
+			},
+		};
+	})();
+</script><template id="theme-icons"><svg aria-hidden="true" class="light astro-hkc32dio" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M5 12a1 1 0 0 0-1-1H3a1 1 0 0 0 0 2h1a1 1 0 0 0 1-1Zm.64 5-.71.71a1 1 0 0 0 0 1.41 1 1 0 0 0 1.41 0l.71-.71A1 1 0 0 0 5.64 17ZM12 5a1 1 0 0 0 1-1V3a1 1 0 0 0-2 0v1a1 1 0 0 0 1 1Zm5.66 2.34a1 1 0 0 0 .7-.29l.71-.71a1 1 0 1 0-1.41-1.41l-.66.71a1 1 0 0 0 0 1.41 1 1 0 0 0 .66.29Zm-12-.29a1 1 0 0 0 1.41 0 1 1 0 0 0 0-1.41l-.71-.71a1.004 1.004 0 1 0-1.43 1.41l.73.71ZM21 11h-1a1 1 0 0 0 0 2h1a1 1 0 0 0 0-2Zm-2.64 6A1 1 0 0 0 17 18.36l.71.71a1 1 0 0 0 1.41 0 1 1 0 0 0 0-1.41l-.76-.66ZM12 6.5a5.5 5.5 0 1 0 5.5 5.5A5.51 5.51 0 0 0 12 6.5Zm0 9a3.5 3.5 0 1 1 0-7 3.5 3.5 0 0 1 0 7Zm0 3.5a1 1 0 0 0-1 1v1a1 1 0 0 0 2 0v-1a1 1 0 0 0-1-1Z"/></svg><svg aria-hidden="true" class="dark astro-hkc32dio" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M21.64 13a1 1 0 0 0-1.05-.14 8.049 8.049 0 0 1-3.37.73 8.15 8.15 0 0 1-8.14-8.1 8.59 8.59 0 0 1 .25-2A1 1 0 0 0 8 2.36a10.14 10.14 0 1 0 14 11.69 1 1 0 0 0-.36-1.05Zm-9.5 6.69A8.14 8.14 0 0 1 7.08 5.22v.27a10.15 10.15 0 0 0 10.14 10.14 9.784 9.784 0 0 0 2.1-.22 8.11 8.11 0 0 1-7.18 4.32v-.04Z"/></svg><svg aria-hidden="true" class="auto astro-hkc32dio" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M21 14h-1V7a3 3 0 0 0-3-3H7a3 3 0 0 0-3 3v7H3a1 1 0 0 0-1 1v2a3 3 0 0 0 3 3h14a3 3 0 0 0 3-3v-2a1 1 0 0 0-1-1ZM6 7a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v7H6V7Zm14 10a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-1h16v1Z"/></svg></template><link rel="stylesheet" href="/vdec/_astro/print.ehPL0gv-.css" media="print"><link rel="stylesheet" href="/vdec/_astro/common.B2KNhLp0.css"><script type="module" src="/vdec/_astro/page.cNngjUgL.js"></script></head><body class="astro-g5ptsecz"><a class="sl-skip-link astro-qb7clj6f" href="#_top">跳转到内容</a><div class="page sl-flex astro-yntsjkba"><header class="header astro-yntsjkba"><div class="header astro-by6fddyj"><div class="title-wrapper sl-flex astro-by6fddyj"><a href="/vdec/" class="site-title sl-flex astro-6rvad3va"><span class="astro-6rvad3va" translate="no">vdec</span></a></div><div class="sl-flex print:hidden astro-by6fddyj"><site-search class="astro-by6fddyj astro-b5kgnn7o" data-translations="{&quot;placeholder&quot;:&quot;搜索&quot;}"><button data-open-modal disabled aria-label="搜索" aria-keyshortcuts="Control+K" class="astro-b5kgnn7o"><svg aria-hidden="true" class="astro-b5kgnn7o astro-hkc32dio" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M21.71 20.29 18 16.61A9 9 0 1 0 16.61 18l3.68 3.68a.999.999 0 0 0 1.42 0 1 1 0 0 0 0-1.39ZM11 18a7 7 0 1 1 0-14 7 7 0 0 1 0 14Z"/></svg><span class="sl-hidden md:sl-block astro-b5kgnn7o" aria-hidden="true">搜索</span><kbd class="sl-hidden md:sl-flex astro-b5kgnn7o" style="display: none;"><kbd class="astro-b5kgnn7o">Ctrl</kbd><kbd class="astro-b5kgnn7o">K</kbd></kbd></button><dialog style="padding:0" aria-label="搜索" class="astro-b5kgnn7o"><div class="dialog-frame sl-flex astro-b5kgnn7o"><button data-close-modal class="sl-flex md:sl-hidden astro-b5kgnn7o">取消</button><div class="search-container astro-b5kgnn7o"><div id="starlight__search" class="astro-b5kgnn7o"></div></div></div></dialog></site-search><script>
+	(() => {
+		const openBtn = document.querySelector('button[data-open-modal]');
+		const shortcut = openBtn?.querySelector('kbd');
+		if (!openBtn || !(shortcut instanceof HTMLElement)) return;
+		const platformKey = shortcut.querySelector('kbd');
+		if (platformKey && /(Mac|iPhone|iPod|iPad)/i.test(navigator.platform)) {
+			platformKey.textContent = '⌘';
+			openBtn.setAttribute('aria-keyshortcuts', 'Meta+K');
+		}
+		shortcut.style.display = '';
+	})();
+</script><script type="module" src="/vdec/_astro/Search.astro_astro_type_script_index_0_lang.BZ0RsVt4.js"></script></div><div class="sl-hidden md:sl-flex print:hidden right-group astro-by6fddyj"><div class="sl-flex social-icons astro-by6fddyj"><a href="https://github.com/donglinkang2021/vdec" rel="me" class="sl-flex astro-n2mnl6yq"><span class="sr-only astro-n2mnl6yq">公开站点</span><svg aria-hidden="true" class="astro-n2mnl6yq astro-hkc32dio" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M12 .3a12 12 0 0 0-3.8 23.38c.6.12.83-.26.83-.57L9 21.07c-3.34.72-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.08-.74.09-.73.09-.73 1.2.09 1.83 1.24 1.83 1.24 1.08 1.83 2.81 1.3 3.5 1 .1-.78.42-1.31.76-1.61-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.14-.3-.54-1.52.1-3.18 0 0 1-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.28-1.55 3.29-1.23 3.29-1.23.64 1.66.24 2.88.12 3.18a4.65 4.65 0 0 1 1.23 3.22c0 4.61-2.8 5.63-5.48 5.92.42.36.81 1.1.81 2.22l-.01 3.29c0 .31.2.69.82.57A12 12 0 0 0 12 .3Z"/></svg></a></div><starlight-theme-select><label style="--sl-select-width: 6.25em" class="astro-2z5xp7gb"><span class="sr-only astro-2z5xp7gb">选择主题</span><svg aria-hidden="true" class="icon label-icon astro-2z5xp7gb astro-hkc32dio" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M21 14h-1V7a3 3 0 0 0-3-3H7a3 3 0 0 0-3 3v7H3a1 1 0 0 0-1 1v2a3 3 0 0 0 3 3h14a3 3 0 0 0 3-3v-2a1 1 0 0 0-1-1ZM6 7a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v7H6V7Zm14 10a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-1h16v1Z"/></svg><select autocomplete="off" class="astro-2z5xp7gb"><option value="dark" class="astro-2z5xp7gb">深色</option><option value="light" class="astro-2z5xp7gb">浅色</option><option value="auto" selected class="astro-2z5xp7gb">自动</option></select><svg aria-hidden="true" class="icon caret astro-2z5xp7gb astro-hkc32dio" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M17 9.17a1 1 0 0 0-1.41 0L12 12.71 8.46 9.17a1 1 0 1 0-1.41 1.42l4.24 4.24a1.002 1.002 0 0 0 1.42 0L17 10.59a1.002 1.002 0 0 0 0-1.42Z"/></svg></label></starlight-theme-select><script>
+	StarlightThemeProvider.updatePickers();
+</script><script type="module">var e=`starlight-theme`,t=e=>e===`auto`||e===`dark`||e===`light`?e:`auto`,n=()=>t(typeof localStorage<`u`&&localStorage.getItem(e));function r(t){typeof localStorage<`u`&&localStorage.setItem(e,t===`light`||t===`dark`?t:``)}var i=()=>matchMedia(`(prefers-color-scheme: light)`).matches?`light`:`dark`;function a(e){StarlightThemeProvider.updatePickers(e),document.documentElement.dataset.theme=e===`auto`?i():e,r(e)}matchMedia(`(prefers-color-scheme: light)`).addEventListener(`change`,()=>{n()===`auto`&&a(`auto`)});var o=class extends HTMLElement{constructor(){super(),a(n()),this.querySelector(`select`)?.addEventListener(`change`,e=>{e.currentTarget instanceof HTMLSelectElement&&a(t(e.currentTarget.value))})}};customElements.define(`starlight-theme-select`,o);</script><script type="module">var e=class extends HTMLElement{constructor(){super();let e=this.querySelector(`select`);e&&(e.addEventListener(`change`,e=>{e.currentTarget instanceof HTMLSelectElement&&(window.location.pathname=e.currentTarget.value)}),window.addEventListener(`pageshow`,t=>{if(!t.persisted)return;let n=e.querySelector(`option[selected]`)?.index;n!==e.selectedIndex&&(e.selectedIndex=n??0)}))}};customElements.define(`starlight-lang-select`,e);</script></div></div></header><nav class="sidebar print:hidden astro-yntsjkba" aria-label="主要"><button popovertarget="starlight__sidebar" class="sl-menu-button sl-flex md:sl-hidden print:hidden astro-r2osgdlg"><svg aria-hidden="true" class="open-menu astro-r2osgdlg astro-hkc32dio" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M3 8h18a1 1 0 1 0 0-2H3a1 1 0 0 0 0 2Zm18 8H3a1 1 0 0 0 0 2h18a1 1 0 0 0 0-2Zm0-5H3a1 1 0 0 0 0 2h18a1 1 0 0 0 0-2Z"/></svg><svg aria-hidden="true" class="close-menu astro-r2osgdlg astro-hkc32dio" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="m13.41 12 6.3-6.29a1.004 1.004 0 1 0-1.42-1.42L12 10.59l-6.29-6.3a1.004 1.004 0 0 0-1.42 1.42l6.3 6.29-6.3 6.29a1 1 0 0 0 0 1.42.998.998 0 0 0 1.42 0l6.29-6.3 6.29 6.3a.999.999 0 0 0 1.42 0 1 1 0 0 0 0-1.42L13.41 12Z"/></svg><span class="sr-only astro-r2osgdlg">菜单</span></button><script type="module">var e=class extends HTMLElement{constructor(){super();let e=matchMedia(`(min-width: 50em)`),t=()=>{this.popover=e.matches?null:`auto`};t(),e.addEventListener(`change`,()=>t()),this.addEventListener(`toggle`,({newState:e})=>this.trapFocus(e===`open`))}trapFocus(e){document.querySelectorAll(`.main-frame, .sl-skip-link`).forEach(t=>{t.toggleAttribute(`inert`,e)})}};customElements.define(`sl-sidebar-pane`,e);</script><sl-sidebar-pane popover id="starlight__sidebar" class="sidebar-pane astro-yntsjkba"><div class="sidebar-content sl-flex astro-yntsjkba"><sl-sidebar-state-persist data-hash="1gq6nwq" class="astro-ipdry5cl"><script aria-hidden="true">
+		(() => {
+			try {
+				if (!matchMedia('(min-width: 50em)').matches) return;
+				/** @type {HTMLElement | null} */
+				const target = document.querySelector('sl-sidebar-state-persist');
+				const state = JSON.parse(sessionStorage.getItem('sl-sidebar-state') || '0');
+				if (!target || !state || target.dataset.hash !== state.hash) return;
+				window._starlightScrollRestore = state.scroll;
+				customElements.define(
+					'sl-sidebar-restore',
+					class SidebarRestore extends HTMLElement {
+						connectedCallback() {
+							try {
+								const idx = parseInt(this.dataset.index || '');
+								const details = this.closest('details');
+								if (details && typeof state.open[idx] === 'boolean') details.open = state.open[idx];
+							} catch {}
+						}
+					}
+				);
+			} catch {}
+		})();
+	</script><ul class="top-level astro-rmhv4bp6"><li class="astro-rmhv4bp6"><details open class="astro-rmhv4bp6"><summary class="astro-rmhv4bp6"><span class="group-label astro-rmhv4bp6"><span class="large astro-rmhv4bp6">Benchmarks</span></span><svg aria-hidden="true" class="caret astro-rmhv4bp6 astro-hkc32dio" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg></summary><sl-sidebar-restore data-index="0"></sl-sidebar-restore><ul class="astro-rmhv4bp6"><li class="astro-rmhv4bp6"><details open class="astro-rmhv4bp6"><summary class="astro-rmhv4bp6"><span class="group-label astro-rmhv4bp6"><span class="large astro-rmhv4bp6">Snake</span></span><svg aria-hidden="true" class="caret astro-rmhv4bp6 astro-hkc32dio" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg></summary><sl-sidebar-restore data-index="1"></sl-sidebar-restore><ul class="astro-rmhv4bp6"><li class="astro-rmhv4bp6"><a href="/vdec/benchmarks/snake/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Snake</span></a></li><li class="astro-rmhv4bp6"><a href="/vdec/benchmarks/snake/examples/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Snake · 完整题库</span></a></li><li class="astro-rmhv4bp6"><a href="/vdec/benchmarks/snake/guide/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Snake 任务讲解</span></a></li><li class="astro-rmhv4bp6"><a href="/vdec/benchmarks/snake/sandbox/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Snake · 交互沙盒</span></a></li></ul></details></li><li class="astro-rmhv4bp6"><details open class="astro-rmhv4bp6"><summary class="astro-rmhv4bp6"><span class="group-label astro-rmhv4bp6"><span class="large astro-rmhv4bp6">Brush</span></span><svg aria-hidden="true" class="caret astro-rmhv4bp6 astro-hkc32dio" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg></summary><sl-sidebar-restore data-index="2"></sl-sidebar-restore><ul class="astro-rmhv4bp6"><li class="astro-rmhv4bp6"><a href="/vdec/benchmarks/brush/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Brush</span></a></li><li class="astro-rmhv4bp6"><a href="/vdec/benchmarks/brush/examples/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Brush · 完整题库</span></a></li><li class="astro-rmhv4bp6"><a href="/vdec/benchmarks/brush/guide/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Brush 任务讲解</span></a></li><li class="astro-rmhv4bp6"><a href="/vdec/benchmarks/brush/reproduction/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">BrushBench v1：看图定位与画笔状态控制</span></a></li><li class="astro-rmhv4bp6"><a href="/vdec/benchmarks/brush/sandbox/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Brush · 交互沙盒</span></a></li></ul></details></li><li class="astro-rmhv4bp6"><details open class="astro-rmhv4bp6"><summary class="astro-rmhv4bp6"><span class="group-label astro-rmhv4bp6"><span class="large astro-rmhv4bp6">Drawing</span></span><svg aria-hidden="true" class="caret astro-rmhv4bp6 astro-hkc32dio" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg></summary><sl-sidebar-restore data-index="3"></sl-sidebar-restore><ul class="astro-rmhv4bp6"><li class="astro-rmhv4bp6"><a href="/vdec/benchmarks/drawing/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Drawing</span></a></li><li class="astro-rmhv4bp6"><a href="/vdec/benchmarks/drawing/examples/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Drawing · 完整题库</span></a></li><li class="astro-rmhv4bp6"><a href="/vdec/benchmarks/drawing/guide/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Drawing 模型输入与操作教学</span></a></li><li class="astro-rmhv4bp6"><a href="/vdec/benchmarks/drawing/reproduction/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">VDecision DrawingBench v2</span></a></li><li class="astro-rmhv4bp6"><a href="/vdec/benchmarks/drawing/sandbox/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Drawing · 交互沙盒</span></a></li></ul></details></li></ul></details></li><li class="astro-rmhv4bp6"><details open class="astro-rmhv4bp6"><summary class="astro-rmhv4bp6"><span class="group-label astro-rmhv4bp6"><span class="large astro-rmhv4bp6">Papers</span></span><svg aria-hidden="true" class="caret astro-rmhv4bp6 astro-hkc32dio" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg></summary><sl-sidebar-restore data-index="4"></sl-sidebar-restore><ul class="astro-rmhv4bp6"><li class="astro-rmhv4bp6"><a href="/vdec/papers/babyvision/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">BabyVision</span></a></li><li class="astro-rmhv4bp6"><a href="/vdec/papers/genception/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">GenCeption：从视频生成到视觉感知</span></a></li></ul></details></li><li class="astro-rmhv4bp6"><details open class="astro-rmhv4bp6"><summary class="astro-rmhv4bp6"><span class="group-label astro-rmhv4bp6"><span class="large astro-rmhv4bp6">Exps</span></span><svg aria-hidden="true" class="caret astro-rmhv4bp6 astro-hkc32dio" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg></summary><sl-sidebar-restore data-index="5"></sl-sidebar-restore><ul class="astro-rmhv4bp6"><li class="astro-rmhv4bp6"><a href="/vdec/exps/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Exps · 运行与复现</span></a></li><li class="astro-rmhv4bp6"><a href="/vdec/exps/brush-study-plan/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Brush Study 实验配置</span></a></li><li class="astro-rmhv4bp6"><a href="/vdec/exps/input-assembly/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">输入拼接实验室</span></a></li><li class="astro-rmhv4bp6"><a href="/vdec/exps/metrics/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Benchmark 说明：main-v1</span></a></li><li class="astro-rmhv4bp6"><a href="/vdec/exps/reproduction/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">三模型规划与视觉推理实验</span></a></li></ul></details></li><li class="astro-rmhv4bp6"><details open class="astro-rmhv4bp6"><summary class="astro-rmhv4bp6"><span class="group-label astro-rmhv4bp6"><span class="large astro-rmhv4bp6">Studies</span></span><svg aria-hidden="true" class="caret astro-rmhv4bp6 astro-hkc32dio" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg></summary><sl-sidebar-restore data-index="6"></sl-sidebar-restore><ul class="astro-rmhv4bp6"><li class="astro-rmhv4bp6"><a href="/vdec/studies/brush/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Brush Study</span></a></li><li class="astro-rmhv4bp6"><a href="/vdec/studies/snake/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Snake Study</span></a></li></ul></details></li><li class="astro-rmhv4bp6"><details open class="astro-rmhv4bp6"><summary class="astro-rmhv4bp6"><span class="group-label astro-rmhv4bp6"><span class="large astro-rmhv4bp6">Archive</span></span><svg aria-hidden="true" class="caret astro-rmhv4bp6 astro-hkc32dio" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg></summary><sl-sidebar-restore data-index="7"></sl-sidebar-restore><ul class="astro-rmhv4bp6"><li class="astro-rmhv4bp6"><a href="/vdec/archive/backend-report/" aria-current="page" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">三模型历史实验结果</span></a></li><li class="astro-rmhv4bp6"><a href="/vdec/archive/drawing-v1/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Drawing v1（历史协议）</span></a></li><li class="astro-rmhv4bp6"><a href="/vdec/archive/pre-main/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">旧版运行手册</span></a></li><li class="astro-rmhv4bp6"><a href="/vdec/archive/snake-plan/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">早期实验计划：先排除固定策略偏差</span></a></li></ul></details></li></ul><script aria-hidden="true">
+		(() => {
+			const scroller = document.getElementById('starlight__sidebar');
+			if (!window._starlightScrollRestore || !scroller) return;
+			scroller.scrollTop = window._starlightScrollRestore;
+			delete window._starlightScrollRestore;
+		})();
+	</script></sl-sidebar-state-persist><div class="md:sl-hidden"><div class="mobile-preferences sl-flex astro-p4azlveh"><div class="social-icons astro-p4azlveh"><a href="https://github.com/donglinkang2021/vdec" rel="me" class="sl-flex astro-n2mnl6yq"><span class="sr-only astro-n2mnl6yq">公开站点</span><svg aria-hidden="true" class="astro-n2mnl6yq astro-hkc32dio" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M12 .3a12 12 0 0 0-3.8 23.38c.6.12.83-.26.83-.57L9 21.07c-3.34.72-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.08-.74.09-.73.09-.73 1.2.09 1.83 1.24 1.83 1.24 1.08 1.83 2.81 1.3 3.5 1 .1-.78.42-1.31.76-1.61-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.14-.3-.54-1.52.1-3.18 0 0 1-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.28-1.55 3.29-1.23 3.29-1.23.64 1.66.24 2.88.12 3.18a4.65 4.65 0 0 1 1.23 3.22c0 4.61-2.8 5.63-5.48 5.92.42.36.81 1.1.81 2.22l-.01 3.29c0 .31.2.69.82.57A12 12 0 0 0 12 .3Z"/></svg></a></div><starlight-theme-select><label style="--sl-select-width: 6.25em" class="astro-2z5xp7gb"><span class="sr-only astro-2z5xp7gb">选择主题</span><svg aria-hidden="true" class="icon label-icon astro-2z5xp7gb astro-hkc32dio" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M21 14h-1V7a3 3 0 0 0-3-3H7a3 3 0 0 0-3 3v7H3a1 1 0 0 0-1 1v2a3 3 0 0 0 3 3h14a3 3 0 0 0 3-3v-2a1 1 0 0 0-1-1ZM6 7a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v7H6V7Zm14 10a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-1h16v1Z"/></svg><select autocomplete="off" class="astro-2z5xp7gb"><option value="dark" class="astro-2z5xp7gb">深色</option><option value="light" class="astro-2z5xp7gb">浅色</option><option value="auto" selected class="astro-2z5xp7gb">自动</option></select><svg aria-hidden="true" class="icon caret astro-2z5xp7gb astro-hkc32dio" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M17 9.17a1 1 0 0 0-1.41 0L12 12.71 8.46 9.17a1 1 0 1 0-1.41 1.42l4.24 4.24a1.002 1.002 0 0 0 1.42 0L17 10.59a1.002 1.002 0 0 0 0-1.42Z"/></svg></label></starlight-theme-select><script>
+	StarlightThemeProvider.updatePickers();
+</script></div></div></div></sl-sidebar-pane></nav><div class="main-frame astro-yntsjkba"><script type="module">var e=document.getElementById(`starlight__sidebar`),t=e?.querySelector(`sl-sidebar-state-persist`),n=`sl-sidebar-state`,r=()=>{let r=[],i=t?.dataset.hash||``;try{let e=sessionStorage.getItem(n),t=JSON.parse(e||`{}`);Array.isArray(t.open)&&t.hash===i&&(r=t.open)}catch{}return{hash:i,open:r,scroll:e?.scrollTop||0}},i=e=>{try{sessionStorage.setItem(n,JSON.stringify(e))}catch{}},a=()=>i(r()),o=(e,t)=>{let n=r();n.open[t]=e,i(n)};t?.addEventListener(`click`,e=>{if(!(e.target instanceof Element))return;let t=e.target.closest(`summary`)?.closest(`details`);if(!t)return;let n=t.querySelector(`sl-sidebar-restore`),r=parseInt(n?.dataset.index||``);isNaN(r)||o(!t.open,r)}),addEventListener(`visibilitychange`,()=>{document.visibilityState===`hidden`&&a()});</script><div class="lg:sl-flex astro-lrzkfocr"><aside class="right-sidebar-container print:hidden astro-lrzkfocr"><div class="right-sidebar astro-lrzkfocr"><div class="lg:sl-hidden astro-qok35upx"><mobile-starlight-toc data-min-h="2" data-max-h="3" class="astro-66cqc7ze"><nav aria-labelledby="starlight__on-this-page--mobile" class="astro-66cqc7ze"><details id="starlight__mobile-toc" class="astro-66cqc7ze"><summary id="starlight__on-this-page--mobile" class="sl-flex astro-66cqc7ze"><span class="toggle sl-flex astro-66cqc7ze">本页内容<svg aria-hidden="true" class="caret astro-66cqc7ze astro-hkc32dio" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg></span><span class="display-current astro-66cqc7ze"></span></summary><div class="dropdown astro-66cqc7ze"><ul class="isMobile astro-jugkfwgx" style="--depth: 0;"><li style="--depth: 0;" class="astro-jugkfwgx"><a href="#_top" style="--depth: 0;" class="astro-jugkfwgx"><span style="--depth: 0;" class="astro-jugkfwgx">概述</span></a></li><li style="--depth: 0;" class="astro-jugkfwgx"><a href="#主要结果" style="--depth: 0;" class="astro-jugkfwgx"><span style="--depth: 0;" class="astro-jugkfwgx">主要结果</span></a><ul class="isMobile astro-jugkfwgx" style="--depth: 1;"><li style="--depth: 1;" class="astro-jugkfwgx"><a href="#31-boxed-确实让答案更像答案但不会自动让答案更对" style="--depth: 1;" class="astro-jugkfwgx"><span style="--depth: 1;" class="astro-jugkfwgx">3.1 boxed 确实让答案更像答案，但不会自动让答案更对</span></a></li><li style="--depth: 1;" class="astro-jugkfwgx"><a href="#32-换后端没有消除选项偏好" style="--depth: 1;" class="astro-jugkfwgx"><span style="--depth: 1;" class="astro-jugkfwgx">3.2 换后端没有消除选项偏好</span></a></li><li style="--depth: 1;" class="astro-jugkfwgx"><a href="#33-tf-的-naive-分数更稳定并列问题仍然存在" style="--depth: 1;" class="astro-jugkfwgx"><span style="--depth: 1;" class="astro-jugkfwgx">3.3 TF 的 naive 分数更稳定；并列问题仍然存在</span></a></li><li style="--depth: 1;" class="astro-jugkfwgx"><a href="#34-看得出箭头却经常算不对转向和碰撞" style="--depth: 1;" class="astro-jugkfwgx"><span style="--depth: 1;" class="astro-jugkfwgx">3.4 看得出箭头，却经常算不对转向和碰撞</span></a></li><li style="--depth: 1;" class="astro-jugkfwgx"><a href="#35-加规划没有统一收益而且本次短计划全部被截断" style="--depth: 1;" class="astro-jugkfwgx"><span style="--depth: 1;" class="astro-jugkfwgx">3.5 加规划没有统一收益，而且本次短计划全部被截断</span></a></li></ul></li><li style="--depth: 0;" class="astro-jugkfwgx"><a href="#错误案例" style="--depth: 0;" class="astro-jugkfwgx"><span style="--depth: 0;" class="astro-jugkfwgx">错误案例</span></a><ul class="isMobile astro-jugkfwgx" style="--depth: 1;"><li style="--depth: 1;" class="astro-jugkfwgx"><a href="#案例一候选分数超过-98答案仍然错误" style="--depth: 1;" class="astro-jugkfwgx"><span style="--depth: 1;" class="astro-jugkfwgx">案例一：候选分数超过 98%，答案仍然错误</span></a></li><li style="--depth: 1;" class="astro-jugkfwgx"><a href="#案例二固定选-c换选项后撞墙" style="--depth: 1;" class="astro-jugkfwgx"><span style="--depth: 1;" class="astro-jugkfwgx">案例二：固定选 C，换选项后撞墙</span></a></li><li style="--depth: 1;" class="astro-jugkfwgx"><a href="#案例三把撞墙答成安全" style="--depth: 1;" class="astro-jugkfwgx"><span style="--depth: 1;" class="astro-jugkfwgx">案例三：把撞墙答成安全</span></a></li><li style="--depth: 1;" class="astro-jugkfwgx"><a href="#案例四分数并列程序选择排在前面的动作" style="--depth: 1;" class="astro-jugkfwgx"><span style="--depth: 1;" class="astro-jugkfwgx">案例四：分数并列，程序选择排在前面的动作</span></a></li><li style="--depth: 1;" class="astro-jugkfwgx"><a href="#案例五输入相同分数仍然变化" style="--depth: 1;" class="astro-jugkfwgx"><span style="--depth: 1;" class="astro-jugkfwgx">案例五：输入相同，分数仍然变化</span></a></li></ul></li><li style="--depth: 0;" class="astro-jugkfwgx"><a href="#测试方法" style="--depth: 0;" class="astro-jugkfwgx"><span style="--depth: 0;" class="astro-jugkfwgx">测试方法</span></a><ul class="isMobile astro-jugkfwgx" style="--depth: 1;"><li style="--depth: 1;" class="astro-jugkfwgx"><a href="#11-六种方法问法与读出位置分别改变" style="--depth: 1;" class="astro-jugkfwgx"><span style="--depth: 1;" class="astro-jugkfwgx">1.1 六种方法：问法与读出位置分别改变</span></a></li><li style="--depth: 1;" class="astro-jugkfwgx"><a href="#12-四个条件前面要不要放一份通用规划" style="--depth: 1;" class="astro-jugkfwgx"><span style="--depth: 1;" class="astro-jugkfwgx">1.2 四个条件：前面要不要放一份通用规划</span></a></li><li style="--depth: 1;" class="astro-jugkfwgx"><a href="#13-三组的规模和执行方式" style="--depth: 1;" class="astro-jugkfwgx"><span style="--depth: 1;" class="astro-jugkfwgx">1.3 三组的规模和执行方式</span></a></li></ul></li><li style="--depth: 0;" class="astro-jugkfwgx"><a href="#怎样读分数" style="--depth: 0;" class="astro-jugkfwgx"><span style="--depth: 0;" class="astro-jugkfwgx">怎样读分数</span></a><ul class="isMobile astro-jugkfwgx" style="--depth: 1;"><li style="--depth: 1;" class="astro-jugkfwgx"><a href="#21-先看原始概率再看候选内排名" style="--depth: 1;" class="astro-jugkfwgx"><span style="--depth: 1;" class="astro-jugkfwgx">2.1 先看原始概率，再看候选内排名</span></a></li></ul></li><li style="--depth: 0;" class="astro-jugkfwgx"><a href="#继续阅读" style="--depth: 0;" class="astro-jugkfwgx"><span style="--depth: 0;" class="astro-jugkfwgx">继续阅读</span></a></li></ul></div></details></nav></mobile-starlight-toc><script type="module" src="/vdec/_astro/MobileTableOfContents.astro_astro_type_script_index_0_lang.C3fM4Kra.js"></script></div><div class="right-sidebar-panel sl-hidden lg:sl-block astro-qok35upx"><div class="sl-container astro-qok35upx"><starlight-toc data-min-h="2" data-max-h="3"><nav aria-labelledby="starlight__on-this-page"><h2 id="starlight__on-this-page">本页内容</h2><ul class="astro-jugkfwgx" style="--depth: 0;"><li style="--depth: 0;" class="astro-jugkfwgx"><a href="#_top" style="--depth: 0;" class="astro-jugkfwgx"><span style="--depth: 0;" class="astro-jugkfwgx">概述</span></a></li><li style="--depth: 0;" class="astro-jugkfwgx"><a href="#主要结果" style="--depth: 0;" class="astro-jugkfwgx"><span style="--depth: 0;" class="astro-jugkfwgx">主要结果</span></a><ul class="astro-jugkfwgx" style="--depth: 1;"><li style="--depth: 1;" class="astro-jugkfwgx"><a href="#31-boxed-确实让答案更像答案但不会自动让答案更对" style="--depth: 1;" class="astro-jugkfwgx"><span style="--depth: 1;" class="astro-jugkfwgx">3.1 boxed 确实让答案更像答案，但不会自动让答案更对</span></a></li><li style="--depth: 1;" class="astro-jugkfwgx"><a href="#32-换后端没有消除选项偏好" style="--depth: 1;" class="astro-jugkfwgx"><span style="--depth: 1;" class="astro-jugkfwgx">3.2 换后端没有消除选项偏好</span></a></li><li style="--depth: 1;" class="astro-jugkfwgx"><a href="#33-tf-的-naive-分数更稳定并列问题仍然存在" style="--depth: 1;" class="astro-jugkfwgx"><span style="--depth: 1;" class="astro-jugkfwgx">3.3 TF 的 naive 分数更稳定；并列问题仍然存在</span></a></li><li style="--depth: 1;" class="astro-jugkfwgx"><a href="#34-看得出箭头却经常算不对转向和碰撞" style="--depth: 1;" class="astro-jugkfwgx"><span style="--depth: 1;" class="astro-jugkfwgx">3.4 看得出箭头，却经常算不对转向和碰撞</span></a></li><li style="--depth: 1;" class="astro-jugkfwgx"><a href="#35-加规划没有统一收益而且本次短计划全部被截断" style="--depth: 1;" class="astro-jugkfwgx"><span style="--depth: 1;" class="astro-jugkfwgx">3.5 加规划没有统一收益，而且本次短计划全部被截断</span></a></li></ul></li><li style="--depth: 0;" class="astro-jugkfwgx"><a href="#错误案例" style="--depth: 0;" class="astro-jugkfwgx"><span style="--depth: 0;" class="astro-jugkfwgx">错误案例</span></a><ul class="astro-jugkfwgx" style="--depth: 1;"><li style="--depth: 1;" class="astro-jugkfwgx"><a href="#案例一候选分数超过-98答案仍然错误" style="--depth: 1;" class="astro-jugkfwgx"><span style="--depth: 1;" class="astro-jugkfwgx">案例一：候选分数超过 98%，答案仍然错误</span></a></li><li style="--depth: 1;" class="astro-jugkfwgx"><a href="#案例二固定选-c换选项后撞墙" style="--depth: 1;" class="astro-jugkfwgx"><span style="--depth: 1;" class="astro-jugkfwgx">案例二：固定选 C，换选项后撞墙</span></a></li><li style="--depth: 1;" class="astro-jugkfwgx"><a href="#案例三把撞墙答成安全" style="--depth: 1;" class="astro-jugkfwgx"><span style="--depth: 1;" class="astro-jugkfwgx">案例三：把撞墙答成安全</span></a></li><li style="--depth: 1;" class="astro-jugkfwgx"><a href="#案例四分数并列程序选择排在前面的动作" style="--depth: 1;" class="astro-jugkfwgx"><span style="--depth: 1;" class="astro-jugkfwgx">案例四：分数并列，程序选择排在前面的动作</span></a></li><li style="--depth: 1;" class="astro-jugkfwgx"><a href="#案例五输入相同分数仍然变化" style="--depth: 1;" class="astro-jugkfwgx"><span style="--depth: 1;" class="astro-jugkfwgx">案例五：输入相同，分数仍然变化</span></a></li></ul></li><li style="--depth: 0;" class="astro-jugkfwgx"><a href="#测试方法" style="--depth: 0;" class="astro-jugkfwgx"><span style="--depth: 0;" class="astro-jugkfwgx">测试方法</span></a><ul class="astro-jugkfwgx" style="--depth: 1;"><li style="--depth: 1;" class="astro-jugkfwgx"><a href="#11-六种方法问法与读出位置分别改变" style="--depth: 1;" class="astro-jugkfwgx"><span style="--depth: 1;" class="astro-jugkfwgx">1.1 六种方法：问法与读出位置分别改变</span></a></li><li style="--depth: 1;" class="astro-jugkfwgx"><a href="#12-四个条件前面要不要放一份通用规划" style="--depth: 1;" class="astro-jugkfwgx"><span style="--depth: 1;" class="astro-jugkfwgx">1.2 四个条件：前面要不要放一份通用规划</span></a></li><li style="--depth: 1;" class="astro-jugkfwgx"><a href="#13-三组的规模和执行方式" style="--depth: 1;" class="astro-jugkfwgx"><span style="--depth: 1;" class="astro-jugkfwgx">1.3 三组的规模和执行方式</span></a></li></ul></li><li style="--depth: 0;" class="astro-jugkfwgx"><a href="#怎样读分数" style="--depth: 0;" class="astro-jugkfwgx"><span style="--depth: 0;" class="astro-jugkfwgx">怎样读分数</span></a><ul class="astro-jugkfwgx" style="--depth: 1;"><li style="--depth: 1;" class="astro-jugkfwgx"><a href="#21-先看原始概率再看候选内排名" style="--depth: 1;" class="astro-jugkfwgx"><span style="--depth: 1;" class="astro-jugkfwgx">2.1 先看原始概率，再看候选内排名</span></a></li></ul></li><li style="--depth: 0;" class="astro-jugkfwgx"><a href="#继续阅读" style="--depth: 0;" class="astro-jugkfwgx"><span style="--depth: 0;" class="astro-jugkfwgx">继续阅读</span></a></li></ul></nav></starlight-toc><script type="module" src="/vdec/_astro/TableOfContents.astro_astro_type_script_index_0_lang.BpJaGz7G.js"></script></div></div></div></aside><div class="main-pane astro-lrzkfocr"><main data-pagefind-body class="astro-g5ptsecz" lang="zh-CN" dir="ltr"><div class="content-panel astro-a7po4psb"><div class="sl-container astro-a7po4psb"><h1 id="_top" class="astro-bebwqqxs">三模型历史实验结果</h1></div></div><div class="content-panel astro-a7po4psb"><div class="sl-container astro-a7po4psb"><div class="sl-markdown-content"><p><span id="模型真的看懂并选对了吗三模型六种读出方法的三组实验"></span></p>
+<div class="sl-heading-wrapper level-h1"><h1 id="三模型历史实验结果">三模型历史实验结果</h1><a class="sl-anchor-link" href="#三模型历史实验结果"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore="">Section titled “三模型历史实验结果”</span></a></div>
+<p><strong>历史报告 · 2026-10-13 · snake-bench-v3</strong></p>
+<p>本实验测试三个视觉模型能否从贪吃蛇截图中判断状态、选择安全动作。比较六种答案读取方法，以及 vLLM eager、Transformers batch、vLLM default + APC 三套执行配置。</p>
+<p>三组实验已完成：<strong>248,832 条正式评分、144 份规划、72 个有效单卡任务</strong>。结果表明：回答格式正确、换选项后答案一致、答案本身正确，需要分别检查。</p>
+<p><span id="3-三组共同发现了什么"></span></p>
+<div class="sl-heading-wrapper level-h2"><h2 id="主要结果">主要结果</h2><a class="sl-anchor-link" href="#主要结果"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore="">Section titled “主要结果”</span></a></div>
+<p>这里的“感知”混合视觉识别与规则判断。“动作安全率”只看下一步是否碰撞。“动作一致率”要求同一张图换六种选项顺序后，仍选同一个动作。<strong>三组没有连续游戏实验。</strong></p>
+<ul>
+<li><strong>固定字母也能得到 91.67% 安全率。</strong> Qwen3.5 的原始 choice 全选 C，Gemma 全选 A；两者动作一致率都是 0%。</li>
+<li><strong>全部回答“安全”会漏掉所有危险。</strong> 在 choice_boxed + no_plan 下，三模型、三配置的碰撞题准确率都是 91.67%，危险召回率都是 0%。</li>
+<li><strong>boxed 改善格式，不保证选对。</strong> 三组中，每组 72 个配对的合法答案概率都提高；任务分数仍有下降的配对。</li>
+<li><strong>本次规划效果无法代表完整策略。</strong> 144 份短计划全部达到 128 token 上限，未完整结束。shared_full 的平均感知准确率均低于 no_plan。</li>
+</ul>
+<p>下表是无计划基线（no_plan），对六种读出方法等权平均。它描述本次结果，不是一条可直接运行的策略，也没有显著性检验。</p>
+<!-- BEGIN backend_overview -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>模型</th><th>配置</th><th>感知准确率</th><th>感知正反一致率</th><th>动作安全率</th><th>安全且趋近食物率</th><th>动作六排列一致率</th></tr></thead><tbody><tr><td>Qwen3.5-4B</td><td>vLLM eager</td><td>73.75%</td><td>78.78%</td><td>94.16%</td><td>44.68%</td><td>35.76%</td></tr><tr><td>Qwen3.5-4B</td><td>TF batch</td><td>73.90%</td><td>79.01%</td><td>93.11%</td><td>45.78%</td><td>36.11%</td></tr><tr><td>Qwen3.5-4B</td><td>vLLM APC</td><td>73.80%</td><td>78.59%</td><td>93.92%</td><td>44.73%</td><td>34.38%</td></tr><tr><td>Qwen3-VL-4B-Thinking</td><td>vLLM eager</td><td>63.08%</td><td>88.77%</td><td>84.84%</td><td>38.25%</td><td>82.64%</td></tr><tr><td>Qwen3-VL-4B-Thinking</td><td>TF batch</td><td>63.68%</td><td>88.39%</td><td>86.00%</td><td>38.77%</td><td>80.21%</td></tr><tr><td>Qwen3-VL-4B-Thinking</td><td>vLLM APC</td><td>63.77%</td><td>88.35%</td><td>84.95%</td><td>37.73%</td><td>77.08%</td></tr><tr><td>Gemma4-E4B-it</td><td>vLLM eager</td><td>61.82%</td><td>68.90%</td><td>86.46%</td><td>39.47%</td><td>57.64%</td></tr><tr><td>Gemma4-E4B-it</td><td>TF batch</td><td>61.84%</td><td>67.98%</td><td>87.15%</td><td>37.04%</td><td>57.64%</td></tr><tr><td>Gemma4-E4B-it</td><td>vLLM APC</td><td>62.50%</td><td>65.51%</td><td>86.63%</td><td>37.21%</td><td>52.43%</td></tr></tbody></table>
+<!-- END backend_overview -->
+<p><img src="/vdec/assets/standard_backend_report/03-no-plan-results.png" alt="三模型的判断正确性、动作安全与选项一致性" loading="lazy" decoding="async"></p>
+<details markdown="1">
+<summary>查看分项结果、规划截断和分数漂移</summary>
+<div class="sl-heading-wrapper level-h3"><h3 id="31-boxed-确实让答案更像答案但不会自动让答案更对">3.1 boxed 确实让答案更像答案，但不会自动让答案更对</h3><a class="sl-anchor-link" href="#31-boxed-确实让答案更像答案但不会自动让答案更对"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore="">Section titled “3.1 boxed 确实让答案更像答案，但不会自动让答案更对”</span></a></div>
+<p><img src="/vdec/assets/standard_backend_report/04-boxed-answer-mass.png" alt="boxed 前后合法答案概率，按模型和方法分组" loading="lazy" decoding="async"></p>
+<p>图 3 只取 no_plan 感知题。纵轴是对数刻度：Gemma 普通 yes/no 的合法概率极小，boxed 后接近 100%，差的是多个数量级。蓝色是 vLLM eager，橙色是 TF batch，绿色是 vLLM APC；空心圆是普通版本，三角是 boxed。</p>
+<p>每组配置都有 72 组 boxed 配对（3 模型×2 阶段×4 条件×3 方法家族）。<strong>三组各自的 72 个配对，合法答案概率均值全部提高。</strong> 但对应任务表现——感知看准确率、动作看安全率——旧 vLLM 是 48 组提高、22 组下降、2 组持平；TF 是 43/24/5；APC 是 44/23/5。这是对本次观测的计数，不是显著性检验。</p>
+<p>最清楚的例子是 Gemma 的 no_plan 感知：choice 准确率在前两组都是 38.43%，加 boxed 后分别为 75.00% 和 74.54%。这个提升跨后端复现。前两组中，Qwen3.5 对应为 vLLM eager 64.81%→80.09%，TF 64.47%→79.98%；Qwen3-VL 为 64.93%→68.98%、66.09%→69.56%。</p>
+<p><strong>这些记录支持读出格式不匹配的解释。</strong> 合法答案 token 的概率很低，但这不能说明模型仍在思考，也不能确定它原本想输出什么。</p>
+<div class="sl-heading-wrapper level-h3"><h3 id="32-换后端没有消除选项偏好">3.2 换后端没有消除选项偏好</h3><a class="sl-anchor-link" href="#32-换后端没有消除选项偏好"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore="">Section titled “3.2 换后端没有消除选项偏好”</span></a></div>
+<p><img src="/vdec/assets/standard_backend_report/03-no-plan-results.png" alt="no_plan 六方法的感知准确率、动作安全率、动作排列一致率" loading="lazy" decoding="async"></p>
+<p>图 4 每三列使用同一个模型，依次为 vLLM eager、TF batch、vLLM APC。三个面板应一起看：最左是判断正确性，中间是一步安全，最右是换选项顺序后的稳定性。</p>
+<p>三组都复现了明显的固定标签现象：Qwen3.5 的原始 choice 在 288 次 no_plan 动作评分中全部选 C；Gemma 全部选 A。两者安全率都达到 91.67%，但六排列语义一致率都是 0%。Qwen3.5 改成 choice_boxed 后，动作一致率仍然是 0%。<strong>格式问题和选项偏好是两件事，boxed 没有一次解决两者。</strong></p>
+<p>这个 91.67% 并不神奇：48 张图里有 36 张的三个动作都安全，另外 12 张各只有一个危险动作。六种排列下固定选一个字母，会均匀轮到三个语义动作，因此安全率为 <code dir="auto">(36×6 + 12×4) / (48×6) = 91.67%</code>。这是由现有数据结构直接算出的参照，不是额外跑了随机游戏。</p>
+<p>即使不看字母，稳定也不是终点。Qwen3-VL 的 choice_boxed 在三组各自的 288 次 no_plan 动作读出中都选择直行，一致率 100%，安全率却只有 83.33%，趋近食物率 33.33%。它确实不受排列影响，但也没有充分根据截图调整动作。</p>
+<div class="sl-heading-wrapper level-h3"><h3 id="33-tf-的-naive-分数更稳定并列问题仍然存在">3.3 TF 的 naive 分数更稳定；并列问题仍然存在</h3><a class="sl-anchor-link" href="#33-tf-的-naive-分数更稳定并列问题仍然存在"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore="">Section titled “3.3 TF 的 naive 分数更稳定；并列问题仍然存在”</span></a></div>
+<!-- BEGIN drift -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>模型</th><th>方法</th><th>配置</th><th>最大归一化分数漂移</th><th>并列最大值评分数</th></tr></thead><tbody><tr><td>Qwen3.5-4B</td><td>yes_no_naive</td><td>vLLM eager</td><td>8.2641 pp</td><td>162 / 4,608</td></tr><tr><td>Qwen3.5-4B</td><td>yes_no_naive</td><td>TF batch</td><td>0.0000 pp</td><td>108 / 4,608</td></tr><tr><td>Qwen3.5-4B</td><td>yes_no_naive</td><td>vLLM APC</td><td>8.7655 pp</td><td>119 / 4,608</td></tr><tr><td>Qwen3.5-4B</td><td>yes_no_naive_boxed</td><td>vLLM eager</td><td>7.2425 pp</td><td>98 / 4,608</td></tr><tr><td>Qwen3.5-4B</td><td>yes_no_naive_boxed</td><td>TF batch</td><td>0.0000 pp</td><td>76 / 4,608</td></tr><tr><td>Qwen3.5-4B</td><td>yes_no_naive_boxed</td><td>vLLM APC</td><td>5.0775 pp</td><td>75 / 4,608</td></tr><tr><td>Qwen3-VL-4B-Thinking</td><td>yes_no_naive</td><td>vLLM eager</td><td>0.0000 pp</td><td>58 / 4,608</td></tr><tr><td>Qwen3-VL-4B-Thinking</td><td>yes_no_naive</td><td>TF batch</td><td>0.0000 pp</td><td>108 / 4,608</td></tr><tr><td>Qwen3-VL-4B-Thinking</td><td>yes_no_naive</td><td>vLLM APC</td><td>5.3528 pp</td><td>129 / 4,608</td></tr><tr><td>Qwen3-VL-4B-Thinking</td><td>yes_no_naive_boxed</td><td>vLLM eager</td><td>4.5105 pp</td><td>20 / 4,608</td></tr><tr><td>Qwen3-VL-4B-Thinking</td><td>yes_no_naive_boxed</td><td>TF batch</td><td>0.0000 pp</td><td>34 / 4,608</td></tr><tr><td>Qwen3-VL-4B-Thinking</td><td>yes_no_naive_boxed</td><td>vLLM APC</td><td>5.9068 pp</td><td>22 / 4,608</td></tr><tr><td>Gemma4-E4B-it</td><td>yes_no_naive</td><td>vLLM eager</td><td>0.0000 pp</td><td>22 / 4,608</td></tr><tr><td>Gemma4-E4B-it</td><td>yes_no_naive</td><td>TF batch</td><td>0.0000 pp</td><td>58 / 4,608</td></tr><tr><td>Gemma4-E4B-it</td><td>yes_no_naive</td><td>vLLM APC</td><td>14.0353 pp</td><td>72 / 4,608</td></tr><tr><td>Gemma4-E4B-it</td><td>yes_no_naive_boxed</td><td>vLLM eager</td><td>0.0000 pp</td><td>12 / 4,608</td></tr><tr><td>Gemma4-E4B-it</td><td>yes_no_naive_boxed</td><td>TF batch</td><td>0.0000 pp</td><td>4 / 4,608</td></tr><tr><td>Gemma4-E4B-it</td><td>yes_no_naive_boxed</td><td>vLLM APC</td><td>7.9816 pp</td><td>7 / 4,608</td></tr></tbody></table>
+<!-- END drift -->
+<p>这里汇总两个阶段、四条件，pp 表示百分点。例如 0.08264 的分数差等于 8.264 个百分点。每个方法的并列分母为 4,608 次评分。</p>
+<p>每模型重建了 11,904 个唯一 naive 候选输入，并比较了 16,512 次重复输入，核对原始 token 与图像哈希。TF 本轮相同候选跨排列的 score 和 q 漂移均为零；旧 vLLM 的 Gemma 原本也是零，APC 组却增至 0.14035（14.035 个百分点）。Qwen3.5 的两种 naive 最大漂移由 0.08264 增至 0.08765，Qwen3-VL 由 0.04510 增至 0.05907。这里描述观测到的整套配置差异，并未隔离某项优化的因果作用。</p>
+<p>需要把三种来源分开：一是提示本身包含选项顺序；二是输入相同，但运行时数值计算有变化；三是分数相同，却因并列取首项而改变动作。naive 去掉第一种来源，TF 本轮消除了重排检查里观察到的第二种，第三种仍在。第 5 节给出精确并列的真实案例。</p>
+<p>另外，<strong>相同 batch 只是换顺序，与改变 batch 大小是不同的测试。</strong> GPU 启动检查中，BF16 单条与混合 batch 的原始 log-prob 仍有差异。不能把这次零漂移推广成“TF 在任何 batch 组织下逐位相同”，也尚未定位 vLLM 漂移来自哪个具体内核。</p>
+<div class="sl-heading-wrapper level-h3"><h3 id="34-看得出箭头却经常算不对转向和碰撞">3.4 看得出箭头，却经常算不对转向和碰撞</h3><a class="sl-anchor-link" href="#34-看得出箭头却经常算不对转向和碰撞"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore="">Section titled “3.4 看得出箭头，却经常算不对转向和碰撞”</span></a></div>
+<p><img src="/vdec/assets/standard_backend_report/06-reasoning-gap.png" alt="朝向识别、左右转向和危险碰撞识别之间的差距" loading="lazy" decoding="async"></p>
+<p>图 5 固定 choice_boxed + no_plan。前三列每项有 96 次评分；最后一列是 <strong>24 次真实危险判断中，成功识别危险的比例</strong>，不是总体碰撞题准确率。</p>
+<p>三个模型在三组配置中几乎都能认出箭头方向，但左转和右转后的绝对方向明显更难。Qwen3-VL 的箭头识别是 100%，左转后朝向却只有 5.21% / 7.29% / 5.21%（eager / TF / APC）。这更像从视觉事实到相对坐标变换之间出现了缺口，不能简单归咎于“图片没看见”。</p>
+<p>更值得警惕的是碰撞题：在这个方法和条件下，三个模型、三组配置都把各自的 288 道碰撞判断全答成 safe。264 道真实安全题答对，24 道真实碰撞题全部漏掉，<strong>总体准确率 91.67%，危险召回率却是 0%</strong>。这个结论只针对 choice_boxed + no_plan；其他方法不能一概而论。例如旧 vLLM 的 Qwen3-VL naive_boxed 能检出部分碰撞，却有大量误报。</p>
+<p>动作评价也应关注那 12 张确实有危险选项的图。旧 vLLM / TF 的 Qwen3.5 no_plan naive 在这些图上安全率是 87.50% / 66.67%，naive_boxed 则两者都为 50.00%；Qwen3-VL naive_boxed 为 50.00% / 58.33%。因此，TF 的零分数漂移和更高的一致率，并不等于在危险局面上做得更好。</p>
+<div class="sl-heading-wrapper level-h3"><h3 id="35-加规划没有统一收益而且本次短计划全部被截断">3.5 加规划没有统一收益，而且本次短计划全部被截断</h3><a class="sl-anchor-link" href="#35-加规划没有统一收益而且本次短计划全部被截断"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore="">Section titled “3.5 加规划没有统一收益，而且本次短计划全部被截断”</span></a></div>
+<p><img src="/vdec/assets/standard_backend_report/05-condition-results.png" alt="四条件下的平均感知准确率和一步安全率" loading="lazy" decoding="async"></p>
+<p>图 6 对六方法等权平均，只描述总体变化，不代表一种可以直接部署的策略。三组、三个模型的 shared_full 感知准确率都低于 no_plan。动作安全率却不是同一趋势：TF 的 Qwen3.5 为 93.11%→96.99%，Qwen3-VL 为 86.00%→93.00%，Gemma 为 87.15%→88.95%。</p>
+<p>可以说通用规划前缀改变了读出行为；但还不能说“规划整体有用”或“思考没有用”。它没有看当前测试局面，而且<strong>三组共 144 份短计划全部在 128 token 上限处截断</strong>。原文中还出现标题、规则重述和任务介绍。拿这样的 plan_only 测不到收益，不等价于一份完整、清晰的短策略没有价值。</p>
+<p>前两组的 greedy 规划也不完全相同。Qwen3.5 在旧 vLLM 中的 thinking 达到 2048 token 上限，TF 中自然结束，实际内容长 2044 token；只差四个 token，不能把耗时差归因于长度。Qwen3-VL 两边均触及 thinking 预算，Gemma 的平均 thinking 长度为 942 / 1048。APC 组三模型的 thinking 总长度分别为 13,623、16,384、8,248 token，每模型 16/16 份短计划截断。跨配置比较共享规划条件时，计划内容和评分计算都可能变化，需与 no_plan 的直接对照区分。</p>
+</details>
+<p><span id="5-真实案例从截图分数和缓存看发生了什么"></span></p>
+<div class="sl-heading-wrapper level-h2"><h2 id="错误案例">错误案例</h2><a class="sl-anchor-link" href="#错误案例"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore="">Section titled “错误案例”</span></a></div>
+<p>前四例比较旧 vLLM eager 与 TF batch；第五例检查 APC 的分数变化。案例用于解释错误，不代表随机样本。截图已按原始图像哈希核验；完整记录见 <a href="/vdec/assets/standard_backend_report/case-evidence.json">case-evidence.json</a>。事件 ID 需结合后端与模型使用。</p>
+<p><span id="案例一98-的候选分数也可能建立在几乎不愿回答的分布上"></span></p>
+<div class="sl-heading-wrapper level-h3"><h3 id="案例一候选分数超过-98答案仍然错误">案例一：候选分数超过 98%，答案仍然错误</h3><a class="sl-anchor-link" href="#案例一候选分数超过-98答案仍然错误"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore="">Section titled “案例一：候选分数超过 98%，答案仍然错误”</span></a></div>
+<p><img src="/vdec/assets/standard_backend_report/case-format.png" alt="open-00-r0：白箭头朝右的原始测试图" loading="lazy" decoding="async"></p>
+<p><strong>Gemma，no_plan，截图 <code dir="auto">open-00-r0</code>，heading 题，排列 0。</strong> 白箭头明确朝右。候选是 A=Up、B=Right、C=Down、D=Left，正确答案是 B。</p>
+<!-- BEGIN case_format -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>后端</th><th>方法</th><th>合法字母总概率</th><th>选中答案</th><th>候选内归一化分数</th><th>结果</th><th>事件 ID</th></tr></thead><tbody><tr><td>vllm</td><td>choice</td><td>0.014040%</td><td>A / 向上</td><td>98.5008%</td><td>错误</td><td>e00000</td></tr><tr><td>vllm</td><td>choice_boxed</td><td>99.998190%</td><td>B / 右转</td><td>99.9672%</td><td>正确</td><td>e00002</td></tr><tr><td>transformers</td><td>choice</td><td>0.014055%</td><td>A / 向上</td><td>98.4216%</td><td>错误</td><td>e00000</td></tr><tr><td>transformers</td><td>choice_boxed</td><td>99.998550%</td><td>B / 右转</td><td>99.9707%</td><td>正确</td><td>e00002</td></tr></tbody></table>
+<!-- END case_format -->
+<p>普通 choice 选错，但候选内分数超过 98%。加 boxed 后，两后端都答对。候选内高分不等于模型原本就准备输出这个答案。</p>
+<p>这个案例支持读出格式不匹配的解释。它不能证明 boxed 可以修复其他错误。</p>
+<p><span id="案例二同一张撞墙图只换选项顺序就改变生死"></span></p>
+<div class="sl-heading-wrapper level-h3"><h3 id="案例二固定选-c换选项后撞墙">案例二：固定选 C，换选项后撞墙</h3><a class="sl-anchor-link" href="#案例二固定选-c换选项后撞墙"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore="">Section titled “案例二：固定选 C，换选项后撞墙”</span></a></div>
+<p><img src="/vdec/assets/standard_backend_report/case-wall.png" alt="wall-04-r0：蛇头位于上边界，朝上" loading="lazy" decoding="async"></p>
+<p><strong>Qwen3.5，choice + no_plan，截图 <code dir="auto">wall-04-r0</code>。</strong> 蛇头在上边界朝上，直行会撞墙，左转、右转都安全。两个后端在所有排列里都选 C。</p>
+<!-- BEGIN case_label -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>排列</th><th>A / B / C 对应动作</th><th>两后端都选</th><th>实际动作</th><th>后果</th><th>两后端事件 ID</th></tr></thead><tbody><tr><td>0</td><td>左转 / 直行 / 右转</td><td>C</td><td>右转</td><td>安全</td><td>e09648</td></tr><tr><td>1</td><td>左转 / 右转 / 直行</td><td>C</td><td>直行</td><td>撞墙</td><td>e09649</td></tr><tr><td>2</td><td>直行 / 左转 / 右转</td><td>C</td><td>右转</td><td>安全</td><td>e09650</td></tr><tr><td>3</td><td>直行 / 右转 / 左转</td><td>C</td><td>左转</td><td>安全</td><td>e09651</td></tr><tr><td>4</td><td>右转 / 左转 / 直行</td><td>C</td><td>直行</td><td>撞墙</td><td>e09652</td></tr><tr><td>5</td><td>右转 / 直行 / 左转</td><td>C</td><td>左转</td><td>安全</td><td>e09653</td></tr></tbody></table>
+<!-- END case_label -->
+<p>图片和动作集合没有变化。模型始终选 C，导致六次选择中两次撞墙。全量 288 次都选 C，也支持模型偏向固定字母的判断。91.67% 的总体安全率掩盖了这个问题。</p>
+<p><span id="案例三格式接近满分却把明确的碰撞答成安全"></span></p>
+<div class="sl-heading-wrapper level-h3"><h3 id="案例三把撞墙答成安全">案例三：把撞墙答成安全</h3><a class="sl-anchor-link" href="#案例三把撞墙答成安全"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore="">Section titled “案例三：把撞墙答成安全”</span></a></div>
+<p>沿用上面的 <code dir="auto">wall-04-r0</code> 截图，改问“直行会不会立即碰撞”。<strong>Qwen3-VL，choice_boxed + no_plan</strong> 在两个后端、正反两种排列里都选择 safe，真实答案却是 collision。原始记录见案例文件的 <code dir="auto">collision</code> 项。</p>
+<p>模型按要求的格式、稳定地答错了。全量结果中，这一条件下的三个模型、三套配置都漏判了 24 道真实碰撞题。因此，还需单独统计识别出多少危险。</p>
+<p><span id="案例四tf-分数一模一样为什么换排列仍会换动作"></span></p>
+<div class="sl-heading-wrapper level-h3"><h3 id="案例四分数并列程序选择排在前面的动作">案例四：分数并列，程序选择排在前面的动作</h3><a class="sl-anchor-link" href="#案例四分数并列程序选择排在前面的动作"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore="">Section titled “案例四：分数并列，程序选择排在前面的动作”</span></a></div>
+<p><img src="/vdec/assets/standard_backend_report/case-tie.png" alt="body_tail-09-r1：用于并列分数案例的原始测试图" loading="lazy" decoding="async"></p>
+<p><strong>Qwen3.5，TF，yes_no_naive + no_plan，截图 <code dir="auto">body_tail-09-r1</code>。</strong> 同一候选在六种排列中的分数没有变化。左转和直行的 q 都是 <code dir="auto">0.18242551936144571</code>，右转的 q 是 <code dir="auto">0.11920292202211753</code>；归一化后左转与直行精确并列第一。</p>
+<!-- BEGIN case_tie -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>排列</th><th>候选次序</th><th>左转分数</th><th>直行分数</th><th>右转分数</th><th>选中</th><th>后果</th><th>事件 ID</th></tr></thead><tbody><tr><td>0</td><td>左转 / 直行 / 右转</td><td>0.376870213</td><td>0.376870213</td><td>0.246259574</td><td>左转</td><td>安全</td><td>e21768</td></tr><tr><td>1</td><td>左转 / 右转 / 直行</td><td>0.376870213</td><td>0.376870213</td><td>0.246259574</td><td>左转</td><td>安全</td><td>e21769</td></tr><tr><td>2</td><td>直行 / 左转 / 右转</td><td>0.376870213</td><td>0.376870213</td><td>0.246259574</td><td>直行</td><td>安全</td><td>e21770</td></tr><tr><td>3</td><td>直行 / 右转 / 左转</td><td>0.376870213</td><td>0.376870213</td><td>0.246259574</td><td>直行</td><td>安全</td><td>e21771</td></tr><tr><td>4</td><td>右转 / 左转 / 直行</td><td>0.376870213</td><td>0.376870213</td><td>0.246259574</td><td>左转</td><td>安全</td><td>e21772</td></tr><tr><td>5</td><td>右转 / 直行 / 左转</td><td>0.376870213</td><td>0.376870213</td><td>0.246259574</td><td>直行</td><td>安全</td><td>e21773</td></tr></tbody></table>
+<!-- END case_tie -->
+<p>程序在并列时取第一个最高分。左转和直行谁排在前面，就选谁。这里的变化来自并列处理，分数本身没有变化。</p>
+<p>后续可将并列记为“不确定”，或预先固定与选项顺序无关的处理规则。后一种做法也会引入动作偏好。本报告保留原规则和原分数。</p>
+<p><span id="案例五候选输入相同缓存深度和-batch-位置仍可能不同"></span></p>
+<div class="sl-heading-wrapper level-h3"><h3 id="案例五输入相同分数仍然变化">案例五：输入相同，分数仍然变化</h3><a class="sl-anchor-link" href="#案例五输入相同分数仍然变化"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore="">Section titled “案例五：输入相同，分数仍然变化”</span></a></div>
+<p>APC 的 Gemma 在 <code dir="auto">wall-07-r3 / collision_straight / no_plan / yes_no_naive</code> 中，safe 候选的输入 token 和图片不变，但事件 <code dir="auto">e18152</code>、<code dir="auto">e18153</code> 的缓存命中分别为 384、416 token，候选归一化分数为 0.64627、0.50592，漂移 0.14035。原始 yes/no 概率和其他候选共同影响最终归一化分数，不能将其视为单个 logit 的差值。</p>
+<p>Qwen3.5 的 <code dir="auto">body_tail-09-r2 / readout / shared_no_think / yes_no_naive</code> 提供另一种情况：left 候选六个排列均命中 528 token，但 batch 位置从 0 变为 1/2 时，yes log-prob 从 −1.60677 变为 −1.91568，归一化分数从 0.40333 变为 0.31567；其他排列又为 0.33778。相同缓存深度下也有漂移，不能把所有变化都解释成冷缓存与暖缓存的差异。</p>
+<p>三模型最大漂移的完整原始记录见 <a href="/vdec/assets/standard_backend_report/apc-naive-drift-evidence.json">APC 漂移案例</a>。这些例子说明应检查运行时计算路径，并不证明某一项优化独自造成漂移；batch 位置、其他候选分数和 kernel 选择尚未被独立控制。</p>
+<p><span id="1-我们让模型做了什么"></span></p>
+<div class="sl-heading-wrapper level-h2"><h2 id="测试方法">测试方法</h2><a class="sl-anchor-link" href="#测试方法"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore="">Section titled “测试方法”</span></a></div>
+<p>三个模型分别是 Qwen3.5-4B、Qwen3-VL-4B-Thinking、Gemma4-E4B-it。48 张截图来自 12 个基础局面的四种旋转。模型只接收规则、图片和问题；真值只用于评分。</p>
+<p>六种读出方法分别改变候选呈现方式和答案读取位置。四个规划条件比较是否加入通用策略；规划只看独立示例图。</p>
+<details markdown="1">
+<summary>查看六种读出、四个规划条件和实验设置</summary>
+<blockquote>
+<p>历史报告：使用 snake-bench-v3。迁移到 v4 时，<code dir="auto">choice_boxed</code> 改名为 <code dir="auto">choice</code>，<code dir="auto">yes_no_naive_boxed</code> 改名为 <code dir="auto">yes_no</code>。本文保留旧名称；六种提示词见附录 D。</p>
+</blockquote>
+<p>棋盘是 10×10。蓝色蛇头里的白箭头表示朝向，绿色方格是蛇身，红色圆点是食物。左转和右转以蛇当前朝向为参照；每次移动一格。撞墙或撞身会失败，没吃食物时尾巴会腾出原来的格子。模型只看规则和图像；真实坐标、正确答案和安全动作清单只供评估程序使用。</p>
+<p>48 张截图来自 12 个基础局面的四种旋转，包括空地、墙边、蛇身与尾巴、食物变化。模型只做两类测试：</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>阶段</th><th>要回答的问题</th><th>同一截图怎样重复测试</th><th>检查什么</th></tr></thead><tbody><tr><td>perception：感知与规则判断</td><td>箭头朝哪、食物在哪、转向后朝哪、是否会撞</td><td>9 类问题，每题正反两种候选排列</td><td>判断是否正确，换排列是否一致</td></tr><tr><td>readout：动作读出</td><td>下一步左转、直行还是右转</td><td>三个动作的全部 6 种排列</td><td>当前一步是否安全、是否靠近食物、换排列是否一致</td></tr></tbody></table>
+<p>九类题分别是：箭头朝向；食物的水平、垂直位置；左转、直行、右转后的绝对朝向；三个动作是否立即碰撞。后六题已经要求应用规则，因此这里的“感知准确率”不等于纯粹的看图识别能力。</p>
+<p><strong>本轮没有连续玩游戏。</strong> 所有动作都只评估当前一步，没有 episode、闭环轨迹或随机游戏基线。一步安全不代表长期能活，靠近食物也不代表最终一定吃到。</p>
+<div class="sl-heading-wrapper level-h3"><h3 id="11-六种方法问法与读出位置分别改变">1.1 六种方法：问法与读出位置分别改变</h3><a class="sl-anchor-link" href="#11-六种方法问法与读出位置分别改变"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore="">Section titled “1.1 六种方法：问法与读出位置分别改变”</span></a></div>
+<p><img src="/vdec/assets/standard_backend_report/01-readout-principle.png" alt="从截图到下一 token 概率，再到六种评分方法" loading="lazy" decoding="async"></p>
+<p>图 1 是原理示意。输入先经过模型，最后一个真实输入位置的隐藏状态经过输出层，得到完整词表上的下一 token 概率。我们读取其中指定答案 token 的概率，选出候选；不是直接把隐藏状态里的某个维度当作答案。</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>方法</th><th>模型看见的候选信息</th><th>问法</th><th>从哪里读答案</th></tr></thead><tbody><tr><td><code dir="auto">choice</code></td><td>完整的 A/B/C… 选项表</td><td>选最好的选项，回复字母</td><td>原生回答起点</td></tr><tr><td><code dir="auto">choice_boxed</code></td><td>同上</td><td>要求把字母放进 boxed</td><td>预填 <code dir="auto">\boxed{</code> 之后</td></tr><tr><td><code dir="auto">yes_no</code></td><td>完整的字母选项表</td><td>逐个问 <code dir="auto">Is option A the best choice?</code></td><td>原生回答起点，读取 yes/no</td></tr><tr><td><code dir="auto">yes_no_boxed</code></td><td>同上</td><td>同上，要求 boxed 格式</td><td>预填 <code dir="auto">\boxed{</code> 之后，读取 yes/no</td></tr><tr><td><code dir="auto">yes_no_naive</code></td><td>原问题和当前候选的描述；没有选项表和字母</td><td>直接问这项内容是不是答案</td><td>原生回答起点，读取 yes/no</td></tr><tr><td><code dir="auto">yes_no_naive_boxed</code></td><td>同上</td><td>同上，要求 boxed 格式</td><td>预填 <code dir="auto">\boxed{</code> 之后，读取 yes/no</td></tr></tbody></table>
+<p>例如 naive 的实际提示末段是：</p>
+<div class="expressive-code"><link rel="stylesheet" href="/vdec/_astro/ec.w36nc.css"><script type="module" src="/vdec/_astro/ec.0vx5m.js"></script><figure class="frame not-content"><figcaption class="header"></figcaption><pre data-language="text"><code><div class="ec-line"><div class="code"><span style="--0:#d6deeb;--1:#403f53">Which action should the snake take next?</span></div></div><div class="ec-line"><div class="code"><span style="--0:#d6deeb;--1:#403f53">Is "Turn left" the best answer to the question above? Reply exactly yes or no.</span></div></div></code></pre><div class="copy"><div aria-live="polite"></div><button title="复制到剪贴板" data-copied="复制成功！" data-code="Which action should the snake take next?Is &#x22;Turn left&#x22; the best answer to the question above? Reply exactly yes or no."><div></div></button></div></figure></div>
+<p>boxed 版本将末句改成：</p>
+<div class="expressive-code"><figure class="frame not-content"><figcaption class="header"></figcaption><pre data-language="text"><code><div class="ec-line"><div class="code"><span style="--0:#d6deeb;--1:#403f53">Reply with exactly \boxed{yes} or \boxed{no}, with no explanation.</span></div></div></code></pre><div class="copy"><div aria-live="polite"></div><button title="复制到剪贴板" data-copied="复制成功！" data-code="Reply with exactly \boxed{yes} or \boxed{no}, with no explanation."><div></div></button></div></figure></div>
+<p>并在 assistant 的原生回答边界之后，主动补上字面量 <code dir="auto">\boxed{</code>。以 Qwen 模板为例，位置在 <code dir="auto">&#x3C;/think></code> 之后；Gemma 使用自己的原生边界，不能把 Qwen 的标记硬套给所有模型。补上前缀后，直接读取后面的字母或 yes/no，不等待模型自己写出整段解释和花括号。</p>
+<p>这里有两个容易混淆的地方。第一，本轮 <code dir="auto">yes_no</code> 仍保留字母选项表；用户希望的“只问 is xxx…，不出现默认 ABC 集合”由 <code dir="auto">yes_no_naive</code> 实现。第二，boxed 同时改变了用户指令和 assistant 前缀，因此它测的是这套组合的效果，不是只改一个 token 的严格消融。</p>
+<p>choice 一次请求就能读取全部候选字母。yes/no 家族对每个候选分别构造一个输入；有 K 个候选，就有 K 个候选请求，但这些请求可以放进同一次 batch 并行计算。</p>
+<div class="sl-heading-wrapper level-h3"><h3 id="12-四个条件前面要不要放一份通用规划">1.2 四个条件：前面要不要放一份通用规划</h3><a class="sl-anchor-link" href="#12-四个条件前面要不要放一份通用规划"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore="">Section titled “1.2 四个条件：前面要不要放一份通用规划”</span></a></div>
+<p><img src="/vdec/assets/standard_backend_report/02-context-conditions.png" alt="四条件及两种规划的复用关系" loading="lazy" decoding="async"></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>条件</th><th>在当前截图之前保留什么</th><th>与其他条件的配对关系</th></tr></thead><tbody><tr><td><code dir="auto">no_plan</code></td><td>没有规划</td><td>只看规则、当前截图和问题</td></tr><tr><td><code dir="auto">shared_full</code></td><td>外观示例与规划对话、完整思考和短计划</td><td>每个 seed 生成一份带思考的规划</td></tr><tr><td><code dir="auto">shared_plan_only</code></td><td>同一个示例与规划对话、同一份短计划，去掉思考正文</td><td>直接复用 full 的原始 plan token，不重新生成</td></tr><tr><td><code dir="auto">shared_no_think</code></td><td>示例与规划对话、不经过 thinking 而单独生成的短计划</td><td>是另一份计划，不是删掉 full 的思考</td></tr></tbody></table>
+<p>规划只看独立的外观示例，不看当前测试截图。相同模型、相同 seed 的规划由 perception、readout 及六种方法共用。比较 full 与 plan_only，比较的是是否保留同一段思考；比较 full 与 no_think，还混入了计划内容本身的变化。</p>
+<div class="sl-heading-wrapper level-h3"><h3 id="13-三组的规模和执行方式">1.3 三组的规模和执行方式</h3><a class="sl-anchor-link" href="#13-三组的规模和执行方式"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore="">Section titled “1.3 三组的规模和执行方式”</span></a></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>统计单位</th><th align="right">每模型、每组</th><th align="right">三模型、每组</th><th align="right">三组合计</th></tr></thead><tbody><tr><td>感知评分</td><td align="right">20,736</td><td align="right">62,208</td><td align="right">186,624</td></tr><tr><td>动作评分</td><td align="right">6,912</td><td align="right">20,736</td><td align="right">62,208</td></tr><tr><td>正式评分</td><td align="right">27,648</td><td align="right">82,944</td><td align="right">248,832</td></tr><tr><td>候选评分请求</td><td align="right">66,048</td><td align="right">198,144</td><td align="right">594,432</td></tr><tr><td>保存的规划</td><td align="right">16</td><td align="right">48</td><td align="right">144</td></tr><tr><td>有效单卡任务</td><td align="right">8</td><td align="right">24</td><td align="right">72</td></tr></tbody></table>
+<p>每个“模型 × 方法 × 条件”有 864 次感知评分（48×9×2）和 288 次动作评分（48×6）。感知一致率的分母是 432 组正反排列，动作一致率的分母是 48 组六排列。</p>
+<p>三个模型是 Qwen3.5-4B、Qwen3-VL-4B-Thinking、Gemma4-E4B-it。每个模型的 seed 0–7 分开提交任务，每个 seed 负责六张图、两份规划。种子轮流分配截图，不是每张图跑八遍；规划采用 greedy，<strong>八个 seed 不应当成八次独立随机重复</strong>。</p>
+<p>三组均使用开发区 H100 CUDA 13.2、183 核分区，单卡 H100 80GB、TP1、BF16、8192 上下文，单任务 20 CPU、200 GiB 内存及等量共享内存，公共科研项目、优先级 4。thinking 上限 2048 token，短计划上限 128 token。权重大小和 SHA256、配置、模板及处理器一致。环境为 PyTorch 2.13.0+cu130、vLLM 0.31.0、Transformers 5.17.0；第三组节点驱动为 595.58.03。沿用镜像 <code dir="auto">ngc-pytorch-cu128-dev:1.1</code>，镜像名、CUDA 13.2 分区名和实际 PyTorch runtime 是不同层面的版本记录。</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>本文名称</th><th>数据中的配置标识</th><th>前缀缓存</th><th>执行与调度</th></tr></thead><tbody><tr><td>vLLM eager／旧 vLLM</td><td><code dir="auto">vllm_eager</code></td><td>关闭</td><td><code dir="auto">enforce_eager=True</code>，禁用编译和 CUDA Graph；显存比例 0.65，max_num_seqs=26，max_num_batched_tokens=8192</td></tr><tr><td>TF batch</td><td><code dir="auto">transformers_batched</code></td><td>无跨请求 KV 复用</td><td>eager attention，原生候选 batch，microbatch 上限 8</td></tr><tr><td>vLLM APC／默认优化组</td><td><code dir="auto">vllm_default_apc</code></td><td>显式开启</td><td>不覆盖 eager、编译、调度和显存默认值；实际显存比例 0.92、1024 seqs、16384 batched tokens、编译模式 3、FULL_AND_PIECEWISE CUDA Graph</td></tr></tbody></table>
+<p>下文简称 APC 的始终是整套默认优化配置。第三组同时改变 APC、编译、Graph、调度上限和显存配额，测量的是整套配置收益，不能单独归因于其中一个开关。各轮不是同一时刻、同一物理卡的微基准。</p>
+<p>三组正式结果均无 pending、failed、unsupported；各 24 个有效任务成功、退出码为 0，资源已释放。TF 和 APC 各有 <strong>576 条固定旧 vLLM 规划的 readout 诊断</strong>，合计 1,152 条，另有启动检查；它们均不计入正式评分。停止的 TF 串行尝试和 APC 首次失败 pilot 另行记录成本，见第 7 节。</p>
+<p><strong>TF 正式组使用 batch。</strong> 同一次 yes/no 评分的候选以张量 batch 同时 forward；choice 只需一个请求。三组都未跨不同实验条目合并评分 batch。TF 使用左侧 padding，读取每条输入最后的真实位置，input_tokens 不计 padding；图像经过实际多模态处理器。规划保留逐请求 RNG，思考和短计划有前后依赖，逐请求生成；跨 seed 通过独立任务并行。保存的规划使用原始 token ID，不经过解码再编码。</p>
+</details>
+<p><span id="2-怎样读这些分数才不会被高分误导"></span></p>
+<div class="sl-heading-wrapper level-h2"><h2 id="怎样读分数">怎样读分数</h2><a class="sl-anchor-link" href="#怎样读分数"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore="">Section titled “怎样读分数”</span></a></div>
+<p><strong>候选内高分不等于答对概率。</strong> 先检查模型是否准备输出规定答案，再检查答案是否正确、动作是否安全。始终选同一动作可以达到 100% 一致率，也可能一直撞墙。</p>
+<details markdown="1">
+<summary>查看指标定义、分母和计算公式</summary>
+<div class="sl-heading-wrapper level-h3"><h3 id="21-先看原始概率再看候选内排名">2.1 先看原始概率，再看候选内排名</h3><a class="sl-anchor-link" href="#21-先看原始概率再看候选内排名"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore="">Section titled “2.1 先看原始概率，再看候选内排名”</span></a></div>
+<p><code dir="auto">logprob</code> 是完整词表概率的自然对数，<code dir="auto">P = exp(logprob)</code>。例如 choice 的三个合法 token 是 A/B/C：</p>
+<div class="expressive-code"><figure class="frame not-content"><figcaption class="header"></figcaption><pre data-language="text"><code><div class="ec-line"><div class="code"><span style="--0:#d6deeb;--1:#403f53">合法答案概率 M = P(A) + P(B) + P(C)</span></div></div><div class="ec-line"><div class="code"><span style="--0:#d6deeb;--1:#403f53">候选分数 score(A) = P(A) / M</span></div></div></code></pre><div class="copy"><div aria-live="polite"></div><button title="复制到剪贴板" data-copied="复制成功！" data-code="合法答案概率 M = P(A) + P(B) + P(C)候选分数 score(A) = P(A) / M"><div></div></button></div></figure></div>
+<p>如果 P(A)=0.00006，P(B)=0.00004，两个合法答案一共只有 <strong>0.01%</strong> 概率；归一化后却会出现 A=60%、B=40%。这不代表模型有 60% 的把握认为 A 正确，而是“硬要在 A/B 里选，它比较偏向 A”。绝大部分概率可能落在其他 token 上。</p>
+<p>yes/no 方法先对每个候选 i 单独计算：</p>
+<div class="expressive-code"><figure class="frame not-content"><figcaption class="header"></figcaption><pre data-language="text"><code><div class="ec-line"><div class="code"><span style="--0:#d6deeb;--1:#403f53">M_i = P_i(yes) + P_i(no)</span></div></div><div class="ec-line"><div class="code"><span style="--0:#d6deeb;--1:#403f53">q_i = P_i(yes) / M_i</span></div></div><div class="ec-line"><div class="code"><span style="--0:#d6deeb;--1:#403f53">score_i = q_i / 所有候选 q 的总和</span></div></div></code></pre><div class="copy"><div aria-live="polite"></div><button title="复制到剪贴板" data-copied="复制成功！" data-code="M_i = P_i(yes) + P_i(no)q_i = P_i(yes) / M_iscore_i = q_i / 所有候选 q 的总和"><div></div></button></div></figure></div>
+<p><code dir="auto">q_i</code> 在原始记录里叫 <code dir="auto">yes_score</code>。几个候选可以同时得到较高的 q；最终按 score 选最大项，不是对 q 再做一次 softmax。这些分数都没有经过正确率校准，不应直接解读成“动作安全的概率”。</p>
+<div class="sl-heading-wrapper level-h2"><h2 id="继续阅读">继续阅读</h2><a class="sl-anchor-link" href="#继续阅读"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore="">Section titled “继续阅读”</span></a></div>
+<ul>
+<li><a href="/vdec/archive/backend-report/more-1/">三模型历史实验结果 · 续 1</a></li>
+<li><a href="/vdec/archive/backend-report/more-2/">三模型历史实验结果 · 续 2</a></li>
+<li><a href="/vdec/archive/backend-report/more-3/">三模型历史实验结果 · 续 3</a></li>
+<li><a href="/vdec/archive/backend-report/more-4/">三模型历史实验结果 · 续 4</a></li>
+</ul></details></div><footer class="sl-flex astro-ddtxxk7k"><div class="meta sl-flex astro-ddtxxk7k"></div><div class="pagination-links print:hidden astro-b5raizh3" dir="ltr"><a href="/vdec/studies/snake/" rel="prev" class="astro-b5raizh3"><svg aria-hidden="true" class="astro-b5raizh3 astro-hkc32dio" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.5rem;"><path d="M17 11H9.41l3.3-3.29a1.004 1.004 0 1 0-1.42-1.42l-5 5a1 1 0 0 0-.21.33 1 1 0 0 0 0 .76 1 1 0 0 0 .21.33l5 5a1.002 1.002 0 0 0 1.639-.325 1 1 0 0 0-.219-1.095L9.41 13H17a1 1 0 0 0 0-2Z"/></svg><span class="astro-b5raizh3">上一页<br class="astro-b5raizh3"><span class="link-title astro-b5raizh3">Snake Study</span></span></a><a href="/vdec/archive/drawing-v1/" rel="next" class="astro-b5raizh3"><svg aria-hidden="true" class="astro-b5raizh3 astro-hkc32dio" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.5rem;"><path d="M17.92 11.62a1.001 1.001 0 0 0-.21-.33l-5-5a1.003 1.003 0 1 0-1.42 1.42l3.3 3.29H7a1 1 0 0 0 0 2h7.59l-3.3 3.29a1.002 1.002 0 0 0 .325 1.639 1 1 0 0 0 1.095-.219l5-5a1 1 0 0 0 .21-.33 1 1 0 0 0 0-.76Z"/></svg><span class="astro-b5raizh3">下一页<br class="astro-b5raizh3"><span class="link-title astro-b5raizh3">Drawing v1（历史协议）</span></span></a></div></footer></div></div></main></div></div></div></div></body></html>

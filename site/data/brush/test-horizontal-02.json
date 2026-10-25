@@ -1,0 +1,1 @@
+{"id":"test-horizontal-02","split":"test","family":"horizontal","size":33,"start":[21,22],"end":[17,22],"pen":[32,16],"template_id":"horizontal","instruction":"抬笔移动到 S，落笔连到 E，再抬笔提交。方向判断相对于当前目标。"}

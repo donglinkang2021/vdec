@@ -1,0 +1,1231 @@
+<!DOCTYPE html><html lang="zh-CN" dir="ltr" data-theme="dark" data-has-toc data-has-sidebar class="astro-g5ptsecz"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><title>Snake Study · 第 7 部分 | vdec</title><link rel="canonical" href="https://donglinkang2021.github.io/vdec/studies/snake/part-7/"/><link rel="sitemap" href="/vdec/sitemap-index.xml"/><link rel="shortcut icon" href="/vdec/favicon.svg" type="image/svg+xml"/><meta name="generator" content="Astro v7.4.2"/><meta name="generator" content="Starlight v0.42.7"/><meta property="og:title" content="Snake Study · 第 7 部分"/><meta property="og:type" content="article"/><meta property="og:url" content="https://donglinkang2021.github.io/vdec/studies/snake/part-7/"/><meta property="og:locale" content="zh-CN"/><meta property="og:description" content="视觉决策评测、论文与可复现实验"/><meta property="og:site_name" content="vdec"/><meta name="twitter:card" content="summary_large_image"/><meta name="description" content="视觉决策评测、论文与可复现实验"/><script>
+	window.StarlightThemeProvider = (() => {
+		const storedTheme =
+			typeof localStorage !== 'undefined' && localStorage.getItem('starlight-theme');
+		const theme =
+			storedTheme ||
+			(window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+		document.documentElement.dataset.theme = theme === 'light' ? 'light' : 'dark';
+		return {
+			updatePickers(theme = storedTheme || 'auto') {
+				document.querySelectorAll('starlight-theme-select').forEach((picker) => {
+					const select = picker.querySelector('select');
+					if (select) select.value = theme;
+					/** @type {HTMLTemplateElement | null} */
+					const tmpl = document.querySelector(`#theme-icons`);
+					const newIcon = tmpl && tmpl.content.querySelector('.' + theme);
+					if (newIcon) {
+						const oldIcon = picker.querySelector('svg.label-icon');
+						if (oldIcon) {
+							oldIcon.replaceChildren(...newIcon.cloneNode(true).childNodes);
+						}
+					}
+				});
+			},
+		};
+	})();
+</script><template id="theme-icons"><svg aria-hidden="true" class="light astro-hkc32dio" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M5 12a1 1 0 0 0-1-1H3a1 1 0 0 0 0 2h1a1 1 0 0 0 1-1Zm.64 5-.71.71a1 1 0 0 0 0 1.41 1 1 0 0 0 1.41 0l.71-.71A1 1 0 0 0 5.64 17ZM12 5a1 1 0 0 0 1-1V3a1 1 0 0 0-2 0v1a1 1 0 0 0 1 1Zm5.66 2.34a1 1 0 0 0 .7-.29l.71-.71a1 1 0 1 0-1.41-1.41l-.66.71a1 1 0 0 0 0 1.41 1 1 0 0 0 .66.29Zm-12-.29a1 1 0 0 0 1.41 0 1 1 0 0 0 0-1.41l-.71-.71a1.004 1.004 0 1 0-1.43 1.41l.73.71ZM21 11h-1a1 1 0 0 0 0 2h1a1 1 0 0 0 0-2Zm-2.64 6A1 1 0 0 0 17 18.36l.71.71a1 1 0 0 0 1.41 0 1 1 0 0 0 0-1.41l-.76-.66ZM12 6.5a5.5 5.5 0 1 0 5.5 5.5A5.51 5.51 0 0 0 12 6.5Zm0 9a3.5 3.5 0 1 1 0-7 3.5 3.5 0 0 1 0 7Zm0 3.5a1 1 0 0 0-1 1v1a1 1 0 0 0 2 0v-1a1 1 0 0 0-1-1Z"/></svg><svg aria-hidden="true" class="dark astro-hkc32dio" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M21.64 13a1 1 0 0 0-1.05-.14 8.049 8.049 0 0 1-3.37.73 8.15 8.15 0 0 1-8.14-8.1 8.59 8.59 0 0 1 .25-2A1 1 0 0 0 8 2.36a10.14 10.14 0 1 0 14 11.69 1 1 0 0 0-.36-1.05Zm-9.5 6.69A8.14 8.14 0 0 1 7.08 5.22v.27a10.15 10.15 0 0 0 10.14 10.14 9.784 9.784 0 0 0 2.1-.22 8.11 8.11 0 0 1-7.18 4.32v-.04Z"/></svg><svg aria-hidden="true" class="auto astro-hkc32dio" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M21 14h-1V7a3 3 0 0 0-3-3H7a3 3 0 0 0-3 3v7H3a1 1 0 0 0-1 1v2a3 3 0 0 0 3 3h14a3 3 0 0 0 3-3v-2a1 1 0 0 0-1-1ZM6 7a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v7H6V7Zm14 10a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-1h16v1Z"/></svg></template><link rel="stylesheet" href="/vdec/_astro/print.ehPL0gv-.css" media="print"><link rel="stylesheet" href="/vdec/_astro/common.B2KNhLp0.css"><script type="module" src="/vdec/_astro/page.cNngjUgL.js"></script></head><body class="astro-g5ptsecz"><a class="sl-skip-link astro-qb7clj6f" href="#_top">跳转到内容</a><div class="page sl-flex astro-yntsjkba"><header class="header astro-yntsjkba"><div class="header astro-by6fddyj"><div class="title-wrapper sl-flex astro-by6fddyj"><a href="/vdec/" class="site-title sl-flex astro-6rvad3va"><span class="astro-6rvad3va" translate="no">vdec</span></a></div><div class="sl-flex print:hidden astro-by6fddyj"><site-search class="astro-by6fddyj astro-b5kgnn7o" data-translations="{&quot;placeholder&quot;:&quot;搜索&quot;}"><button data-open-modal disabled aria-label="搜索" aria-keyshortcuts="Control+K" class="astro-b5kgnn7o"><svg aria-hidden="true" class="astro-b5kgnn7o astro-hkc32dio" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M21.71 20.29 18 16.61A9 9 0 1 0 16.61 18l3.68 3.68a.999.999 0 0 0 1.42 0 1 1 0 0 0 0-1.39ZM11 18a7 7 0 1 1 0-14 7 7 0 0 1 0 14Z"/></svg><span class="sl-hidden md:sl-block astro-b5kgnn7o" aria-hidden="true">搜索</span><kbd class="sl-hidden md:sl-flex astro-b5kgnn7o" style="display: none;"><kbd class="astro-b5kgnn7o">Ctrl</kbd><kbd class="astro-b5kgnn7o">K</kbd></kbd></button><dialog style="padding:0" aria-label="搜索" class="astro-b5kgnn7o"><div class="dialog-frame sl-flex astro-b5kgnn7o"><button data-close-modal class="sl-flex md:sl-hidden astro-b5kgnn7o">取消</button><div class="search-container astro-b5kgnn7o"><div id="starlight__search" class="astro-b5kgnn7o"></div></div></div></dialog></site-search><script>
+	(() => {
+		const openBtn = document.querySelector('button[data-open-modal]');
+		const shortcut = openBtn?.querySelector('kbd');
+		if (!openBtn || !(shortcut instanceof HTMLElement)) return;
+		const platformKey = shortcut.querySelector('kbd');
+		if (platformKey && /(Mac|iPhone|iPod|iPad)/i.test(navigator.platform)) {
+			platformKey.textContent = '⌘';
+			openBtn.setAttribute('aria-keyshortcuts', 'Meta+K');
+		}
+		shortcut.style.display = '';
+	})();
+</script><script type="module" src="/vdec/_astro/Search.astro_astro_type_script_index_0_lang.BZ0RsVt4.js"></script></div><div class="sl-hidden md:sl-flex print:hidden right-group astro-by6fddyj"><div class="sl-flex social-icons astro-by6fddyj"><a href="https://github.com/donglinkang2021/vdec" rel="me" class="sl-flex astro-n2mnl6yq"><span class="sr-only astro-n2mnl6yq">公开站点</span><svg aria-hidden="true" class="astro-n2mnl6yq astro-hkc32dio" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M12 .3a12 12 0 0 0-3.8 23.38c.6.12.83-.26.83-.57L9 21.07c-3.34.72-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.08-.74.09-.73.09-.73 1.2.09 1.83 1.24 1.83 1.24 1.08 1.83 2.81 1.3 3.5 1 .1-.78.42-1.31.76-1.61-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.14-.3-.54-1.52.1-3.18 0 0 1-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.28-1.55 3.29-1.23 3.29-1.23.64 1.66.24 2.88.12 3.18a4.65 4.65 0 0 1 1.23 3.22c0 4.61-2.8 5.63-5.48 5.92.42.36.81 1.1.81 2.22l-.01 3.29c0 .31.2.69.82.57A12 12 0 0 0 12 .3Z"/></svg></a></div><starlight-theme-select><label style="--sl-select-width: 6.25em" class="astro-2z5xp7gb"><span class="sr-only astro-2z5xp7gb">选择主题</span><svg aria-hidden="true" class="icon label-icon astro-2z5xp7gb astro-hkc32dio" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M21 14h-1V7a3 3 0 0 0-3-3H7a3 3 0 0 0-3 3v7H3a1 1 0 0 0-1 1v2a3 3 0 0 0 3 3h14a3 3 0 0 0 3-3v-2a1 1 0 0 0-1-1ZM6 7a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v7H6V7Zm14 10a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-1h16v1Z"/></svg><select autocomplete="off" class="astro-2z5xp7gb"><option value="dark" class="astro-2z5xp7gb">深色</option><option value="light" class="astro-2z5xp7gb">浅色</option><option value="auto" selected class="astro-2z5xp7gb">自动</option></select><svg aria-hidden="true" class="icon caret astro-2z5xp7gb astro-hkc32dio" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M17 9.17a1 1 0 0 0-1.41 0L12 12.71 8.46 9.17a1 1 0 1 0-1.41 1.42l4.24 4.24a1.002 1.002 0 0 0 1.42 0L17 10.59a1.002 1.002 0 0 0 0-1.42Z"/></svg></label></starlight-theme-select><script>
+	StarlightThemeProvider.updatePickers();
+</script><script type="module">var e=`starlight-theme`,t=e=>e===`auto`||e===`dark`||e===`light`?e:`auto`,n=()=>t(typeof localStorage<`u`&&localStorage.getItem(e));function r(t){typeof localStorage<`u`&&localStorage.setItem(e,t===`light`||t===`dark`?t:``)}var i=()=>matchMedia(`(prefers-color-scheme: light)`).matches?`light`:`dark`;function a(e){StarlightThemeProvider.updatePickers(e),document.documentElement.dataset.theme=e===`auto`?i():e,r(e)}matchMedia(`(prefers-color-scheme: light)`).addEventListener(`change`,()=>{n()===`auto`&&a(`auto`)});var o=class extends HTMLElement{constructor(){super(),a(n()),this.querySelector(`select`)?.addEventListener(`change`,e=>{e.currentTarget instanceof HTMLSelectElement&&a(t(e.currentTarget.value))})}};customElements.define(`starlight-theme-select`,o);</script><script type="module">var e=class extends HTMLElement{constructor(){super();let e=this.querySelector(`select`);e&&(e.addEventListener(`change`,e=>{e.currentTarget instanceof HTMLSelectElement&&(window.location.pathname=e.currentTarget.value)}),window.addEventListener(`pageshow`,t=>{if(!t.persisted)return;let n=e.querySelector(`option[selected]`)?.index;n!==e.selectedIndex&&(e.selectedIndex=n??0)}))}};customElements.define(`starlight-lang-select`,e);</script></div></div></header><nav class="sidebar print:hidden astro-yntsjkba" aria-label="主要"><button popovertarget="starlight__sidebar" class="sl-menu-button sl-flex md:sl-hidden print:hidden astro-r2osgdlg"><svg aria-hidden="true" class="open-menu astro-r2osgdlg astro-hkc32dio" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M3 8h18a1 1 0 1 0 0-2H3a1 1 0 0 0 0 2Zm18 8H3a1 1 0 0 0 0 2h18a1 1 0 0 0 0-2Zm0-5H3a1 1 0 0 0 0 2h18a1 1 0 0 0 0-2Z"/></svg><svg aria-hidden="true" class="close-menu astro-r2osgdlg astro-hkc32dio" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="m13.41 12 6.3-6.29a1.004 1.004 0 1 0-1.42-1.42L12 10.59l-6.29-6.3a1.004 1.004 0 0 0-1.42 1.42l6.3 6.29-6.3 6.29a1 1 0 0 0 0 1.42.998.998 0 0 0 1.42 0l6.29-6.3 6.29 6.3a.999.999 0 0 0 1.42 0 1 1 0 0 0 0-1.42L13.41 12Z"/></svg><span class="sr-only astro-r2osgdlg">菜单</span></button><script type="module">var e=class extends HTMLElement{constructor(){super();let e=matchMedia(`(min-width: 50em)`),t=()=>{this.popover=e.matches?null:`auto`};t(),e.addEventListener(`change`,()=>t()),this.addEventListener(`toggle`,({newState:e})=>this.trapFocus(e===`open`))}trapFocus(e){document.querySelectorAll(`.main-frame, .sl-skip-link`).forEach(t=>{t.toggleAttribute(`inert`,e)})}};customElements.define(`sl-sidebar-pane`,e);</script><sl-sidebar-pane popover id="starlight__sidebar" class="sidebar-pane astro-yntsjkba"><div class="sidebar-content sl-flex astro-yntsjkba"><sl-sidebar-state-persist data-hash="1gq6nwq" class="astro-ipdry5cl"><script aria-hidden="true">
+		(() => {
+			try {
+				if (!matchMedia('(min-width: 50em)').matches) return;
+				/** @type {HTMLElement | null} */
+				const target = document.querySelector('sl-sidebar-state-persist');
+				const state = JSON.parse(sessionStorage.getItem('sl-sidebar-state') || '0');
+				if (!target || !state || target.dataset.hash !== state.hash) return;
+				window._starlightScrollRestore = state.scroll;
+				customElements.define(
+					'sl-sidebar-restore',
+					class SidebarRestore extends HTMLElement {
+						connectedCallback() {
+							try {
+								const idx = parseInt(this.dataset.index || '');
+								const details = this.closest('details');
+								if (details && typeof state.open[idx] === 'boolean') details.open = state.open[idx];
+							} catch {}
+						}
+					}
+				);
+			} catch {}
+		})();
+	</script><ul class="top-level astro-rmhv4bp6"><li class="astro-rmhv4bp6"><details open class="astro-rmhv4bp6"><summary class="astro-rmhv4bp6"><span class="group-label astro-rmhv4bp6"><span class="large astro-rmhv4bp6">Benchmarks</span></span><svg aria-hidden="true" class="caret astro-rmhv4bp6 astro-hkc32dio" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg></summary><sl-sidebar-restore data-index="0"></sl-sidebar-restore><ul class="astro-rmhv4bp6"><li class="astro-rmhv4bp6"><details open class="astro-rmhv4bp6"><summary class="astro-rmhv4bp6"><span class="group-label astro-rmhv4bp6"><span class="large astro-rmhv4bp6">Snake</span></span><svg aria-hidden="true" class="caret astro-rmhv4bp6 astro-hkc32dio" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg></summary><sl-sidebar-restore data-index="1"></sl-sidebar-restore><ul class="astro-rmhv4bp6"><li class="astro-rmhv4bp6"><a href="/vdec/benchmarks/snake/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Snake</span></a></li><li class="astro-rmhv4bp6"><a href="/vdec/benchmarks/snake/examples/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Snake · 完整题库</span></a></li><li class="astro-rmhv4bp6"><a href="/vdec/benchmarks/snake/guide/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Snake 任务讲解</span></a></li><li class="astro-rmhv4bp6"><a href="/vdec/benchmarks/snake/sandbox/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Snake · 交互沙盒</span></a></li></ul></details></li><li class="astro-rmhv4bp6"><details open class="astro-rmhv4bp6"><summary class="astro-rmhv4bp6"><span class="group-label astro-rmhv4bp6"><span class="large astro-rmhv4bp6">Brush</span></span><svg aria-hidden="true" class="caret astro-rmhv4bp6 astro-hkc32dio" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg></summary><sl-sidebar-restore data-index="2"></sl-sidebar-restore><ul class="astro-rmhv4bp6"><li class="astro-rmhv4bp6"><a href="/vdec/benchmarks/brush/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Brush</span></a></li><li class="astro-rmhv4bp6"><a href="/vdec/benchmarks/brush/examples/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Brush · 完整题库</span></a></li><li class="astro-rmhv4bp6"><a href="/vdec/benchmarks/brush/guide/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Brush 任务讲解</span></a></li><li class="astro-rmhv4bp6"><a href="/vdec/benchmarks/brush/reproduction/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">BrushBench v1：看图定位与画笔状态控制</span></a></li><li class="astro-rmhv4bp6"><a href="/vdec/benchmarks/brush/sandbox/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Brush · 交互沙盒</span></a></li></ul></details></li><li class="astro-rmhv4bp6"><details open class="astro-rmhv4bp6"><summary class="astro-rmhv4bp6"><span class="group-label astro-rmhv4bp6"><span class="large astro-rmhv4bp6">Drawing</span></span><svg aria-hidden="true" class="caret astro-rmhv4bp6 astro-hkc32dio" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg></summary><sl-sidebar-restore data-index="3"></sl-sidebar-restore><ul class="astro-rmhv4bp6"><li class="astro-rmhv4bp6"><a href="/vdec/benchmarks/drawing/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Drawing</span></a></li><li class="astro-rmhv4bp6"><a href="/vdec/benchmarks/drawing/examples/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Drawing · 完整题库</span></a></li><li class="astro-rmhv4bp6"><a href="/vdec/benchmarks/drawing/guide/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Drawing 模型输入与操作教学</span></a></li><li class="astro-rmhv4bp6"><a href="/vdec/benchmarks/drawing/reproduction/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">VDecision DrawingBench v2</span></a></li><li class="astro-rmhv4bp6"><a href="/vdec/benchmarks/drawing/sandbox/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Drawing · 交互沙盒</span></a></li></ul></details></li></ul></details></li><li class="astro-rmhv4bp6"><details open class="astro-rmhv4bp6"><summary class="astro-rmhv4bp6"><span class="group-label astro-rmhv4bp6"><span class="large astro-rmhv4bp6">Papers</span></span><svg aria-hidden="true" class="caret astro-rmhv4bp6 astro-hkc32dio" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg></summary><sl-sidebar-restore data-index="4"></sl-sidebar-restore><ul class="astro-rmhv4bp6"><li class="astro-rmhv4bp6"><a href="/vdec/papers/babyvision/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">BabyVision</span></a></li><li class="astro-rmhv4bp6"><a href="/vdec/papers/genception/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">GenCeption：从视频生成到视觉感知</span></a></li></ul></details></li><li class="astro-rmhv4bp6"><details open class="astro-rmhv4bp6"><summary class="astro-rmhv4bp6"><span class="group-label astro-rmhv4bp6"><span class="large astro-rmhv4bp6">Exps</span></span><svg aria-hidden="true" class="caret astro-rmhv4bp6 astro-hkc32dio" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg></summary><sl-sidebar-restore data-index="5"></sl-sidebar-restore><ul class="astro-rmhv4bp6"><li class="astro-rmhv4bp6"><a href="/vdec/exps/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Exps · 运行与复现</span></a></li><li class="astro-rmhv4bp6"><a href="/vdec/exps/brush-study-plan/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Brush Study 实验配置</span></a></li><li class="astro-rmhv4bp6"><a href="/vdec/exps/input-assembly/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">输入拼接实验室</span></a></li><li class="astro-rmhv4bp6"><a href="/vdec/exps/metrics/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Benchmark 说明：main-v1</span></a></li><li class="astro-rmhv4bp6"><a href="/vdec/exps/reproduction/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">三模型规划与视觉推理实验</span></a></li></ul></details></li><li class="astro-rmhv4bp6"><details open class="astro-rmhv4bp6"><summary class="astro-rmhv4bp6"><span class="group-label astro-rmhv4bp6"><span class="large astro-rmhv4bp6">Studies</span></span><svg aria-hidden="true" class="caret astro-rmhv4bp6 astro-hkc32dio" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg></summary><sl-sidebar-restore data-index="6"></sl-sidebar-restore><ul class="astro-rmhv4bp6"><li class="astro-rmhv4bp6"><a href="/vdec/studies/brush/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Brush Study</span></a></li><li class="astro-rmhv4bp6"><a href="/vdec/studies/snake/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Snake Study</span></a></li></ul></details></li><li class="astro-rmhv4bp6"><details class="astro-rmhv4bp6"><summary class="astro-rmhv4bp6"><span class="group-label astro-rmhv4bp6"><span class="large astro-rmhv4bp6">Archive</span></span><svg aria-hidden="true" class="caret astro-rmhv4bp6 astro-hkc32dio" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg></summary><sl-sidebar-restore data-index="7"></sl-sidebar-restore><ul class="astro-rmhv4bp6"><li class="astro-rmhv4bp6"><a href="/vdec/archive/backend-report/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">三模型历史实验结果</span></a></li><li class="astro-rmhv4bp6"><a href="/vdec/archive/drawing-v1/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Drawing v1（历史协议）</span></a></li><li class="astro-rmhv4bp6"><a href="/vdec/archive/pre-main/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">旧版运行手册</span></a></li><li class="astro-rmhv4bp6"><a href="/vdec/archive/snake-plan/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">早期实验计划：先排除固定策略偏差</span></a></li></ul></details></li></ul><script aria-hidden="true">
+		(() => {
+			const scroller = document.getElementById('starlight__sidebar');
+			if (!window._starlightScrollRestore || !scroller) return;
+			scroller.scrollTop = window._starlightScrollRestore;
+			delete window._starlightScrollRestore;
+		})();
+	</script></sl-sidebar-state-persist><div class="md:sl-hidden"><div class="mobile-preferences sl-flex astro-p4azlveh"><div class="social-icons astro-p4azlveh"><a href="https://github.com/donglinkang2021/vdec" rel="me" class="sl-flex astro-n2mnl6yq"><span class="sr-only astro-n2mnl6yq">公开站点</span><svg aria-hidden="true" class="astro-n2mnl6yq astro-hkc32dio" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M12 .3a12 12 0 0 0-3.8 23.38c.6.12.83-.26.83-.57L9 21.07c-3.34.72-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.08-.74.09-.73.09-.73 1.2.09 1.83 1.24 1.83 1.24 1.08 1.83 2.81 1.3 3.5 1 .1-.78.42-1.31.76-1.61-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.14-.3-.54-1.52.1-3.18 0 0 1-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.28-1.55 3.29-1.23 3.29-1.23.64 1.66.24 2.88.12 3.18a4.65 4.65 0 0 1 1.23 3.22c0 4.61-2.8 5.63-5.48 5.92.42.36.81 1.1.81 2.22l-.01 3.29c0 .31.2.69.82.57A12 12 0 0 0 12 .3Z"/></svg></a></div><starlight-theme-select><label style="--sl-select-width: 6.25em" class="astro-2z5xp7gb"><span class="sr-only astro-2z5xp7gb">选择主题</span><svg aria-hidden="true" class="icon label-icon astro-2z5xp7gb astro-hkc32dio" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M21 14h-1V7a3 3 0 0 0-3-3H7a3 3 0 0 0-3 3v7H3a1 1 0 0 0-1 1v2a3 3 0 0 0 3 3h14a3 3 0 0 0 3-3v-2a1 1 0 0 0-1-1ZM6 7a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v7H6V7Zm14 10a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-1h16v1Z"/></svg><select autocomplete="off" class="astro-2z5xp7gb"><option value="dark" class="astro-2z5xp7gb">深色</option><option value="light" class="astro-2z5xp7gb">浅色</option><option value="auto" selected class="astro-2z5xp7gb">自动</option></select><svg aria-hidden="true" class="icon caret astro-2z5xp7gb astro-hkc32dio" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M17 9.17a1 1 0 0 0-1.41 0L12 12.71 8.46 9.17a1 1 0 1 0-1.41 1.42l4.24 4.24a1.002 1.002 0 0 0 1.42 0L17 10.59a1.002 1.002 0 0 0 0-1.42Z"/></svg></label></starlight-theme-select><script>
+	StarlightThemeProvider.updatePickers();
+</script></div></div></div></sl-sidebar-pane></nav><div class="main-frame astro-yntsjkba"><script type="module">var e=document.getElementById(`starlight__sidebar`),t=e?.querySelector(`sl-sidebar-state-persist`),n=`sl-sidebar-state`,r=()=>{let r=[],i=t?.dataset.hash||``;try{let e=sessionStorage.getItem(n),t=JSON.parse(e||`{}`);Array.isArray(t.open)&&t.hash===i&&(r=t.open)}catch{}return{hash:i,open:r,scroll:e?.scrollTop||0}},i=e=>{try{sessionStorage.setItem(n,JSON.stringify(e))}catch{}},a=()=>i(r()),o=(e,t)=>{let n=r();n.open[t]=e,i(n)};t?.addEventListener(`click`,e=>{if(!(e.target instanceof Element))return;let t=e.target.closest(`summary`)?.closest(`details`);if(!t)return;let n=t.querySelector(`sl-sidebar-restore`),r=parseInt(n?.dataset.index||``);isNaN(r)||o(!t.open,r)}),addEventListener(`visibilitychange`,()=>{document.visibilityState===`hidden`&&a()});</script><div class="lg:sl-flex astro-lrzkfocr"><aside class="right-sidebar-container print:hidden astro-lrzkfocr"><div class="right-sidebar astro-lrzkfocr"><div class="lg:sl-hidden astro-qok35upx"><mobile-starlight-toc data-min-h="2" data-max-h="3" class="astro-66cqc7ze"><nav aria-labelledby="starlight__on-this-page--mobile" class="astro-66cqc7ze"><details id="starlight__mobile-toc" class="astro-66cqc7ze"><summary id="starlight__on-this-page--mobile" class="sl-flex astro-66cqc7ze"><span class="toggle sl-flex astro-66cqc7ze">本页内容<svg aria-hidden="true" class="caret astro-66cqc7ze astro-hkc32dio" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg></span><span class="display-current astro-66cqc7ze"></span></summary><div class="dropdown astro-66cqc7ze"><ul class="isMobile astro-jugkfwgx" style="--depth: 0;"><li style="--depth: 0;" class="astro-jugkfwgx"><a href="#_top" style="--depth: 0;" class="astro-jugkfwgx"><span style="--depth: 0;" class="astro-jugkfwgx">概述</span></a></li><li style="--depth: 0;" class="astro-jugkfwgx"><a href="#基线结果与简单策略对照" style="--depth: 0;" class="astro-jugkfwgx"><span style="--depth: 0;" class="astro-jugkfwgx">基线结果与简单策略对照</span></a></li><li style="--depth: 0;" class="astro-jugkfwgx"><a href="#历史案例计划要求左转模型在底边撞墙" style="--depth: 0;" class="astro-jugkfwgx"><span style="--depth: 0;" class="astro-jugkfwgx">历史案例：计划要求左转，模型在底边撞墙</span></a></li><li style="--depth: 0;" class="astro-jugkfwgx"><a href="#案例二图片没变换选项顺序后改选" style="--depth: 0;" class="astro-jugkfwgx"><span style="--depth: 0;" class="astro-jugkfwgx">案例二：图片没变，换选项顺序后改选</span></a></li><li style="--depth: 0;" class="astro-jugkfwgx"><a href="#继续阅读" style="--depth: 0;" class="astro-jugkfwgx"><span style="--depth: 0;" class="astro-jugkfwgx">继续阅读</span></a></li></ul></div></details></nav></mobile-starlight-toc><script type="module" src="/vdec/_astro/MobileTableOfContents.astro_astro_type_script_index_0_lang.C3fM4Kra.js"></script></div><div class="right-sidebar-panel sl-hidden lg:sl-block astro-qok35upx"><div class="sl-container astro-qok35upx"><starlight-toc data-min-h="2" data-max-h="3"><nav aria-labelledby="starlight__on-this-page"><h2 id="starlight__on-this-page">本页内容</h2><ul class="astro-jugkfwgx" style="--depth: 0;"><li style="--depth: 0;" class="astro-jugkfwgx"><a href="#_top" style="--depth: 0;" class="astro-jugkfwgx"><span style="--depth: 0;" class="astro-jugkfwgx">概述</span></a></li><li style="--depth: 0;" class="astro-jugkfwgx"><a href="#基线结果与简单策略对照" style="--depth: 0;" class="astro-jugkfwgx"><span style="--depth: 0;" class="astro-jugkfwgx">基线结果与简单策略对照</span></a></li><li style="--depth: 0;" class="astro-jugkfwgx"><a href="#历史案例计划要求左转模型在底边撞墙" style="--depth: 0;" class="astro-jugkfwgx"><span style="--depth: 0;" class="astro-jugkfwgx">历史案例：计划要求左转，模型在底边撞墙</span></a></li><li style="--depth: 0;" class="astro-jugkfwgx"><a href="#案例二图片没变换选项顺序后改选" style="--depth: 0;" class="astro-jugkfwgx"><span style="--depth: 0;" class="astro-jugkfwgx">案例二：图片没变，换选项顺序后改选</span></a></li><li style="--depth: 0;" class="astro-jugkfwgx"><a href="#继续阅读" style="--depth: 0;" class="astro-jugkfwgx"><span style="--depth: 0;" class="astro-jugkfwgx">继续阅读</span></a></li></ul></nav></starlight-toc><script type="module" src="/vdec/_astro/TableOfContents.astro_astro_type_script_index_0_lang.BpJaGz7G.js"></script></div></div></div></aside><div class="main-pane astro-lrzkfocr"><main data-pagefind-body class="astro-g5ptsecz" lang="zh-CN" dir="ltr"><div class="content-panel astro-a7po4psb"><div class="sl-container astro-a7po4psb"><h1 id="_top" class="astro-bebwqqxs">Snake Study · 第 7 部分</h1></div></div><div class="content-panel astro-a7po4psb"><div class="sl-container astro-a7po4psb"><div class="sl-markdown-content"><div class="sl-heading-wrapper level-h2"><h2 id="基线结果与简单策略对照">基线结果与简单策略对照</h2><a class="sl-anchor-link" href="#基线结果与简单策略对照"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore="">Section titled “基线结果与简单策略对照”</span></a></div>
+<p>无计划基线（no_plan）只让模型看当前图答题。每项任务有 36 个局面，来自开发集（dev）。本轮使用 dev 检查方法，并补齐全部闭环配置，不运行 test。</p>
+<p>**四列分别看：**Perception 看图是否准确；Readout 换选项顺序后是否仍选同一动作；Safety 能否找全安全动作；Decision 能否选中安全动作。分数越高越好，不合成总分。</p>
+<p>**两种答题方式：**choice 比较选项字母的分数；yes_no 分别询问每个候选是否成立，再比较分数。模型均选择最高分候选。</p>
+<p><strong>完整 dev 基线 · 三模型 / 四任务 / 两种读出</strong>真实结果 · no_plan完整 dev 运行<strong>12 / 12</strong>模型 × 任务 × 读出<strong>24 个分数</strong>成功的评分事件<strong>8208 / 8208</strong></p>
+<p>dev 数据；每任务、每种读出各 36 个局面。灰底为规则计算或随机期望，— 表示不适用。各列分别计分。</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>模型</th><th>读出</th><th>Perception</th><th>Readout</th><th>Safety</th><th>Decision</th></tr></thead><tbody><tr><td>Qwen3.5-4B</td><td>choice</td><td>60.90%</td><td>2.78%</td><td>25.00%</td><td>50.00%</td></tr><tr><td>Qwen3.5-4B</td><td>yes_no</td><td>57.22%</td><td>83.33%</td><td>25.00%</td><td>48.15%</td></tr><tr><td>Qwen3-VL-4B-Thinking</td><td>choice</td><td>47.36%</td><td>100.00%</td><td>25.00%</td><td>50.00%</td></tr><tr><td>Qwen3-VL-4B-Thinking</td><td>yes_no</td><td>43.16%</td><td>100.00%</td><td>23.61%</td><td>50.00%</td></tr><tr><td>Gemma-4-E4B-it</td><td>choice</td><td>56.35%</td><td>58.33%</td><td>27.78%</td><td>54.63%</td></tr><tr><td>Gemma-4-E4B-it</td><td>yes_no</td><td>53.65%</td><td>94.44%</td><td>25.00%</td><td>58.80%</td></tr><tr><td>独立均匀乱选</td><td>数学期望</td><td>27.92%</td><td>0.41%</td><td>12.50%</td><td>50.00%</td></tr><tr><td>固定显示第一项（choice 的 A）</td><td>规则计算</td><td>27.92%</td><td>0.00%</td><td>25.00%</td><td>50.00%</td></tr><tr><td>固定首个语义答案</td><td>规则计算</td><td>27.92%</td><td>—</td><td>—</td><td>—</td></tr><tr><td>固定左转</td><td>规则计算</td><td>—</td><td>100.00%</td><td>—</td><td>50.00%</td></tr><tr><td>固定直行</td><td>规则计算</td><td>—</td><td>100.00%</td><td>—</td><td>50.00%</td></tr><tr><td>固定右转</td><td>规则计算</td><td>—</td><td>100.00%</td><td>—</td><td>50.00%</td></tr><tr><td>全部回答安全</td><td>规则计算</td><td>—</td><td>—</td><td>25.00%</td><td>—</td></tr><tr><td>全部回答危险</td><td>规则计算</td><td>—</td><td>—</td><td>25.00%</td><td>—</td></tr></tbody></table>
+<p>精确分数、覆盖率、请求数与执行延迟</p>
+<p>原始比例单位为 0–1；延迟为每条评分事件的平均秒数，排除模型加载。yes/no 事件包含多个候选请求；请求数不等于评分事件数。失败率均为 0。</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>配置</th><th>主分数（原精度）</th><th>局面数</th><th>family 数</th><th>评分事件</th><th>请求数</th><th>平均秒数</th><th>失败率</th></tr></thead><tbody><tr><td>Qwen3.5-4B / perception / choice</td><td>0.6090277777777777</td><td>36</td><td>36</td><td>720</td><td>720</td><td>0.022769940722112855</td><td>0.0</td></tr><tr><td>Qwen3.5-4B / perception / yes_no</td><td>0.5722222222222222</td><td>36</td><td>36</td><td>720</td><td>2952</td><td>0.047201375828848945</td><td>0.0</td></tr><tr><td>Qwen3.5-4B / readout / choice</td><td>0.027777777777777776</td><td>36</td><td>36</td><td>216</td><td>216</td><td>0.026373222418543365</td><td>0.0</td></tr><tr><td>Qwen3.5-4B / readout / yes_no</td><td>0.8333333333333334</td><td>36</td><td>36</td><td>216</td><td>648</td><td>0.05000448884028527</td><td>0.0</td></tr><tr><td>Qwen3.5-4B / safety / choice</td><td>0.25</td><td>36</td><td>33</td><td>216</td><td>216</td><td>0.027570981894516282</td><td>0.0</td></tr><tr><td>Qwen3.5-4B / safety / yes_no</td><td>0.25</td><td>36</td><td>33</td><td>216</td><td>432</td><td>0.043527658183679534</td><td>0.0</td></tr><tr><td>Qwen3.5-4B / decision / choice</td><td>0.5</td><td>36</td><td>36</td><td>216</td><td>216</td><td>0.02834015357722011</td><td>0.0</td></tr><tr><td>Qwen3.5-4B / decision / yes_no</td><td>0.4814814814814815</td><td>36</td><td>36</td><td>216</td><td>648</td><td>0.053643901332247036</td><td>0.0</td></tr><tr><td>Qwen3-VL-4B-Thinking / perception / choice</td><td>0.4736111111111111</td><td>36</td><td>36</td><td>720</td><td>720</td><td>0.010482537373900414</td><td>0.0</td></tr><tr><td>Qwen3-VL-4B-Thinking / perception / yes_no</td><td>0.43159722222222224</td><td>36</td><td>36</td><td>720</td><td>2952</td><td>0.018174340528073825</td><td>0.0</td></tr><tr><td>Qwen3-VL-4B-Thinking / readout / choice</td><td>1.0</td><td>36</td><td>36</td><td>216</td><td>216</td><td>0.013649602140368963</td><td>0.0</td></tr><tr><td>Qwen3-VL-4B-Thinking / readout / yes_no</td><td>1.0</td><td>36</td><td>36</td><td>216</td><td>648</td><td>0.013713224114056814</td><td>0.0</td></tr><tr><td>Qwen3-VL-4B-Thinking / safety / choice</td><td>0.25</td><td>36</td><td>33</td><td>216</td><td>216</td><td>0.014397038668566555</td><td>0.0</td></tr><tr><td>Qwen3-VL-4B-Thinking / safety / yes_no</td><td>0.2361111111111111</td><td>36</td><td>33</td><td>216</td><td>432</td><td>0.017803397163300327</td><td>0.0</td></tr><tr><td>Qwen3-VL-4B-Thinking / decision / choice</td><td>0.5</td><td>36</td><td>36</td><td>216</td><td>216</td><td>0.013574185487986714</td><td>0.0</td></tr><tr><td>Qwen3-VL-4B-Thinking / decision / yes_no</td><td>0.5</td><td>36</td><td>36</td><td>216</td><td>648</td><td>0.01842530520149955</td><td>0.0</td></tr><tr><td>Gemma-4-E4B-it / perception / choice</td><td>0.5635416666666667</td><td>36</td><td>36</td><td>720</td><td>720</td><td>0.014455297576367028</td><td>0.0</td></tr><tr><td>Gemma-4-E4B-it / perception / yes_no</td><td>0.5364583333333334</td><td>36</td><td>36</td><td>720</td><td>2952</td><td>0.024027422873768956</td><td>0.0</td></tr><tr><td>Gemma-4-E4B-it / readout / choice</td><td>0.5833333333333334</td><td>36</td><td>36</td><td>216</td><td>216</td><td>0.020549464932021994</td><td>0.0</td></tr><tr><td>Gemma-4-E4B-it / readout / yes_no</td><td>0.9444444444444444</td><td>36</td><td>36</td><td>216</td><td>648</td><td>0.01785174790442128</td><td>0.0</td></tr><tr><td>Gemma-4-E4B-it / safety / choice</td><td>0.2777777777777778</td><td>36</td><td>33</td><td>216</td><td>216</td><td>0.0386993385532319</td><td>0.0</td></tr><tr><td>Gemma-4-E4B-it / safety / yes_no</td><td>0.25</td><td>36</td><td>33</td><td>216</td><td>432</td><td>0.02298012186980082</td><td>0.0</td></tr><tr><td>Gemma-4-E4B-it / decision / choice</td><td>0.5462962962962963</td><td>36</td><td>36</td><td>216</td><td>216</td><td>0.032978763734852826</td><td>0.0</td></tr><tr><td>Gemma-4-E4B-it / decision / yes_no</td><td>0.5879629629629629</td><td>36</td><td>36</td><td>216</td><td>648</td><td>0.02057832981356316</td><td>0.0</td></tr></tbody></table>
+<p>全部配置的原始分层诊断Qwen3.5-4B / perception / choice · 原始诊断</p>
+<div class="expressive-code"><link rel="stylesheet" href="/vdec/_astro/ec.w36nc.css"><script type="module" src="/vdec/_astro/ec.0vx5m.js"></script><figure class="frame not-content"><figcaption class="header"></figcaption><pre data-language="plaintext"><code><div class="ec-line"><div class="code"><span style="--0:#d6deeb;--1:#403f53">&#x26;#123;</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">  </span></span><span style="--0:#d6deeb;--1:#403f53">"cell_confusion": &#x26;#123;</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">    </span></span><span style="--0:#d6deeb;--1:#403f53">"food->empty": 38,</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">    </span></span><span style="--0:#d6deeb;--1:#403f53">"empty->empty": 41,</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">    </span></span><span style="--0:#d6deeb;--1:#403f53">"tail->body": 8,</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">    </span></span><span style="--0:#d6deeb;--1:#403f53">"head->empty": 34,</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">    </span></span><span style="--0:#d6deeb;--1:#403f53">"body->body": 14,</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">    </span></span><span style="--0:#d6deeb;--1:#403f53">"body->empty": 39,</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">    </span></span><span style="--0:#d6deeb;--1:#403f53">"tail->tail": 4,</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">    </span></span><span style="--0:#d6deeb;--1:#403f53">"tail->empty": 42,</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">    </span></span><span style="--0:#d6deeb;--1:#403f53">"food->food": 24,</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">    </span></span><span style="--0:#d6deeb;--1:#403f53">"food->body": 3,</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">    </span></span><span style="--0:#d6deeb;--1:#403f53">"food->head": 7,</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">    </span></span><span style="--0:#d6deeb;--1:#403f53">"body->head": 16,</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">    </span></span><span style="--0:#d6deeb;--1:#403f53">"empty->head": 26,</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">    </span></span><span style="--0:#d6deeb;--1:#403f53">"head->head": 29,</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">    </span></span><span style="--0:#d6deeb;--1:#403f53">"tail->food": 7,</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">    </span></span><span style="--0:#d6deeb;--1:#403f53">"empty->body": 3,</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">    </span></span><span style="--0:#d6deeb;--1:#403f53">"body->tail": 2,</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">    </span></span><span style="--0:#d6deeb;--1:#403f53">"tail->head": 11,</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">    </span></span><span style="--0:#d6deeb;--1:#403f53">"body->food": 1,</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">    </span></span><span style="--0:#d6deeb;--1:#403f53">"head->tail": 3,</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">    </span></span><span style="--0:#d6deeb;--1:#403f53">"head->body": 4,</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">    </span></span><span style="--0:#d6deeb;--1:#403f53">"empty->food": 2,</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">    </span></span><span style="--0:#d6deeb;--1:#403f53">"head->food": 2</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">  </span></span><span style="--0:#d6deeb;--1:#403f53">&#x26;#125;,</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">  </span></span><span style="--0:#d6deeb;--1:#403f53">"strata": &#x26;#123;&#x26;#125;,</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">  </span></span><span style="--0:#d6deeb;--1:#403f53">"visual_types": &#x26;#123;</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">    </span></span><span style="--0:#d6deeb;--1:#403f53">"heading": 0.8333333333333334,</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">    </span></span><span style="--0:#d6deeb;--1:#403f53">"food_position": 0.6805555555555556,</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">    </span></span><span style="--0:#d6deeb;--1:#403f53">"tail_position": 0.6111111111111112,</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">    </span></span><span style="--0:#d6deeb;--1:#403f53">"cell_content": 0.3111111111111111</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">  </span></span><span style="--0:#d6deeb;--1:#403f53">&#x26;#125;</span></div></div><div class="ec-line"><div class="code"><span style="--0:#d6deeb;--1:#403f53">&#x26;#125;</span></div></div></code></pre><div class="copy"><div aria-live="polite"></div><button title="复制到剪贴板" data-copied="复制成功！" data-code="&#x26;#123;  &#x22;cell_confusion&#x22;: &#x26;#123;    &#x22;food->empty&#x22;: 38,    &#x22;empty->empty&#x22;: 41,    &#x22;tail->body&#x22;: 8,    &#x22;head->empty&#x22;: 34,    &#x22;body->body&#x22;: 14,    &#x22;body->empty&#x22;: 39,    &#x22;tail->tail&#x22;: 4,    &#x22;tail->empty&#x22;: 42,    &#x22;food->food&#x22;: 24,    &#x22;food->body&#x22;: 3,    &#x22;food->head&#x22;: 7,    &#x22;body->head&#x22;: 16,    &#x22;empty->head&#x22;: 26,    &#x22;head->head&#x22;: 29,    &#x22;tail->food&#x22;: 7,    &#x22;empty->body&#x22;: 3,    &#x22;body->tail&#x22;: 2,    &#x22;tail->head&#x22;: 11,    &#x22;body->food&#x22;: 1,    &#x22;head->tail&#x22;: 3,    &#x22;head->body&#x22;: 4,    &#x22;empty->food&#x22;: 2,    &#x22;head->food&#x22;: 2  &#x26;#125;,  &#x22;strata&#x22;: &#x26;#123;&#x26;#125;,  &#x22;visual_types&#x22;: &#x26;#123;    &#x22;heading&#x22;: 0.8333333333333334,    &#x22;food_position&#x22;: 0.6805555555555556,    &#x22;tail_position&#x22;: 0.6111111111111112,    &#x22;cell_content&#x22;: 0.3111111111111111  &#x26;#125;&#x26;#125;"><div></div></button></div></figure></div>
+<p>Qwen3.5-4B / perception / yes_no · 原始诊断</p>
+<div class="expressive-code"><figure class="frame not-content"><figcaption class="header"></figcaption><pre data-language="plaintext"><code><div class="ec-line"><div class="code"><span style="--0:#d6deeb;--1:#403f53">&#x26;#123;</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">  </span></span><span style="--0:#d6deeb;--1:#403f53">"cell_confusion": &#x26;#123;</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">    </span></span><span style="--0:#d6deeb;--1:#403f53">"food->empty": 40,</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">    </span></span><span style="--0:#d6deeb;--1:#403f53">"empty->empty": 14,</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">    </span></span><span style="--0:#d6deeb;--1:#403f53">"tail->body": 41,</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">    </span></span><span style="--0:#d6deeb;--1:#403f53">"head->empty": 11,</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">    </span></span><span style="--0:#d6deeb;--1:#403f53">"body->empty": 23,</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">    </span></span><span style="--0:#d6deeb;--1:#403f53">"body->body": 49,</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">    </span></span><span style="--0:#d6deeb;--1:#403f53">"head->body": 57,</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">    </span></span><span style="--0:#d6deeb;--1:#403f53">"food->body": 26,</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">    </span></span><span style="--0:#d6deeb;--1:#403f53">"empty->head": 7,</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">    </span></span><span style="--0:#d6deeb;--1:#403f53">"head->head": 4,</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">    </span></span><span style="--0:#d6deeb;--1:#403f53">"tail->empty": 31,</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">    </span></span><span style="--0:#d6deeb;--1:#403f53">"empty->body": 51,</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">    </span></span><span style="--0:#d6deeb;--1:#403f53">"food->tail": 2,</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">    </span></span><span style="--0:#d6deeb;--1:#403f53">"food->food": 2,</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">    </span></span><span style="--0:#d6deeb;--1:#403f53">"food->head": 2</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">  </span></span><span style="--0:#d6deeb;--1:#403f53">&#x26;#125;,</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">  </span></span><span style="--0:#d6deeb;--1:#403f53">"strata": &#x26;#123;&#x26;#125;,</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">  </span></span><span style="--0:#d6deeb;--1:#403f53">"visual_types": &#x26;#123;</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">    </span></span><span style="--0:#d6deeb;--1:#403f53">"heading": 0.8194444444444444,</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">    </span></span><span style="--0:#d6deeb;--1:#403f53">"food_position": 0.7291666666666666,</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">    </span></span><span style="--0:#d6deeb;--1:#403f53">"tail_position": 0.5486111111111112,</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">    </span></span><span style="--0:#d6deeb;--1:#403f53">"cell_content": 0.19166666666666668</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">  </span></span><span style="--0:#d6deeb;--1:#403f53">&#x26;#125;</span></div></div><div class="ec-line"><div class="code"><span style="--0:#d6deeb;--1:#403f53">&#x26;#125;</span></div></div></code></pre><div class="copy"><div aria-live="polite"></div><button title="复制到剪贴板" data-copied="复制成功！" data-code="&#x26;#123;  &#x22;cell_confusion&#x22;: &#x26;#123;    &#x22;food->empty&#x22;: 40,    &#x22;empty->empty&#x22;: 14,    &#x22;tail->body&#x22;: 41,    &#x22;head->empty&#x22;: 11,    &#x22;body->empty&#x22;: 23,    &#x22;body->body&#x22;: 49,    &#x22;head->body&#x22;: 57,    &#x22;food->body&#x22;: 26,    &#x22;empty->head&#x22;: 7,    &#x22;head->head&#x22;: 4,    &#x22;tail->empty&#x22;: 31,    &#x22;empty->body&#x22;: 51,    &#x22;food->tail&#x22;: 2,    &#x22;food->food&#x22;: 2,    &#x22;food->head&#x22;: 2  &#x26;#125;,  &#x22;strata&#x22;: &#x26;#123;&#x26;#125;,  &#x22;visual_types&#x22;: &#x26;#123;    &#x22;heading&#x22;: 0.8194444444444444,    &#x22;food_position&#x22;: 0.7291666666666666,    &#x22;tail_position&#x22;: 0.5486111111111112,    &#x22;cell_content&#x22;: 0.19166666666666668  &#x26;#125;&#x26;#125;"><div></div></button></div></figure></div>
+<p>Qwen3.5-4B / readout / choice · 原始诊断</p>
+<div class="expressive-code"><figure class="frame not-content"><figcaption class="header"></figcaption><pre data-language="plaintext"><code><div class="ec-line"><div class="code"><span style="--0:#d6deeb;--1:#403f53">&#x26;#123;</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">  </span></span><span style="--0:#d6deeb;--1:#403f53">"action_counts": &#x26;#123;</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">    </span></span><span style="--0:#d6deeb;--1:#403f53">"right": 97,</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">    </span></span><span style="--0:#d6deeb;--1:#403f53">"left": 114,</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">    </span></span><span style="--0:#d6deeb;--1:#403f53">"straight": 5</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">  </span></span><span style="--0:#d6deeb;--1:#403f53">&#x26;#125;,</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">  </span></span><span style="--0:#d6deeb;--1:#403f53">"strata": &#x26;#123;&#x26;#125;,</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">  </span></span><span style="--0:#d6deeb;--1:#403f53">"visual_types": &#x26;#123;&#x26;#125;</span></div></div><div class="ec-line"><div class="code"><span style="--0:#d6deeb;--1:#403f53">&#x26;#125;</span></div></div></code></pre><div class="copy"><div aria-live="polite"></div><button title="复制到剪贴板" data-copied="复制成功！" data-code="&#x26;#123;  &#x22;action_counts&#x22;: &#x26;#123;    &#x22;right&#x22;: 97,    &#x22;left&#x22;: 114,    &#x22;straight&#x22;: 5  &#x26;#125;,  &#x22;strata&#x22;: &#x26;#123;&#x26;#125;,  &#x22;visual_types&#x22;: &#x26;#123;&#x26;#125;&#x26;#125;"><div></div></button></div></figure></div>
+<p>Qwen3.5-4B / readout / yes_no · 原始诊断</p>
+<div class="expressive-code"><figure class="frame not-content"><figcaption class="header"></figcaption><pre data-language="plaintext"><code><div class="ec-line"><div class="code"><span style="--0:#d6deeb;--1:#403f53">&#x26;#123;</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">  </span></span><span style="--0:#d6deeb;--1:#403f53">"action_counts": &#x26;#123;</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">    </span></span><span style="--0:#d6deeb;--1:#403f53">"left": 53,</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">    </span></span><span style="--0:#d6deeb;--1:#403f53">"straight": 163</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">  </span></span><span style="--0:#d6deeb;--1:#403f53">&#x26;#125;,</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">  </span></span><span style="--0:#d6deeb;--1:#403f53">"strata": &#x26;#123;&#x26;#125;,</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">  </span></span><span style="--0:#d6deeb;--1:#403f53">"visual_types": &#x26;#123;&#x26;#125;</span></div></div><div class="ec-line"><div class="code"><span style="--0:#d6deeb;--1:#403f53">&#x26;#125;</span></div></div></code></pre><div class="copy"><div aria-live="polite"></div><button title="复制到剪贴板" data-copied="复制成功！" data-code="&#x26;#123;  &#x22;action_counts&#x22;: &#x26;#123;    &#x22;left&#x22;: 53,    &#x22;straight&#x22;: 163  &#x26;#125;,  &#x22;strata&#x22;: &#x26;#123;&#x26;#125;,  &#x22;visual_types&#x22;: &#x26;#123;&#x26;#125;&#x26;#125;"><div></div></button></div></figure></div>
+<p>Qwen3.5-4B / safety / choice · 原始诊断</p>
+<div class="expressive-code"><figure class="frame not-content"><figcaption class="header"></figcaption><pre data-language="plaintext"><code><div class="ec-line"><div class="code"><span style="--0:#d6deeb;--1:#403f53">&#x26;#123;</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">  </span></span><span style="--0:#d6deeb;--1:#403f53">"paired_judgement_accuracy": 0.6666666666666666,</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">  </span></span><span style="--0:#d6deeb;--1:#403f53">"required_change_accuracy": 0,</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">  </span></span><span style="--0:#d6deeb;--1:#403f53">"danger_recall": 0,</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">  </span></span><span style="--0:#d6deeb;--1:#403f53">"false_alarm_rate": 0,</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">  </span></span><span style="--0:#d6deeb;--1:#403f53">"dead_end_accuracy": 0.75,</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">  </span></span><span style="--0:#d6deeb;--1:#403f53">"strata": &#x26;#123;</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">    </span></span><span style="--0:#d6deeb;--1:#403f53">"0": 0,</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">    </span></span><span style="--0:#d6deeb;--1:#403f53">"1": 0,</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">    </span></span><span style="--0:#d6deeb;--1:#403f53">"2": 0,</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">    </span></span><span style="--0:#d6deeb;--1:#403f53">"3": 1</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">  </span></span><span style="--0:#d6deeb;--1:#403f53">&#x26;#125;,</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">  </span></span><span style="--0:#d6deeb;--1:#403f53">"visual_types": &#x26;#123;&#x26;#125;</span></div></div><div class="ec-line"><div class="code"><span style="--0:#d6deeb;--1:#403f53">&#x26;#125;</span></div></div></code></pre><div class="copy"><div aria-live="polite"></div><button title="复制到剪贴板" data-copied="复制成功！" data-code="&#x26;#123;  &#x22;paired_judgement_accuracy&#x22;: 0.6666666666666666,  &#x22;required_change_accuracy&#x22;: 0,  &#x22;danger_recall&#x22;: 0,  &#x22;false_alarm_rate&#x22;: 0,  &#x22;dead_end_accuracy&#x22;: 0.75,  &#x22;strata&#x22;: &#x26;#123;    &#x22;0&#x22;: 0,    &#x22;1&#x22;: 0,    &#x22;2&#x22;: 0,    &#x22;3&#x22;: 1  &#x26;#125;,  &#x22;visual_types&#x22;: &#x26;#123;&#x26;#125;&#x26;#125;"><div></div></button></div></figure></div>
+<p>Qwen3.5-4B / safety / yes_no · 原始诊断</p>
+<div class="expressive-code"><figure class="frame not-content"><figcaption class="header"></figcaption><pre data-language="plaintext"><code><div class="ec-line"><div class="code"><span style="--0:#d6deeb;--1:#403f53">&#x26;#123;</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">  </span></span><span style="--0:#d6deeb;--1:#403f53">"paired_judgement_accuracy": 0.6666666666666666,</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">  </span></span><span style="--0:#d6deeb;--1:#403f53">"required_change_accuracy": 0,</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">  </span></span><span style="--0:#d6deeb;--1:#403f53">"danger_recall": 0,</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">  </span></span><span style="--0:#d6deeb;--1:#403f53">"false_alarm_rate": 0,</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">  </span></span><span style="--0:#d6deeb;--1:#403f53">"dead_end_accuracy": 0.75,</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">  </span></span><span style="--0:#d6deeb;--1:#403f53">"strata": &#x26;#123;</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">    </span></span><span style="--0:#d6deeb;--1:#403f53">"0": 0,</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">    </span></span><span style="--0:#d6deeb;--1:#403f53">"1": 0,</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">    </span></span><span style="--0:#d6deeb;--1:#403f53">"2": 0,</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">    </span></span><span style="--0:#d6deeb;--1:#403f53">"3": 1</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">  </span></span><span style="--0:#d6deeb;--1:#403f53">&#x26;#125;,</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">  </span></span><span style="--0:#d6deeb;--1:#403f53">"visual_types": &#x26;#123;&#x26;#125;</span></div></div><div class="ec-line"><div class="code"><span style="--0:#d6deeb;--1:#403f53">&#x26;#125;</span></div></div></code></pre><div class="copy"><div aria-live="polite"></div><button title="复制到剪贴板" data-copied="复制成功！" data-code="&#x26;#123;  &#x22;paired_judgement_accuracy&#x22;: 0.6666666666666666,  &#x22;required_change_accuracy&#x22;: 0,  &#x22;danger_recall&#x22;: 0,  &#x22;false_alarm_rate&#x22;: 0,  &#x22;dead_end_accuracy&#x22;: 0.75,  &#x22;strata&#x22;: &#x26;#123;    &#x22;0&#x22;: 0,    &#x22;1&#x22;: 0,    &#x22;2&#x22;: 0,    &#x22;3&#x22;: 1  &#x26;#125;,  &#x22;visual_types&#x22;: &#x26;#123;&#x26;#125;&#x26;#125;"><div></div></button></div></figure></div>
+<p>Qwen3.5-4B / decision / choice · 原始诊断</p>
+<div class="expressive-code"><figure class="frame not-content"><figcaption class="header"></figcaption><pre data-language="plaintext"><code><div class="ec-line"><div class="code"><span style="--0:#d6deeb;--1:#403f53">&#x26;#123;</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">  </span></span><span style="--0:#d6deeb;--1:#403f53">"action_counts": &#x26;#123;</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">    </span></span><span style="--0:#d6deeb;--1:#403f53">"right": 69,</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">    </span></span><span style="--0:#d6deeb;--1:#403f53">"straight": 55,</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">    </span></span><span style="--0:#d6deeb;--1:#403f53">"left": 92</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">  </span></span><span style="--0:#d6deeb;--1:#403f53">&#x26;#125;,</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">  </span></span><span style="--0:#d6deeb;--1:#403f53">"strata": &#x26;#123;</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">    </span></span><span style="--0:#d6deeb;--1:#403f53">"1": 0.34259259259259256,</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">    </span></span><span style="--0:#d6deeb;--1:#403f53">"2": 0.6574074074074074</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">  </span></span><span style="--0:#d6deeb;--1:#403f53">&#x26;#125;,</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">  </span></span><span style="--0:#d6deeb;--1:#403f53">"visual_types": &#x26;#123;&#x26;#125;</span></div></div><div class="ec-line"><div class="code"><span style="--0:#d6deeb;--1:#403f53">&#x26;#125;</span></div></div></code></pre><div class="copy"><div aria-live="polite"></div><button title="复制到剪贴板" data-copied="复制成功！" data-code="&#x26;#123;  &#x22;action_counts&#x22;: &#x26;#123;    &#x22;right&#x22;: 69,    &#x22;straight&#x22;: 55,    &#x22;left&#x22;: 92  &#x26;#125;,  &#x22;strata&#x22;: &#x26;#123;    &#x22;1&#x22;: 0.34259259259259256,    &#x22;2&#x22;: 0.6574074074074074  &#x26;#125;,  &#x22;visual_types&#x22;: &#x26;#123;&#x26;#125;&#x26;#125;"><div></div></button></div></figure></div>
+<p>Qwen3.5-4B / decision / yes_no · 原始诊断</p>
+<div class="expressive-code"><figure class="frame not-content"><figcaption class="header"></figcaption><pre data-language="plaintext"><code><div class="ec-line"><div class="code"><span style="--0:#d6deeb;--1:#403f53">&#x26;#123;</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">  </span></span><span style="--0:#d6deeb;--1:#403f53">"action_counts": &#x26;#123;</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">    </span></span><span style="--0:#d6deeb;--1:#403f53">"straight": 212,</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">    </span></span><span style="--0:#d6deeb;--1:#403f53">"left": 4</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">  </span></span><span style="--0:#d6deeb;--1:#403f53">&#x26;#125;,</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">  </span></span><span style="--0:#d6deeb;--1:#403f53">"strata": &#x26;#123;</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">    </span></span><span style="--0:#d6deeb;--1:#403f53">"1": 0.3333333333333333,</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">    </span></span><span style="--0:#d6deeb;--1:#403f53">"2": 0.6296296296296297</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">  </span></span><span style="--0:#d6deeb;--1:#403f53">&#x26;#125;,</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">  </span></span><span style="--0:#d6deeb;--1:#403f53">"visual_types": &#x26;#123;&#x26;#125;</span></div></div><div class="ec-line"><div class="code"><span style="--0:#d6deeb;--1:#403f53">&#x26;#125;</span></div></div></code></pre><div class="copy"><div aria-live="polite"></div><button title="复制到剪贴板" data-copied="复制成功！" data-code="&#x26;#123;  &#x22;action_counts&#x22;: &#x26;#123;    &#x22;straight&#x22;: 212,    &#x22;left&#x22;: 4  &#x26;#125;,  &#x22;strata&#x22;: &#x26;#123;    &#x22;1&#x22;: 0.3333333333333333,    &#x22;2&#x22;: 0.6296296296296297  &#x26;#125;,  &#x22;visual_types&#x22;: &#x26;#123;&#x26;#125;&#x26;#125;"><div></div></button></div></figure></div>
+<p>Qwen3-VL-4B-Thinking / perception / choice · 原始诊断</p>
+<div class="expressive-code"><figure class="frame not-content"><figcaption class="header"></figcaption><pre data-language="plaintext"><code><div class="ec-line"><div class="code"><span style="--0:#d6deeb;--1:#403f53">&#x26;#123;</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">  </span></span><span style="--0:#d6deeb;--1:#403f53">"cell_confusion": &#x26;#123;</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">    </span></span><span style="--0:#d6deeb;--1:#403f53">"food->empty": 68,</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">    </span></span><span style="--0:#d6deeb;--1:#403f53">"empty->empty": 70,</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">    </span></span><span style="--0:#d6deeb;--1:#403f53">"tail->empty": 70,</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">    </span></span><span style="--0:#d6deeb;--1:#403f53">"head->empty": 69,</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">    </span></span><span style="--0:#d6deeb;--1:#403f53">"body->empty": 72,</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">    </span></span><span style="--0:#d6deeb;--1:#403f53">"empty->head": 2,</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">    </span></span><span style="--0:#d6deeb;--1:#403f53">"head->head": 3,</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">    </span></span><span style="--0:#d6deeb;--1:#403f53">"food->food": 4,</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">    </span></span><span style="--0:#d6deeb;--1:#403f53">"tail->head": 1,</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">    </span></span><span style="--0:#d6deeb;--1:#403f53">"tail->food": 1</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">  </span></span><span style="--0:#d6deeb;--1:#403f53">&#x26;#125;,</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">  </span></span><span style="--0:#d6deeb;--1:#403f53">"strata": &#x26;#123;&#x26;#125;,</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">  </span></span><span style="--0:#d6deeb;--1:#403f53">"visual_types": &#x26;#123;</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">    </span></span><span style="--0:#d6deeb;--1:#403f53">"heading": 0.4583333333333333,</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">    </span></span><span style="--0:#d6deeb;--1:#403f53">"food_position": 0.7638888888888888,</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">    </span></span><span style="--0:#d6deeb;--1:#403f53">"tail_position": 0.4583333333333333,</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">    </span></span><span style="--0:#d6deeb;--1:#403f53">"cell_content": 0.2138888888888889</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">  </span></span><span style="--0:#d6deeb;--1:#403f53">&#x26;#125;</span></div></div><div class="ec-line"><div class="code"><span style="--0:#d6deeb;--1:#403f53">&#x26;#125;</span></div></div></code></pre><div class="copy"><div aria-live="polite"></div><button title="复制到剪贴板" data-copied="复制成功！" data-code="&#x26;#123;  &#x22;cell_confusion&#x22;: &#x26;#123;    &#x22;food->empty&#x22;: 68,    &#x22;empty->empty&#x22;: 70,    &#x22;tail->empty&#x22;: 70,    &#x22;head->empty&#x22;: 69,    &#x22;body->empty&#x22;: 72,    &#x22;empty->head&#x22;: 2,    &#x22;head->head&#x22;: 3,    &#x22;food->food&#x22;: 4,    &#x22;tail->head&#x22;: 1,    &#x22;tail->food&#x22;: 1  &#x26;#125;,  &#x22;strata&#x22;: &#x26;#123;&#x26;#125;,  &#x22;visual_types&#x22;: &#x26;#123;    &#x22;heading&#x22;: 0.4583333333333333,    &#x22;food_position&#x22;: 0.7638888888888888,    &#x22;tail_position&#x22;: 0.4583333333333333,    &#x22;cell_content&#x22;: 0.2138888888888889  &#x26;#125;&#x26;#125;"><div></div></button></div></figure></div>
+<p>Qwen3-VL-4B-Thinking / perception / yes_no · 原始诊断</p>
+<div class="expressive-code"><figure class="frame not-content"><figcaption class="header"></figcaption><pre data-language="plaintext"><code><div class="ec-line"><div class="code"><span style="--0:#d6deeb;--1:#403f53">&#x26;#123;</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">  </span></span><span style="--0:#d6deeb;--1:#403f53">"cell_confusion": &#x26;#123;</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">    </span></span><span style="--0:#d6deeb;--1:#403f53">"food->empty": 67,</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">    </span></span><span style="--0:#d6deeb;--1:#403f53">"empty->empty": 63,</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">    </span></span><span style="--0:#d6deeb;--1:#403f53">"tail->empty": 72,</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">    </span></span><span style="--0:#d6deeb;--1:#403f53">"head->empty": 65,</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">    </span></span><span style="--0:#d6deeb;--1:#403f53">"body->empty": 68,</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">    </span></span><span style="--0:#d6deeb;--1:#403f53">"empty->head": 2,</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">    </span></span><span style="--0:#d6deeb;--1:#403f53">"empty->body": 5,</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">    </span></span><span style="--0:#d6deeb;--1:#403f53">"head->body": 4,</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">    </span></span><span style="--0:#d6deeb;--1:#403f53">"food->body": 3,</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">    </span></span><span style="--0:#d6deeb;--1:#403f53">"head->head": 2,</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">    </span></span><span style="--0:#d6deeb;--1:#403f53">"body->food": 2,</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">    </span></span><span style="--0:#d6deeb;--1:#403f53">"body->body": 2,</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">    </span></span><span style="--0:#d6deeb;--1:#403f53">"food->food": 2,</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">    </span></span><span style="--0:#d6deeb;--1:#403f53">"empty->food": 2,</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">    </span></span><span style="--0:#d6deeb;--1:#403f53">"head->food": 1</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">  </span></span><span style="--0:#d6deeb;--1:#403f53">&#x26;#125;,</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">  </span></span><span style="--0:#d6deeb;--1:#403f53">"strata": &#x26;#123;&#x26;#125;,</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">  </span></span><span style="--0:#d6deeb;--1:#403f53">"visual_types": &#x26;#123;</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">    </span></span><span style="--0:#d6deeb;--1:#403f53">"heading": 0.4583333333333333,</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">    </span></span><span style="--0:#d6deeb;--1:#403f53">"food_position": 0.6319444444444444,</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">    </span></span><span style="--0:#d6deeb;--1:#403f53">"tail_position": 0.4444444444444444,</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">    </span></span><span style="--0:#d6deeb;--1:#403f53">"cell_content": 0.19166666666666668</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">  </span></span><span style="--0:#d6deeb;--1:#403f53">&#x26;#125;</span></div></div><div class="ec-line"><div class="code"><span style="--0:#d6deeb;--1:#403f53">&#x26;#125;</span></div></div></code></pre><div class="copy"><div aria-live="polite"></div><button title="复制到剪贴板" data-copied="复制成功！" data-code="&#x26;#123;  &#x22;cell_confusion&#x22;: &#x26;#123;    &#x22;food->empty&#x22;: 67,    &#x22;empty->empty&#x22;: 63,    &#x22;tail->empty&#x22;: 72,    &#x22;head->empty&#x22;: 65,    &#x22;body->empty&#x22;: 68,    &#x22;empty->head&#x22;: 2,    &#x22;empty->body&#x22;: 5,    &#x22;head->body&#x22;: 4,    &#x22;food->body&#x22;: 3,    &#x22;head->head&#x22;: 2,    &#x22;body->food&#x22;: 2,    &#x22;body->body&#x22;: 2,    &#x22;food->food&#x22;: 2,    &#x22;empty->food&#x22;: 2,    &#x22;head->food&#x22;: 1  &#x26;#125;,  &#x22;strata&#x22;: &#x26;#123;&#x26;#125;,  &#x22;visual_types&#x22;: &#x26;#123;    &#x22;heading&#x22;: 0.4583333333333333,    &#x22;food_position&#x22;: 0.6319444444444444,    &#x22;tail_position&#x22;: 0.4444444444444444,    &#x22;cell_content&#x22;: 0.19166666666666668  &#x26;#125;&#x26;#125;"><div></div></button></div></figure></div>
+<p>Qwen3-VL-4B-Thinking / readout / choice · 原始诊断</p>
+<div class="expressive-code"><figure class="frame not-content"><figcaption class="header"></figcaption><pre data-language="plaintext"><code><div class="ec-line"><div class="code"><span style="--0:#d6deeb;--1:#403f53">&#x26;#123;</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">  </span></span><span style="--0:#d6deeb;--1:#403f53">"action_counts": &#x26;#123;</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">    </span></span><span style="--0:#d6deeb;--1:#403f53">"straight": 216</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">  </span></span><span style="--0:#d6deeb;--1:#403f53">&#x26;#125;,</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">  </span></span><span style="--0:#d6deeb;--1:#403f53">"strata": &#x26;#123;&#x26;#125;,</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">  </span></span><span style="--0:#d6deeb;--1:#403f53">"visual_types": &#x26;#123;&#x26;#125;</span></div></div><div class="ec-line"><div class="code"><span style="--0:#d6deeb;--1:#403f53">&#x26;#125;</span></div></div></code></pre><div class="copy"><div aria-live="polite"></div><button title="复制到剪贴板" data-copied="复制成功！" data-code="&#x26;#123;  &#x22;action_counts&#x22;: &#x26;#123;    &#x22;straight&#x22;: 216  &#x26;#125;,  &#x22;strata&#x22;: &#x26;#123;&#x26;#125;,  &#x22;visual_types&#x22;: &#x26;#123;&#x26;#125;&#x26;#125;"><div></div></button></div></figure></div>
+<p>Qwen3-VL-4B-Thinking / readout / yes_no · 原始诊断</p>
+<div class="expressive-code"><figure class="frame not-content"><figcaption class="header"></figcaption><pre data-language="plaintext"><code><div class="ec-line"><div class="code"><span style="--0:#d6deeb;--1:#403f53">&#x26;#123;</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">  </span></span><span style="--0:#d6deeb;--1:#403f53">"action_counts": &#x26;#123;</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">    </span></span><span style="--0:#d6deeb;--1:#403f53">"right": 216</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">  </span></span><span style="--0:#d6deeb;--1:#403f53">&#x26;#125;,</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">  </span></span><span style="--0:#d6deeb;--1:#403f53">"strata": &#x26;#123;&#x26;#125;,</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">  </span></span><span style="--0:#d6deeb;--1:#403f53">"visual_types": &#x26;#123;&#x26;#125;</span></div></div><div class="ec-line"><div class="code"><span style="--0:#d6deeb;--1:#403f53">&#x26;#125;</span></div></div></code></pre><div class="copy"><div aria-live="polite"></div><button title="复制到剪贴板" data-copied="复制成功！" data-code="&#x26;#123;  &#x22;action_counts&#x22;: &#x26;#123;    &#x22;right&#x22;: 216  &#x26;#125;,  &#x22;strata&#x22;: &#x26;#123;&#x26;#125;,  &#x22;visual_types&#x22;: &#x26;#123;&#x26;#125;&#x26;#125;"><div></div></button></div></figure></div>
+<p>Qwen3-VL-4B-Thinking / safety / choice · 原始诊断</p>
+<div class="expressive-code"><figure class="frame not-content"><figcaption class="header"></figcaption><pre data-language="plaintext"><code><div class="ec-line"><div class="code"><span style="--0:#d6deeb;--1:#403f53">&#x26;#123;</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">  </span></span><span style="--0:#d6deeb;--1:#403f53">"paired_judgement_accuracy": 0.6666666666666666,</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">  </span></span><span style="--0:#d6deeb;--1:#403f53">"required_change_accuracy": 0,</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">  </span></span><span style="--0:#d6deeb;--1:#403f53">"danger_recall": 0,</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">  </span></span><span style="--0:#d6deeb;--1:#403f53">"false_alarm_rate": 0,</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">  </span></span><span style="--0:#d6deeb;--1:#403f53">"dead_end_accuracy": 0.75,</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">  </span></span><span style="--0:#d6deeb;--1:#403f53">"strata": &#x26;#123;</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">    </span></span><span style="--0:#d6deeb;--1:#403f53">"0": 0,</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">    </span></span><span style="--0:#d6deeb;--1:#403f53">"1": 0,</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">    </span></span><span style="--0:#d6deeb;--1:#403f53">"2": 0,</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">    </span></span><span style="--0:#d6deeb;--1:#403f53">"3": 1</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">  </span></span><span style="--0:#d6deeb;--1:#403f53">&#x26;#125;,</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">  </span></span><span style="--0:#d6deeb;--1:#403f53">"visual_types": &#x26;#123;&#x26;#125;</span></div></div><div class="ec-line"><div class="code"><span style="--0:#d6deeb;--1:#403f53">&#x26;#125;</span></div></div></code></pre><div class="copy"><div aria-live="polite"></div><button title="复制到剪贴板" data-copied="复制成功！" data-code="&#x26;#123;  &#x22;paired_judgement_accuracy&#x22;: 0.6666666666666666,  &#x22;required_change_accuracy&#x22;: 0,  &#x22;danger_recall&#x22;: 0,  &#x22;false_alarm_rate&#x22;: 0,  &#x22;dead_end_accuracy&#x22;: 0.75,  &#x22;strata&#x22;: &#x26;#123;    &#x22;0&#x22;: 0,    &#x22;1&#x22;: 0,    &#x22;2&#x22;: 0,    &#x22;3&#x22;: 1  &#x26;#125;,  &#x22;visual_types&#x22;: &#x26;#123;&#x26;#125;&#x26;#125;"><div></div></button></div></figure></div>
+<p>Qwen3-VL-4B-Thinking / safety / yes_no · 原始诊断</p>
+<div class="expressive-code"><figure class="frame not-content"><figcaption class="header"></figcaption><pre data-language="plaintext"><code><div class="ec-line"><div class="code"><span style="--0:#d6deeb;--1:#403f53">&#x26;#123;</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">  </span></span><span style="--0:#d6deeb;--1:#403f53">"paired_judgement_accuracy": 0.2222222222222222,</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">  </span></span><span style="--0:#d6deeb;--1:#403f53">"required_change_accuracy": 0,</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">  </span></span><span style="--0:#d6deeb;--1:#403f53">"danger_recall": 0.9259259259259259,</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">  </span></span><span style="--0:#d6deeb;--1:#403f53">"false_alarm_rate": 0.8888888888888888,</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">  </span></span><span style="--0:#d6deeb;--1:#403f53">"dead_end_accuracy": 0.4444444444444444,</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">  </span></span><span style="--0:#d6deeb;--1:#403f53">"strata": &#x26;#123;</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">    </span></span><span style="--0:#d6deeb;--1:#403f53">"0": 0.8333333333333334,</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">    </span></span><span style="--0:#d6deeb;--1:#403f53">"1": 0.1111111111111111,</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">    </span></span><span style="--0:#d6deeb;--1:#403f53">"2": 0,</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">    </span></span><span style="--0:#d6deeb;--1:#403f53">"3": 0</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">  </span></span><span style="--0:#d6deeb;--1:#403f53">&#x26;#125;,</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">  </span></span><span style="--0:#d6deeb;--1:#403f53">"visual_types": &#x26;#123;&#x26;#125;</span></div></div><div class="ec-line"><div class="code"><span style="--0:#d6deeb;--1:#403f53">&#x26;#125;</span></div></div></code></pre><div class="copy"><div aria-live="polite"></div><button title="复制到剪贴板" data-copied="复制成功！" data-code="&#x26;#123;  &#x22;paired_judgement_accuracy&#x22;: 0.2222222222222222,  &#x22;required_change_accuracy&#x22;: 0,  &#x22;danger_recall&#x22;: 0.9259259259259259,  &#x22;false_alarm_rate&#x22;: 0.8888888888888888,  &#x22;dead_end_accuracy&#x22;: 0.4444444444444444,  &#x22;strata&#x22;: &#x26;#123;    &#x22;0&#x22;: 0.8333333333333334,    &#x22;1&#x22;: 0.1111111111111111,    &#x22;2&#x22;: 0,    &#x22;3&#x22;: 0  &#x26;#125;,  &#x22;visual_types&#x22;: &#x26;#123;&#x26;#125;&#x26;#125;"><div></div></button></div></figure></div>
+<p>Qwen3-VL-4B-Thinking / decision / choice · 原始诊断</p>
+<div class="expressive-code"><figure class="frame not-content"><figcaption class="header"></figcaption><pre data-language="plaintext"><code><div class="ec-line"><div class="code"><span style="--0:#d6deeb;--1:#403f53">&#x26;#123;</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">  </span></span><span style="--0:#d6deeb;--1:#403f53">"action_counts": &#x26;#123;</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">    </span></span><span style="--0:#d6deeb;--1:#403f53">"straight": 216</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">  </span></span><span style="--0:#d6deeb;--1:#403f53">&#x26;#125;,</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">  </span></span><span style="--0:#d6deeb;--1:#403f53">"strata": &#x26;#123;</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">    </span></span><span style="--0:#d6deeb;--1:#403f53">"1": 0.3333333333333333,</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">    </span></span><span style="--0:#d6deeb;--1:#403f53">"2": 0.6666666666666666</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">  </span></span><span style="--0:#d6deeb;--1:#403f53">&#x26;#125;,</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">  </span></span><span style="--0:#d6deeb;--1:#403f53">"visual_types": &#x26;#123;&#x26;#125;</span></div></div><div class="ec-line"><div class="code"><span style="--0:#d6deeb;--1:#403f53">&#x26;#125;</span></div></div></code></pre><div class="copy"><div aria-live="polite"></div><button title="复制到剪贴板" data-copied="复制成功！" data-code="&#x26;#123;  &#x22;action_counts&#x22;: &#x26;#123;    &#x22;straight&#x22;: 216  &#x26;#125;,  &#x22;strata&#x22;: &#x26;#123;    &#x22;1&#x22;: 0.3333333333333333,    &#x22;2&#x22;: 0.6666666666666666  &#x26;#125;,  &#x22;visual_types&#x22;: &#x26;#123;&#x26;#125;&#x26;#125;"><div></div></button></div></figure></div>
+<p>Qwen3-VL-4B-Thinking / decision / yes_no · 原始诊断</p>
+<div class="expressive-code"><figure class="frame not-content"><figcaption class="header"></figcaption><pre data-language="plaintext"><code><div class="ec-line"><div class="code"><span style="--0:#d6deeb;--1:#403f53">&#x26;#123;</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">  </span></span><span style="--0:#d6deeb;--1:#403f53">"action_counts": &#x26;#123;</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">    </span></span><span style="--0:#d6deeb;--1:#403f53">"straight": 216</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">  </span></span><span style="--0:#d6deeb;--1:#403f53">&#x26;#125;,</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">  </span></span><span style="--0:#d6deeb;--1:#403f53">"strata": &#x26;#123;</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">    </span></span><span style="--0:#d6deeb;--1:#403f53">"1": 0.3333333333333333,</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">    </span></span><span style="--0:#d6deeb;--1:#403f53">"2": 0.6666666666666666</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">  </span></span><span style="--0:#d6deeb;--1:#403f53">&#x26;#125;,</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">  </span></span><span style="--0:#d6deeb;--1:#403f53">"visual_types": &#x26;#123;&#x26;#125;</span></div></div><div class="ec-line"><div class="code"><span style="--0:#d6deeb;--1:#403f53">&#x26;#125;</span></div></div></code></pre><div class="copy"><div aria-live="polite"></div><button title="复制到剪贴板" data-copied="复制成功！" data-code="&#x26;#123;  &#x22;action_counts&#x22;: &#x26;#123;    &#x22;straight&#x22;: 216  &#x26;#125;,  &#x22;strata&#x22;: &#x26;#123;    &#x22;1&#x22;: 0.3333333333333333,    &#x22;2&#x22;: 0.6666666666666666  &#x26;#125;,  &#x22;visual_types&#x22;: &#x26;#123;&#x26;#125;&#x26;#125;"><div></div></button></div></figure></div>
+<p>Gemma-4-E4B-it / perception / choice · 原始诊断</p>
+<div class="expressive-code"><figure class="frame not-content"><figcaption class="header"></figcaption><pre data-language="plaintext"><code><div class="ec-line"><div class="code"><span style="--0:#d6deeb;--1:#403f53">&#x26;#123;</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">  </span></span><span style="--0:#d6deeb;--1:#403f53">"cell_confusion": &#x26;#123;</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">    </span></span><span style="--0:#d6deeb;--1:#403f53">"food->empty": 57,</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">    </span></span><span style="--0:#d6deeb;--1:#403f53">"empty->empty": 43,</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">    </span></span><span style="--0:#d6deeb;--1:#403f53">"tail->body": 23,</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">    </span></span><span style="--0:#d6deeb;--1:#403f53">"head->empty": 41,</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">    </span></span><span style="--0:#d6deeb;--1:#403f53">"body->empty": 46,</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">    </span></span><span style="--0:#d6deeb;--1:#403f53">"tail->empty": 47,</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">    </span></span><span style="--0:#d6deeb;--1:#403f53">"empty->head": 2,</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">    </span></span><span style="--0:#d6deeb;--1:#403f53">"head->head": 4,</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">    </span></span><span style="--0:#d6deeb;--1:#403f53">"body->body": 26,</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">    </span></span><span style="--0:#d6deeb;--1:#403f53">"food->food": 1,</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">    </span></span><span style="--0:#d6deeb;--1:#403f53">"head->body": 27,</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">    </span></span><span style="--0:#d6deeb;--1:#403f53">"empty->body": 27,</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">    </span></span><span style="--0:#d6deeb;--1:#403f53">"food->body": 12,</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">    </span></span><span style="--0:#d6deeb;--1:#403f53">"tail->head": 2,</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">    </span></span><span style="--0:#d6deeb;--1:#403f53">"food->head": 2</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">  </span></span><span style="--0:#d6deeb;--1:#403f53">&#x26;#125;,</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">  </span></span><span style="--0:#d6deeb;--1:#403f53">"strata": &#x26;#123;&#x26;#125;,</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">  </span></span><span style="--0:#d6deeb;--1:#403f53">"visual_types": &#x26;#123;</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">    </span></span><span style="--0:#d6deeb;--1:#403f53">"heading": 0.9027777777777778,</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">    </span></span><span style="--0:#d6deeb;--1:#403f53">"food_position": 0.6736111111111112,</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">    </span></span><span style="--0:#d6deeb;--1:#403f53">"tail_position": 0.4722222222222222,</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">    </span></span><span style="--0:#d6deeb;--1:#403f53">"cell_content": 0.20555555555555557</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">  </span></span><span style="--0:#d6deeb;--1:#403f53">&#x26;#125;</span></div></div><div class="ec-line"><div class="code"><span style="--0:#d6deeb;--1:#403f53">&#x26;#125;</span></div></div></code></pre><div class="copy"><div aria-live="polite"></div><button title="复制到剪贴板" data-copied="复制成功！" data-code="&#x26;#123;  &#x22;cell_confusion&#x22;: &#x26;#123;    &#x22;food->empty&#x22;: 57,    &#x22;empty->empty&#x22;: 43,    &#x22;tail->body&#x22;: 23,    &#x22;head->empty&#x22;: 41,    &#x22;body->empty&#x22;: 46,    &#x22;tail->empty&#x22;: 47,    &#x22;empty->head&#x22;: 2,    &#x22;head->head&#x22;: 4,    &#x22;body->body&#x22;: 26,    &#x22;food->food&#x22;: 1,    &#x22;head->body&#x22;: 27,    &#x22;empty->body&#x22;: 27,    &#x22;food->body&#x22;: 12,    &#x22;tail->head&#x22;: 2,    &#x22;food->head&#x22;: 2  &#x26;#125;,  &#x22;strata&#x22;: &#x26;#123;&#x26;#125;,  &#x22;visual_types&#x22;: &#x26;#123;    &#x22;heading&#x22;: 0.9027777777777778,    &#x22;food_position&#x22;: 0.6736111111111112,    &#x22;tail_position&#x22;: 0.4722222222222222,    &#x22;cell_content&#x22;: 0.20555555555555557  &#x26;#125;&#x26;#125;"><div></div></button></div></figure></div>
+<p>Gemma-4-E4B-it / perception / yes_no · 原始诊断</p>
+<div class="expressive-code"><figure class="frame not-content"><figcaption class="header"></figcaption><pre data-language="plaintext"><code><div class="ec-line"><div class="code"><span style="--0:#d6deeb;--1:#403f53">&#x26;#123;</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">  </span></span><span style="--0:#d6deeb;--1:#403f53">"cell_confusion": &#x26;#123;</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">    </span></span><span style="--0:#d6deeb;--1:#403f53">"food->empty": 64,</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">    </span></span><span style="--0:#d6deeb;--1:#403f53">"empty->empty": 56,</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">    </span></span><span style="--0:#d6deeb;--1:#403f53">"tail->empty": 64,</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">    </span></span><span style="--0:#d6deeb;--1:#403f53">"head->empty": 56,</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">    </span></span><span style="--0:#d6deeb;--1:#403f53">"body->empty": 62,</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">    </span></span><span style="--0:#d6deeb;--1:#403f53">"empty->head": 2,</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">    </span></span><span style="--0:#d6deeb;--1:#403f53">"head->head": 4,</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">    </span></span><span style="--0:#d6deeb;--1:#403f53">"head->body": 12,</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">    </span></span><span style="--0:#d6deeb;--1:#403f53">"empty->body": 14,</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">    </span></span><span style="--0:#d6deeb;--1:#403f53">"tail->head": 1,</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">    </span></span><span style="--0:#d6deeb;--1:#403f53">"tail->body": 7,</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">    </span></span><span style="--0:#d6deeb;--1:#403f53">"food->body": 8,</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">    </span></span><span style="--0:#d6deeb;--1:#403f53">"body->body": 10</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">  </span></span><span style="--0:#d6deeb;--1:#403f53">&#x26;#125;,</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">  </span></span><span style="--0:#d6deeb;--1:#403f53">"strata": &#x26;#123;&#x26;#125;,</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">  </span></span><span style="--0:#d6deeb;--1:#403f53">"visual_types": &#x26;#123;</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">    </span></span><span style="--0:#d6deeb;--1:#403f53">"heading": 0.9444444444444444,</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">    </span></span><span style="--0:#d6deeb;--1:#403f53">"food_position": 0.5416666666666666,</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">    </span></span><span style="--0:#d6deeb;--1:#403f53">"tail_position": 0.4652777777777778,</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">    </span></span><span style="--0:#d6deeb;--1:#403f53">"cell_content": 0.19444444444444445</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">  </span></span><span style="--0:#d6deeb;--1:#403f53">&#x26;#125;</span></div></div><div class="ec-line"><div class="code"><span style="--0:#d6deeb;--1:#403f53">&#x26;#125;</span></div></div></code></pre><div class="copy"><div aria-live="polite"></div><button title="复制到剪贴板" data-copied="复制成功！" data-code="&#x26;#123;  &#x22;cell_confusion&#x22;: &#x26;#123;    &#x22;food->empty&#x22;: 64,    &#x22;empty->empty&#x22;: 56,    &#x22;tail->empty&#x22;: 64,    &#x22;head->empty&#x22;: 56,    &#x22;body->empty&#x22;: 62,    &#x22;empty->head&#x22;: 2,    &#x22;head->head&#x22;: 4,    &#x22;head->body&#x22;: 12,    &#x22;empty->body&#x22;: 14,    &#x22;tail->head&#x22;: 1,    &#x22;tail->body&#x22;: 7,    &#x22;food->body&#x22;: 8,    &#x22;body->body&#x22;: 10  &#x26;#125;,  &#x22;strata&#x22;: &#x26;#123;&#x26;#125;,  &#x22;visual_types&#x22;: &#x26;#123;    &#x22;heading&#x22;: 0.9444444444444444,    &#x22;food_position&#x22;: 0.5416666666666666,    &#x22;tail_position&#x22;: 0.4652777777777778,    &#x22;cell_content&#x22;: 0.19444444444444445  &#x26;#125;&#x26;#125;"><div></div></button></div></figure></div>
+<p>Gemma-4-E4B-it / readout / choice · 原始诊断</p>
+<div class="expressive-code"><figure class="frame not-content"><figcaption class="header"></figcaption><pre data-language="plaintext"><code><div class="ec-line"><div class="code"><span style="--0:#d6deeb;--1:#403f53">&#x26;#123;</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">  </span></span><span style="--0:#d6deeb;--1:#403f53">"action_counts": &#x26;#123;</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">    </span></span><span style="--0:#d6deeb;--1:#403f53">"straight": 183,</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">    </span></span><span style="--0:#d6deeb;--1:#403f53">"right": 14,</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">    </span></span><span style="--0:#d6deeb;--1:#403f53">"left": 19</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">  </span></span><span style="--0:#d6deeb;--1:#403f53">&#x26;#125;,</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">  </span></span><span style="--0:#d6deeb;--1:#403f53">"strata": &#x26;#123;&#x26;#125;,</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">  </span></span><span style="--0:#d6deeb;--1:#403f53">"visual_types": &#x26;#123;&#x26;#125;</span></div></div><div class="ec-line"><div class="code"><span style="--0:#d6deeb;--1:#403f53">&#x26;#125;</span></div></div></code></pre><div class="copy"><div aria-live="polite"></div><button title="复制到剪贴板" data-copied="复制成功！" data-code="&#x26;#123;  &#x22;action_counts&#x22;: &#x26;#123;    &#x22;straight&#x22;: 183,    &#x22;right&#x22;: 14,    &#x22;left&#x22;: 19  &#x26;#125;,  &#x22;strata&#x22;: &#x26;#123;&#x26;#125;,  &#x22;visual_types&#x22;: &#x26;#123;&#x26;#125;&#x26;#125;"><div></div></button></div></figure></div>
+<p>Gemma-4-E4B-it / readout / yes_no · 原始诊断</p>
+<div class="expressive-code"><figure class="frame not-content"><figcaption class="header"></figcaption><pre data-language="plaintext"><code><div class="ec-line"><div class="code"><span style="--0:#d6deeb;--1:#403f53">&#x26;#123;</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">  </span></span><span style="--0:#d6deeb;--1:#403f53">"action_counts": &#x26;#123;</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">    </span></span><span style="--0:#d6deeb;--1:#403f53">"straight": 185,</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">    </span></span><span style="--0:#d6deeb;--1:#403f53">"right": 7,</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">    </span></span><span style="--0:#d6deeb;--1:#403f53">"left": 24</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">  </span></span><span style="--0:#d6deeb;--1:#403f53">&#x26;#125;,</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">  </span></span><span style="--0:#d6deeb;--1:#403f53">"strata": &#x26;#123;&#x26;#125;,</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">  </span></span><span style="--0:#d6deeb;--1:#403f53">"visual_types": &#x26;#123;&#x26;#125;</span></div></div><div class="ec-line"><div class="code"><span style="--0:#d6deeb;--1:#403f53">&#x26;#125;</span></div></div></code></pre><div class="copy"><div aria-live="polite"></div><button title="复制到剪贴板" data-copied="复制成功！" data-code="&#x26;#123;  &#x22;action_counts&#x22;: &#x26;#123;    &#x22;straight&#x22;: 185,    &#x22;right&#x22;: 7,    &#x22;left&#x22;: 24  &#x26;#125;,  &#x22;strata&#x22;: &#x26;#123;&#x26;#125;,  &#x22;visual_types&#x22;: &#x26;#123;&#x26;#125;&#x26;#125;"><div></div></button></div></figure></div>
+<p>Gemma-4-E4B-it / safety / choice · 原始诊断</p>
+<div class="expressive-code"><figure class="frame not-content"><figcaption class="header"></figcaption><pre data-language="plaintext"><code><div class="ec-line"><div class="code"><span style="--0:#d6deeb;--1:#403f53">&#x26;#123;</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">  </span></span><span style="--0:#d6deeb;--1:#403f53">"paired_judgement_accuracy": 0.6111111111111112,</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">  </span></span><span style="--0:#d6deeb;--1:#403f53">"required_change_accuracy": 0,</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">  </span></span><span style="--0:#d6deeb;--1:#403f53">"danger_recall": 0.3055555555555556,</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">  </span></span><span style="--0:#d6deeb;--1:#403f53">"false_alarm_rate": 0.16666666666666666,</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">  </span></span><span style="--0:#d6deeb;--1:#403f53">"dead_end_accuracy": 0.7638888888888888,</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">  </span></span><span style="--0:#d6deeb;--1:#403f53">"strata": &#x26;#123;</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">    </span></span><span style="--0:#d6deeb;--1:#403f53">"0": 0.2777777777777778,</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">    </span></span><span style="--0:#d6deeb;--1:#403f53">"1": 0.05555555555555555,</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">    </span></span><span style="--0:#d6deeb;--1:#403f53">"2": 0.05555555555555555,</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">    </span></span><span style="--0:#d6deeb;--1:#403f53">"3": 0.7222222222222222</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">  </span></span><span style="--0:#d6deeb;--1:#403f53">&#x26;#125;,</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">  </span></span><span style="--0:#d6deeb;--1:#403f53">"visual_types": &#x26;#123;&#x26;#125;</span></div></div><div class="ec-line"><div class="code"><span style="--0:#d6deeb;--1:#403f53">&#x26;#125;</span></div></div></code></pre><div class="copy"><div aria-live="polite"></div><button title="复制到剪贴板" data-copied="复制成功！" data-code="&#x26;#123;  &#x22;paired_judgement_accuracy&#x22;: 0.6111111111111112,  &#x22;required_change_accuracy&#x22;: 0,  &#x22;danger_recall&#x22;: 0.3055555555555556,  &#x22;false_alarm_rate&#x22;: 0.16666666666666666,  &#x22;dead_end_accuracy&#x22;: 0.7638888888888888,  &#x22;strata&#x22;: &#x26;#123;    &#x22;0&#x22;: 0.2777777777777778,    &#x22;1&#x22;: 0.05555555555555555,    &#x22;2&#x22;: 0.05555555555555555,    &#x22;3&#x22;: 0.7222222222222222  &#x26;#125;,  &#x22;visual_types&#x22;: &#x26;#123;&#x26;#125;&#x26;#125;"><div></div></button></div></figure></div>
+<p>Gemma-4-E4B-it / safety / yes_no · 原始诊断</p>
+<div class="expressive-code"><figure class="frame not-content"><figcaption class="header"></figcaption><pre data-language="plaintext"><code><div class="ec-line"><div class="code"><span style="--0:#d6deeb;--1:#403f53">&#x26;#123;</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">  </span></span><span style="--0:#d6deeb;--1:#403f53">"paired_judgement_accuracy": 0.6666666666666666,</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">  </span></span><span style="--0:#d6deeb;--1:#403f53">"required_change_accuracy": 0,</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">  </span></span><span style="--0:#d6deeb;--1:#403f53">"danger_recall": 0,</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">  </span></span><span style="--0:#d6deeb;--1:#403f53">"false_alarm_rate": 0,</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">  </span></span><span style="--0:#d6deeb;--1:#403f53">"dead_end_accuracy": 0.75,</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">  </span></span><span style="--0:#d6deeb;--1:#403f53">"strata": &#x26;#123;</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">    </span></span><span style="--0:#d6deeb;--1:#403f53">"0": 0,</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">    </span></span><span style="--0:#d6deeb;--1:#403f53">"1": 0,</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">    </span></span><span style="--0:#d6deeb;--1:#403f53">"2": 0,</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">    </span></span><span style="--0:#d6deeb;--1:#403f53">"3": 1</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">  </span></span><span style="--0:#d6deeb;--1:#403f53">&#x26;#125;,</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">  </span></span><span style="--0:#d6deeb;--1:#403f53">"visual_types": &#x26;#123;&#x26;#125;</span></div></div><div class="ec-line"><div class="code"><span style="--0:#d6deeb;--1:#403f53">&#x26;#125;</span></div></div></code></pre><div class="copy"><div aria-live="polite"></div><button title="复制到剪贴板" data-copied="复制成功！" data-code="&#x26;#123;  &#x22;paired_judgement_accuracy&#x22;: 0.6666666666666666,  &#x22;required_change_accuracy&#x22;: 0,  &#x22;danger_recall&#x22;: 0,  &#x22;false_alarm_rate&#x22;: 0,  &#x22;dead_end_accuracy&#x22;: 0.75,  &#x22;strata&#x22;: &#x26;#123;    &#x22;0&#x22;: 0,    &#x22;1&#x22;: 0,    &#x22;2&#x22;: 0,    &#x22;3&#x22;: 1  &#x26;#125;,  &#x22;visual_types&#x22;: &#x26;#123;&#x26;#125;&#x26;#125;"><div></div></button></div></figure></div>
+<p>Gemma-4-E4B-it / decision / choice · 原始诊断</p>
+<div class="expressive-code"><figure class="frame not-content"><figcaption class="header"></figcaption><pre data-language="plaintext"><code><div class="ec-line"><div class="code"><span style="--0:#d6deeb;--1:#403f53">&#x26;#123;</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">  </span></span><span style="--0:#d6deeb;--1:#403f53">"action_counts": &#x26;#123;</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">    </span></span><span style="--0:#d6deeb;--1:#403f53">"straight": 145,</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">    </span></span><span style="--0:#d6deeb;--1:#403f53">"left": 54,</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">    </span></span><span style="--0:#d6deeb;--1:#403f53">"right": 17</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">  </span></span><span style="--0:#d6deeb;--1:#403f53">&#x26;#125;,</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">  </span></span><span style="--0:#d6deeb;--1:#403f53">"strata": &#x26;#123;</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">    </span></span><span style="--0:#d6deeb;--1:#403f53">"1": 0.37037037037037035,</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">    </span></span><span style="--0:#d6deeb;--1:#403f53">"2": 0.7222222222222222</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">  </span></span><span style="--0:#d6deeb;--1:#403f53">&#x26;#125;,</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">  </span></span><span style="--0:#d6deeb;--1:#403f53">"visual_types": &#x26;#123;&#x26;#125;</span></div></div><div class="ec-line"><div class="code"><span style="--0:#d6deeb;--1:#403f53">&#x26;#125;</span></div></div></code></pre><div class="copy"><div aria-live="polite"></div><button title="复制到剪贴板" data-copied="复制成功！" data-code="&#x26;#123;  &#x22;action_counts&#x22;: &#x26;#123;    &#x22;straight&#x22;: 145,    &#x22;left&#x22;: 54,    &#x22;right&#x22;: 17  &#x26;#125;,  &#x22;strata&#x22;: &#x26;#123;    &#x22;1&#x22;: 0.37037037037037035,    &#x22;2&#x22;: 0.7222222222222222  &#x26;#125;,  &#x22;visual_types&#x22;: &#x26;#123;&#x26;#125;&#x26;#125;"><div></div></button></div></figure></div>
+<p>Gemma-4-E4B-it / decision / yes_no · 原始诊断</p>
+<div class="expressive-code"><figure class="frame not-content"><figcaption class="header"></figcaption><pre data-language="plaintext"><code><div class="ec-line"><div class="code"><span style="--0:#d6deeb;--1:#403f53">&#x26;#123;</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">  </span></span><span style="--0:#d6deeb;--1:#403f53">"action_counts": &#x26;#123;</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">    </span></span><span style="--0:#d6deeb;--1:#403f53">"straight": 181,</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">    </span></span><span style="--0:#d6deeb;--1:#403f53">"left": 27,</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">    </span></span><span style="--0:#d6deeb;--1:#403f53">"right": 8</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">  </span></span><span style="--0:#d6deeb;--1:#403f53">&#x26;#125;,</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">  </span></span><span style="--0:#d6deeb;--1:#403f53">"strata": &#x26;#123;</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">    </span></span><span style="--0:#d6deeb;--1:#403f53">"1": 0.3333333333333333,</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">    </span></span><span style="--0:#d6deeb;--1:#403f53">"2": 0.8425925925925926</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">  </span></span><span style="--0:#d6deeb;--1:#403f53">&#x26;#125;,</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">  </span></span><span style="--0:#d6deeb;--1:#403f53">"visual_types": &#x26;#123;&#x26;#125;</span></div></div><div class="ec-line"><div class="code"><span style="--0:#d6deeb;--1:#403f53">&#x26;#125;</span></div></div></code></pre><div class="copy"><div aria-live="polite"></div><button title="复制到剪贴板" data-copied="复制成功！" data-code="&#x26;#123;  &#x22;action_counts&#x22;: &#x26;#123;    &#x22;straight&#x22;: 181,    &#x22;left&#x22;: 27,    &#x22;right&#x22;: 8  &#x26;#125;,  &#x22;strata&#x22;: &#x26;#123;    &#x22;1&#x22;: 0.3333333333333333,    &#x22;2&#x22;: 0.8425925925925926  &#x26;#125;,  &#x22;visual_types&#x22;: &#x26;#123;&#x26;#125;&#x26;#125;"><div></div></button></div></figure></div>
+<p>查看随机与固定策略的计算方法</p>
+<p>这些参照全部在<strong>当前 dev</strong> 的冻结数据和主评分规则上重新计算；旧 benchmark 说明页的参考表使用 all 划分，不能直接当作 dev 实测复制。规则参照不运行模型，也没有 GPU 延迟或生成重复。“均匀乱选”直接作用于最终语义答案，不是给 yes/no 的每个候选随意抛硬币再取最高分。</p>
+<ul>
+<li>Perception 独立乱选期望：(1/4 + 1/3 + 1/3 + 1/5) / 4 = 27.92%，按四类等权。</li>
+<li>Readout 独立乱选期望：3 × (1/3)⁶ = 1/243 ≈ 0.41%。必须六次都选同一个语义动作才记 1；先随机选一次再复用六次，则是 100%，属于另一种策略。</li>
+<li>Safety 独立二元乱猜的完整集合正确率为 (1/2)³ = 12.5%。全部判安全／危险各只在一个安全动作数层得满分，四层等权后均为 25%。</li>
+<li>Decision 均匀乱选期望为 (1/3 + 2/3) / 2 = 50%；固定左／直／右在当前平衡 dev 集也都是 50%。</li>
+</ul>
+<p>— 表示该策略在该任务下没有定义，不是零分。固定字母 A 指选择显示第一项；yes/no 没有字母输出，此行仅作为位置策略参照。</p>
+<p>按任务查看图表和错误统计</p>
+<p>0% — 100%，各条同尺度；按固定模型顺序展示，不跨任务求总分。</p>
+<div class="sl-heading-wrapper level-h4"><h4 id="同一任务的规则参照">同一任务的规则参照</h4><a class="sl-anchor-link" href="#同一任务的规则参照"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore="">Section titled “同一任务的规则参照”</span></a></div>
+<p>灰色条为规则计算／解析期望，不是模型输出。固定策略与独立乱选是不同的控制条件；两种读出视图使用相同的语义策略参照。</p>
+<p>当前筛选的精确数据；均为完整 dev 基线。</p>
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>模型</th><th>主分数（0–1）</th><th>均值延迟 / 秒</th><th>评分事件</th></tr></thead></table>
+<p>Qwen3.5 的 choice 看图准确率为 60.90%。其中朝向识别为 83.33%，格子内容识别为 31.11%。</p>
+<p>Qwen3-VL 的两种读出都得到 100% 动作一致率，但各自一直选同一个动作。<strong>一致率高，不代表看图正确。</strong></p>
+<p>查看动作分布和 Decision 分数</p>
+<p>Qwen3-VL：choice {“straight”: 216}；yes/no {“right”: 216}。</p>
+<p>Gemma 的 Decision 安全率：choice 54.63%，yes/no 58.80%。这里只测一步动作，尚不能说明整局游戏表现。</p>
+<p>**Safety 要与固定回答比较。**独立随机判断三个动作的得分期望是 12.5%；全部回答安全可得 25%。Qwen3.5 的两种读出都在 216 次判断中始终回答安全。</p>
+<p>**Decision 尚未证明稳定超过随机期望。**六个配置的差值区间都包含 0。<a href="/vdec/studies/snake/?evidence=comparison#evidence">查看比较方法</a>。</p>
+<p>查看 Safety 输出计数和碰撞案例</p>
+<p>实际 Safety 语义输出计数；每种读出 36 图 × 3 动作 × 2 排列。</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>模型</th><th>读出</th><th>safe</th><th>collision</th></tr></thead><tbody><tr><td>Qwen3.5-4B</td><td>choice</td><td>216</td><td>0</td></tr><tr><td>Qwen3.5-4B</td><td>yes_no</td><td>216</td><td>0</td></tr><tr><td>Qwen3-VL-4B-Thinking</td><td>choice</td><td>216</td><td>0</td></tr><tr><td>Qwen3-VL-4B-Thinking</td><td>yes_no</td><td>20</td><td>196</td></tr><tr><td>gemma-4-E4B-it</td><td>choice</td><td>165</td><td>51</td></tr><tr><td>gemma-4-E4B-it</td><td>yes_no</td><td>216</td><td>0</td></tr></tbody></table>
+<p>看一个真实全危险局面：safety-008<img src="/vdec/media/a7b995c054feb0c1d32193c6b9c7b7e151a75e5724b5761702010e0abf258744.png" alt="三个动作都碰撞的冻结 Safety dev 局面" loading="lazy" decoding="async"></p>
+<p>此局面三个动作都应判 collision；Qwen3.5 却全部判 safe。下表显示原始排列 0，两种排列的全部 12 条记录均内嵌在展示数据中。</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>读出</th><th>动作题</th><th>环境真值</th><th>模型输出</th></tr></thead><tbody><tr><td>choice</td><td>collision_left</td><td>collision</td><td>safe</td></tr><tr><td>choice</td><td>collision_straight</td><td>collision</td><td>safe</td></tr><tr><td>choice</td><td>collision_right</td><td>collision</td><td>safe</td></tr><tr><td>yes_no</td><td>collision_left</td><td>collision</td><td>safe</td></tr><tr><td>yes_no</td><td>collision_straight</td><td>collision</td><td>safe</td></tr><tr><td>yes_no</td><td>collision_right</td><td>collision</td><td>safe</td></tr></tbody></table>
+<div class="sl-heading-wrapper level-h2"><h2 id="历史案例计划要求左转模型在底边撞墙">历史案例：计划要求左转，模型在底边撞墙</h2><a class="sl-anchor-link" href="#历史案例计划要求左转模型在底边撞墙"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore="">Section titled “历史案例：计划要求左转，模型在底边撞墙”</span></a></div>
+<p>以下来自 2026-10-18 的 v8 运行及其配对基线。它解释一种失败现象，不计入上方 v9 成绩。</p>
+<p>Qwen3.5 的一份计划写着 <code dir="auto">Execute: Choose Left (Turn Up)</code>。在使用这份计划的 4 个局面中，yes/no 加入完整思考和计划后，24 次都选左转。</p>
+<p>相同 4 个局面，每图 6 种选项顺序；这里只统计案例，不是完整榜单。</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>条件</th><th>选择左转</th><th>安全次数</th></tr></thead><tbody><tr><td>无计划 no_plan</td><td>0 / 24</td><td>18 / 24</td></tr><tr><td>完整思考和计划 shared_full</td><td>24 / 24</td><td>12 / 24</td></tr><tr><td>仅计划 shared_plan_only</td><td>22 / 24</td><td>14 / 24</td></tr></tbody></table>
+<p>下图的蛇朝左，位于底边。左转会向下撞墙。计划却沿用参考图的“朝右、左转向上”结论。这说明该计划可能干扰当前看图判断；还不能确定是哪一句造成了改变。</p>
+<p>这份运行未全部成功，下面只分析案例。无计划基线没有使用这些计划。</p>
+<p><strong>比较同一题目的三种条件</strong>选取案例 · 非完整方法榜查看记录标识</p>
+<p>条形按语义动作对齐，归一化分数不是校准的正确概率。环境真值只用于解释，没有注入模型。</p>
+<p>同图、同读出，比较六种选项顺序。安全表示下一步不会碰撞。</p>
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>排列</th><th>A / B / C</th><th>no_plan</th><th>full</th><th>plan-only</th></tr></thead></table>
+<p>当前读出原始数值当前计划全文及 thinking</p>
+<div class="sl-heading-wrapper level-h4"><h4 id="planfull--plan-only-共用同一-token-记录">plan（full / plan-only 共用同一 token 记录）</h4><a class="sl-anchor-link" href="#planfull--plan-only-共用同一-token-记录"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore="">Section titled “plan（full / plan-only 共用同一 token 记录）”</span></a></div>
+<div class="sl-heading-wrapper level-h4"><h4 id="thinking仅-full-注入">thinking（仅 full 注入）</h4><a class="sl-anchor-link" href="#thinking仅-full-注入"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore="">Section titled “thinking（仅 full 注入）”</span></a></div>
+<p>另一个例子：计划写 Right，模型却选 straight</p>
+<p>同一运行的另一份计划把 Right 当作绝对向右，把 Left 当作掉头。但题目要求的是相对左右转。它对应 5 个局面：yes/no 的无计划、完整计划和仅计划条件都选 straight，共 30/30 次。</p>
+<p>因此，计划里出现动作词，不代表模型一定照着做。上方切换到 seed 2 可查看原文和输出。</p>
+<p>查看案例来源、完整计划和统计</p>
+<p>Qwen3.5 / Decision / dev；probe 采样；思考上限 2048，计划上限 1024 token；重复编号 1。864 条预期读出中，768 条成功，96 条因 seed 4 规划失败而失败。下面选取其中两份计划，不代表全部计划的表现。</p>
+<p>seed 7 · Execute: Choose Left</p>
+<blockquote>
+<p>4. **Execute:** Choose **Left** (Turn Up).</p>
+</blockquote>
+<p>仅此计划覆盖的 4 个 family，包含每图全部六种排列；安全次数是事件计数，不能当作完整分层主分数。</p>
+<p>同题 no_plan 对照及两种共享视图；left / straight / right 为语义动作计数。</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>读出</th><th>条件</th><th>left</th><th>straight</th><th>right</th><th>安全 / 事件</th></tr></thead><tbody><tr><td>choice</td><td>no_plan</td><td>11</td><td>6</td><td>7</td><td>14/24</td></tr><tr><td>choice</td><td>shared_full</td><td>19</td><td>3</td><td>2</td><td>14/24</td></tr><tr><td>choice</td><td>shared_plan_only</td><td>18</td><td>2</td><td>4</td><td>15/24</td></tr><tr><td>yes_no</td><td>no_plan</td><td>0</td><td>24</td><td>0</td><td>18/24</td></tr><tr><td>yes_no</td><td>shared_full</td><td>24</td><td>0</td><td>0</td><td>12/24</td></tr><tr><td>yes_no</td><td>shared_plan_only</td><td>22</td><td>2</td><td>0</td><td>14/24</td></tr></tbody></table>
+<p>逐局面 yes/no 行为；有多个动作时表示六种排列不一致。</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>局面</th><th>实际安全动作</th><th>no_plan</th><th>full</th><th>plan-only</th></tr></thead><tbody><tr><td>decision-dev-007</td><td>straight, right</td><td>straight</td><td>left</td><td>left</td></tr><tr><td>decision-dev-015</td><td>left, right</td><td>straight</td><td>left</td><td>left</td></tr><tr><td>decision-dev-023</td><td>left, straight</td><td>straight</td><td>left</td><td>left</td></tr><tr><td>decision-dev-031</td><td>straight, right</td><td>straight</td><td>left</td><td>left, straight</td></tr></tbody></table>
+<p>thinking 2048 token / forced；plan 703 token；plan 截断：否。</p>
+<div class="sl-heading-wrapper level-h4"><h4 id="完整-plan-原文未经改写">完整 plan 原文（未经改写）</h4><a class="sl-anchor-link" href="#完整-plan-原文未经改写"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore="">Section titled “完整 plan 原文（未经改写）”</span></a></div>
+<p>生成过的完整 thinking；仅 full 注入seed 2 · Right 是方位，还是动作？</p>
+<blockquote>
+<p>I will select **Right** as the action. It is safe.</p>
+</blockquote>
+<p>仅此计划覆盖的 5 个 family，包含每图全部六种排列；安全次数是事件计数，不能当作完整分层主分数。</p>
+<p>同题 no_plan 对照及两种共享视图；left / straight / right 为语义动作计数。</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>读出</th><th>条件</th><th>left</th><th>straight</th><th>right</th><th>安全 / 事件</th></tr></thead><tbody><tr><td>choice</td><td>no_plan</td><td>12</td><td>8</td><td>10</td><td>10/30</td></tr><tr><td>choice</td><td>shared_full</td><td>5</td><td>25</td><td>0</td><td>13/30</td></tr><tr><td>choice</td><td>shared_plan_only</td><td>10</td><td>20</td><td>0</td><td>11/30</td></tr><tr><td>yes_no</td><td>no_plan</td><td>0</td><td>30</td><td>0</td><td>12/30</td></tr><tr><td>yes_no</td><td>shared_full</td><td>0</td><td>30</td><td>0</td><td>12/30</td></tr><tr><td>yes_no</td><td>shared_plan_only</td><td>0</td><td>30</td><td>0</td><td>12/30</td></tr></tbody></table>
+<p>逐局面 yes/no 行为；有多个动作时表示六种排列不一致。</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>局面</th><th>实际安全动作</th><th>no_plan</th><th>full</th><th>plan-only</th></tr></thead><tbody><tr><td>decision-dev-002</td><td>straight</td><td>straight</td><td>straight</td><td>straight</td></tr><tr><td>decision-dev-010</td><td>right</td><td>straight</td><td>straight</td><td>straight</td></tr><tr><td>decision-dev-018</td><td>left</td><td>straight</td><td>straight</td><td>straight</td></tr><tr><td>decision-dev-026</td><td>straight</td><td>straight</td><td>straight</td><td>straight</td></tr><tr><td>decision-dev-034</td><td>right</td><td>straight</td><td>straight</td><td>straight</td></tr></tbody></table>
+<p>thinking 2048 token / forced；plan 1024 token；plan 截断：是。</p>
+<div class="sl-heading-wrapper level-h4"><h4 id="完整-plan-原文未经改写-1">完整 plan 原文（未经改写）</h4><a class="sl-anchor-link" href="#完整-plan-原文未经改写-1"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore="">Section titled “完整 plan 原文（未经改写）”</span></a></div>
+<p>生成过的完整 thinking；仅 full 注入</p>
+<p>后续检查重点：在“计划偏好的动作会撞墙，但其他动作安全”的局面，模型是否仍坚持原动作。只有先确认动作安全，再按固定优先级选择，才是有效的规则。</p>
+<div class="sl-heading-wrapper level-h2"><h2 id="案例二图片没变换选项顺序后改选">案例二：图片没变，换选项顺序后改选</h2><a class="sl-anchor-link" href="#案例二图片没变换选项顺序后改选"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore="">Section titled “案例二：图片没变，换选项顺序后改选”</span></a></div>
+<p>同一张图的六种选项顺序中，Qwen3.5 的 choice 仅有 <strong>1/36</strong> 个局面始终选同一动作；yes/no 有 <strong>30/36</strong> 个。</p>
+<p>例如 readout-dev-000：排列 0 选右转，排列 3 改选左转。两次都选 C，但 C 对应的动作不同。两次分数差都较大，不是同分导致。</p>
+<p>查看选项位置偏好与同分统计</p>
+<p>每种读出共 216 次。yes/no 的 A/B/C 表示候选位置，不是输出字母。</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>读出</th><th>一致局面</th><th>选第一项</th><th>选第二项</th><th>选第三项</th><th>精确同分</th><th>分差 ≤ 10⁻⁶</th></tr></thead><tbody><tr><td>choice</td><td>1/36</td><td>6/216</td><td>64/216</td><td>146/216</td><td>6</td><td>6</td></tr><tr><td>yes_no</td><td>30/36</td><td>78/216</td><td>70/216</td><td>68/216</td><td>8</td><td>26</td></tr></tbody></table>
+<p>choice 共选 C 146/216 次。当 C 是左转、右转、直行时，分别选它 72/72、69/72、5/72 次。位置和动作含义都影响选择。</p>
+<p>35 个不一致的 choice 局面中，只有 6 个出现过分差 ≤ 10⁻⁶。yes/no 的 6 个不一致局面都出现过这种小分差。</p>
+<p>已核对截图、选项映射、原始分数和最高分选择。模型的输出确实随选项顺序变化，但尚不能确定内部原因。</p>
+<p><strong>Qwen3.5 · Readout 全部 36 个 dev 局面</strong>真实 baseline · 六种排列查看记录标识</p>
+<p>只展示已保存结果。yes/no 的 A/B/C 表示候选位置。</p>
+<p>同一张截图的六个原始排列；score 为候选内归一化分数，不是校准的正确概率。</p>
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>排列</th><th>A / B / C</th><th>胜出</th><th>left</th><th>straight</th><th>right</th><th>最高分与次高分之差</th></tr></thead></table>
+<p>当前排列：原始 log-prob 与精确分数查看同分处理规则</p>
+<p>最高分与次高分之差 = 最高分 − 次高分，原单位为 0–1。近似同分阈值为 10⁻⁶，仅用于诊断；生产规则没有容差平局处理，精确同分时 Python max 保留列表中靠前的候选。</p>
+<p>查看四个案例的说明与数据表readout-dev-000 · 清晰的换序翻转</p>
+<p>清晰的换序翻转：choice 在排列 0 选 C/right（约 53.78%），排列 3 选 C/left（约 75.27%）。同一张图未变，两次领先差都不是近似同分。该局面三个动作都安全；这里检查的是语义一致性，不是把某一个动作当作唯一正确答案。</p>
+<p><img src="/vdec/media/0749d6bcd567f30ba4546e23b44d02df2175f60ebeae2c67d09b8f109af4d775.png" alt="readout-dev-000 的实际输入截图" loading="lazy" decoding="async"></p>
+<p>原始记录；候选分数以语义对齐，完整原精度保存在展示数据中。</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>读出</th><th>排列</th><th>A / B / C 映射</th><th>选择</th><th>left</th><th>straight</th><th>right</th><th>领先差（0–1）</th></tr></thead><tbody><tr><td>choice</td><td>0</td><td>left / straight / right</td><td>right</td><td>32.62%</td><td>13.60%</td><td>53.78%</td><td>0.211614303</td></tr><tr><td>choice</td><td>1</td><td>left / right / straight</td><td>left</td><td>40.55%</td><td>27.87%</td><td>31.58%</td><td>0.0896963475</td></tr><tr><td>choice</td><td>2</td><td>straight / left / right</td><td>right</td><td>41.33%</td><td>11.84%</td><td>46.83%</td><td>0.055027907</td></tr><tr><td>choice</td><td>3</td><td>straight / right / left</td><td>left</td><td>75.27%</td><td>7.93%</td><td>16.80%</td><td>0.584759254</td></tr><tr><td>choice</td><td>4</td><td>right / left / straight</td><td>left</td><td>58.71%</td><td>24.47%</td><td>16.82%</td><td>0.342344335</td></tr><tr><td>choice</td><td>5</td><td>right / straight / left</td><td>left</td><td>73.61%</td><td>9.96%</td><td>16.43%</td><td>0.571873087</td></tr><tr><td>yes_no</td><td>0</td><td>left / straight / right</td><td>left</td><td>39.08%</td><td>39.08%</td><td>21.85%</td><td>0</td></tr><tr><td>yes_no</td><td>1</td><td>left / right / straight</td><td>left</td><td>39.08%</td><td>39.08%</td><td>21.85%</td><td>0</td></tr><tr><td>yes_no</td><td>2</td><td>straight / left / right</td><td>straight</td><td>36.96%</td><td>40.43%</td><td>22.61%</td><td>0.0347320319</td></tr><tr><td>yes_no</td><td>3</td><td>straight / right / left</td><td>straight</td><td>36.96%</td><td>40.43%</td><td>22.61%</td><td>0.0347320319</td></tr><tr><td>yes_no</td><td>4</td><td>right / left / straight</td><td>straight</td><td>36.07%</td><td>39.46%</td><td>24.47%</td><td>0.0338977599</td></tr><tr><td>yes_no</td><td>5</td><td>right / straight / left</td><td>straight</td><td>36.07%</td><td>39.46%</td><td>24.47%</td><td>0.0338977599</td></tr></tbody></table>
+<p>readout-dev-001 · 语义与位置交互</p>
+<p>语义与位置交互：choice 在 C=straight 的排列 1、4 没有选 C；在 C=left 的排列 3、5 则选 left。yes/no 的排列 2 中 straight 只以约 8.4×10⁻⁹ 的归一化分差胜过 left，属于明确的近似同分边界。</p>
+<p><img src="/vdec/media/338bc62f7735fff1996485c8ccfb471b7d2a78a5cbc24ba3053f777cb81a9caf.png" alt="readout-dev-001 的实际输入截图" loading="lazy" decoding="async"></p>
+<p>原始记录；候选分数以语义对齐，完整原精度保存在展示数据中。</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>读出</th><th>排列</th><th>A / B / C 映射</th><th>选择</th><th>left</th><th>straight</th><th>right</th><th>领先差（0–1）</th></tr></thead><tbody><tr><td>choice</td><td>0</td><td>left / straight / right</td><td>right</td><td>15.43%</td><td>15.43%</td><td>69.14%</td><td>0.537157662</td></tr><tr><td>choice</td><td>1</td><td>left / right / straight</td><td>right</td><td>24.37%</td><td>35.46%</td><td>40.18%</td><td>0.0472084584</td></tr><tr><td>choice</td><td>2</td><td>straight / left / right</td><td>right</td><td>31.32%</td><td>10.17%</td><td>58.51%</td><td>0.271930341</td></tr><tr><td>choice</td><td>3</td><td>straight / right / left</td><td>left</td><td>78.78%</td><td>5.71%</td><td>15.51%</td><td>0.632676122</td></tr><tr><td>choice</td><td>4</td><td>right / left / straight</td><td>left</td><td>60.98%</td><td>25.42%</td><td>13.61%</td><td>0.355573635</td></tr><tr><td>choice</td><td>5</td><td>right / straight / left</td><td>left</td><td>78.57%</td><td>9.38%</td><td>12.05%</td><td>0.665189369</td></tr><tr><td>yes_no</td><td>0</td><td>left / straight / right</td><td>left</td><td>40.08%</td><td>33.01%</td><td>26.91%</td><td>0.0707732256</td></tr><tr><td>yes_no</td><td>1</td><td>left / right / straight</td><td>left</td><td>40.08%</td><td>33.01%</td><td>26.91%</td><td>0.0707732256</td></tr></tbody></table>
+<div class="sl-heading-wrapper level-h2"><h2 id="继续阅读">继续阅读</h2><a class="sl-anchor-link" href="#继续阅读"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore="">Section titled “继续阅读”</span></a></div>
+<ul>
+<li><a href="/vdec/studies/snake/part-7/more-1/">Snake Study · 第 7 部分 · 续 1</a></li>
+</ul></div><footer class="sl-flex astro-ddtxxk7k"><div class="meta sl-flex astro-ddtxxk7k"></div><div class="pagination-links print:hidden astro-b5raizh3" dir="ltr"></div></footer></div></div></main></div></div></div></div></body></html>

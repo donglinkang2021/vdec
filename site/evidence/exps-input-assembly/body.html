@@ -1,0 +1,92 @@
+<div data-pagefind-ignore="all"><div data-pagefind-ignore=""><section class="hero"><p>看原文，跟随变化，检查可复用前缀。</p></section>
+<p id="loading" role="status">正在解包本页内嵌快照。下方静态案例可直接阅读。</p>
+<section aria-label="输入拼接实验室" hidden="" id="lab">
+<div class="workspace-controls">
+<div class="control-bar"><label>Bench<select id="bench"></select></label><label>模型<select id="model"></select></label><label>读出／输出<select id="method"></select></label><label>任务／轨道<select id="task"></select></label><label>真实案例<select id="case"></select></label><label>局面步骤<select id="step"></select></label><button id="share" title="复制当前页面链接">分享</button></div>
+<div class="method-row"><select aria-label="执行条件" hidden="" id="condition"></select><div aria-label="七种执行条件" id="condition-buttons" role="group"></div><details class="advanced"><summary>更多设置</summary><div class="advanced-popover"><div class="control-bar"><label>问题<select id="probe"></select></label><label>选项排列<select id="order"></select></label><label>采样／证据<select id="profile"></select></label><label>thinking 上限<select id="budget"></select></label></div><p class="caption" id="support"></p></div></details></div>
+<p class="caption" id="method-description"></p>
+<div class="record-header"><span class="badge" id="evidence"></span><span id="case-name"></span><details class="record-info"><summary>证据说明</summary><p class="caption" id="record-note"></p></details><span class="change" id="changes" role="status"></span></div>
+</div>
+<section aria-label="请求流程" class="flow-panel"><div class="panel-heading"><p class="eyebrow">01 / REQUEST FLOW <span>构造顺序，不表示耗时</span></p><div class="buttons"><button aria-label="上一步" id="prev">←</button><button id="play">播放流程</button><button aria-label="下一步" id="next">→</button><button id="reset">重置</button></div></div><ol class="flow" id="flow"></ol><p aria-live="polite" class="caption" id="stage-note"></p></section>
+<div hidden="" id="unsupported" role="status"></div>
+<div class="inspection"><aside class="observation"><p class="eyebrow">02 / OBSERVATION</p><div class="observation-scroll"><div class="images" id="images"></div><p class="caption" id="image-note"></p><section aria-label="当前问题与语义候选"><h3>当前问题与语义候选</h3><p id="question" lang="en"></p><pre id="choices" tabindex="0"></pre></section><div id="result"></div><details hidden="" id="extraction"><summary>同一轨迹如何提取 plan</summary><p class="caption" id="extraction-note"></p><pre id="extracted-text" tabindex="0"></pre></details><details hidden="" id="output-box"><summary>此阶段的输出</summary><p class="caption" id="output-note"></p><pre id="output" tabindex="0"></pre></details></div></aside>
+<section class="assembly"><div class="panel-heading"><div><p class="eyebrow">03 / TOKEN ASSEMBLY</p><h2 id="request-title">完整原始输入</h2></div><span class="badge" id="token-count"></span></div>
+<div class="editor-toolbar"><label class="inline-label"><input checked="" id="wrap" type="checkbox"/>自动换行</label><label class="inline-label">比较<select id="compare"><option value="previous_request">前一请求</option><option value="previous_step">上一局面同类请求</option></select></label><button id="copy">复制原文</button><button id="download">JSON ↓</button><button aria-expanded="false" id="show-tokens">Token ID</button></div>
+<p aria-live="polite" class="caption" id="cache-note"></p><div class="editor-layout"><div class="segments" id="segments"></div><div aria-label="完整原始输入，只读" class="editor wrap" id="editor" role="region" tabindex="0"><pre id="full-text"></pre></div></div>
+<p aria-live="polite" class="caption" id="segment-meta"></p><div hidden="" id="token-detail"><button id="close-tokens">关闭 Token ID</button><pre id="token-ids" tabindex="0"></pre></div>
+<details class="cache-help"><summary>缓存推断如何读？</summary><p>实线／虚线表示内容变化属性；编辑器左侧绿色标记表示共同前缀。图片按顺序单独传入，文本标记不是图片特征。</p><p>共同前缀基于原始文本 token、图片哈希与顺序推断，不是实际 KV 命中数。后端配置、缓存驻留、清空、块边界及图像展开都会影响实际复用。后续相同文字不能跨过前面的差异继续命中。</p><a href="https://docs.vllm.ai/en/latest/design/prefix_caching/">vLLM 缓存说明 ↗</a></details>
+</section></div>
+<details class="provenance"><summary>来源、版本与计划提取</summary><p>范围使用原始 token 的半开区间 [start, end)。生成、复用、程序预填分别标记。输出格式提示不用于拒绝计划。</p><pre id="provenance" tabindex="0"></pre></details><p class="caption" id="status" role="status"></p>
+</section>
+<section class="static-case" id="static-case"><p class="eyebrow">READ WITHOUT JAVASCRIPT</p><h2>一个真实案例：共享计划后读出</h2><p>Qwen3.5-4B · perception-dev-000 · v9 冒烟实测。完整请求包含参考图和当前图；这里展示当前截图。</p><img alt="静态案例的当前 Snake 截图" decoding="async" height="320" loading="lazy" src="/vdec/media/46fa1d7ef952127bb09757c190742b9499d22e7bfc3ad8d7a91531d9b6a6ed18.webp" width="320"/><details><summary>完整请求</summary><pre tabindex="0">&lt;|im_start|&gt;system
+Play Snake on a 10 by 10 board. The blue head has a white arrow showing its direction; connected green segments form the body, fading lighter from neck to the pointed tail; only consecutive body segments are connected. The red circle is food. Read the CURRENT screenshot. Report visible direction, position or cell contents only. Grid columns count from left to right and rows from top to bottom, starting at 1.&lt;|im_end|&gt;
+&lt;|im_start|&gt;user
+&lt;|vision_start|&gt;&lt;|image_pad|&gt;&lt;|vision_end|&gt;
+Develop a reusable strategy for reading Snake screenshots. The example shows appearance only, not a test state. Identify the blue head and white direction arrow, the red food, connected green body segments and pointed tail. Locate objects relative to the head and read explicitly named grid coordinates. Answer only the visual question about the CURRENT screenshot; do not choose a move, predict motion or judge collisions. After your reasoning, return a concise reusable plan.&lt;|im_end|&gt;
+&lt;|im_start|&gt;assistant
+&lt;think&gt;
+The user wants me to analyze a Snake game screenshot.
+
+**1. Identify the Grid:**
+The image shows a dark blue grid. I need to count columns and rows.
+- Looking at the grid lines, there are 10 distinct squares across the width and 10 distinct squares down the height. So it's a 10x10 grid.
+
+**2. Locate Objects:**
+- **Blue Head with White Arrow:** I see a blue square in the lower middle area. It has a white arrow pointing right. Wait, let me look closer. The arrow is white inside the blue square. The&lt;/think&gt;
+
+Based on the visual analysis of the current screenshot:
+
+*   **Blue Head:** Located at column 6, row 6 (counting from top-left, 1-indexed). The white arrow inside points to the right.
+*   **Red Food:** Located at column 2, row 3.
+*   **Green Body Segments:** There is a connected line of green segments extending to the left from the head.
+    *   Segment 1 (connected to neck): Column 5, Row 6
+    *   Segment 2: Column 4, Row 6
+    *   Tail&lt;|im_end|&gt;
+&lt;|im_start|&gt;user
+&lt;|vision_start|&gt;&lt;|image_pad|&gt;&lt;|vision_end|&gt;The earlier image illustrated appearance only. Answer the visual question using the CURRENT screenshot.
+The following image is the CURRENT observation.
+Which absolute direction does the white arrow on the blue head point?
+Options:
+A. Up
+B. Right
+C. Down
+D. Left
+Choose the best option. Reply with exactly its uppercase letter inside \boxed{}, with no explanation.&lt;|im_end|&gt;
+&lt;|im_start|&gt;assistant
+&lt;think&gt;
+
+&lt;/think&gt;
+
+\boxed{</pre></details><details><summary>实际候选分数</summary><pre tabindex="0">{
+  "candidates": [
+    {
+      "id": "up",
+      "label": "A",
+      "logprob": -0.18484604358673096,
+      "score": 0.8314031470927598
+    },
+    {
+      "id": "right",
+      "label": "B",
+      "logprob": -5.434845924377441,
+      "score": 0.004362803831593278
+    },
+    {
+      "id": "down",
+      "label": "C",
+      "logprob": -1.809846043586731,
+      "score": 0.16371298646407428
+    },
+    {
+      "id": "left",
+      "label": "D",
+      "logprob": -7.559845924377441,
+      "score": 0.0005210626115726028
+    }
+  ],
+  "action": "up",
+  "seconds": 0.05183106381446123,
+  "correct": true
+}</pre></details></section>
+<section class="methods" id="methods"><p class="eyebrow">WHY THE PREFIX CHANGES</p><h2>七种方法，改变的是哪一段？</h2><div class="table-wrap"><table><thead><tr><th>方法</th><th>准备阶段</th><th>当前问题前保留什么</th></tr></thead><tbody><tr><th>no_plan</th><td>无</td><td>当前截图、问题与候选</td></tr><tr><th>shared_full</th><td>Thinking + plan</td><td>完整生成轨迹</td></tr><tr><th>shared_plan_only</th><td>复用 full 的同一轨迹</td><td>提取的 plan 与必要边界</td></tr><tr><th>shared_no_think</th><td>关闭 thinking，直接 plan</td><td>提取的直接计划</td></tr><tr><th>manual_plan</th><td>固定英文清单</td><td>完整人工正文与相同位置的参考图</td></tr><tr><th>neutral_prefix</th><td>固定中性段落</td><td>长度接近人工清单的无规则正文</td></tr><tr><th>per_step_cot</th><td>当前图与实际问题之后思考</td><td>原始 thinking + 原生结束边界 + boxed；不生成 plan</td></tr></tbody></table></div><p>Snake 与 Brush 展示七种条件。Drawing 目前只实现前四种，选择其余方法会显示不支持说明。choice 联合读取候选；yes_no 逐候选提问。Drawing 的 coordinate 直接生成动作 JSON。</p><p>default 指 model_default；probe 指激进 thinking 加 greedy plan。Qwen3.5 使用既定模型卡显式覆盖。模板中的占位符仅说明结构，不是模型输出；规则回放也不是模型成绩。</p></section>
+</div></div>

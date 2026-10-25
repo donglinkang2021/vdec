@@ -1,0 +1,1 @@
+{"id":"test-shallow-02","split":"test","family":"shallow","size":33,"start":[5,6],"end":[22,8],"pen":[31,24],"template_id":"shallow","instruction":"抬笔移动到 S，落笔连到 E，再抬笔提交。方向判断相对于当前目标。"}

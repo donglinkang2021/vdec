@@ -1,0 +1,124 @@
+[
+  {
+    "source": "snake_explainer.html",
+    "route": "benchmarks/snake/guide",
+    "evidence": "benchmarks-snake-guide",
+    "prose_bytes": 7022,
+    "parts": 1,
+    "images": 7
+  },
+  {
+    "source": "brush_explainer.html",
+    "route": "benchmarks/brush/guide",
+    "evidence": "benchmarks-brush-guide",
+    "prose_bytes": 11860,
+    "parts": 1,
+    "images": 3
+  },
+  {
+    "source": "drawing_explainer.html",
+    "route": "benchmarks/drawing/guide",
+    "evidence": "benchmarks-drawing-guide",
+    "prose_bytes": 22937,
+    "parts": 1,
+    "images": 21
+  },
+  {
+    "source": "reasoning_study_explainer.html",
+    "route": "studies/snake",
+    "evidence": "studies-snake",
+    "prose_bytes": 620731,
+    "parts": 9,
+    "images": 30
+  },
+  {
+    "source": "brush_study_explainer.html",
+    "route": "studies/brush",
+    "evidence": "studies-brush",
+    "prose_bytes": 45200,
+    "parts": 1,
+    "images": 24
+  },
+  {
+    "source": "babyvision_explainer.html",
+    "route": "papers/babyvision",
+    "evidence": "papers-babyvision",
+    "prose_bytes": 23934,
+    "parts": 1,
+    "images": 1
+  },
+  {
+    "source": "genception_explainer.html",
+    "route": "papers/genception",
+    "evidence": "papers-genception",
+    "prose_bytes": 29288,
+    "parts": 1,
+    "images": 4
+  },
+  {
+    "source": "input_assembly_explainer.html",
+    "route": "exps/input-assembly",
+    "evidence": "exps-input-assembly",
+    "prose_bytes": 2990,
+    "parts": 1,
+    "images": 1
+  },
+  {
+    "source": "papers.html",
+    "route": "papers",
+    "evidence": "papers",
+    "prose_bytes": 438,
+    "parts": 1,
+    "images": 0
+  },
+  {
+    "source": "benchmark_tasks.md",
+    "route": "exps/metrics",
+    "kind": "markdown"
+  },
+  {
+    "source": "brush_bench.md",
+    "route": "benchmarks/brush/reproduction",
+    "kind": "markdown"
+  },
+  {
+    "source": "drawing_bench.md",
+    "route": "benchmarks/drawing/reproduction",
+    "kind": "markdown"
+  },
+  {
+    "source": "experiment_study.md",
+    "route": "exps/reproduction",
+    "kind": "markdown"
+  },
+  {
+    "source": "archive/README.md",
+    "route": "archive",
+    "kind": "markdown"
+  },
+  {
+    "source": "archive/pre-main-readme.md",
+    "route": "archive/pre-main",
+    "kind": "markdown"
+  },
+  {
+    "source": "archive/standard_backend_report.md",
+    "route": "archive/backend-report",
+    "kind": "markdown"
+  },
+  {
+    "source": "archive/visual_snake_bench_plan.md",
+    "route": "archive/snake-plan",
+    "kind": "markdown"
+  },
+  {
+    "source": "benchmark_explainer.html",
+    "kind": "removed_alias",
+    "behavior": "404, no redirect"
+  },
+  {
+    "source": "Drawing v1 section",
+    "route": "archive/drawing-v1",
+    "kind": "archived_component"
+  }
+]

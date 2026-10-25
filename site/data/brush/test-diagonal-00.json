@@ -1,0 +1,1 @@
+{"id":"test-diagonal-00","split":"test","family":"diagonal","size":33,"start":[29,27],"end":[9,7],"pen":[29,27],"template_id":"diagonal","instruction":"抬笔移动到 S，落笔连到 E，再抬笔提交。方向判断相对于当前目标。"}

@@ -1,0 +1,1 @@
+{"id":"dev-vertical-04","split":"dev","family":"vertical","size":33,"start":[13,3],"end":[13,29],"pen":[13,11],"template_id":"vertical","instruction":"抬笔移动到 S，落笔连到 E，再抬笔提交。方向判断相对于当前目标。"}

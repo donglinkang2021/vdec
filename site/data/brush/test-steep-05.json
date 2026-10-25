@@ -1,0 +1,1 @@
+{"id":"test-steep-05","split":"test","family":"steep","size":33,"start":[23,23],"end":[21,28],"pen":[1,5],"template_id":"steep","instruction":"抬笔移动到 S，落笔连到 E，再抬笔提交。方向判断相对于当前目标。"}

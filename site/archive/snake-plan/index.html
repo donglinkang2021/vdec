@@ -1,0 +1,387 @@
+<!DOCTYPE html><html lang="zh-CN" dir="ltr" data-theme="dark" data-has-toc data-has-sidebar class="astro-g5ptsecz"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><title>早期实验计划：先排除固定策略偏差 | vdec</title><link rel="canonical" href="https://donglinkang2021.github.io/vdec/archive/snake-plan/"/><link rel="sitemap" href="/vdec/sitemap-index.xml"/><link rel="shortcut icon" href="/vdec/favicon.svg" type="image/svg+xml"/><meta name="generator" content="Astro v7.4.2"/><meta name="generator" content="Starlight v0.42.7"/><meta property="og:title" content="早期实验计划：先排除固定策略偏差"/><meta property="og:type" content="article"/><meta property="og:url" content="https://donglinkang2021.github.io/vdec/archive/snake-plan/"/><meta property="og:locale" content="zh-CN"/><meta property="og:description" content="视觉决策评测、论文与可复现实验"/><meta property="og:site_name" content="vdec"/><meta name="twitter:card" content="summary_large_image"/><meta name="description" content="视觉决策评测、论文与可复现实验"/><script>
+	window.StarlightThemeProvider = (() => {
+		const storedTheme =
+			typeof localStorage !== 'undefined' && localStorage.getItem('starlight-theme');
+		const theme =
+			storedTheme ||
+			(window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+		document.documentElement.dataset.theme = theme === 'light' ? 'light' : 'dark';
+		return {
+			updatePickers(theme = storedTheme || 'auto') {
+				document.querySelectorAll('starlight-theme-select').forEach((picker) => {
+					const select = picker.querySelector('select');
+					if (select) select.value = theme;
+					/** @type {HTMLTemplateElement | null} */
+					const tmpl = document.querySelector(`#theme-icons`);
+					const newIcon = tmpl && tmpl.content.querySelector('.' + theme);
+					if (newIcon) {
+						const oldIcon = picker.querySelector('svg.label-icon');
+						if (oldIcon) {
+							oldIcon.replaceChildren(...newIcon.cloneNode(true).childNodes);
+						}
+					}
+				});
+			},
+		};
+	})();
+</script><template id="theme-icons"><svg aria-hidden="true" class="light astro-hkc32dio" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M5 12a1 1 0 0 0-1-1H3a1 1 0 0 0 0 2h1a1 1 0 0 0 1-1Zm.64 5-.71.71a1 1 0 0 0 0 1.41 1 1 0 0 0 1.41 0l.71-.71A1 1 0 0 0 5.64 17ZM12 5a1 1 0 0 0 1-1V3a1 1 0 0 0-2 0v1a1 1 0 0 0 1 1Zm5.66 2.34a1 1 0 0 0 .7-.29l.71-.71a1 1 0 1 0-1.41-1.41l-.66.71a1 1 0 0 0 0 1.41 1 1 0 0 0 .66.29Zm-12-.29a1 1 0 0 0 1.41 0 1 1 0 0 0 0-1.41l-.71-.71a1.004 1.004 0 1 0-1.43 1.41l.73.71ZM21 11h-1a1 1 0 0 0 0 2h1a1 1 0 0 0 0-2Zm-2.64 6A1 1 0 0 0 17 18.36l.71.71a1 1 0 0 0 1.41 0 1 1 0 0 0 0-1.41l-.76-.66ZM12 6.5a5.5 5.5 0 1 0 5.5 5.5A5.51 5.51 0 0 0 12 6.5Zm0 9a3.5 3.5 0 1 1 0-7 3.5 3.5 0 0 1 0 7Zm0 3.5a1 1 0 0 0-1 1v1a1 1 0 0 0 2 0v-1a1 1 0 0 0-1-1Z"/></svg><svg aria-hidden="true" class="dark astro-hkc32dio" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M21.64 13a1 1 0 0 0-1.05-.14 8.049 8.049 0 0 1-3.37.73 8.15 8.15 0 0 1-8.14-8.1 8.59 8.59 0 0 1 .25-2A1 1 0 0 0 8 2.36a10.14 10.14 0 1 0 14 11.69 1 1 0 0 0-.36-1.05Zm-9.5 6.69A8.14 8.14 0 0 1 7.08 5.22v.27a10.15 10.15 0 0 0 10.14 10.14 9.784 9.784 0 0 0 2.1-.22 8.11 8.11 0 0 1-7.18 4.32v-.04Z"/></svg><svg aria-hidden="true" class="auto astro-hkc32dio" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M21 14h-1V7a3 3 0 0 0-3-3H7a3 3 0 0 0-3 3v7H3a1 1 0 0 0-1 1v2a3 3 0 0 0 3 3h14a3 3 0 0 0 3-3v-2a1 1 0 0 0-1-1ZM6 7a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v7H6V7Zm14 10a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-1h16v1Z"/></svg></template><link rel="stylesheet" href="/vdec/_astro/print.ehPL0gv-.css" media="print"><link rel="stylesheet" href="/vdec/_astro/common.B2KNhLp0.css"><script type="module" src="/vdec/_astro/page.cNngjUgL.js"></script></head><body class="astro-g5ptsecz"><a class="sl-skip-link astro-qb7clj6f" href="#_top">跳转到内容</a><div class="page sl-flex astro-yntsjkba"><header class="header astro-yntsjkba"><div class="header astro-by6fddyj"><div class="title-wrapper sl-flex astro-by6fddyj"><a href="/vdec/" class="site-title sl-flex astro-6rvad3va"><span class="astro-6rvad3va" translate="no">vdec</span></a></div><div class="sl-flex print:hidden astro-by6fddyj"><site-search class="astro-by6fddyj astro-b5kgnn7o" data-translations="{&quot;placeholder&quot;:&quot;搜索&quot;}"><button data-open-modal disabled aria-label="搜索" aria-keyshortcuts="Control+K" class="astro-b5kgnn7o"><svg aria-hidden="true" class="astro-b5kgnn7o astro-hkc32dio" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M21.71 20.29 18 16.61A9 9 0 1 0 16.61 18l3.68 3.68a.999.999 0 0 0 1.42 0 1 1 0 0 0 0-1.39ZM11 18a7 7 0 1 1 0-14 7 7 0 0 1 0 14Z"/></svg><span class="sl-hidden md:sl-block astro-b5kgnn7o" aria-hidden="true">搜索</span><kbd class="sl-hidden md:sl-flex astro-b5kgnn7o" style="display: none;"><kbd class="astro-b5kgnn7o">Ctrl</kbd><kbd class="astro-b5kgnn7o">K</kbd></kbd></button><dialog style="padding:0" aria-label="搜索" class="astro-b5kgnn7o"><div class="dialog-frame sl-flex astro-b5kgnn7o"><button data-close-modal class="sl-flex md:sl-hidden astro-b5kgnn7o">取消</button><div class="search-container astro-b5kgnn7o"><div id="starlight__search" class="astro-b5kgnn7o"></div></div></div></dialog></site-search><script>
+	(() => {
+		const openBtn = document.querySelector('button[data-open-modal]');
+		const shortcut = openBtn?.querySelector('kbd');
+		if (!openBtn || !(shortcut instanceof HTMLElement)) return;
+		const platformKey = shortcut.querySelector('kbd');
+		if (platformKey && /(Mac|iPhone|iPod|iPad)/i.test(navigator.platform)) {
+			platformKey.textContent = '⌘';
+			openBtn.setAttribute('aria-keyshortcuts', 'Meta+K');
+		}
+		shortcut.style.display = '';
+	})();
+</script><script type="module" src="/vdec/_astro/Search.astro_astro_type_script_index_0_lang.BZ0RsVt4.js"></script></div><div class="sl-hidden md:sl-flex print:hidden right-group astro-by6fddyj"><div class="sl-flex social-icons astro-by6fddyj"><a href="https://github.com/donglinkang2021/vdec" rel="me" class="sl-flex astro-n2mnl6yq"><span class="sr-only astro-n2mnl6yq">公开站点</span><svg aria-hidden="true" class="astro-n2mnl6yq astro-hkc32dio" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M12 .3a12 12 0 0 0-3.8 23.38c.6.12.83-.26.83-.57L9 21.07c-3.34.72-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.08-.74.09-.73.09-.73 1.2.09 1.83 1.24 1.83 1.24 1.08 1.83 2.81 1.3 3.5 1 .1-.78.42-1.31.76-1.61-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.14-.3-.54-1.52.1-3.18 0 0 1-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.28-1.55 3.29-1.23 3.29-1.23.64 1.66.24 2.88.12 3.18a4.65 4.65 0 0 1 1.23 3.22c0 4.61-2.8 5.63-5.48 5.92.42.36.81 1.1.81 2.22l-.01 3.29c0 .31.2.69.82.57A12 12 0 0 0 12 .3Z"/></svg></a></div><starlight-theme-select><label style="--sl-select-width: 6.25em" class="astro-2z5xp7gb"><span class="sr-only astro-2z5xp7gb">选择主题</span><svg aria-hidden="true" class="icon label-icon astro-2z5xp7gb astro-hkc32dio" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M21 14h-1V7a3 3 0 0 0-3-3H7a3 3 0 0 0-3 3v7H3a1 1 0 0 0-1 1v2a3 3 0 0 0 3 3h14a3 3 0 0 0 3-3v-2a1 1 0 0 0-1-1ZM6 7a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v7H6V7Zm14 10a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-1h16v1Z"/></svg><select autocomplete="off" class="astro-2z5xp7gb"><option value="dark" class="astro-2z5xp7gb">深色</option><option value="light" class="astro-2z5xp7gb">浅色</option><option value="auto" selected class="astro-2z5xp7gb">自动</option></select><svg aria-hidden="true" class="icon caret astro-2z5xp7gb astro-hkc32dio" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M17 9.17a1 1 0 0 0-1.41 0L12 12.71 8.46 9.17a1 1 0 1 0-1.41 1.42l4.24 4.24a1.002 1.002 0 0 0 1.42 0L17 10.59a1.002 1.002 0 0 0 0-1.42Z"/></svg></label></starlight-theme-select><script>
+	StarlightThemeProvider.updatePickers();
+</script><script type="module">var e=`starlight-theme`,t=e=>e===`auto`||e===`dark`||e===`light`?e:`auto`,n=()=>t(typeof localStorage<`u`&&localStorage.getItem(e));function r(t){typeof localStorage<`u`&&localStorage.setItem(e,t===`light`||t===`dark`?t:``)}var i=()=>matchMedia(`(prefers-color-scheme: light)`).matches?`light`:`dark`;function a(e){StarlightThemeProvider.updatePickers(e),document.documentElement.dataset.theme=e===`auto`?i():e,r(e)}matchMedia(`(prefers-color-scheme: light)`).addEventListener(`change`,()=>{n()===`auto`&&a(`auto`)});var o=class extends HTMLElement{constructor(){super(),a(n()),this.querySelector(`select`)?.addEventListener(`change`,e=>{e.currentTarget instanceof HTMLSelectElement&&a(t(e.currentTarget.value))})}};customElements.define(`starlight-theme-select`,o);</script><script type="module">var e=class extends HTMLElement{constructor(){super();let e=this.querySelector(`select`);e&&(e.addEventListener(`change`,e=>{e.currentTarget instanceof HTMLSelectElement&&(window.location.pathname=e.currentTarget.value)}),window.addEventListener(`pageshow`,t=>{if(!t.persisted)return;let n=e.querySelector(`option[selected]`)?.index;n!==e.selectedIndex&&(e.selectedIndex=n??0)}))}};customElements.define(`starlight-lang-select`,e);</script></div></div></header><nav class="sidebar print:hidden astro-yntsjkba" aria-label="主要"><button popovertarget="starlight__sidebar" class="sl-menu-button sl-flex md:sl-hidden print:hidden astro-r2osgdlg"><svg aria-hidden="true" class="open-menu astro-r2osgdlg astro-hkc32dio" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M3 8h18a1 1 0 1 0 0-2H3a1 1 0 0 0 0 2Zm18 8H3a1 1 0 0 0 0 2h18a1 1 0 0 0 0-2Zm0-5H3a1 1 0 0 0 0 2h18a1 1 0 0 0 0-2Z"/></svg><svg aria-hidden="true" class="close-menu astro-r2osgdlg astro-hkc32dio" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="m13.41 12 6.3-6.29a1.004 1.004 0 1 0-1.42-1.42L12 10.59l-6.29-6.3a1.004 1.004 0 0 0-1.42 1.42l6.3 6.29-6.3 6.29a1 1 0 0 0 0 1.42.998.998 0 0 0 1.42 0l6.29-6.3 6.29 6.3a.999.999 0 0 0 1.42 0 1 1 0 0 0 0-1.42L13.41 12Z"/></svg><span class="sr-only astro-r2osgdlg">菜单</span></button><script type="module">var e=class extends HTMLElement{constructor(){super();let e=matchMedia(`(min-width: 50em)`),t=()=>{this.popover=e.matches?null:`auto`};t(),e.addEventListener(`change`,()=>t()),this.addEventListener(`toggle`,({newState:e})=>this.trapFocus(e===`open`))}trapFocus(e){document.querySelectorAll(`.main-frame, .sl-skip-link`).forEach(t=>{t.toggleAttribute(`inert`,e)})}};customElements.define(`sl-sidebar-pane`,e);</script><sl-sidebar-pane popover id="starlight__sidebar" class="sidebar-pane astro-yntsjkba"><div class="sidebar-content sl-flex astro-yntsjkba"><sl-sidebar-state-persist data-hash="1gq6nwq" class="astro-ipdry5cl"><script aria-hidden="true">
+		(() => {
+			try {
+				if (!matchMedia('(min-width: 50em)').matches) return;
+				/** @type {HTMLElement | null} */
+				const target = document.querySelector('sl-sidebar-state-persist');
+				const state = JSON.parse(sessionStorage.getItem('sl-sidebar-state') || '0');
+				if (!target || !state || target.dataset.hash !== state.hash) return;
+				window._starlightScrollRestore = state.scroll;
+				customElements.define(
+					'sl-sidebar-restore',
+					class SidebarRestore extends HTMLElement {
+						connectedCallback() {
+							try {
+								const idx = parseInt(this.dataset.index || '');
+								const details = this.closest('details');
+								if (details && typeof state.open[idx] === 'boolean') details.open = state.open[idx];
+							} catch {}
+						}
+					}
+				);
+			} catch {}
+		})();
+	</script><ul class="top-level astro-rmhv4bp6"><li class="astro-rmhv4bp6"><details open class="astro-rmhv4bp6"><summary class="astro-rmhv4bp6"><span class="group-label astro-rmhv4bp6"><span class="large astro-rmhv4bp6">Benchmarks</span></span><svg aria-hidden="true" class="caret astro-rmhv4bp6 astro-hkc32dio" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg></summary><sl-sidebar-restore data-index="0"></sl-sidebar-restore><ul class="astro-rmhv4bp6"><li class="astro-rmhv4bp6"><details open class="astro-rmhv4bp6"><summary class="astro-rmhv4bp6"><span class="group-label astro-rmhv4bp6"><span class="large astro-rmhv4bp6">Snake</span></span><svg aria-hidden="true" class="caret astro-rmhv4bp6 astro-hkc32dio" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg></summary><sl-sidebar-restore data-index="1"></sl-sidebar-restore><ul class="astro-rmhv4bp6"><li class="astro-rmhv4bp6"><a href="/vdec/benchmarks/snake/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Snake</span></a></li><li class="astro-rmhv4bp6"><a href="/vdec/benchmarks/snake/examples/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Snake · 完整题库</span></a></li><li class="astro-rmhv4bp6"><a href="/vdec/benchmarks/snake/guide/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Snake 任务讲解</span></a></li><li class="astro-rmhv4bp6"><a href="/vdec/benchmarks/snake/sandbox/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Snake · 交互沙盒</span></a></li></ul></details></li><li class="astro-rmhv4bp6"><details open class="astro-rmhv4bp6"><summary class="astro-rmhv4bp6"><span class="group-label astro-rmhv4bp6"><span class="large astro-rmhv4bp6">Brush</span></span><svg aria-hidden="true" class="caret astro-rmhv4bp6 astro-hkc32dio" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg></summary><sl-sidebar-restore data-index="2"></sl-sidebar-restore><ul class="astro-rmhv4bp6"><li class="astro-rmhv4bp6"><a href="/vdec/benchmarks/brush/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Brush</span></a></li><li class="astro-rmhv4bp6"><a href="/vdec/benchmarks/brush/examples/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Brush · 完整题库</span></a></li><li class="astro-rmhv4bp6"><a href="/vdec/benchmarks/brush/guide/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Brush 任务讲解</span></a></li><li class="astro-rmhv4bp6"><a href="/vdec/benchmarks/brush/reproduction/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">BrushBench v1：看图定位与画笔状态控制</span></a></li><li class="astro-rmhv4bp6"><a href="/vdec/benchmarks/brush/sandbox/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Brush · 交互沙盒</span></a></li></ul></details></li><li class="astro-rmhv4bp6"><details open class="astro-rmhv4bp6"><summary class="astro-rmhv4bp6"><span class="group-label astro-rmhv4bp6"><span class="large astro-rmhv4bp6">Drawing</span></span><svg aria-hidden="true" class="caret astro-rmhv4bp6 astro-hkc32dio" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg></summary><sl-sidebar-restore data-index="3"></sl-sidebar-restore><ul class="astro-rmhv4bp6"><li class="astro-rmhv4bp6"><a href="/vdec/benchmarks/drawing/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Drawing</span></a></li><li class="astro-rmhv4bp6"><a href="/vdec/benchmarks/drawing/examples/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Drawing · 完整题库</span></a></li><li class="astro-rmhv4bp6"><a href="/vdec/benchmarks/drawing/guide/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Drawing 模型输入与操作教学</span></a></li><li class="astro-rmhv4bp6"><a href="/vdec/benchmarks/drawing/reproduction/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">VDecision DrawingBench v2</span></a></li><li class="astro-rmhv4bp6"><a href="/vdec/benchmarks/drawing/sandbox/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Drawing · 交互沙盒</span></a></li></ul></details></li></ul></details></li><li class="astro-rmhv4bp6"><details open class="astro-rmhv4bp6"><summary class="astro-rmhv4bp6"><span class="group-label astro-rmhv4bp6"><span class="large astro-rmhv4bp6">Papers</span></span><svg aria-hidden="true" class="caret astro-rmhv4bp6 astro-hkc32dio" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg></summary><sl-sidebar-restore data-index="4"></sl-sidebar-restore><ul class="astro-rmhv4bp6"><li class="astro-rmhv4bp6"><a href="/vdec/papers/babyvision/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">BabyVision</span></a></li><li class="astro-rmhv4bp6"><a href="/vdec/papers/genception/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">GenCeption：从视频生成到视觉感知</span></a></li></ul></details></li><li class="astro-rmhv4bp6"><details open class="astro-rmhv4bp6"><summary class="astro-rmhv4bp6"><span class="group-label astro-rmhv4bp6"><span class="large astro-rmhv4bp6">Exps</span></span><svg aria-hidden="true" class="caret astro-rmhv4bp6 astro-hkc32dio" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg></summary><sl-sidebar-restore data-index="5"></sl-sidebar-restore><ul class="astro-rmhv4bp6"><li class="astro-rmhv4bp6"><a href="/vdec/exps/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Exps · 运行与复现</span></a></li><li class="astro-rmhv4bp6"><a href="/vdec/exps/brush-study-plan/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Brush Study 实验配置</span></a></li><li class="astro-rmhv4bp6"><a href="/vdec/exps/input-assembly/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">输入拼接实验室</span></a></li><li class="astro-rmhv4bp6"><a href="/vdec/exps/metrics/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Benchmark 说明：main-v1</span></a></li><li class="astro-rmhv4bp6"><a href="/vdec/exps/reproduction/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">三模型规划与视觉推理实验</span></a></li></ul></details></li><li class="astro-rmhv4bp6"><details open class="astro-rmhv4bp6"><summary class="astro-rmhv4bp6"><span class="group-label astro-rmhv4bp6"><span class="large astro-rmhv4bp6">Studies</span></span><svg aria-hidden="true" class="caret astro-rmhv4bp6 astro-hkc32dio" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg></summary><sl-sidebar-restore data-index="6"></sl-sidebar-restore><ul class="astro-rmhv4bp6"><li class="astro-rmhv4bp6"><a href="/vdec/studies/brush/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Brush Study</span></a></li><li class="astro-rmhv4bp6"><a href="/vdec/studies/snake/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Snake Study</span></a></li></ul></details></li><li class="astro-rmhv4bp6"><details open class="astro-rmhv4bp6"><summary class="astro-rmhv4bp6"><span class="group-label astro-rmhv4bp6"><span class="large astro-rmhv4bp6">Archive</span></span><svg aria-hidden="true" class="caret astro-rmhv4bp6 astro-hkc32dio" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg></summary><sl-sidebar-restore data-index="7"></sl-sidebar-restore><ul class="astro-rmhv4bp6"><li class="astro-rmhv4bp6"><a href="/vdec/archive/backend-report/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">三模型历史实验结果</span></a></li><li class="astro-rmhv4bp6"><a href="/vdec/archive/drawing-v1/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">Drawing v1（历史协议）</span></a></li><li class="astro-rmhv4bp6"><a href="/vdec/archive/pre-main/" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">旧版运行手册</span></a></li><li class="astro-rmhv4bp6"><a href="/vdec/archive/snake-plan/" aria-current="page" class="astro-rmhv4bp6"><span class="astro-rmhv4bp6">早期实验计划：先排除固定策略偏差</span></a></li></ul></details></li></ul><script aria-hidden="true">
+		(() => {
+			const scroller = document.getElementById('starlight__sidebar');
+			if (!window._starlightScrollRestore || !scroller) return;
+			scroller.scrollTop = window._starlightScrollRestore;
+			delete window._starlightScrollRestore;
+		})();
+	</script></sl-sidebar-state-persist><div class="md:sl-hidden"><div class="mobile-preferences sl-flex astro-p4azlveh"><div class="social-icons astro-p4azlveh"><a href="https://github.com/donglinkang2021/vdec" rel="me" class="sl-flex astro-n2mnl6yq"><span class="sr-only astro-n2mnl6yq">公开站点</span><svg aria-hidden="true" class="astro-n2mnl6yq astro-hkc32dio" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M12 .3a12 12 0 0 0-3.8 23.38c.6.12.83-.26.83-.57L9 21.07c-3.34.72-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.08-.74.09-.73.09-.73 1.2.09 1.83 1.24 1.83 1.24 1.08 1.83 2.81 1.3 3.5 1 .1-.78.42-1.31.76-1.61-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.14-.3-.54-1.52.1-3.18 0 0 1-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.28-1.55 3.29-1.23 3.29-1.23.64 1.66.24 2.88.12 3.18a4.65 4.65 0 0 1 1.23 3.22c0 4.61-2.8 5.63-5.48 5.92.42.36.81 1.1.81 2.22l-.01 3.29c0 .31.2.69.82.57A12 12 0 0 0 12 .3Z"/></svg></a></div><starlight-theme-select><label style="--sl-select-width: 6.25em" class="astro-2z5xp7gb"><span class="sr-only astro-2z5xp7gb">选择主题</span><svg aria-hidden="true" class="icon label-icon astro-2z5xp7gb astro-hkc32dio" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M21 14h-1V7a3 3 0 0 0-3-3H7a3 3 0 0 0-3 3v7H3a1 1 0 0 0-1 1v2a3 3 0 0 0 3 3h14a3 3 0 0 0 3-3v-2a1 1 0 0 0-1-1ZM6 7a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v7H6V7Zm14 10a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-1h16v1Z"/></svg><select autocomplete="off" class="astro-2z5xp7gb"><option value="dark" class="astro-2z5xp7gb">深色</option><option value="light" class="astro-2z5xp7gb">浅色</option><option value="auto" selected class="astro-2z5xp7gb">自动</option></select><svg aria-hidden="true" class="icon caret astro-2z5xp7gb astro-hkc32dio" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M17 9.17a1 1 0 0 0-1.41 0L12 12.71 8.46 9.17a1 1 0 1 0-1.41 1.42l4.24 4.24a1.002 1.002 0 0 0 1.42 0L17 10.59a1.002 1.002 0 0 0 0-1.42Z"/></svg></label></starlight-theme-select><script>
+	StarlightThemeProvider.updatePickers();
+</script></div></div></div></sl-sidebar-pane></nav><div class="main-frame astro-yntsjkba"><script type="module">var e=document.getElementById(`starlight__sidebar`),t=e?.querySelector(`sl-sidebar-state-persist`),n=`sl-sidebar-state`,r=()=>{let r=[],i=t?.dataset.hash||``;try{let e=sessionStorage.getItem(n),t=JSON.parse(e||`{}`);Array.isArray(t.open)&&t.hash===i&&(r=t.open)}catch{}return{hash:i,open:r,scroll:e?.scrollTop||0}},i=e=>{try{sessionStorage.setItem(n,JSON.stringify(e))}catch{}},a=()=>i(r()),o=(e,t)=>{let n=r();n.open[t]=e,i(n)};t?.addEventListener(`click`,e=>{if(!(e.target instanceof Element))return;let t=e.target.closest(`summary`)?.closest(`details`);if(!t)return;let n=t.querySelector(`sl-sidebar-restore`),r=parseInt(n?.dataset.index||``);isNaN(r)||o(!t.open,r)}),addEventListener(`visibilitychange`,()=>{document.visibilityState===`hidden`&&a()});</script><div class="lg:sl-flex astro-lrzkfocr"><aside class="right-sidebar-container print:hidden astro-lrzkfocr"><div class="right-sidebar astro-lrzkfocr"><div class="lg:sl-hidden astro-qok35upx"><mobile-starlight-toc data-min-h="2" data-max-h="3" class="astro-66cqc7ze"><nav aria-labelledby="starlight__on-this-page--mobile" class="astro-66cqc7ze"><details id="starlight__mobile-toc" class="astro-66cqc7ze"><summary id="starlight__on-this-page--mobile" class="sl-flex astro-66cqc7ze"><span class="toggle sl-flex astro-66cqc7ze">本页内容<svg aria-hidden="true" class="caret astro-66cqc7ze astro-hkc32dio" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg></span><span class="display-current astro-66cqc7ze"></span></summary><div class="dropdown astro-66cqc7ze"><ul class="isMobile astro-jugkfwgx" style="--depth: 0;"><li style="--depth: 0;" class="astro-jugkfwgx"><a href="#_top" style="--depth: 0;" class="astro-jugkfwgx"><span style="--depth: 0;" class="astro-jugkfwgx">概述</span></a></li></ul></div></details></nav></mobile-starlight-toc><script type="module" src="/vdec/_astro/MobileTableOfContents.astro_astro_type_script_index_0_lang.C3fM4Kra.js"></script></div><div class="right-sidebar-panel sl-hidden lg:sl-block astro-qok35upx"><div class="sl-container astro-qok35upx"><starlight-toc data-min-h="2" data-max-h="3"><nav aria-labelledby="starlight__on-this-page"><h2 id="starlight__on-this-page">本页内容</h2><ul class="astro-jugkfwgx" style="--depth: 0;"><li style="--depth: 0;" class="astro-jugkfwgx"><a href="#_top" style="--depth: 0;" class="astro-jugkfwgx"><span style="--depth: 0;" class="astro-jugkfwgx">概述</span></a></li></ul></nav></starlight-toc><script type="module" src="/vdec/_astro/TableOfContents.astro_astro_type_script_index_0_lang.BpJaGz7G.js"></script></div></div></div></aside><div class="main-pane astro-lrzkfocr"><main data-pagefind-body class="astro-g5ptsecz" lang="zh-CN" dir="ltr"><div class="content-panel astro-a7po4psb"><div class="sl-container astro-a7po4psb"><h1 id="_top" class="astro-bebwqqxs">早期实验计划：先排除固定策略偏差</h1></div></div><div class="content-panel astro-a7po4psb"><div class="sl-container astro-a7po4psb"><div class="sl-markdown-content"><p><span id="制定视觉系统贪吃蛇实验计划"></span></p>
+<div class="sl-heading-wrapper level-h1"><h1 id="早期实验计划先排除固定策略偏差">早期实验计划：先排除固定策略偏差</h1><a class="sl-anchor-link" href="#早期实验计划先排除固定策略偏差"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore="">Section titled “早期实验计划：先排除固定策略偏差”</span></a></div>
+<p>这份历史计划解释旧测试集的问题，并提出后续实验。它不是当前配置说明；文中的待办事项反映当时进度。</p>
+<p><strong>旧测试集中，固定左转就能得到 100% 安全率。</strong> 48 张图只有直行或右转危险，左转始终安全。下表由环境真值计算，不是模型实测。</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>策略</th><th align="right">全体截图一步安全率</th><th align="right">12 张危险截图上的安全率</th><th align="right">安全且趋近食物率</th></tr></thead><tbody><tr><td>均匀随机选动作，期望值</td><td align="right">91.67%</td><td align="right">66.67%</td><td align="right">44.44%</td></tr><tr><td>永远左转</td><td align="right"><strong>100%</strong></td><td align="right"><strong>100%</strong></td><td align="right"><strong>50%</strong></td></tr><tr><td>永远直行</td><td align="right">83.33%</td><td align="right">33.33%</td><td align="right">33.33%</td></tr><tr><td>永远右转</td><td align="right">91.67%</td><td align="right">66.67%</td><td align="right">50%</td></tr></tbody></table>
+<p>APC 组 Qwen3.5 的 <code dir="auto">shared_full + yes_no_naive_boxed</code> 在 288 次评分中全部左转。因此，高安全率不能证明模型会根据截图避险。</p>
+<p>当时建议按以下顺序验证：</p>
+<ol>
+<li>平衡左、直、右的危险位置，并让尾巴在图上可辨认。</li>
+<li>将 plan 预算从 128 提高到 512、1024，检查策略是否完整。</li>
+<li>比较当前截图的直接作答与逐题 CoT，定位视觉能力差距。</li>
+<li>用 20–30 个配对 seed 做闭环，检查食物数、碰撞和延迟。</li>
+<li>只有 teacher 优势稳定后，才考虑蒸馏。</li>
+</ol>
+<details markdown="1">
+<summary>查看原始讨论、诊断依据与五步计划</summary>
+<blockquote>
+<p>请你结合 docs/standard_backend_report.md 为我规划一下我的下一步最应该做什么，（从第一性出发的话，我目前是想做一个利用模型 visual system 1 能力，快速打贪吃蛇游戏的一个方法，后面的话我觉得可以接入我的 ../vdisitll 中进行训练，这是长期规划），短期规划是我目前思考的是我应该先把 plan 允许的长度开长一点再测试一下（包括 cot 的更好的消融），以及对于安全的 case 我再丰富一下来单独做一个 bench，还有一些 report 里的内容我没有读懂，请你结合我的 report 和长远规划思考一下我当前最应该做哪些探索或者验证</p>
+</blockquote>
+<details markdown="1"><summary>12 previous messages</summary>
+<blockquote>
+<p>我先读报告和相关实验配置，再结合你的长期目标，梳理哪些结论已经可信、哪些关键假设还需要验证，以及下一轮实验的优先级。</p>
+<details markdown="1"><summary>Explored a file, a search, a list, ran 3 commands</summary>
+<ul>
+<li>
+<p>Ran <code dir="auto">for path in /AGENTS.md /inspire/AGENTS.md /inspire/hdd/AGENTS.md /inspire/hdd/global_user/AGENTS.md /inspire/hdd/global_user/donglinkang-253108120084/AGENTS.md /inspire/hdd/global_user/donglinkang-253108120084/projects/AGENTS.md; do if [ -f "$path" ]; then printf '\n%s\n' "$path"; cat "$path"; fi; done</code></p>
+</li>
+<li>
+<p>Ran <code dir="auto">pwd &#x26;&#x26; rg --files -g 'AGENTS.md' -g '*report*' -g '*README*' -g '*plan*' -g '*cot*' -g '*bench*' -g '*config*' | head -100</code></p>
+</li>
+</ul>
+<details markdown="1"><summary>Explored 2 files, a search, a list</summary>
+<ul>
+<li>Read <code dir="auto">./docs/standard_backend_report.md</code></li>
+<li>Read <code dir="auto">./docs/standard_backend_report.md</code></li>
+<li>Listed files</li>
+<li>Searched for <code dir="auto">^##|^###|128|截断|预算|规划|安全|CoT|cot</code> in <code dir="auto">standard_backend_report.md</code></li>
+</ul>
+</details>
+<ul>
+<li>Ran <code dir="auto">cat README.md; if [ -d ../vdisitll ]; then rg --files ../vdisitll -g AGENTS.md -g 'README*' -g '*.md' | head -50; else ls -d ../*dist* ../*disi* 2>/dev/null; fi</code></li>
+</ul>
+</details>
+<p>报告里你最想进一步解释的是哪一部分？我会先完整分析实验优先级；另外你写的 ../vdisitll 在目录中不存在，我先按现有的 ../vdistill 理解。</p>
+<ul>
+<li>plan / CoT 的对照到底说明了什么</li>
+<li>概率、boxed、顺序偏置与数值漂移</li>
+<li>安全率、碰撞召回与 benchmark 设计</li>
+</ul>
+<details markdown="1"><summary>Explored 4 files, ran 2 commands</summary>
+<details markdown="1"><summary>Explored 4 files</summary>
+<ul>
+<li>Read <code dir="auto">./README.md</code></li>
+<li>Read <code dir="auto">./docs/standard_backend_report.md</code></li>
+<li>Read <code dir="auto">./src/vdecision/benches/snake/episode.py</code></li>
+<li>Read <code dir="auto">./src/vdecision/benches/snake/environment.py</code></li>
+</ul>
+</details>
+<ul>
+<li>
+<p>Ran <code dir="auto">cat src/vdecision/core/generation.py; sed -n '1,220p' src/vdecision/benches/snake/cli.py; git status --short</code></p>
+</li>
+<li>
+<p>Ran <code dir="auto">rg --files --hidden -g AGENTS.md -g 'README*' ../vdistill | head -55; sed -n '1,200p' ../vdistill/README.md; if [ -f ../vdistill/AGENTS.md ]; then cat ../vdistill/AGENTS.md; fi</code></p>
+</li>
+</ul>
+</details>
+<p>报告里有两个关键限制：144 份短计划全部被截断；现有截图即使均匀随机选动作，一步安全率也能达到 91.67%。所以，加长 plan 值得做，但需要配合更有区分度的安全测试，才能判断收益。</p>
+<p>代码里已经有闭环游戏入口。另外，名为 <code dir="auto">per_step_cot</code> 的分支目前仍只看外观示例图生成策略，并没有针对当前局面推理；下一轮 CoT 消融需要把这两件事明确分开。</p>
+<details markdown="1"><summary>Explored 7 files, 4 searches, a list, ran a command, searched the web</summary>
+<p>Searched the web for <code dir="auto">site.proceedings.mlr.press v15 ross11a imitation learning dataset aggregation ...</code></p>
+<details markdown="1"><summary>Explored 3 files, 2 searches, a list</summary>
+<ul>
+<li>Read <code dir="auto">/inspire/hdd/global_user/donglinkang-253108120084/projects/vdistill/AGENTS.md</code></li>
+<li>Listed files in <code dir="auto">vdistill</code></li>
+<li>Searched for <code dir="auto">experience|dynamic|probe|vision|multimodal|distill|harness</code></li>
+<li>Read <code dir="auto">./src/vdecision/benches/snake/bench.py</code></li>
+<li>Read <code dir="auto">./src/vdecision/core/scoring.py</code></li>
+<li>Searched for <code dir="auto">def plan|plan_tokens|thinking_tokens|finish_reason|prefix_mode|def score</code> in <code dir="auto">engine.py</code></li>
+</ul>
+</details>
+<p>Searched the web for <code dir="auto">https://arxiv.org/abs/2407.06023</code></p>
+<details markdown="1"><summary>Explored 4 files, 2 searches</summary>
+<ul>
+<li>Searched for <code dir="auto">probe|boxed|potential|phi|multimodal|image</code> in <code dir="auto">experience_credit.py</code></li>
+<li>Read <code dir="auto">./src/vdecision/core/engine.py</code></li>
+<li>Searched for <code dir="auto">^##|^###</code> in <code dir="auto">standard_backend_report.md</code></li>
+<li>Read <code dir="auto">/inspire/hdd/global_user/donglinkang-253108120084/projects/vdistill/docs/dynamic-experience-plan.md</code></li>
+<li>Read <code dir="auto">/inspire/hdd/global_user/donglinkang-253108120084/projects/vdistill/docs/harness/README.md</code></li>
+<li>Read <code dir="auto">/inspire/hdd/global_user/donglinkang-253108120084/projects/vdistill/src/vdistill/experience_credit.py</code></li>
+</ul>
+</details>
+<ul>
+<li>Ran <code dir="auto">PYTHONPATH=src .venv/bin/python - &#x3C;&#x3C;'PY' from vdecision.benches.snake.environment import Snake, validate_state, action_facts from vdecision.core.artifacts import image_hash cells={(x,y) for x in range(4,7) for y in range(4,8)} paths={} def dfs(path, seen):   if len(path)==len(cells):       paths.setdefault(path[-1], path.copy())       return   x,y=path[-1]   for q in ((x+1,y),(x-1,y),(x,y+1),(x,y-1)):       if q in cells and q not in seen:           dfs(path+[q],seen|{q}) dfs([(4,4),(5,4)],{(4,4),(5,4)}) print('possible_tails',list(paths)) if (4,5) in paths and len(paths)>1:   tail2=next(t for t in paths if t!=(4,5))   for tail in ((4,5),tail2):       game=Snake(0,body=paths[tail],direction=3,food=(1,1))       validate_state(game)       print({'body':game.body,'image_hash':image_hash(game.render()),'actions':action_facts(game)}) PY</code></li>
+</ul>
+</details>
+<p><strong>报告里你最想进一步解释的是哪一部分？我会先完整分析实验优先级；另外你写的 ../vdisitll 在目录中不存在，我先按现有的 ../vdistill 理解。</strong></p>
+<p>安全率、碰撞召回与 benchmark 设计</p>
+<details markdown="1"><summary>Explored 4 files, ran a command</summary>
+<details markdown="1"><summary>Explored 4 files</summary>
+<ul>
+<li>Read <code dir="auto">./src/vdecision/benches/snake/episode.py</code></li>
+<li>Read <code dir="auto">./src/vdecision/benches/snake/environment.py</code></li>
+<li>Read <code dir="auto">./README.md</code></li>
+<li>Read <code dir="auto">./docs/assets/standard_backend_report/apc-readout-failures.json</code></li>
+</ul>
+</details>
+<ul>
+<li>Ran <code dir="auto">head -4 docs/assets/standard_backend_report/three-profile-comparison.csv; sed -n '1016,1069p' docs/standard_backend_report.md; sed -n '1,120p' ../vdistill/src/vdistill/skill_distillation.py; rg --files ../vdistill/src/vdistill ../vdistill/docs ../vdistill/exps | rg 't23|probe|potential' | head -50</code></li>
+</ul>
+</details>
+<p>我会重点解释安全率、碰撞召回和 benchmark 设计，并把它们与闭环表现联系起来。</p>
+<p>另外，检查渲染代码时发现一个会影响新 benchmark 的问题：蛇尾没有独立标记。我用 CPU 构造了两个通过当前状态校验的局面，截图哈希完全相同，但同一个左转动作在一个局面安全、另一个会撞身。扩充尾巴案例时，需要先处理这种单张图无法区分的情况。</p>
+<details markdown="1"><summary>Explored 2 searches, ran 3 commands</summary>
+<details markdown="1"><summary>Explored 2 searches</summary>
+<ul>
+<li>Searched for <code dir="auto">multimodal|vision|images|pixel_values</code> in <code dir="auto">skill_distillation.py</code></li>
+<li>Searched for <code dir="auto">response_mask|replay</code> in <code dir="auto">replay_loss.py</code></li>
+</ul>
+</details>
+<ul>
+<li>
+<p>Ran <code dir="auto">PYTHONPATH=src .venv/bin/python - &#x3C;&#x3C;'PY' from collections import Counter from vdecision.benches.snake.environment import diagnostic_cases, action_facts cases=diagnostic_cases() facts=[action_facts(g) for _,_,g in cases] danger=[f for f in facts if any(v['collision'] for v in f.values())] print('case_count',len(cases),'hazard_cases',len(danger)) print('dangerous_action_counts',dict(Counter(a for f in facts for a,v in f.items() if v['collision']))) for action in ('left','straight','right'):   print(action, {'safe_all':sum(not f[action]['collision'] for f in facts)/len(facts), 'safe_hazard':sum(not f[action]['collision'] for f in danger)/len(danger), 'safe_approach':sum(f[action]['approaches_food'] for f in facts)/len(facts)}) PY</code></p>
+</li>
+<li>
+<p>Ran <code dir="auto">python - &#x3C;&#x3C;'PY' import json from pathlib import Path for name in ['provenance.json','apc-insights.json','insights.json']:  p=Path('docs/assets/standard_backend_report')/name  d=json.loads(p.read_text())  print(name, list(d) if isinstance(d,dict) else len(d))  if name=='provenance.json': print(json.dumps(d,ensure_ascii=False)[:5000]) PY</code></p>
+</li>
+<li>
+<p>Ran <code dir="auto">python - &#x3C;&#x3C;'PY' import json from collections import Counter from pathlib import Path roots=['standard-six-20261012T123333Z-cu132-seeds','standard-transformers-batched-20261012T140259Z','standard-vllm-default-apc-20261013T031635Z'] for root in roots:  p=Path('outputs')/root/'merged/qwen35-4b/events.jsonl'  if not p.exists(): print(root,'missing');continue  counts={};states={}  with p.open() as f: for line in f:  d=json.loads(line)  if d.get('type')!='result' or d.get('stage')!='readout' or d.get('status')!='success':continue  states[d['case_id']]=d.get('evaluation_actions',{})  if d.get('method')=='yes_no_naive_boxed':   k=d['condition'];counts.setdefault(k,Counter())[d.get('action')]+=1  print(root,'action_counts',counts)  print('historical_states',len(states),'danger_actions',Counter(a for fact in states.values() for a,v in fact.items() if v['collision']))  if states: print('fixed_left',sum(not f['left']['collision'] for f in states.values()),sum(f['left']['approaches_food'] for f in states.values())) PY</code></p>
+</li>
+</ul>
+</details>
+<p>复核原始记录后，发现一个直接影响实验优先级的问题：这 48 张图里，固定“永远左转”就能达到 100% 安全率、50% 趋近食物率。APC 组 Qwen3.5 的 <code dir="auto">shared_full + yes_no_naive_boxed</code> 恰好是 288 次全部左转。</p>
+<p>所以，这一组的满分安全率还不能证明模型会根据图片避险。下一步应先补上左转也会危险、必须根据画面改变动作的局面，再比较完整 plan 和 CoT 的收益。</p>
+<details markdown="1"><summary>Ran a command</summary>
+<ul>
+<li>Ran <code dir="auto">nl -ba src/vdecision/benches/snake/environment.py | sed -n '124,174p'; python - &#x3C;&#x3C;'PY' import json from pathlib import Path p=Path('outputs/standard-vllm-default-apc-20261013T031635Z/merged/qwen35-4b/events.jsonl') with p.open() as f:  for i,line in enumerate(f,1): d=json.loads(line) if d.get('type')=='result' and d.get('stage')=='readout' and d.get('condition')=='shared_full' and d.get('method')=='yes_no_naive_boxed':  print('first_full_naive_boxed_result_line',i,'event',d.get('id'),'action',d.get('action'));break PY</code></li>
+</ul>
+</details>
+</blockquote>
+</details>
+<p>我建议你的下一步按这个顺序推进：<strong>先让安全 benchmark 能识别“模型有没有根据画面做决策”，再验证完整 plan 和真正的当前局面 CoT，随后尽早跑闭环。</strong> 加长 plan 是必要修正，但目前最影响结论可信度的是评测集的区分能力。</p>
+<p>从第一性出发，你想验证的方法可以明确为：<strong>模型读取当前截图，通过少量前向计算、无需每步生成长推理，就能持续吃食物并避免死亡。</strong> 通用规划可以作为一次性准备；最终需要证明的是它提高了后续视觉决策的质量，并且成本能被摊薄。</p>
+<p>我读了报告、相关实现和 <code dir="auto">../vdistill</code> 的部分训练代码，还对原始实验记录做了 CPU 复核。这里有一个值得优先处理的新发现。</p>
+<p><strong>现有测试集上，“永远左转”已经可以拿到 100% 安全率。</strong></p>
+<p>48 张截图中，危险动作只有直行和右转：8 张直行危险、4 张右转危险，左转在全部截图上都安全。下面是不需要看图的基线，直接由环境真值计算：</p>
+<p>固定策略参照见本页开头。</p>
+<p>更关键的是，<strong>APC 组 Qwen3.5 的 <code dir="auto">shared_full + yes_no_naive_boxed</code>，实际就是 288 次全部左转</strong>，恰好得到 100% 安全、50% 趋近食物、100% 排列一致。原始记录（仓库内证据：<code dir="auto">../../outputs/standard-vllm-default-apc-20261013T031635Z/merged/qwen35-4b/events.jsonl</code>）</p>
+<p>因此，这组规划后的提升，目前无法区分“模型学会了避险”和“模型变得更偏爱左转”。<strong>只看危险截图也不足以解决这个问题，还必须平衡危险动作的位置。</strong> 四种旋转会改变绝对朝向，却保持相对左转、右转关系，所以旋转扩增没有消除这个偏差。局面生成代码（仓库内证据：<code dir="auto">../../src/vdecision/benches/snake/archive/environment.py</code>）</p>
+<p>你关心的安全率与碰撞召回，核心区别在于它们回答不同问题：</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>指标</th><th>回答的问题</th><th>单独使用时的漏洞</th></tr></thead><tbody><tr><td>碰撞判断准确率</td><td>所有“状态＋动作”中，判断对了多少？</td><td>安全样本多时，全部回答安全也能高分</td></tr><tr><td>危险召回率</td><td>真正会撞的动作中，识别出了多少？</td><td>全部回答危险可以拿到 100%</td></tr><tr><td>危险误报率</td><td>真正安全的动作中，多少被误判危险？</td><td>需要与危险召回一起看</td></tr><tr><td>动作安全率</td><td>最终选出的动作，有多少不会立即撞？</td><td>固定动作可能利用数据偏差拿高分</td></tr></tbody></table>
+<p>报告中 <code dir="auto">choice_boxed + no_plan</code> 的碰撞题，共有 264 次真实安全、24 次真实危险；全部答安全，就得到 <strong>91.67% 判断准确率、0% 危险召回率</strong>。这说明它在该测试条件下没有检出危险。<a href="/vdec/archive/backend-report/">报告 §3.4</a></p>
+<p>还要区分“会判断危险”和“会选动作”：模型可能把三个动作都判断正确，最终仍选错；也可能不会解释碰撞，却碰巧选到安全动作。因此，碰撞判断与实际动作选择应分别测量。</p>
+<p>我会按下面五步推进。</p>
+<ol>
+<li>
+<p><strong>先做一个小而有区分度的安全 benchmark。</strong></p>
+<p>首轮建议用 <strong>90–150 个不同的基础局面</strong>，按三个动作中有 <strong>3、2、1 个安全动作</strong>分层采样。完全无路可走的局面单列，用于诊断，不混进“能否避免碰撞”的主指标。</p>
+<p>关键设计是让左转、直行、右转都充分出现为危险动作，也都出现为唯一安全动作。覆盖墙角、撞身、尾巴腾空、食物诱导进入危险方向等情况。全安全局面仍有价值：它们可以测危险误报，以及模型是否追逐食物。</p>
+<p>我最建议加入<strong>成对的局面</strong>：保持大部分画面相同，只改变一个会影响决策的因素。例如，把前方障碍移开；保持身体占用格不变但改变可辨认的尾巴位置；移动食物使应选动作改变。检查模型是否随关键视觉变化改变判断，比单看总分更接近你想证明的视觉能力。</p>
+<p>每次报告至少包含：危险召回、危险误报、危险局面的动作安全率、三个动作分别的表现，以及完整安全动作集合的判断正确率。多个动作都安全时，允许多个正确答案，不要人为指定唯一“正确动作”。</p>
+<p>开发集和测试集按基础局面或来源轨迹划分，同一局面的旋转、镜像和成对变体放在同一侧。排列次数和旋转次数用于测一致性，不能当成新增独立样本。</p>
+<p><strong>扩集前还需要解决一个观测问题。</strong> 当前所有蛇身格使用同一种颜色，蛇尾没有标记。我构造了两个通过当前合法性校验的状态，截图哈希完全相同，但左转在一个状态进入即将腾空的尾巴，在另一个状态撞到身体。这意味着密集身体局面中，单帧截图可能不足以确定标签。渲染与碰撞规则（仓库内证据：<code dir="auto">../../src/vdecision/benches/snake/archive/environment.py</code>）</p>
+<p>如果你先研究单帧的一步安全，建议给蛇尾增加视觉标记；后续涉及身体移动顺序和长期规划时，再考虑连接线或历史帧。这是让输入包含必要信息。</p>
+</li>
+<li>
+<p><strong>把 plan 加长，但以“计划完整”为目标，不以 token 数更多为目标。</strong></p>
+<p>报告的 <strong>144 份 plan 全部在 128 token 截断</strong>，所以现在确实不足以评价完整策略的效果。<a href="/vdec/archive/backend-report/">报告 §3.5</a></p>
+<p>可以先做一个很小的生成检查：保持提示和 thinking 不变，比较 plan 上限 <strong>128、512、1024</strong>，记录实际长度、停止原因、是否完成以及是否包含明确决策规则。thinking 是否被强制截断也要单独记录。</p>
+<p>我建议把两个问题分开：先固定提示检查预算是否足够，再改提示要求简洁、完整的决策规则。否则长度和提示同时变化，很难解释收益。</p>
+<p>完整性检查通过后，在新安全集上比较：</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>条件</th><th>想验证什么</th></tr></thead><tbody><tr><td>无 plan</td><td>原始快速决策能力</td></tr><tr><td>人工写好的简洁通用规则</td><td>清楚的策略上下文是否有帮助</td></tr><tr><td>无 thinking 生成的完整 plan</td><td>直接生成策略的效果</td></tr><tr><td>thinking 后生成的完整 plan，仅保留 plan</td><td>推理生成的摘要是否有用</td></tr><tr><td>同一份 thinking＋同一份 plan</td><td>保留推理正文是否进一步帮助</td></tr></tbody></table>
+<p>人工规则应在开发集上确定，不针对测试局面写答案。它的价值是提供一个质量较明确的对照：如果它有效而模型生成的 plan 无效，下一步应改善计划生成；如果都无效，就要关注模型是否能把规则应用到截图上。</p>
+<p><code dir="auto">full</code> 与 <code dir="auto">plan_only</code> 的比较只能回答“保留这段推理上下文有没有帮助”；它同时改变了内容和上下文长度。出现可靠收益后，再补长度匹配等进一步消融。</p>
+</li>
+<li>
+<p><strong>增加真正看当前局面的 CoT，用它定位能力缺口。</strong></p>
+<p>现有共享规划只看外观示例，因此它测试的是“通用策略能否帮助快速决策”。<strong>它没有回答：同一张测试截图，给模型更多推理时间，能不能做对？</strong></p>
+<p>代码中名为 <code dir="auto">per_step_cot</code> 的分支，生成规划时仍传入 <code dir="auto">reference_image()</code>，需要另行实现针对当前截图的推理条件。对应代码（仓库内证据：<code dir="auto">../../src/vdecision/benches/snake/episode.py</code>）</p>
+<p>最有信息量的诊断是这四组：</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>输入</th><th>直接回答</th><th>针对当前局面推理后回答</th></tr></thead><tbody><tr><td>当前截图</td><td>目标快速策略</td><td>潜在的视觉 teacher</td></tr><tr><td>真实结构化状态，仅作诊断</td><td>减少视觉理解负担</td><td>检查规则推理能力</td></tr></tbody></table>
+<p>如果结构化状态明显更好，应重点查视觉定位、空间关系和身体识别；如果当前局面 CoT 明显优于直接回答，就出现了值得压缩或蒸馏的能力差距。如果 CoT 也识别不了危险，暂时不能把它当可靠 teacher。</p>
+<p>结构化真值只放在明确标注的诊断条件中，主方法始终按目标使用截图。</p>
+</li>
+<li>
+<p><strong>尽早跑小规模闭环，检查静态收益能否转化为会玩。</strong></p>
+<p>仓库已经有 <code dir="auto">episode</code> 入口，可以在新安全集有初步结果后，选两三个方法跑 <strong>20–30 个配对游戏 seed</strong> 做探索，不必等待大型 benchmark 完成。<a href="/vdec/archive/pre-main/">现有入口</a></p>
+<p>主要看每局吃到的食物数、存活步数、可避免碰撞、重复状态比例，以及每步延迟的 P50/P95。固定左转可能在局部循环，因此存活也要与进食一起看。当前 128 步上限适合初测；若大量方法达到上限，再延长，否则容易把截断当成长期成功。</p>
+<p>基线保留随机、固定动作，并增加使用环境真值的简单避撞贪心策略作为能力参照，明确其额外信息来源。</p>
+<p>“快速”需要在连续变化的截图上测量。报告的静态矩阵反复使用相同图片，缓存命中率不能直接代表闭环；输出只有一个 token，也不意味着视觉编码和输入处理免费。共享规划生成成本、模型启动成本与稳定运行时每步成本应分别报告。</p>
+</li>
+<li>
+<p><strong>等 teacher 优势可信后，再接入 <code dir="auto">vdistill</code>。</strong></p>
+<p>我按实际目录 <code dir="auto">../vdistill</code> 理解你的长期规划。那里已有 private skill prompt 的蒸馏和 closed-book replay 相关实现，可以作为连接点；多模态输入、动作标签和闭环采样仍需要专门适配。现有蒸馏模块（仓库内源码）</p>
+<p>最小训练验证可以是：teacher 使用当前局面 CoT 或经验证有效的策略上下文，student 只看截图并输出动作；先训练动作选择与安全判断，再检查是否保持低延迟。这个方向与把 System 2 的输出能力蒸馏到无需中间推理的 System 1 一致，但迁移到 Snake 的收益需要实验确认。<a href="https://arxiv.org/abs/2407.06023">相关研究</a></p>
+<p>后续数据应加入 student 自己玩到的失败局面，再补标注或 teacher 判断。因为动作会改变下一步看到的状态，只在固定截图上训练容易漏掉部署时的分布变化；这是 DAgger 所处理的问题。<a href="https://proceedings.mlr.press/v15/ross11a.html">DAgger 原论文</a></p>
+</li>
+</ol>
+<p>就下一轮实际投入而言，我会先选 <strong>一个模型、当前两个 boxed 读出方法、一个主后端</strong>。优先完成安全集和完整 plan 检查，再加入当前局面 CoT 与小规模闭环；关键差异出来后，用第二个模型和另一后端复核。</p>
+<p><strong>下一轮最值得拿到的证据是：在固定动作无法取巧、截图信息充分的新局面上，完整规划或当前局面 CoT 能稳定减少可避免碰撞；随后，这种优势能被保留在快速闭环决策中。</strong> 这份证据会直接决定你接下来应该优化提示、补视觉训练，还是开始做 teacher→student 蒸馏。</p>
+</details></div><footer class="sl-flex astro-ddtxxk7k"><div class="meta sl-flex astro-ddtxxk7k"></div><div class="pagination-links print:hidden astro-b5raizh3" dir="ltr"><a href="/vdec/archive/pre-main/" rel="prev" class="astro-b5raizh3"><svg aria-hidden="true" class="astro-b5raizh3 astro-hkc32dio" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.5rem;"><path d="M17 11H9.41l3.3-3.29a1.004 1.004 0 1 0-1.42-1.42l-5 5a1 1 0 0 0-.21.33 1 1 0 0 0 0 .76 1 1 0 0 0 .21.33l5 5a1.002 1.002 0 0 0 1.639-.325 1 1 0 0 0-.219-1.095L9.41 13H17a1 1 0 0 0 0-2Z"/></svg><span class="astro-b5raizh3">上一页<br class="astro-b5raizh3"><span class="link-title astro-b5raizh3">旧版运行手册</span></span></a></div></footer></div></div></main></div></div></div></div></body></html>
