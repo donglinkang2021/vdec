@@ -1,0 +1,1 @@
+{"model":"qwen35","kind":"context","origin":"input","ids":[3710,1220,488,635,1727,30,198,3670,25,198,32,13,3608,198,33,13,3166,198,34,13,5758,248046,198,248045,74455,198,3288,248046,198,248045,846,198],"text":"What should you do next?\nOptions:\nA. pick\nB. move\nC. drop<|im_end|>\n<|im_start|>assistant\nmove<|im_end|>\n<|im_start|>user\n"}

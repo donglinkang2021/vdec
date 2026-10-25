@@ -1,0 +1,1 @@
+{"model":"qwen35","parts":[{"ref":"f0","start":0,"end":3},{"ref":"f7","start":3,"end":123},{"ref":"f2","start":123,"end":128},{"ref":"f3","start":128,"end":131},{"ref":"f10","start":131,"end":274}],"images":["4d27d79bd3593862f973d5688a2a58f111d00fe0f19addf3f417583e75d744be"],"tokens":274,"ids_sha256":"67ed46608e6a8f919c864e2286204b2deefb12577b5e55a77e0a584e28cdf2c9"}

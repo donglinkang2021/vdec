@@ -1,0 +1,1 @@
+{"model":"gemma4","kind":"context","origin":"input","ids":[108,3689,1374,611,776,2148,236881,107,8755,236787,107,236776,236761,4351,107,236799,236761,2827,107,236780,236761,7266,106,107,105,4368,107,11047,106,107,105,2364,107],"text":"\n\nWhat should you do next?\nOptions:\nA. pick\nB. move\nC. drop<turn|>\n<|turn>model\nmove<turn|>\n<|turn>user\n"}

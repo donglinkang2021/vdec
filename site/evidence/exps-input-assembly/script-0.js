@@ -44,11 +44,10 @@ window.assemblyReady=(async()=>{
 const $=id=>document.getElementById(id), packed=JSON.parse($('assembly-data').textContent);
 const D=packed;
 const groupCache=new Map();let groupVersion=0;
-async function loadGroup(){const key=state.bench+'-'+state.model,version=++groupVersion;
- if(!groupCache.has(key))groupCache.set(key,fetch(D.groups[key]).then(r=>{if(!r.ok)throw Error('请求数据加载失败');return r.json();}));
- const g=await groupCache.get(key);if(version!==groupVersion)return false;
- Object.assign(D,g);for(const r of Object.values(D.requests))if(!Object.getOwnPropertyDescriptor(r,'text'))Object.defineProperty(r,'text',{get(){return this.parts.map(p=>g.fragments[p.ref].text).join('');},enumerable:true});return true;}
-
+async function getChunk(url){if(!groupCache.has(url))groupCache.set(url,fetch(url).then(r=>{if(!r.ok)throw Error('请求数据加载失败');return r.json();}).catch(e=>{groupCache.delete(url);throw e;}));return groupCache.get(url);}
+async function mergePayload(g){for(const [key,urls] of [["requests",g.request_urls],["fragments",g.fragment_urls]])if(urls)g[key]=Object.fromEntries(await Promise.all(Object.entries(urls).map(async([k,u])=>[k,await getChunk(u)])));Object.assign(D.requests,g.requests||{});Object.assign(D.fragments,g.fragments||{});Object.assign(D.plans,g.plans||{});for(const r of Object.values(g.requests||{}))if(!Object.getOwnPropertyDescriptor(r,'text'))Object.defineProperty(r,'text',{get(){return this.parts.map(p=>D.fragments[p.ref].text).join('');},enumerable:true});}
+async function loadRow(row){if(!row?.payload)return;const g=await getChunk(row.payload);await mergePayload(g);Object.assign(row,g.row);}
+async function loadGroup(version){const key=state.bench+'-'+state.model;const g=await getChunk(D.groups[key]);if(version!==groupVersion)return false;D.records=g.records.map(r=>({...r}));return true;}
 const H=window.AssemblyHelpers,labels=H.labels;
 const methods=['no_plan','shared_full','shared_plan_only','shared_no_think','manual_plan','neutral_prefix','per_step_cot'];
 const methodDescriptions=['直接看当前截图并读出候选。','生成 thinking 与 plan，复用完整轨迹。','与 full 共用轨迹，只保留提取后的 plan。','关闭 thinking，直接生成并复用 plan。','插入完整人工操作清单。','插入不含决策规则的中性正文。','对当前截图和实际问题逐次思考，再直接读出。'];
@@ -71,9 +70,9 @@ function legacyView(){const L=D.legacy,cs=L.cases[state.case],task=L.tasks[L.bin
   note:'真实题目模板；生成正文为占位符，未运行模型。当前图按案例绑定，token 由原文与匹配的 tokenizer 导出。',
   stages:[...planning,...calls]};}
 async function reconcile(changed=null){
- pause();options('bench',['snake','brush','drawing'],{snake:'Snake',brush:'Brush',drawing:'Drawing'});
+ const version=++groupVersion;pause();options('bench',['snake','brush','drawing'],{snake:'Snake',brush:'Brush',drawing:'Drawing'});
  options('model',Object.keys(D.models),Object.fromEntries(Object.entries(D.models).map(([k,v])=>[k,v.name])));
- if(!await loadGroup())return;
+ if(!await loadGroup(version))return;
  options('condition',methods);renderMethods();
  options('method',state.bench==='drawing'?['choice','yes_no','coordinate']:['choice','yes_no']);
  if(state.bench==='drawing'&&methods.indexOf(state.condition)>3){renderUnsupported();syncURL();return;}
@@ -93,6 +92,12 @@ async function reconcile(changed=null){
  rows=rows.filter(r=>r.profile===state.profile);
  options('budget',rows.length?rows.map(r=>r.budget):['0'],{'0':'无／见阶段参数'});rows=rows.filter(r=>String(r.budget)===state.budget);
  options('step',rows.length?rows.map(r=>r.step):['0']);rows=rows.filter(r=>String(r.step)===state.step);
+ if(rows[0]){
+  await loadRow(rows[0]);
+  const previous=D.records.filter(r=>['bench','model','condition','method','task','case','probe','order','profile','budget'].every(k=>String(r[k])===String(rows[0][k]))&&r.protocol===rows[0].protocol&&Number(r.step)<Number(rows[0].step)).sort((a,b)=>Number(b.step)-Number(a.step))[0];
+  await loadRow(previous);
+ }else if(tids){const g=await getChunk(D.legacy_chunks[state.model][state.case]);await mergePayload(g);D.legacy.models[state.model]=g.legacy_model;}
+ if(version!==groupVersion)return;
  view=rows[0]||(tids?legacyView():null);
  if(!view)throw Error('没有可用证据；请重置页面选择。');
  $('support').textContent=state.bench==='snake'?'只有已保存的实测组合显示模型输出。其他题目或排列使用明确标记的模板。':state.bench==='brush'?'Brush v2 七种条件使用生产构造路径；生成正文为占位符，规则动作推进局面。':'Drawing v1 快照支持四种共享计划条件；其他三种尚未实现。';

@@ -1,0 +1,1 @@
+{"model":"qwen3_vl","parts":[{"ref":"f177","start":0,"end":3},{"ref":"f178","start":3,"end":90},{"ref":"f179","start":90,"end":95},{"ref":"f180","start":95,"end":98},{"ref":"f182","start":98,"end":201}],"images":["4d27d79bd3593862f973d5688a2a58f111d00fe0f19addf3f417583e75d744be"],"tokens":201,"ids_sha256":"a1c97508eb9bc87c9d1820976cae19646632f5c8157782b9044ba8f8c33ad999"}

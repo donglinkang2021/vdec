@@ -1,0 +1,1 @@
+{"model":"gemma4","parts":[{"ref":"f1702","start":0,"end":5},{"ref":"f1703","start":5,"end":92},{"ref":"f1704","start":92,"end":97},{"ref":"f1705","start":97,"end":98},{"ref":"f1706","start":98,"end":193}],"images":["4d27d79bd3593862f973d5688a2a58f111d00fe0f19addf3f417583e75d744be"],"tokens":193,"ids_sha256":"990bfba10153d62fd32b1b52c4ba037f3c61787007e187aee78fb4778e896a0e"}
