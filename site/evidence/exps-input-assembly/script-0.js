@@ -179,7 +179,7 @@ function renderEditor(stage,r){
   if(comparison.available&&r){let status=part.end<=comparison.end?'共同前缀':part.start<comparison.end?'部分前缀':'差异后缀';if(part.start>=comparison.end){const prev=comparison.previousIds.slice(part.start,part.end),now=D.fragments[part.ref].ids;if(prev.length===now.length&&now.every((t,i)=>t===prev[i]))status='相同 · 前缀外';}b.append(text('small',status,'cache-state'));}
   b.title=part.scope;b.onclick=()=>{selection=part.key;selectPart(part.index,true);syncURL();};rail.append(b);
   const chunks=part.text.split(/(\n)/);
-  for(const chunk of chunks){if(!chunk)continue;const run=text('span',chunk,'text-run');run.dataset.part=String(part.index);run.dataset.kind=part.kind;
+  for(const chunk of chunks){if(!chunk)continue;const run=text('span',chunk,'text-run');run.dataset.part=String(part.index);run.dataset.kind=part.kind;if(chunk!=='\n'&&!root.querySelector(`[data-part="${part.index}"]`)){run.tabIndex=0;run.setAttribute('role','button');run.setAttribute('aria-label','定位片段：'+(labels[part.kind]||part.kind));}
    if(comparison.available){
     run.dataset.cache=part.end<=comparison.end?'prefix':part.start<comparison.end?'partial':'suffix';
     if(!comparison.identical&&part.start<=comparison.end&&part.end>comparison.end){lineNode.dataset.divergence='true';lineNode.title=`首个差异在此片段：token ${comparison.end}（非实际缓存命中）`;}
@@ -198,8 +198,16 @@ function selectPart(index,reveal=false){
  $('segment-meta').textContent=`${labels[p.kind]} · ${p.scope} · 原始 token [${p.start}, ${p.end})`;
  document.querySelectorAll('#segments button').forEach((b,i)=>b.setAttribute('aria-pressed',String(i===index)));
  document.querySelectorAll('#full-text .text-run').forEach(n=>n.classList.toggle('selected',Number(n.dataset.part)===index));
- if(reveal){const target=$('full-text').querySelector(`[data-part="${index}"]`),editor=$('editor');if(target){const y=target.getBoundingClientRect().top-editor.getBoundingClientRect().top+editor.scrollTop-35;editor.scrollTo({top:Math.max(0,y),behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth'});}const button=$('segments').children[index],rail=$('segments');if(button)rail.scrollTop=Math.max(0,button.offsetTop-rail.offsetTop-20);}
+ if(reveal){const target=$('full-text').querySelector(`[data-part="${index}"]`),editor=$('editor');if(target){const y=target.getBoundingClientRect().top-editor.getBoundingClientRect().top+editor.scrollTop-35;editor.scrollTo({top:Math.max(0,y),behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth'});}}const button=$('segments').children[index],rail=$('segments');if(button){const a=button.getBoundingClientRect(),b=rail.getBoundingClientRect();if(a.top<b.top||a.bottom>b.bottom)rail.scrollTop+=a.top-b.top-10;if(a.left<b.left||a.right>b.right)rail.scrollLeft+=a.left-b.left-10;}
 }
+function activateText(event){
+ if(event.type==='keydown'&&!['Enter',' '].includes(event.key))return;
+ if(event.type==='click'&&window.getSelection()?.toString())return;
+ const run=event.target.closest('.text-run');if(!run)return;
+ if(event.type==='keydown')event.preventDefault();
+ const index=Number(run.dataset.part);selection=parts[index].key;selectPart(index,false);syncURL();
+}
+$('full-text').addEventListener('click',activateText);$('full-text').addEventListener('keydown',activateText);
 function renderResult(){const root=$('result');root.replaceChildren();if(view.result){root.append(text('h3','实际读出'),text('p','选择：'+view.result.action));for(const row of view.result.candidates){const d=text('div','', 'score-row');d.append(text('span',row.id),text('strong',(row.score*100).toFixed(2)+'%'));root.append(d);}root.append(text('p','候选相对权重，不是成功概率。','caption'));}
  else if(view.oracle_action)root.append(text('h3','规则示范动作'),text('pre',typeof view.oracle_action==='string'?view.oracle_action:JSON.stringify(view.oracle_action)),text('p','用于推进示范，不是模型预测。','caption'));
  else root.append(text('p','此配置展示输入模板，没有模型候选分数。','caption'));}
