@@ -1,0 +1,139 @@
+{
+  "engine": {
+    "engine": "f5f3c52e21ce570c8471c28f9802b9c475f6335589d04c331984cd739be998e0",
+    "renderer": "shared-rgba",
+    "protocol": "local-ndjson",
+    "node": 24
+  },
+  "drawing_version": "v3",
+  "figures": [
+    {
+      "bench": "snake",
+      "title": "直行吃食物，蛇身增长一格",
+      "before": {
+        "src": "/vdec/assets/current-rules/snake-before.png",
+        "width": 480,
+        "height": 480
+      },
+      "after": {
+        "src": "/vdec/assets/current-rules/snake-after.png",
+        "width": 480,
+        "height": 480
+      },
+      "caption": "正式单食物任务。图示是一条正式动作；网页插值不增加环境动作。",
+      "case": null
+    },
+    {
+      "bench": "brush",
+      "title": "抬笔定位 S，落笔到 E，再提交",
+      "before": {
+        "src": "/vdec/assets/current-rules/brush-before.png",
+        "width": 480,
+        "height": 480
+      },
+      "after": {
+        "src": "/vdec/assets/current-rules/brush-after.png",
+        "width": 480,
+        "height": 480
+      },
+      "caption": "33×33 格点、pick / move / drop 与原有评分不变。淡色搜索范围来自动作产生的区间，不表示真实答案。",
+      "case": "dev-horizontal-00"
+    },
+    {
+      "bench": "drawing",
+      "title": "自由路径：复制可见轮廓",
+      "before": {
+        "src": "/vdec/assets/current-rules/drawing-path_copy-before.png",
+        "width": 736,
+        "height": 752
+      },
+      "after": {
+        "src": "/vdec/assets/current-rules/drawing-path_copy-after.png",
+        "width": 736,
+        "height": 752
+      },
+      "caption": "v3 正式环境的规则参考解；不是模型运行成绩。",
+      "case": "v3-dev-path_copy-0-00"
+    },
+    {
+      "bench": "drawing",
+      "title": "描边与填充分别配色",
+      "before": {
+        "src": "/vdec/assets/current-rules/drawing-independent_fill-before.png",
+        "width": 736,
+        "height": 752
+      },
+      "after": {
+        "src": "/vdec/assets/current-rules/drawing-independent_fill-after.png",
+        "width": 736,
+        "height": 752
+      },
+      "caption": "v3 正式环境的规则参考解；不是模型运行成绩。",
+      "case": "v3-dev-independent_fill-0-00"
+    },
+    {
+      "bench": "drawing",
+      "title": "拉伸形状，圆保持圆形",
+      "before": {
+        "src": "/vdec/assets/current-rules/drawing-reshape-before.png",
+        "width": 736,
+        "height": 752
+      },
+      "after": {
+        "src": "/vdec/assets/current-rules/drawing-reshape-after.png",
+        "width": 736,
+        "height": 752
+      },
+      "caption": "v3 正式环境的规则参考解；不是模型运行成绩。",
+      "case": "v3-dev-reshape-0-00"
+    },
+    {
+      "bench": "drawing",
+      "title": "修改端点与顶点",
+      "before": {
+        "src": "/vdec/assets/current-rules/drawing-vertex_edit-before.png",
+        "width": 736,
+        "height": 752
+      },
+      "after": {
+        "src": "/vdec/assets/current-rules/drawing-vertex_edit-after.png",
+        "width": 736,
+        "height": 752
+      },
+      "caption": "v3 正式环境的规则参考解；不是模型运行成绩。",
+      "case": "v3-dev-vertex_edit-0-00"
+    },
+    {
+      "bench": "drawing",
+      "title": "调整重叠对象的图层",
+      "before": {
+        "src": "/vdec/assets/current-rules/drawing-layering-before.png",
+        "width": 736,
+        "height": 752
+      },
+      "after": {
+        "src": "/vdec/assets/current-rules/drawing-layering-after.png",
+        "width": 736,
+        "height": 752
+      },
+      "caption": "v3 正式环境的规则参考解；不是模型运行成绩。",
+      "case": "v3-dev-layering-0-00"
+    },
+    {
+      "bench": "drawing",
+      "title": "多选后整体变换",
+      "before": {
+        "src": "/vdec/assets/current-rules/drawing-group_edit-before.png",
+        "width": 736,
+        "height": 752
+      },
+      "after": {
+        "src": "/vdec/assets/current-rules/drawing-group_edit-after.png",
+        "width": 736,
+        "height": 752
+      },
+      "caption": "v3 正式环境的规则参考解；不是模型运行成绩。",
+      "case": "v3-dev-group_edit-0-00"
+    }
+  ]
+}

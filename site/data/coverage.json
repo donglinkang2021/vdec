@@ -1,1 +1,1 @@
-{"snake":{"total":432,"splits":{"dev":144,"test":288},"families":4,"templates":7},"brush":{"total":108,"splits":{"dev":36,"test":72},"families":6,"templates":6},"drawing":{"total":512,"splits":{"dev":128,"test":256,"ood":128},"families":16,"templates":48}}
+{"snake":{"total":432,"splits":{"dev":144,"test":288},"families":4,"templates":7},"brush":{"total":108,"splits":{"dev":36,"test":72},"families":6,"templates":6},"drawing":{"total":704,"splits":{"dev":176,"test":352,"ood":176},"families":22,"templates":66}}
